@@ -1,149 +1,128 @@
 import "./App.css";
+import "./components/ui/buttons.css";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { motionTokens } from "./utils/motion";
 
 function Navbar({ isDark, toggleTheme }) {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-white/70 dark:bg-neutral-900/70 backdrop-blur border-b border-neutral-200 dark:border-neutral-700">
-      <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-black/5 dark:border-white/10 bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between">
         <a
           href="#hero"
-          className="font-semibold tracking-tight text-neutral-900 dark:text-white font-heading"
+          className="font-semibold font-heading text-text-light dark:text-text-dark"
         >
-          Abhiyan Sainju
+          AS
         </a>
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-6 text-sm text-neutral-700 dark:text-neutral-300">
-            <a
-              href="#projects"
-              className="hover:text-neutral-900 dark:hover:text-white"
-            >
-              Projects
-            </a>
-            <a
-              href="#photography"
-              className="hover:text-neutral-900 dark:hover:text-white"
-            >
-              Photography
-            </a>
-            <a
-              href="#deep-dives"
-              className="hover:text-neutral-900 dark:hover:text-white"
-            >
-              Deep Dives
-            </a>
-            <a
-              href="#about"
-              className="hover:text-neutral-900 dark:hover:text-white"
-            >
-              About
-            </a>
-          </div>
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
-            aria-label="Toggle theme"
+        <nav className="hidden md:flex gap-6">
+          <a
+            href="#projects"
+            className="text-sm md:text-base font-medium hover:text-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-violet-600 transition-colors"
           >
-            {isDark ? (
-              <svg
-                className="w-5 h-5 text-yellow-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="w-5 h-5 text-neutral-700"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-              </svg>
-            )}
-          </button>
-        </div>
-      </nav>
+            Projects
+          </a>
+          <a
+            href="#photography"
+            className="text-sm md:text-base font-medium hover:text-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-violet-600 transition-colors"
+          >
+            Photography
+          </a>
+          <a
+            href="#deep-dives"
+            className="text-sm md:text-base font-medium hover:text-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-violet-600 transition-colors"
+          >
+            Deep Dives
+          </a>
+          <a
+            href="#about"
+            className="text-sm md:text-base font-medium hover:text-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-violet-600 transition-colors"
+          >
+            About
+          </a>
+        </nav>
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-lg bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-colors"
+          aria-label="Toggle theme"
+        >
+          {isDark ? (
+            <svg
+              className="w-5 h-5 text-yellow-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                clipRule="evenodd"
+              />
+            </svg>
+          ) : (
+            <svg
+              className="w-5 h-5 text-muted-light dark:text-muted-dark"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+            </svg>
+          )}
+        </button>
+      </div>
     </header>
   );
 }
 
 function Hero() {
   return (
-    <section
-      id="hero"
-      className="pt-24 relative overflow-hidden min-h-screen flex items-center"
-    >
-      {/* Background photo with gradient overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center')",
-        }}
+    <div className="relative min-h-[60vh] md:min-h-[80vh]">
+      <img
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center"
+        className="absolute inset-0 w-full h-full object-cover"
+        alt="Landscape by Abhiyan"
       />
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-brand-light/90 via-white/80 to-brand-accent/20 dark:from-brand-dark/90 dark:via-neutral-800/80 dark:to-brand-accent/20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      />
-
-      <motion.div
-        className="mx-auto max-w-6xl px-4 relative z-10"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
+      <div className="absolute inset-0 bg-gradient-to-t from-bg-light/80 via-bg-light/30 to-bg-light/10 dark:from-bg-dark/80 dark:via-bg-dark/30 dark:to-bg-dark/10"></div>
+      <div className="relative max-w-7xl mx-auto px-6 md:px-8 py-24">
         <motion.h1
-          className="text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white font-heading"
+          className="text-5xl md:text-6xl font-bold tracking-tight text-text-light dark:text-text-dark font-heading"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{
+            duration: motionTokens.duration.normal / 1000,
+            delay: 0.2,
+          }}
         >
-          Hi, I'm Abhiyan Sainju.
+          Hi, I'm Abhiyan.
         </motion.h1>
-
         <motion.p
-          className="mt-4 max-w-2xl text-neutral-700 dark:text-neutral-300"
+          className="mt-4 text-lg text-muted-light dark:text-muted-dark max-w-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{
+            duration: motionTokens.duration.normal / 1000,
+            delay: 0.4,
+          }}
         >
-          Software Engineer, Photographer, and critical thinker exploring
-          systems, images, and ideas.
+          Software Engineer | Cloud + AI Enthusiast | Photographer
         </motion.p>
-
         <motion.div
-          className="mt-6 flex gap-3"
+          className="mt-8 flex gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{
+            duration: motionTokens.duration.normal / 1000,
+            delay: 0.6,
+          }}
         >
-          <motion.a
-            href="#projects"
-            className="inline-flex items-center rounded-md bg-neutral-900 dark:bg-white px-4 py-2 text-white dark:text-neutral-900 text-sm hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <a href="#projects" className="btn-primary">
             View Projects
-          </motion.a>
-          <motion.a
-            href="#about"
-            className="inline-flex items-center rounded-md border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-sm text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            About Me
-          </motion.a>
+          </a>
+          <a href="#photography" className="btn-ghost">
+            See Photography
+          </a>
         </motion.div>
-      </motion.div>
-    </section>
+      </div>
+    </div>
   );
 }
 
@@ -218,69 +197,63 @@ function Projects() {
     },
   ];
   return (
-    <section id="projects" className="py-16">
-      <div className="mx-auto max-w-6xl px-4">
-        <h2
-          className="text-2xl font-semibold text-neutral-900 dark:text-white"
-          style={{ fontFamily: "Space Grotesk, system-ui" }}
-        >
+    <section id="projects" className="py-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-text-light dark:text-text-dark font-heading">
           Projects
         </h2>
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {items.map((p, index) => (
             <motion.article
               key={p.title}
-              className="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-4 hover:shadow-lg dark:hover:shadow-neutral-900/20 transition-all cursor-pointer"
-              initial={{ opacity: 0, y: 20, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              className="group rounded-2xl border border-black/5 dark:border-white/10 bg-surface-light dark:bg-surface-dark overflow-hidden transition shadow-sm hover:shadow-xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{
-                duration: 0.5,
+                duration: motionTokens.duration.normal / 1000,
                 delay: index * 0.1,
-                ease: "easeOut",
+                ease: motionTokens.easing.easeOut,
               }}
               whileHover={{
                 scale: 1.02,
-                y: -4,
-                transition: { duration: 0.2 },
+                transition: { duration: motionTokens.duration.fast / 1000 },
               }}
-              whileTap={{ scale: 0.98 }}
             >
-              <h3 className="font-semibold text-neutral-900 dark:text-white">
-                {p.title}
-              </h3>
-              <p className="mt-1 text-sm text-neutral-700 dark:text-neutral-300">
-                {p.summary}
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {p.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="inline-flex items-center rounded-full bg-neutral-100 dark:bg-neutral-700 px-2 py-1 text-xs text-neutral-700 dark:text-neutral-300"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-4 flex gap-2">
-                {p.link && (
+              <div className="p-6">
+                <h3 className="text-xl font-semibold tracking-tight group-hover:text-accent text-text-light dark:text-text-dark font-heading">
+                  {p.title}
+                </h3>
+                <p className="mt-2 text-muted-light dark:text-muted-dark">
+                  {p.summary}
+                </p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {p.tech.map((t) => (
+                    <li key={t} className="chip">
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-6 flex gap-3">
+                  {p.link && (
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary"
+                    >
+                      Live
+                    </a>
+                  )}
                   <a
-                    href={p.link}
+                    href={p.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs bg-brand-accent text-white px-3 py-1 rounded hover:bg-brand-accent/90 transition-colors"
+                    className="btn-ghost"
                   >
-                    Live Demo
+                    GitHub
                   </a>
-                )}
-                <a
-                  href={p.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs border border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-300 px-3 py-1 rounded hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors"
-                >
-                  GitHub
-                </a>
+                </div>
               </div>
             </motion.article>
           ))}
@@ -1442,7 +1415,7 @@ function App() {
 
   return (
     <div
-      className="min-h-screen bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white transition-colors"
+      className="min-h-screen bg-light-bg dark:bg-dark-bg text-text-light dark:text-text-dark transition-colors"
       style={{ fontFamily: "Inter, system-ui" }}
     >
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
