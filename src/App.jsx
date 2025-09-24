@@ -151,35 +151,71 @@ function Projects() {
   const items = [
     {
       title: "InfraSight",
-      summary: "ML-powered cloud cost intelligence platform that cuts AWS billing analysis time by 70%.",
-      tech: ["Python", "FastAPI", "PostgreSQL", "scikit-learn", "Docker", "React", "Pandas"],
+      summary:
+        "ML-powered cloud cost intelligence platform that cuts AWS billing analysis time by 70%.",
+      tech: [
+        "Python",
+        "FastAPI",
+        "PostgreSQL",
+        "scikit-learn",
+        "Docker",
+        "React",
+        "Pandas",
+      ],
       link: "https://infrasight.netlify.app/",
-      github: "https://github.com/aabhiyann/infrasight"
+      github: "https://github.com/aabhiyann/infrasight",
     },
     {
       title: "MelodyHub",
-      summary: "Real-time music streaming platform supporting 100+ concurrent users with synchronized playback.",
-      tech: ["Node.js", "React", "Socket.IO", "Clerk Auth", "Cloudinary", "MongoDB"],
-      github: "https://github.com/UdaykiranKalyanapu/CSCI_6234_OOD"
+      summary:
+        "Real-time music streaming platform supporting 100+ concurrent users with synchronized playback.",
+      tech: [
+        "Node.js",
+        "React",
+        "Socket.IO",
+        "Clerk Auth",
+        "Cloudinary",
+        "MongoDB",
+      ],
+      github: "https://github.com/UdaykiranKalyanapu/CSCI_6234_OOD",
     },
     {
       title: "TalkifyDocs",
-      summary: "AI SaaS document assistant that processes documents 47% faster than manual review.",
-      tech: ["Next.js", "OpenAI GPT-4", "LangChain", "Pinecone", "Stripe", "Prisma", "TypeScript"],
-      github: "https://github.com/aabhiyann/talkifydocs"
+      summary:
+        "AI SaaS document assistant that processes documents 47% faster than manual review.",
+      tech: [
+        "Next.js",
+        "OpenAI GPT-4",
+        "LangChain",
+        "Pinecone",
+        "Stripe",
+        "Prisma",
+        "TypeScript",
+      ],
+      github: "https://github.com/aabhiyann/talkifydocs",
     },
     {
       title: "Disease Prediction ML",
-      summary: "Clinical decision support system achieving 98.7% diagnostic accuracy on 4,920 medical records.",
-      tech: ["Python", "scikit-learn", "pandas", "React", "Tailwind CSS", "Jupyter"],
-      github: "https://github.com/aabhiyann/ml-disease-prediction-system"
+      summary:
+        "Clinical decision support system achieving 98.7% diagnostic accuracy on 4,920 medical records.",
+      tech: [
+        "Python",
+        "scikit-learn",
+        "pandas",
+        "React",
+        "Tailwind CSS",
+        "Jupyter",
+      ],
+      github: "https://github.com/aabhiyann/ml-disease-prediction-system",
     },
     {
       title: "Multi-Source Information Retrieval",
-      summary: "NLP-based retrieval system that reduced research query times by 70%.",
+      summary:
+        "NLP-based retrieval system that reduced research query times by 70%.",
       tech: ["Python", "GPT-3.5-turbo", "Mistral 7B", "FAISS", "NLP"],
-      github: "https://github.com/aabhiyann/Conversational-Interface-for-Multi-Source-Information-Retrieval"
-    }
+      github:
+        "https://github.com/aabhiyann/Conversational-Interface-for-Multi-Source-Information-Retrieval",
+    },
   ];
   return (
     <section id="projects" className="py-16">
@@ -262,7 +298,14 @@ function Experience() {
       dates: "August 2024 - Present",
       description:
         "Transformed algorithm comprehension for 60+ graduate students by designing interactive tutorials that translated complex concepts into industry case studies, resulting in 22% average improvement in midterm scores.",
-      technologies: ["Algorithms", "Dynamic Programming", "Graph Theory", "NP-completeness", "Python", "Java"],
+      technologies: [
+        "Algorithms",
+        "Dynamic Programming",
+        "Graph Theory",
+        "NP-completeness",
+        "Python",
+        "Java",
+      ],
     },
     {
       role: "Software Development Intern",
@@ -270,7 +313,13 @@ function Experience() {
       dates: "June 2023 - September 2023",
       description:
         "Developed and delivered 7 production-ready features for a fintech platform serving 1,200+ active users, including automated booking system that eliminated 89% of scheduling conflicts.",
-      technologies: ["React.js", "Node.js", "PostgreSQL", "JavaScript", "API Development"],
+      technologies: [
+        "React.js",
+        "Node.js",
+        "PostgreSQL",
+        "JavaScript",
+        "API Development",
+      ],
     },
     {
       role: "IT Solutions Lead",
@@ -278,7 +327,13 @@ function Experience() {
       dates: "August 2022 - March 2023",
       description:
         "Spearheaded complete digital transformation for security consultancy, rebuilding legacy website into lead-generation platform that generated 73% increase in qualified leads and $35K in new contracts.",
-      technologies: ["WordPress", "Web Development", "IT Management", "Digital Transformation", "Budget Management"],
+      technologies: [
+        "WordPress",
+        "Web Development",
+        "IT Management",
+        "Digital Transformation",
+        "Budget Management",
+      ],
     },
   ];
 
@@ -378,16 +433,19 @@ function Education() {
       dates: "January 2024 - December 2025",
       location: "Washington, DC",
       gpa: "4.0",
-      details: "Focus on algorithms, machine learning, and software engineering"
+      details:
+        "Focus on algorithms, machine learning, and software engineering",
     },
     {
-      degree: "Bachelor of Science in Computer Science & Information Technology",
+      degree:
+        "Bachelor of Science in Computer Science & Information Technology",
       school: "St. Xavier's College",
       dates: "August 2018 - December 2022",
       location: "Kathmandu, Nepal",
       gpa: "3.89",
-      details: "Comprehensive foundation in computer science, software development, and IT systems"
-    }
+      details:
+        "Comprehensive foundation in computer science, software development, and IT systems",
+    },
   ];
 
   return (
@@ -668,7 +726,7 @@ function Photography() {
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
-        </button>
+            </button>
           </motion.div>
         </motion.div>
       )}
@@ -1317,36 +1375,36 @@ function Footer() {
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
             © {new Date().getFullYear()} Abhiyan Sainju
           </p>
-              <div className="flex items-center gap-4 text-sm">
-                <a
-                  href="mailto:aabhiyansainju@gmail.com"
-                  className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
-                >
-                  aabhiyansainju@gmail.com
-                </a>
-                <a
-                  href="tel:571-427-5918"
-                  className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
-                >
-                  571-427-5918
-                </a>
-                <a
-                  href="https://github.com/aabhiyann"
-                  target="_blank"
-                  className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/aabhiyansainju/"
-                  target="_blank"
-                  className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
-                  rel="noreferrer"
-                >
-                  LinkedIn
-                </a>
-              </div>
+          <div className="flex items-center gap-4 text-sm">
+            <a
+              href="mailto:aabhiyansainju@gmail.com"
+              className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
+            >
+              aabhiyansainju@gmail.com
+            </a>
+            <a
+              href="tel:571-427-5918"
+              className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
+            >
+              571-427-5918
+            </a>
+            <a
+              href="https://github.com/aabhiyann"
+              target="_blank"
+              className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/aabhiyansainju/"
+              target="_blank"
+              className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
+          </div>
         </div>
       </div>
     </footer>
