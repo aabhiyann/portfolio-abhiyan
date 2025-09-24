@@ -275,6 +275,222 @@ function Experience() {
   );
 }
 
+function Photography() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const photos = [
+    {
+      id: 1,
+      src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+      alt: "Mountain landscape",
+      title: "Himalayan Vista",
+      camera: "Canon EOS R5",
+      lens: "RF 24-70mm f/2.8L",
+      settings: "f/8, 1/125s, ISO 100",
+      location: "Annapurna Base Camp, Nepal",
+    },
+    {
+      id: 2,
+      src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=800&fit=crop",
+      alt: "Portrait in golden hour",
+      title: "Golden Hour Portrait",
+      camera: "Sony A7R IV",
+      lens: "85mm f/1.4 GM",
+      settings: "f/2.8, 1/250s, ISO 400",
+      location: "Kathmandu, Nepal",
+    },
+    {
+      id: 3,
+      src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=500&fit=crop",
+      alt: "Street photography",
+      title: "Urban Stories",
+      camera: "Fujifilm X-T4",
+      lens: "23mm f/1.4",
+      settings: "f/5.6, 1/60s, ISO 800",
+      location: "Washington DC, USA",
+    },
+    {
+      id: 4,
+      src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=800&fit=crop",
+      alt: "Architecture detail",
+      title: "Geometric Patterns",
+      camera: "Canon EOS R5",
+      lens: "RF 70-200mm f/2.8L",
+      settings: "f/4, 1/500s, ISO 200",
+      location: "New York, USA",
+    },
+    {
+      id: 5,
+      src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+      alt: "Nature macro",
+      title: "Forest Details",
+      camera: "Sony A7R IV",
+      lens: "90mm f/2.8 Macro",
+      settings: "f/8, 1/125s, ISO 100",
+      location: "Rock Creek Park, DC",
+    },
+    {
+      id: 6,
+      src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop",
+      alt: "Cityscape at night",
+      title: "Urban Nightscape",
+      camera: "Fujifilm X-T4",
+      lens: "16-55mm f/2.8",
+      settings: "f/4, 8s, ISO 100",
+      location: "Washington DC, USA",
+    },
+  ];
+
+  return (
+    <>
+      <section id="photography" className="py-16">
+        <div className="mx-auto max-w-6xl px-4">
+          <h2
+            className="text-2xl font-semibold text-neutral-900 dark:text-white mb-8"
+            style={{ fontFamily: "Space Grotesk, system-ui" }}
+          >
+            Photography
+          </h2>
+
+          {/* Masonry Grid */}
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+            {photos.map((photo, index) => (
+              <motion.div
+                key={photo.id}
+                className="break-inside-avoid mb-6 group cursor-pointer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => setSelectedImage(photo)}
+              >
+                <div className="relative overflow-hidden rounded-xl bg-white dark:bg-neutral-800 shadow-lg hover:shadow-xl dark:hover:shadow-neutral-900/20 transition-all duration-300 group-hover:scale-105">
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-auto object-cover"
+                    loading="lazy"
+                  />
+
+                  {/* Overlay with EXIF data */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex items-end">
+                    <div className="p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <h3 className="font-semibold text-lg mb-2">
+                        {photo.title}
+                      </h3>
+                      <div className="text-sm space-y-1">
+                        <p>
+                          <span className="font-medium">Camera:</span>{" "}
+                          {photo.camera}
+                        </p>
+                        <p>
+                          <span className="font-medium">Lens:</span>{" "}
+                          {photo.lens}
+                        </p>
+                        <p>
+                          <span className="font-medium">Settings:</span>{" "}
+                          {photo.settings}
+                        </p>
+                        <p>
+                          <span className="font-medium">Location:</span>{" "}
+                          {photo.location}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <motion.div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedImage(null)}
+        >
+          <motion.div
+            className="relative max-w-4xl max-h-[90vh] bg-white dark:bg-neutral-800 rounded-xl overflow-hidden"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              className="w-full h-auto max-h-[70vh] object-contain"
+            />
+            <div className="p-6">
+              <h3 className="text-xl font-semibold text-neutral-900 dark:text-white mb-4">
+                {selectedImage.title}
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">
+                    Camera
+                  </p>
+                  <p className="text-neutral-900 dark:text-white font-medium">
+                    {selectedImage.camera}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">
+                    Lens
+                  </p>
+                  <p className="text-neutral-900 dark:text-white font-medium">
+                    {selectedImage.lens}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">
+                    Settings
+                  </p>
+                  <p className="text-neutral-900 dark:text-white font-medium">
+                    {selectedImage.settings}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-neutral-600 dark:text-neutral-400 mb-1">
+                    Location
+                  </p>
+                  <p className="text-neutral-900 dark:text-white font-medium">
+                    {selectedImage.location}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 p-2 bg-white/20 hover:bg-white/30 rounded-full text-white transition-colors"
+              aria-label="Close lightbox"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+    </>
+  );
+}
+
 function About() {
   return (
     <section id="about" className="py-16">
@@ -369,6 +585,7 @@ function App() {
         <Hero />
         <Projects />
         <Experience />
+        <Photography />
         <About />
       </main>
       <Footer />
