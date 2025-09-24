@@ -9,8 +9,7 @@ function Navbar({ isDark, toggleTheme }) {
       <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
         <a
           href="#hero"
-          className="font-semibold tracking-tight text-neutral-900 dark:text-white"
-          style={{ fontFamily: "Space Grotesk, system-ui" }}
+          className="font-semibold tracking-tight text-neutral-900 dark:text-white font-heading"
         >
           Abhiyan Sainju
         </a>
@@ -21,12 +20,6 @@ function Navbar({ isDark, toggleTheme }) {
               className="hover:text-neutral-900 dark:hover:text-white"
             >
               Projects
-            </a>
-            <a
-              href="#experience"
-              className="hover:text-neutral-900 dark:hover:text-white"
-            >
-              Experience
             </a>
             <a
               href="#photography"
@@ -82,10 +75,20 @@ function Navbar({ isDark, toggleTheme }) {
 
 function Hero() {
   return (
-    <section id="hero" className="pt-24 relative overflow-hidden">
-      {/* Background gradient animation */}
+    <section
+      id="hero"
+      className="pt-24 relative overflow-hidden min-h-screen flex items-center"
+    >
+      {/* Background photo with gradient overlay */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center')",
+        }}
+      />
       <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900"
+        className="absolute inset-0 bg-gradient-to-br from-brand-light/90 via-white/80 to-brand-accent/20 dark:from-brand-dark/90 dark:via-neutral-800/80 dark:to-brand-accent/20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -98,8 +101,7 @@ function Hero() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <motion.h1
-          className="text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white"
-          style={{ fontFamily: "Space Grotesk, system-ui" }}
+          className="text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white font-heading"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -439,30 +441,34 @@ function Photography() {
                     loading="lazy"
                   />
 
-                  {/* Overlay with EXIF data */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex items-end">
-                    <div className="p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <h3 className="font-semibold text-lg mb-2">
-                        {photo.title}
-                      </h3>
-                      <div className="text-sm space-y-1">
-                        <p>
+                  {/* EXIF Data Hover Tooltip */}
+                  <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-black/80 text-white text-xs p-2 rounded-lg max-w-48">
+                      <div className="space-y-1">
+                        <div>
                           <span className="font-medium">Camera:</span>{" "}
                           {photo.camera}
-                        </p>
-                        <p>
+                        </div>
+                        <div>
                           <span className="font-medium">Lens:</span>{" "}
                           {photo.lens}
-                        </p>
-                        <p>
+                        </div>
+                        <div>
                           <span className="font-medium">Settings:</span>{" "}
                           {photo.settings}
-                        </p>
-                        <p>
+                        </div>
+                        <div>
                           <span className="font-medium">Location:</span>{" "}
                           {photo.location}
-                        </p>
+                        </div>
                       </div>
+                    </div>
+                  </div>
+
+                  {/* Overlay with title */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex items-end">
+                    <div className="p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <h3 className="font-semibold text-lg">{photo.title}</h3>
                     </div>
                   </div>
                 </div>
