@@ -1112,9 +1112,23 @@ function Footer() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-              <span className="text-2xl">⚽</span>
-            </div>
+            <motion.div
+              className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center cursor-pointer"
+              whileHover={{ scale: 1.1, rotate: 360 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => {
+                // Football easter egg - bounce animation
+                const ball = document.querySelector(".football-ball");
+                if (ball) {
+                  ball.style.animation = "bounce 0.6s ease-in-out";
+                  setTimeout(() => {
+                    ball.style.animation = "";
+                  }, 600);
+                }
+              }}
+            >
+              <span className="text-2xl football-ball">⚽</span>
+            </motion.div>
             <div className="flex-1">
               <h3 className="text-lg font-semibold mb-1">
                 Let's talk FC Barcelona
@@ -1203,10 +1217,17 @@ function App() {
   return (
     <div
       className="min-h-screen bg-light-bg dark:bg-dark-bg text-text-light dark:text-text-dark transition-colors"
-      style={{ fontFamily: "Inter, system-ui" }}
+      style={{ fontFamily: "Inter, sans-serif" }}
     >
+      {/* Skip link for accessibility */}
+      <a
+        href="#content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-accent text-white px-4 py-2 rounded-lg z-50"
+      >
+        Skip to main content
+      </a>
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
-      <main>
+      <main id="content">
         <Hero />
         <Projects />
         <Experience />
