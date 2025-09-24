@@ -17,6 +17,9 @@ function Navbar() {
           <a href="#projects" className="hover:text-neutral-900">
             Projects
           </a>
+          <a href="#experience" className="hover:text-neutral-900">
+            Experience
+          </a>
           <a href="#photography" className="hover:text-neutral-900">
             Photography
           </a>
@@ -127,6 +130,100 @@ function Projects() {
   );
 }
 
+function Experience() {
+  const experiences = [
+    {
+      role: "Software Engineer",
+      company: "TechCorp",
+      dates: "2023 - Present",
+      description:
+        "Building scalable web applications and leading technical initiatives.",
+      technologies: ["React", "Node.js", "AWS", "TypeScript"],
+    },
+    {
+      role: "Full Stack Developer",
+      company: "StartupXYZ",
+      dates: "2022 - 2023",
+      description:
+        "Developed end-to-end solutions for early-stage startup, focusing on user experience and performance.",
+      technologies: ["Next.js", "PostgreSQL", "Docker", "GraphQL"],
+    },
+    {
+      role: "Frontend Developer",
+      company: "Digital Agency",
+      dates: "2021 - 2022",
+      description:
+        "Created responsive web applications and collaborated with design teams to implement pixel-perfect UIs.",
+      technologies: ["Vue.js", "Sass", "Webpack", "Figma"],
+    },
+  ];
+
+  return (
+    <section id="experience" className="py-16">
+      <div className="mx-auto max-w-4xl px-4">
+        <h2
+          className="text-2xl font-semibold text-neutral-900 mb-8"
+          style={{ fontFamily: "Space Grotesk, system-ui" }}
+        >
+          Experience
+        </h2>
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-neutral-200"></div>
+
+          <div className="space-y-8">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                className="relative flex items-start"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                {/* Timeline dot */}
+                <div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900">
+                  <div className="h-3 w-3 rounded-full bg-white"></div>
+                </div>
+
+                {/* Content */}
+                <div className="ml-6 flex-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <h3 className="text-lg font-semibold text-neutral-900">
+                        {exp.role}
+                      </h3>
+                      <p className="text-neutral-600 font-medium">
+                        {exp.company}
+                      </p>
+                    </div>
+                    <span className="text-sm text-neutral-500 mt-1 sm:mt-0">
+                      {exp.dates}
+                    </span>
+                  </div>
+
+                  <p className="mt-2 text-neutral-700">{exp.description}</p>
+
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {exp.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function About() {
   return (
     <section id="about" className="py-16">
@@ -189,6 +286,7 @@ function App() {
       <main>
         <Hero />
         <Projects />
+        <Experience />
         <About />
       </main>
       <Footer />
