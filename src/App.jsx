@@ -558,6 +558,232 @@ function Photography() {
   );
 }
 
+function DeepDives() {
+  const [activeVisualization, setActiveVisualization] = useState(null);
+
+  const articles = [
+    {
+      id: 1,
+      title: "AI & Copyright: The Uncharted Territory",
+      excerpt:
+        "Exploring the legal and ethical implications of AI-generated content in the age of machine learning.",
+      readTime: "12 min read",
+      date: "September 2024",
+      category: "Technology & Ethics",
+      hasVisualization: true,
+      visualization: "coupon-collector",
+    },
+    {
+      id: 2,
+      title: "The Architecture of Modern Web Applications",
+      excerpt:
+        "A deep dive into microservices, event-driven architecture, and the evolution of web development patterns.",
+      readTime: "8 min read",
+      date: "August 2024",
+      category: "Software Architecture",
+      hasVisualization: false,
+    },
+    {
+      id: 3,
+      title: "Photography as Data: EXIF and Beyond",
+      excerpt:
+        "How metadata transforms photography from art into structured data, and what that means for the future.",
+      readTime: "6 min read",
+      date: "July 2024",
+      category: "Data & Photography",
+      hasVisualization: false,
+    },
+  ];
+
+  const CouponCollectorVisualization = () => {
+    const [boxes, setBoxes] = useState([]);
+    const [attempts, setAttempts] = useState(0);
+    const [isRunning, setIsRunning] = useState(false);
+
+    const startSimulation = () => {
+      setIsRunning(true);
+      setAttempts(0);
+      setBoxes([]);
+
+      const collected = new Set();
+      let count = 0;
+
+      const interval = setInterval(() => {
+        const randomBox = Math.floor(Math.random() * 10) + 1;
+        collected.add(randomBox);
+        count++;
+
+        setBoxes([...collected]);
+        setAttempts(count);
+
+        if (collected.size === 10) {
+          clearInterval(interval);
+          setIsRunning(false);
+        }
+      }, 200);
+    };
+
+    return (
+      <div className="bg-white dark:bg-neutral-800 rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
+        <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4">
+          Coupon Collector's Problem
+        </h3>
+        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4">
+          How many attempts to collect all 10 unique items? This classic
+          probability problem has an expected value of ~29.3 attempts.
+        </p>
+
+        <div className="grid grid-cols-5 gap-2 mb-4">
+          {Array.from({ length: 10 }, (_, i) => (
+            <div
+              key={i + 1}
+              className={`w-12 h-12 rounded-lg flex items-center justify-center text-sm font-medium transition-all duration-300 ${
+                boxes.includes(i + 1)
+                  ? "bg-green-500 text-white"
+                  : "bg-neutral-200 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400"
+              }`}
+            >
+              {i + 1}
+            </div>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-4 mb-4">
+          <button
+            onClick={startSimulation}
+            disabled={isRunning}
+            className="px-4 py-2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-lg text-sm font-medium hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors disabled:opacity-50"
+          >
+            {isRunning ? "Running..." : "Start Simulation"}
+          </button>
+          <div className="text-sm text-neutral-600 dark:text-neutral-400">
+            Attempts: <span className="font-semibold">{attempts}</span>
+          </div>
+        </div>
+
+        <div className="text-xs text-neutral-500 dark:text-neutral-500">
+          Expected value: ~29.3 attempts | Current: {attempts} attempts
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <section id="deep-dives" className="py-16">
+      <div className="mx-auto max-w-6xl px-4">
+        <motion.h2
+          className="text-2xl font-semibold text-neutral-900 dark:text-white mb-8"
+          style={{ fontFamily: "Space Grotesk, system-ui" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Deep Dives
+        </motion.h2>
+
+        <motion.p
+          className="text-neutral-600 dark:text-neutral-400 mb-8 max-w-3xl"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          Technical essays and interactive explorations of complex topics in
+          software, photography, and the intersection of technology with
+          society.
+        </motion.p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {articles.map((article, index) => (
+            <motion.article
+              key={article.id}
+              className="bg-white dark:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-700 p-6 hover:shadow-lg dark:hover:shadow-neutral-900/20 transition-all duration-300 cursor-pointer group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              onClick={() =>
+                article.hasVisualization &&
+                setActiveVisualization(article.visualization)
+              }
+            >
+              <div className="flex items-start justify-between mb-4">
+                <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded-full">
+                  {article.category}
+                </span>
+                <span className="text-xs text-neutral-500 dark:text-neutral-400">
+                  {article.date}
+                </span>
+              </div>
+
+              <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-3 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
+                {article.title}
+              </h3>
+
+              <p className="text-neutral-600 dark:text-neutral-400 mb-4 text-sm leading-relaxed">
+                {article.excerpt}
+              </p>
+
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-neutral-500 dark:text-neutral-400">
+                  {article.readTime}
+                </span>
+                {article.hasVisualization && (
+                  <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">
+                    Interactive Demo →
+                  </span>
+                )}
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        {/* Interactive Visualization Modal */}
+        {activeVisualization === "coupon-collector" && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveVisualization(null)}
+          >
+            <motion.div
+              className="relative max-w-2xl w-full bg-white dark:bg-neutral-800 rounded-xl p-6"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <CouponCollectorVisualization />
+              <button
+                onClick={() => setActiveVisualization(null)}
+                className="absolute top-4 right-4 p-2 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 rounded-full text-neutral-600 dark:text-neutral-400 transition-colors"
+                aria-label="Close visualization"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 function About() {
   return (
     <section id="about" className="py-16 relative">
@@ -669,6 +895,7 @@ function App() {
         <Projects />
         <Experience />
         <Photography />
+        <DeepDives />
         <About />
       </main>
       <Footer />
