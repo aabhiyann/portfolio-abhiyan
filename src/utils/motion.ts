@@ -8,11 +8,11 @@ export const motionTokens = {
     slower: 600, // complex animations
   },
 
-  // Easing curves
+  // Easing curves (Framer Motion format)
   easing: {
-    easeOut: "cubic-bezier(0.22, 1, 0.36, 1)", // easeOutBack-ish for entrances
-    easeIn: "cubic-bezier(0.4, 0, 1, 1)", // easeIn for exits
-    easeInOut: "cubic-bezier(0.4, 0, 0.2, 1)", // easeInOut for toggles
+    easeOut: [0.22, 1, 0.36, 1], // easeOutBack-ish for entrances
+    easeIn: [0.4, 0, 1, 1], // easeIn for exits
+    easeInOut: [0.4, 0, 0.2, 1], // easeInOut for toggles
     linear: "linear", // for progress bars
   },
 
