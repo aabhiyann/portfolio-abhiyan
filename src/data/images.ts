@@ -1,5 +1,6 @@
 // src/data/images.ts
 import { ImageMetadata } from "../types/image";
+import { imageEXIFData } from "./exif-data";
 
 export const heroImages: ImageMetadata[] = [
   {
@@ -55,33 +56,22 @@ export const projectImages: Record<string, ImageMetadata[]> = {
   ],
 };
 
-export const photographyImages: ImageMetadata[] = [
-  {
-    src: "/images/photography/photo-kathmandu-street.webp",
-    alt: "Street scene in Kathmandu",
-    width: 1200,
-    height: 800,
-    format: "webp",
-    exif: {
-      camera: "Fujifilm X-T3",
-      lens: "35mm f/2",
-      settings: "f/2 · 1/250 · ISO 200",
-      location: "Kathmandu, Nepal",
-      date: "2023-12-20",
-    },
+// Generate photography images with real EXIF data
+export const photographyImages: ImageMetadata[] = imageEXIFData.map((exif, index) => ({
+  src: `/images/photography/${exif.filename}.webp`,
+  alt: `Photography by Abhiyan - ${exif.filename}`,
+  width: 1200,
+  height: 1500,
+  format: "webp",
+  exif: {
+    camera: exif.camera,
+    lens: exif.lens,
+    settings: `${exif.aperture} · ${exif.shutterSpeed} · ISO ${exif.iso}`,
+    location: "Various Locations",
+    date: new Date(exif.dateTaken).toLocaleDateString(),
+    focalLength: exif.focalLength,
+    aperture: exif.aperture,
+    shutterSpeed: exif.shutterSpeed,
+    iso: exif.iso.toString(),
   },
-  {
-    src: "/images/photography/photo-dc-monument.webp",
-    alt: "Washington Monument at sunset",
-    width: 1200,
-    height: 1600,
-    format: "webp",
-    exif: {
-      camera: "Fujifilm X-T3",
-      lens: "23mm f/2",
-      settings: "f/5.6 · 1/60 · ISO 400",
-      location: "Washington, DC",
-      date: "2024-03-15",
-    },
-  },
-];
+}));
