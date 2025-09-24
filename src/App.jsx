@@ -82,37 +82,64 @@ function Navbar({ isDark, toggleTheme }) {
 
 function Hero() {
   return (
-    <section id="hero" className="pt-24">
+    <section id="hero" className="pt-24 relative overflow-hidden">
+      {/* Background gradient animation */}
       <motion.div
-        className="mx-auto max-w-6xl px-4"
-        initial={{ opacity: 0, y: 16 }}
+        className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      />
+
+      <motion.div
+        className="mx-auto max-w-6xl px-4 relative z-10"
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1
+        <motion.h1
           className="text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900 dark:text-white"
           style={{ fontFamily: "Space Grotesk, system-ui" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           Hi, I'm Abhiyan Sainju.
-        </h1>
-        <p className="mt-4 max-w-2xl text-neutral-700 dark:text-neutral-300">
+        </motion.h1>
+
+        <motion.p
+          className="mt-4 max-w-2xl text-neutral-700 dark:text-neutral-300"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           Software Engineer, Photographer, and critical thinker exploring
           systems, images, and ideas.
-        </p>
-        <div className="mt-6 flex gap-3">
-          <a
+        </motion.p>
+
+        <motion.div
+          className="mt-6 flex gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <motion.a
             href="#projects"
             className="inline-flex items-center rounded-md bg-neutral-900 dark:bg-white px-4 py-2 text-white dark:text-neutral-900 text-sm hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-colors"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
           >
             View Projects
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             href="#about"
             className="inline-flex items-center rounded-md border border-neutral-300 dark:border-neutral-600 px-4 py-2 text-sm text-neutral-800 dark:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
           >
             About Me
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </motion.div>
     </section>
   );
@@ -149,11 +176,21 @@ function Projects() {
           {items.map((p, index) => (
             <motion.article
               key={p.title}
-              className="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-4 hover:shadow-sm dark:hover:shadow-neutral-900/20 transition-all"
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className="rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-4 hover:shadow-lg dark:hover:shadow-neutral-900/20 transition-all cursor-pointer"
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+                ease: "easeOut",
+              }}
+              whileHover={{
+                scale: 1.02,
+                y: -4,
+                transition: { duration: 0.2 },
+              }}
+              whileTap={{ scale: 0.98 }}
             >
               <h3 className="font-semibold text-neutral-900 dark:text-white">
                 {p.title}
@@ -224,16 +261,36 @@ function Experience() {
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
-                className="relative flex items-start"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="relative flex items-start group"
+                initial={{ opacity: 0, x: -30, scale: 0.95 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                  ease: "easeOut",
+                }}
+                whileHover={{ x: 8, transition: { duration: 0.2 } }}
               >
                 {/* Timeline dot */}
-                <div className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 dark:bg-white">
-                  <div className="h-3 w-3 rounded-full bg-white dark:bg-neutral-900"></div>
-                </div>
+                <motion.div
+                  className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 dark:bg-white"
+                  whileHover={{ scale: 1.2, rotate: 180 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.div
+                    className="h-3 w-3 rounded-full bg-white dark:bg-neutral-900"
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      opacity: [0.8, 1, 0.8],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: index * 0.5,
+                    }}
+                  />
+                </motion.div>
 
                 {/* Content */}
                 <div className="ml-6 flex-1">
@@ -358,10 +415,20 @@ function Photography() {
               <motion.div
                 key={photo.id}
                 className="break-inside-avoid mb-6 group cursor-pointer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                  ease: "easeOut",
+                }}
+                whileHover={{
+                  scale: 1.03,
+                  y: -8,
+                  transition: { duration: 0.3 },
+                }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setSelectedImage(photo)}
               >
                 <div className="relative overflow-hidden rounded-xl bg-white dark:bg-neutral-800 shadow-lg hover:shadow-xl dark:hover:shadow-neutral-900/20 transition-all duration-300 group-hover:scale-105">
@@ -493,19 +560,35 @@ function Photography() {
 
 function About() {
   return (
-    <section id="about" className="py-16">
-      <div className="mx-auto max-w-3xl px-4">
-        <h2
+    <section id="about" className="py-16 relative">
+      <motion.div
+        className="mx-auto max-w-3xl px-4"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <motion.h2
           className="text-2xl font-semibold text-neutral-900 dark:text-white"
           style={{ fontFamily: "Space Grotesk, system-ui" }}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           About
-        </h2>
-        <p className="mt-4 text-neutral-700 dark:text-neutral-300">
+        </motion.h2>
+        <motion.p
+          className="mt-4 text-neutral-700 dark:text-neutral-300"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           I build thoughtful software, shoot photographs that tell stories, and
           write deep dives exploring how things work—from Kathmandu to DC.
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </section>
   );
 }
