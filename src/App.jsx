@@ -1056,35 +1056,173 @@ function About() {
 }
 
 function Footer() {
+  const [currentTrack, setCurrentTrack] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Simulate fetching current track (in real implementation, this would connect to Spotify API)
+  useEffect(() => {
+    const tracks = [
+      {
+        title: "Bohemian Rhapsody",
+        artist: "Queen",
+        album: "A Night at the Opera",
+      },
+      {
+        title: "Hotel California",
+        artist: "Eagles",
+        album: "Hotel California",
+      },
+      { title: "Imagine", artist: "John Lennon", album: "Imagine" },
+      {
+        title: "Stairway to Heaven",
+        artist: "Led Zeppelin",
+        album: "Led Zeppelin IV",
+      },
+      {
+        title: "Sweet Child O' Mine",
+        artist: "Guns N' Roses",
+        album: "Appetite for Destruction",
+      },
+    ];
+
+    const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+    setCurrentTrack(randomTrack);
+  }, []);
+
   return (
-    <footer className="border-t border-neutral-200 dark:border-neutral-700 py-8">
-      <div className="mx-auto max-w-6xl px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          © {new Date().getFullYear()} Abhiyan Sainju
-        </p>
-        <div className="flex items-center gap-4 text-sm">
-          <a
-            href="#"
-            className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400"
-          >
-            Resume
-          </a>
-          <a
-            href="https://github.com/aabhiyann"
-            target="_blank"
-            className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/aabhiyansainju/"
-            target="_blank"
-            className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400"
-            rel="noreferrer"
-          >
-            LinkedIn
-          </a>
+    <footer className="border-t border-neutral-200 dark:border-neutral-700 py-12">
+      <div className="mx-auto max-w-6xl px-4">
+        {/* Currently Listening To Section */}
+        <motion.div
+          className="mb-8 p-6 bg-gradient-to-r from-neutral-50 to-blue-50 dark:from-neutral-800 dark:to-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-700"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+              Currently Listening To
+            </span>
+          </div>
+
+          {currentTrack && (
+            <motion.div
+              className="flex items-center gap-4"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.369 4.369 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
+                </svg>
+              </div>
+
+              <div className="flex-1">
+                <h4 className="font-semibold text-neutral-900 dark:text-white">
+                  {currentTrack.title}
+                </h4>
+                <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                  {currentTrack.artist} • {currentTrack.album}
+                </p>
+              </div>
+
+              <button
+                onClick={() => setIsPlaying(!isPlaying)}
+                className="p-2 bg-white dark:bg-neutral-700 rounded-full shadow-sm hover:shadow-md transition-all"
+              >
+                {isPlaying ? (
+                  <svg
+                    className="w-5 h-5 text-neutral-600 dark:text-neutral-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    className="w-5 h-5 text-neutral-600 dark:text-neutral-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                )}
+              </button>
+            </motion.div>
+          )}
+        </motion.div>
+
+        {/* FC Barcelona CTA */}
+        <motion.div
+          className="mb-8 p-6 bg-gradient-to-r from-blue-600 to-red-600 rounded-xl text-white"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+              <span className="text-2xl">⚽</span>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold mb-1">
+                Let's talk FC Barcelona
+              </h3>
+              <p className="text-sm text-blue-100">
+                Always up for discussing the beautiful game and Barça's latest
+                matches
+              </p>
+            </div>
+            <button className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-colors">
+              Chat →
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Footer Links */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-neutral-200 dark:border-neutral-700">
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            © {new Date().getFullYear()} Abhiyan Sainju
+          </p>
+          <div className="flex items-center gap-4 text-sm">
+            <a
+              href="#"
+              className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
+            >
+              Resume
+            </a>
+            <a
+              href="https://github.com/aabhiyann"
+              target="_blank"
+              className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
+              rel="noreferrer"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/aabhiyansainju/"
+              target="_blank"
+              className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
+          </div>
         </div>
       </div>
     </footer>
