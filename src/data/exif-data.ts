@@ -1,6 +1,17 @@
 // Auto-generated EXIF data from images
 export const imageEXIFData = [
   {
+    "filename": "IMG_0056Ben",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "50mm",
+    "aperture": "f/2.8",
+    "shutterSpeed": "1/2000s",
+    "iso": 100,
+    "dateTaken": "2022-05-23T14:06:35.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
     "filename": "IMG_0216",
     "camera": "iPhone 15 Pro Max",
     "lens": "iPhone 15 Pro Max back triple camera 6.765mm f/1.78",
@@ -130,6 +141,193 @@ export const imageEXIFData = [
     "shutterSpeed": "1/7100s",
     "iso": 64,
     "dateTaken": "2025-03-29T20:17:41.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_4499Ben",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "23mm",
+    "aperture": "f/2.8",
+    "shutterSpeed": "1/400s",
+    "iso": 100,
+    "dateTaken": "2021-04-24T16:34:11.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_5295_ig-Highest insta-2",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "50mm",
+    "aperture": "f/2.8",
+    "shutterSpeed": "1/1000s",
+    "iso": 400,
+    "dateTaken": "2021-05-27T14:17:37.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_6208Ben",
+    "camera": "Canon EOS 750D",
+    "lens": "EF50mm f/1.8 STM",
+    "focalLength": "50mm",
+    "aperture": "f/1.8",
+    "shutterSpeed": "1/4000s",
+    "iso": 100,
+    "dateTaken": "2021-10-10T13:50:40.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_6355Ben",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "38mm",
+    "aperture": "f/2.8",
+    "shutterSpeed": "1/2000s",
+    "iso": 100,
+    "dateTaken": "2021-10-10T21:21:19.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_6544PatKay",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "26mm",
+    "aperture": "f/2.8",
+    "shutterSpeed": "1/100s",
+    "iso": 400,
+    "dateTaken": "2021-10-15T12:57:12.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_6905Ben",
+    "camera": "Canon EOS 750D",
+    "lens": "EF50mm f/1.8 STM",
+    "focalLength": "50mm",
+    "aperture": "f/1.8",
+    "shutterSpeed": "1/60s",
+    "iso": 400,
+    "dateTaken": "2021-12-30T17:24:57.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_6913Ben",
+    "camera": "Canon EOS 750D",
+    "lens": "EF50mm f/1.8 STM",
+    "focalLength": "50mm",
+    "aperture": "f/1.8",
+    "shutterSpeed": "1/100s",
+    "iso": 400,
+    "dateTaken": "2021-12-30T17:27:08.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_7229Ben",
+    "camera": "Canon EOS 750D",
+    "lens": "EF50mm f/1.8 STM",
+    "focalLength": "50mm",
+    "aperture": "f/1.8",
+    "shutterSpeed": "1/30s",
+    "iso": 400,
+    "dateTaken": "2022-03-04T00:07:27.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_7916Ben-Ben-2",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "20mm",
+    "aperture": "f/2.8",
+    "shutterSpeed": "1/1600s",
+    "iso": 100,
+    "dateTaken": "2022-05-17T21:16:44.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_7916Ben",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "20mm",
+    "aperture": "f/2.8",
+    "shutterSpeed": "1/1600s",
+    "iso": 100,
+    "dateTaken": "2022-05-17T21:16:44.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_8018Ben-Ben-2",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "17mm",
+    "aperture": "f/2.8",
+    "shutterSpeed": "1/640s",
+    "iso": 100,
+    "dateTaken": "2022-05-17T22:11:14.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_9398Ben-Ben-2",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "43mm",
+    "aperture": "f/4",
+    "shutterSpeed": "1/60s",
+    "iso": 100,
+    "dateTaken": "2022-05-23T09:35:53.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_9496Ben",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "33mm",
+    "aperture": "f/2.8",
+    "shutterSpeed": "1/400s",
+    "iso": 200,
+    "dateTaken": "2022-05-23T10:10:37.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_9504Ben",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "45mm",
+    "aperture": "f/2.8",
+    "shutterSpeed": "1/400s",
+    "iso": 200,
+    "dateTaken": "2022-05-23T10:11:18.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_9643Ben-Ben-3",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "33mm",
+    "aperture": "f/2.8",
+    "shutterSpeed": "1/4000s",
+    "iso": 800,
+    "dateTaken": "2022-05-23T10:32:34.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_9647Ben",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "33mm",
+    "aperture": "f/3.2",
+    "shutterSpeed": "1/4000s",
+    "iso": 800,
+    "dateTaken": "2022-05-23T10:32:48.000Z",
+    "dimensions": "undefinedxundefined"
+  },
+  {
+    "filename": "IMG_9749Ben-Ben-4",
+    "camera": "Canon EOS 750D",
+    "lens": "17-50mm",
+    "focalLength": "50mm",
+    "aperture": "f/2.8",
+    "shutterSpeed": "1/1000s",
+    "iso": 100,
+    "dateTaken": "2022-05-23T10:50:07.000Z",
     "dimensions": "undefinedxundefined"
   }
 ];
