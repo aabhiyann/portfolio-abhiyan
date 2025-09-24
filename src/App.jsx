@@ -1,101 +1,190 @@
-import './App.css'
+import "./App.css";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-white/70 backdrop-blur border-b border-neutral-200">
       <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-        <a href="#hero" className="font-semibold tracking-tight text-neutral-900" style={{ fontFamily: 'Space Grotesk, system-ui' }}>
+        <a
+          href="#hero"
+          className="font-semibold tracking-tight text-neutral-900"
+          style={{ fontFamily: "Space Grotesk, system-ui" }}
+        >
           Abhiyan Sainju
         </a>
         <div className="flex items-center gap-6 text-sm text-neutral-700">
-          <a href="#projects" className="hover:text-neutral-900">Projects</a>
-          <a href="#photography" className="hover:text-neutral-900">Photography</a>
-          <a href="#deep-dives" className="hover:text-neutral-900">Deep Dives</a>
-          <a href="#about" className="hover:text-neutral-900">About</a>
+          <a href="#projects" className="hover:text-neutral-900">
+            Projects
+          </a>
+          <a href="#photography" className="hover:text-neutral-900">
+            Photography
+          </a>
+          <a href="#deep-dives" className="hover:text-neutral-900">
+            Deep Dives
+          </a>
+          <a href="#about" className="hover:text-neutral-900">
+            About
+          </a>
         </div>
       </nav>
     </header>
-  )
+  );
 }
 
 function Hero() {
   return (
     <section id="hero" className="pt-24">
-      <div className="mx-auto max-w-6xl px-4">
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900" style={{ fontFamily: 'Space Grotesk, system-ui' }}>
+      <motion.div
+        className="mx-auto max-w-6xl px-4"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <h1
+          className="text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-900"
+          style={{ fontFamily: "Space Grotesk, system-ui" }}
+        >
           Hi, I’m Abhiyan Sainju.
         </h1>
         <p className="mt-4 max-w-2xl text-neutral-700">
-          Software Engineer, Photographer, and critical thinker exploring systems, images, and ideas.
+          Software Engineer, Photographer, and critical thinker exploring
+          systems, images, and ideas.
         </p>
         <div className="mt-6 flex gap-3">
-          <a href="#projects" className="inline-flex items-center rounded-md bg-neutral-900 px-4 py-2 text-white text-sm">View Projects</a>
-          <a href="#about" className="inline-flex items-center rounded-md border border-neutral-300 px-4 py-2 text-sm text-neutral-800 hover:bg-neutral-50">About Me</a>
+          <a
+            href="#projects"
+            className="inline-flex items-center rounded-md bg-neutral-900 px-4 py-2 text-white text-sm"
+          >
+            View Projects
+          </a>
+          <a
+            href="#about"
+            className="inline-flex items-center rounded-md border border-neutral-300 px-4 py-2 text-sm text-neutral-800 hover:bg-neutral-50"
+          >
+            About Me
+          </a>
         </div>
-      </div>
+      </motion.div>
     </section>
-  )
+  );
 }
 
 function Projects() {
   const items = [
-    { title: 'InfraSight', summary: 'Cloud cost & performance insights.', tech: ['React','Node','AWS'] },
-    { title: 'ChainCheck', summary: 'Supply chain verification.', tech: ['Next.js','tRPC','Postgres'] },
-    { title: 'MediQuery', summary: 'Clinical data querying.', tech: ['Python','FastAPI','FHIR'] },
-  ]
+    {
+      title: "InfraSight",
+      summary: "Cloud cost & performance insights.",
+      tech: ["React", "Node", "AWS"],
+    },
+    {
+      title: "ChainCheck",
+      summary: "Supply chain verification.",
+      tech: ["Next.js", "tRPC", "Postgres"],
+    },
+    {
+      title: "MediQuery",
+      summary: "Clinical data querying.",
+      tech: ["Python", "FastAPI", "FHIR"],
+    },
+  ];
   return (
     <section id="projects" className="py-16">
       <div className="mx-auto max-w-6xl px-4">
-        <h2 className="text-2xl font-semibold text-neutral-900" style={{ fontFamily: 'Space Grotesk, system-ui' }}>Projects</h2>
+        <h2
+          className="text-2xl font-semibold text-neutral-900"
+          style={{ fontFamily: "Space Grotesk, system-ui" }}
+        >
+          Projects
+        </h2>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {items.map((p) => (
-            <article key={p.title} className="rounded-xl border border-neutral-200 p-4 hover:shadow-sm transition">
+          {items.map((p, index) => (
+            <motion.article
+              key={p.title}
+              className="rounded-xl border border-neutral-200 p-4 hover:shadow-sm transition"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+            >
               <h3 className="font-semibold text-neutral-900">{p.title}</h3>
               <p className="mt-1 text-sm text-neutral-700">{p.summary}</p>
               <div className="mt-3 flex flex-wrap gap-2">
-                {p.tech.map(t => (
-                  <span key={t} className="inline-flex items-center rounded-full bg-neutral-100 px-2 py-1 text-xs text-neutral-700">{t}</span>
+                {p.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="inline-flex items-center rounded-full bg-neutral-100 px-2 py-1 text-xs text-neutral-700"
+                  >
+                    {t}
+                  </span>
                 ))}
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function About() {
   return (
     <section id="about" className="py-16">
       <div className="mx-auto max-w-3xl px-4">
-        <h2 className="text-2xl font-semibold text-neutral-900" style={{ fontFamily: 'Space Grotesk, system-ui' }}>About</h2>
+        <h2
+          className="text-2xl font-semibold text-neutral-900"
+          style={{ fontFamily: "Space Grotesk, system-ui" }}
+        >
+          About
+        </h2>
         <p className="mt-4 text-neutral-700">
-          I build thoughtful software, shoot photographs that tell stories, and write deep dives exploring how things work—from Kathmandu to DC.
+          I build thoughtful software, shoot photographs that tell stories, and
+          write deep dives exploring how things work—from Kathmandu to DC.
         </p>
       </div>
     </section>
-  )
+  );
 }
 
 function Footer() {
   return (
     <footer className="border-t border-neutral-200 py-8">
       <div className="mx-auto max-w-6xl px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-neutral-600">© {new Date().getFullYear()} Abhiyan Sainju</p>
+        <p className="text-sm text-neutral-600">
+          © {new Date().getFullYear()} Abhiyan Sainju
+        </p>
         <div className="flex items-center gap-4 text-sm">
-          <a href="#" className="hover:text-neutral-900">Resume</a>
-          <a href="https://github.com/aabhiyann" target="_blank" className="hover:text-neutral-900" rel="noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/aabhiyansainju/" target="_blank" className="hover:text-neutral-900" rel="noreferrer">LinkedIn</a>
+          <a href="#" className="hover:text-neutral-900">
+            Resume
+          </a>
+          <a
+            href="https://github.com/aabhiyann"
+            target="_blank"
+            className="hover:text-neutral-900"
+            rel="noreferrer"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/aabhiyansainju/"
+            target="_blank"
+            className="hover:text-neutral-900"
+            rel="noreferrer"
+          >
+            LinkedIn
+          </a>
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
 function App() {
   return (
-    <div className="min-h-screen bg-white text-neutral-900" style={{ fontFamily: 'Inter, system-ui' }}>
+    <div
+      className="min-h-screen bg-white text-neutral-900"
+      style={{ fontFamily: "Inter, system-ui" }}
+    >
       <Navbar />
       <main>
         <Hero />
@@ -104,7 +193,7 @@ function App() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
