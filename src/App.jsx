@@ -784,6 +784,242 @@ function DeepDives() {
   );
 }
 
+function PersonalStory() {
+  const [activeMilestone, setActiveMilestone] = useState(0);
+
+  const journey = [
+    {
+      year: "1998",
+      location: "Kathmandu, Nepal",
+      title: "Born in the Himalayas",
+      description:
+        "Started life in the vibrant capital of Nepal, surrounded by ancient temples and modern aspirations.",
+      coordinates: { x: 20, y: 30 },
+      color: "bg-blue-500",
+    },
+    {
+      year: "2016",
+      location: "Kathmandu, Nepal",
+      title: "First Computer",
+      description:
+        "Built my first computer and discovered the world of programming through online tutorials and curiosity.",
+      coordinates: { x: 25, y: 35 },
+      color: "bg-green-500",
+    },
+    {
+      year: "2020",
+      location: "Kathmandu, Nepal",
+      title: "University & First Job",
+      description:
+        "Studied Computer Science while working as a freelance developer, building websites for local businesses.",
+      coordinates: { x: 30, y: 40 },
+      color: "bg-purple-500",
+    },
+    {
+      year: "2022",
+      location: "Transition",
+      title: "The Big Decision",
+      description:
+        "Decided to pursue opportunities in the US, began the visa process and prepared for a new chapter.",
+      coordinates: { x: 50, y: 45 },
+      color: "bg-orange-500",
+    },
+    {
+      year: "2023",
+      location: "Washington DC, USA",
+      title: "New Beginnings",
+      description:
+        "Arrived in DC, started working as a Software Engineer, and began exploring the intersection of technology and society.",
+      coordinates: { x: 80, y: 50 },
+      color: "bg-red-500",
+    },
+    {
+      year: "2024",
+      location: "Washington DC, USA",
+      title: "Building the Future",
+      description:
+        "Now building thoughtful software, capturing moments through photography, and writing about the journey.",
+      coordinates: { x: 85, y: 55 },
+      color: "bg-indigo-500",
+    },
+  ];
+
+  return (
+    <section id="personal-story" className="py-16">
+      <div className="mx-auto max-w-6xl px-4">
+        <motion.h2
+          className="text-2xl font-semibold text-neutral-900 dark:text-white mb-8"
+          style={{ fontFamily: "Space Grotesk, system-ui" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          My Journey
+        </motion.h2>
+
+        <motion.p
+          className="text-neutral-600 dark:text-neutral-400 mb-8 max-w-3xl"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          From the mountains of Nepal to the capital of the United States—a
+          story of growth, technology, and the pursuit of meaningful work.
+        </motion.p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Interactive Map/Timeline */}
+          <motion.div
+            className="relative bg-gradient-to-br from-blue-50 to-purple-50 dark:from-neutral-800 dark:to-neutral-900 rounded-xl p-8 h-96 overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <svg
+                className="w-full h-full"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+              >
+                <defs>
+                  <pattern
+                    id="grid"
+                    width="10"
+                    height="10"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <path
+                      d="M 10 0 L 0 0 0 10"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="0.5"
+                    />
+                  </pattern>
+                </defs>
+                <rect width="100" height="100" fill="url(#grid)" />
+              </svg>
+            </div>
+
+            {/* Journey Path */}
+            <svg className="absolute inset-0 w-full h-full">
+              <path
+                d={`M ${journey[0].coordinates.x} ${
+                  journey[0].coordinates.y
+                } ${journey
+                  .map((_, i) =>
+                    i > 0
+                      ? `L ${journey[i].coordinates.x} ${journey[i].coordinates.y}`
+                      : ""
+                  )
+                  .join(" ")}`}
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                className="text-neutral-400 dark:text-neutral-600"
+                strokeDasharray="5,5"
+              />
+            </svg>
+
+            {/* Milestone Points */}
+            {journey.map((milestone, index) => (
+              <motion.button
+                key={index}
+                className={`absolute w-6 h-6 rounded-full ${milestone.color} border-2 border-white dark:border-neutral-800 shadow-lg transform -translate-x-1/2 -translate-y-1/2 hover:scale-110 transition-transform cursor-pointer`}
+                style={{
+                  left: `${milestone.coordinates.x}%`,
+                  top: `${milestone.coordinates.y}%`,
+                }}
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.2 }}
+                onClick={() => setActiveMilestone(index)}
+              >
+                {activeMilestone === index && (
+                  <motion.div
+                    className="absolute inset-0 rounded-full bg-white/50"
+                    animate={{ scale: [1, 1.5, 1] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                  />
+                )}
+              </motion.button>
+            ))}
+
+            {/* Location Labels */}
+            <div className="absolute top-4 left-4 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+              Kathmandu, Nepal
+            </div>
+            <div className="absolute bottom-4 right-4 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+              Washington DC, USA
+            </div>
+          </motion.div>
+
+          {/* Milestone Details */}
+          <motion.div
+            className="space-y-4"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <div className="bg-white dark:bg-neutral-800 rounded-xl p-6 border border-neutral-200 dark:border-neutral-700">
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  className={`w-3 h-3 rounded-full ${journey[activeMilestone].color}`}
+                />
+                <span className="text-sm font-medium text-neutral-500 dark:text-neutral-400">
+                  {journey[activeMilestone].year}
+                </span>
+              </div>
+
+              <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-2">
+                {journey[activeMilestone].title}
+              </h3>
+
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+                {journey[activeMilestone].location}
+              </p>
+
+              <p className="text-neutral-700 dark:text-neutral-300 text-sm leading-relaxed">
+                {journey[activeMilestone].description}
+              </p>
+            </div>
+
+            {/* Navigation */}
+            <div className="flex gap-2">
+              <button
+                onClick={() =>
+                  setActiveMilestone(Math.max(0, activeMilestone - 1))
+                }
+                disabled={activeMilestone === 0}
+                className="px-3 py-2 text-sm bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                ← Previous
+              </button>
+              <button
+                onClick={() =>
+                  setActiveMilestone(
+                    Math.min(journey.length - 1, activeMilestone + 1)
+                  )
+                }
+                disabled={activeMilestone === journey.length - 1}
+                className="px-3 py-2 text-sm bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400 rounded-lg hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Next →
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function About() {
   return (
     <section id="about" className="py-16 relative">
@@ -896,6 +1132,7 @@ function App() {
         <Experience />
         <Photography />
         <DeepDives />
+        <PersonalStory />
         <About />
       </main>
       <Footer />
