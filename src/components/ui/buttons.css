@@ -1,0 +1,12 @@
+/* src/components/ui/buttons.css */
+.btn-primary {
+  @apply inline-flex items-center rounded-xl bg-accent px-5 py-3 text-white font-medium hover:brightness-95 transition duration-200;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center rounded-xl border border-black/10 dark:border-white/10 px-5 py-3 hover:bg-black/5 dark:hover:bg-white/5 transition duration-200;
+}
+
+.chip {
+  @apply inline-flex items-center rounded-full px-3 py-1 text-sm bg-black/5 dark:bg-white/10;
+}
