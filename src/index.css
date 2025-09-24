@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+/* Optional base styles for the app shell */
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
