@@ -311,17 +311,14 @@ function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-16">
-      <div className="mx-auto max-w-4xl px-4">
-        <h2
-          className="text-2xl font-semibold text-neutral-900 dark:text-white mb-8"
-          style={{ fontFamily: "Space Grotesk, system-ui" }}
-        >
+    <section id="experience" className="py-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-text-light dark:text-text-dark font-heading mb-10">
           Experience
         </h2>
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-neutral-200 dark:bg-neutral-700"></div>
+          <div className="absolute left-4 top-0 bottom-0 w-0.5 border-l border-black/10 dark:border-white/10"></div>
 
           <div className="space-y-8">
             {experiences.map((exp, index) => (
@@ -340,12 +337,12 @@ function Experience() {
               >
                 {/* Timeline dot */}
                 <motion.div
-                  className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 dark:bg-white"
+                  className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full bg-accent"
                   whileHover={{ scale: 1.2, rotate: 180 }}
                   transition={{ duration: 0.3 }}
                 >
                   <motion.div
-                    className="h-3 w-3 rounded-full bg-white dark:bg-neutral-900"
+                    className="h-3 w-3 rounded-full bg-white"
                     animate={{
                       scale: [1, 1.1, 1],
                       opacity: [0.8, 1, 0.8],
@@ -362,28 +359,25 @@ function Experience() {
                 <div className="ml-6 flex-1">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                      <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
+                      <h3 className="text-lg font-semibold text-text-light dark:text-text-dark font-heading">
                         {exp.role}
                       </h3>
-                      <p className="text-neutral-600 dark:text-neutral-400 font-medium">
+                      <p className="text-muted-light dark:text-muted-dark font-medium">
                         {exp.company}
                       </p>
                     </div>
-                    <span className="text-sm text-neutral-500 dark:text-neutral-400 mt-1 sm:mt-0">
+                    <span className="text-sm text-muted-light dark:text-muted-dark mt-1 sm:mt-0">
                       {exp.dates}
                     </span>
                   </div>
 
-                  <p className="mt-2 text-neutral-700 dark:text-neutral-300">
+                  <p className="mt-2 text-text-light dark:text-text-dark">
                     {exp.description}
                   </p>
 
                   <div className="mt-3 flex flex-wrap gap-2">
                     {exp.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="inline-flex items-center rounded-full bg-neutral-100 dark:bg-neutral-700 px-3 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-300"
-                      >
+                      <span key={tech} className="chip">
                         {tech}
                       </span>
                     ))}
@@ -422,10 +416,10 @@ function Education() {
   ];
 
   return (
-    <section id="education" className="py-16 bg-neutral-50 dark:bg-neutral-900">
-      <div className="mx-auto max-w-4xl px-4">
+    <section id="education" className="py-24 bg-surface-light dark:bg-surface-dark">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
         <motion.h2
-          className="text-2xl font-semibold text-neutral-900 dark:text-white mb-8 font-heading"
+          className="text-4xl md:text-5xl font-bold tracking-tight text-text-light dark:text-text-dark mb-10 font-heading"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -433,11 +427,11 @@ function Education() {
         >
           Education
         </motion.h2>
-        <div className="space-y-6">
+        <div className="space-y-8">
           {education.map((edu, index) => (
             <motion.div
               key={edu.school}
-              className="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-sm border border-neutral-200 dark:border-neutral-700"
+              className="bg-surface-light dark:bg-surface-dark rounded-2xl p-6 shadow-sm border border-black/5 dark:border-white/10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -445,18 +439,18 @@ function Education() {
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
                 <div>
-                  <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
+                  <h3 className="text-lg font-semibold text-text-light dark:text-text-dark font-heading">
                     {edu.degree}
                   </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 font-medium">
+                  <p className="text-muted-light dark:text-muted-dark font-medium">
                     {edu.school}
                   </p>
                 </div>
                 <div className="mt-2 sm:mt-0 text-right">
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                  <p className="text-sm text-muted-light dark:text-muted-dark">
                     {edu.dates}
                   </p>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-500">
+                  <p className="text-sm text-muted-light dark:text-muted-dark">
                     {edu.location}
                   </p>
                 </div>
@@ -545,8 +539,8 @@ function Photography() {
 
   return (
     <>
-      <section id="photography" className="py-16">
-        <div className="mx-auto max-w-6xl px-4">
+      <section id="photography" className="py-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
           <h2
             className="text-2xl font-semibold text-neutral-900 dark:text-white mb-8"
             style={{ fontFamily: "Space Grotesk, system-ui" }}
@@ -818,8 +812,8 @@ function DeepDives() {
   };
 
   return (
-    <section id="deep-dives" className="py-16">
-      <div className="mx-auto max-w-6xl px-4">
+    <section id="deep-dives" className="py-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
         <motion.h2
           className="text-2xl font-semibold text-neutral-900 dark:text-white mb-8"
           style={{ fontFamily: "Space Grotesk, system-ui" }}
@@ -994,8 +988,8 @@ function PersonalStory() {
   ];
 
   return (
-    <section id="personal-story" className="py-16">
-      <div className="mx-auto max-w-6xl px-4">
+    <section id="personal-story" className="py-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
         <motion.h2
           className="text-2xl font-semibold text-neutral-900 dark:text-white mb-8"
           style={{ fontFamily: "Space Grotesk, system-ui" }}
@@ -1171,9 +1165,9 @@ function PersonalStory() {
 
 function About() {
   return (
-    <section id="about" className="py-16 relative">
+    <section id="about" className="py-24 relative">
       <motion.div
-        className="mx-auto max-w-3xl px-4"
+        className="max-w-7xl mx-auto px-6 md:px-8"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
