@@ -11,5 +11,9 @@ export interface ImageMetadata {
     settings: string;
     location?: string;
     date: string;
+    focalLength?: string;
+    aperture?: string;
+    shutterSpeed?: string;
+    iso?: string;
   };
 }
