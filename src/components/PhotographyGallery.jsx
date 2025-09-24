@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// eslint-disable-next-line no-unused-vars
 import { photographyImages } from "../data/images";
 
 function PhotographyGallery() {
