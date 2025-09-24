@@ -151,19 +151,35 @@ function Projects() {
   const items = [
     {
       title: "InfraSight",
-      summary: "Cloud cost & performance insights.",
-      tech: ["React", "Node", "AWS"],
+      summary: "ML-powered cloud cost intelligence platform that cuts AWS billing analysis time by 70%.",
+      tech: ["Python", "FastAPI", "PostgreSQL", "scikit-learn", "Docker", "React", "Pandas"],
+      link: "https://infrasight.netlify.app/",
+      github: "https://github.com/aabhiyann/infrasight"
     },
     {
-      title: "ChainCheck",
-      summary: "Supply chain verification.",
-      tech: ["Next.js", "tRPC", "Postgres"],
+      title: "MelodyHub",
+      summary: "Real-time music streaming platform supporting 100+ concurrent users with synchronized playback.",
+      tech: ["Node.js", "React", "Socket.IO", "Clerk Auth", "Cloudinary", "MongoDB"],
+      github: "https://github.com/UdaykiranKalyanapu/CSCI_6234_OOD"
     },
     {
-      title: "MediQuery",
-      summary: "Clinical data querying.",
-      tech: ["Python", "FastAPI", "FHIR"],
+      title: "TalkifyDocs",
+      summary: "AI SaaS document assistant that processes documents 47% faster than manual review.",
+      tech: ["Next.js", "OpenAI GPT-4", "LangChain", "Pinecone", "Stripe", "Prisma", "TypeScript"],
+      github: "https://github.com/aabhiyann/talkifydocs"
     },
+    {
+      title: "Disease Prediction ML",
+      summary: "Clinical decision support system achieving 98.7% diagnostic accuracy on 4,920 medical records.",
+      tech: ["Python", "scikit-learn", "pandas", "React", "Tailwind CSS", "Jupyter"],
+      github: "https://github.com/aabhiyann/ml-disease-prediction-system"
+    },
+    {
+      title: "Multi-Source Information Retrieval",
+      summary: "NLP-based retrieval system that reduced research query times by 70%.",
+      tech: ["Python", "GPT-3.5-turbo", "Mistral 7B", "FAISS", "NLP"],
+      github: "https://github.com/aabhiyann/Conversational-Interface-for-Multi-Source-Information-Retrieval"
+    }
   ];
   return (
     <section id="projects" className="py-16">
@@ -210,6 +226,26 @@ function Projects() {
                   </span>
                 ))}
               </div>
+              <div className="mt-4 flex gap-2">
+                {p.link && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs bg-brand-accent text-white px-3 py-1 rounded hover:bg-brand-accent/90 transition-colors"
+                  >
+                    Live Demo
+                  </a>
+                )}
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs border border-neutral-300 dark:border-neutral-600 text-neutral-700 dark:text-neutral-300 px-3 py-1 rounded hover:bg-neutral-50 dark:hover:bg-neutral-700 transition-colors"
+                >
+                  GitHub
+                </a>
+              </div>
             </motion.article>
           ))}
         </div>
@@ -221,28 +257,28 @@ function Projects() {
 function Experience() {
   const experiences = [
     {
-      role: "Software Engineer",
-      company: "TechCorp",
-      dates: "2023 - Present",
+      role: "Graduate Teaching Assistant",
+      company: "George Washington University",
+      dates: "August 2024 - Present",
       description:
-        "Building scalable web applications and leading technical initiatives.",
-      technologies: ["React", "Node.js", "AWS", "TypeScript"],
+        "Transformed algorithm comprehension for 60+ graduate students by designing interactive tutorials that translated complex concepts into industry case studies, resulting in 22% average improvement in midterm scores.",
+      technologies: ["Algorithms", "Dynamic Programming", "Graph Theory", "NP-completeness", "Python", "Java"],
     },
     {
-      role: "Full Stack Developer",
-      company: "StartupXYZ",
-      dates: "2022 - 2023",
+      role: "Software Development Intern",
+      company: "ECS Tech",
+      dates: "June 2023 - September 2023",
       description:
-        "Developed end-to-end solutions for early-stage startup, focusing on user experience and performance.",
-      technologies: ["Next.js", "PostgreSQL", "Docker", "GraphQL"],
+        "Developed and delivered 7 production-ready features for a fintech platform serving 1,200+ active users, including automated booking system that eliminated 89% of scheduling conflicts.",
+      technologies: ["React.js", "Node.js", "PostgreSQL", "JavaScript", "API Development"],
     },
     {
-      role: "Frontend Developer",
-      company: "Digital Agency",
-      dates: "2021 - 2022",
+      role: "IT Solutions Lead",
+      company: "Intel Security Service Pvt. Ltd.",
+      dates: "August 2022 - March 2023",
       description:
-        "Created responsive web applications and collaborated with design teams to implement pixel-perfect UIs.",
-      technologies: ["Vue.js", "Sass", "Webpack", "Figma"],
+        "Spearheaded complete digital transformation for security consultancy, rebuilding legacy website into lead-generation platform that generated 73% increase in qualified leads and $35K in new contracts.",
+      technologies: ["WordPress", "Web Development", "IT Management", "Digital Transformation", "Budget Management"],
     },
   ];
 
@@ -328,6 +364,82 @@ function Experience() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Education() {
+  const education = [
+    {
+      degree: "Master of Science - Computer Science",
+      school: "George Washington University",
+      dates: "January 2024 - December 2025",
+      location: "Washington, DC",
+      gpa: "4.0",
+      details: "Focus on algorithms, machine learning, and software engineering"
+    },
+    {
+      degree: "Bachelor of Science in Computer Science & Information Technology",
+      school: "St. Xavier's College",
+      dates: "August 2018 - December 2022",
+      location: "Kathmandu, Nepal",
+      gpa: "3.89",
+      details: "Comprehensive foundation in computer science, software development, and IT systems"
+    }
+  ];
+
+  return (
+    <section id="education" className="py-16 bg-neutral-50 dark:bg-neutral-900">
+      <div className="mx-auto max-w-4xl px-4">
+        <motion.h2
+          className="text-2xl font-semibold text-neutral-900 dark:text-white mb-8 font-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          Education
+        </motion.h2>
+        <div className="space-y-6">
+          {education.map((edu, index) => (
+            <motion.div
+              key={edu.school}
+              className="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-sm border border-neutral-200 dark:border-neutral-700"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                <div>
+                  <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
+                    {edu.degree}
+                  </h3>
+                  <p className="text-neutral-600 dark:text-neutral-400 font-medium">
+                    {edu.school}
+                  </p>
+                </div>
+                <div className="mt-2 sm:mt-0 text-right">
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                    {edu.dates}
+                  </p>
+                  <p className="text-sm text-neutral-500 dark:text-neutral-500">
+                    {edu.location}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 mb-3">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-brand-accent/10 text-brand-accent">
+                  GPA: {edu.gpa}
+                </span>
+              </div>
+              <p className="text-sm text-neutral-700 dark:text-neutral-300">
+                {edu.details}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -556,7 +668,7 @@ function Photography() {
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
-            </button>
+        </button>
           </motion.div>
         </motion.div>
       )}
@@ -1205,30 +1317,36 @@ function Footer() {
           <p className="text-sm text-neutral-600 dark:text-neutral-400">
             © {new Date().getFullYear()} Abhiyan Sainju
           </p>
-          <div className="flex items-center gap-4 text-sm">
-            <a
-              href="#"
-              className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
-            >
-              Resume
-            </a>
-            <a
-              href="https://github.com/aabhiyann"
-              target="_blank"
-              className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/aabhiyansainju/"
-              target="_blank"
-              className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
-              rel="noreferrer"
-            >
-              LinkedIn
-            </a>
-          </div>
+              <div className="flex items-center gap-4 text-sm">
+                <a
+                  href="mailto:aabhiyansainju@gmail.com"
+                  className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
+                >
+                  aabhiyansainju@gmail.com
+                </a>
+                <a
+                  href="tel:571-427-5918"
+                  className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
+                >
+                  571-427-5918
+                </a>
+                <a
+                  href="https://github.com/aabhiyann"
+                  target="_blank"
+                  className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/aabhiyansainju/"
+                  target="_blank"
+                  className="hover:text-neutral-900 dark:hover:text-white text-neutral-600 dark:text-neutral-400 transition-colors"
+                  rel="noreferrer"
+                >
+                  LinkedIn
+                </a>
+              </div>
         </div>
       </div>
     </footer>
@@ -1274,6 +1392,7 @@ function App() {
         <Hero />
         <Projects />
         <Experience />
+        <Education />
         <Photography />
         <DeepDives />
         <PersonalStory />
