@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion"; // eslint-disable-line no-unused-vars
 import { photographyImages } from "../data/images";
+import LazyImage from "./LazyImage";
 
 function PhotographyGallery() {
   const [selectedImage, setSelectedImage] = useState(null);
