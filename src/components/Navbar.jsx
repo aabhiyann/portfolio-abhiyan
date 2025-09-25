@@ -6,9 +6,9 @@ function Navbar({ isDark, toggleTheme }) {
       className="sticky top-0 z-50 backdrop-blur-md border-b"
       style={{
         backgroundColor: isDark
-          ? "rgba(21,24,33,0.8)"
-          : "rgba(255,255,255,0.8)",
-        borderColor: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.05)",
+          ? "rgba(26,32,44,0.8)"
+          : "rgba(255,251,235,0.8)",
+        borderColor: isDark ? "rgba(160,174,192,0.3)" : "rgba(100,116,139,0.3)",
       }}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between">
@@ -17,7 +17,7 @@ function Navbar({ isDark, toggleTheme }) {
           className="font-semibold transition-colors hover:opacity-70"
           style={{
             fontFamily: "var(--font-family-heading)",
-            color: isDark ? "#e0e0e0" : "#333333",
+            color: isDark ? "var(--color-dark-text)" : "var(--color-light-text)",
           }}
         >
           AS
@@ -27,28 +27,28 @@ function Navbar({ isDark, toggleTheme }) {
           <Link
             to="/projects"
             className="text-sm md:text-base font-medium transition-colors hover:opacity-70"
-            style={{ color: isDark ? "#e0e0e0" : "#333333" }}
+            style={{ color: isDark ? "var(--color-dark-text)" : "var(--color-light-text)" }}
           >
             Projects
           </Link>
           <Link
             to="/photography"
             className="text-sm md:text-base font-medium transition-colors hover:opacity-70"
-            style={{ color: isDark ? "#e0e0e0" : "#333333" }}
+            style={{ color: isDark ? "var(--color-dark-text)" : "var(--color-light-text)" }}
           >
             Photography
           </Link>
           <Link
             to="/deep-dives"
             className="text-sm md:text-base font-medium transition-colors hover:opacity-70"
-            style={{ color: isDark ? "#e0e0e0" : "#333333" }}
+            style={{ color: isDark ? "var(--color-dark-text)" : "var(--color-light-text)" }}
           >
             Deep Dives
           </Link>
           <Link
             to="/about"
             className="text-sm md:text-base font-medium transition-colors hover:opacity-70"
-            style={{ color: isDark ? "#e0e0e0" : "#333333" }}
+            style={{ color: isDark ? "var(--color-dark-text)" : "var(--color-light-text)" }}
           >
             About
           </Link>

@@ -39,8 +39,8 @@ function Layout({ children }) {
     <div
       className={`min-h-screen transition-colors ${isDark ? "dark" : ""}`}
       style={{
-        backgroundColor: isDark ? "#1a1a1a" : "#f8f7f4",
-        color: isDark ? "#e0e0e0" : "#333333",
+        backgroundColor: isDark ? "var(--color-dark-bg)" : "var(--color-light-bg)",
+        color: isDark ? "var(--color-dark-text)" : "var(--color-light-text)",
       }}
     >
       <SkipLink />
