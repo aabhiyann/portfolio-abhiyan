@@ -3,7 +3,7 @@
   display: inline-flex;
   align-items: center;
   border-radius: 0.75rem;
-  background-color: var(--color-primary);
+  background-color: #F9A825;
   color: white;
   font-weight: 500;
   padding: 0.75rem 1.25rem;
@@ -20,24 +20,24 @@
 }
 
 .btn-primary:focus {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid #F9A825;
   outline-offset: 2px;
 }
 
 .dark .btn-primary {
-  background-color: var(--color-primary-dark);
+  background-color: #8B5CF6;
 }
 
 .dark .btn-primary:focus {
-  outline-color: var(--color-primary-dark);
+  outline-color: #8B5CF6;
 }
 
 .btn-ghost {
   display: inline-flex;
   align-items: center;
   border-radius: 0.75rem;
-  border: 1px solid var(--color-light-muted);
-  color: var(--color-light-text);
+  border: 1px solid #64748B;
+  color: #0F172A;
   padding: 0.75rem 1.25rem;
   transition: all 0.15s ease;
   text-decoration: none;
@@ -46,27 +46,27 @@
 }
 
 .dark .btn-ghost {
-  border-color: var(--color-dark-muted);
-  color: var(--color-dark-text);
+  border-color: #A0AEC0;
+  color: #F4F4F7;
 }
 
 .btn-ghost:hover {
-  background-color: var(--color-secondary);
+  background-color: #3B82F6;
   color: white;
 }
 
 .dark .btn-ghost:hover {
-  background-color: var(--color-secondary-dark);
+  background-color: #22C55E;
   color: white;
 }
 
 .btn-ghost:focus {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid #F9A825;
   outline-offset: 2px;
 }
 
 .dark .btn-ghost:focus {
-  outline-color: var(--color-primary-dark);
+  outline-color: #8B5CF6;
 }
 
 /* Chip styles */
@@ -76,12 +76,12 @@
   border-radius: 9999px;
   padding: 0.25rem 0.75rem;
   font-size: 0.875rem;
-  background-color: var(--color-secondary);
+  background-color: #3B82F6;
   color: white;
 }
 
 .dark .chip {
-  background-color: var(--color-secondary-dark);
+  background-color: #22C55E;
   color: white;
 }
 
