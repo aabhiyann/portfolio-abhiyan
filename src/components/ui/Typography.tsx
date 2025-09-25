@@ -13,6 +13,7 @@ export interface TypographyProps {
   variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body' | 'caption' | 'small';
   color?: 'primary' | 'secondary' | 'muted' | 'accent';
   isDark?: boolean;
+  currentTheme?: string;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -22,6 +23,7 @@ export const Typography: React.FC<TypographyProps> = ({
   variant = 'body',
   color = 'primary',
   isDark = false,
+  currentTheme = 'default',
   className = '',
   style = {},
 }) => {
@@ -99,11 +101,11 @@ export const Typography: React.FC<TypographyProps> = ({
     switch (color) {
       case 'primary':
         return {
-          color: colorUtils.getThemeColor('text', isDark),
+          color: colorUtils.getThemeColor('text', isDark, currentTheme),
         };
       case 'secondary':
         return {
-          color: colorUtils.getThemeColor('textSecondary', isDark),
+          color: colorUtils.getThemeColor('textSecondary', isDark, currentTheme),
         };
       case 'muted':
         return {
@@ -111,7 +113,7 @@ export const Typography: React.FC<TypographyProps> = ({
         };
       case 'accent':
         return {
-          color: colorUtils.getAccentColor('primary', isDark),
+          color: colorUtils.getAccentColor('primary', isDark, currentTheme),
         };
       default:
         return {};
