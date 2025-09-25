@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
 import { motionTokens } from "../utils/motion";
+import { colorUtils } from "../design/colors";
 
-function About() {
+function About({ isDark = false, currentTheme = 'default' }) {
   const timeline = [
     {
       year: "2021",
@@ -81,9 +82,19 @@ function About() {
   ];
 
   return (
-    <div className="min-h-screen pt-24">
+    <div 
+      className="min-h-screen pt-24"
+      style={{
+        backgroundColor: colorUtils.getThemeColor('background', isDark, currentTheme),
+      }}
+    >
       {/* Hero Section */}
-      <section className="py-24">
+      <section 
+        className="py-24"
+        style={{
+          backgroundColor: colorUtils.getThemeColor('background', isDark, currentTheme),
+        }}
+      >
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -91,11 +102,21 @@ function About() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: motionTokens.duration.slow / 1000 }}
             >
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-text-light dark:text-text-dark mb-6 font-heading">
+              <h1 
+                className="text-5xl md:text-6xl font-bold tracking-tight mb-6 font-heading"
+                style={{
+                  color: colorUtils.getThemeColor('text', isDark, currentTheme)
+                }}
+              >
                 About Me
               </h1>
 
-              <div className="prose prose-lg max-w-none text-muted-light dark:text-muted-dark">
+              <div 
+                className="prose prose-lg max-w-none"
+                style={{
+                  color: colorUtils.getThemeColor('textSecondary', isDark, currentTheme)
+                }}
+              >
                 <p className="text-xl mb-6">
                   I'm a passionate software engineer and photographer based in
                   Washington D.C., originally from the vibrant city of

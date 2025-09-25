@@ -1,7 +1,8 @@
 import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
 import { motionTokens } from "../utils/motion";
+import { colorUtils } from "../design/colors";
 
-function Projects() {
+function Projects({ isDark = false, currentTheme = 'default' }) {
   const projects = [
     {
       id: 1,
@@ -78,11 +79,24 @@ function Projects() {
   ];
 
   return (
-    <div className="min-h-screen pt-24">
-      <section className="py-24">
+    <div 
+      className="min-h-screen pt-24"
+      style={{
+        backgroundColor: colorUtils.getThemeColor('background', isDark, currentTheme),
+      }}
+    >
+      <section 
+        className="py-24"
+        style={{
+          backgroundColor: colorUtils.getThemeColor('background', isDark, currentTheme),
+        }}
+      >
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <motion.h1
-            className="text-5xl md:text-6xl font-bold tracking-tight text-text-light dark:text-text-dark mb-6 font-heading"
+            className="text-5xl md:text-6xl font-bold tracking-tight mb-6 font-heading"
+            style={{
+              color: colorUtils.getThemeColor('text', isDark, currentTheme)
+            }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: motionTokens.duration.slow / 1000 }}
