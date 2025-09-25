@@ -2,29 +2,52 @@
 
 @theme {
   /* Light Theme: Yellow + Blue */
-  --color-light-bg: #f1f5f9;
+  --color-light-background: #f1f5f9;
   --color-light-navbar: #fffbeb;
   --color-light-surface: #ffffff;
+  --color-light-card: #ffffff;
   --color-light-text: #0f172a;
-  --color-light-muted: #64748b;
-  
+  --color-light-textSecondary: #64748b;
+  --color-light-textMuted: #94a3b8;
+  --color-light-border: #a8a29e;
+  --color-light-borderMuted: #64748b;
+
   /* Dark Theme: Purple + Green */
-  --color-dark-bg: #1a202c;
-  --color-dark-surface: #1a202c;
+  --color-dark-background: #1a202c;
+  --color-dark-navbar: #1a202c;
+  --color-dark-surface: #2d3748;
+  --color-dark-card: #2d3748;
   --color-dark-text: #f4f4f7;
-  --color-dark-muted: #a0aec0;
-  
+  --color-dark-textSecondary: #a0aec0;
+  --color-dark-textMuted: #718096;
+  --color-dark-border: #4a5568;
+  --color-dark-borderMuted: #718096;
+
   /* Accent Colors */
-  --color-primary: #f9a825;
-  --color-secondary: #3b82f6;
+  --color-primary-light: #f9a825;
   --color-primary-dark: #8b5cf6;
+  --color-secondary-light: #3b82f6;
   --color-secondary-dark: #22c55e;
-  
+  --color-hover-light: #f59e0b;
+  --color-hover-dark: #7c3aed;
+  --color-focus-light: #f9a825;
+  --color-focus-dark: #8b5cf6;
+
   /* State Colors */
-  --color-info: #3b82f6;
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Semantic Colors */
+  --color-link-light: #3b82f6;
+  --color-link-dark: #22c55e;
+  --color-button-primary-light: #f9a825;
+  --color-button-primary-dark: #8b5cf6;
+  --color-button-secondary-light: #3b82f6;
+  --color-button-secondary-dark: #22c55e;
+  --color-chip-light: #3b82f6;
+  --color-chip-dark: #22c55e;
 
   --font-family-heading: "Space Grotesk", sans-serif;
   --font-family-body: "Inter", sans-serif;

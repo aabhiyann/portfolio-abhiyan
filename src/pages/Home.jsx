@@ -12,15 +12,15 @@ function Home() {
       >
         {/* Background Image with Gradient Overlay */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 z-10 bg-gradient-to-t from-stone-50 via-stone-50/50 to-stone-50/20 dark:from-gray-900 dark:via-gray-900/50 dark:to-gray-900/20"></div>
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#F1F5F9] via-[#F1F5F9]/50 to-[#F1F5F9]/20 dark:from-[#1A202C] dark:via-[#1A202C]/50 dark:to-[#1A202C]/20"></div>
           {/* Placeholder for hero image - replace with actual photo */}
-          <div className="w-full h-full bg-gradient-to-br from-orange-200/20 to-blue-200/20"></div>
+          <div className="w-full h-full bg-gradient-to-br from-[#F9A825]/20 to-[#3B82F6]/20"></div>
         </div>
 
         {/* Hero Content */}
         <div className="relative z-20 text-center max-w-4xl mx-auto px-6">
           <motion.h1
-            className="text-6xl md:text-7xl font-bold tracking-tight mb-6 text-gray-900 dark:text-gray-100"
+            className="text-6xl md:text-7xl font-bold tracking-tight mb-6 text-[#0F172A] dark:text-[#F4F4F7]"
             style={{ fontFamily: "var(--font-family-heading)" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ function Home() {
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-gray-600 dark:text-gray-400"
+            className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-[#64748B] dark:text-[#A0AEC0]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
