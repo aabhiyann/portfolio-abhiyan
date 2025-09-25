@@ -3,7 +3,7 @@
   display: inline-flex;
   align-items: center;
   border-radius: 0.75rem;
-  background-color: #ff7a00;
+  background-color: var(--color-primary);
   color: white;
   font-weight: 500;
   padding: 0.75rem 1.25rem;
@@ -15,21 +15,29 @@
 }
 
 .btn-primary:hover {
-  background-color: #e66a00;
+  filter: brightness(0.9);
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
 .btn-primary:focus {
-  outline: 2px solid #ff7a00;
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+.dark .btn-primary {
+  background-color: var(--color-primary-dark);
+}
+
+.dark .btn-primary:focus {
+  outline-color: var(--color-primary-dark);
 }
 
 .btn-ghost {
   display: inline-flex;
   align-items: center;
   border-radius: 0.75rem;
-  border: 1px solid rgb(0 0 0 / 0.1);
-  color: #333333;
+  border: 1px solid var(--color-light-muted);
+  color: var(--color-light-text);
   padding: 0.75rem 1.25rem;
   transition: all 0.15s ease;
   text-decoration: none;
@@ -38,21 +46,27 @@
 }
 
 .dark .btn-ghost {
-  border-color: rgb(255 255 255 / 0.1);
-  color: #e0e0e0;
+  border-color: var(--color-dark-muted);
+  color: var(--color-dark-text);
 }
 
 .btn-ghost:hover {
-  background-color: rgb(0 0 0 / 0.05);
+  background-color: var(--color-secondary);
+  color: white;
 }
 
 .dark .btn-ghost:hover {
-  background-color: rgb(255 255 255 / 0.05);
+  background-color: var(--color-secondary-dark);
+  color: white;
 }
 
 .btn-ghost:focus {
-  outline: 2px solid #ff7a00;
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+.dark .btn-ghost:focus {
+  outline-color: var(--color-primary-dark);
 }
 
 /* Chip styles */
@@ -62,13 +76,13 @@
   border-radius: 9999px;
   padding: 0.25rem 0.75rem;
   font-size: 0.875rem;
-  background-color: rgb(0 0 0 / 0.05);
-  color: #333333;
+  background-color: var(--color-secondary);
+  color: white;
 }
 
 .dark .chip {
-  background-color: rgb(255 255 255 / 0.1);
-  color: #e0e0e0;
+  background-color: var(--color-secondary-dark);
+  color: white;
 }
 
 /* Football easter egg animation */
