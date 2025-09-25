@@ -12,7 +12,7 @@
  */
 
 export const colors = {
-  // Light Theme Colors
+  // Light Theme Colors (from your palette)
   light: {
     // Background Colors
     background: '#F1F5F9',      // Light blue-gray
@@ -26,8 +26,8 @@ export const colors = {
     textMuted: '#94A3B8',      // Light slate
     
     // Border Colors
-    border: '#E2E8F0',         // Light border
-    borderMuted: '#CBD5E1',    // Muted border
+    border: '#A8A29E',         // From your palette
+    borderMuted: '#64748B',    // Muted border
   },
   
   // Dark Theme Colors
