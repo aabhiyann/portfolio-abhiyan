@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
 import { Link } from "react-router-dom";
 import { colorUtils } from "../design/colors";
@@ -82,7 +82,7 @@ function Layout({ children }) {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
       >
-        {children}
+        {React.cloneElement(children, { isDark, currentTheme })}
       </motion.main>
 
       <Footer />
