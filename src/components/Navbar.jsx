@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { colorUtils } from "../design/colors";
 
 function Navbar({ isDark, toggleTheme }) {
   return (
@@ -6,9 +7,9 @@ function Navbar({ isDark, toggleTheme }) {
       className="sticky top-0 z-50 backdrop-blur-md border-b"
       style={{
         backgroundColor: isDark
-          ? "rgba(26,32,44,0.8)"
-          : "rgba(255,251,235,0.8)",
-        borderColor: isDark ? "rgba(160,174,192,0.3)" : "rgba(100,116,139,0.3)",
+          ? `${colorUtils.getThemeColor('navbar', isDark)}CC`
+          : `${colorUtils.getThemeColor('navbar', isDark)}CC`,
+        borderColor: `${colorUtils.getThemeColor('border', isDark)}4D`,
       }}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between">
@@ -17,7 +18,7 @@ function Navbar({ isDark, toggleTheme }) {
           className="font-semibold transition-colors hover:opacity-70"
           style={{
             fontFamily: "var(--font-family-heading)",
-            color: isDark ? "var(--color-dark-text)" : "var(--color-light-text)",
+            color: colorUtils.getThemeColor('text', isDark),
           }}
         >
           AS
@@ -27,28 +28,28 @@ function Navbar({ isDark, toggleTheme }) {
           <Link
             to="/projects"
             className="text-sm md:text-base font-medium transition-colors hover:opacity-70"
-            style={{ color: isDark ? "var(--color-dark-text)" : "var(--color-light-text)" }}
+            style={{ color: colorUtils.getThemeColor('text', isDark) }}
           >
             Projects
           </Link>
           <Link
             to="/photography"
             className="text-sm md:text-base font-medium transition-colors hover:opacity-70"
-            style={{ color: isDark ? "var(--color-dark-text)" : "var(--color-light-text)" }}
+            style={{ color: colorUtils.getThemeColor('text', isDark) }}
           >
             Photography
           </Link>
           <Link
             to="/deep-dives"
             className="text-sm md:text-base font-medium transition-colors hover:opacity-70"
-            style={{ color: isDark ? "var(--color-dark-text)" : "var(--color-light-text)" }}
+            style={{ color: colorUtils.getThemeColor('text', isDark) }}
           >
             Deep Dives
           </Link>
           <Link
             to="/about"
             className="text-sm md:text-base font-medium transition-colors hover:opacity-70"
-            style={{ color: isDark ? "var(--color-dark-text)" : "var(--color-light-text)" }}
+            style={{ color: colorUtils.getThemeColor('text', isDark) }}
           >
             About
           </Link>
