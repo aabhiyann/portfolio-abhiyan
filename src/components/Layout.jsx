@@ -8,21 +8,29 @@ import SkipLink from "./SkipLink";
 
 function Layout({ children }) {
   const [isDark, setIsDark] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState('default');
 
   // Load theme preference from localStorage on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const savedColorTheme = localStorage.getItem("colorTheme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
     if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
       setIsDark(true);
       document.documentElement.classList.add("dark");
     }
+
+    if (savedColorTheme) {
+      setCurrentTheme(savedColorTheme);
+      document.documentElement.className = document.documentElement.className
+        .replace(/theme-\w+/g, '')
+        .trim();
+      document.documentElement.classList.add(`theme-${savedColorTheme}`);
+    }
   }, []);
 
-  // Toggle theme and persist to localStorage
+  // Toggle dark/light mode
   const toggleTheme = () => {
     const newTheme = !isDark;
     setIsDark(newTheme);
@@ -36,16 +44,37 @@ function Layout({ children }) {
     }
   };
 
+  // Switch color theme
+  const switchColorTheme = (theme) => {
+    setCurrentTheme(theme);
+    localStorage.setItem("colorTheme", theme);
+    
+    // Remove existing theme classes
+    document.documentElement.className = document.documentElement.className
+      .replace(/theme-\w+/g, '')
+      .trim();
+    
+    // Add new theme class
+    if (theme !== 'default') {
+      document.documentElement.classList.add(`theme-${theme}`);
+    }
+  };
+
   return (
     <div
       className={`min-h-screen transition-colors ${isDark ? "dark" : ""}`}
       style={{
-        backgroundColor: colorUtils.getThemeColor('background', isDark),
-        color: colorUtils.getThemeColor('text', isDark),
+        backgroundColor: colorUtils.getThemeColor('background', isDark, currentTheme),
+        color: colorUtils.getThemeColor('text', isDark, currentTheme),
       }}
     >
       <SkipLink />
-      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
+      <Navbar 
+        isDark={isDark} 
+        toggleTheme={toggleTheme}
+        currentTheme={currentTheme}
+        switchColorTheme={switchColorTheme}
+      />
 
       <motion.main
         id="main-content"
