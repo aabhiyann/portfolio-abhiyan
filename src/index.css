@@ -1,11 +1,87 @@
 @import "tailwindcss";
 
-/* Optional base styles for the app shell */
+@theme {
+  --color-light-bg: #f8f7f4;
+  --color-dark-bg: #1a1a1a;
+  --color-accent: #ff7a00;
+  --color-accent-ink: #2a1a07;
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #151821;
+  --color-text-light: #333333;
+  --color-text-dark: #e0e0e0;
+  --color-muted-light: #6b7280;
+  --color-muted-dark: #98a1b3;
+  --color-info: #3b82f6;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  --font-family-heading: "Space Grotesk", sans-serif;
+  --font-family-body: "Inter", sans-serif;
+}
+
+/* Base styles */
+body {
+  margin: 0;
+  font-family: var(--font-family-body);
+  background-color: var(--color-light-bg);
+  color: var(--color-text-light);
+}
+
 html,
 body,
 #root {
   height: 100%;
 }
-body {
-  margin: 0;
+
+/* Dark mode */
+.dark {
+  background-color: var(--color-dark-bg);
+  color: var(--color-text-dark);
+}
+
+/* Animations */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleHover {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.02);
+  }
+}
+
+/* Utility classes */
+.text-accent {
+  color: var(--color-accent);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.text-muted {
+  color: var(--color-muted-light);
+}
+
+.dark .text-muted {
+  color: var(--color-muted-dark);
+}
+
+.font-heading {
+  font-family: var(--font-family-heading);
+}
+
+.font-body {
+  font-family: var(--font-family-body);
 }
