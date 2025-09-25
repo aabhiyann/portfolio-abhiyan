@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
 import { motionTokens } from "../utils/motion";
-import TestTailwind from "../components/TestTailwind";
 
 function Home() {
   return (
     <>
-      <TestTailwind />
       {/* Hero Section */}
       <section
         id="hero"
