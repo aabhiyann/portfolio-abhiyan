@@ -1,9 +1,11 @@
-/* Design System Button Styles */
+/* Design System Button Styles - Theme-Aware */
+
+/* Primary Button */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   border-radius: 0.75rem;
-  background-color: #F9A825;
+  background-color: var(--color-button-primary);
   color: white;
   font-weight: 500;
   padding: 0.75rem 1.25rem;
@@ -20,24 +22,43 @@
 }
 
 .btn-primary:focus {
-  outline: 2px solid #F9A825;
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
-.dark .btn-primary {
-  background-color: #8B5CF6;
+/* Secondary Button */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.75rem;
+  background-color: var(--color-button-secondary);
+  color: white;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
 }
 
-.dark .btn-primary:focus {
-  outline-color: #8B5CF6;
+.btn-secondary:hover {
+  filter: brightness(0.9);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
+.btn-secondary:focus {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Ghost Button */
 .btn-ghost {
   display: inline-flex;
   align-items: center;
   border-radius: 0.75rem;
-  border: 1px solid #64748B;
-  color: #0F172A;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   padding: 0.75rem 1.25rem;
   transition: all 0.15s ease;
   text-decoration: none;
@@ -45,43 +66,24 @@
   background: transparent;
 }
 
-.dark .btn-ghost {
-  border-color: #A0AEC0;
-  color: #F4F4F7;
-}
-
 .btn-ghost:hover {
-  background-color: #3B82F6;
-  color: white;
-}
-
-.dark .btn-ghost:hover {
-  background-color: #22C55E;
-  color: white;
+  background-color: var(--color-surface);
+  color: var(--color-text);
 }
 
 .btn-ghost:focus {
-  outline: 2px solid #F9A825;
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
-.dark .btn-ghost:focus {
-  outline-color: #8B5CF6;
-}
-
-/* Chip styles */
+/* Chip/Tag Styles */
 .chip {
   display: inline-flex;
   align-items: center;
   border-radius: 9999px;
   padding: 0.25rem 0.75rem;
   font-size: 0.875rem;
-  background-color: #3B82F6;
-  color: white;
-}
-
-.dark .chip {
-  background-color: #22C55E;
+  background-color: var(--color-chip);
   color: white;
 }
 
@@ -100,4 +102,89 @@
   60% {
     transform: translateY(-5px);
   }
+}
+
+/* Theme-specific overrides */
+.theme-kathmandu .btn-primary {
+  background-color: var(--color-kathmandu-button-primary-light);
+}
+
+.theme-kathmandu .btn-secondary {
+  background-color: var(--color-kathmandu-button-secondary-light);
+}
+
+.theme-kathmandu .btn-ghost {
+  border-color: var(--color-kathmandu-light-border);
+  color: var(--color-kathmandu-light-text);
+}
+
+.theme-kathmandu .btn-ghost:hover {
+  background-color: var(--color-kathmandu-light-surface);
+}
+
+.theme-kathmandu .chip {
+  background-color: var(--color-kathmandu-chip-light);
+}
+
+.theme-kathmandu.dark .btn-primary {
+  background-color: var(--color-kathmandu-button-primary-dark);
+}
+
+.theme-kathmandu.dark .btn-secondary {
+  background-color: var(--color-kathmandu-button-secondary-dark);
+}
+
+.theme-kathmandu.dark .btn-ghost {
+  border-color: var(--color-kathmandu-dark-border);
+  color: var(--color-kathmandu-dark-text);
+}
+
+.theme-kathmandu.dark .btn-ghost:hover {
+  background-color: var(--color-kathmandu-dark-surface);
+}
+
+.theme-kathmandu.dark .chip {
+  background-color: var(--color-kathmandu-chip-dark);
+}
+
+.theme-voltage .btn-primary {
+  background-color: var(--color-voltage-button-primary-light);
+}
+
+.theme-voltage .btn-secondary {
+  background-color: var(--color-voltage-button-secondary-light);
+}
+
+.theme-voltage .btn-ghost {
+  border-color: var(--color-voltage-light-border);
+  color: var(--color-voltage-light-text);
+}
+
+.theme-voltage .btn-ghost:hover {
+  background-color: var(--color-voltage-light-surface);
+}
+
+.theme-voltage .chip {
+  background-color: var(--color-voltage-chip-light);
+}
+
+.theme-voltage.dark .btn-primary {
+  background-color: var(--color-voltage-button-primary-dark);
+}
+
+.theme-voltage.dark .btn-secondary {
+  background-color: var(--color-voltage-button-secondary-dark);
+}
+
+.theme-voltage.dark .btn-ghost {
+  border-color: var(--color-voltage-dark-border);
+  color: var(--color-voltage-dark-text);
+}
+
+.theme-voltage.dark .btn-ghost:hover {
+  background-color: var(--color-voltage-dark-surface);
+}
+
+.theme-voltage.dark .chip {
+  background-color: var(--color-voltage-chip-dark);
 }
