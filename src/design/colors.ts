@@ -12,7 +12,7 @@
  */
 
 export const colors = {
-  // Light Theme Colors (from your palette)
+  // Current Theme: Yellow + Blue (from your original palette)
   light: {
     // Background Colors
     background: '#F1F5F9',      // Light blue-gray
@@ -47,31 +47,126 @@ export const colors = {
     border: '#4A5568',         // Dark border
     borderMuted: '#718096',    // Muted border
   },
+
+  // Alternative Theme A: Kathmandu Fog
+  kathmanduFog: {
+    light: {
+      background: '#F8FAFC',      // Slate-50
+      navbar: '#F8FAFC',         // Slate-50
+      surface: '#FFFFFF',        // White
+      card: '#FFFFFF',          // White
+      text: '#1E293B',           // Slate-800
+      textSecondary: '#64748B',  // Slate-500
+      textMuted: '#94A3B8',     // Slate-400
+      border: '#E2E8F0',        // Slate-200
+      borderMuted: '#CBD5E1',   // Slate-300
+    },
+    dark: {
+      background: '#1E293B',      // Slate-800
+      navbar: '#1E293B',        // Slate-800
+      surface: '#334155',        // Slate-700
+      card: '#334155',          // Slate-700
+      text: '#F8FAFC',           // Slate-50
+      textSecondary: '#94A3B8',  // Slate-400
+      textMuted: '#64748B',     // Slate-500
+      border: '#475569',        // Slate-600
+      borderMuted: '#64748B',   // Slate-500
+    },
+  },
+
+  // Alternative Theme B: Creative Voltage
+  creativeVoltage: {
+    light: {
+      background: '#F8FAFC',      // Slate-50
+      navbar: '#F8FAFC',         // Slate-50
+      surface: '#FFFFFF',        // White
+      card: '#FFFFFF',          // White
+      text: '#1E293B',           // Slate-800
+      textSecondary: '#64748B',  // Slate-500
+      textMuted: '#94A3B8',     // Slate-400
+      border: '#E2E8F0',        // Slate-200
+      borderMuted: '#CBD5E1',   // Slate-300
+    },
+    dark: {
+      background: '#1E293B',      // Slate-800
+      navbar: '#1E293B',        // Slate-800
+      surface: '#334155',        // Slate-700
+      card: '#334155',          // Slate-700
+      text: '#F8FAFC',           // Slate-50
+      textSecondary: '#94A3B8',  // Slate-400
+      textMuted: '#64748B',     // Slate-500
+      border: '#475569',        // Slate-600
+      borderMuted: '#64748B',   // Slate-500
+    },
+  },
   
   // Accent Colors (Theme-aware)
   accent: {
-    // Primary Colors
+    // Current Theme: Yellow + Blue
     primary: {
       light: '#F9A825',        // Warm yellow
       dark: '#8B5CF6',         // Purple
     },
     
-    // Secondary Colors
     secondary: {
       light: '#3B82F6',        // Blue
       dark: '#22C55E',         // Green
     },
     
-    // Interactive Colors
     hover: {
       light: '#F59E0B',        // Darker yellow
       dark: '#7C3AED',         // Darker purple
     },
     
-    // Focus Colors
     focus: {
       light: '#F9A825',        // Yellow focus
       dark: '#8B5CF6',         // Purple focus
+    },
+  },
+
+  // Kathmandu Fog Accent Colors
+  kathmanduFogAccent: {
+    primary: {
+      light: '#F472B6',        // Pink-400
+      dark: '#F472B6',         // Pink-400
+    },
+    
+    secondary: {
+      light: '#94A3B8',       // Slate-400
+      dark: '#94A3B8',        // Slate-400
+    },
+    
+    hover: {
+      light: '#EC4899',       // Pink-500
+      dark: '#EC4899',        // Pink-500
+    },
+    
+    focus: {
+      light: '#F472B6',       // Pink-400
+      dark: '#F472B6',        // Pink-400
+    },
+  },
+
+  // Creative Voltage Accent Colors
+  creativeVoltageAccent: {
+    primary: {
+      light: '#8B5CF6',       // Violet-500
+      dark: '#8B5CF6',        // Violet-500
+    },
+    
+    secondary: {
+      light: '#94A3B8',       // Slate-400
+      dark: '#94A3B8',        // Slate-400
+    },
+    
+    hover: {
+      light: '#7C3AED',       // Violet-600
+      dark: '#7C3AED',        // Violet-600
+    },
+    
+    focus: {
+      light: '#8B5CF6',       // Violet-500
+      dark: '#8B5CF6',        // Violet-500
     },
   },
   
@@ -109,6 +204,54 @@ export const colors = {
       dark: '#22C55E',         // Green
     },
   },
+
+  // Kathmandu Fog Semantic Colors
+  kathmanduFogSemantic: {
+    link: {
+      light: '#F472B6',        // Pink-400
+      dark: '#F472B6',         // Pink-400
+    },
+    
+    button: {
+      primary: {
+        light: '#F472B6',      // Pink-400
+        dark: '#F472B6',       // Pink-400
+      },
+      secondary: {
+        light: '#94A3B8',      // Slate-400
+        dark: '#94A3B8',       // Slate-400
+      },
+    },
+    
+    chip: {
+      light: '#F472B6',        // Pink-400
+      dark: '#F472B6',         // Pink-400
+    },
+  },
+
+  // Creative Voltage Semantic Colors
+  creativeVoltageSemantic: {
+    link: {
+      light: '#8B5CF6',        // Violet-500
+      dark: '#8B5CF6',         // Violet-500
+    },
+    
+    button: {
+      primary: {
+        light: '#8B5CF6',      // Violet-500
+        dark: '#8B5CF6',       // Violet-500
+      },
+      secondary: {
+        light: '#94A3B8',      // Slate-400
+        dark: '#94A3B8',       // Slate-400
+      },
+    },
+    
+    chip: {
+      light: '#8B5CF6',        // Violet-500
+      dark: '#8B5CF6',         // Violet-500
+    },
+  },
 } as const;
 
 /**
@@ -118,21 +261,47 @@ export const colorUtils = {
   /**
    * Get theme-aware color
    */
-  getThemeColor: (colorKey: keyof typeof colors.light, isDark: boolean) => {
+  getThemeColor: (colorKey: keyof typeof colors.light, isDark: boolean, theme: string = 'default') => {
+    if (theme === 'kathmanduFog') {
+      return isDark ? colors.kathmanduFog.dark[colorKey] : colors.kathmanduFog.light[colorKey];
+    }
+    if (theme === 'creativeVoltage') {
+      return isDark ? colors.creativeVoltage.dark[colorKey] : colors.creativeVoltage.light[colorKey];
+    }
     return isDark ? colors.dark[colorKey] : colors.light[colorKey];
   },
   
   /**
    * Get accent color based on theme
    */
-  getAccentColor: (accentKey: keyof typeof colors.accent, isDark: boolean) => {
+  getAccentColor: (accentKey: keyof typeof colors.accent, isDark: boolean, theme: string = 'default') => {
+    if (theme === 'kathmanduFog') {
+      return isDark ? colors.kathmanduFogAccent[accentKey].dark : colors.kathmanduFogAccent[accentKey].light;
+    }
+    if (theme === 'creativeVoltage') {
+      return isDark ? colors.creativeVoltageAccent[accentKey].dark : colors.creativeVoltageAccent[accentKey].light;
+    }
     return isDark ? colors.accent[accentKey].dark : colors.accent[accentKey].light;
   },
   
   /**
    * Get semantic color based on theme
    */
-  getSemanticColor: (semanticKey: keyof typeof colors.semantic, isDark: boolean) => {
+  getSemanticColor: (semanticKey: keyof typeof colors.semantic, isDark: boolean, theme: string = 'default') => {
+    if (theme === 'kathmanduFog') {
+      const semantic = colors.kathmanduFogSemantic[semanticKey];
+      if (typeof semantic === 'object' && 'light' in semantic && 'dark' in semantic) {
+        return isDark ? semantic.dark : semantic.light;
+      }
+      return semantic as string;
+    }
+    if (theme === 'creativeVoltage') {
+      const semantic = colors.creativeVoltageSemantic[semanticKey];
+      if (typeof semantic === 'object' && 'light' in semantic && 'dark' in semantic) {
+        return isDark ? semantic.dark : semantic.light;
+      }
+      return semantic as string;
+    }
     const semantic = colors.semantic[semanticKey];
     if (typeof semantic === 'object' && 'light' in semantic && 'dark' in semantic) {
       return isDark ? semantic.dark : semantic.light;
@@ -144,6 +313,25 @@ export const colorUtils = {
    * Get CSS custom property for color
    */
   getCSSVar: (colorPath: string) => `var(--color-${colorPath})`,
+
+  /**
+   * Get all available themes
+   */
+  getAvailableThemes: () => {
+    return ['default', 'kathmanduFog', 'creativeVoltage'];
+  },
+
+  /**
+   * Get theme display name
+   */
+  getThemeDisplayName: (theme: string) => {
+    const names = {
+      'default': 'Yellow + Blue',
+      'kathmanduFog': 'Kathmandu Fog',
+      'creativeVoltage': 'Creative Voltage'
+    };
+    return names[theme] || theme;
+  },
 };
 
 /**
