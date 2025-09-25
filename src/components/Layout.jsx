@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
 import { Link } from "react-router-dom";
+import { colorUtils } from "../design/colors";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SkipLink from "./SkipLink";
@@ -39,8 +40,8 @@ function Layout({ children }) {
     <div
       className={`min-h-screen transition-colors ${isDark ? "dark" : ""}`}
       style={{
-        backgroundColor: isDark ? "var(--color-dark-bg)" : "var(--color-light-bg)",
-        color: isDark ? "var(--color-dark-text)" : "var(--color-light-text)",
+        backgroundColor: colorUtils.getThemeColor('background', isDark),
+        color: colorUtils.getThemeColor('text', isDark),
       }}
     >
       <SkipLink />
