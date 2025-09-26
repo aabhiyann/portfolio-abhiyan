@@ -31,16 +31,19 @@ src/
 ### Theme Palettes
 
 #### 1. **Default Theme: Yellow + Blue** (Primary)
+
 - **Light Mode**: Warm cream backgrounds with blue accents
 - **Dark Mode**: Purple + Green modern combination
 - **Best for**: Professional, warm, approachable
 
 #### 2. **Kathmandu Fog** (Alternative A)
+
 - **Light Mode**: Clean slate backgrounds with pink accents
 - **Dark Mode**: Professional slate with consistent pink branding
 - **Best for**: Serene, professional, memorable
 
 #### 3. **Creative Voltage** (Alternative B)
+
 - **Light Mode**: Clean slate backgrounds with violet accents
 - **Dark Mode**: Professional slate with consistent violet branding
 - **Best for**: Modern, logical, innovative
@@ -50,6 +53,7 @@ src/
 #### Default Theme (Yellow + Blue)
 
 **Light Mode:**
+
 ```css
 --background: #F1F5F9    /* Light blue-gray */
 --navbar: #FFFBEB        /* Warm cream */
@@ -61,6 +65,7 @@ src/
 ```
 
 **Dark Mode:**
+
 ```css
 --background: #1A202C    /* Dark slate */
 --navbar: #1A202C        /* Dark slate */
@@ -74,6 +79,7 @@ src/
 #### Kathmandu Fog Theme
 
 **Light Mode:**
+
 ```css
 --background: #F8FAFC    /* Slate-50 */
 --navbar: #F8FAFC        /* Slate-50 */
@@ -85,6 +91,7 @@ src/
 ```
 
 **Dark Mode:**
+
 ```css
 --background: #1E293B    /* Slate-800 */
 --navbar: #1E293B        /* Slate-800 */
@@ -98,6 +105,7 @@ src/
 #### Creative Voltage Theme
 
 **Light Mode:**
+
 ```css
 --background: #F8FAFC    /* Slate-50 */
 --navbar: #F8FAFC        /* Slate-50 */
@@ -109,6 +117,7 @@ src/
 ```
 
 **Dark Mode:**
+
 ```css
 --background: #1E293B    /* Slate-800 */
 --navbar: #1E293B        /* Slate-800 */
@@ -122,25 +131,30 @@ src/
 ### Color Usage
 
 ```typescript
-import { colorUtils } from '../design/colors';
+import { colorUtils } from "../design/colors";
 
 // Get theme-aware colors
-const backgroundColor = colorUtils.getThemeColor('background', isDark, currentTheme);
-const primaryColor = colorUtils.getAccentColor('primary', isDark, currentTheme);
-const linkColor = colorUtils.getSemanticColor('link', isDark, currentTheme);
+const backgroundColor = colorUtils.getThemeColor(
+  "background",
+  isDark,
+  currentTheme
+);
+const primaryColor = colorUtils.getAccentColor("primary", isDark, currentTheme);
+const linkColor = colorUtils.getSemanticColor("link", isDark, currentTheme);
 
 // Get available themes
 const themes = colorUtils.getAvailableThemes();
 // Returns: ['default', 'kathmanduFog', 'creativeVoltage']
 
 // Get theme display names
-const displayName = colorUtils.getThemeDisplayName('kathmanduFog');
+const displayName = colorUtils.getThemeDisplayName("kathmanduFog");
 // Returns: 'Kathmandu Fog'
 ```
 
 ## 📝 Typography System
 
 ### Font Families
+
 ```typescript
 fontFamily: {
   heading: '"Space Grotesk", sans-serif',
@@ -149,6 +163,7 @@ fontFamily: {
 ```
 
 ### Font Sizes
+
 ```typescript
 fontSize: {
   xs: '0.75rem',      // 12px
@@ -166,6 +181,7 @@ fontSize: {
 ```
 
 ### Font Weights
+
 ```typescript
 fontWeight: {
   normal: '400',
@@ -176,6 +192,7 @@ fontWeight: {
 ```
 
 ### Line Heights
+
 ```typescript
 lineHeight: {
   tight: '1.25',
@@ -258,6 +275,7 @@ shadows: {
 ## 🎬 Animation System
 
 ### Durations
+
 ```typescript
 duration: {
   fast: '150ms',
@@ -268,6 +286,7 @@ duration: {
 ```
 
 ### Easing Functions
+
 ```typescript
 easing: {
   easeOut: 'cubic-bezier(0.22, 1, 0.36, 1)',
@@ -283,8 +302,8 @@ easing: {
 
 ```typescript
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: "primary" | "secondary" | "ghost" | "outline";
+  size?: "sm" | "md" | "lg";
   isDark?: boolean;
   currentTheme?: string;
   children: React.ReactNode;
@@ -293,15 +312,15 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 // Usage
-<Button 
-  variant="primary" 
-  size="md" 
-  isDark={isDark} 
+<Button
+  variant="primary"
+  size="md"
+  isDark={isDark}
   currentTheme={currentTheme}
   onClick={handleClick}
 >
   Click Me
-</Button>
+</Button>;
 ```
 
 ### Card Component
@@ -312,20 +331,20 @@ interface CardProps {
   className?: string;
   isDark?: boolean;
   currentTheme?: string;
-  variant?: 'default' | 'elevated' | 'outlined';
-  padding?: 'sm' | 'md' | 'lg';
+  variant?: "default" | "elevated" | "outlined";
+  padding?: "sm" | "md" | "lg";
   style?: React.CSSProperties;
 }
 
 // Usage
-<Card 
-  variant="elevated" 
-  padding="lg" 
-  isDark={isDark} 
+<Card
+  variant="elevated"
+  padding="lg"
+  isDark={isDark}
   currentTheme={currentTheme}
 >
   Card Content
-</Card>
+</Card>;
 ```
 
 ### Typography Component
@@ -333,8 +352,17 @@ interface CardProps {
 ```typescript
 interface TypographyProps {
   children: React.ReactNode;
-  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body' | 'caption' | 'small';
-  color?: 'primary' | 'secondary' | 'muted' | 'accent';
+  variant?:
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "body"
+    | "caption"
+    | "small";
+  color?: "primary" | "secondary" | "muted" | "accent";
   isDark?: boolean;
   currentTheme?: string;
   className?: string;
@@ -342,14 +370,14 @@ interface TypographyProps {
 }
 
 // Usage
-<Typography 
-  variant="h1" 
-  color="primary" 
-  isDark={isDark} 
+<Typography
+  variant="h1"
+  color="primary"
+  isDark={isDark}
   currentTheme={currentTheme}
 >
   Heading
-</Typography>
+</Typography>;
 ```
 
 ### Chip Component
@@ -357,8 +385,8 @@ interface TypographyProps {
 ```typescript
 interface ChipProps extends React.HTMLAttributes<HTMLSpanElement> {
   children: React.ReactNode;
-  variant?: 'default' | 'accent' | 'muted';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: "default" | "accent" | "muted";
+  size?: "sm" | "md" | "lg";
   isDark?: boolean;
   currentTheme?: string;
   className?: string;
@@ -366,14 +394,9 @@ interface ChipProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 // Usage
-<Chip 
-  variant="accent" 
-  size="md" 
-  isDark={isDark} 
-  currentTheme={currentTheme}
->
+<Chip variant="accent" size="md" isDark={isDark} currentTheme={currentTheme}>
   Tag
-</Chip>
+</Chip>;
 ```
 
 ## 🎨 Theme System
@@ -382,10 +405,10 @@ interface ChipProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 ```typescript
 interface ThemeState {
-  isDarkMode: boolean;        // Current theme mode
-  currentTheme: string;       // Active palette (default, kathmanduFog, creativeVoltage)
-  timeRatio: number;         // Time of day (0-1)
-  isAutoMode: boolean;       // Auto theme switching enabled
+  isDarkMode: boolean; // Current theme mode
+  currentTheme: string; // Active palette (default, kathmanduFog, creativeVoltage)
+  timeRatio: number; // Time of day (0-1)
+  isAutoMode: boolean; // Auto theme switching enabled
 }
 
 interface ThemeContextType {
@@ -412,18 +435,28 @@ interface ThemeContextType {
 ### Using Theme in Components
 
 ```typescript
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from "../contexts/ThemeContext";
 
 function MyComponent() {
   const { themeState, toggleTheme, setCurrentTheme } = useTheme();
-  
+
   return (
-    <div style={{
-      backgroundColor: colorUtils.getThemeColor('surface', themeState.isDarkMode, themeState.currentTheme),
-      color: colorUtils.getThemeColor('text', themeState.isDarkMode, themeState.currentTheme),
-    }}>
+    <div
+      style={{
+        backgroundColor: colorUtils.getThemeColor(
+          "surface",
+          themeState.isDarkMode,
+          themeState.currentTheme
+        ),
+        color: colorUtils.getThemeColor(
+          "text",
+          themeState.isDarkMode,
+          themeState.currentTheme
+        ),
+      }}
+    >
       <button onClick={toggleTheme}>
-        Switch to {themeState.isDarkMode ? 'light' : 'dark'} mode
+        Switch to {themeState.isDarkMode ? "light" : "dark"} mode
       </button>
     </div>
   );
@@ -433,6 +466,7 @@ function MyComponent() {
 ## 📱 Responsive Design
 
 ### Breakpoints
+
 ```typescript
 breakpoints: {
   sm: '640px',
@@ -444,6 +478,7 @@ breakpoints: {
 ```
 
 ### Z-Index Scale
+
 ```typescript
 zIndex: {
   hide: -1,
@@ -484,9 +519,9 @@ interface ComponentProps {
 
 export const Component: React.FC<ComponentProps> = ({
   children,
-  className = '',
+  className = "",
   isDark = false,
-  currentTheme = 'default',
+  currentTheme = "default",
   ...props
 }) => {
   // Component logic using design system utilities
@@ -498,15 +533,15 @@ export const Component: React.FC<ComponentProps> = ({
 ```typescript
 // ✅ CORRECT - Use design system utilities
 const styles = {
-  backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
-  color: colorUtils.getThemeColor('text', isDark, currentTheme),
-  borderColor: colorUtils.getThemeColor('border', isDark, currentTheme),
+  backgroundColor: colorUtils.getThemeColor("surface", isDark, currentTheme),
+  color: colorUtils.getThemeColor("text", isDark, currentTheme),
+  borderColor: colorUtils.getThemeColor("border", isDark, currentTheme),
 };
 
 // ❌ WRONG - Hardcoded colors
 const styles = {
-  backgroundColor: '#ffffff',
-  color: '#000000',
+  backgroundColor: "#ffffff",
+  color: "#000000",
 };
 ```
 
@@ -522,8 +557,8 @@ const styles = {
 
 // ❌ WRONG - Hardcoded spacing
 const styles = {
-  padding: '1.5rem',
-  margin: '1rem',
+  padding: "1.5rem",
+  margin: "1rem",
 };
 ```
 
@@ -532,8 +567,8 @@ const styles = {
 ### Complete Component Example
 
 ```typescript
-import React from 'react';
-import { Typography, Button, Card, colorUtils, designSystem } from './ui';
+import React from "react";
+import { Typography, Button, Card, colorUtils, designSystem } from "./ui";
 
 interface MyComponentProps {
   title: string;
@@ -550,42 +585,42 @@ const MyComponent: React.FC<MyComponentProps> = ({
 }) => {
   const containerStyles: React.CSSProperties = {
     padding: designSystem.spacing.lg,
-    backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
+    backgroundColor: colorUtils.getThemeColor("surface", isDark, currentTheme),
     borderRadius: designSystem.borderRadius.lg,
     boxShadow: designSystem.shadows.md,
   };
 
   return (
-    <Card 
-      variant="elevated" 
-      padding="lg" 
-      isDark={isDark} 
+    <Card
+      variant="elevated"
+      padding="lg"
+      isDark={isDark}
       currentTheme={currentTheme}
     >
-      <Typography 
-        variant="h3" 
-        color="primary" 
-        isDark={isDark} 
+      <Typography
+        variant="h3"
+        color="primary"
+        isDark={isDark}
         currentTheme={currentTheme}
         style={{ marginBottom: designSystem.spacing.md }}
       >
         {title}
       </Typography>
-      
-      <Typography 
-        variant="body" 
-        color="secondary" 
-        isDark={isDark} 
+
+      <Typography
+        variant="body"
+        color="secondary"
+        isDark={isDark}
         currentTheme={currentTheme}
         style={{ marginBottom: designSystem.spacing.lg }}
       >
         {description}
       </Typography>
-      
-      <Button 
-        variant="primary" 
-        size="md" 
-        isDark={isDark} 
+
+      <Button
+        variant="primary"
+        size="md"
+        isDark={isDark}
         currentTheme={currentTheme}
       >
         Learn More
@@ -600,16 +635,19 @@ export default MyComponent;
 ## ♿ Accessibility Features
 
 ### Keyboard Navigation
+
 - **Tab Navigation**: All interactive elements are focusable
 - **Arrow Keys**: Slider and menu navigation
 - **Enter/Space**: Activate buttons and links
 
 ### Screen Reader Support
+
 - **ARIA Labels**: Descriptive labels for all interactive elements
 - **Role Attributes**: Proper semantic roles
 - **Value Announcements**: Current state announced
 
 ### Visual Accessibility
+
 - **High Contrast**: All themes meet WCAG contrast requirements
 - **Focus Indicators**: Clear focus states for keyboard navigation
 - **Color Independence**: Information not conveyed by color alone
@@ -617,6 +655,7 @@ export default MyComponent;
 ## 🔧 Development Guidelines
 
 ### 1. Always Use TypeScript
+
 ```typescript
 // ✅ CORRECT
 interface ComponentProps {
@@ -632,38 +671,41 @@ function Component({ children, isDark }) {
 ```
 
 ### 2. Use Design System Utilities
+
 ```typescript
 // ✅ CORRECT
 const styles = {
   padding: designSystem.spacing.lg,
-  color: colorUtils.getThemeColor('text', isDark, currentTheme),
+  color: colorUtils.getThemeColor("text", isDark, currentTheme),
 };
 
 // ❌ WRONG
 const styles = {
-  padding: '1.5rem',
-  color: '#000000',
+  padding: "1.5rem",
+  color: "#000000",
 };
 ```
 
 ### 3. Implement Theme Support
+
 ```typescript
 // ✅ CORRECT
 const Component: React.FC<ComponentProps> = ({ isDark, currentTheme }) => {
   const styles = {
-    backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
+    backgroundColor: colorUtils.getThemeColor("surface", isDark, currentTheme),
   };
 };
 
 // ❌ WRONG
 const Component = () => {
   const styles = {
-    backgroundColor: 'white',
+    backgroundColor: "white",
   };
 };
 ```
 
 ### 4. Use Standardized Components
+
 ```typescript
 // ✅ CORRECT
 <Typography variant="h1" color="primary" isDark={isDark} currentTheme={currentTheme}>
@@ -679,6 +721,7 @@ const Component = () => {
 ### From Legacy CSS Classes
 
 **Before:**
+
 ```tsx
 <button className="btn-primary">Click me</button>
 <div className="bg-white dark:bg-slate-900 text-black dark:text-white">
@@ -687,6 +730,7 @@ const Component = () => {
 ```
 
 **After:**
+
 ```tsx
 <Button variant="primary" isDark={isDark} currentTheme={currentTheme}>
   Click me
@@ -702,23 +746,27 @@ const Component = () => {
 ### From Inline Styles
 
 **Before:**
+
 ```tsx
-<div style={{ 
-  backgroundColor: '#F9A825', 
-  color: 'white',
-  padding: '1rem',
-  borderRadius: '8px'
-}}>
+<div
+  style={{
+    backgroundColor: "#F9A825",
+    color: "white",
+    padding: "1rem",
+    borderRadius: "8px",
+  }}
+>
   Content
 </div>
 ```
 
 **After:**
+
 ```tsx
-<Card 
-  variant="elevated" 
-  padding="md" 
-  isDark={isDark} 
+<Card
+  variant="elevated"
+  padding="md"
+  isDark={isDark}
   currentTheme={currentTheme}
 >
   <Typography color="accent" isDark={isDark} currentTheme={currentTheme}>
@@ -741,6 +789,7 @@ const Component = () => {
 ## 🚀 Future Enhancements
 
 ### Planned Features
+
 - **System Theme Detection**: Respect user's OS theme preference
 - **Custom Theme Builder**: Allow users to create custom palettes
 - **Theme Animations**: More sophisticated transition effects
@@ -748,6 +797,7 @@ const Component = () => {
 - **Theme Sharing**: Export/import theme configurations
 
 ### Performance Improvements
+
 - **Theme Preloading**: Preload theme assets
 - **Reduced Motion**: Respect user's motion preferences
 - **Theme Caching**: Cache theme calculations
@@ -756,6 +806,7 @@ const Component = () => {
 ## 📖 Contributing
 
 ### Adding New Components
+
 1. Create TypeScript component with proper interfaces
 2. Implement theme-aware styling using design system utilities
 3. Add comprehensive documentation and examples
@@ -763,6 +814,7 @@ const Component = () => {
 5. Update this documentation
 
 ### Adding New Themes
+
 1. Define colors in `src/design/colors.ts`
 2. Add CSS variables in `src/index.css`
 3. Update theme utility functions
@@ -771,4 +823,4 @@ const Component = () => {
 
 ---
 
-*This design system provides a solid foundation for creating engaging, accessible, and performant user experiences while maintaining flexibility for future enhancements.*
+_This design system provides a solid foundation for creating engaging, accessible, and performant user experiences while maintaining flexibility for future enhancements._
