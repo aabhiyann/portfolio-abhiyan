@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
 import { useTheme } from "../contexts/ThemeContext";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -9,13 +9,13 @@ function Layout({ children }) {
   const { themeState, toggleTheme, setCurrentTheme } = useTheme();
 
   return (
-    <div className="min-h-screen bg-light-bg text-light-text transition-theme">
+    <div className="min-h-screen bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark transition-colors duration-300">
       <SkipLink />
-      <Navbar 
-        isDark={themeState.isDarkMode} 
-        toggleTheme={toggleTheme} 
-        currentTheme={themeState.currentTheme} 
-        switchColorTheme={setCurrentTheme} 
+      <Navbar
+        isDark={themeState.isDarkMode}
+        toggleTheme={toggleTheme}
+        currentTheme={themeState.currentTheme}
+        switchColorTheme={setCurrentTheme}
       />
 
       <motion.main

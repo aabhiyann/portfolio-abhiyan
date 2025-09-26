@@ -13,7 +13,7 @@ function NotFound() {
         >
           {/* 404 Number */}
           <motion.h1
-            className="text-8xl md:text-9xl font-bold text-accent mb-8 font-heading"
+            className="text-8xl md:text-9xl font-bold text-accent-primary mb-8 font-heading"
             initial={{ scale: 0.5 }}
             animate={{ scale: 1 }}
             transition={{
@@ -28,7 +28,7 @@ function NotFound() {
 
           {/* Error Message */}
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-text-light dark:text-text-dark mb-6 font-heading"
+            className="text-3xl md:text-4xl font-bold text-text-primary mb-6 font-heading"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -40,7 +40,7 @@ function NotFound() {
           </motion.h2>
 
           <motion.p
-            className="text-xl text-muted-light dark:text-muted-dark mb-8 leading-relaxed"
+            className="text-xl text-text-secondary mb-8 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
