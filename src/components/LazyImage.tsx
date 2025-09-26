@@ -37,7 +37,7 @@ function LazyImage({ src, alt, className, ...props }) {
         />
       )}
       {!isLoaded && isInView && (
-        <div className="animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg w-full h-full" />
+        <div className="animate-pulse bg-muted rounded-lg w-full h-full" />
       )}
     </div>
   );

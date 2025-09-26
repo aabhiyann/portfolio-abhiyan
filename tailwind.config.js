@@ -9,25 +9,25 @@ export default {
         // These will be defined in index.css and updated by ThemeContext
         
         // Background colors
-        "bg-primary": "var(--color-bg-primary)",
-        "bg-secondary": "var(--color-bg-secondary)",
-        "bg-surface": "var(--color-bg-surface)",
-        "bg-card": "var(--color-bg-card)",
+        "bg-primary": "var(--color-light-background)",
+        "bg-surface": "var(--color-light-surface)",
+        "bg-card": "var(--color-light-card)",
+        "bg-navbar": "var(--color-light-navbar)",
         
         // Text colors
-        "text-primary": "var(--color-text-primary)",
-        "text-secondary": "var(--color-text-secondary)",
-        "text-muted": "var(--color-text-muted)",
+        "text-primary": "var(--color-light-text)",
+        "text-secondary": "var(--color-light-textSecondary)",
+        "text-muted": "var(--color-light-textMuted)",
         
         // Border colors
-        "border-primary": "var(--color-border-primary)",
-        "border-secondary": "var(--color-border-secondary)",
+        "border-primary": "var(--color-light-border)",
+        "border-secondary": "var(--color-light-borderMuted)",
         
         // Accent colors
-        "accent-primary": "var(--color-accent-primary)",
-        "accent-secondary": "var(--color-accent-secondary)",
-        "accent-hover": "var(--color-accent-hover)",
-        "accent-focus": "var(--color-accent-focus)",
+        "accent-primary": "var(--color-primary-light)",
+        "accent-secondary": "var(--color-secondary-light)",
+        "accent-hover": "var(--color-hover-light)",
+        "accent-focus": "var(--color-focus-light)",
         
         // State colors
         "success": "var(--color-success)",
