@@ -1,10 +1,10 @@
-# 🎨 Complete Design System Documentation
+# Complete Design System Documentation
 
 ## Overview
 
 This is the comprehensive design system for the Abhiyan Sainju Portfolio. It encompasses colors, typography, components, spacing, themes, and styling standards to ensure consistency, maintainability, and scalability across the entire application.
 
-## 📁 Architecture
+## Architecture
 
 ```
 src/
@@ -26,24 +26,14 @@ src/
     └── ThemeContext.tsx       # Theme management
 ```
 
-## 🎨 Color System
+## Color System
 
 ### Theme Palettes
 
 #### 1. **Default Theme: Yellow + Blue** (Primary)
-- **Light Mode**: Warm cream backgrounds with blue accents
-- **Dark Mode**: Purple + Green modern combination
+- **Light Mode**: Light blue-gray backgrounds with yellow and blue accents
+- **Dark Mode**: Dark slate backgrounds with purple and green accents
 - **Best for**: Professional, warm, approachable
-
-#### 2. **Kathmandu Fog** (Alternative A)
-- **Light Mode**: Clean slate backgrounds with pink accents
-- **Dark Mode**: Professional slate with consistent pink branding
-- **Best for**: Serene, professional, memorable
-
-#### 3. **Creative Voltage** (Alternative B)
-- **Light Mode**: Clean slate backgrounds with violet accents
-- **Dark Mode**: Professional slate with consistent violet branding
-- **Best for**: Modern, logical, innovative
 
 ### Color Specifications
 

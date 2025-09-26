@@ -17,74 +17,78 @@ Every design decision should serve this dual purpose: to present Abhiyan as a se
 
 ### 2.1. Color Palette
 
-The palette is designed to be professional, warm, and timeless. It supports both light and dark modes seamlessly. The accent color is intentionally vibrant to draw attention to key interactive elements.
+The palette is designed to be professional, warm, and timeless. It supports both light and dark modes seamlessly with a Yellow + Blue light theme and Purple + Green dark theme.
 
-**Light Mode:**
+**Light Theme (Yellow + Blue):**
 
-- Background: Off-White - `#F8F7F4` (Tailwind class: `bg-light-bg`)
-- Surface: `#FFFFFF`
-- Text: Dark Gray - `#333333` (e.g., `text-gray-800`)
-- Muted: Medium Gray - `#6B7280` (e.g., `text-gray-500`)
+- Background: Light Blue-Gray - `#F1F5F9`
+- Navbar: Warm Cream - `#FFFBEB`
+- Surface: Pure White - `#FFFFFF`
+- Text: Dark Slate - `#0F172A`
+- Text Secondary: Slate Gray - `#64748B`
+- Text Muted: Light Gray - `#A0AEC0`
+- Border: Warm Border - `#A8A29E`
+- Primary Accent: Warm Yellow - `#F9A825`
+- Secondary Accent: Blue - `#3B82F6`
 
-**Dark Mode:**
+**Dark Theme (Purple + Green):**
 
-- Background: Charcoal - `#1A1A1A` (Tailwind class: `bg-dark-bg`)
-- Surface: `#151821`
-- Text: Light Gray - `#E0E0E0` (e.g., `text-gray-200`)
-- Muted: Cool Gray - `#98A1B3`
+- Background: Dark Slate - `#1A202C`
+- Navbar: Dark Slate - `#1A202C`
+- Surface: Darker Slate - `#2D3748`
+- Text: Light Gray - `#F4F4F7`
+- Text Secondary: Medium Gray - `#A0AEC0`
+- Text Muted: Muted Gray - `#718096`
+- Border: Dark Border - `#4A5568`
+- Primary Accent: Purple - `#8B5CF6`
+- Secondary Accent: Green - `#22C55E`
 
-**Accent Colors:**
+**State Colors:**
 
-- Primary Accent: Warm Orange - `#FF7A00` (Tailwind class: `bg-accent`, `text-accent`)
-- Accent Ink: `#2A1A07` (for text on accent surfaces)
-- Alt accents: Emerald `#10B981`, Blue `#3B82F6`
-
-**States:**
-
-- Info: `#3B82F6`
 - Success: `#10B981`
 - Warning: `#F59E0B`
 - Error: `#EF4444`
+- Info: `#3B82F6`
 - Focus ring: `#7C3AED` (violet-600), 2px outline
 
 ### 2.2. Tailwind Config Reference
 
-To implement the custom color palette, extend your `tailwind.config.js`:
+The color system is implemented using CSS custom properties and theme-aware utilities:
 
 ```javascript
 // tailwind.config.js
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
     extend: {
       colors: {
-        // Custom color tokens
-        "light-bg": "#F8F7F4",
-        "dark-bg": "#1A1A1A",
-        accent: "#FF7A00",
-        "accent-ink": "#2A1A07",
-        surface: {
-          light: "#FFFFFF",
-          dark: "#151821",
-        },
-        text: {
-          light: "#333333",
-          dark: "#E0E0E0",
-        },
-        muted: {
-          light: "#6B7280",
-          dark: "#98A1B3",
-        },
-        // State colors
-        info: "#3B82F6",
-        success: "#10B981",
-        warning: "#F59E0B",
-        error: "#EF4444",
+        // Theme-aware colors using CSS custom properties
+        "bg-primary": "var(--color-light-background)",
+        "bg-surface": "var(--color-light-surface)",
+        "bg-card": "var(--color-light-card)",
+        "bg-navbar": "var(--color-light-navbar)",
+        
+        "text-primary": "var(--color-light-text)",
+        "text-secondary": "var(--color-light-textSecondary)",
+        "text-muted": "var(--color-light-textMuted)",
+        
+        "border-primary": "var(--color-light-border)",
+        "border-secondary": "var(--color-light-borderMuted)",
+        
+        "accent-primary": "var(--color-primary-light)",
+        "accent-secondary": "var(--color-secondary-light)",
+        "accent-hover": "var(--color-hover-light)",
+        "accent-focus": "var(--color-focus-light)",
+        
+        "success": "var(--color-success)",
+        "warning": "var(--color-warning)",
+        "error": "var(--color-error)",
+        "info": "var(--color-info)",
       },
       fontFamily: {
-        heading: ["Space Grotesk", "sans-serif"],
-        body: ["Inter", "sans-serif"],
+        "heading": ["Space Grotesk", "sans-serif"],
+        "body": ["Inter", "sans-serif"],
       },
       animation: {
         "fade-up": "fadeUp 0.25s ease-out",

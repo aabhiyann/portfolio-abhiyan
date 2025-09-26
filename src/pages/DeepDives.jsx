@@ -95,11 +95,11 @@ function DeepDives() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: motionTokens.duration.slow / 1000 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-text-primary mb-6 font-heading">
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-primary mb-6 font-heading">
               Deep Dives
             </h1>
 
-            <p className="text-xl text-text-secondary mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-secondary mb-8 max-w-3xl mx-auto">
               In-depth explorations of technology, mathematics, and the
               intersection of code and creativity. Each article represents hours
               of research, analysis, and thoughtful writing.
@@ -112,7 +112,7 @@ function DeepDives() {
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                       index === 0
                         ? "bg-accent-primary text-white"
-                        : "bg-bg-surface text-text-secondary hover:text-accent-primary border border-border-primary/20"
+                        : "bg-surface text-secondary hover:text-accent border border-primary/20"
                     }`}
                 >
                   {category}

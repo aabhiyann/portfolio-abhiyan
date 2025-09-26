@@ -9,7 +9,7 @@ function Layout({ children }) {
   const { themeState, toggleTheme, setCurrentTheme } = useTheme();
 
   return (
-    <div className="min-h-screen bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark transition-colors duration-300">
+    <div className="min-h-screen bg-primary text-primary transition-colors duration-300">
       <SkipLink />
       <Navbar
         isDark={themeState.isDarkMode}

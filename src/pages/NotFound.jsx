@@ -28,7 +28,7 @@ function NotFound() {
 
           {/* Error Message */}
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-text-primary mb-6 font-heading"
+            className="text-3xl md:text-4xl font-bold text-primary mb-6 font-heading"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -40,7 +40,7 @@ function NotFound() {
           </motion.h2>
 
           <motion.p
-            className="text-xl text-text-secondary mb-8 leading-relaxed"
+            className="text-xl text-secondary mb-8 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -93,35 +93,35 @@ function NotFound() {
               delay: 1.0,
             }}
           >
-            <p className="text-sm text-muted-light dark:text-muted-dark mb-4">
+            <p className="text-sm text-muted mb-4">
               Or explore these popular destinations:
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 to="/projects"
-                className="text-accent hover:text-accent-ink transition-colors font-medium"
+                className="text-accent hover:text-accent-secondary transition-colors font-medium"
               >
                 Projects
               </Link>
-              <span className="text-muted-light dark:text-muted-dark">•</span>
+              <span className="text-muted">•</span>
               <Link
                 to="/photography"
-                className="text-accent hover:text-accent-ink transition-colors font-medium"
+                className="text-accent hover:text-accent-secondary transition-colors font-medium"
               >
                 Photography
               </Link>
-              <span className="text-muted-light dark:text-muted-dark">•</span>
+              <span className="text-muted">•</span>
               <Link
                 to="/about"
-                className="text-accent hover:text-accent-ink transition-colors font-medium"
+                className="text-accent hover:text-accent-secondary transition-colors font-medium"
               >
                 About
               </Link>
-              <span className="text-muted-light dark:text-muted-dark">•</span>
+              <span className="text-muted">•</span>
               <Link
                 to="/deep-dives"
-                className="text-accent hover:text-accent-ink transition-colors font-medium"
+                className="text-accent hover:text-accent-secondary transition-colors font-medium"
               >
                 Deep Dives
               </Link>
