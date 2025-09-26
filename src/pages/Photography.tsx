@@ -1,10 +1,11 @@
-import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
+import { motion } from "framer-motion"; 
 import { motionTokens } from "../utils/motion";
 import PhotographyGallery from "../components/PhotographyGallery";
+import Page from "../components/Page";
 
 function Photography() {
   return (
-    <div className="min-h-screen pt-24">
+    <Page>
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <motion.div
@@ -61,7 +62,7 @@ function Photography() {
           <PhotographyGallery />
         </div>
       </section>
-    </div>
+    </Page>
   );
 }
 

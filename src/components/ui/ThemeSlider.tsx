@@ -8,7 +8,7 @@
 
 import React, { useRef, useCallback, useEffect, useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
-import { useTheme } from '../../contexts/ThemeContext';
+import { useTheme } from '../../contexts/useTheme';
 import { motion } from 'framer-motion';
 
 export interface ThemeSliderProps {
@@ -26,7 +26,6 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
 
   // Update theme based on time ratio
   const updateTheme = useCallback((ratio: number) => {
-    const shouldBeDark = ratio < 0.25 || ratio > 0.75;
     updateThemeFromTime(ratio);
   }, [updateThemeFromTime]);
 

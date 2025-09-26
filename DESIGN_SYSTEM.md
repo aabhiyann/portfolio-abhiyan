@@ -1,4 +1,28 @@
+**Last Updated**: September 25, 2025
+
 # Complete Design System Documentation
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Architecture](#architecture)
+- [Color System](#color-system)
+- [Typography System](#-typography-system)
+- [Spacing System](#-spacing-system)
+- [Border Radius](#-border-radius)
+- [Shadows](#-shadows)
+- [Animation System](#-animation-system)
+- [Component System](#-component-system)
+- [Theme System](#-theme-system)
+- [Responsive Design](#-responsive-design)
+- [Styling Standards](#-styling-standards)
+- [Usage Examples](#-usage-examples)
+- [Accessibility Features](#-accessibility-features)
+- [Development Guidelines](#-development-guidelines)
+- [Migration Guide](#-migration-guide)
+- [Best Practices](#-best-practices)
+- [Future Enhancements](#-future-enhancements)
+- [Contributing](#-contributing)
 
 ## Overview
 

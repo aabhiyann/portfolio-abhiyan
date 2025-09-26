@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
+import { motion } from "framer-motion"; 
 import { motionTokens } from "../utils/motion";
+import Page from "../components/Page";
+import { useTheme } from "../contexts/useTheme";
 import { colorUtils } from "../design/colors";
 
-function About({ isDark = false, currentTheme = 'default' }) {
+function About() {
+  const { themeState } = useTheme();
+  const { isDarkMode, currentTheme } = themeState;
   const timeline = [
     {
       year: "2021",
@@ -82,17 +86,12 @@ function About({ isDark = false, currentTheme = 'default' }) {
   ];
 
   return (
-    <div 
-      className="min-h-screen pt-24"
-      style={{
-        backgroundColor: colorUtils.getThemeColor('background', isDark, currentTheme),
-      }}
-    >
+    <Page>
       {/* Hero Section */}
       <section 
         className="py-24"
         style={{
-          backgroundColor: colorUtils.getThemeColor('background', isDark, currentTheme),
+          backgroundColor: colorUtils.getThemeColor('background', isDarkMode, currentTheme),
         }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -105,7 +104,7 @@ function About({ isDark = false, currentTheme = 'default' }) {
               <h1 
                 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 font-heading"
                 style={{
-                  color: colorUtils.getThemeColor('text', isDark, currentTheme)
+                  color: colorUtils.getThemeColor('text', isDarkMode, currentTheme)
                 }}
               >
                 About Me
@@ -114,7 +113,7 @@ function About({ isDark = false, currentTheme = 'default' }) {
               <div 
                 className="prose prose-lg max-w-none"
                 style={{
-                  color: colorUtils.getThemeColor('textSecondary', isDark, currentTheme)
+                  color: colorUtils.getThemeColor('textSecondary', isDarkMode, currentTheme)
                 }}
               >
                 <p className="text-xl mb-6">
@@ -295,7 +294,7 @@ function About({ isDark = false, currentTheme = 'default' }) {
           </motion.div>
         </div>
       </section>
-    </div>
+    </Page>
   );
 }
 

@@ -57,7 +57,7 @@ export const projectImages: Record<string, ImageMetadata[]> = {
 };
 
 // Generate photography images with real EXIF data
-export const photographyImages: ImageMetadata[] = imageEXIFData.map((exif, index) => ({
+export const photographyImages: ImageMetadata[] = imageEXIFData.map((exif) => ({
   src: `/images/photography/${exif.filename}.webp`,
   alt: `Photography by Abhiyan - ${exif.filename}`,
   width: 1200,
