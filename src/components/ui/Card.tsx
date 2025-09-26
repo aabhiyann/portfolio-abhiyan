@@ -12,6 +12,7 @@ export interface CardProps {
   children: React.ReactNode;
   className?: string;
   isDark?: boolean;
+  currentTheme?: string;
   variant?: 'default' | 'elevated' | 'outlined';
   padding?: 'sm' | 'md' | 'lg';
 }
@@ -20,6 +21,7 @@ export const Card: React.FC<CardProps> = ({
   children,
   className = '',
   isDark = false,
+  currentTheme = 'default',
   variant = 'default',
   padding = 'md',
 }) => {
@@ -27,19 +29,19 @@ export const Card: React.FC<CardProps> = ({
     switch (variant) {
       case 'elevated':
         return {
-          backgroundColor: colorUtils.getThemeColor('surface', isDark),
+          backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
           boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
           border: 'none',
         };
       case 'outlined':
         return {
-          backgroundColor: colorUtils.getThemeColor('surface', isDark),
-          border: `1px solid ${colorUtils.getThemeColor('border', isDark)}`,
+          backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
+          border: `1px solid ${colorUtils.getThemeColor('border', isDark, currentTheme)}`,
           boxShadow: 'none',
         };
       default:
         return {
-          backgroundColor: colorUtils.getThemeColor('surface', isDark),
+          backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
           border: `1px solid ${colorUtils.getThemeColor('borderMuted', isDark)}`,
           boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
         };

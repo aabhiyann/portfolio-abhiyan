@@ -6,21 +6,24 @@ import Photography from "./pages/Photography";
 import About from "./pages/About";
 import DeepDives from "./pages/DeepDives";
 import NotFound from "./pages/NotFound";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 function App() {
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/photography" element={<Photography />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/deep-dives" element={<DeepDives />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/photography" element={<Photography />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/deep-dives" element={<DeepDives />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </ThemeProvider>
   );
 }
 
