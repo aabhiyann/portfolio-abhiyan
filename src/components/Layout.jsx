@@ -9,7 +9,7 @@ function Layout({ children }) {
   const { themeState, toggleTheme, setCurrentTheme } = useTheme();
 
   return (
-    <div className="min-h-screen bg-bg-primary text-text-primary transition-theme">
+    <div className="min-h-screen bg-surface-light dark:bg-surface-dark text-text-light dark:text-text-dark transition-colors duration-300">
       <SkipLink />
       <Navbar
         isDark={themeState.isDarkMode}
@@ -19,7 +19,7 @@ function Layout({ children }) {
       />
 
       <motion.main
-        id="main-content"
+        id="content"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
