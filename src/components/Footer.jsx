@@ -6,12 +6,17 @@ import ThemeSlider from "./ui/ThemeSlider";
 import { useTheme } from "../contexts/ThemeContext";
 
 function Footer() {
-  const [footballBounce] = useState(false); // eslint-disable-line no-unused-vars
+  const [footballBounce, setFootballBounce] = useState(false);
   const { themeState, toggleTheme, setIsAutoMode } = useTheme();
 
   const handleThemeToggle = () => {
     toggleTheme();
     setIsAutoMode(false); // Disable auto mode when manually toggling
+  };
+
+  const handleFootballClick = () => {
+    setFootballBounce(true);
+    setTimeout(() => setFootballBounce(false), 1000);
   };
 
   return (
