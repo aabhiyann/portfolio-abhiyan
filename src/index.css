@@ -1,7 +1,55 @@
 @import "tailwindcss";
 
 @theme {
-  /* Color variables will be defined here once new palette is provided */
+  /* Light Theme: Yellow + Blue */
+  --color-light-background: #f1f5f9;
+  --color-light-navbar: #fffbeb;
+  --color-light-surface: #ffffff;
+  --color-light-card: #ffffff;
+  --color-light-text: #0f172a;
+  --color-light-textSecondary: #64748b;
+  --color-light-textMuted: #a0aec0;
+  --color-light-border: #a8a29e;
+  --color-light-borderMuted: #64748b;
+
+  /* Dark Theme: Purple + Green */
+  --color-dark-background: #1a202c;
+  --color-dark-navbar: #1a202c;
+  --color-dark-surface: #2d3748;
+  --color-dark-card: #2d3748;
+  --color-dark-text: #f4f4f7;
+  --color-dark-textSecondary: #a0aec0;
+  --color-dark-textMuted: #718096;
+  --color-dark-border: #4a5568;
+  --color-dark-borderMuted: #718096;
+
+  /* Accent Colors */
+  --color-primary-light: #f9a825;
+  --color-primary-dark: #8b5cf6;
+  --color-secondary-light: #3b82f6;
+  --color-secondary-dark: #22c55e;
+  --color-hover-light: #f59e0b;
+  --color-hover-dark: #7c3aed;
+  --color-focus-light: #f9a825;
+  --color-focus-dark: #8b5cf6;
+
+  /* State Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Semantic Colors */
+  --color-link-light: #3b82f6;
+  --color-link-dark: #22c55e;
+  --color-button-primary-light: #f9a825;
+  --color-button-primary-dark: #8b5cf6;
+  --color-button-secondary-light: #3b82f6;
+  --color-button-secondary-dark: #22c55e;
+  --color-chip-light: #3b82f6;
+  --color-chip-dark: #22c55e;
+
+  /* Font Families */
   --font-family-heading: "Space Grotesk", sans-serif;
   --font-family-body: "Inter", sans-serif;
 }
@@ -10,12 +58,135 @@
 body {
   margin: 0;
   font-family: var(--font-family-body);
+  background-color: var(--color-light-background);
+  color: var(--color-light-text);
 }
 
 html,
 body,
 #root {
   height: 100%;
+}
+
+/* Dark mode */
+.dark {
+  background-color: var(--color-dark-background);
+  color: var(--color-dark-text);
+}
+
+/* Theme-aware utility classes */
+.bg-primary {
+  background-color: var(--color-light-background);
+}
+
+.dark .bg-primary {
+  background-color: var(--color-dark-background);
+}
+
+.bg-surface {
+  background-color: var(--color-light-surface);
+}
+
+.dark .bg-surface {
+  background-color: var(--color-dark-surface);
+}
+
+.bg-card {
+  background-color: var(--color-light-card);
+}
+
+.dark .bg-card {
+  background-color: var(--color-dark-card);
+}
+
+.text-primary {
+  color: var(--color-light-text);
+}
+
+.dark .text-primary {
+  color: var(--color-dark-text);
+}
+
+.text-secondary {
+  color: var(--color-light-textSecondary);
+}
+
+.dark .text-secondary {
+  color: var(--color-dark-textSecondary);
+}
+
+.text-muted {
+  color: var(--color-light-textMuted);
+}
+
+.dark .text-muted {
+  color: var(--color-dark-textMuted);
+}
+
+.border-primary {
+  border-color: var(--color-light-border);
+}
+
+.dark .border-primary {
+  border-color: var(--color-dark-border);
+}
+
+.border-secondary {
+  border-color: var(--color-light-borderMuted);
+}
+
+.dark .border-secondary {
+  border-color: var(--color-dark-borderMuted);
+}
+
+/* Accent colors */
+.text-accent {
+  color: var(--color-primary-light);
+}
+
+.dark .text-accent {
+  color: var(--color-primary-dark);
+}
+
+.bg-accent {
+  background-color: var(--color-primary-light);
+}
+
+.dark .bg-accent {
+  background-color: var(--color-primary-dark);
+}
+
+.text-accent-secondary {
+  color: var(--color-secondary-light);
+}
+
+.dark .text-accent-secondary {
+  color: var(--color-secondary-dark);
+}
+
+.bg-accent-secondary {
+  background-color: var(--color-secondary-light);
+}
+
+.dark .bg-accent-secondary {
+  background-color: var(--color-secondary-dark);
+}
+
+/* Hover states */
+.hover-accent:hover {
+  color: var(--color-hover-light);
+}
+
+.dark .hover-accent:hover {
+  color: var(--color-hover-dark);
+}
+
+.hover-accent-bg:hover {
+  background-color: var(--color-hover-light);
+}
+
+.dark .hover-accent-bg:hover {
+  background-color: var(--color-hover-dark);
 }
 
 /* Animations */
