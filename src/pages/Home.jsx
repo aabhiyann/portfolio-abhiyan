@@ -1,44 +1,26 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
 import { motionTokens } from "../utils/motion";
-import { colorUtils } from "../design/colors";
 
-function Home({ isDark = false, currentTheme = 'default' }) {
+function Home() {
   return (
     <>
       {/* Hero Section */}
       <section
         id="hero"
-        className="relative min-h-[80vh] flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundColor: colorUtils.getThemeColor('background', isDark, currentTheme),
-        }}
+        className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-bg-primary"
       >
         {/* Background Image with Gradient Overlay */}
         <div className="absolute inset-0 z-0">
-          <div 
-            className="absolute inset-0 z-10 bg-gradient-to-t"
-            style={{
-              background: `linear-gradient(to top, ${colorUtils.getThemeColor('background', isDark, currentTheme)}, ${colorUtils.getThemeColor('background', isDark, currentTheme)}80, ${colorUtils.getThemeColor('background', isDark, currentTheme)}33)`
-            }}
-          ></div>
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-bg-primary/80 via-bg-primary/50 to-bg-primary/20"></div>
           {/* Placeholder for hero image - replace with actual photo */}
-          <div 
-            className="w-full h-full bg-gradient-to-br"
-            style={{
-              background: `linear-gradient(135deg, ${colorUtils.getAccentColor('primary', isDark, currentTheme)}33, ${colorUtils.getAccentColor('secondary', isDark, currentTheme)}33)`
-            }}
-          ></div>
+          <div className="w-full h-full bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20"></div>
         </div>
 
         {/* Hero Content */}
         <div className="relative z-20 text-center max-w-4xl mx-auto px-6">
           <motion.h1
-            className="text-6xl md:text-7xl font-bold tracking-tight mb-6"
-            style={{ 
-              fontFamily: "var(--font-family-heading)",
-              color: colorUtils.getThemeColor('text', isDark, currentTheme)
-            }}
+            className="text-6xl md:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: motionTokens.duration.slow / 1000 }}
@@ -47,10 +29,7 @@ function Home({ isDark = false, currentTheme = 'default' }) {
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto"
-            style={{
-              color: colorUtils.getThemeColor('textSecondary', isDark, currentTheme)
-            }}
+            className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-text-secondary"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
