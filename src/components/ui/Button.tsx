@@ -12,6 +12,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   isDark?: boolean;
+  currentTheme?: string;
   children: React.ReactNode;
 }
 
@@ -19,6 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   size = 'md',
   isDark = false,
+  currentTheme = 'default',
   children,
   className = '',
   style = {},
@@ -28,7 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
     switch (variant) {
       case 'primary':
         return {
-          backgroundColor: colorUtils.getAccentColor('primary', isDark),
+          backgroundColor: colorUtils.getAccentColor('primary', isDark, currentTheme),
           color: 'white',
           border: 'none',
           '&:hover': {
@@ -37,7 +39,7 @@ export const Button: React.FC<ButtonProps> = ({
         };
       case 'secondary':
         return {
-          backgroundColor: colorUtils.getAccentColor('secondary', isDark),
+          backgroundColor: colorUtils.getAccentColor('secondary', isDark, currentTheme),
           color: 'white',
           border: 'none',
           '&:hover': {
@@ -47,20 +49,20 @@ export const Button: React.FC<ButtonProps> = ({
       case 'ghost':
         return {
           backgroundColor: 'transparent',
-          color: colorUtils.getThemeColor('text', isDark),
-          border: `1px solid ${colorUtils.getThemeColor('border', isDark)}`,
+          color: colorUtils.getThemeColor('text', isDark, currentTheme),
+          border: `1px solid ${colorUtils.getThemeColor('border', isDark, currentTheme)}`,
           '&:hover': {
-            backgroundColor: colorUtils.getAccentColor('secondary', isDark),
+            backgroundColor: colorUtils.getAccentColor('secondary', isDark, currentTheme),
             color: 'white',
           },
         };
       case 'outline':
         return {
           backgroundColor: 'transparent',
-          color: colorUtils.getAccentColor('primary', isDark),
-          border: `1px solid ${colorUtils.getAccentColor('primary', isDark)}`,
+          color: colorUtils.getAccentColor('primary', isDark, currentTheme),
+          border: `1px solid ${colorUtils.getAccentColor('primary', isDark, currentTheme)}`,
           '&:hover': {
-            backgroundColor: colorUtils.getAccentColor('primary', isDark),
+            backgroundColor: colorUtils.getAccentColor('primary', isDark, currentTheme),
             color: 'white',
           },
         };

@@ -154,6 +154,47 @@ body,
   color: var(--color-dark-text);
 }
 
+/* Theme-aware utility classes for Tailwind dark mode */
+.bg-light-bg {
+  background-color: var(--color-light-background);
+}
+
+.dark .bg-light-bg {
+  background-color: var(--color-dark-background);
+}
+
+.bg-light-surface {
+  background-color: var(--color-light-surface);
+}
+
+.dark .bg-light-surface {
+  background-color: var(--color-dark-surface);
+}
+
+.text-light-text {
+  color: var(--color-light-text);
+}
+
+.dark .text-light-text {
+  color: var(--color-dark-text);
+}
+
+.text-light-muted {
+  color: var(--color-light-textMuted);
+}
+
+.dark .text-light-muted {
+  color: var(--color-dark-textMuted);
+}
+
+.border-light-border {
+  border-color: var(--color-light-border);
+}
+
+.dark .border-light-border {
+  border-color: var(--color-dark-border);
+}
+
 /* Theme-specific classes */
 .theme-kathmandu {
   --color-background: var(--color-kathmandu-light-background);
@@ -275,4 +316,36 @@ body,
 
 .font-body {
   font-family: var(--font-family-body);
+}
+
+/* Theme-aware utility classes */
+.bg-surface-light {
+  background-color: var(--color-light-surface);
+}
+
+.dark .bg-surface-dark {
+  background-color: var(--color-dark-surface);
+}
+
+.text-text-light {
+  color: var(--color-light-text);
+}
+
+.dark .text-text-dark {
+  color: var(--color-dark-text);
+}
+
+.text-muted-light {
+  color: var(--color-light-textMuted);
+}
+
+.dark .text-muted-dark {
+  color: var(--color-dark-textMuted);
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
