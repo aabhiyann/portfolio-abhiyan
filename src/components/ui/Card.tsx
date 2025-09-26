@@ -1,12 +1,19 @@
 /**
- * Reusable Card Component
+ * Standardized Card Component
  * 
- * A centralized card component that uses the design system colors.
+ * A centralized card component that follows the design system standards.
  * All cards in the application should use this component for consistency.
+ * 
+ * Features:
+ * - Theme-aware styling
+ * - Consistent prop interface
+ * - Design system integration
+ * - Multiple variants and sizes
  */
 
 import React from 'react';
-import { colors, colorUtils } from '../../design/colors';
+import { colorUtils } from '../../design/colors';
+import { designSystem } from '../../design/system';
 
 export interface CardProps {
   children: React.ReactNode;
@@ -15,6 +22,7 @@ export interface CardProps {
   currentTheme?: string;
   variant?: 'default' | 'elevated' | 'outlined';
   padding?: 'sm' | 'md' | 'lg';
+  style?: React.CSSProperties;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -24,13 +32,14 @@ export const Card: React.FC<CardProps> = ({
   currentTheme = 'default',
   variant = 'default',
   padding = 'md',
+  style = {},
 }) => {
-  const getVariantStyles = () => {
+  const getVariantStyles = (): React.CSSProperties => {
     switch (variant) {
       case 'elevated':
         return {
           backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
-          boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+          boxShadow: designSystem.shadows.lg,
           border: 'none',
         };
       case 'outlined':
@@ -42,30 +51,31 @@ export const Card: React.FC<CardProps> = ({
       default:
         return {
           backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
-          border: `1px solid ${colorUtils.getThemeColor('borderMuted', isDark)}`,
-          boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+          border: `1px solid ${colorUtils.getThemeColor('borderMuted', isDark, currentTheme)}`,
+          boxShadow: designSystem.shadows.sm,
         };
     }
   };
 
-  const getPaddingStyles = () => {
+  const getPaddingStyles = (): React.CSSProperties => {
     switch (padding) {
       case 'sm':
-        return { padding: '1rem' };
+        return { padding: designSystem.spacing.md };
       case 'md':
-        return { padding: '1.5rem' };
+        return { padding: designSystem.spacing.lg };
       case 'lg':
-        return { padding: '2rem' };
+        return { padding: designSystem.spacing.xl };
       default:
-        return { padding: '1.5rem' };
+        return { padding: designSystem.spacing.lg };
     }
   };
 
   const baseStyles: React.CSSProperties = {
-    borderRadius: '1rem',
-    transition: 'all 0.15s ease',
+    borderRadius: designSystem.borderRadius.xl,
+    transition: `all ${designSystem.animation.duration.normal} ${designSystem.animation.easing.easeInOut}`,
     ...getVariantStyles(),
     ...getPaddingStyles(),
+    ...style,
   };
 
   return (
