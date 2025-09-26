@@ -8,7 +8,7 @@ function Home() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-bg-primary"
+        className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-primary"
       >
         {/* Background Image with Gradient Overlay */}
         <div className="absolute inset-0 z-0">
@@ -20,7 +20,7 @@ function Home() {
         {/* Hero Content */}
         <div className="relative z-20 text-center max-w-4xl mx-auto px-6">
           <motion.h1
-            className="text-6xl md:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary"
+            className="text-6xl md:text-7xl font-bold tracking-tight mb-6 font-heading text-primary"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: motionTokens.duration.slow / 1000 }}
@@ -29,7 +29,7 @@ function Home() {
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-text-secondary"
+            className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-secondary"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -179,10 +179,10 @@ function Home() {
             viewport={{ once: true }}
             transition={{ duration: motionTokens.duration.slow / 1000 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 font-heading text-text-primary">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 font-heading text-primary">
               Photography
             </h2>
-            <p className="text-xl text-text-secondary mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-secondary mb-8 max-w-3xl mx-auto">
               Capturing moments and stories through the lens. From street
               photography to landscape shots, each image tells a unique story.
             </p>
@@ -206,7 +206,7 @@ function Home() {
       </section>
 
       {/* About Teaser */}
-      <section className="py-24 bg-bg-primary">
+      <section className="py-24 bg-primary">
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

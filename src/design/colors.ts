@@ -115,20 +115,14 @@ export const colorUtils = {
   /**
    * Get theme-aware color
    */
-  getThemeColor: (
-    colorKey: keyof typeof colors.light,
-    isDark: boolean
-  ) => {
+  getThemeColor: (colorKey: keyof typeof colors.light, isDark: boolean) => {
     return isDark ? colors.dark[colorKey] : colors.light[colorKey];
   },
 
   /**
    * Get accent color based on theme
    */
-  getAccentColor: (
-    accentKey: keyof typeof colors.accent,
-    isDark: boolean
-  ) => {
+  getAccentColor: (accentKey: keyof typeof colors.accent, isDark: boolean) => {
     return isDark
       ? colors.accent[accentKey].dark
       : colors.accent[accentKey].light;

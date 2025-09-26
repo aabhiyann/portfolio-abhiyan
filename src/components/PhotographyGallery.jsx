@@ -72,7 +72,7 @@ function PhotographyGallery() {
             onClick={closeLightbox}
           >
             <motion.div
-              className="relative max-w-4xl max-h-[90vh] bg-surface-light dark:bg-surface-dark rounded-xl overflow-hidden"
+              className="relative max-w-4xl max-h-[90vh] bg-surface rounded-xl overflow-hidden"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
