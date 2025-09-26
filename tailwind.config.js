@@ -5,7 +5,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Colors will be defined here once new palette is provided
+        // Theme-aware colors using CSS custom properties
+        // These will be defined in index.css and updated by ThemeContext
+        
+        // Background colors
+        "bg-primary": "var(--color-light-background)",
+        "bg-surface": "var(--color-light-surface)",
+        "bg-card": "var(--color-light-card)",
+        "bg-navbar": "var(--color-light-navbar)",
+        
+        // Text colors
+        "text-primary": "var(--color-light-text)",
+        "text-secondary": "var(--color-light-textSecondary)",
+        "text-muted": "var(--color-light-textMuted)",
+        
+        // Border colors
+        "border-primary": "var(--color-light-border)",
+        "border-secondary": "var(--color-light-borderMuted)",
+        
+        // Accent colors
+        "accent-primary": "var(--color-primary-light)",
+        "accent-secondary": "var(--color-secondary-light)",
+        "accent-hover": "var(--color-hover-light)",
+        "accent-focus": "var(--color-focus-light)",
+        
+        // State colors
+        "success": "var(--color-success)",
+        "warning": "var(--color-warning)",
+        "error": "var(--color-error)",
+        "info": "var(--color-info)",
       },
       fontFamily: {
         "heading": ["Space Grotesk", "sans-serif"],
