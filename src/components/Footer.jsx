@@ -9,18 +9,18 @@ function Footer() {
   const [footballBounce, setFootballBounce] = useState(false);
   const { themeState, toggleTheme, setIsAutoMode } = useTheme();
 
-  const handleFootballClick = () => {
-    setFootballBounce(true);
-    setTimeout(() => setFootballBounce(false), 1000);
-  };
-
   const handleThemeToggle = () => {
     toggleTheme();
     setIsAutoMode(false); // Disable auto mode when manually toggling
   };
 
+  const handleFootballClick = () => {
+    setFootballBounce(true);
+    setTimeout(() => setFootballBounce(false), 1000);
+  };
+
   return (
-    <footer className="bg-surface-light dark:bg-surface-dark border-t border-black/5 dark:border-white/10">
+    <footer className="border-t border-border-primary bg-bg-surface">
       <div className="max-w-7xl mx-auto px-6 md:px-8 py-16">
         {/* Row 1: Interactive Theme Switcher */}
         <motion.div
@@ -31,28 +31,33 @@ function Footer() {
           transition={{ duration: motionTokens.duration.slow / 1000 }}
         >
           <div className="text-center">
-            <h3 className="text-lg font-semibold text-text-light dark:text-text-dark mb-2">
+            <h3 className="text-lg font-semibold mb-2 text-text-primary">
               Interactive Theme Timeline
             </h3>
-            <p className="text-sm text-muted-light dark:text-muted-dark max-w-md">
-              Drag the slider to change the time of day and see the theme transition between light and dark modes automatically.
+            <p className="text-sm max-w-md text-text-secondary">
+              Drag the slider to change the time of day and see the theme
+              transition between light and dark modes automatically.
             </p>
           </div>
-          
+
           <ThemeSlider />
-          
+
           {/* Manual theme toggle button */}
           <div className="flex items-center space-x-4">
             <button
               onClick={handleThemeToggle}
-              className="px-4 py-2 rounded-full bg-accent text-white hover:opacity-80 transition-opacity text-sm font-medium"
-              aria-label={`Switch to ${themeState.isDarkMode ? 'light' : 'dark'} mode`}
+              className="px-4 py-2 rounded-full bg-accent-primary text-white hover:opacity-80 transition-opacity text-sm font-medium"
+              aria-label={`Switch to ${
+                themeState.isDarkMode ? "light" : "dark"
+              } mode`}
             >
-              {themeState.isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
+              {themeState.isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
             </button>
-            
-            <div className="text-xs text-muted-light dark:text-muted-dark">
-              {themeState.isAutoMode ? 'Auto mode active' : 'Manual mode active'}
+
+            <div className="text-xs text-text-muted">
+              {themeState.isAutoMode
+                ? "Auto mode active"
+                : "Manual mode active"}
             </div>
           </div>
         </motion.div>
