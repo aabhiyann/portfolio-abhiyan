@@ -154,6 +154,47 @@ body,
   color: var(--color-dark-text);
 }
 
+/* Theme-aware utility classes for Tailwind dark mode */
+.bg-light-bg {
+  background-color: var(--color-light-background);
+}
+
+.dark .bg-light-bg {
+  background-color: var(--color-dark-background);
+}
+
+.bg-light-surface {
+  background-color: var(--color-light-surface);
+}
+
+.dark .bg-light-surface {
+  background-color: var(--color-dark-surface);
+}
+
+.text-light-text {
+  color: var(--color-light-text);
+}
+
+.dark .text-light-text {
+  color: var(--color-dark-text);
+}
+
+.text-light-muted {
+  color: var(--color-light-textMuted);
+}
+
+.dark .text-light-muted {
+  color: var(--color-dark-textMuted);
+}
+
+.border-light-border {
+  border-color: var(--color-light-border);
+}
+
+.dark .border-light-border {
+  border-color: var(--color-dark-border);
+}
+
 /* Theme-specific classes */
 .theme-kathmandu {
   --color-background: var(--color-kathmandu-light-background);
