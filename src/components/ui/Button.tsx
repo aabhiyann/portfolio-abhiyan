@@ -1,12 +1,19 @@
 /**
- * Reusable Button Component
+ * Standardized Button Component
  * 
- * A centralized button component that uses the design system colors.
+ * A centralized button component that follows the design system standards.
  * All buttons in the application should use this component for consistency.
+ * 
+ * Features:
+ * - Theme-aware styling
+ * - Consistent prop interface
+ * - Design system integration
+ * - Accessibility support
  */
 
 import React from 'react';
-import { colors, colorUtils } from '../../design/colors';
+import { colorUtils } from '../../design/colors';
+import { designSystem } from '../../design/system';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
@@ -14,6 +21,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   isDark?: boolean;
   currentTheme?: string;
   children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -26,67 +35,80 @@ export const Button: React.FC<ButtonProps> = ({
   style = {},
   ...props
 }) => {
-  const getVariantStyles = () => {
+  const getVariantStyles = (): React.CSSProperties => {
     switch (variant) {
       case 'primary':
         return {
           backgroundColor: colorUtils.getAccentColor('primary', isDark, currentTheme),
           color: 'white',
           border: 'none',
-          '&:hover': {
-            filter: 'brightness(0.9)',
-          },
+          boxShadow: designSystem.shadows.sm,
         };
       case 'secondary':
         return {
           backgroundColor: colorUtils.getAccentColor('secondary', isDark, currentTheme),
           color: 'white',
           border: 'none',
-          '&:hover': {
-            filter: 'brightness(0.9)',
-          },
+          boxShadow: designSystem.shadows.sm,
         };
       case 'ghost':
         return {
           backgroundColor: 'transparent',
           color: colorUtils.getThemeColor('text', isDark, currentTheme),
           border: `1px solid ${colorUtils.getThemeColor('border', isDark, currentTheme)}`,
-          '&:hover': {
-            backgroundColor: colorUtils.getAccentColor('secondary', isDark, currentTheme),
-            color: 'white',
-          },
         };
       case 'outline':
         return {
           backgroundColor: 'transparent',
           color: colorUtils.getAccentColor('primary', isDark, currentTheme),
           border: `1px solid ${colorUtils.getAccentColor('primary', isDark, currentTheme)}`,
-          '&:hover': {
-            backgroundColor: colorUtils.getAccentColor('primary', isDark, currentTheme),
-            color: 'white',
-          },
         };
       default:
         return {};
     }
   };
 
-  const getSizeStyles = () => {
+  const getSizeStyles = (): React.CSSProperties => {
     switch (size) {
       case 'sm':
         return {
-          padding: '0.5rem 1rem',
-          fontSize: '0.875rem',
+          padding: `${designSystem.spacing.sm} ${designSystem.spacing.md}`,
+          fontSize: designSystem.typography.fontSize.sm,
+          minHeight: '2rem',
         };
       case 'md':
         return {
-          padding: '0.75rem 1.25rem',
-          fontSize: '1rem',
+          padding: `${designSystem.spacing.md} ${designSystem.spacing.lg}`,
+          fontSize: designSystem.typography.fontSize.base,
+          minHeight: '2.5rem',
         };
       case 'lg':
         return {
-          padding: '1rem 1.5rem',
-          fontSize: '1.125rem',
+          padding: `${designSystem.spacing.lg} ${designSystem.spacing.xl}`,
+          fontSize: designSystem.typography.fontSize.lg,
+          minHeight: '3rem',
+        };
+      default:
+        return {};
+    }
+  };
+
+  const getHoverStyles = (): React.CSSProperties => {
+    switch (variant) {
+      case 'primary':
+      case 'secondary':
+        return {
+          filter: 'brightness(0.9)',
+          boxShadow: designSystem.shadows.md,
+        };
+      case 'ghost':
+        return {
+          backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
+        };
+      case 'outline':
+        return {
+          backgroundColor: colorUtils.getAccentColor('primary', isDark, currentTheme),
+          color: 'white',
         };
       default:
         return {};
@@ -97,21 +119,46 @@ export const Button: React.FC<ButtonProps> = ({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: '0.75rem',
-    fontWeight: '500',
-    transition: 'all 0.15s ease',
+    borderRadius: designSystem.borderRadius.lg,
+    fontWeight: designSystem.typography.fontWeight.medium,
+    fontFamily: designSystem.typography.fontFamily.body,
+    transition: `all ${designSystem.animation.duration.normal} ${designSystem.animation.easing.easeInOut}`,
     cursor: 'pointer',
     textDecoration: 'none',
-    border: 'none',
+    outline: 'none',
     ...getVariantStyles(),
     ...getSizeStyles(),
     ...style,
+  };
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const hoverStyles = getHoverStyles();
+    Object.assign(e.currentTarget.style, hoverStyles);
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const originalStyles = getVariantStyles();
+    Object.assign(e.currentTarget.style, originalStyles);
+  };
+
+  const handleFocus = (e: React.FocusEvent<HTMLButtonElement>) => {
+    e.currentTarget.style.outline = `2px solid ${colorUtils.getAccentColor('focus', isDark, currentTheme)}`;
+    e.currentTarget.style.outlineOffset = '2px';
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLButtonElement>) => {
+    e.currentTarget.style.outline = 'none';
+    e.currentTarget.style.outlineOffset = '0';
   };
 
   return (
     <button
       className={className}
       style={baseStyles}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
       {...props}
     >
       {children}
