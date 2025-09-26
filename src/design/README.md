@@ -4,6 +4,20 @@
 
 This design system provides a centralized, reusable approach to styling and components across the portfolio application. It ensures consistency, maintainability, and scalability.
 
+## 📚 Complete Documentation
+
+**For the complete, up-to-date design system documentation, see:**
+**[DESIGN_SYSTEM.md](../../DESIGN_SYSTEM.md)**
+
+This includes:
+- Complete color system with all themes
+- Typography system and usage
+- Component specifications and examples
+- Styling standards and guidelines
+- Migration patterns and best practices
+- Accessibility features
+- Development guidelines
+
 ## Architecture
 
 ```
@@ -11,13 +25,14 @@ src/design/
 ├── colors.ts          # Color palette and utilities
 ├── system.ts          # Design system configuration
 ├── index.ts           # Centralized exports
-└── README.md          # This documentation
+└── README.md          # This documentation (legacy)
 
 src/components/ui/
-├── Button.tsx         # Reusable button component
-├── Card.tsx           # Reusable card component
-├── Typography.tsx     # Reusable typography component
-└── buttons.css        # Legacy button styles (to be deprecated)
+├── Button.tsx         # Standardized button component
+├── Card.tsx           # Standardized card component
+├── Typography.tsx     # Standardized typography component
+├── Chip.tsx           # Standardized chip component
+└── index.ts           # Component exports
 ```
 
 ## Color System
