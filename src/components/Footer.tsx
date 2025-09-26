@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
 import ThemeSlider from "./ui/ThemeSlider";
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "../contexts/useTheme";
 import { Typography, Button, colorUtils, designSystem } from "./ui";
 
-interface FooterProps {}
+type FooterProps = Record<string, never>;
 
 const Footer: React.FC<FooterProps> = () => {
   const [footballBounce, setFootballBounce] = useState(false);
@@ -51,10 +51,7 @@ const Footer: React.FC<FooterProps> = () => {
     gap: designSystem.spacing.md,
   };
 
-  const statusStyles: React.CSSProperties = {
-    fontSize: designSystem.typography.fontSize.xs,
-    color: colorUtils.getThemeColor('textMuted', themeState.isDarkMode, themeState.currentTheme),
-  };
+  
 
   return (
     <footer style={footerStyles}>
