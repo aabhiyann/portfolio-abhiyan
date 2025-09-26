@@ -1,12 +1,19 @@
 /**
- * Reusable Typography Component
+ * Standardized Typography Component
  *
- * A centralized typography component that uses the design system.
+ * A centralized typography component that follows the design system standards.
  * All text in the application should use this component for consistency.
+ * 
+ * Features:
+ * - Theme-aware styling
+ * - Consistent prop interface
+ * - Design system integration
+ * - Semantic HTML elements
  */
 
 import React from "react";
-import { colors, colorUtils } from "../../design/colors";
+import { colorUtils } from "../../design/colors";
+import { designSystem } from "../../design/system";
 
 export interface TypographyProps {
   children: React.ReactNode;
@@ -36,77 +43,77 @@ export const Typography: React.FC<TypographyProps> = ({
   className = "",
   style = {},
 }) => {
-  const getVariantStyles = () => {
+  const getVariantStyles = (): React.CSSProperties => {
     switch (variant) {
       case "h1":
         return {
-          fontSize: "3.75rem",
-          fontWeight: "700",
-          lineHeight: "1.1",
-          fontFamily: "var(--font-family-heading)",
+          fontSize: designSystem.typography.fontSize["6xl"],
+          fontWeight: designSystem.typography.fontWeight.bold,
+          lineHeight: designSystem.typography.lineHeight.tight,
+          fontFamily: designSystem.typography.fontFamily.heading,
         };
       case "h2":
         return {
-          fontSize: "3rem",
-          fontWeight: "700",
-          lineHeight: "1.2",
-          fontFamily: "var(--font-family-heading)",
+          fontSize: designSystem.typography.fontSize["5xl"],
+          fontWeight: designSystem.typography.fontWeight.bold,
+          lineHeight: designSystem.typography.lineHeight.snug,
+          fontFamily: designSystem.typography.fontFamily.heading,
         };
       case "h3":
         return {
-          fontSize: "1.875rem",
-          fontWeight: "600",
-          lineHeight: "1.3",
-          fontFamily: "var(--font-family-heading)",
+          fontSize: designSystem.typography.fontSize["3xl"],
+          fontWeight: designSystem.typography.fontWeight.semibold,
+          lineHeight: designSystem.typography.lineHeight.snug,
+          fontFamily: designSystem.typography.fontFamily.heading,
         };
       case "h4":
         return {
-          fontSize: "1.5rem",
-          fontWeight: "600",
-          lineHeight: "1.4",
-          fontFamily: "var(--font-family-heading)",
+          fontSize: designSystem.typography.fontSize["2xl"],
+          fontWeight: designSystem.typography.fontWeight.semibold,
+          lineHeight: designSystem.typography.lineHeight.snug,
+          fontFamily: designSystem.typography.fontFamily.heading,
         };
       case "h5":
         return {
-          fontSize: "1.25rem",
-          fontWeight: "600",
-          lineHeight: "1.5",
-          fontFamily: "var(--font-family-heading)",
+          fontSize: designSystem.typography.fontSize.xl,
+          fontWeight: designSystem.typography.fontWeight.semibold,
+          lineHeight: designSystem.typography.lineHeight.normal,
+          fontFamily: designSystem.typography.fontFamily.heading,
         };
       case "h6":
         return {
-          fontSize: "1.125rem",
-          fontWeight: "600",
-          lineHeight: "1.5",
-          fontFamily: "var(--font-family-heading)",
+          fontSize: designSystem.typography.fontSize.lg,
+          fontWeight: designSystem.typography.fontWeight.semibold,
+          lineHeight: designSystem.typography.lineHeight.normal,
+          fontFamily: designSystem.typography.fontFamily.heading,
         };
       case "body":
         return {
-          fontSize: "1rem",
-          fontWeight: "400",
-          lineHeight: "1.6",
-          fontFamily: "var(--font-family-body)",
+          fontSize: designSystem.typography.fontSize.base,
+          fontWeight: designSystem.typography.fontWeight.normal,
+          lineHeight: designSystem.typography.lineHeight.relaxed,
+          fontFamily: designSystem.typography.fontFamily.body,
         };
       case "caption":
         return {
-          fontSize: "0.875rem",
-          fontWeight: "400",
-          lineHeight: "1.5",
-          fontFamily: "var(--font-family-body)",
+          fontSize: designSystem.typography.fontSize.sm,
+          fontWeight: designSystem.typography.fontWeight.normal,
+          lineHeight: designSystem.typography.lineHeight.normal,
+          fontFamily: designSystem.typography.fontFamily.body,
         };
       case "small":
         return {
-          fontSize: "0.75rem",
-          fontWeight: "400",
-          lineHeight: "1.4",
-          fontFamily: "var(--font-family-body)",
+          fontSize: designSystem.typography.fontSize.xs,
+          fontWeight: designSystem.typography.fontWeight.normal,
+          lineHeight: designSystem.typography.lineHeight.tight,
+          fontFamily: designSystem.typography.fontFamily.body,
         };
       default:
         return {};
     }
   };
 
-  const getColorStyles = () => {
+  const getColorStyles = (): React.CSSProperties => {
     switch (color) {
       case "primary":
         return {
@@ -114,15 +121,11 @@ export const Typography: React.FC<TypographyProps> = ({
         };
       case "secondary":
         return {
-          color: colorUtils.getThemeColor(
-            "textSecondary",
-            isDark,
-            currentTheme
-          ),
+          color: colorUtils.getThemeColor("textSecondary", isDark, currentTheme),
         };
       case "muted":
         return {
-          color: colorUtils.getThemeColor("textMuted", isDark),
+          color: colorUtils.getThemeColor("textMuted", isDark, currentTheme),
         };
       case "accent":
         return {
@@ -140,7 +143,7 @@ export const Typography: React.FC<TypographyProps> = ({
     ...style,
   };
 
-  const getTag = () => {
+  const getTag = (): keyof React.JSX.IntrinsicElements => {
     switch (variant) {
       case "h1":
         return "h1";
@@ -165,7 +168,7 @@ export const Typography: React.FC<TypographyProps> = ({
     }
   };
 
-  const Tag = getTag() as keyof JSX.IntrinsicElements;
+  const Tag = getTag() as React.ElementType;
 
   return (
     <Tag className={className} style={baseStyles}>
