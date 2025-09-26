@@ -1,9 +1,9 @@
-import { useState, Suspense } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // eslint-disable-line no-unused-vars
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion"; 
 import { photographyImages } from "../data/images";
-import LazyImage from "./LazyImage";
 
-function PhotographyGallery() {
+
+function PhotographyGallery({ limit }: { limit?: number }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -33,10 +33,10 @@ function PhotographyGallery() {
     <>
       {/* Gallery Grid */}
       <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">
-        {photographyImages.map((image, index) => (
+        {photographyImages.slice(0, limit).map((image, index) => (
           <motion.figure
             key={index}
-            className="mb-4 break-inside-avoid rounded-2xl overflow-hidden group cursor-pointer"
+            className="relative mb-4 break-inside-avoid rounded-2xl overflow-hidden group cursor-pointer"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

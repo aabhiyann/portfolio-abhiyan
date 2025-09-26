@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
+import { motion } from "framer-motion"; 
 import { motionTokens } from "../utils/motion";
+import Page from "../components/Page";
 
 function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <Page>
       <div className="max-w-2xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -129,7 +130,7 @@ function NotFound() {
           </motion.div>
         </motion.div>
       </div>
-    </div>
+    </Page>
   );
 }
 

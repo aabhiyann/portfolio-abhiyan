@@ -1,6 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
-import { useTheme } from "../contexts/ThemeContext";
+import { motion } from "framer-motion"; 
+import { useTheme } from "../contexts/useTheme";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SkipLink from "./SkipLink";

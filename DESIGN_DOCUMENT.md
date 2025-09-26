@@ -1,7 +1,26 @@
 # Design Document: The Abhiyan Sainju Portfolio
 
 **Version:** 1.0  
-**Date:** September 24, 2025
+**Last Updated**: September 25, 2025
+
+## Table of Contents
+
+- [1. Core Design Philosophy: "Minimalist Canvas, Personal Story"](#1-core-design-philosophy-minimalist-canvas-personal-story)
+- [2. Brand Identity](#2-brand-identity)
+- [3. Layout & Spacing](#3-layout--spacing)
+- [4. Component Design System](#4-component-design-system)
+- [5. Interaction & Animation Philosophy](#5-interaction--animation-philosophy)
+- [6. Content, Voice & Imagery](#6-content-voice--imagery)
+- [7. Dark Mode Strategy](#7-dark-mode-strategy)
+- [8. Accessibility Checklist](#8-accessibility-checklist)
+- [9. SEO & Social](#9-seo--social)
+- [10. Performance & Assets](#10-performance--assets)
+- [11. Data-Viz Style (Deep Dives)](#11-data-viz-style-deep-dives)
+- [12. Micro-Patterns & Easter Eggs](#12-micro-patterns--easter-eggs)
+- [13. Code & File Conventions](#13-code--file-conventions)
+- [14. Page Layouts (Blueprints)](#14-page-layouts-blueprints)
+- [15. Future Extensibility](#15-future-extensibility)
+- [16. QA Checklist (per release)](#16-qa-checklist-per-release)
 
 ## 1. Core Design Philosophy: "Minimalist Canvas, Personal Story"
 

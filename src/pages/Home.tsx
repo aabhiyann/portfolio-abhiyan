@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
+import { motion } from "framer-motion"; 
 import { motionTokens } from "../utils/motion";
+import PhotographyGallery from "../components/PhotographyGallery";
+import { projects } from "../data/projects";
+import Page from "../components/Page";
 
 function Home() {
   return (
-    <>
+    <Page>
       {/* Hero Section */}
       <section
         id="hero"
@@ -14,7 +17,7 @@ function Home() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-bg-primary/80 via-bg-primary/50 to-bg-primary/20"></div>
           {/* Placeholder for hero image - replace with actual photo */}
-          <div className="w-full h-full bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20"></div>
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center" alt="Landscape by Abhiyan" className="w-full h-full object-cover" />
         </div>
 
         {/* Hero Content */}
@@ -88,68 +91,27 @@ function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Project Card 1 */}
-            <motion.div
-              className="bg-bg-card border border-border-primary rounded-xl p-6 hover:shadow-lg transition-shadow"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: motionTokens.duration.slow / 1000, delay: 0.1 }}
-            >
-              <h3 className="text-xl font-semibold mb-3 text-text-primary">Project Alpha</h3>
-              <p className="text-text-secondary mb-4">
-                A full-stack web application built with React and Node.js,
-                featuring real-time collaboration and modern UI design.
-              </p>
-              <Link
-                to="/projects"
-                className="text-accent-primary hover:text-accent-hover transition-colors"
+            {projects.slice(0, 3).map((project, index) => (
+              <motion.div
+                key={project.id}
+                className="bg-bg-card border border-border-primary rounded-xl p-6 hover:shadow-lg transition-shadow"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: motionTokens.duration.slow / 1000, delay: 0.1 + index * 0.1 }}
               >
-                View Project →
-              </Link>
-            </motion.div>
-
-            {/* Project Card 2 */}
-            <motion.div
-              className="bg-bg-card border border-border-primary rounded-xl p-6 hover:shadow-lg transition-shadow"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: motionTokens.duration.slow / 1000, delay: 0.2 }}
-            >
-              <h3 className="text-xl font-semibold mb-3 text-text-primary">Mobile App Beta</h3>
-              <p className="text-text-secondary mb-4">
-                A cross-platform mobile application developed with React Native,
-                focusing on user experience and performance optimization.
-              </p>
-              <Link
-                to="/projects"
-                className="text-accent-primary hover:text-accent-hover transition-colors"
-              >
-                View Project →
-              </Link>
-            </motion.div>
-
-            {/* Project Card 3 */}
-            <motion.div
-              className="bg-bg-card border border-border-primary rounded-xl p-6 hover:shadow-lg transition-shadow"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: motionTokens.duration.slow / 1000, delay: 0.3 }}
-            >
-              <h3 className="text-xl font-semibold mb-3 text-text-primary">Creative Coding</h3>
-              <p className="text-text-secondary mb-4">
-                Interactive art pieces and generative design projects created
-                with p5.js and creative coding techniques.
-              </p>
-              <Link
-                to="/projects"
-                className="text-accent-primary hover:text-accent-hover transition-colors"
-              >
-                View Project →
-              </Link>
-            </motion.div>
+                <h3 className="text-xl font-semibold mb-3 text-text-primary">{project.title}</h3>
+                <p className="text-text-secondary mb-4">
+                  {project.description}
+                </p>
+                <Link
+                  to={`/projects`}
+                  className="text-accent-primary hover:text-accent-hover transition-colors"
+                >
+                  View Project →
+                </Link>
+              </motion.div>
+            ))}
           </div>
 
           <motion.div
@@ -188,8 +150,10 @@ function Home() {
             </p>
           </motion.div>
 
+          <PhotographyGallery limit={6} />
+
           <motion.div
-            className="text-center"
+            className="text-center mt-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -232,7 +196,7 @@ function Home() {
           </motion.div>
         </div>
       </section>
-    </>
+    </Page>
   );
 }
 

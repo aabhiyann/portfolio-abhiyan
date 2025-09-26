@@ -4,6 +4,21 @@
 **Date:** September 24, 2025  
 **Owner:** Abhiyan Sainju
 
+## Table of Contents
+
+- [1. Purpose](#1-purpose)
+- [2. Inspirations & References](#2-inspirations--references)
+- [3. Site Structure (Pages & Routes)](#3-site-structure-pages--routes)
+- [4. Global Design System](#4-global-design-system)
+- [5. Components & Sections](#5-components--sections)
+- [6. Animations & Interactions](#6-animations--interactions)
+- [7. Dark/Light Mode](#7-darklight-mode)
+- [8. Content & Voice Guidelines](#8-content--voice-guidelines)
+- [9. Performance Requirements](#9-performance-requirements)
+- [10. Accessibility](#10-accessibility)
+- [11. Future Extensibility](#11-future-extensibility)
+- [12. QA Checklist](#12-qa-checklist)
+
 ## 1. Purpose
 
 This document provides a comprehensive specification for the design, structure, components, and interactions of the Abhiyan Sainju portfolio website. It merges all prior plans, inspirations, and technical details into one definitive reference for both designers and developers.
@@ -220,5 +235,5 @@ The end result should feel modern, approachable, and distinctly personal.
 ---
 
 **Document Status**: ✅ Complete  
-**Last Updated**: September 24, 2025  
+**Last Updated**: September 25, 2025  
 **Next Review**: As needed for new features

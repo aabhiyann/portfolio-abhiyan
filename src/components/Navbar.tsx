@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Typography, Button, colorUtils, designSystem } from "./ui";
+import { Typography, colorUtils, designSystem } from "./ui";
 
 interface NavbarProps {
   isDark: boolean;
   toggleTheme: () => void;
   currentTheme: string;
-  switchColorTheme: (theme: string) => void;
+  switchColorTheme: (theme: string) => void; // eslint-disable-line no-unused-vars
 }
 
 interface ThemeOption {
@@ -15,11 +15,11 @@ interface ThemeOption {
   color: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ 
-  isDark, 
-  toggleTheme, 
-  currentTheme, 
-  switchColorTheme 
+const Navbar: React.FC<NavbarProps> = ({
+  isDark,
+  toggleTheme,
+  currentTheme,
+  switchColorTheme: switchTheme,
 }) => {
   const [showThemeMenu, setShowThemeMenu] = useState(false);
 
@@ -30,131 +30,176 @@ const Navbar: React.FC<NavbarProps> = ({
   ];
 
   const headerStyles: React.CSSProperties = {
-    position: 'sticky',
+    position: "sticky",
     top: 0,
     zIndex: designSystem.zIndex.sticky,
-    backdropFilter: 'blur(12px)',
-    borderBottom: `1px solid ${colorUtils.getThemeColor('border', isDark, currentTheme)}`,
-    backgroundColor: `${colorUtils.getThemeColor('surface', isDark, currentTheme)}CC`,
+    backdropFilter: "blur(12px)",
+    borderBottom: `1px solid ${colorUtils.getThemeColor(
+      "border",
+      isDark,
+      currentTheme
+    )}`,
+    backgroundColor: `${colorUtils.getThemeColor(
+      "surface",
+      isDark,
+      currentTheme
+    )}CC`,
   };
 
   const containerStyles: React.CSSProperties = {
-    maxWidth: '80rem',
-    margin: '0 auto',
+    maxWidth: "80rem",
+    margin: "0 auto",
     padding: `0 ${designSystem.spacing.lg}`,
-    height: '4rem',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    height: "4rem",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
   };
 
   const logoStyles: React.CSSProperties = {
     fontWeight: designSystem.typography.fontWeight.semibold,
     fontFamily: designSystem.typography.fontFamily.heading,
-    color: colorUtils.getThemeColor('text', isDark, currentTheme),
-    textDecoration: 'none',
+    color: colorUtils.getThemeColor("text", isDark, currentTheme),
+    textDecoration: "none",
     transition: `all ${designSystem.animation.duration.normal} ${designSystem.animation.easing.easeInOut}`,
   };
 
   const navStyles: React.CSSProperties = {
-    display: 'none',
+    display: "none",
     gap: designSystem.spacing.lg,
-    alignItems: 'center',
+    alignItems: "center",
   };
 
   const linkStyles: React.CSSProperties = {
     fontSize: designSystem.typography.fontSize.sm,
     fontWeight: designSystem.typography.fontWeight.medium,
-    color: colorUtils.getThemeColor('textSecondary', isDark, currentTheme),
-    textDecoration: 'none',
+    color: colorUtils.getThemeColor("textSecondary", isDark, currentTheme),
+    textDecoration: "none",
     transition: `all ${designSystem.animation.duration.normal} ${designSystem.animation.easing.easeInOut}`,
   };
 
   const controlsStyles: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     gap: designSystem.spacing.sm,
   };
 
   const buttonStyles: React.CSSProperties = {
     padding: designSystem.spacing.sm,
     borderRadius: designSystem.borderRadius.lg,
-    backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
-    color: colorUtils.getThemeColor('text', isDark, currentTheme),
-    border: `1px solid ${colorUtils.getThemeColor('border', isDark, currentTheme)}`,
-    cursor: 'pointer',
+    backgroundColor: colorUtils.getThemeColor("surface", isDark, currentTheme),
+    color: colorUtils.getThemeColor("text", isDark, currentTheme),
+    border: `1px solid ${colorUtils.getThemeColor(
+      "border",
+      isDark,
+      currentTheme
+    )}`,
+    cursor: "pointer",
     transition: `all ${designSystem.animation.duration.normal} ${designSystem.animation.easing.easeInOut}`,
   };
 
   const themeMenuStyles: React.CSSProperties = {
-    position: 'absolute',
+    position: "absolute",
     right: 0,
-    top: '100%',
+    top: "100%",
     marginTop: designSystem.spacing.sm,
-    width: '12rem',
+    width: "12rem",
     borderRadius: designSystem.borderRadius.lg,
     boxShadow: designSystem.shadows.lg,
-    border: `1px solid ${colorUtils.getThemeColor('border', isDark, currentTheme)}`,
-    backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
+    border: `1px solid ${colorUtils.getThemeColor(
+      "border",
+      isDark,
+      currentTheme
+    )}`,
+    backgroundColor: colorUtils.getThemeColor("surface", isDark, currentTheme),
     padding: designSystem.spacing.sm,
   };
 
   const themeOptionStyles: React.CSSProperties = {
-    width: '100%',
-    textAlign: 'left',
+    width: "100%",
+    textAlign: "left",
     padding: `${designSystem.spacing.sm} ${designSystem.spacing.md}`,
     fontSize: designSystem.typography.fontSize.sm,
-    color: colorUtils.getThemeColor('text', isDark, currentTheme),
-    backgroundColor: 'transparent',
-    border: 'none',
+    color: colorUtils.getThemeColor("text", isDark, currentTheme),
+    backgroundColor: "transparent",
+    border: "none",
     borderRadius: designSystem.borderRadius.md,
-    cursor: 'pointer',
+    cursor: "pointer",
     transition: `all ${designSystem.animation.duration.normal} ${designSystem.animation.easing.easeInOut}`,
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     gap: designSystem.spacing.md,
   };
 
   const handleThemeSelect = (themeId: string) => {
-    switchColorTheme(themeId);
+    switchTheme(themeId);
     setShowThemeMenu(false);
   };
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.style.backgroundColor = colorUtils.getThemeColor('surface', isDark, currentTheme);
+    e.currentTarget.style.backgroundColor = colorUtils.getThemeColor(
+      "surface",
+      isDark,
+      currentTheme
+    );
   };
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.currentTarget.style.backgroundColor = 'transparent';
+    e.currentTarget.style.backgroundColor = "transparent";
   };
 
   return (
     <header style={headerStyles}>
       <div style={containerStyles}>
         <Link to="/" style={logoStyles}>
-          <Typography variant="h6" color="primary" isDark={isDark} currentTheme={currentTheme}>
+          <Typography
+            variant="h6"
+            color="primary"
+            isDark={isDark}
+            currentTheme={currentTheme}
+          >
             AS
           </Typography>
         </Link>
 
         <nav style={navStyles} aria-label="Main navigation">
           <Link to="/projects" style={linkStyles}>
-            <Typography variant="caption" color="secondary" isDark={isDark} currentTheme={currentTheme}>
+            <Typography
+              variant="caption"
+              color="secondary"
+              isDark={isDark}
+              currentTheme={currentTheme}
+            >
               Projects
             </Typography>
           </Link>
           <Link to="/photography" style={linkStyles}>
-            <Typography variant="caption" color="secondary" isDark={isDark} currentTheme={currentTheme}>
+            <Typography
+              variant="caption"
+              color="secondary"
+              isDark={isDark}
+              currentTheme={currentTheme}
+            >
               Photography
             </Typography>
           </Link>
           <Link to="/deep-dives" style={linkStyles}>
-            <Typography variant="caption" color="secondary" isDark={isDark} currentTheme={currentTheme}>
+            <Typography
+              variant="caption"
+              color="secondary"
+              isDark={isDark}
+              currentTheme={currentTheme}
+            >
               Deep Dives
             </Typography>
           </Link>
           <Link to="/about" style={linkStyles}>
-            <Typography variant="caption" color="secondary" isDark={isDark} currentTheme={currentTheme}>
+            <Typography
+              variant="caption"
+              color="secondary"
+              isDark={isDark}
+              currentTheme={currentTheme}
+            >
               About
             </Typography>
           </Link>
@@ -162,7 +207,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
         <div style={controlsStyles}>
           {/* Color Theme Selector */}
-          <div style={{ position: 'relative' }}>
+          <div style={{ position: "relative" }}>
             <button
               onClick={() => setShowThemeMenu(!showThemeMenu)}
               style={buttonStyles}
@@ -186,30 +231,44 @@ const Navbar: React.FC<NavbarProps> = ({
 
             {showThemeMenu && (
               <div style={themeMenuStyles}>
-                {availableThemes.map((theme) => (
+                {availableThemes.map((themeOption) => (
                   <button
-                    key={theme.id}
-                    onClick={() => handleThemeSelect(theme.id)}
+                    key={themeOption.id}
+                    onClick={() => handleThemeSelect(themeOption.id)}
                     style={{
                       ...themeOptionStyles,
-                      backgroundColor: currentTheme === theme.id 
-                        ? `${colorUtils.getAccentColor('primary', isDark, currentTheme)}20`
-                        : 'transparent',
+                      backgroundColor:
+                        currentTheme === themeOption.id
+                          ? `${colorUtils.getAccentColor(
+                              "primary",
+                              isDark,
+                              currentTheme
+                            )}20`
+                          : "transparent",
                     }}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
                     <div
                       style={{
-                        width: '1rem',
-                        height: '1rem',
-                        borderRadius: '50%',
-                        border: `1px solid ${colorUtils.getThemeColor('border', isDark, currentTheme)}`,
-                        backgroundColor: theme.color,
+                        width: "1rem",
+                        height: "1rem",
+                        borderRadius: "50%",
+                        border: `1px solid ${colorUtils.getThemeColor(
+                          "border",
+                          isDark,
+                          currentTheme
+                        )}`,
+                        backgroundColor: themeOption.color,
                       }}
                     />
-                    <Typography variant="small" color="primary" isDark={isDark} currentTheme={currentTheme}>
-                      {theme.name}
+                    <Typography
+                      variant="small"
+                      color="primary"
+                      isDark={isDark}
+                      currentTheme={currentTheme}
+                    >
+                      {themeOption.name}
                     </Typography>
                   </button>
                 ))}
