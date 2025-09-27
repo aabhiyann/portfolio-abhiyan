@@ -323,6 +323,20 @@ A single source of truth for visual/interaction design. This doc defines pages, 
 - Search across site  
 - Live Spotify API (placeholder text v1)
 
+🔹 4) Live Spotify API (placeholder text v1)
+
+Why not v1?
+Pulling “Currently Listening” directly from Spotify requires:
+
+OAuth integration with your account,
+
+Token refresh logic,
+
+And caching responses.
+This is more backend-heavy. For now, it’s faster to display a hardcoded or manually updated text (e.g., “Currently Listening: IVE – Either Way”). That still gives personality without the engineering lift.
+
+Planned: Add the Spotify API integration in v2 once the core site is stable.
+
 ---
 
 ## 14) Open Questions
