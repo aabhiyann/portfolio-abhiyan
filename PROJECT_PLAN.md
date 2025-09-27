@@ -71,5 +71,5 @@ This roadmap is based on the signature interactions defined in the designer hand
 
 ### 3. Out of Scope (for v1)
 
-*   **AI Concierge:** The UI is built but will be disabled to align with the handoff.
+*   **AI Concierge:** Enabled as a UI placeholder. The full API integration is deferred to v2.
 *   **Live Spotify API:** A placeholder will be used in the footer.
