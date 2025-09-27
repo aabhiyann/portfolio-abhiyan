@@ -11,7 +11,8 @@
  * - Multiple variants and sizes
  */
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import VanillaTilt from 'vanilla-tilt';
 import { colorUtils } from '../../design/colors';
 import { designSystem } from '../../design/system';
 
@@ -23,6 +24,7 @@ export interface CardProps {
   variant?: 'default' | 'elevated' | 'outlined';
   padding?: 'sm' | 'md' | 'lg';
   style?: React.CSSProperties;
+  interactive?: boolean;
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -33,7 +35,21 @@ export const Card: React.FC<CardProps> = ({
   variant = 'default',
   padding = 'md',
   style = {},
+  interactive = false,
 }) => {
+  const tiltRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (interactive && tiltRef.current) {
+      VanillaTilt.init(tiltRef.current, {
+        max: 10,
+        speed: 400,
+        glare: true,
+        'max-glare': 0.5,
+      });
+    }
+  }, [interactive]);
+
   const getVariantStyles = (): React.CSSProperties => {
     switch (variant) {
       case 'elevated':
@@ -80,6 +96,7 @@ export const Card: React.FC<CardProps> = ({
 
   return (
     <div
+      ref={tiltRef}
       className={className}
       style={baseStyles}
     >

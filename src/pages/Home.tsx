@@ -4,8 +4,14 @@ import { motionTokens } from "../utils/motion";
 import PhotographyGallery from "../components/PhotographyGallery";
 import { projects } from "../data/projects";
 import Page from "../components/Page";
+import LivingBackground from "../components/LivingBackground";
+import SectionTitle from "../components/SectionTitle";
+import { useTheme } from "../contexts/useTheme";
 
 function Home() {
+  const { themeState } = useTheme();
+  const { isDarkMode, currentTheme } = themeState;
+
   return (
     <Page>
       {/* Hero Section */}
@@ -13,12 +19,8 @@ function Home() {
         id="hero"
         className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-primary"
       >
-        {/* Background Image with Gradient Overlay */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 z-10 bg-gradient-to-t from-bg-primary/80 via-bg-primary/50 to-bg-primary/20"></div>
-          {/* Placeholder for hero image - replace with actual photo */}
-          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center" alt="Landscape by Abhiyan" className="w-full h-full object-cover" />
-        </div>
+        {/* Living Background */}
+        <LivingBackground />
 
         {/* Hero Content */}
         <div className="relative z-20 text-center max-w-4xl mx-auto px-6">
@@ -74,21 +76,12 @@ function Home() {
       {/* Projects Teaser */}
       <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: motionTokens.duration.slow / 1000 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 font-heading text-text-primary">
-              Featured Projects
-            </h2>
-            <p className="text-xl text-text-secondary mb-8 max-w-3xl mx-auto">
-              A showcase of my recent work spanning web development, mobile
-              applications, and creative coding projects.
-            </p>
-          </motion.div>
+          <SectionTitle 
+            title="Featured Projects" 
+            subtitle="A showcase of my recent work spanning web development, mobile applications, and creative coding projects." 
+            isDark={isDarkMode} 
+            currentTheme={currentTheme} 
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.slice(0, 3).map((project, index) => (
@@ -134,21 +127,12 @@ function Home() {
       {/* Photography Teaser */}
       <section className="py-24 bg-bg-surface">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: motionTokens.duration.slow / 1000 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 font-heading text-primary">
-              Photography
-            </h2>
-            <p className="text-xl text-secondary mb-8 max-w-3xl mx-auto">
-              Capturing moments and stories through the lens. From street
-              photography to landscape shots, each image tells a unique story.
-            </p>
-          </motion.div>
+          <SectionTitle 
+            title="Photography" 
+            subtitle="Capturing moments and stories through the lens. From street photography to landscape shots, each image tells a unique story." 
+            isDark={isDarkMode} 
+            currentTheme={currentTheme} 
+          />
 
           <PhotographyGallery limit={6} />
 
@@ -172,28 +156,18 @@ function Home() {
       {/* About Teaser */}
       <section className="py-24 bg-primary">
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: motionTokens.duration.slow / 1000 }}
+          <SectionTitle 
+            title="About Me" 
+            subtitle="I'm a passionate developer with a love for creating digital experiences that matter. When I'm not coding, you'll find me exploring new places with my camera or diving deep into the latest technology trends." 
+            isDark={isDarkMode} 
+            currentTheme={currentTheme} 
+          />
+          <Link
+            to="/about"
+            className="btn-primary"
           >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 font-heading text-text-primary">
-              About Me
-            </h2>
-            <p className="text-xl text-text-secondary mb-8 leading-relaxed">
-              I'm a passionate developer with a love for creating digital
-              experiences that matter. When I'm not coding, you'll find me
-              exploring new places with my camera or diving deep into the latest
-              technology trends.
-            </p>
-            <Link
-              to="/about"
-              className="btn-primary"
-            >
-              Read My Story
-            </Link>
-          </motion.div>
+            Read My Story
+          </Link>
         </div>
       </section>
     </Page>
