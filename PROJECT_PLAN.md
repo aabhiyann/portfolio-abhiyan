@@ -14,14 +14,16 @@ This document provides a comprehensive overview and development plan for the int
 
 ## Part 2: Brand & System Tokens
 
-*   **Color Tokens (Light Mode):**
-    *   `--bg`: `#F8FAFC`
-    *   `--surface`: `#FFFFFF`
-    *   `--accent-1` (primary): **Yellow** `#F9A825`
-*   **Color Tokens (Dark Mode):**
-    *   `--bg`: `#1A202C`
-    *   `--surface`: `#0F172A`
-    *   `--accent-1` (primary): **Purple** `#8B5CF6`
+*   **Official Color Palette:**
+    *   **Light Mode ("Kathmandu Fog"):**
+        *   Background: `#F8FAFC` (Soft Off-White)
+        *   Text: `#334155` (Charcoal)
+        *   Accent: `#F472B6` (Warm Pink)
+    *   **Dark Mode ("Kyoto Twilight"):**
+        *   Background: `#1A202C` (Deep Slate)
+        *   Text: `#F4F4F7` (Light Gray)
+        *   Primary Accent: `#8B5CF6` (Purple)
+        *   Secondary Accent: `#22C55E` (Emerald)
 *   **Typography:**
     *   Headings: `Space Grotesk`
     *   Body: `Inter`

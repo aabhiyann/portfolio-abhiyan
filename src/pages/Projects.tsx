@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion"; 
 import { motionTokens } from "../utils/motion";
-import { projects } from "../data/projects";
+import { projects as initialProjects } from "../data/projects";
 import Page from "../components/Page";
 import { useTheme } from "../contexts/useTheme";
 import { colorUtils } from "../design/colors";
@@ -13,6 +13,41 @@ function Projects() {
   const { themeState } = useTheme();
   const { isDarkMode, currentTheme } = themeState;
   const [selectedArch, setSelectedArch] = useState(null);
+  const [projects, setProjects] = useState(initialProjects.map(p => ({...p, elaboratedDescription: null, isLoading: false })));
+
+  const handleElaborate = async (projectId) => {
+    setProjects(projects.map(p => p.id === projectId ? { ...p, isLoading: true } : p));
+
+    const project = projects.find(p => p.id === projectId);
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
+    if (!apiKey) {
+      console.error("Gemini API key is missing.");
+      const errorMessage = "API Key is not configured. Please add VITE_GEMINI_API_KEY to your .env file.";
+      setProjects(projects.map(p => p.id === projectId ? { ...p, elaboratedDescription: errorMessage, isLoading: false } : p));
+      return;
+    }
+
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+    const prompt = `You are a professional tech writer. Given the project title '${project.title}', its technologies '${project.tech.join(', ')}', and its brief description '${project.description}', write a professional, engaging paragraph (3-4 sentences) that elaborates on what this project might entail, its potential impact, and the technical challenges involved.`;
+
+    const payload = { contents: [{ parts: [{ text: prompt }] }] };
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        if (!response.ok) throw new Error('API Error');
+        const result = await response.json();
+        const elaboratedText = result.candidates?.[0]?.content?.parts?.[0]?.text || "Could not generate elaboration.";
+        setProjects(projects.map(p => p.id === projectId ? { ...p, elaboratedDescription: elaboratedText, isLoading: false } : p));
+    } catch (error) {
+        console.error("Elaboration failed:", error);
+        setProjects(projects.map(p => p.id === projectId ? { ...p, elaboratedDescription: "Error generating details. Please try again.", isLoading: false } : p));
+    }
+  };
 
   return (
     <Page>
@@ -47,10 +82,11 @@ function Projects() {
                   interactive
                   isDark={themeState.isDarkMode}
                   currentTheme={themeState.currentTheme}
-                  className="group bg-surface-light dark:bg-surface-dark rounded-2xl border border-black/5 dark:border-white/10 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+                  className="bg-surface-light dark:bg-surface-dark rounded-2xl border border-black/5 dark:border-white/10 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col"
                 >
                   {/* Project Image */}
-                  <div className="aspect-video bg-gradient-to-br from-accent/20 to-blue-500/20 relative overflow-hidden">
+                  <div className="aspect-video bg-gradient-to-br from-accent/20 to-blue-500/20 relative overflow-hidden group">
+                    <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out" />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
                     <div className="absolute bottom-4 left-4 right-4">
                       <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
@@ -59,7 +95,7 @@ function Projects() {
                     </div>
                   </div>
 
-                  <div className="p-8">
+                  <div className="p-8 flex flex-col flex-grow">
                     {/* Impact Statement */}
                     <div className="mb-4">
                       <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-accent/10 text-accent">
@@ -68,9 +104,13 @@ function Projects() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-muted-light dark:text-muted-dark mb-6 leading-relaxed">
+                    <p className="text-muted-light dark:text-muted-dark mb-6 leading-relaxed flex-grow">
                       {project.description}
                     </p>
+
+                    {project.elaboratedDescription && (
+                        <p className="mb-6 text-sm text-slate-500 dark:text-slate-300 bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg border border-purple-200 dark:border-purple-800">{project.elaboratedDescription}</p>
+                    )}
 
                     {/* Tech Stack */}
                     <div className="flex flex-wrap gap-2 mb-6">
@@ -82,20 +122,13 @@ function Projects() {
                     </div>
 
                     {/* Links */}
-                    <div className="flex gap-4 items-center">
+                    <div className="flex gap-4 items-center mt-auto pt-4 border-t border-black/5 dark:border-white/10">
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-accent hover:text-accent-ink transition-colors font-medium"
                       >
-                        <svg
-                          className="w-5 h-5"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                        </svg>
                         GitHub
                       </a>
                       <a
@@ -104,26 +137,16 @@ function Projects() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 text-accent hover:text-accent-ink transition-colors font-medium"
                       >
-                        <svg
-                          className="w-5 h-5"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                          />
-                        </svg>
                         Live Demo
                       </a>
                       {project.architecture && (
                         <button onClick={() => setSelectedArch(project.architecture)} className="btn-ghost">
-                          Explore Architecture
+                          Architecture
                         </button>
                       )}
+                      <button onClick={() => handleElaborate(project.id)} disabled={project.isLoading || project.elaboratedDescription} className="ml-auto btn-primary">
+                        {project.isLoading ? 'Generating...' : (project.elaboratedDescription ? 'Done' : 'Elaborate')}
+                      </button>
                     </div>
                   </div>
                 </Card>
