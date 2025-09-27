@@ -4,10 +4,10 @@ import { motionTokens } from "../utils/motion";
 import { projects as initialProjects } from "../data/projects";
 import Page from "../components/Page";
 import { useTheme } from "../contexts/useTheme";
-import { colorUtils } from "../design/colors";
 import { Card } from "../components/ui/Card";
 import SectionTitle from "../components/SectionTitle";
 import ProjectDeconstructor from "../components/ProjectDeconstructor";
+import { Button, Chip } from "../components/ui";
 
 function Projects() {
   const { themeState } = useTheme();
@@ -51,12 +51,7 @@ function Projects() {
 
   return (
     <Page>
-      <section 
-        className="py-24"
-        style={{
-          backgroundColor: colorUtils.getThemeColor('background', isDarkMode, currentTheme),
-        }}
-      >
+      <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle 
             title="Projects" 
@@ -82,9 +77,8 @@ function Projects() {
                   interactive
                   isDark={themeState.isDarkMode}
                   currentTheme={themeState.currentTheme}
-                  className="bg-surface-light dark:bg-surface-dark rounded-2xl border border-black/5 dark:border-white/10 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col"
+                  className="flex flex-col"
                 >
-                  {/* Project Image */}
                   <div className="aspect-video bg-gradient-to-br from-accent/20 to-blue-500/20 relative overflow-hidden group">
                     <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out" />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
@@ -96,15 +90,13 @@ function Projects() {
                   </div>
 
                   <div className="p-8 flex flex-col flex-grow">
-                    {/* Impact Statement */}
                     <div className="mb-4">
                       <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-accent/10 text-accent">
                         💡 {project.impact}
                       </span>
                     </div>
 
-                    {/* Description */}
-                    <p className="text-muted-light dark:text-muted-dark mb-6 leading-relaxed flex-grow">
+                    <p className="text-text-secondary mb-6 leading-relaxed flex-grow">
                       {project.description}
                     </p>
 
@@ -112,41 +104,21 @@ function Projects() {
                         <p className="mb-6 text-sm text-slate-500 dark:text-slate-300 bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg border border-purple-200 dark:border-purple-800">{project.elaboratedDescription}</p>
                     )}
 
-                    {/* Tech Stack */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.tech.map((tech) => (
-                        <span key={tech} className="chip">
-                          {tech}
-                        </span>
+                        <Chip key={tech} size="sm">{tech}</Chip>
                       ))}
                     </div>
 
-                    {/* Links */}
-                    <div className="flex gap-4 items-center mt-auto pt-4 border-t border-black/5 dark:border-white/10">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-accent hover:text-accent-ink transition-colors font-medium"
-                      >
-                        GitHub
-                      </a>
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-accent hover:text-accent-ink transition-colors font-medium"
-                      >
-                        Live Demo
-                      </a>
+                    <div className="flex gap-4 items-center mt-auto pt-4 border-t border-border-primary">
+                      <Button as="a" href={project.github} target="_blank" rel="noopener noreferrer" variant="ghost" size="sm">GitHub</Button>
+                      <Button as="a" href={project.live} target="_blank" rel="noopener noreferrer" variant="ghost" size="sm">Live Demo</Button>
                       {project.architecture && (
-                        <button onClick={() => setSelectedArch(project.architecture)} className="btn-ghost">
-                          Architecture
-                        </button>
+                        <Button onClick={() => setSelectedArch(project.architecture)} variant="ghost" size="sm">Architecture</Button>
                       )}
-                      <button onClick={() => handleElaborate(project.id)} disabled={project.isLoading || project.elaboratedDescription} className="ml-auto btn-primary">
+                      <Button onClick={() => handleElaborate(project.id)} disabled={project.isLoading || project.elaboratedDescription} variant="primary" size="sm" className="ml-auto">
                         {project.isLoading ? 'Generating...' : (project.elaboratedDescription ? 'Done' : 'Elaborate')}
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </Card>
