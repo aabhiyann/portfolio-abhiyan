@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 interface StructuredDataProps {
-  jsonLd: Record<string, any>;
+  jsonLd: Record<string, unknown>;
 }
 
 const useStructuredData = ({ jsonLd }: StructuredDataProps) => {

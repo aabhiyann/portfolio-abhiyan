@@ -9,36 +9,34 @@ function DeepDiveDetail() {
   const { slug } = useParams();
   const article = articles.find((article) => article.slug === slug);
 
-  if (article) {
-    useSeo({
-      title: `${article.title} – Deep Dive by Abhiyan Sainju`,
-      description: article.abstract,
-      keywords: `${article.category}, ${article.title}, Abhiyan Sainju, deep dive, technology, mathematics, creativity`,
-    });
+  useSeo({
+    title: article ? `${article.title} – Deep Dive by Abhiyan Sainju` : "Article Not Found – Deep Dive by Abhiyan Sainju",
+    description: article ? article.abstract : "The requested article could not be found.",
+    keywords: article ? `${article.category}, ${article.title}, Abhiyan Sainju, deep dive, technology, mathematics, creativity` : "article not found, deep dive, technology, mathematics, creativity",
+  });
 
-    useStructuredData({
-      jsonLd: {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": article.title,
-        "description": article.abstract,
-        "image": "/og-image.jpg", // Replace with actual article image if available
-        "datePublished": article.date, // Assuming article.date is in a valid format (e.g., YYYY-MM-DD)
-        "author": {
-          "@type": "Person",
-          "name": "Abhiyan Sainju"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Abhiyan Sainju Portfolio", // Replace with your portfolio name
-          "logo": {
-            "@type": "ImageObject",
-            "url": "/favicon.svg" // Replace with your logo URL
-          }
+  useStructuredData({
+    jsonLd: article ? {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": article.title,
+      "description": article.abstract,
+      "image": "/og-image.jpg", // Replace with actual article image if available
+      "datePublished": article.date, // Assuming article.date is in a valid format (e.g., YYYY-MM-DD)
+      "author": {
+        "@type": "Person",
+        "name": "Abhiyan Sainju"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Abhiyan Sainju Portfolio", // Replace with your portfolio name
+        "logo": {
+          "@type": "ImageObject",
+          "url": "/favicon.svg" // Replace with your logo URL
         }
       }
-    });
-  }
+    } : null,
+  });
 
   if (!article) {
     return (
