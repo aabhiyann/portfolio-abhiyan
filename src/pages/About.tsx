@@ -4,6 +4,7 @@ import { motionTokens } from "../utils/motion";
 import Page from "../components/Page";
 import { useTheme } from "../contexts/useTheme";
 import { colorUtils } from "../design/colors";
+import SectionTitle from "../components/SectionTitle";
 
 function About() {
   const { themeState } = useTheme();
@@ -172,15 +173,7 @@ function About() {
       {/* Journey Timeline */}
       <section className="py-24 bg-surface-light dark:bg-surface-dark">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold tracking-tight text-text-light dark:text-text-dark mb-16 font-heading text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: motionTokens.duration.slow / 1000 }}
-          >
-            My Journey
-          </motion.h2>
+          <SectionTitle title="My Journey" isDark={isDarkMode} currentTheme={currentTheme} />
 
           <div className="relative">
             {/* Timeline Line */}
@@ -231,15 +224,7 @@ function About() {
       {/* Fun Facts */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold tracking-tight text-text-light dark:text-text-dark mb-16 font-heading text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: motionTokens.duration.slow / 1000 }}
-          >
-            Fun Facts
-          </motion.h2>
+          <SectionTitle title="Fun Facts" isDark={isDarkMode} currentTheme={currentTheme} />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {funFacts.map((fact, index) => (
@@ -270,15 +255,13 @@ function About() {
       {/* CTA Section */}
       <section className="py-24 bg-surface-light dark:bg-surface-dark">
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
+          <SectionTitle title="Let's Connect" isDark={isDarkMode} currentTheme={currentTheme} />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: motionTokens.duration.slow / 1000 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-text-light dark:text-text-dark mb-6 font-heading">
-              Let's Connect
-            </h2>
             <p className="text-xl text-muted-light dark:text-muted-dark mb-8">
               I'm always excited to collaborate on innovative projects, discuss
               technology, or share stories about photography and FC Barcelona!
