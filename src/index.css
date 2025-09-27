@@ -1,37 +1,39 @@
 @import "tailwindcss";
 
+@import "tailwindcss";
+
 @theme {
-  /* Light Theme: Yellow + Blue */
-  --color-light-background: #f1f5f9;
-  --color-light-navbar: #fffbeb;
-  --color-light-surface: #ffffff;
-  --color-light-card: #ffffff;
-  --color-light-text: #0f172a;
-  --color-light-textSecondary: #64748b;
-  --color-light-textMuted: #a0aec0;
-  --color-light-border: #a8a29e;
-  --color-light-borderMuted: #64748b;
+  /* Light Theme: From Handoff */
+  --color-light-background: #F8FAFC;
+  --color-light-navbar: #FFFFFF;
+  --color-light-surface: #FFFFFF;
+  --color-light-card: #FFFFFF;
+  --color-light-text: #0F172A;
+  --color-light-textSecondary: #64748B;
+  --color-light-textMuted: #64748B;
+  --color-light-border: #e2e8f0; /* Assuming a light border */
+  --color-light-borderMuted: #f1f5f9; /* Assuming a lighter border */
 
-  /* Dark Theme: Purple + Green */
-  --color-dark-background: #1a202c;
-  --color-dark-navbar: #1a202c;
-  --color-dark-surface: #2d3748;
-  --color-dark-card: #2d3748;
-  --color-dark-text: #f4f4f7;
-  --color-dark-textSecondary: #a0aec0;
-  --color-dark-textMuted: #718096;
-  --color-dark-border: #4a5568;
-  --color-dark-borderMuted: #718096;
+  /* Dark Theme: From Handoff */
+  --color-dark-background: #1A202C;
+  --color-dark-navbar: #0F172A;
+  --color-dark-surface: #0F172A;
+  --color-dark-card: #0F172A;
+  --color-dark-text: #F4F4F7;
+  --color-dark-textSecondary: #A0AEC0;
+  --color-dark-textMuted: #A0AEC0;
+  --color-dark-border: #334155; /* Assuming a dark border */
+  --color-dark-borderMuted: #1e293b; /* Assuming a darker border */
 
-  /* Accent Colors */
-  --color-primary-light: #f9a825;
-  --color-primary-dark: #8b5cf6;
-  --color-secondary-light: #3b82f6;
-  --color-secondary-dark: #22c55e;
-  --color-hover-light: #f59e0b;
-  --color-hover-dark: #7c3aed;
-  --color-focus-light: #f9a825;
-  --color-focus-dark: #8b5cf6;
+  /* Accent Colors From Handoff */
+  --color-primary-light: #F9A825; /* Yellow */
+  --color-primary-dark: #8B5CF6; /* Purple */
+  --color-secondary-light: #3B82F6; /* Blue */
+  --color-secondary-dark: #22C55E; /* Emerald */
+  --color-hover-light: #f59e0b; /* Assuming slight darken */
+  --color-hover-dark: #7c3aed; /* Assuming slight darken */
+  --color-focus-light: #F9A825;
+  --color-focus-dark: #8B5CF6;
 
   /* State Colors */
   --color-success: #10b981;
