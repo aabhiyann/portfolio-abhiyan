@@ -2,10 +2,43 @@ import { useParams } from "react-router-dom";
 import Page from "../components/Page";
 import Prose from "../components/Prose";
 import { articles } from "../data/articles";
+import useSeo from '../utils/useSeo';
+import useStructuredData from '../utils/useStructuredData';
 
 function DeepDiveDetail() {
   const { slug } = useParams();
   const article = articles.find((article) => article.slug === slug);
+
+  if (article) {
+    useSeo({
+      title: `${article.title} – Deep Dive by Abhiyan Sainju`,
+      description: article.abstract,
+      keywords: `${article.category}, ${article.title}, Abhiyan Sainju, deep dive, technology, mathematics, creativity`,
+    });
+
+    useStructuredData({
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": article.title,
+        "description": article.abstract,
+        "image": "/og-image.jpg", // Replace with actual article image if available
+        "datePublished": article.date, // Assuming article.date is in a valid format (e.g., YYYY-MM-DD)
+        "author": {
+          "@type": "Person",
+          "name": "Abhiyan Sainju"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Abhiyan Sainju Portfolio", // Replace with your portfolio name
+          "logo": {
+            "@type": "ImageObject",
+            "url": "/favicon.svg" // Replace with your logo URL
+          }
+        }
+      }
+    });
+  }
 
   if (!article) {
     return (
