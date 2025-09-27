@@ -39,7 +39,7 @@ function PhotographyGallery({ limit }: { limit?: number }) {
             <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="text-white text-sm space-y-1">
                 <div className="font-medium">{image.exif?.camera}</div>
-                <div className="text-xs opacity-90">{image.exif?.settings}</div>
+                <div className="text-xs opacity-90">{image.exif?.focalLength} · {image.exif?.settings}</div>
               </div>
             </figcaption>
           </motion.figure>
