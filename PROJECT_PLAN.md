@@ -1,121 +1,77 @@
 # Project Plan: Interactive Portfolio
 
-This document provides a comprehensive overview and development plan for the interactive portfolio website for Abhiyan Sainju.
+This document provides a comprehensive overview and development plan for the interactive portfolio website for Abhiyan Sainju, based on the latest designer handoff.
 
 ---
 
 ## Part 1: Core Strategy & Vision
 
-*   **Project Mission:** To build a unique, interactive personal brand hub that establishes Abhiyan Sainju as a "Creative Software Engineer." The site will serve as a memorable tool for professional opportunities by demonstrating technical excellence, design sensibility, and a unique personal story.
+*   **Project Mission:** To build a unique, interactive personal brand hub that establishes Abhiyan Sainju as a "Creative Software Engineer."
 *   **Target Audience:** Technical Recruiters, Hiring Managers, Fellow Developers.
 *   **Core Narrative:** The fusion of a logical, detail-oriented engineer with the creative, perceptive eye of a photographer.
 
 ---
 
-## Part 2: Final Brand Identity & Design System
+## Part 2: Brand & System Tokens
 
-This section outlines the design system, including the planned "Kathmandu Fog" palette and the currently implemented "Vibrant" palette.
-
-### 2.1. Planned Palette: "Kathmandu Fog"
-
-This palette is designed to be professional, minimalist, and personal.
-
-*   **Base (Inspired by Coastal Fog):**
-    *   Light Mode Background: Soft Off-White (`#F8FAFC`)
-    *   Dark Mode Background: Deep Slate (`#1E2B3A`)
-    *   Text (Light): Charcoal (`#334155`)
-    *   Text (Dark): Light Gray (`#E2E8F0`)
-*   **Accent (Inspired by Himalayan Sunrise):**
-    *   Primary Accent: Warm Pink (`#F472B6`)
-
-### 2.2. Implemented Palette: "Vibrant Default"
-
-This is the palette currently implemented in the codebase. It is more energetic and high-contrast.
-
-*   **Light Theme (Yellow + Blue):**
-    *   Background: `#f1f5f9`
-    *   Navbar: `#fffbeb`
-    *   Text: `#0f172a`
-    *   Primary Accent: `#f9a825` (Yellow)
-    *   Secondary Accent: `#3b82f6` (Blue)
-*   **Dark Theme (Purple + Green):**
-    *   Background: `#1a202c`
-    *   Text: `#f4f4f7`
-    *   Primary Accent: `#8b5cf6` (Purple)
-    *   Secondary Accent: `#22c55e` (Green)
-
-### 2.3. Typography & Design Principles
-
+*   **Official Color Palette:**
+    *   **Light Mode ("Kathmandu Fog"):**
+        *   Background: `#F8FAFC` (Soft Off-White)
+        *   Text: `#334155` (Charcoal)
+        *   Accent: `#F472B6` (Warm Pink)
+    *   **Dark Mode ("Kyoto Twilight"):**
+        *   Background: `#1A202C` (Deep Slate)
+        *   Text: `#F4F4F7` (Light Gray)
+        *   Primary Accent: `#8B5CF6` (Purple)
+        *   Secondary Accent: `#22C55E` (Emerald)
 *   **Typography:**
     *   Headings: `Space Grotesk`
     *   Body: `Inter`
-*   **Design Principles:**
-    *   **Consistency:** The same grid, padding, and font hierarchy across all views.
-    *   **Accessibility:** Semantic HTML, visible focus states, AA-compliant color contrast, and respect for `prefers-reduced-motion`.
-    *   **Performance:** Lazy-load images, use WebP/AVIF formats, and keep the initial JS bundle under 200KB.
 
 ---
 
 ## Part 3: Technical Architecture & Tools
 
-*   **Site Architecture:** A Multi-View Single Page Application (SPA).
 *   **Framework:** React + TypeScript + Vite
-*   **Routing:** React Router
-*   **Styling:** Tailwind CSS with custom design tokens.
+*   **Styling:** Tailwind CSS
 *   **Animation:** Framer Motion
-*   **Interactive Tilt:** vanilla-tilt.js
-*   **AI Integration:** Gemini API
 *   **Deployment:** Vercel
 
 ---
 
-## Part 4: Phased Development Roadmap & Workflow
+## Part 4: Development Roadmap
 
-This is our week-by-week plan to build the entire application.
+This roadmap is based on the signature interactions defined in the designer handoff.
 
-*   **Git Workflow:**
-    *   Branches: `main` (production), `develop` (staging), `feature/*` (e.g., `feature/journey-map`).
-    *   Commits: Conventional Commits (e.g., `feat(footer): add interactive timeline`).
+### 1. Foundational Features (Already Implemented)
 
-### Week 1: Setup & The Static Foundation
+*   **Living Background (Hero):** A subtle, interactive particle background.
+*   **Day/Night Timeline (Footer):** A draggable slider to control the site's theme.
+*   **Project Card 3D Tilt:** An interactive tilt effect on project cards.
+*   **Photography EXIF Reveal:** An overlay showing camera data on image hover.
+*   **Scroll-Driven Animations:** Journey map and other elements animate on scroll.
 
-*   **Goal:** Establish the project's technical foundation and create the static structure of the site.
-*   **Tasks:**
-    1.  Initialize React/Vite project with TypeScript.
-    2.  Install all dependencies: Tailwind, Framer Motion, React Router, `vanilla-tilt`.
-    3.  Configure `tailwind.config.js` with the "Kathmandu Fog" design tokens.
-    4.  Build the static, responsive layouts for all pages/views with placeholder content.
-    5.  Create the global `Navbar` and `Footer` components.
+### 2. New Handoff Features (To Be Implemented)
 
-### Week 2: Core "WOW" Feature - The Timeline
+*   **Task 1: Update Color Palette**
+    *   **Goal:** Align the site's theme with the new color tokens from the handoff.
+    *   **Action:** Modify `src/index.css` to replace the old color variables.
 
-*   **Goal:** Implement the interactive day/night timeline in the footer.
-*   **Tasks:**
-    1.  Create a `feature/interactive-timeline` branch.
-    2.  Develop a `ThemeContext` for global theme state management.
-    3.  Build the final, polished version of the interactive `ThemeSlider` component in the footer, ensuring it sets the theme automatically and allows for manual override.
+*   **Task 2: Implement "Project Deconstructor"**
+    *   **Goal:** Create a modal that visualizes a project's architecture.
+    *   **Actions:**
+        1.  Update `src/data/projects.ts` with architecture data.
+        2.  Create a `ProjectDeconstructor.tsx` modal component.
+        3.  Integrate the modal into the `Projects.tsx` page.
 
-### Week 3: Bringing the Pages to Life
+*   **Task 3: Implement "Photography Focus Mode"**
+    *   **Goal:** Replace the current lightbox with a pan-and-zoom interface.
+    *   **Actions:**
+        1.  Install a suitable pan-and-zoom library (e.g., `react-zoom-pan-pinch`).
+        2.  Create a `FocusMode.tsx` component.
+        3.  Integrate `FocusMode` into `PhotographyGallery.tsx`, replacing the old lightbox.
 
-*   **Goal:** Implement the core interactive features on the Projects, Photography, and About pages.
-*   **Tasks:**
-    1.  **Project Card 3D Tilt:** Add a 3D tilt effect to project cards using `vanilla-tilt.js`.
-    2.  **Photography EXIF Reveal:** Show EXIF data on image hover using Tailwind CSS `group-hover` states.
-    3.  **Scroll-Driven Journey Map:** Animate the journey map on the About page using Framer Motion and `whileInView`.
+### 3. Out of Scope (for v1)
 
-### Week 4: The Final Polish & Animation Layer
-
-*   **Goal:** Add the final layer of polish and advanced animations.
-*   **Tasks:**
-    1.  **"Living" Background:** Create an interactive particle background for the hero section using HTML Canvas.
-    2.  **Sticky Accent Highlights:** Create a reusable `SectionTitle` component that animates an accent-colored underline when it scrolls into view.
-    3.  **Page Transitions:** Add animated transitions between pages using Framer Motion's `AnimatePresence`.
-
-### Week 5: AI Integration, QA & Deployment
-
-*   **Goal:** Integrate the AI chatbot, perform quality assurance, and deploy the application.
-*   **Tasks:**
-    1.  **AI Concierge:** Integrate a Gemini API-powered chatbot, accessible via a floating action button.
-    2.  **Quality Assurance:** Conduct a full QA check (browser testing, mobile testing, accessibility audit).
-    3.  **Performance Audit:** Run a final performance audit with Lighthouse.
-    4.  **Deployment:** Merge `develop` into `main` and deploy to Vercel.
+*   **AI Concierge:** Enabled as a UI placeholder. The full API integration is deferred to v2.
+*   **Live Spotify API:** A placeholder will be used in the footer.

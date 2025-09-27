@@ -42,10 +42,10 @@ export const Card: React.FC<CardProps> = ({
   useEffect(() => {
     if (interactive && tiltRef.current) {
       VanillaTilt.init(tiltRef.current, {
-        max: 10,
-        speed: 400,
+        max: 3,
+        speed: 800,
         glare: true,
-        'max-glare': 0.5,
+        'max-glare': 0.1,
       });
     }
   }, [interactive]);

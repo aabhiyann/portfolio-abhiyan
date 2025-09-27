@@ -1,126 +1,75 @@
 # Project Specification
 
-This document provides a comprehensive specification for the design, structure, components, and interactions of the Abhiyan Sainju portfolio website.
+**Version:** 2.0 (Based on Designer Handoff)
+**Date:** September 27, 2025
 
 ---
 
-## Part 1: Project Overview
+## 1. Brand & System Tokens
 
-**Version:** 1.0  
-**Date:** September 25, 2025  
-**Owner:** Abhiyan Sainju
+### 1.1 Color Tokens
+*   **Light mode (Golden Hour × Coastal Fog):**
+    *   `--bg`: `#F8FAFC`
+    *   `--surface`: `#FFFFFF`
+    *   `--text`: `#0F172A`
+    *   `--muted`: `#64748B`
+    *   `--accent-1` (primary): **Yellow** `#F9A825`
+    *   `--accent-2` (secondary): **Blue** `#3B82F6`
+*   **Dark mode (Kyoto Twilight × Emerald):**
+    *   `--bg`: `#1A202C`
+    *   `--surface`: `#0F172A`
+    *   `--text`: `#F4F4F7`
+    *   `--muted`: `#A0AEC0`
+    *   `--accent-1` (primary): **Purple** `#8B5CF6`
+    *   `--accent-2` (secondary): **Emerald** `#22C55E`
 
-### 1.1. Project Goal & Vision
+### 1.2 Typography
+*   **Headings:** Space Grotesk (700/600)
+*   **Body:** Inter (400/500)
 
-The goal is to design, develop, and deploy a unique, professional portfolio website that serves as a personal brand hub. The site will showcase Abhiyan Sainju's identity as a skilled **Software Engineer** (projects, experience), a creative **Photographer** (gallery with EXIF details), and a critical **Thinker** (deep dives, journey from Kathmandu → DC).
-
-This project moves beyond a simple digital resume to combine professionalism, creativity, and personality into a memorable site that recruiters and professional connections will remember.
-
-### 1.2. Technology & Tools
-
-| Category         | Tool / Technology | Purpose                                                                 |
-| ---------------- | ----------------- | ----------------------------------------------------------------------- |
-| Framework        | React (with Vite) | For building a modern, fast, component-based user interface.            |
-| Styling          | Tailwind CSS      | For a utility-first, fully custom, and responsive design system.      |
-| Animations       | Framer Motion     | To add polished, professional, and fluid animations.                    |
-| Deployment       | Vercel            | For seamless, continuous deployment connected to the Git repository.    |
-| Domain           | abhiyansainju.com | For a professional and branded online presence.                         |
-| Version Control  | Git & GitHub      | For disciplined code management and collaboration.                      |
-| Project Tracking | GitHub Projects   | For task and progress tracking using a Kanban board.                    |
-
----
-
-## Part 2: Requirements
-
-### 2.1. Purpose
-
-This document provides a comprehensive specification for the design, structure, components, and interactions of the Abhiyan Sainju portfolio website. It merges all prior plans, inspirations, and technical details into one definitive reference for both designers and developers.
-
-The goal is to ensure consistency, clarity, and scalability across the site.
-
-### 2.2. Inspirations & References
-
-The portfolio draws inspiration from:
-
-- **Keita Yamada** (minimalist, motion-focused): Clean grid layouts, subtle scroll animations, smooth dark/light mode toggle.
-- **Seán Halpin** (personal warmth, storytelling): Rounded accents, friendly typography, personal touches, narrative-driven sections.
-- **Apple / Stripe websites**: Crisp transitions, focus on whitespace, high-res photography integration.
-
-The end result should feel modern, approachable, and distinctly personal.
-
-### 2.3. Site Structure (Pages & Routes)
-
-*   **Home (/)**: Hero, Projects teaser, Photography teaser, About teaser, Footer.
-*   **Projects (/projects)**: Grid of all projects.
-*   **Photography (/photography)**: Masonry gallery, Lightbox view with EXIF data.
-*   **About (/about)**: Portrait, personal story, timeline, fun facts.
-*   **Deep Dives (/deep-dives)**: List of essays/visualizations.
-*   **404 Page (/404)**: Friendly error message and CTA.
+### 1.3 Spacing & Grid
+*   **Container:** `max-width: 1200px`
+*   **Section rhythm:** `py-24` (desktop) / `py-16` (mobile)
+*   **Card radius:** `16px`
 
 ---
 
-## Part 3: Design Document
+## 2. Components (UI Kit)
 
-### 3.1. Core Design Philosophy: "Minimalist Canvas, Personal Story"
+### 2.1 Buttons
+*   **Primary:** Filled with `--accent-1`.
+*   **Ghost:** Transparent with 1px border.
 
-This portfolio will blend two distinct aesthetics:
+### 2.2 Cards
+*   Radius 16px, 1px border.
+*   Hover: shadow elevate, `translateY(-2px)`.
 
-*   **The Foundation (Minimalist Canvas):** Inspired by Keita Yamada, the core layout will be clean, spacious, and built on a strong grid.
-*   **The Accents (Personal Story):** Inspired by Seán Halpin, we will layer personal, warm, and interactive elements on top.
+### 2.3 Chips (Tech Pills)
+*   Lowercase labels, compact.
+*   Light: `bg-black/5`, Dark: `bg-white/10`.
 
-### 3.2. Brand Identity & Design System
-
-*   **Color Palette:** The project has multiple themes, including a default "Yellow + Blue" and the planned "Kathmandu Fog". The system is built on CSS custom properties for theme-awareness.
-*   **Typography:** Headings use `Space Grotesk`, and body text uses `Inter`.
-*   **Layout & Spacing:** A consistent spacing system based on a 4px unit is used throughout.
-
-### 3.3. Component Design System
-
-Reusable React components for `Navbar`, `Hero`, `Buttons`, `Project Cards`, `Timeline`, `Photography Grid`, and `Footer` have been designed and implemented.
-
-### 3.4. Interaction & Animation Philosophy
-
-Animations are subtle and purposeful, implemented with Framer Motion. This includes fade-in-up animations on scroll and micro-interactions on hover.
+### 2.4 Navbar
+*   Sticky, backdrop-blur `8px`, semi-transparent.
 
 ---
 
-## Part 4: Design System Details
+## 3. Motion System
 
-This section provides details on the implemented design system.
-
-### 4.1. Architecture
-
-The design system is structured in `src/design` and `src/components/ui`, with a `ThemeContext` for state management.
-
-### 4.2. Color System
-
-The system supports multiple themes (`default`, `kathmanduFog`, `creativeVoltage`) via CSS variables.
-
-### 4.3. Typography, Spacing, and other Systems
-
-The system defines scales for `fontSize`, `fontWeight`, `lineHeight`, `spacing`, `borderRadius`, and `shadows`.
+*   **Durations:** Tap (120-150ms), Hover/Reveal (200-250ms), Section enter (450-600ms).
+*   **Easing:** `cubic-bezier(0.22, 1, 0.36, 1)` for entrances.
+*   **Reduced Motion:** Should be respected.
 
 ---
 
-## Part 5: Component Migration Guide
+## 4. Accessibility & SEO
 
-This section documents the migration from inconsistent styling to a standardized design system approach.
-
-*   **Completed Components:** `Button`, `Card`, `Typography`, `Chip`, `Navbar`, `Footer`.
-*   **Migration Patterns:** Components were converted to TypeScript, integrated with the design system, and made theme-aware.
+*   **Contrast:** WCAG AA required.
+*   **Keyboard Nav:** All interactive elements must be keyboard accessible.
+*   **Metadata:** Proper `<title>` and Open Graph tags required.
 
 ---
 
-## Part 6: Requirements Verification
+## 5. Asset Guidelines
 
-This checklist confirms that all requirements from the planning phases have been met.
-
-*   [x] **Phase 1: Foundation & Brand Identity (MVP)**
-*   [x] **Phase 2: Core Content & Interactivity**
-*   [x] **Phase 3: The "Uniquely Abhiyan" Layer**
-*   [x] **Phase 4: Final Polish & Deployment**
-*   [x] **All Design Document specifications met**
-*   [x] **All README.md features included**
-*   [x] **Performance and accessibility optimized**
-
-**Summary:** The portfolio is feature-complete and ready for deployment, with the only deviation being the default color palette.
+*   **Images:** WebP or AVIF format, lazy-loaded.
+*   **Icons:** SVG only.
