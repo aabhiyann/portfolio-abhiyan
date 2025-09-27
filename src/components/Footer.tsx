@@ -20,20 +20,26 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="flex flex-col space-y-4">
             <h4 className="font-semibold text-primary">Work</h4>
-            <FooterLink to="/projects">Projects</FooterLink>
-            <FooterLink to="/photography">Photography</FooterLink>
-            <FooterLink to="/deep-dives">Deep Dives</FooterLink>
+            <nav className="flex flex-col space-y-2">
+              <FooterLink to="/projects">Projects</FooterLink>
+              <FooterLink to="/photography">Photography</FooterLink>
+              <FooterLink to="/deep-dives">Deep Dives</FooterLink>
+            </nav>
           </div>
           <div className="flex flex-col space-y-4">
             <h4 className="font-semibold text-primary">Connect</h4>
-            <ExternalFooterLink href="https://github.com/aabhiyann">GitHub</ExternalFooterLink>
-            <ExternalFooterLink href="https://linkedin.com/in/abhiyansainju">LinkedIn</ExternalFooterLink>
-            <ExternalFooterLink href="mailto:abhiyan.sainju@email.com">Email</ExternalFooterLink>
+            <nav className="flex flex-col space-y-2">
+              <ExternalFooterLink href="https://github.com/aabhiyann">GitHub</ExternalFooterLink>
+              <ExternalFooterLink href="https://linkedin.com/in/abhiyansainju">LinkedIn</ExternalFooterLink>
+              <ExternalFooterLink href="mailto:abhiyan.sainju@email.com">Email</ExternalFooterLink>
+            </nav>
           </div>
           <div className="flex flex-col space-y-4">
             <h4 className="font-semibold text-primary">Resources</h4>
-            <FooterLink to="/about">About</FooterLink>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-primary transition-colors duration-300">Resume</a>
+            <nav className="flex flex-col space-y-2">
+              <FooterLink to="/about">About</FooterLink>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-primary transition-colors duration-300">Resume</a>
+            </nav>
           </div>
           <div className="flex flex-col space-y-4">
             <h4 className="font-semibold text-primary">Other</h4>

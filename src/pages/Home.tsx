@@ -9,10 +9,17 @@ import SectionTitle from "../components/SectionTitle";
 import { useTheme } from "../contexts/useTheme";
 import { Button } from "../components/ui/Button";
 import { Card } from "../components/ui/Card";
+import useSeo from '../utils/useSeo';
 
 function Home() {
   const { themeState } = useTheme();
   const { isDarkMode, currentTheme } = themeState;
+
+  useSeo({
+    title: "Abhiyan Sainju – Software Engineer & Photographer",
+    description: "Welcome to the personal portfolio of Abhiyan Sainju, a full-stack developer passionate about creating meaningful digital experiences and capturing moments through photography.",
+    keywords: "Abhiyan Sainju, portfolio, software engineer, photographer, web development, React, TypeScript, projects, photography gallery",
+  });
 
   return (
     <Page>

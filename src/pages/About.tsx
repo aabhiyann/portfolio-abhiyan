@@ -5,10 +5,45 @@ import Page from "../components/Page";
 import { useTheme } from "../contexts/useTheme";
 import { colorUtils } from "../design/colors";
 import SectionTitle from "../components/SectionTitle";
+import useSeo from '../utils/useSeo';
+import useStructuredData from '../utils/useStructuredData';
 
 function About() {
   const { themeState } = useTheme();
   const { isDarkMode, currentTheme } = themeState;
+
+  useSeo({
+    title: "About Abhiyan Sainju – Software Engineer & Photographer",
+    description: "Learn more about Abhiyan Sainju, a passionate software engineer and photographer based in Washington D.C., with a focus on cloud infrastructure, AI, and visual storytelling.",
+    keywords: "Abhiyan Sainju, about me, software engineer, photographer, cloud computing, AI, Washington D.C., Kathmandu, Nepal",
+  });
+
+  useStructuredData({
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Abhiyan Sainju",
+      "url": "https://www.abhiyansainju.com", // Replace with actual domain
+      "image": "/og-image.jpg", // Replace with actual portrait image
+      "sameAs": [
+        "https://github.com/aabhiyann",
+        "https://linkedin.com/in/abhiyansainju",
+        // Add other social media profiles
+      ],
+      "jobTitle": "Software Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "[Your Company Name]" // Replace with actual company name
+      },
+      "alumniOf": "[Your University Name]", // Replace with actual university
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Photographer",
+        "description": "Capturing moments and stories through the lens."
+      },
+      "description": "A passionate software engineer and photographer based in Washington D.C., focusing on cloud infrastructure, AI, and visual storytelling."
+    }
+  });
   const timeline = [
     {
       year: "2021",
