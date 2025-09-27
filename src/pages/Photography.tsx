@@ -2,8 +2,15 @@ import { motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
 import PhotographyGallery from "../components/PhotographyGallery";
 import Page from "../components/Page";
+import useSeo from '../utils/useSeo';
 
 function Photography() {
+  useSeo({
+    title: "Photography – Abhiyan Sainju",
+    description: "Explore the photography portfolio of Abhiyan Sainju, featuring moments captured with iPhone 15 Pro Max and Canon EOS 750D, showcasing diverse stories and places.",
+    keywords: "Abhiyan Sainju photography, street photography, landscape photography, iPhone photography, Canon photography, photo gallery",
+  });
+
   return (
     <Page>
       <section className="py-24">

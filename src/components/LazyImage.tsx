@@ -1,46 +1,54 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-function LazyImage({ src, alt, className, ...props }) {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
-  const imgRef = useRef();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={imgRef} className={className}>
-      {isInView && (
-        <img
-          src={src}
-          alt={alt}
-          onLoad={() => setIsLoaded(true)}
-          className={`transition-opacity duration-300 ${
-            isLoaded ? "opacity-100" : "opacity-0"
-          } ${className}`}
-          {...props}
-        />
-      )}
-      {!isLoaded && isInView && (
-        <div className="animate-pulse bg-muted rounded-lg w-full h-full" />
-      )}
-    </div>
-  );
+interface LazyImageProps {
+  src: string;
+  alt: string;
+  className?: string;
+  thumbnailSrc?: string;
 }
 
+const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className, thumbnailSrc }) => {
+  const [imageSrc, setImageSrc] = useState(thumbnailSrc || '');
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    if (!src) return;
+
+    setImageSrc(thumbnailSrc || '');
+    setIsLoaded(false);
+    setHasError(false);
+
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      setImageSrc(src);
+      setIsLoaded(true);
+    };
+    img.onerror = () => {
+      setHasError(true);
+      console.error(`Failed to load image: ${src}`);
+    };
+  }, [src, thumbnailSrc]);
+
+  if (hasError) {
+    return (
+      <div className={`flex items-center justify-center bg-gray-200 dark:bg-gray-700 ${className}`}>
+        <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2A9 9 0 111 12a9 9 0 0118 0z" />
+        </svg>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={imageSrc}
+      alt={alt}
+      className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
+    />
+  );
+};
+
 export default LazyImage;
+

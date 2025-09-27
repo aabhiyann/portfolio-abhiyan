@@ -3,8 +3,15 @@ import { motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
 import { articles, categories } from "../data/articles";
 import Page from "../components/Page";
+import useSeo from '../utils/useSeo';
 
 function DeepDives() {
+  useSeo({
+    title: "Deep Dives – Abhiyan Sainju",
+    description: "Explore in-depth articles and deep dives by Abhiyan Sainju on technology, mathematics, and the intersection of code and creativity.",
+    keywords: "Abhiyan Sainju deep dives, technology articles, software engineering insights, AI, cloud computing, creative coding",
+  });
+
   return (
     <Page>
       {/* Hero Section */}

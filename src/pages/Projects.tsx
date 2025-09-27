@@ -8,14 +8,47 @@ import { Card } from "../components/ui/Card";
 import SectionTitle from "../components/SectionTitle";
 import ProjectDeconstructor from "../components/ProjectDeconstructor";
 import { Button, Chip } from "../components/ui";
+import useSeo from '../utils/useSeo';
+import useStructuredData from '../utils/useStructuredData';
 
 function Projects() {
   const { themeState } = useTheme();
   const { isDarkMode, currentTheme } = themeState;
   const [selectedArch, setSelectedArch] = useState(null);
   const [projects, setProjects] = useState(initialProjects.map(p => ({...p, elaboratedDescription: null, isLoading: false })));
+  const [apiError, setApiError] = useState<string | null>(null);
+
+  useSeo({
+    title: "Projects – Abhiyan Sainju",
+    description: "Explore a collection of software engineering projects by Abhiyan Sainju, showcasing expertise in web development, cloud, and AI.",
+    keywords: "Abhiyan Sainju projects, software development portfolio, web projects, cloud projects, AI projects",
+  });
+
+  useStructuredData({
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": projects.map((project, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "CreativeWork", // Or SoftwareSourceCode if more appropriate
+          "name": project.title,
+          "description": project.description,
+          "url": `https://www.abhiyansainju.com/projects/${project.id}`, // Adjust URL structure if needed
+          "image": project.image,
+          "keywords": project.tech.join(', '),
+          "author": {
+            "@type": "Person",
+            "name": "Abhiyan Sainju"
+          }
+        }
+      }))
+    }
+  });
 
   const handleElaborate = async (projectId) => {
+    setApiError(null); // Clear previous errors
     setProjects(projects.map(p => p.id === projectId ? { ...p, isLoading: true } : p));
 
     const project = projects.find(p => p.id === projectId);
@@ -23,8 +56,8 @@ function Projects() {
 
     if (!apiKey) {
       console.error("Gemini API key is missing.");
-      const errorMessage = "API Key is not configured. Please add VITE_GEMINI_API_KEY to your .env file.";
-      setProjects(projects.map(p => p.id === projectId ? { ...p, elaboratedDescription: errorMessage, isLoading: false } : p));
+      setApiError("Gemini API Key is not configured. Please add VITE_GEMINI_API_KEY to your .env file.");
+      setProjects(projects.map(p => p.id === projectId ? { ...p, isLoading: false } : p));
       return;
     }
 
@@ -39,13 +72,17 @@ function Projects() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
-        if (!response.ok) throw new Error('API Error');
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error.message || 'API Error');
+        }
         const result = await response.json();
         const elaboratedText = result.candidates?.[0]?.content?.parts?.[0]?.text || "Could not generate elaboration.";
         setProjects(projects.map(p => p.id === projectId ? { ...p, elaboratedDescription: elaboratedText, isLoading: false } : p));
     } catch (error) {
         console.error("Elaboration failed:", error);
-        setProjects(projects.map(p => p.id === projectId ? { ...p, elaboratedDescription: "Error generating details. Please try again.", isLoading: false } : p));
+        setApiError(`Elaboration failed: ${error.message}. Please try again.`);
+        setProjects(projects.map(p => p.id === projectId ? { ...p, elaboratedDescription: null, isLoading: false } : p));
     }
   };
 
@@ -59,6 +96,13 @@ function Projects() {
             isDark={isDarkMode} 
             currentTheme={currentTheme} 
           />
+
+          {apiError && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-8" role="alert">
+              <strong className="font-bold">Error: </strong>
+              <span className="block sm:inline">{apiError}</span>
+            </div>
+          )}
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
