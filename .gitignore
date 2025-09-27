@@ -23,6 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 
+# Environment variables
+.env
+.env.*
+
 # Large original images (keep optimized versions only)
 Images/
 *.JPG
