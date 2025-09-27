@@ -3,18 +3,17 @@
 @import "tailwindcss";
 
 @theme {
-  /* Light Theme: From Handoff */
-  --color-light-background: #F8FAFC;
+  /* Theme: Kathmandu Fog */
+  --color-light-background: #F8FAFC; /* Soft Off-White */
   --color-light-navbar: #FFFFFF;
   --color-light-surface: #FFFFFF;
   --color-light-card: #FFFFFF;
-  --color-light-text: #0F172A;
-  --color-light-textSecondary: #64748B;
-  --color-light-textMuted: #64748B;
-  --color-light-border: #e2e8f0; /* Assuming a light border */
-  --color-light-borderMuted: #f1f5f9; /* Assuming a lighter border */
+  --color-light-text: #334155; /* Charcoal */
+  --color-light-textSecondary: #64748b;
+  --color-light-textMuted: #94a3b8;
+  --color-light-border: #e2e8f0;
+  --color-light-borderMuted: #f1f5f9;
 
-  /* Dark Theme: From Handoff */
   --color-dark-background: #1A202C;
   --color-dark-navbar: #0F172A;
   --color-dark-surface: #0F172A;
@@ -22,18 +21,18 @@
   --color-dark-text: #F4F4F7;
   --color-dark-textSecondary: #A0AEC0;
   --color-dark-textMuted: #A0AEC0;
-  --color-dark-border: #334155; /* Assuming a dark border */
-  --color-dark-borderMuted: #1e293b; /* Assuming a darker border */
+  --color-dark-border: #334155;
+  --color-dark-borderMuted: #1e293b;
 
-  /* Accent Colors From Handoff */
-  --color-primary-light: #F9A825; /* Yellow */
+  /* Accent Color */
+  --color-primary-light: #F472B6; /* Warm Pink */
   --color-primary-dark: #8B5CF6; /* Purple */
-  --color-secondary-light: #3B82F6; /* Blue */
+  --color-secondary-light: #F472B6; 
   --color-secondary-dark: #22C55E; /* Emerald */
-  --color-hover-light: #f59e0b; /* Assuming slight darken */
-  --color-hover-dark: #7c3aed; /* Assuming slight darken */
-  --color-focus-light: #F9A825;
-  --color-focus-dark: #8B5CF6;
+  --color-hover-light: #ec4899; /* Darker Pink */
+  --color-hover-dark: #f9a8d4; /* Lighter Pink */
+  --color-focus-light: #F472B6;
+  --color-focus-dark: #F472B6;
 
   /* State Colors */
   --color-success: #10b981;
@@ -42,14 +41,14 @@
   --color-info: #3b82f6;
 
   /* Semantic Colors */
-  --color-link-light: #3b82f6;
-  --color-link-dark: #22c55e;
-  --color-button-primary-light: #f9a825;
-  --color-button-primary-dark: #8b5cf6;
-  --color-button-secondary-light: #3b82f6;
-  --color-button-secondary-dark: #22c55e;
-  --color-chip-light: #3b82f6;
-  --color-chip-dark: #22c55e;
+  --color-link-light: #F472B6;
+  --color-link-dark: #F472B6;
+  --color-button-primary-light: #F472B6;
+  --color-button-primary-dark: #F472B6;
+  --color-button-secondary-light: #F472B6;
+  --color-button-secondary-dark: #F472B6;
+  --color-chip-light: #F472B6;
+  --color-chip-dark: #F472B6;
 
   /* Font Families */
   --font-family-heading: "Space Grotesk", sans-serif;
