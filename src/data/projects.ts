@@ -10,6 +10,22 @@ export const projects = [
       tech: ["React", "Node.js", "AWS", "PostgreSQL", "Docker", "Kubernetes"],
       impact:
         "Reduced infrastructure costs by 40% and improved deployment reliability by 95%",
+      architecture: {
+        nodes: [
+          { id: 'frontend', label: 'React Frontend', position: { x: 100, y: 200 } },
+          { id: 'api', label: 'Node.js API Gateway', position: { x: 400, y: 200 } },
+          { id: 'db', label: 'PostgreSQL Database', position: { x: 700, y: 100 } },
+          { id: 'monitoring', label: 'AWS Monitoring Service', position: { x: 700, y: 300 } },
+          { id: 'auth', label: 'Auth Service (JWT)', position: { x: 400, y: 0 } },
+        ],
+        connections: [
+          { from: 'frontend', to: 'api' },
+          { from: 'api', to: 'db' },
+          { from: 'api', to: 'monitoring' },
+          { from: 'frontend', to: 'auth' },
+          { from: 'api', to: 'auth' },
+        ],
+      },
     },
     {
       id: 2,
