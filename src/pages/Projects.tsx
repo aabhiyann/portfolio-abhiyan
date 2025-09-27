@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion"; 
 import { motionTokens } from "../utils/motion";
 import { projects } from "../data/projects";
@@ -6,10 +7,12 @@ import { useTheme } from "../contexts/useTheme";
 import { colorUtils } from "../design/colors";
 import { Card } from "../components/ui/Card";
 import SectionTitle from "../components/SectionTitle";
+import ProjectDeconstructor from "../components/ProjectDeconstructor";
 
 function Projects() {
   const { themeState } = useTheme();
   const { isDarkMode, currentTheme } = themeState;
+  const [selectedArch, setSelectedArch] = useState(null);
 
   return (
     <Page>
@@ -79,7 +82,7 @@ function Projects() {
                     </div>
 
                     {/* Links */}
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 items-center">
                       <a
                         href={project.github}
                         target="_blank"
@@ -116,6 +119,11 @@ function Projects() {
                         </svg>
                         Live Demo
                       </a>
+                      {project.architecture && (
+                        <button onClick={() => setSelectedArch(project.architecture)} className="btn-ghost">
+                          Explore Architecture
+                        </button>
+                      )}
                     </div>
                   </div>
                 </Card>
@@ -124,6 +132,9 @@ function Projects() {
           </div>
         </div>
       </section>
+      {selectedArch && (
+        <ProjectDeconstructor architecture={selectedArch} onClose={() => setSelectedArch(null)} />
+      )}
     </Page>
   );
 }
