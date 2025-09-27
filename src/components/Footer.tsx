@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-border-primary text-center text-sm text-secondary">
-          <p>&copy; {new Date().getFullYear()} Abhiyan Sainju. Built with ❤️ using React, Vite, and Tailwind CSS.</p>
+          <p>&copy; {new Date().getFullYear()} Abhiyan Sainju. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
