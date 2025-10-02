@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
@@ -10,18 +10,9 @@ import DeepDiveDetail from "./pages/DeepDiveDetail";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./contexts/ThemeProvider";
 import ErrorBoundary from "./components/ErrorBoundary";
-import useSeo from './utils/useSeo';
 
 function App() {
   const location = useLocation();
-
-  useSeo({
-    title: "Abhiyan Sainju – Software Engineer & Photographer",
-    description: "Software Engineer (Cloud + AI) and Photographer. Projects, deep dives, and photography by Abhiyan Sainju.",
-    keywords: "software engineer, cloud computing, AI, machine learning, photography, portfolio, Abhiyan Sainju",
-    ogImage: "/og-image.jpg",
-    twitterImage: "/og-image.jpg",
-  });
 
   return (
     <ThemeProvider>
@@ -44,12 +35,4 @@ function App() {
   );
 }
 
-function Root() {
-  return (
-    <Router>
-      <App />
-    </Router>
-  )
-}
-
-export default Root;
+export default App;

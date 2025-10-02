@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion"; 
-import { photographyImages } from "../data/images";
+import { photographyImages } from "../data/Images";
 import FocusMode from "./FocusMode";
 
 function PhotographyGallery({ limit }: { limit?: number }) {

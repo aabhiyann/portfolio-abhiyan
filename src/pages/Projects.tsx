@@ -1,19 +1,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion"; 
-import { motionTokens } from "../utils/motion";
-import { projects as initialProjects } from "../data/projects";
+import { motionTokens } from "../utils/Motion";
+import { projects as initialProjects } from "../data/Projects";
 import Page from "../components/Page";
-import { useTheme } from "../contexts/useTheme";
 import { Card } from "../components/ui/Card";
 import SectionTitle from "../components/SectionTitle";
 import ProjectDeconstructor from "../components/ProjectDeconstructor";
 import { Button, Chip } from "../components/ui";
-import useSeo from '../utils/useSeo';
-import useStructuredData from '../utils/useStructuredData';
+import useSeo from '../utils/UseSeo';
+import useStructuredData from '../utils/UseStructuredData';
 
 function Projects() {
-  const { themeState } = useTheme();
-  const { isDarkMode, currentTheme } = themeState;
   const [selectedArch, setSelectedArch] = useState(null);
   const [projects, setProjects] = useState(initialProjects.map(p => ({...p, elaboratedDescription: null, isLoading: false })));
   const [apiError, setApiError] = useState<string | null>(null);
@@ -93,8 +90,6 @@ function Projects() {
           <SectionTitle 
             title="Projects" 
             subtitle="A collection of projects that showcase my passion for building innovative solutions that solve real-world problems with modern technology." 
-            isDark={isDarkMode} 
-            currentTheme={currentTheme} 
           />
 
           {apiError && (
@@ -119,8 +114,6 @@ function Projects() {
               >
                 <Card
                   interactive
-                  isDark={themeState.isDarkMode}
-                  currentTheme={themeState.currentTheme}
                   className="flex flex-col"
                 >
                   <div className="aspect-video bg-gradient-to-br from-accent/20 to-blue-500/20 relative overflow-hidden group">
