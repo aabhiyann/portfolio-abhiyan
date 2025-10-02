@@ -1,6 +1,6 @@
 // src/data/images.ts
 import { ImageMetadata } from "../types/image";
-import { imageEXIFData } from "./exif-data";
+import { imageEXIFData } from "./ExifData";
 
 export const heroImages: ImageMetadata[] = [
   {
