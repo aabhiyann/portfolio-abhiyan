@@ -3,36 +3,36 @@
 @import "tailwindcss";
 
 @theme {
-  /* Theme: Kathmandu Fog */
-  --color-light-background: #F8FAFC; /* Soft Off-White */
-  --color-light-navbar: #FFFFFF;
-  --color-light-surface: #FFFFFF;
-  --color-light-card: #FFFFFF;
-  --color-light-text: #334155; /* Charcoal */
-  --color-light-textSecondary: #64748b;
-  --color-light-textMuted: #94a3b8;
-  --color-light-border: #e2e8f0;
-  --color-light-borderMuted: #f1f5f9;
+  /* Theme: Clean & Modern with Better Contrast */
+  --color-light-background: #fafafa; /* Clean white-gray */
+  --color-light-navbar: #ffffff;
+  --color-light-surface: #ffffff;
+  --color-light-card: #ffffff;
+  --color-light-text: #1a1a1a; /* Near black for better readability */
+  --color-light-textSecondary: #4a5568; /* Darker gray for better contrast */
+  --color-light-textMuted: #718096; /* Medium gray for subtle text */
+  --color-light-border: #e2e8f0; /* Light gray border */
+  --color-light-borderMuted: #f1f5f9; /* Very light border */
 
-  --color-dark-background: #1A202C;
-  --color-dark-navbar: #0F172A;
-  --color-dark-surface: #0F172A;
-  --color-dark-card: #0F172A;
-  --color-dark-text: #F4F4F7;
-  --color-dark-textSecondary: #A0AEC0;
-  --color-dark-textMuted: #A0AEC0;
-  --color-dark-border: #334155;
-  --color-dark-borderMuted: #1e293b;
+  --color-dark-background: #0f172a; /* Darker slate for better contrast */
+  --color-dark-navbar: #0f172a;
+  --color-dark-surface: #1e293b; /* Dark slate */
+  --color-dark-card: #1e293b;
+  --color-dark-text: #f8fafc; /* Near white for better readability */
+  --color-dark-textSecondary: #cbd5e1; /* Light gray for better contrast */
+  --color-dark-textMuted: #94a3b8; /* Medium light gray for subtle text */
+  --color-dark-border: #334155; /* Dark border */
+  --color-dark-borderMuted: #475569; /* Muted border */
 
-  /* Accent Color */
-  --color-primary-light: #F472B6; /* Warm Pink */
-  --color-primary-dark: #8B5CF6; /* Purple */
-  --color-secondary-light: #F472B6; 
-  --color-secondary-dark: #22C55E; /* Emerald */
-  --color-hover-light: #ec4899; /* Darker Pink */
-  --color-hover-dark: #f9a8d4; /* Lighter Pink */
-  --color-focus-light: #F472B6;
-  --color-focus-dark: #F472B6;
+  /* Accent Color - Better contrast options */
+  --color-primary-light: #3b82f6; /* Blue - better contrast on light */
+  --color-primary-dark: #8b5cf6; /* Purple */
+  --color-secondary-light: #f59e0b; /* Amber - better contrast on light */
+  --color-secondary-dark: #22c55e; /* Emerald */
+  --color-hover-light: #2563eb; /* Darker Blue */
+  --color-hover-dark: #7c3aed; /* Darker Purple */
+  --color-focus-light: #3b82f6; /* Blue focus */
+  --color-focus-dark: #8b5cf6; /* Purple focus */
 
   /* State Colors */
   --color-success: #10b981;
@@ -40,19 +40,40 @@
   --color-error: #ef4444;
   --color-info: #3b82f6;
 
-  /* Semantic Colors */
-  --color-link-light: #F472B6;
-  --color-link-dark: #F472B6;
-  --color-button-primary-light: #F472B6;
-  --color-button-primary-dark: #F472B6;
-  --color-button-secondary-light: #F472B6;
-  --color-button-secondary-dark: #F472B6;
-  --color-chip-light: #F472B6;
-  --color-chip-dark: #F472B6;
+  /* Semantic Colors - Better contrast */
+  --color-link-light: #3b82f6; /* Blue links */
+  --color-link-dark: #22c55e; /* Green links */
+  --color-button-primary-light: #3b82f6; /* Blue buttons */
+  --color-button-primary-dark: #8b5cf6; /* Purple buttons */
+  --color-button-secondary-light: #f59e0b; /* Amber buttons */
+  --color-button-secondary-dark: #22c55e; /* Green buttons */
+  --color-chip-light: #3b82f6; /* Blue chips */
+  --color-chip-dark: #22c55e; /* Green chips */
 
   /* Font Families */
   --font-family-heading: "Space Grotesk", sans-serif;
   --font-family-body: "Inter", sans-serif;
+}
+
+/* Light Theme Variants */
+.theme-warm {
+  --color-light-background: #fefefe; /* Warm white */
+  --color-light-navbar: #fdf6e3; /* Warm cream */
+  --color-light-text: #2d3748; /* Dark gray */
+  --color-light-textSecondary: #4a5568; /* Medium dark gray */
+  --color-light-textMuted: #718096; /* Medium gray */
+  --color-light-border: #d6d3d1; /* Warm border */
+  --color-light-borderMuted: #f3f4f6; /* Light warm border */
+}
+
+.theme-cool {
+  --color-light-background: #f8fafc; /* Cool white */
+  --color-light-navbar: #f1f5f9; /* Cool light gray */
+  --color-light-text: #0f172a; /* Dark slate */
+  --color-light-textSecondary: #475569; /* Slate gray */
+  --color-light-textMuted: #64748b; /* Light slate */
+  --color-light-border: #cbd5e1; /* Cool border */
+  --color-light-borderMuted: #e2e8f0; /* Light cool border */
 }
 
 /* Base styles */
@@ -222,7 +243,8 @@ body,
 
 /* Smooth transitions for theme changes */
 * {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
 }
