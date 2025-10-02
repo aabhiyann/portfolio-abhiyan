@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import { useTheme } from "../contexts/useTheme";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -32,14 +32,11 @@ function Layout({ children }) {
 
       <Footer />
 
-      <FloatingActionButton 
-        onClick={() => setChatbotOpen(!isChatbotOpen)} 
-        isOpen={isChatbotOpen} 
+      <FloatingActionButton
+        onClick={() => setChatbotOpen(!isChatbotOpen)}
+        isOpen={isChatbotOpen}
       />
-      <AIChatbot 
-        isOpen={isChatbotOpen} 
-        onClose={() => setChatbotOpen(false)} 
-      />
+      <AIChatbot isOpen={isChatbotOpen} onClose={() => setChatbotOpen(false)} />
     </div>
   );
 }

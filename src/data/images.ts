@@ -69,7 +69,9 @@ export const photographyImages: ImageMetadata[] = imageEXIFData.map((exif) => ({
     settings: `${exif.aperture} · ${exif.shutterSpeed} · ISO ${exif.iso}`,
     location: "Various Locations",
     date: new Date(exif.dateTaken).toLocaleDateString(),
-    focalLength: exif.focalLength ? `${Math.round(parseFloat(exif.focalLength))}mm` : undefined,
+    focalLength: exif.focalLength
+      ? `${Math.round(parseFloat(exif.focalLength))}mm`
+      : undefined,
     aperture: exif.aperture,
     shutterSpeed: exif.shutterSpeed,
     iso: exif.iso.toString(),
