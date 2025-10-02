@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from '../contexts/ThemeContext';
+import { useTheme } from '../contexts/useTheme';
 import ThemeSlider from './ui/ThemeSlider';
 import Typography from './ui/Typography';
 
@@ -15,9 +15,9 @@ export const ThemeDemo: React.FC = () => {
   const { themeState, setCurrentTheme, toggleTheme } = useTheme();
 
   const themes = [
-    { key: 'default', name: 'Yellow + Blue', description: 'Warm and professional' },
-    { key: 'kathmanduFog', name: 'Kathmandu Fog', description: 'Soft and ethereal' },
-    { key: 'creativeVoltage', name: 'Creative Voltage', description: 'Bold and energetic' },
+    { key: 'default', name: 'Clean & Modern', description: 'Clean white with blue accents' },
+    { key: 'warm', name: 'Warm & Professional', description: 'Warm cream with amber accents' },
+    { key: 'cool', name: 'Cool & Minimal', description: 'Cool gray with slate accents' },
   ];
 
   return (
