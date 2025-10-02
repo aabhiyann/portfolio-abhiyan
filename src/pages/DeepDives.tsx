@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; 
-import { motionTokens } from "../utils/Motion";
+import { motion } from "framer-motion";
+import { motionTokens } from "../utils/motion";
 import { articles, categories } from "../data/Articles";
 import Page from "../components/Page";
-import useSeo from '../utils/UseSeo';
+import useSeo from "../utils/useSeo";
 
 function DeepDives() {
   useSeo({
     title: "Deep Dives – Abhiyan Sainju",
-    description: "Explore in-depth articles and deep dives by Abhiyan Sainju on technology, mathematics, and the intersection of code and creativity.",
-    keywords: "Abhiyan Sainju deep dives, technology articles, software engineering insights, AI, cloud computing, creative coding",
+    description:
+      "Explore in-depth articles and deep dives by Abhiyan Sainju on technology, mathematics, and the intersection of code and creativity.",
+    keywords:
+      "Abhiyan Sainju deep dives, technology articles, software engineering insights, AI, cloud computing, creative coding",
   });
 
   return (
@@ -37,9 +39,12 @@ function DeepDives() {
               {categories.map((category, index) => (
                 <button
                   key={index}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${index === 0
-                        ? "bg-accent-primary text-white"
-                        : "bg-surface text-secondary hover:text-accent border border-primary/20"}`}>
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    index === 0
+                      ? "bg-accent-primary text-white"
+                      : "bg-surface text-secondary hover:text-accent border border-primary/20"
+                  }`}
+                >
                   {category}
                 </button>
               ))}
