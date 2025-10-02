@@ -8,7 +8,7 @@
 
 import React, { useRef, useCallback, useEffect, useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
-import { useTheme } from '../../contexts/useTheme';
+import { useTheme } from '../../contexts/UseTheme';
 import { motion } from 'framer-motion';
 
 export interface ThemeSliderProps {

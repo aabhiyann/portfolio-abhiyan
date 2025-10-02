@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Typography, TypographyProps } from './ui/Typography';
 
-interface SectionTitleProps extends TypographyProps {
+interface SectionTitleProps extends Omit<TypographyProps, 'color'> {
   title: string;
   subtitle?: string;
 }
@@ -24,7 +24,12 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
         {title}
       </Typography>
       {subtitle && (
-        <Typography variant="body" color="secondary" {...typographyProps} style={{ maxWidth: '48rem', margin: '1rem auto 0' }}>
+        <Typography
+          variant="body"
+          color="secondary"
+          {...typographyProps}
+          style={{ maxWidth: '48rem', margin: '1rem auto 0' }}
+        >
           {subtitle}
         </Typography>
       )}
