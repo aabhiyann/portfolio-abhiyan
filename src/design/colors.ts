@@ -145,16 +145,20 @@ export const colorUtils = {
   /**
    * Get theme-aware color
    */
-  getThemeColor: (colorKey: keyof typeof colors.light, isDark: boolean, themeVariant: string = 'default') => {
+  getThemeColor: (
+    colorKey: keyof typeof colors.light,
+    isDark: boolean,
+    themeVariant: string = "default"
+  ) => {
     if (isDark) {
       return colors.dark[colorKey];
     }
-    
+
     // Support different light theme variants
     switch (themeVariant) {
-      case 'warm':
+      case "warm":
         return colors.lightWarm[colorKey];
-      case 'cool':
+      case "cool":
         return colors.lightCool[colorKey];
       default:
         return colors.light[colorKey];
@@ -206,7 +210,7 @@ export const colorUtils = {
   getThemeDisplayName: (theme: string) => {
     const names: Record<string, string> = {
       default: "Clean & Modern",
-      warm: "Warm & Professional", 
+      warm: "Warm & Professional",
       cool: "Cool & Minimal",
     };
     return names[theme] || theme;
