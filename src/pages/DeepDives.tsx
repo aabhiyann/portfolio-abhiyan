@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion"; 
-import { motionTokens } from "../utils/motion";
-import { articles, categories } from "../data/articles";
+import { motionTokens } from "../utils/Motion";
+import { articles, categories } from "../data/Articles";
 import Page from "../components/Page";
-import useSeo from '../utils/useSeo';
+import useSeo from '../utils/UseSeo';
 
 function DeepDives() {
   useSeo({
@@ -37,12 +37,9 @@ function DeepDives() {
               {categories.map((category, index) => (
                 <button
                   key={index}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                      index === 0
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${index === 0
                         ? "bg-accent-primary text-white"
-                        : "bg-surface text-secondary hover:text-accent border border-primary/20"
-                    }`}
-                >
+                        : "bg-surface text-secondary hover:text-accent border border-primary/20"}`}>
                   {category}
                 </button>
               ))}

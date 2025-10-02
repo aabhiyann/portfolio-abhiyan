@@ -33,6 +33,7 @@ const FocusMode = ({ image, onClose }) => {
         <div className="absolute bottom-6 left-6 text-white bg-black/30 p-4 rounded-lg">
           <p className="font-bold">{image.exif?.camera}</p>
           <p>{image.exif?.settings}</p>
+          {image.exif?.focalLength && <p>{image.exif.focalLength}</p>}
         </div>
       </motion.div>
     </AnimatePresence>
