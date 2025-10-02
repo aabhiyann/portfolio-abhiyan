@@ -2,40 +2,48 @@ import { useParams } from "react-router-dom";
 import Page from "../components/Page";
 import Prose from "../components/Prose";
 import { articles } from "../data/Articles";
-import useSeo from '../utils/UseSeo';
-import useStructuredData from '../utils/UseStructuredData';
+import useSeo from "../utils/useSeo";
+import useStructuredData from "../utils/useStructuredData";
 
 function DeepDiveDetail() {
   const { slug } = useParams();
   const article = articles.find((article) => article.slug === slug);
 
   useSeo({
-    title: article ? `${article.title} – Deep Dive by Abhiyan Sainju` : "Article Not Found – Deep Dive by Abhiyan Sainju",
-    description: article ? article.abstract : "The requested article could not be found.",
-    keywords: article ? `${article.category}, ${article.title}, Abhiyan Sainju, deep dive, technology, mathematics, creativity` : "article not found, deep dive, technology, mathematics, creativity",
+    title: article
+      ? `${article.title} – Deep Dive by Abhiyan Sainju`
+      : "Article Not Found – Deep Dive by Abhiyan Sainju",
+    description: article
+      ? article.abstract
+      : "The requested article could not be found.",
+    keywords: article
+      ? `${article.category}, ${article.title}, Abhiyan Sainju, deep dive, technology, mathematics, creativity`
+      : "article not found, deep dive, technology, mathematics, creativity",
   });
 
   useStructuredData({
-    jsonLd: article ? {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": article.title,
-      "description": article.abstract,
-      "image": "/og-image.jpg", // Replace with actual article image if available
-      "datePublished": article.date, // Assuming article.date is in a valid format (e.g., YYYY-MM-DD)
-      "author": {
-        "@type": "Person",
-        "name": "Abhiyan Sainju"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Abhiyan Sainju Portfolio", // Replace with your portfolio name
-        "logo": {
-          "@type": "ImageObject",
-          "url": "/favicon.svg" // Replace with your logo URL
+    jsonLd: article
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: article.title,
+          description: article.abstract,
+          image: "/og-image.jpg", // Replace with actual article image if available
+          datePublished: article.date, // Assuming article.date is in a valid format (e.g., YYYY-MM-DD)
+          author: {
+            "@type": "Person",
+            name: "Abhiyan Sainju",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "Abhiyan Sainju Portfolio", // Replace with your portfolio name
+            logo: {
+              "@type": "ImageObject",
+              url: "/favicon.svg", // Replace with your logo URL
+            },
+          },
         }
-      }
-    } : null,
+      : null,
   });
 
   if (!article) {
