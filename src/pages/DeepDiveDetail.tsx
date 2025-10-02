@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import Page from "../components/Page";
 import Prose from "../components/Prose";
-import { articles } from "../data/articles";
-import useSeo from '../utils/useSeo';
-import useStructuredData from '../utils/useStructuredData';
+import { articles } from "../data/Articles";
+import useSeo from '../utils/UseSeo';
+import useStructuredData from '../utils/UseStructuredData';
 
 function DeepDiveDetail() {
   const { slug } = useParams();
