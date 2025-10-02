@@ -1,20 +1,16 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion"; 
-import { motionTokens } from "../utils/motion";
+import { motionTokens } from "../utils/Motion";
 import PhotographyGallery from "../components/PhotographyGallery";
-import { projects } from "../data/projects";
+import { projects } from "../data/Projects";
 import Page from "../components/Page";
 import LivingBackground from "../components/LivingBackground";
 import SectionTitle from "../components/SectionTitle";
-import { useTheme } from "../contexts/useTheme";
 import { Button } from "../components/ui/Button";
 import { Card } from "../components/ui/Card";
-import useSeo from '../utils/useSeo';
+import useSeo from '../utils/UseSeo';
 
 function Home() {
-  const { themeState } = useTheme();
-  const { isDarkMode, currentTheme } = themeState;
-
   useSeo({
     title: "Abhiyan Sainju – Software Engineer & Photographer",
     description: "Welcome to the personal portfolio of Abhiyan Sainju, a full-stack developer passionate about creating meaningful digital experiences and capturing moments through photography.",
@@ -64,8 +60,6 @@ function Home() {
           <SectionTitle 
             title="Featured Projects" 
             subtitle="A showcase of my recent work spanning web development, mobile applications, and creative coding projects." 
-            isDark={isDarkMode} 
-            currentTheme={currentTheme} 
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.slice(0, 3).map((project, index) => (
@@ -76,7 +70,7 @@ function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: motionTokens.duration.slow / 1000, delay: 0.1 + index * 0.1 }}
               >
-                <Card isDark={isDarkMode} currentTheme={currentTheme} className="h-full flex flex-col">
+                <Card className="h-full flex flex-col">
                   <h3 className="text-xl font-semibold mb-3 text-text-primary">{project.title}</h3>
                   <p className="text-text-secondary mb-4 flex-grow">{project.description}</p>
                   <div className="mt-auto">
@@ -104,8 +98,6 @@ function Home() {
           <SectionTitle 
             title="Photography" 
             subtitle="Capturing moments and stories through the lens. From street photography to landscape shots, each image tells a unique story." 
-            isDark={isDarkMode} 
-            currentTheme={currentTheme} 
           />
           <PhotographyGallery limit={6} />
           <motion.div
@@ -126,8 +118,6 @@ function Home() {
           <SectionTitle 
             title="About Me" 
             subtitle="I'm a passionate developer with a love for creating digital experiences that matter. When I'm not coding, you'll find me exploring new places with my camera or diving deep into the latest technology trends." 
-            isDark={isDarkMode} 
-            currentTheme={currentTheme} 
           />
           <Button as={Link} to="/about" variant="primary" size="lg">Read My Story</Button>
         </div>

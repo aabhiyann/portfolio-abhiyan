@@ -1,26 +1,9 @@
-/**
- * Standardized Card Component
- * 
- * A centralized card component that follows the design system standards.
- * All cards in the application should use this component for consistency.
- * 
- * Features:
- * - Theme-aware styling
- * - Consistent prop interface
- * - Design system integration
- * - Multiple variants and sizes
- */
-
 import React, { useEffect, useRef } from 'react';
 import VanillaTilt from 'vanilla-tilt';
-import { colorUtils } from '../../design/colors';
-import { designSystem } from '../../design/system';
 
 export interface CardProps {
   children: React.ReactNode;
   className?: string;
-  isDark?: boolean;
-  currentTheme?: string;
   variant?: 'default' | 'elevated' | 'outlined';
   padding?: 'sm' | 'md' | 'lg';
   style?: React.CSSProperties;
@@ -30,8 +13,6 @@ export interface CardProps {
 export const Card: React.FC<CardProps> = ({
   children,
   className = '',
-  isDark = false,
-  currentTheme = 'default',
   variant = 'default',
   padding = 'md',
   style = {},
@@ -50,55 +31,37 @@ export const Card: React.FC<CardProps> = ({
     }
   }, [interactive]);
 
-  const getVariantStyles = (): React.CSSProperties => {
+  const getVariantClasses = () => {
     switch (variant) {
       case 'elevated':
-        return {
-          backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
-          boxShadow: designSystem.shadows.lg,
-          border: 'none',
-        };
+        return 'bg-bg-surface shadow-lg';
       case 'outlined':
-        return {
-          backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
-          border: `1px solid ${colorUtils.getThemeColor('border', isDark, currentTheme)}`,
-          boxShadow: 'none',
-        };
+        return 'bg-bg-surface border border-border-primary';
       default:
-        return {
-          backgroundColor: colorUtils.getThemeColor('surface', isDark, currentTheme),
-          border: `1px solid ${colorUtils.getThemeColor('borderMuted', isDark, currentTheme)}`,
-          boxShadow: designSystem.shadows.sm,
-        };
+        return 'bg-bg-surface border border-border-secondary shadow-sm';
     }
   };
 
-  const getPaddingStyles = (): React.CSSProperties => {
+  const getPaddingClasses = () => {
     switch (padding) {
       case 'sm':
-        return { padding: designSystem.spacing.md };
+        return 'p-4';
       case 'md':
-        return { padding: designSystem.spacing.lg };
+        return 'p-6';
       case 'lg':
-        return { padding: designSystem.spacing.xl };
+        return 'p-8';
       default:
-        return { padding: designSystem.spacing.lg };
+        return 'p-6';
     }
   };
 
-  const baseStyles: React.CSSProperties = {
-    borderRadius: designSystem.borderRadius.xl,
-    transition: `all ${designSystem.animation.duration.normal} ${designSystem.animation.easing.easeInOut}`,
-    ...getVariantStyles(),
-    ...getPaddingStyles(),
-    ...style,
-  };
+  const baseClasses = 'rounded-xl transition-all duration-300 ease-in-out';
 
   return (
     <div
       ref={tiltRef}
-      className={className}
-      style={baseStyles}
+      className={`${baseClasses} ${getVariantClasses()} ${getPaddingClasses()} ${className}`}
+      style={style}
     >
       {children}
     </div>

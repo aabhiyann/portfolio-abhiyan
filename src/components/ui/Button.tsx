@@ -20,7 +20,7 @@ const getButtonClasses = (variant, size) => {
   return `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`;
 };
 
-export const Button = React.forwardRef(
+const Button = React.forwardRef(
   ({ as: Component = 'button', variant = 'primary', size = 'md', className = '', ...props }, ref) => {
     const classes = getButtonClasses(variant, size);
 

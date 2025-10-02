@@ -52,22 +52,22 @@ export const colors = {
   accent: {
     // Light Theme: Yellow + Blue
     primary: {
-      light: "#F9A825", // Warm yellow
+      light: "#3B82F6", // Blue
       dark: "#8B5CF6", // Purple
     },
 
     secondary: {
-      light: "#3B82F6", // Blue
+      light: "#F9A825", // Warm yellow
       dark: "#22C55E", // Green
     },
 
     hover: {
-      light: "#F59E0B", // Darker yellow
+      light: "#2563EB", // Darker blue
       dark: "#7C3AED", // Darker purple
     },
 
     focus: {
-      light: "#F9A825", // Yellow focus
+      light: "#3B82F6", // Blue focus
       dark: "#8B5CF6", // Purple focus
     },
   },
@@ -91,11 +91,11 @@ export const colors = {
     // Button Colors
     button: {
       primary: {
-        light: "#F9A825", // Yellow
+        light: "#3B82F6", // Blue
         dark: "#8B5CF6", // Purple
       },
       secondary: {
-        light: "#3B82F6", // Blue
+        light: "#F9A825", // Yellow
         dark: "#22C55E", // Green
       },
     },
@@ -163,7 +163,7 @@ export const colorUtils = {
    */
   getThemeDisplayName: (theme: string) => {
     const names = {
-      default: "Yellow + Blue / Purple + Green",
+      default: "Blue + Yellow / Purple + Green",
     };
     return names[theme] || theme;
   },
