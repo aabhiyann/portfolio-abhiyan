@@ -12,40 +12,70 @@
  */
 
 export const colors = {
-  // Light Theme: Yellow + Blue
+  // Light Theme Options
   light: {
-    // Background Colors
-    background: "#F1F5F9", // Light blue-gray
-    navbar: "#FFFBEB", // Warm cream
+    // Option 1: Clean & Modern (Default)
+    background: "#FAFAFA", // Clean white-gray
+    navbar: "#FFFFFF", // Pure white
     surface: "#FFFFFF", // Pure white
     card: "#FFFFFF", // Card backgrounds
 
-    // Text Colors
-    text: "#0F172A", // Dark slate
-    textSecondary: "#64748B", // Slate gray
-    textMuted: "#A0AEC0", // Light gray
+    // Text Colors - Better contrast
+    text: "#1A1A1A", // Near black for better readability
+    textSecondary: "#4A5568", // Darker gray for better contrast
+    textMuted: "#718096", // Medium gray for subtle text
 
     // Border Colors
-    border: "#A8A29E", // Warm border
-    borderMuted: "#64748B", // Muted border
+    border: "#E2E8F0", // Light gray border
+    borderMuted: "#F1F5F9", // Very light border
+  },
+
+  // Alternative Light Theme: Warm & Professional
+  lightWarm: {
+    background: "#FEFEFE", // Warm white
+    navbar: "#FDF6E3", // Warm cream
+    surface: "#FFFFFF", // Pure white
+    card: "#FFFFFF", // Card backgrounds
+
+    text: "#2D3748", // Dark gray
+    textSecondary: "#4A5568", // Medium dark gray
+    textMuted: "#718096", // Medium gray
+
+    border: "#D6D3D1", // Warm border
+    borderMuted: "#F3F4F6", // Light warm border
+  },
+
+  // Alternative Light Theme: Cool & Minimal
+  lightCool: {
+    background: "#F8FAFC", // Cool white
+    navbar: "#F1F5F9", // Cool light gray
+    surface: "#FFFFFF", // Pure white
+    card: "#FFFFFF", // Card backgrounds
+
+    text: "#0F172A", // Dark slate
+    textSecondary: "#475569", // Slate gray
+    textMuted: "#64748B", // Light slate
+
+    border: "#CBD5E1", // Cool border
+    borderMuted: "#E2E8F0", // Light cool border
   },
 
   // Dark Theme: Purple + Green
   dark: {
     // Background Colors
-    background: "#1A202C", // Dark slate
-    navbar: "#1A202C", // Dark slate
-    surface: "#2D3748", // Darker slate
-    card: "#2D3748", // Card backgrounds
+    background: "#0F172A", // Darker slate for better contrast
+    navbar: "#0F172A", // Darker slate
+    surface: "#1E293B", // Dark slate
+    card: "#1E293B", // Card backgrounds
 
-    // Text Colors
-    text: "#F4F4F7", // Light gray
-    textSecondary: "#A0AEC0", // Medium gray
-    textMuted: "#718096", // Muted gray
+    // Text Colors - Better contrast
+    text: "#F8FAFC", // Near white for better readability
+    textSecondary: "#CBD5E1", // Light gray for better contrast
+    textMuted: "#94A3B8", // Medium light gray for subtle text
 
     // Border Colors
-    border: "#4A5568", // Dark border
-    borderMuted: "#718096", // Muted border
+    border: "#334155", // Dark border
+    borderMuted: "#475569", // Muted border
   },
 
   // Accent Colors (Theme-aware)
@@ -115,8 +145,20 @@ export const colorUtils = {
   /**
    * Get theme-aware color
    */
-  getThemeColor: (colorKey: keyof typeof colors.light, isDark: boolean) => {
-    return isDark ? colors.dark[colorKey] : colors.light[colorKey];
+  getThemeColor: (colorKey: keyof typeof colors.light, isDark: boolean, themeVariant: string = 'default') => {
+    if (isDark) {
+      return colors.dark[colorKey];
+    }
+    
+    // Support different light theme variants
+    switch (themeVariant) {
+      case 'warm':
+        return colors.lightWarm[colorKey];
+      case 'cool':
+        return colors.lightCool[colorKey];
+      default:
+        return colors.light[colorKey];
+    }
   },
 
   /**
@@ -155,15 +197,17 @@ export const colorUtils = {
    * Get all available themes
    */
   getAvailableThemes: () => {
-    return ["default"];
+    return ["default", "warm", "cool"];
   },
 
   /**
    * Get theme display name
    */
   getThemeDisplayName: (theme: string) => {
-    const names = {
-      default: "Blue + Yellow / Purple + Green",
+    const names: Record<string, string> = {
+      default: "Clean & Modern",
+      warm: "Warm & Professional", 
+      cool: "Cool & Minimal",
     };
     return names[theme] || theme;
   },
