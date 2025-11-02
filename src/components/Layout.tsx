@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import SkipLink from "./SkipLink";
 import AIChatbot from "./AIChatbot";
 import FloatingActionButton from "./FloatingActionButton";
+import CustomCursor from "./CustomCursor";
 
 function Layout({ children }) {
   const { themeState, toggleTheme, setCurrentTheme } = useTheme();
@@ -13,6 +14,7 @@ function Layout({ children }) {
 
   return (
     <div className="min-h-screen bg-primary text-primary transition-colors duration-300">
+      <CustomCursor />
       <SkipLink />
       <Navbar
         isDark={themeState.isDarkMode}
