@@ -34,14 +34,14 @@ const LivingBackground: React.FC = () => {
       initialY: number;
 
       constructor() {
-        this.size = 200 + Math.random() * 300;
+        this.size = 300 + Math.random() * 400;
         this.initialX = Math.random() * canvas.width;
-        this.initialY = Math.random() * canvas.height * 0.6;
+        this.initialY = Math.random() * canvas.height * 0.8;
         this.x = this.initialX;
         this.y = this.initialY;
         this.speedX = (Math.random() - 0.5) * 0.5;
         this.speedY = (Math.random() - 0.5) * 0.3;
-        this.opacity = 0.03 + Math.random() * 0.04;
+        this.opacity = 0.08 + Math.random() * 0.12; // More visible
       }
 
       update() {
@@ -67,7 +67,10 @@ const LivingBackground: React.FC = () => {
         );
 
         gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-        gradient.addColorStop(0.5, `rgba(255, 255, 255, ${this.opacity * 0.5})`);
+        gradient.addColorStop(
+          0.5,
+          `rgba(255, 255, 255, ${this.opacity * 0.5})`
+        );
         gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
 
         ctx.fillStyle = gradient;
@@ -104,9 +107,9 @@ const LivingBackground: React.FC = () => {
           this.x = Math.random() * canvas.width * 0.3 + canvas.width * 0.2;
         }
 
-        this.length = 80 + Math.random() * 120;
-        this.speed = 2 + Math.random() * 4;
-        this.opacity = 0.4 + Math.random() * 0.4;
+        this.length = 100 + Math.random() * 150;
+        this.speed = 3 + Math.random() * 5;
+        this.opacity = 0.6 + Math.random() * 0.4; // More visible
         this.angle = 30 * (Math.PI / 180); // 30 degrees diagonal
         this.maxLife = 3000 + Math.random() * 2000;
         this.life = 0;
@@ -132,11 +135,14 @@ const LivingBackground: React.FC = () => {
         const gradient = ctx.createLinearGradient(this.x, this.y, endX, endY);
 
         gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-        gradient.addColorStop(0.5, `rgba(255, 255, 255, ${this.opacity * 0.5})`);
+        gradient.addColorStop(
+          0.5,
+          `rgba(255, 255, 255, ${this.opacity * 0.5})`
+        );
         gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
 
         ctx.strokeStyle = gradient;
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = 2; // Slightly thicker for visibility
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(endX, endY);
@@ -185,8 +191,8 @@ const LivingBackground: React.FC = () => {
         return !star.isDead();
       });
 
-      // Spawn new shooting stars occasionally
-      if (Math.random() < 0.002) {
+      // Spawn new shooting stars more frequently
+      if (Math.random() < 0.005) {
         shootingStars.push(new ShootingStar());
       }
 
@@ -195,8 +201,8 @@ const LivingBackground: React.FC = () => {
 
     resizeCanvas();
 
-    // Initialize clouds
-    for (let i = 0; i < 3; i++) {
+    // Initialize more clouds for better visibility
+    for (let i = 0; i < 5; i++) {
       clouds.push(new Cloud());
     }
 
@@ -214,7 +220,7 @@ const LivingBackground: React.FC = () => {
       resizeCanvas();
       // Reinitialize clouds
       clouds = [];
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 5; i++) {
         clouds.push(new Cloud());
       }
       // Clean up stars
@@ -247,4 +253,3 @@ const LivingBackground: React.FC = () => {
 };
 
 export default LivingBackground;
-

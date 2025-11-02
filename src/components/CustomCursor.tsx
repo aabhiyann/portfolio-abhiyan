@@ -2,58 +2,43 @@ import { useEffect, useRef } from "react";
 
 const CustomCursor: React.FC = () => {
   const cursorDot = useRef<HTMLDivElement>(null);
-  const cursorOutline = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const dot = cursorDot.current;
-    const outline = cursorOutline.current;
-    if (!dot || !outline) return;
+    if (!dot) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let dotX = 0;
+    let dotY = 0;
 
     const handleMouseMove = (e: MouseEvent) => {
-      const posX = e.clientX;
-      const posY = e.clientY;
-
-      // Move dot instantly
-      dot.style.left = `${posX}px`;
-      dot.style.top = `${posY}px`;
-
-      // Animate outline smoothly
-      outline.animate(
-        {
-          left: `${posX}px`,
-          top: `${posY}px`,
-        },
-        { duration: 500, fill: "forwards" }
-      );
+      mouseX = e.clientX;
+      mouseY = e.clientY;
     };
 
-    // Add hover effects for interactive elements
-    const interactiveElements = document.querySelectorAll(
-      "a, button, .project-card, [role='button']"
-    );
+    let animationFrameId: number;
 
-    const handleMouseEnter = () => {
-      if (outline) {
-        outline.style.transform = "translate(-50%, -50%) scale(1.5)";
-        outline.style.borderColor = "rgba(255, 255, 255, 1)";
-      }
+    const animate = () => {
+      // Smooth interpolation with lag effect
+      const speed = 0.15;
+      dotX += (mouseX - dotX) * speed;
+      dotY += (mouseY - dotY) * speed;
+
+      dot.style.left = `${dotX}px`;
+      dot.style.top = `${dotY}px`;
+
+      animationFrameId = requestAnimationFrame(animate);
     };
 
-    const handleMouseLeave = () => {
-      if (outline) {
-        outline.style.transform = "translate(-50%, -50%) scale(1)";
-        outline.style.borderColor = "rgba(255, 255, 255, 0.5)";
-      }
-    };
+    animate();
 
-    interactiveElements.forEach((el) => {
-      el.addEventListener("mouseenter", handleMouseEnter);
-      el.addEventListener("mouseleave", handleMouseLeave);
-    });
+    // No cursor changes on hover - just let it follow normally
 
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
       window.removeEventListener("mousemove", handleMouseMove);
       interactiveElements.forEach((el) => {
         el.removeEventListener("mouseenter", handleMouseEnter);
@@ -63,44 +48,25 @@ const CustomCursor: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <div
-        ref={cursorDot}
-        id="cursor-dot"
-        style={{
-          position: "fixed",
-          width: "8px",
-          height: "8px",
-          backgroundColor: "white",
-          borderRadius: "50%",
-          left: 0,
-          top: 0,
-          transform: "translate(-50%, -50%)",
-          pointerEvents: "none",
-          zIndex: 9999,
-          transition: "transform 0.1s ease-out",
-        }}
-      />
-      <div
-        ref={cursorOutline}
-        id="cursor-outline"
-        style={{
-          position: "fixed",
-          width: "30px",
-          height: "30px",
-          border: "2px solid rgba(255, 255, 255, 0.5)",
-          borderRadius: "50%",
-          left: 0,
-          top: 0,
-          transform: "translate(-50%, -50%)",
-          pointerEvents: "none",
-          zIndex: 9998,
-          transition: "transform 0.2s ease-out, border-color 0.2s ease-out",
-        }}
-      />
-    </>
+    <div
+      ref={cursorDot}
+      id="cursor-dot"
+      style={{
+        position: "fixed",
+        width: "8px",
+        height: "8px",
+        backgroundColor: "white",
+        borderRadius: "50%",
+        left: 0,
+        top: 0,
+        transform: "translate(-50%, -50%)",
+        pointerEvents: "none",
+        zIndex: 9999,
+        transition:
+          "width 0.3s ease-out, height 0.3s ease-out, border-radius 0.3s ease-out",
+      }}
+    />
   );
 };
 
 export default CustomCursor;
-
