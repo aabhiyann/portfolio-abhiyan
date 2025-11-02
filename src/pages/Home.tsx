@@ -26,7 +26,8 @@ function Home() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+        style={{ backgroundColor: "#000000" }}
       >
         <LivingBackground />
         <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-8 pt-24">
@@ -136,7 +137,6 @@ function Home() {
                       {project.description}
                     </p>
                   </div>
-                  <ProjectCardOverlay projectUrl="/projects" />
                 </Card>
               </motion.div>
             ))}

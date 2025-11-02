@@ -20,8 +20,8 @@ const CustomCursor: React.FC = () => {
     let animationFrameId: number;
 
     const animate = () => {
-      // Smooth interpolation with lag effect
-      const speed = 0.15;
+      // Smooth interpolation with more lag effect
+      const speed = 0.08; // Slower speed for more lag
       dotX += (mouseX - dotX) * speed;
       dotY += (mouseY - dotY) * speed;
 
@@ -33,16 +33,61 @@ const CustomCursor: React.FC = () => {
 
     animate();
 
-    // No cursor changes on hover - just let it follow normally
+    // Add hover effects for project cards
+    const projectCards = document.querySelectorAll(".project-card");
+
+    const handleMouseEnter = () => {
+      if (dot) {
+        dot.style.width = "120px";
+        dot.style.height = "40px";
+        dot.style.borderRadius = "20px";
+        dot.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+        dot.style.backdropFilter = "blur(8px)";
+        dot.style.border = "1px solid rgba(255, 255, 255, 0.3)";
+        dot.style.display = "flex";
+        dot.style.alignItems = "center";
+        dot.style.justifyContent = "center";
+        dot.textContent = "View Project";
+        dot.style.fontSize = "14px";
+        dot.style.fontWeight = "500";
+        dot.style.color = "white";
+        dot.style.padding = "0 16px";
+        dot.style.boxShadow = "0 0 12px rgba(255, 255, 255, 0.3)";
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (dot) {
+        dot.style.width = "12px";
+        dot.style.height = "12px";
+        dot.style.borderRadius = "50%";
+        dot.style.backgroundColor = "white";
+        dot.style.backdropFilter = "none";
+        dot.style.border = "none";
+        dot.style.display = "block";
+        dot.textContent = "";
+        dot.style.fontSize = "";
+        dot.style.fontWeight = "";
+        dot.style.color = "";
+        dot.style.padding = "";
+        dot.style.boxShadow =
+          "0 0 8px rgba(255, 255, 255, 0.6), 0 0 16px rgba(255, 255, 255, 0.4)";
+      }
+    };
+
+    projectCards.forEach((card) => {
+      card.addEventListener("mouseenter", handleMouseEnter);
+      card.addEventListener("mouseleave", handleMouseLeave);
+    });
 
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("mousemove", handleMouseMove);
-      interactiveElements.forEach((el) => {
-        el.removeEventListener("mouseenter", handleMouseEnter);
-        el.removeEventListener("mouseleave", handleMouseLeave);
+      projectCards.forEach((card) => {
+        card.removeEventListener("mouseenter", handleMouseEnter);
+        card.removeEventListener("mouseleave", handleMouseLeave);
       });
     };
   }, []);
@@ -53,8 +98,8 @@ const CustomCursor: React.FC = () => {
       id="cursor-dot"
       style={{
         position: "fixed",
-        width: "8px",
-        height: "8px",
+        width: "12px",
+        height: "12px",
         backgroundColor: "white",
         borderRadius: "50%",
         left: 0,
@@ -63,7 +108,10 @@ const CustomCursor: React.FC = () => {
         pointerEvents: "none",
         zIndex: 9999,
         transition:
-          "width 0.3s ease-out, height 0.3s ease-out, border-radius 0.3s ease-out",
+          "width 0.3s ease-out, height 0.3s ease-out, border-radius 0.3s ease-out, background-color 0.3s ease-out, backdrop-filter 0.3s ease-out, border 0.3s ease-out, box-shadow 0.3s ease-out",
+        whiteSpace: "nowrap",
+        boxShadow:
+          "0 0 8px rgba(255, 255, 255, 0.6), 0 0 16px rgba(255, 255, 255, 0.4)",
       }}
     />
   );
