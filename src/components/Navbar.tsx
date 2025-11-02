@@ -52,8 +52,8 @@ const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-black/80 border-b border-white/10 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-black/70 border-b border-white/20 transition-colors duration-300 shadow-lg shadow-black/20 before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none overflow-hidden">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="font-heading font-bold text-xl text-white">
@@ -147,7 +147,7 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       {isMobileMenuOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden relative z-10 bg-black/80 backdrop-blur-md border-t border-white/10">
           <nav className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <NavLinks />
           </nav>

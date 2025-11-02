@@ -9,7 +9,6 @@ import ProjectDeconstructor from "../components/ProjectDeconstructor";
 import { Button, Chip } from "../components/ui";
 import useSeo from "../utils/useSeo";
 import useStructuredData from "../utils/useStructuredData";
-import LivingBackground from "../components/LivingBackground";
 
 function Projects() {
   const [selectedArch, setSelectedArch] = useState(null);
@@ -126,7 +125,6 @@ function Projects() {
         className="relative py-24 min-h-screen"
         style={{ backgroundColor: "#000000" }}
       >
-        <LivingBackground />
         <div className="relative z-20">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <SectionTitle
@@ -159,9 +157,9 @@ function Projects() {
                 >
                   <Card
                     interactive
-                    className="flex flex-col bg-white/5 border border-white/10 hover:border-white/20 backdrop-blur-sm"
+                    className="flex flex-col bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent before:pointer-events-none"
                   >
-                    <div className="aspect-video bg-gradient-to-br from-white/10 to-white/5 relative overflow-hidden group">
+                    <div className="aspect-video bg-gradient-to-br from-white/15 to-white/5 relative overflow-hidden group border-b border-white/10">
                       <img
                         src={project.image}
                         alt={project.title}
@@ -177,7 +175,7 @@ function Projects() {
 
                     <div className="p-8 flex flex-col flex-grow">
                       <div className="mb-4">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/10 text-white border border-white/20">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/10 backdrop-blur-md text-white border border-white/20 shadow-md shadow-black/10">
                           💡 {project.impact}
                         </span>
                       </div>

@@ -4,13 +4,11 @@ import { motionTokens } from "../utils/motion";
 import PhotographyGallery from "../components/PhotographyGallery";
 import { projects } from "../data/Projects";
 import Page from "../components/Page";
-import LivingBackground from "../components/LivingBackground";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
 import useSeo from "../utils/useSeo";
 import { ArrowUpRight } from "lucide-react";
-import ProjectCardOverlay from "../components/ProjectCardOverlay";
 
 function Home() {
   useSeo({
@@ -29,11 +27,10 @@ function Home() {
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
         style={{ backgroundColor: "#000000" }}
       >
-        <LivingBackground />
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-8 pt-24">
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-8 pt-32">
           <div className="max-w-4xl mx-auto text-center">
             <motion.span
-              className="inline-flex items-center rounded-full bg-white/5 px-4 py-1.5 text-sm font-medium text-white/80 ring-1 ring-inset ring-white/10"
+              className="inline-flex items-center rounded-full bg-white/10 backdrop-blur-md px-4 py-1.5 text-sm font-medium text-white/90 ring-1 ring-inset ring-white/20 shadow-lg shadow-black/10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: motionTokens.duration.slow / 1000 }}
@@ -51,7 +48,7 @@ function Home() {
             >
               Abhiyan Sainju
               <motion.button
-                className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 flex items-center justify-center transition-colors"
+                className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 hover:border-white/30 flex items-center justify-center transition-all duration-300 shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-white/5"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{
@@ -98,7 +95,7 @@ function Home() {
               </Link>
               <Link
                 to="/about"
-                className="rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-white/20 hover:bg-white/20 transition-colors"
+                className="rounded-full bg-white/10 backdrop-blur-md px-6 py-3 text-sm font-semibold text-white shadow-md shadow-black/10 ring-1 ring-inset ring-white/20 hover:bg-white/15 hover:ring-white/30 hover:shadow-lg hover:shadow-white/5 transition-all duration-300"
               >
                 Contact Now
               </Link>
@@ -132,12 +129,12 @@ function Home() {
                 }}
                 whileHover={{ y: -8 }}
               >
-                <Card className="h-full flex flex-col bg-white/5 dark:bg-gray-900 border border-white/10 dark:border-gray-800 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-white/20 dark:hover:border-gray-700">
+                <Card className="h-full flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:border-white/30 hover:bg-white/15">
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-3 text-white dark:text-text-primary">
+                    <h3 className="text-xl font-semibold mb-3 text-white">
                       {project.title}
                     </h3>
-                    <p className="text-white/80 dark:text-text-secondary mb-4 flex-grow">
+                    <p className="text-white/80 mb-4 flex-grow">
                       {project.description}
                     </p>
                   </div>

@@ -2,16 +2,11 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
 import Page from "../components/Page";
-import { useTheme } from "../contexts/useTheme";
-import { colorUtils } from "../design/colors";
 import SectionTitle from "../components/SectionTitle";
 import useSeo from "../utils/useSeo";
 import useStructuredData from "../utils/useStructuredData";
-import LivingBackground from "../components/LivingBackground";
 
 function About() {
-  const { themeState } = useTheme();
-  const { isDarkMode, currentTheme } = themeState;
 
   useSeo({
     title: "About Abhiyan Sainju – Software Engineer & Photographer",
@@ -132,7 +127,6 @@ function About() {
         className="relative py-24 min-h-screen flex items-center"
         style={{ backgroundColor: "#000000" }}
       >
-        <LivingBackground />
         <div className="relative z-20 w-full">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -185,7 +179,7 @@ function About() {
                 }}
               >
                 {/* Portrait Image Placeholder */}
-                <div className="aspect-square rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 relative overflow-hidden backdrop-blur-sm">
+                <div className="aspect-square rounded-2xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 relative overflow-hidden backdrop-blur-md shadow-xl shadow-black/20 before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/10 before:via-transparent before:to-transparent before:pointer-events-none">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 text-white">
                     <h3 className="text-xl font-semibold">Abhiyan Sainju</h3>
@@ -226,7 +220,7 @@ function About() {
                   }}
                 >
                   {/* Timeline Dot */}
-                  <div className="relative z-10 flex-shrink-0 w-16 h-16 bg-white/10 border border-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                  <div className="relative z-10 flex-shrink-0 w-16 h-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center shadow-lg shadow-black/10">
                     <div className="w-3 h-3 bg-white rounded-full"></div>
                   </div>
 
@@ -262,7 +256,7 @@ function About() {
             {funFacts.map((fact, index) => (
               <motion.div
                 key={index}
-                className="bg-white/5 rounded-2xl p-6 border border-white/10 hover:shadow-lg hover:border-white/20 transition-all duration-300 backdrop-blur-sm"
+                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:shadow-2xl hover:shadow-white/10 hover:border-white/30 hover:bg-white/15 transition-all duration-300 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent before:pointer-events-none"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -308,7 +302,7 @@ function About() {
               </Link>
               <Link
                 to="/photography"
-                className="rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-white/20 hover:bg-white/20 transition-colors"
+                className="rounded-full bg-white/10 backdrop-blur-md px-6 py-3 text-sm font-semibold text-white shadow-md shadow-black/10 ring-1 ring-inset ring-white/20 hover:bg-white/15 hover:ring-white/30 hover:shadow-lg hover:shadow-white/5 transition-all duration-300"
               >
                 View My Photography
               </Link>
