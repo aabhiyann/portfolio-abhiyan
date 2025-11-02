@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
 import Page from "../components/Page";
 import { useTheme } from "../contexts/useTheme";
 import { colorUtils } from "../design/colors";
 import SectionTitle from "../components/SectionTitle";
-import useSeo from '../utils/useSeo';
-import useStructuredData from '../utils/useStructuredData';
+import useSeo from "../utils/useSeo";
+import useStructuredData from "../utils/useStructuredData";
 import LivingBackground from "../components/LivingBackground";
 
 function About() {
@@ -15,35 +15,38 @@ function About() {
 
   useSeo({
     title: "About Abhiyan Sainju – Software Engineer & Photographer",
-    description: "Learn more about Abhiyan Sainju, a passionate software engineer and photographer based in Washington D.C., with a focus on cloud infrastructure, AI, and visual storytelling.",
-    keywords: "Abhiyan Sainju, about me, software engineer, photographer, cloud computing, AI, Washington D.C., Kathmandu, Nepal",
+    description:
+      "Learn more about Abhiyan Sainju, a passionate software engineer and photographer based in Washington D.C., with a focus on cloud infrastructure, AI, and visual storytelling.",
+    keywords:
+      "Abhiyan Sainju, about me, software engineer, photographer, cloud computing, AI, Washington D.C., Kathmandu, Nepal",
   });
 
   useStructuredData({
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Abhiyan Sainju",
-      "url": "https://www.abhiyansainju.com", // Replace with actual domain
-      "image": "/og-image.jpg", // Replace with actual portrait image
-      "sameAs": [
+      name: "Abhiyan Sainju",
+      url: "https://www.abhiyansainju.com", // Replace with actual domain
+      image: "/og-image.jpg", // Replace with actual portrait image
+      sameAs: [
         "https://github.com/aabhiyann",
         "https://linkedin.com/in/abhiyansainju",
         // Add other social media profiles
       ],
-      "jobTitle": "Software Engineer",
-      "worksFor": {
+      jobTitle: "Software Engineer",
+      worksFor: {
         "@type": "Organization",
-        "name": "[Your Company Name]" // Replace with actual company name
+        name: "[Your Company Name]", // Replace with actual company name
       },
-      "alumniOf": "[Your University Name]", // Replace with actual university
-      "hasOccupation": {
+      alumniOf: "[Your University Name]", // Replace with actual university
+      hasOccupation: {
         "@type": "Occupation",
-        "name": "Photographer",
-        "description": "Capturing moments and stories through the lens."
+        name: "Photographer",
+        description: "Capturing moments and stories through the lens.",
       },
-      "description": "A passionate software engineer and photographer based in Washington D.C., focusing on cloud infrastructure, AI, and visual storytelling."
-    }
+      description:
+        "A passionate software engineer and photographer based in Washington D.C., focusing on cloud infrastructure, AI, and visual storytelling.",
+    },
   });
   const timeline = [
     {
@@ -125,74 +128,74 @@ function About() {
   return (
     <Page>
       {/* Hero Section */}
-      <section 
+      <section
         className="relative py-24 min-h-screen flex items-center"
         style={{ backgroundColor: "#000000" }}
       >
         <LivingBackground />
         <div className="relative z-20 w-full">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: motionTokens.duration.slow / 1000 }}
-            >
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 font-heading text-white">
-                About Me
-              </h1>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: motionTokens.duration.slow / 1000 }}
+              >
+                <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 font-heading text-white">
+                  About Me
+                </h1>
 
-              <div className="prose prose-lg max-w-none text-white/80">
-                <p className="text-xl mb-6">
-                  I'm a passionate software engineer and photographer based in
-                  Washington D.C., originally from the vibrant city of
-                  Kathmandu, Nepal.
-                </p>
+                <div className="prose prose-lg max-w-none text-white/80">
+                  <p className="text-xl mb-6">
+                    I'm a passionate software engineer and photographer based in
+                    Washington D.C., originally from the vibrant city of
+                    Kathmandu, Nepal.
+                  </p>
 
-                <p className="mb-6">
-                  My journey in technology began with a curiosity about how
-                  things work, which led me to pursue software engineering with
-                  a focus on cloud infrastructure and artificial intelligence. I
-                  believe in building solutions that not only solve problems but
-                  also create meaningful impact.
-                </p>
+                  <p className="mb-6">
+                    My journey in technology began with a curiosity about how
+                    things work, which led me to pursue software engineering
+                    with a focus on cloud infrastructure and artificial
+                    intelligence. I believe in building solutions that not only
+                    solve problems but also create meaningful impact.
+                  </p>
 
-                <p className="mb-6">
-                  When I'm not coding, you'll find me with a camera in hand,
-                  capturing the world around me. Photography has taught me to
-                  see beauty in everyday moments and to appreciate the stories
-                  that unfold in front of my lens.
-                </p>
+                  <p className="mb-6">
+                    When I'm not coding, you'll find me with a camera in hand,
+                    capturing the world around me. Photography has taught me to
+                    see beauty in everyday moments and to appreciate the stories
+                    that unfold in front of my lens.
+                  </p>
 
-                <p>
-                  I'm always excited to collaborate on innovative projects,
-                  discuss the latest in tech, or share stories about our
-                  favorite football club (Visca Barça!).
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: motionTokens.duration.slow / 1000,
-                delay: 0.2,
-              }}
-            >
-              {/* Portrait Image Placeholder */}
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 relative overflow-hidden backdrop-blur-sm">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                <div className="absolute bottom-6 left-6 text-white">
-                  <h3 className="text-xl font-semibold">Abhiyan Sainju</h3>
-                  <p className="text-white/80">
-                    Software Engineer & Photographer
+                  <p>
+                    I'm always excited to collaborate on innovative projects,
+                    discuss the latest in tech, or share stories about our
+                    favorite football club (Visca Barça!).
                   </p>
                 </div>
-              </div>
-            </motion.div>
-          </div>
+              </motion.div>
+
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: motionTokens.duration.slow / 1000,
+                  delay: 0.2,
+                }}
+              >
+                {/* Portrait Image Placeholder */}
+                <div className="aspect-square rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 relative overflow-hidden backdrop-blur-sm">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 text-white">
+                    <h3 className="text-xl font-semibold">Abhiyan Sainju</h3>
+                    <p className="text-white/80">
+                      Software Engineer & Photographer
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -200,8 +203,8 @@ function About() {
       {/* Journey Timeline */}
       <section className="py-24" style={{ backgroundColor: "#000000" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <SectionTitle 
-            title="My Journey" 
+          <SectionTitle
+            title="My Journey"
             subtitle="A timeline of my journey through technology and photography"
           />
 
@@ -237,12 +240,8 @@ function About() {
                         {item.year}
                       </span>
                     </div>
-                    <p className="text-white/70 mb-2">
-                      {item.description}
-                    </p>
-                    <p className="text-sm text-white/60">
-                      📍 {item.location}
-                    </p>
+                    <p className="text-white/70 mb-2">{item.description}</p>
+                    <p className="text-sm text-white/60">📍 {item.location}</p>
                   </div>
                 </motion.div>
               ))}
@@ -254,8 +253,8 @@ function About() {
       {/* Fun Facts */}
       <section className="py-24" style={{ backgroundColor: "#000000" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <SectionTitle 
-            title="Fun Facts" 
+          <SectionTitle
+            title="Fun Facts"
             subtitle="Some interesting things about me"
           />
 
@@ -276,9 +275,7 @@ function About() {
                 <h3 className="text-xl font-semibold text-white mb-3">
                   {fact.title}
                 </h3>
-                <p className="text-white/70">
-                  {fact.description}
-                </p>
+                <p className="text-white/70">{fact.description}</p>
               </motion.div>
             ))}
           </div>
@@ -288,8 +285,8 @@ function About() {
       {/* CTA Section */}
       <section className="py-24" style={{ backgroundColor: "#000000" }}>
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
-          <SectionTitle 
-            title="Let's Connect" 
+          <SectionTitle
+            title="Let's Connect"
             subtitle="I'm always excited to collaborate and discuss new opportunities"
           />
           <motion.div
