@@ -9,6 +9,7 @@ import ProjectDeconstructor from "../components/ProjectDeconstructor";
 import { Button, Chip } from "../components/ui";
 import useSeo from "../utils/useSeo";
 import useStructuredData from "../utils/useStructuredData";
+import LivingBackground from "../components/LivingBackground";
 
 function Projects() {
   const [selectedArch, setSelectedArch] = useState(null);
@@ -121,7 +122,9 @@ function Projects() {
 
   return (
     <Page>
-      <section className="py-24 bg-bg-primary">
+      <section className="relative py-24 min-h-screen" style={{ backgroundColor: "#000000" }}>
+        <LivingBackground />
+        <div className="relative z-20">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Projects"
@@ -151,8 +154,8 @@ function Projects() {
                   delay: index * 0.1,
                 }}
               >
-                <Card interactive className="flex flex-col">
-                  <div className="aspect-video bg-gradient-to-br from-accent/20 to-blue-500/20 relative overflow-hidden group">
+                <Card interactive className="flex flex-col bg-white/5 border border-white/10 hover:border-white/20 backdrop-blur-sm">
+                  <div className="aspect-video bg-gradient-to-br from-white/10 to-white/5 relative overflow-hidden group">
                     <img
                       src={project.image}
                       alt={project.title}
@@ -168,12 +171,12 @@ function Projects() {
 
                   <div className="p-8 flex flex-col flex-grow">
                     <div className="mb-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-accent/10 text-accent">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/10 text-white border border-white/20">
                         💡 {project.impact}
                       </span>
                     </div>
 
-                    <p className="text-text-secondary mb-6 leading-relaxed flex-grow">
+                    <p className="text-white/80 mb-6 leading-relaxed flex-grow">
                       {project.description}
                     </p>
 
@@ -191,7 +194,7 @@ function Projects() {
                       ))}
                     </div>
 
-                    <div className="flex gap-4 items-center mt-auto pt-4 border-t border-border-primary">
+                    <div className="flex gap-4 items-center mt-auto pt-4 border-t border-white/10">
                       <Button
                         as="a"
                         href={project.github}
@@ -242,6 +245,7 @@ function Projects() {
               </motion.div>
             ))}
           </div>
+        </div>
         </div>
       </section>
       {selectedArch && (

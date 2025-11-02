@@ -13,8 +13,7 @@ const LivingBackground: React.FC = () => {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let shootingStars: ShootingStar[] = [];
-    let clouds: Cloud[] = [];
+    let fallingStars: FallingStar[] = [];
     let time = 0;
 
     const resizeCanvas = () => {
@@ -22,69 +21,8 @@ const LivingBackground: React.FC = () => {
       canvas.height = window.innerHeight;
     };
 
-    // Smoky cloud class
-    class Cloud {
-      x: number;
-      y: number;
-      size: number;
-      speedX: number;
-      speedY: number;
-      opacity: number;
-      initialX: number;
-      initialY: number;
-
-      constructor() {
-        this.size = 300 + Math.random() * 400;
-        this.initialX = Math.random() * canvas.width;
-        this.initialY = Math.random() * canvas.height * 0.8;
-        this.x = this.initialX;
-        this.y = this.initialY;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.3;
-        this.opacity = 0.08 + Math.random() * 0.12; // More visible
-      }
-
-      update() {
-        // Slow drift movement
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        // Gentle floating motion
-        this.x += Math.sin(time * 0.001 + this.initialX * 0.01) * 0.2;
-        this.y += Math.cos(time * 0.001 + this.initialY * 0.01) * 0.2;
-      }
-
-      draw() {
-        if (!ctx) return;
-
-        const gradient = ctx.createRadialGradient(
-          this.x,
-          this.y,
-          0,
-          this.x,
-          this.y,
-          this.size
-        );
-
-        gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-        gradient.addColorStop(
-          0.5,
-          `rgba(255, 255, 255, ${this.opacity * 0.5})`
-        );
-        gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-
-        ctx.fillStyle = gradient;
-        ctx.fillRect(
-          this.x - this.size,
-          this.y - this.size,
-          this.size * 2,
-          this.size * 2
-        );
-      }
-    }
-
-    // Shooting star class
-    class ShootingStar {
+    // Falling star class (lines falling down)
+    class FallingStar {
       x: number;
       y: number;
       length: number;
@@ -93,75 +31,85 @@ const LivingBackground: React.FC = () => {
       angle: number;
       life: number;
       maxLife: number;
+      initialOpacity: number;
 
-      constructor() {
-        // Start from various positions (top-left to bottom-right diagonal)
-        const side = Math.random();
-        if (side < 0.5) {
-          // Start from left side
-          this.x = -150;
-          this.y = Math.random() * canvas.height * 0.4;
-        } else {
-          // Start from top
-          this.y = -150;
-          this.x = Math.random() * canvas.width * 0.3 + canvas.width * 0.2;
-        }
+      constructor(
+        index: number,
+        total: number,
+        canvasWidth: number,
+        canvasHeight: number
+      ) {
+        // Start from anywhere in the canvas
+        this.x = Math.random() * canvasWidth;
+        this.y = Math.random() * canvasHeight;
 
-        this.length = 100 + Math.random() * 150;
-        this.speed = 3 + Math.random() * 5;
-        this.opacity = 0.6 + Math.random() * 0.4; // More visible
-        this.angle = 30 * (Math.PI / 180); // 30 degrees diagonal
-        this.maxLife = 3000 + Math.random() * 2000;
+        // Consistent properties for falling stars
+        this.length = 20 + (index % 5) * 10; // 20-60px lines
+        this.speed = 0.5 + (index % 3) * 0.3; // 0.5-1.1px per frame (slower)
+        this.angle = Math.PI / 2; // Falling straight down (positive Y direction)
+        this.initialOpacity = 0.4 + (index % 4) * 0.15; // 0.4-0.85 opacity
+        this.opacity = this.initialOpacity;
+        this.maxLife = 3000 + (index % 4) * 1000; // Live for 3-6 seconds
         this.life = 0;
       }
 
-      update(deltaTime: number) {
+      update(canvasWidth: number, canvasHeight: number, deltaTime: number) {
+        // Increment life timer
         this.life += deltaTime;
-        // Move diagonally
-        this.x += Math.cos(this.angle) * this.speed * 1.5;
-        this.y += Math.sin(this.angle) * this.speed;
 
-        // Fade out
+        // Move downward (falling) - positive Y is downward in canvas coordinates
+        this.y += this.speed; // Direct downward movement
+        // Small horizontal drift for natural movement
+        this.x += Math.sin(time * 0.001 + this.x * 0.01) * 0.1;
+
+        // Fade out over time
         const ageRatio = this.life / this.maxLife;
-        this.opacity = Math.max(0, this.opacity * (1 - ageRatio * 1.2));
-      }
+        this.opacity = this.initialOpacity * (1 - ageRatio);
 
-      draw() {
-        if (!ctx || this.opacity <= 0) return;
-
-        const endX = this.x + Math.cos(this.angle) * this.length;
-        const endY = this.y + Math.sin(this.angle) * this.length;
-
-        const gradient = ctx.createLinearGradient(this.x, this.y, endX, endY);
-
-        gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-        gradient.addColorStop(
-          0.5,
-          `rgba(255, 255, 255, ${this.opacity * 0.5})`
-        );
-        gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = 2; // Slightly thicker for visibility
-        ctx.beginPath();
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(endX, endY);
-        ctx.stroke();
-
-        // Bright dot at head
-        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity * 0.9})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2);
-        ctx.fill();
+        // Wrap horizontally (just for movement, not resetting)
+        if (this.x > canvasWidth + 50) {
+          this.x = -50;
+        }
+        if (this.x < -50) {
+          this.x = canvasWidth + 50;
+        }
       }
 
       isDead() {
-        return (
-          this.y > canvas.height + 100 ||
-          this.x > canvas.width + 100 ||
-          this.opacity <= 0 ||
-          this.life >= this.maxLife
+        return this.life >= this.maxLife || this.opacity <= 0;
+      }
+
+      draw() {
+        if (!ctx) return;
+
+        // Calculate line - head is at current position, tail extends upward (since it's falling)
+        // When falling down, the trail should be above the head
+        const startX = this.x; // Head position
+        const startY = this.y; // Head position (bright dot here)
+        const endX = this.x; // Tail is straight up
+        const endY = this.y - this.length; // Tail extends upward from the head
+
+        // Create gradient for the falling star line (bright head at bottom, fading tail upward)
+        const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`); // Bright at head (bottom)
+        gradient.addColorStop(
+          0.5,
+          `rgba(255, 255, 255, ${this.opacity * 0.6})`
         );
+        gradient.addColorStop(1, `rgba(255, 255, 255, 0)`); // Transparent at tail (top)
+
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(startX, startY); // Start at head (bright)
+        ctx.lineTo(endX, endY); // End at tail (fading)
+        ctx.stroke();
+
+        // Small bright dot at the head (the falling point)
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 1, 0, Math.PI * 2);
+        ctx.fill();
       }
     }
 
@@ -174,26 +122,26 @@ const LivingBackground: React.FC = () => {
 
       if (!ctx) return;
 
-      // Clear canvas with dark background
-      ctx.fillStyle = themeState.isDarkMode ? "#0A0A0A" : "#FAFAFA";
+      // Clear canvas with deep black background
+      ctx.fillStyle = themeState.isDarkMode ? "#000000" : "#FAFAFA";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Update and draw clouds
-      clouds.forEach((cloud) => {
-        cloud.update();
-        cloud.draw();
+      // Update and draw falling stars, remove dead ones
+      fallingStars = fallingStars.filter((star) => {
+        star.update(canvas.width, canvas.height, deltaTime);
+        if (!star.isDead()) {
+          star.draw();
+          return true;
+        }
+        return false;
       });
 
-      // Update and draw shooting stars
-      shootingStars = shootingStars.filter((star) => {
-        star.update(deltaTime);
-        star.draw();
-        return !star.isDead();
-      });
-
-      // Spawn new shooting stars more frequently
-      if (Math.random() < 0.005) {
-        shootingStars.push(new ShootingStar());
+      // Spawn new falling stars more frequently to replace the ones that fade out
+      if (Math.random() < 0.01) {
+        const newIndex = fallingStars.length;
+        fallingStars.push(
+          new FallingStar(newIndex, 15, canvas.width, canvas.height)
+        );
       }
 
       animationFrameId = requestAnimationFrame(animate);
@@ -201,16 +149,12 @@ const LivingBackground: React.FC = () => {
 
     resizeCanvas();
 
-    // Initialize more clouds for better visibility
-    for (let i = 0; i < 5; i++) {
-      clouds.push(new Cloud());
-    }
-
-    // Initialize a few shooting stars
-    for (let i = 0; i < 2; i++) {
-      setTimeout(() => {
-        shootingStars.push(new ShootingStar());
-      }, i * 1000);
+    // Initialize fewer falling stars at start (they'll spawn more over time)
+    const numStars = 5;
+    for (let i = 0; i < numStars; i++) {
+      fallingStars.push(
+        new FallingStar(i, numStars, canvas.width, canvas.height)
+      );
     }
 
     lastTime = performance.now();
@@ -218,15 +162,14 @@ const LivingBackground: React.FC = () => {
 
     const handleResize = () => {
       resizeCanvas();
-      // Reinitialize clouds
-      clouds = [];
-      for (let i = 0; i < 5; i++) {
-        clouds.push(new Cloud());
+      // Reinitialize falling stars on resize
+      fallingStars = [];
+      const numStars = 15;
+      for (let i = 0; i < numStars; i++) {
+        fallingStars.push(
+          new FallingStar(i, numStars, canvas.width, canvas.height)
+        );
       }
-      // Clean up stars
-      shootingStars = shootingStars.filter(
-        (star) => star.x < canvas.width + 100 && star.y < canvas.height + 100
-      );
     };
 
     window.addEventListener("resize", handleResize);
