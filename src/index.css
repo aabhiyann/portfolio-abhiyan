@@ -80,8 +80,8 @@
 body {
   margin: 0;
   font-family: var(--font-family-body);
-  background-color: var(--color-light-background);
-  color: var(--color-light-text);
+  background-color: #000000;
+  color: #ffffff;
 }
 
 html,

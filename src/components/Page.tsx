@@ -4,7 +4,7 @@ import { motionTokens } from "../utils/motion";
 function Page({ children }) {
   return (
     <motion.div
-      className="min-h-screen pt-24"
+      className="min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

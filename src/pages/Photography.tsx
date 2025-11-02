@@ -3,7 +3,6 @@ import { motionTokens } from "../utils/motion";
 import PhotographyGallery from "../components/PhotographyGallery";
 import Page from "../components/Page";
 import useSeo from "../utils/useSeo";
-import LivingBackground from "../components/LivingBackground";
 
 function Photography() {
   useSeo({
@@ -20,7 +19,6 @@ function Photography() {
         className="relative py-24 min-h-screen"
         style={{ backgroundColor: "#000000" }}
       >
-        <LivingBackground />
         <div className="relative z-20">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <motion.div

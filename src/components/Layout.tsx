@@ -7,32 +7,40 @@ import SkipLink from "./SkipLink";
 import AIChatbot from "./AIChatbot";
 import FloatingActionButton from "./FloatingActionButton";
 import CustomCursor from "./CustomCursor";
+import LivingBackground from "./LivingBackground";
 
 function Layout({ children }) {
   const { themeState, toggleTheme, setCurrentTheme } = useTheme();
   const [isChatbotOpen, setChatbotOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-primary text-primary transition-colors duration-300">
+    <div
+      className="min-h-screen relative"
+      style={{ backgroundColor: "#000000", color: "#ffffff" }}
+    >
+      <LivingBackground />
       <CustomCursor />
       <SkipLink />
-      <Navbar
-        isDark={themeState.isDarkMode}
-        toggleTheme={toggleTheme}
-        currentTheme={themeState.currentTheme}
-        switchColorTheme={setCurrentTheme}
-      />
+      <div className="relative z-10">
+        <Navbar
+          isDark={themeState.isDarkMode}
+          toggleTheme={toggleTheme}
+          currentTheme={themeState.currentTheme}
+          switchColorTheme={setCurrentTheme}
+        />
 
-      <motion.main
-        id="content"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-      >
-        {children}
-      </motion.main>
+        <motion.main
+          id="content"
+          className="relative z-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          {children}
+        </motion.main>
 
-      <Footer />
+        <Footer />
+      </div>
 
       <FloatingActionButton
         onClick={() => setChatbotOpen(!isChatbotOpen)}
