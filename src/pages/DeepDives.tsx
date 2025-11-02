@@ -4,6 +4,7 @@ import { motionTokens } from "../utils/motion";
 import { articles, categories } from "../data/Articles";
 import Page from "../components/Page";
 import useSeo from "../utils/useSeo";
+import LivingBackground from "../components/LivingBackground";
 
 function DeepDives() {
   useSeo({
@@ -17,7 +18,9 @@ function DeepDives() {
   return (
     <Page>
       {/* Hero Section */}
-      <section className="py-24">
+      <section className="relative py-24 min-h-screen" style={{ backgroundColor: "#000000" }}>
+        <LivingBackground />
+        <div className="relative z-20">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <motion.div
             className="text-center mb-16"
@@ -25,11 +28,11 @@ function DeepDives() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: motionTokens.duration.slow / 1000 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-primary mb-6 font-heading">
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 font-heading">
               Deep Dives
             </h1>
 
-            <p className="text-xl text-secondary mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
               In-depth explorations of technology, mathematics, and the
               intersection of code and creativity. Each article represents hours
               of research, analysis, and thoughtful writing.
@@ -41,8 +44,8 @@ function DeepDives() {
                   key={index}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     index === 0
-                      ? "bg-accent-primary text-white"
-                      : "bg-surface text-secondary hover:text-accent border border-primary/20"
+                      ? "bg-white text-black"
+                      : "bg-white/10 text-white/70 hover:text-white hover:bg-white/20 border border-white/20"
                   }`}
                 >
                   {category}
@@ -53,7 +56,7 @@ function DeepDives() {
 
           {/* Featured Articles */}
           <div className="mb-16">
-            <h2 className="text-2xl font-semibold text-text-light dark:text-text-dark mb-8 font-heading">
+            <h2 className="text-2xl font-semibold text-white mb-8 font-heading">
               Featured Articles
             </h2>
 
@@ -63,7 +66,7 @@ function DeepDives() {
                 .map((article, index) => (
                   <motion.article
                     key={article.id}
-                    className="group bg-surface-light dark:bg-surface-dark rounded-2xl border border-black/5 dark:border-white/10 overflow-hidden hover:shadow-xl transition-all duration-300"
+                    className="group bg-white/5 rounded-2xl border border-white/10 overflow-hidden hover:shadow-xl hover:border-white/20 transition-all duration-300 backdrop-blur-sm"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

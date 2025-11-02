@@ -108,7 +108,11 @@ function Home() {
       </section>
 
       {/* Projects Teaser */}
-      <section id="projects" className="py-24 bg-bg-primary">
+      <section
+        id="projects"
+        className="py-24"
+        style={{ backgroundColor: "#000000" }}
+      >
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Featured Projects"
@@ -159,7 +163,7 @@ function Home() {
       </section>
 
       {/* Photography Teaser */}
-      <section className="py-24 bg-bg-surface">
+      <section className="py-24" style={{ backgroundColor: "#000000" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Photography"
@@ -184,7 +188,7 @@ function Home() {
       </section>
 
       {/* About Teaser */}
-      <section className="py-24 bg-bg-primary">
+      <section className="py-24" style={{ backgroundColor: "#000000" }}>
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
           <SectionTitle
             title="About Me"

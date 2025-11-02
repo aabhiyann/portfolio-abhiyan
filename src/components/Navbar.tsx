@@ -4,10 +4,46 @@ import { useTheme } from "../contexts/useTheme";
 
 const NavLinks = () => (
   <>
-    <NavLink to="/projects" className={({ isActive }) => `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-primary' : 'text-secondary'} hover:text-primary`}>Projects</NavLink>
-    <NavLink to="/photography" className={({ isActive }) => `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-primary' : 'text-secondary'} hover:text-primary`}>Photography</NavLink>
-    <NavLink to="/deep-dives" className={({ isActive }) => `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-primary' : 'text-secondary'} hover:text-primary`}>Deep Dives</NavLink>
-    <NavLink to="/about" className={({ isActive }) => `px-3 py-2 rounded-md text-sm font-medium ${isActive ? 'text-primary' : 'text-secondary'} hover:text-primary`}>About</NavLink>
+    <NavLink
+      to="/projects"
+      className={({ isActive }) =>
+        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          isActive ? "text-white" : "text-white/70"
+        } hover:text-white`
+      }
+    >
+      Projects
+    </NavLink>
+    <NavLink
+      to="/photography"
+      className={({ isActive }) =>
+        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          isActive ? "text-white" : "text-white/70"
+        } hover:text-white`
+      }
+    >
+      Photography
+    </NavLink>
+    <NavLink
+      to="/deep-dives"
+      className={({ isActive }) =>
+        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          isActive ? "text-white" : "text-white/70"
+        } hover:text-white`
+      }
+    >
+      Deep Dives
+    </NavLink>
+    <NavLink
+      to="/about"
+      className={({ isActive }) =>
+        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          isActive ? "text-white" : "text-white/70"
+        } hover:text-white`
+      }
+    >
+      About
+    </NavLink>
   </>
 );
 
@@ -16,11 +52,13 @@ const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-sm bg-bg-surface/80 border-b border-border-primary transition-colors duration-300">
+    <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-black/80 border-b border-white/10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="font-heading font-bold text-xl text-primary">AS</Link>
+            <Link to="/" className="font-heading font-bold text-xl text-white">
+              AS
+            </Link>
           </div>
           <div className="hidden md:block">
             <nav className="ml-10 flex items-baseline space-x-4">
@@ -30,24 +68,78 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full text-secondary hover:text-primary hover:bg-bg-card focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg-surface focus:ring-accent-primary"
-              aria-label={`Switch to ${themeState.isDarkMode ? "light" : "dark"} mode`}
+              className="p-2 rounded-full text-white/70 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-white/50 transition-colors"
+              aria-label={`Switch to ${
+                themeState.isDarkMode ? "light" : "dark"
+              } mode`}
             >
               {themeState.isDarkMode ? (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                  />
+                </svg>
               ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                  />
+                </svg>
               )}
             </button>
             <div className="-mr-2 flex md:hidden">
               <button
                 onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-secondary hover:text-primary hover:bg-bg-card focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-bg-surface focus:ring-accent-primary"
+                className="inline-flex items-center justify-center p-2 rounded-md text-white/70 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-white/50 transition-colors"
               >
                 {isMobileMenuOpen ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
                 ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
                 )}
               </button>
             </div>

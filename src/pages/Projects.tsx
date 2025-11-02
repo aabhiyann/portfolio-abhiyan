@@ -122,130 +122,138 @@ function Projects() {
 
   return (
     <Page>
-      <section className="relative py-24 min-h-screen" style={{ backgroundColor: "#000000" }}>
+      <section
+        className="relative py-24 min-h-screen"
+        style={{ backgroundColor: "#000000" }}
+      >
         <LivingBackground />
         <div className="relative z-20">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <SectionTitle
-            title="Projects"
-            subtitle="A collection of projects that showcase my passion for building innovative solutions that solve real-world problems with modern technology."
-          />
+          <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <SectionTitle
+              title="Projects"
+              subtitle="A collection of projects that showcase my passion for building innovative solutions that solve real-world problems with modern technology."
+            />
 
-          {apiError && (
-            <div
-              className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-8"
-              role="alert"
-            >
-              <strong className="font-bold">Error: </strong>
-              <span className="block sm:inline">{apiError}</span>
-            </div>
-          )}
-
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: motionTokens.duration.slow / 1000,
-                  delay: index * 0.1,
-                }}
+            {apiError && (
+              <div
+                className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-8"
+                role="alert"
               >
-                <Card interactive className="flex flex-col bg-white/5 border border-white/10 hover:border-white/20 backdrop-blur-sm">
-                  <div className="aspect-video bg-gradient-to-br from-white/10 to-white/5 relative overflow-hidden group">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
-                        {project.title}
-                      </h3>
+                <strong className="font-bold">Error: </strong>
+                <span className="block sm:inline">{apiError}</span>
+              </div>
+            )}
+
+            {/* Projects Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {projects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: motionTokens.duration.slow / 1000,
+                    delay: index * 0.1,
+                  }}
+                >
+                  <Card
+                    interactive
+                    className="flex flex-col bg-white/5 border border-white/10 hover:border-white/20 backdrop-blur-sm"
+                  >
+                    <div className="aspect-video bg-gradient-to-br from-white/10 to-white/5 relative overflow-hidden group">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
+                          {project.title}
+                        </h3>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="p-8 flex flex-col flex-grow">
-                    <div className="mb-4">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/10 text-white border border-white/20">
-                        💡 {project.impact}
-                      </span>
-                    </div>
+                    <div className="p-8 flex flex-col flex-grow">
+                      <div className="mb-4">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/10 text-white border border-white/20">
+                          💡 {project.impact}
+                        </span>
+                      </div>
 
-                    <p className="text-white/80 mb-6 leading-relaxed flex-grow">
-                      {project.description}
-                    </p>
-
-                    {project.elaboratedDescription && (
-                      <p className="mb-6 text-sm text-slate-500 dark:text-slate-300 bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg border border-purple-200 dark:border-purple-800">
-                        {project.elaboratedDescription}
+                      <p className="text-white/80 mb-6 leading-relaxed flex-grow">
+                        {project.description}
                       </p>
-                    )}
 
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((tech) => (
-                        <Chip key={tech} size="sm">
-                          {tech}
-                        </Chip>
-                      ))}
-                    </div>
+                      {project.elaboratedDescription && (
+                        <p className="mb-6 text-sm text-slate-500 dark:text-slate-300 bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg border border-purple-200 dark:border-purple-800">
+                          {project.elaboratedDescription}
+                        </p>
+                      )}
 
-                    <div className="flex gap-4 items-center mt-auto pt-4 border-t border-white/10">
-                      <Button
-                        as="a"
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        variant="ghost"
-                        size="sm"
-                      >
-                        GitHub
-                      </Button>
-                      <Button
-                        as="a"
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        variant="ghost"
-                        size="sm"
-                      >
-                        Live Demo
-                      </Button>
-                      {project.architecture && (
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.tech.map((tech) => (
+                          <Chip key={tech} size="sm">
+                            {tech}
+                          </Chip>
+                        ))}
+                      </div>
+
+                      <div className="flex gap-4 items-center mt-auto pt-4 border-t border-white/10">
                         <Button
-                          onClick={() => setSelectedArch(project.architecture)}
+                          as="a"
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           variant="ghost"
                           size="sm"
                         >
-                          Architecture
+                          GitHub
                         </Button>
-                      )}
-                      <Button
-                        onClick={() => handleElaborate(project.id)}
-                        disabled={
-                          project.isLoading || project.elaboratedDescription
-                        }
-                        variant="primary"
-                        size="sm"
-                        className="ml-auto"
-                      >
-                        {project.isLoading
-                          ? "Generating..."
-                          : project.elaboratedDescription
-                          ? "Done"
-                          : "Elaborate"}
-                      </Button>
+                        <Button
+                          as="a"
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          variant="ghost"
+                          size="sm"
+                        >
+                          Live Demo
+                        </Button>
+                        {project.architecture && (
+                          <Button
+                            onClick={() =>
+                              setSelectedArch(project.architecture)
+                            }
+                            variant="ghost"
+                            size="sm"
+                          >
+                            Architecture
+                          </Button>
+                        )}
+                        <Button
+                          onClick={() => handleElaborate(project.id)}
+                          disabled={
+                            project.isLoading || project.elaboratedDescription
+                          }
+                          variant="primary"
+                          size="sm"
+                          className="ml-auto"
+                        >
+                          {project.isLoading
+                            ? "Generating..."
+                            : project.elaboratedDescription
+                            ? "Done"
+                            : "Elaborate"}
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
         </div>
       </section>
       {selectedArch && (
