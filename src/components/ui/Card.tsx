@@ -36,11 +36,11 @@ export const Card: React.FC<CardProps> = ({
   const getVariantClasses = () => {
     switch (variant) {
       case "elevated":
-        return "bg-bg-surface shadow-lg";
+        return "bg-white/10 backdrop-blur-md border border-white/20 shadow-lg shadow-black/20";
       case "outlined":
-        return "bg-bg-surface border border-border-primary";
+        return "bg-white/10 backdrop-blur-md border border-white/20";
       default:
-        return "bg-bg-surface border border-border-secondary shadow-sm";
+        return "bg-white/10 backdrop-blur-md border border-white/20 shadow-md shadow-black/10";
     }
   };
 
@@ -57,7 +57,8 @@ export const Card: React.FC<CardProps> = ({
     }
   };
 
-  const baseClasses = "rounded-xl transition-all duration-300 ease-in-out";
+  const baseClasses =
+    "rounded-xl transition-all duration-300 ease-in-out relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:via-transparent before:to-transparent before:pointer-events-none";
 
   return (
     <div
@@ -66,7 +67,7 @@ export const Card: React.FC<CardProps> = ({
       style={style}
       data-theme={themeState.isDarkMode ? "dark" : "light"}
     >
-      {children}
+      <div className="relative z-10">{children}</div>
     </div>
   );
 };

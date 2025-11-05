@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Typography, TypographyProps } from './ui/Typography';
+import React from "react";
+import { motion } from "framer-motion";
+import { Typography, TypographyProps } from "./ui/Typography";
 
-interface SectionTitleProps extends Omit<TypographyProps, 'color'> {
+interface SectionTitleProps extends Omit<TypographyProps, "color"> {
   title: string;
   subtitle?: string;
 }
@@ -20,7 +20,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <Typography variant="h2" {...typographyProps}>
+      <Typography variant="h2" {...typographyProps} className="text-white">
         {title}
       </Typography>
       {subtitle && (
@@ -28,18 +28,19 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
           variant="body"
           color="secondary"
           {...typographyProps}
-          style={{ maxWidth: '48rem', margin: '1rem auto 0' }}
+          style={{ maxWidth: "48rem", margin: "1rem auto 0" }}
+          className="text-white/80"
         >
           {subtitle}
         </Typography>
       )}
       <motion.div
-        className="absolute -bottom-2 left-1/2 w-24 h-1 bg-accent-primary"
-        style={{ x: '-50%' }}
+        className="absolute -bottom-2 left-1/2 w-24 h-1 bg-white/30"
+        style={{ x: "-50%" }}
         initial={{ width: 0 }}
-        whileInView={{ width: '6rem' }}
+        whileInView={{ width: "6rem" }}
         viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.3, ease: 'easeInOut' }}
+        transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
       />
     </motion.div>
   );

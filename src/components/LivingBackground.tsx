@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { useTheme } from '../contexts/useTheme';
+import React, { useRef, useEffect } from "react";
+import { useTheme } from "../contexts/useTheme";
 
 const LivingBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -9,109 +9,190 @@ const LivingBackground: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let animationFrameId: number;
-    let particles: Particle[] = [];
-    const mouse = { x: -1000, y: -1000 };
+    let fallingStars: FallingStar[] = [];
+    let time = 0;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
 
-    class Particle {
+    // Falling star class (lines falling down)
+    class FallingStar {
       x: number;
       y: number;
-      size: number;
-      speedX: number;
-      speedY: number;
-      color: string;
+      length: number;
+      speed: number;
+      opacity: number;
+      angle: number;
+      life: number;
+      maxLife: number;
+      initialOpacity: number;
 
-      constructor(x: number, y: number, color: string) {
-        this.x = x;
-        this.y = y;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-        this.color = color;
+      constructor(
+        index: number,
+        total: number,
+        canvasWidth: number,
+        canvasHeight: number
+      ) {
+        // Start from anywhere in the canvas
+        this.x = Math.random() * canvasWidth;
+        this.y = Math.random() * canvasHeight;
+
+        // Consistent properties for falling stars
+        this.length = 20 + (index % 5) * 10; // 20-60px lines
+        this.speed = 0.5 + (index % 3) * 0.3; // 0.5-1.1px per frame (slower)
+        this.angle = Math.PI / 2; // Falling straight down (positive Y direction)
+        this.initialOpacity = 0.4 + (index % 4) * 0.15; // 0.4-0.85 opacity
+        this.opacity = this.initialOpacity;
+        this.maxLife = 3000 + (index % 4) * 1000; // Live for 3-6 seconds
+        this.life = 0;
       }
 
-      update() {
-        if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-        if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+      update(canvasWidth: number, canvasHeight: number, deltaTime: number) {
+        // Increment life timer
+        this.life += deltaTime;
 
-        this.x += this.speedX;
-        this.y += this.speedY;
+        // Move downward (falling) - positive Y is downward in canvas coordinates
+        this.y += this.speed; // Direct downward movement
+        // Small horizontal drift for natural movement
+        this.x += Math.sin(time * 0.001 + this.x * 0.01) * 0.1;
 
-        // Mouse interaction
-        const dx = mouse.x - this.x;
-        const dy = mouse.y - this.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < 100) {
-          this.x -= dx / 20;
-          this.y -= dy / 20;
+        // Fade out over time
+        const ageRatio = this.life / this.maxLife;
+        this.opacity = this.initialOpacity * (1 - ageRatio);
+
+        // Wrap horizontally (just for movement, not resetting)
+        if (this.x > canvasWidth + 50) {
+          this.x = -50;
         }
+        if (this.x < -50) {
+          this.x = canvasWidth + 50;
+        }
+      }
+
+      isDead() {
+        return this.life >= this.maxLife || this.opacity <= 0;
       }
 
       draw() {
         if (!ctx) return;
-        ctx.fillStyle = this.color;
+
+        // Calculate line - head is at current position, tail extends upward (since it's falling)
+        // When falling down, the trail should be above the head
+        const startX = this.x; // Head position
+        const startY = this.y; // Head position (bright dot here)
+        const endX = this.x; // Tail is straight up
+        const endY = this.y - this.length; // Tail extends upward from the head
+
+        // Create gradient for the falling star line (bright head at bottom, fading tail upward)
+        const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
+        gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`); // Bright at head (bottom)
+        gradient.addColorStop(
+          0.5,
+          `rgba(255, 255, 255, ${this.opacity * 0.6})`
+        );
+        gradient.addColorStop(1, `rgba(255, 255, 255, 0)`); // Transparent at tail (top)
+
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 1.5;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.moveTo(startX, startY); // Start at head (bright)
+        ctx.lineTo(endX, endY); // End at tail (fading)
+        ctx.stroke();
+
+        // Small bright dot at the head (the falling point)
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 1, 0, Math.PI * 2);
         ctx.fill();
       }
     }
 
-    const init = () => {
-      particles = [];
-      const particleColor = themeState.isDarkMode ? 'rgba(226, 232, 240, 0.5)' : 'rgba(51, 65, 85, 0.5)';
-      const numberOfParticles = (canvas.width * canvas.height) / 9000;
+    let lastTime = performance.now();
 
-      for (let i = 0; i < numberOfParticles; i++) {
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
-        particles.push(new Particle(x, y, particleColor));
-      }
-    };
+    const animate = (currentTime: number) => {
+      const deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
+      time += deltaTime;
 
-    const animate = () => {
       if (!ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(particle => {
-        particle.update();
-        particle.draw();
+
+      // Clear canvas with deep black background
+      ctx.fillStyle = themeState.isDarkMode ? "#000000" : "#FAFAFA";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Update and draw falling stars, remove dead ones
+      fallingStars = fallingStars.filter((star) => {
+        star.update(canvas.width, canvas.height, deltaTime);
+        if (!star.isDead()) {
+          star.draw();
+          return true;
+        }
+        return false;
       });
+
+      // Spawn new falling stars more frequently to replace the ones that fade out
+      if (Math.random() < 0.01) {
+        const newIndex = fallingStars.length;
+        fallingStars.push(
+          new FallingStar(newIndex, 15, canvas.width, canvas.height)
+        );
+      }
+
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    const handleMouseMove = (event: MouseEvent) => {
-      mouse.x = event.clientX;
-      mouse.y = event.clientY;
+    resizeCanvas();
+
+    // Initialize fewer falling stars at start (they'll spawn more over time)
+    const numStars = 5;
+    for (let i = 0; i < numStars; i++) {
+      fallingStars.push(
+        new FallingStar(i, numStars, canvas.width, canvas.height)
+      );
+    }
+
+    lastTime = performance.now();
+    animationFrameId = requestAnimationFrame(animate);
+
+    const handleResize = () => {
+      resizeCanvas();
+      // Reinitialize falling stars on resize
+      fallingStars = [];
+      const numStars = 15;
+      for (let i = 0; i < numStars; i++) {
+        fallingStars.push(
+          new FallingStar(i, numStars, canvas.width, canvas.height)
+        );
+      }
     };
 
-    resizeCanvas();
-    init();
-    animate();
-
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      init();
-    });
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', () => {
-        resizeCanvas();
-        init();
-      });
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("resize", handleResize);
     };
   }, [themeState.isDarkMode]);
 
-  return <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        zIndex: 0,
+        width: "100%",
+        height: "100%",
+      }}
+    />
+  );
 };
 
 export default LivingBackground;
