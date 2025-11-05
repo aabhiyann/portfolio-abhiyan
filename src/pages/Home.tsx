@@ -8,16 +8,85 @@ import SectionTitle from "../components/SectionTitle";
 import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
 import useSeo from "../utils/useSeo";
-import { ArrowUpRight } from "lucide-react";
+import DottedBackground from "../components/DottedBackground";
+import DraggableCards from "../components/DraggableCards";
+import CanvasConnections from "../components/CanvasConnections";
+import SkillsSlider from "../components/SkillsSlider";
+import { useState, useEffect } from "react";
 
 function Home() {
   useSeo({
-    title: "Abhiyan Sainju – Software Engineer & Photographer",
+    title: "Abhiyan Sainju – Creative Software Engineer",
     description:
-      "Welcome to the personal portfolio of Abhiyan Sainju, a full-stack developer passionate about creating meaningful digital experiences and capturing moments through photography.",
+      "Building intelligent systems at the intersection of engineering and creativity. Full-stack developer passionate about creating meaningful digital experiences.",
     keywords:
-      "Abhiyan Sainju, portfolio, software engineer, photographer, web development, React, TypeScript, projects, photography gallery",
+      "Abhiyan Sainju, portfolio, creative software engineer, photographer, web development, React, TypeScript, projects, photography gallery",
   });
+
+  const [isMobile, setIsMobile] = useState(false);
+  const [cards, setCards] = useState([
+    {
+      id: 1,
+      tag: "Cloud Intelligence",
+      title: "InfraSight",
+      width: 300,
+      height: 220,
+      x: typeof window !== "undefined" ? window.innerWidth * 0.15 : 300,
+      y: typeof window !== "undefined" ? window.innerHeight * 0.22 : 200,
+      image:
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80",
+      connections: [2, 3],
+    },
+    {
+      id: 2,
+      tag: "Teaching",
+      title: "GWU Algorithms TA",
+      width: 300,
+      height: 220,
+      x: typeof window !== "undefined" ? window.innerWidth * 0.68 : 800,
+      y: typeof window !== "undefined" ? window.innerHeight * 0.18 : 150,
+      image:
+        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop&q=80",
+      connections: [1, 4],
+    },
+    {
+      id: 3,
+      tag: "Photography",
+      title: "iPhone 15 Pro Max",
+      width: 280,
+      height: 200,
+      x: typeof window !== "undefined" ? window.innerWidth * 0.12 : 250,
+      y: typeof window !== "undefined" ? window.innerHeight * 0.58 : 500,
+      image:
+        "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&h=300&fit=crop&q=80",
+      connections: [1, 4],
+    },
+    {
+      id: 4,
+      tag: "AI SaaS",
+      title: "TalkifyDocs",
+      width: 320,
+      height: 240,
+      x: typeof window !== "undefined" ? window.innerWidth * 0.65 : 750,
+      y: typeof window !== "undefined" ? window.innerHeight * 0.55 : 550,
+      image:
+        "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&q=80",
+      connections: [2, 3],
+    },
+  ]);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const handleCardMove = (id: number, x: number, y: number) => {
+    setCards((prev) => prev.map((c) => (c.id === id ? { ...c, x, y } : c)));
+  };
 
   return (
     <Page>
@@ -27,18 +96,14 @@ function Home() {
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
         style={{ backgroundColor: "#000000" }}
       >
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-8 pt-32">
+        <DottedBackground />
+        <CanvasConnections cards={cards} />
+
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-8 pt-20 sm:pt-32">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.span
-              className="inline-flex items-center rounded-full bg-white/10 backdrop-blur-md px-4 py-1.5 text-sm font-medium text-white/90 ring-1 ring-inset ring-white/20 shadow-lg shadow-black/10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: motionTokens.duration.slow / 1000 }}
-            >
-              Software Engineer & Photographer
-            </motion.span>
             <motion.h1
-              className="mt-8 text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white flex items-center justify-center gap-3"
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white mb-6 leading-tight"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -46,27 +111,11 @@ function Home() {
                 delay: 0.1,
               }}
             >
-              Abhiyan Sainju
-              <motion.button
-                className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 hover:border-white/30 flex items-center justify-center transition-all duration-300 shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-white/5"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  duration: motionTokens.duration.slow / 1000,
-                  delay: 0.2,
-                }}
-                onClick={() => {
-                  document.getElementById("projects")?.scrollIntoView({
-                    behavior: "smooth",
-                  });
-                }}
-                aria-label="Scroll to projects"
-              >
-                <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-              </motion.button>
+              Creative <span className="italic font-semibold">Software</span>{" "}
+              Engineer.
             </motion.h1>
             <motion.p
-              className="mt-6 text-lg max-w-2xl mx-auto leading-8 text-white/80"
+              className="text-base sm:text-lg lg:text-xl text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -74,12 +123,10 @@ function Home() {
                 delay: 0.2,
               }}
             >
-              I'm a versatile developer specializing in full-stack web
-              development and creative solutions to help grow your business.
-              Let's build something great!
+              Building intelligent systems at the intersection of engineering
+              and creativity.
             </motion.p>
             <motion.div
-              className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -89,19 +136,17 @@ function Home() {
             >
               <Link
                 to="/projects"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black shadow-sm hover:bg-gray-200 transition-colors"
+                className="inline-block bg-white text-black px-6 sm:px-8 py-3 rounded-md font-semibold hover:opacity-85 transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                See All Projects
-              </Link>
-              <Link
-                to="/about"
-                className="rounded-full bg-white/10 backdrop-blur-md px-6 py-3 text-sm font-semibold text-white shadow-md shadow-black/10 ring-1 ring-inset ring-white/20 hover:bg-white/15 hover:ring-white/30 hover:shadow-lg hover:shadow-white/5 transition-all duration-300"
-              >
-                Contact Now
+                Explore my work
               </Link>
             </motion.div>
           </div>
         </div>
+
+        <DraggableCards onCardMove={handleCardMove} isMobile={isMobile} />
+        <SkillsSlider />
       </section>
 
       {/* Projects Teaser */}
