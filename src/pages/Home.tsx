@@ -99,8 +99,8 @@ function Home() {
         <DottedBackground />
         <CanvasConnections cards={cards} />
 
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-8 pt-20 sm:pt-32">
-          <div className="max-w-4xl mx-auto text-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 pt-20 sm:pt-32 pointer-events-none">
+          <div className="max-w-4xl mx-auto text-center pointer-events-auto">
             <motion.h1
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white mb-6 leading-tight"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}

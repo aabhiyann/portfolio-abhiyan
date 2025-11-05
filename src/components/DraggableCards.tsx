@@ -171,7 +171,7 @@ const DraggableCards: React.FC<DraggableCardsProps> = ({
             left: card.x,
             top: card.y,
             width: card.width,
-            zIndex: 10,
+            zIndex: 20,
           }}
           drag={!isMobile}
           dragMomentum={false}
