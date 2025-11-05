@@ -183,13 +183,13 @@ const DraggableCards: React.FC<DraggableCardsProps> = ({
           whileTap={{ scale: 0.98 }}
         >
             <div
-              className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1"
+              className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1 pointer-events-none"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               {card.tag}
             </div>
             <div
-              className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-250 hover:border-white/20"
+              className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-250 hover:border-white/20 pointer-events-none"
               style={{
                 height: card.height,
                 background: "#0a0a0a",
@@ -199,7 +199,7 @@ const DraggableCards: React.FC<DraggableCardsProps> = ({
               <img
                 src={card.image}
                 alt={card.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover pointer-events-none"
                 loading="lazy"
               />
               <div
