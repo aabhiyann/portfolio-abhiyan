@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface Card {
   id: number;
@@ -26,8 +26,11 @@ const DraggableCards: React.FC<DraggableCardsProps> = ({
   onCardMove,
   isMobile = false,
 }) => {
+  const navigate = useNavigate();
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const [cards, setCards] = useState<Card[]>([]);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragDelta, setDragDelta] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const updateSize = () => {
@@ -109,12 +112,20 @@ const DraggableCards: React.FC<DraggableCardsProps> = ({
     setCards(initialCards);
   }, [windowSize]);
 
+  const handleDragStart = () => {
+    setIsDragging(true);
+    setDragDelta({ x: 0, y: 0 });
+  };
+
   const handleDrag = (
     cardId: number,
     _event: MouseEvent | TouchEvent | PointerEvent,
     info: { delta: { x: number; y: number } }
   ) => {
     if (isMobile) return; // Disable dragging on mobile
+
+    // Track total drag distance
+    setDragDelta({ x: info.delta.x, y: info.delta.y });
 
     const card = cards.find((c) => c.id === cardId);
     if (card) {
@@ -127,29 +138,50 @@ const DraggableCards: React.FC<DraggableCardsProps> = ({
     }
   };
 
+  const handleDragEnd = () => {
+    // Small delay to prevent accidental link clicks after drag
+    setTimeout(() => {
+      setIsDragging(false);
+      setDragDelta({ x: 0, y: 0 });
+    }, 100);
+  };
+
+  const handleCardClick = (card: Card) => {
+    // Only navigate if we didn't drag (or dragged very little)
+    const dragDistance = Math.sqrt(
+      dragDelta.x * dragDelta.x + dragDelta.y * dragDelta.y
+    );
+
+    if (card.link && dragDistance < 10 && !isDragging) {
+      navigate(card.link);
+    }
+  };
+
   if (cards.length === 0) return null;
 
   return (
     <>
-      {cards.map((card) => {
-        const CardContent = (
-          <motion.div
-            key={card.id}
-            className={`absolute ${
-              isMobile ? "cursor-pointer" : "cursor-grab active:cursor-grabbing"
-            }`}
-            style={{
-              left: card.x,
-              top: card.y,
-              width: card.width,
-              zIndex: 10,
-            }}
-            drag={!isMobile}
-            dragMomentum={false}
-            onDrag={(e, info) => handleDrag(card.id, e, info)}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-          >
+      {cards.map((card) => (
+        <motion.div
+          key={card.id}
+          className={`absolute ${
+            isMobile ? "cursor-pointer" : "cursor-grab active:cursor-grabbing"
+          }`}
+          style={{
+            left: card.x,
+            top: card.y,
+            width: card.width,
+            zIndex: 10,
+          }}
+          drag={!isMobile}
+          dragMomentum={false}
+          onDragStart={handleDragStart}
+          onDrag={(e, info) => handleDrag(card.id, e, info)}
+          onDragEnd={handleDragEnd}
+          onClick={() => handleCardClick(card)}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.98 }}
+        >
             <div
               className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
@@ -184,17 +216,8 @@ const DraggableCards: React.FC<DraggableCardsProps> = ({
                 )}
               </div>
             </div>
-          </motion.div>
-        );
-
-        return card.link ? (
-          <Link key={card.id} to={card.link} className="block">
-            {CardContent}
-          </Link>
-        ) : (
-          CardContent
-        );
-      })}
+        </motion.div>
+      ))}
     </>
   );
 };

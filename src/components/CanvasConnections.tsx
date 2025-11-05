@@ -45,8 +45,15 @@ const CanvasConnections: React.FC<CanvasConnectionsProps> = ({
     if (!ctx) return;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      // Constrain canvas to parent container (hero section)
+      const parent = canvas.parentElement;
+      if (parent) {
+        canvas.width = parent.clientWidth;
+        canvas.height = parent.clientHeight;
+      } else {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
     };
 
     resizeCanvas();
@@ -161,7 +168,7 @@ const CanvasConnections: React.FC<CanvasConnectionsProps> = ({
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-screen pointer-events-none"
+      className="absolute top-0 left-0 w-full h-full pointer-events-none"
       style={{ zIndex: 2 }}
     />
   );
