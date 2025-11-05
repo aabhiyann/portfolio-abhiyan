@@ -25,10 +25,10 @@ const SkillsSlider: React.FC = () => {
 
   return (
     <div
-      className="fixed bottom-0 left-0 w-full py-12 pointer-events-none"
+      className="absolute bottom-0 left-0 w-full py-12 pointer-events-none"
       style={{
         background: "linear-gradient(to top, rgba(0,0,0,0.95), transparent)",
-        zIndex: 100,
+        zIndex: 5,
       }}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
