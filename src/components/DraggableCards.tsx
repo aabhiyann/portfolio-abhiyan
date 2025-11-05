@@ -182,40 +182,40 @@ const DraggableCards: React.FC<DraggableCardsProps> = ({
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
         >
+          <div
+            className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1 pointer-events-none"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            {card.tag}
+          </div>
+          <div
+            className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-250 hover:border-white/20 pointer-events-none"
+            style={{
+              height: card.height,
+              background: "#0a0a0a",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+            }}
+          >
+            <img
+              src={card.image}
+              alt={card.title}
+              className="w-full h-full object-cover pointer-events-none"
+              loading="lazy"
+            />
             <div
-              className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1 pointer-events-none"
+              className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-250"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              {card.tag}
-            </div>
-            <div
-              className="relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-250 hover:border-white/20 pointer-events-none"
-              style={{
-                height: card.height,
-                background: "#0a0a0a",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-              }}
-            >
-              <img
-                src={card.image}
-                alt={card.title}
-                className="w-full h-full object-cover pointer-events-none"
-                loading="lazy"
-              />
-              <div
-                className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-250"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              >
-                <div className="text-white text-sm sm:text-base font-semibold tracking-tight mb-1">
-                  {card.title}
-                </div>
-                {card.description && (
-                  <div className="text-white/70 text-xs sm:text-sm">
-                    {card.description}
-                  </div>
-                )}
+              <div className="text-white text-sm sm:text-base font-semibold tracking-tight mb-1">
+                {card.title}
               </div>
+              {card.description && (
+                <div className="text-white/70 text-xs sm:text-sm">
+                  {card.description}
+                </div>
+              )}
             </div>
+          </div>
         </motion.div>
       ))}
     </>
@@ -223,4 +223,3 @@ const DraggableCards: React.FC<DraggableCardsProps> = ({
 };
 
 export default DraggableCards;
-
