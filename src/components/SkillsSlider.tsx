@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const SkillsSlider: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const skills = [
     "Python",
@@ -22,6 +23,29 @@ const SkillsSlider: React.FC = () => {
 
   // Duplicate skills for seamless infinite scroll
   const duplicatedSkills = [...skills, ...skills];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById("hero");
+      if (heroSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        const scrollPosition = window.scrollY + window.innerHeight;
+
+        // Show slider when hero section is visible
+        setIsVisible(
+          scrollPosition > heroSection.offsetTop && window.scrollY < heroBottom
+        );
+      }
+    };
+
+    // Check on mount
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  if (!isVisible) return null;
 
   return (
     <div
@@ -62,4 +86,3 @@ const SkillsSlider: React.FC = () => {
 };
 
 export default SkillsSlider;
-
