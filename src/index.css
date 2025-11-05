@@ -80,8 +80,8 @@
 body {
   margin: 0;
   font-family: var(--font-family-body);
-  background-color: var(--color-light-background);
-  color: var(--color-light-text);
+  background-color: #000000;
+  color: #ffffff;
 }
 
 html,
@@ -247,4 +247,25 @@ body,
     text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+}
+
+/* Skills slider animation for hero section */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
