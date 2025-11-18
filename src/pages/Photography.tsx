@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { motionTokens } from "../utils/motion";
+import { motionTokens } from "../utils/Motion";
 import PhotographyGallery from "../components/PhotographyGallery";
 import Page from "../components/Page";
 import useSeo from "../utils/useSeo";

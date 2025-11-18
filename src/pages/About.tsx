@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { motionTokens } from "../utils/motion";
+import { motionTokens } from "../utils/Motion";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import useSeo from "../utils/useSeo";
 import useStructuredData from "../utils/useStructuredData";
 
 function About() {
-
   useSeo({
     title: "About Abhiyan Sainju – Software Engineer & Photographer",
     description:

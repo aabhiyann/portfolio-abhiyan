@@ -1,6 +1,15 @@
 import React from "react";
 
-const getChipClasses = (variant, size) => {
+type ChipVariant = "default" | "accent" | "muted";
+type ChipSize = "sm" | "md" | "lg";
+
+interface ChipProps extends React.HTMLAttributes<HTMLSpanElement> {
+  variant?: ChipVariant;
+  size?: ChipSize;
+  children?: React.ReactNode;
+}
+
+const getChipClasses = (variant: ChipVariant, size: ChipSize) => {
   const baseClasses =
     "inline-flex items-center justify-center rounded-full font-medium";
 
@@ -21,10 +30,17 @@ const getChipClasses = (variant, size) => {
   return `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`;
 };
 
-export const Chip = React.forwardRef(
-  ({ variant = "default", size = "md", className = "", ...props }, ref) => {
+export const Chip = React.forwardRef<HTMLSpanElement, ChipProps>(
+  (
+    { variant = "default", size = "md", className = "", children, ...props },
+    ref
+  ) => {
     const classes = getChipClasses(variant, size);
-    return <span ref={ref} className={`${classes} ${className}`} {...props} />;
+    return (
+      <span ref={ref} className={`${classes} ${className}`} {...props}>
+        {children}
+      </span>
+    );
   }
 );
 

@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { photographyImages } from "../data/Images";
+import { photographyImages } from "../data/images";
+import { ImageMetadata } from "../types/image";
 import FocusMode from "./FocusMode";
 
 function PhotographyGallery({ limit }: { limit?: number }) {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<ImageMetadata | null>(
+    null
+  );
 
-  const openLightbox = (image) => {
+  const openLightbox = (image: ImageMetadata) => {
     setSelectedImage(image);
   };
 

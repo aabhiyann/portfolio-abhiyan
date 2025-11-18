@@ -2,7 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Typography, TypographyProps } from "./ui/Typography";
 
-interface SectionTitleProps extends Omit<TypographyProps, "color"> {
+interface SectionTitleProps
+  extends Omit<TypographyProps, "color" | "children"> {
   title: string;
   subtitle?: string;
 }

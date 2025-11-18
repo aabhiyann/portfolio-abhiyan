@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { motionTokens } from "../utils/motion";
+import { motionTokens } from "../utils/Motion";
 import { articles, categories } from "../data/Articles";
 import Page from "../components/Page";
 import useSeo from "../utils/useSeo";

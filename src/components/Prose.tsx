@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
-import { motionTokens } from "../utils/motion";
+import { motionTokens } from "../utils/Motion";
 
-function Prose({ children }) {
+interface ProseProps {
+  children: React.ReactNode;
+}
+
+function Prose({ children }: ProseProps) {
   return (
     <motion.div
       className="prose prose-lg max-w-none prose-invert"
