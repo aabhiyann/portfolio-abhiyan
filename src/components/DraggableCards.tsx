@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -17,100 +17,20 @@ interface Card {
 }
 
 interface DraggableCardsProps {
+  cards: Card[];
   // eslint-disable-next-line no-unused-vars
   onCardMove?: (cardId: number, x: number, y: number) => void;
   isMobile?: boolean;
 }
 
 const DraggableCards: React.FC<DraggableCardsProps> = ({
+  cards,
   onCardMove,
   isMobile = false,
 }) => {
   const navigate = useNavigate();
-  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
-  const [cards, setCards] = useState<Card[]>([]);
   const [isDragging, setIsDragging] = useState(false);
   const [dragDelta, setDragDelta] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const updateSize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    updateSize();
-    window.addEventListener("resize", updateSize);
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-
-  useEffect(() => {
-    if (windowSize.width === 0) return;
-
-    const isMobileSize = windowSize.width < 768;
-
-    const initialCards: Card[] = [
-      {
-        id: 1,
-        tag: "Cloud Intelligence",
-        title: "InfraSight",
-        width: isMobileSize ? 220 : 300,
-        height: isMobileSize ? 160 : 220,
-        x: windowSize.width * (isMobileSize ? 0.05 : 0.15),
-        y: windowSize.height * (isMobileSize ? 0.15 : 0.22),
-        image:
-          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80",
-        connections: [2, 3],
-        link: "/projects",
-        description: "Cloud monitoring platform",
-      },
-      {
-        id: 2,
-        tag: "Teaching",
-        title: "GWU Algorithms TA",
-        width: isMobileSize ? 220 : 300,
-        height: isMobileSize ? 160 : 220,
-        x: windowSize.width * (isMobileSize ? 0.55 : 0.68),
-        y: windowSize.height * (isMobileSize ? 0.15 : 0.18),
-        image:
-          "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop&q=80",
-        connections: [1, 4],
-        link: "/about",
-        description: "Graduate Teaching Assistant",
-      },
-      {
-        id: 3,
-        tag: "Photography",
-        title: "iPhone 15 Pro Max",
-        width: isMobileSize ? 200 : 280,
-        height: isMobileSize ? 150 : 200,
-        x: windowSize.width * (isMobileSize ? 0.05 : 0.12),
-        y: windowSize.height * (isMobileSize ? 0.5 : 0.58),
-        image:
-          "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&h=300&fit=crop&q=80",
-        connections: [1, 4],
-        link: "/photography",
-        description: "Photography portfolio",
-      },
-      {
-        id: 4,
-        tag: "AI SaaS",
-        title: "TalkifyDocs",
-        width: isMobileSize ? 240 : 320,
-        height: isMobileSize ? 180 : 240,
-        x: windowSize.width * (isMobileSize ? 0.5 : 0.65),
-        y: windowSize.height * (isMobileSize ? 0.5 : 0.55),
-        image:
-          "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&q=80",
-        connections: [2, 3],
-        link: "/projects",
-        description: "AI-powered document analysis",
-      },
-    ];
-
-    setCards(initialCards);
-  }, [windowSize]);
 
   const handleDragStart = () => {
     setIsDragging(true);
@@ -131,9 +51,6 @@ const DraggableCards: React.FC<DraggableCardsProps> = ({
     if (card) {
       const newX = card.x + info.delta.x;
       const newY = card.y + info.delta.y;
-      setCards((prev) =>
-        prev.map((c) => (c.id === cardId ? { ...c, x: newX, y: newY } : c))
-      );
       onCardMove?.(cardId, newX, newY);
     }
   };

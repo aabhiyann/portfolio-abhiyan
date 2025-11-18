@@ -6,7 +6,6 @@ import { projects } from "../data/Projects";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/ui/Button";
-import Card from "../components/ui/Card";
 import useSeo from "../utils/useSeo";
 import DottedBackground from "../components/DottedBackground";
 import DraggableCards from "../components/DraggableCards";
@@ -31,8 +30,8 @@ function Home() {
       title: "InfraSight",
       width: 300,
       height: 220,
-      x: typeof window !== "undefined" ? window.innerWidth * 0.15 : 300,
-      y: typeof window !== "undefined" ? window.innerHeight * 0.22 : 200,
+      x: 0,
+      y: 0,
       image:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80",
       connections: [2, 3],
@@ -43,8 +42,8 @@ function Home() {
       title: "GWU Algorithms TA",
       width: 300,
       height: 220,
-      x: typeof window !== "undefined" ? window.innerWidth * 0.68 : 800,
-      y: typeof window !== "undefined" ? window.innerHeight * 0.18 : 150,
+      x: 0,
+      y: 0,
       image:
         "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop&q=80",
       connections: [1, 4],
@@ -55,8 +54,8 @@ function Home() {
       title: "iPhone 15 Pro Max",
       width: 280,
       height: 200,
-      x: typeof window !== "undefined" ? window.innerWidth * 0.12 : 250,
-      y: typeof window !== "undefined" ? window.innerHeight * 0.58 : 500,
+      x: 0,
+      y: 0,
       image:
         "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&h=300&fit=crop&q=80",
       connections: [1, 4],
@@ -67,8 +66,8 @@ function Home() {
       title: "TalkifyDocs",
       width: 320,
       height: 240,
-      x: typeof window !== "undefined" ? window.innerWidth * 0.65 : 750,
-      y: typeof window !== "undefined" ? window.innerHeight * 0.55 : 550,
+      x: 0,
+      y: 0,
       image:
         "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&q=80",
       connections: [2, 3],
@@ -77,10 +76,52 @@ function Home() {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      const isMobileSize = window.innerWidth < 768;
+      setIsMobile(isMobileSize);
+      setCards((prev) =>
+        prev.map((card) => ({
+          ...card,
+          width: isMobileSize ? card.width * 0.75 : card.width,
+          height: isMobileSize ? card.height * 0.75 : card.height,
+        }))
+      );
     };
     checkMobile();
     window.addEventListener("resize", checkMobile);
+
+    setCards((prev) =>
+      prev.map((card) => {
+        switch (card.id) {
+          case 1:
+            return {
+              ...card,
+              x: window.innerWidth * 0.15,
+              y: window.innerHeight * 0.22,
+            };
+          case 2:
+            return {
+              ...card,
+              x: window.innerWidth * 0.68,
+              y: window.innerHeight * 0.18,
+            };
+          case 3:
+            return {
+              ...card,
+              x: window.innerWidth * 0.12,
+              y: window.innerHeight * 0.58,
+            };
+          case 4:
+            return {
+              ...card,
+              x: window.innerWidth * 0.65,
+              y: window.innerHeight * 0.55,
+            };
+          default:
+            return card;
+        }
+      })
+    );
+
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
@@ -145,7 +186,7 @@ function Home() {
           </div>
         </div>
 
-        <DraggableCards onCardMove={handleCardMove} isMobile={isMobile} />
+        <DraggableCards cards={cards} onCardMove={handleCardMove} isMobile={isMobile} />
         <SkillsSlider />
       </section>
 
@@ -160,11 +201,13 @@ function Home() {
             title="Featured Projects"
             subtitle="A showcase of my recent work spanning web development, mobile applications, and creative coding projects."
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          import { MotionCard } from "../components/ui/MotionCard";
+...
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {projects.slice(0, 3).map((project, index) => (
-              <motion.div
+              <MotionCard
                 key={project.id}
-                className="project-card group relative"
+                className="project-card group relative h-full flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:border-white/30 hover:bg-white/15"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -174,17 +217,15 @@ function Home() {
                 }}
                 whileHover={{ y: -8 }}
               >
-                <Card className="h-full flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:border-white/30 hover:bg-white/15">
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-3 text-white">
-                      {project.title}
-                    </h3>
-                    <p className="text-white/80 mb-4 flex-grow">
-                      {project.description}
-                    </p>
-                  </div>
-                </Card>
-              </motion.div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-3 text-white">
+                    {project.title}
+                  </h3>
+                  <p className="text-white/80 mb-4 flex-grow">
+                    {project.description}
+                  </p>
+                </div>
+              </MotionCard>
             ))}
           </div>
           <motion.div

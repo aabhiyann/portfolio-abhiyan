@@ -14,10 +14,7 @@ function Layout({ children }) {
   const [isChatbotOpen, setChatbotOpen] = useState(false);
 
   return (
-    <div
-      className="min-h-screen relative"
-      style={{ backgroundColor: "#000000", color: "#ffffff" }}
-    >
+    <div className="min-h-screen relative bg-bg-primary text-text-primary">
       <LivingBackground />
       <CustomCursor />
       <SkipLink />
