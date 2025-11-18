@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { motionTokens } from "../utils/motion";
+import { motionTokens } from "../utils/Motion";
 import PhotographyGallery from "../components/PhotographyGallery";
 import { projects } from "../data/Projects";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/ui/Button";
+import { MotionCard } from "../components/ui/MotionCard";
 import useSeo from "../utils/useSeo";
 import DottedBackground from "../components/DottedBackground";
 import DraggableCards from "../components/DraggableCards";
@@ -186,7 +187,11 @@ function Home() {
           </div>
         </div>
 
-        <DraggableCards cards={cards} onCardMove={handleCardMove} isMobile={isMobile} />
+        <DraggableCards
+          cards={cards}
+          onCardMove={handleCardMove}
+          isMobile={isMobile}
+        />
         <SkillsSlider />
       </section>
 
@@ -201,9 +206,7 @@ function Home() {
             title="Featured Projects"
             subtitle="A showcase of my recent work spanning web development, mobile applications, and creative coding projects."
           />
-          import { MotionCard } from "../components/ui/MotionCard";
-...
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {projects.slice(0, 3).map((project, index) => (
               <MotionCard
                 key={project.id}

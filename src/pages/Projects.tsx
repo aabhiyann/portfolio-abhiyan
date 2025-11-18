@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { motionTokens } from "../utils/motion";
+import { motionTokens } from "../utils/Motion";
 import { projects as initialProjects } from "../data/Projects";
 import Page from "../components/Page";
 import { Card } from "../components/ui/Card";
@@ -10,8 +10,17 @@ import { Button, Chip } from "../components/ui";
 import useSeo from "../utils/useSeo";
 import useStructuredData from "../utils/useStructuredData";
 
+interface Architecture {
+  nodes: Array<{
+    id: string;
+    label: string;
+    position: { x: number; y: number };
+  }>;
+  connections: Array<{ from: string; to: string }>;
+}
+
 function Projects() {
-  const [selectedArch, setSelectedArch] = useState(null);
+  const [selectedArch, setSelectedArch] = useState<Architecture | null>(null);
   const [projects, setProjects] = useState(
     initialProjects.map((p) => ({
       ...p,
@@ -52,13 +61,17 @@ function Projects() {
     },
   });
 
-  const handleElaborate = async (projectId) => {
+  const handleElaborate = async (projectId: number) => {
     setApiError(null); // Clear previous errors
     setProjects(
       projects.map((p) => (p.id === projectId ? { ...p, isLoading: true } : p))
     );
 
     const project = projects.find((p) => p.id === projectId);
+    if (!project) {
+      console.error("Project not found");
+      return;
+    }
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
     if (!apiKey) {
@@ -108,7 +121,9 @@ function Projects() {
       );
     } catch (error) {
       console.error("Elaboration failed:", error);
-      setApiError(`Elaboration failed: ${error.message}. Please try again.`);
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown error";
+      setApiError(`Elaboration failed: ${errorMessage}. Please try again.`);
       setProjects(
         projects.map((p) =>
           p.id === projectId
@@ -233,7 +248,8 @@ function Projects() {
                         <Button
                           onClick={() => handleElaborate(project.id)}
                           disabled={
-                            project.isLoading || project.elaboratedDescription
+                            !!project.isLoading ||
+                            !!project.elaboratedDescription
                           }
                           variant="primary"
                           size="sm"

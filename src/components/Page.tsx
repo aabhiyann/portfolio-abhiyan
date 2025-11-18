@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
-import { motionTokens } from "../utils/motion";
+import { motionTokens } from "../utils/Motion";
 
-function Page({ children }) {
+interface PageProps {
+  children: React.ReactNode;
+}
+
+function Page({ children }: PageProps) {
   return (
     <motion.div
       className="min-h-screen"
