@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
               <ExternalFooterLink href="https://linkedin.com/in/abhiyansainju">
                 LinkedIn
               </ExternalFooterLink>
-              <ExternalFooterLink href="mailto:abhiyan.sainju@email.com">
+              <ExternalFooterLink href="mailto:aabhiyansainju@gmail.com">
                 Email
               </ExternalFooterLink>
             </nav>
@@ -66,18 +66,15 @@ const Footer: React.FC = () => {
             </nav>
           </div>
           <div className="flex flex-col space-y-4">
-            <h4 className="font-semibold text-white">Other</h4>
+            <h4 className="font-semibold text-white">Side Quests</h4>
             <p className="text-sm text-white/70">
-              Currently Listening:{" "}
-              <span className="font-medium text-white">IVE - Either Way</span>
+              Currently experimenting with Agentic AI workflows and reading 'Designing Data-Intensive Applications'.
             </p>
-            <p className="text-sm text-white/70">Visca Barça! 🔵🔴</p>
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-white/70">
           <p>
-            &copy; {new Date().getFullYear()} Abhiyan Sainju. All Rights
-            Reserved.
+            &copy; {new Date().getFullYear()} Abhiyan Sainju. Built with React & Tailwind.
           </p>
         </div>
       </div>
