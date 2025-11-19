@@ -1,7 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '../contexts/useTheme';
-import { Typography } from './ui/Typography';
+import { resumeContext } from '../data/ResumeContext';
 
 interface Message {
   text: string;
@@ -18,11 +15,21 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    if (isOpen && messages.length === 0) {
+      // Add a welcome message when the chatbot is opened for the first time
+      setMessages([
+        { text: "Hello! I'm Abhiyan's AI assistant. Ask me anything about his skills, projects, or experience.", sender: 'ai' }
+      ]);
+    }
+  }, [isOpen, messages.length]);
 
   useEffect(scrollToBottom, [messages]);
 
@@ -33,18 +40,67 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
+    setError(null);
 
-    // --- AI INTEGRATION POINT ---
-    // In a real application, you would make an API call to the Gemini API here.
-    // For this placeholder, we'll simulate a response.
-    setTimeout(() => {
-      const aiResponse: Message = {
-        text: `Thanks for your message: "${input}". As a demo, I'm just echoing your input. In a real app, I would provide a thoughtful response based on my training data about Abhiyan.`,
-        sender: 'ai',
-      };
-      setMessages(prev => [...prev, aiResponse]);
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!apiKey) {
+      const errorMsg = "API Key is not configured. This feature is disabled.";
+      setMessages(prev => [...prev, { text: errorMsg, sender: 'ai' }]);
       setIsLoading(false);
-    }, 1500);
+      setError(errorMsg);
+      return;
+    }
+
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+
+    const prompt = `
+      You are a professional, helpful AI assistant for Abhiyan Sainju's portfolio website.
+      Your goal is to answer questions about Abhiyan based ONLY on the context provided below.
+      Do not make up information. If the answer is not in the context, say "I don't have information on that, but you can reach out to Abhiyan to ask."
+      Keep your answers concise and professional.
+
+      CONTEXT:
+      ${resumeContext}
+
+      ---
+      QUESTION:
+      "${input}"
+
+      ANSWER:
+    `;
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('The AI is currently unavailable. Please try again later.');
+      }
+
+      const data = await response.json();
+      const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+      if (!aiText) {
+        throw new Error('The AI returned an empty response.');
+      }
+
+      const aiResponse: Message = { text: aiText, sender: 'ai' };
+      setMessages(prev => [...prev, aiResponse]);
+
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred.';
+      setMessages(prev => [...prev, { text: errorMessage, sender: 'ai' }]);
+      setError(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -88,14 +144,16 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
 
           {/* Input */}
           <div className={`p-4 border-t ${themeState.isDarkMode ? 'border-white/10' : 'border-black/10'}`}>
+            {error && <Typography variant="caption" color="error" className="text-center pb-2">{error}</Typography>}
             <div className="flex items-center space-x-2">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSend()}
                 placeholder="Ask about Abhiyan..."
                 className={`w-full px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-accent-primary ${themeState.isDarkMode ? 'bg-white/10 text-white' : 'bg-black/10 text-black'}`}
+                disabled={isLoading}
               />
               <button onClick={handleSend} className="p-3 bg-accent-primary text-white rounded-full hover:bg-opacity-90 transition-colors disabled:opacity-50" disabled={isLoading}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -107,5 +165,3 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     </AnimatePresence>
   );
 };
-
-export default AIChatbot;
