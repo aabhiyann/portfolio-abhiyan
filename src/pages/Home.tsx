@@ -184,6 +184,8 @@ function Home() {
                 <a
                   href="/Abhiyan_Sainju_Resume.pdf"
                   download
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-black transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
