@@ -19,6 +19,8 @@ This release focuses on a major overhaul of the portfolio's content strategy, pe
 -   **Page Transitions:** Enhanced the global page transition animation with a smoother, more dynamic slide-and-fade effect.
 -   **Resume Link:** Updated the resume download button to open the PDF in a new tab for better usability.
 -   **Article Cards:** The article cards on the homepage now display a summary to be more informative.
+-   **Photography Page:** Upgraded the gallery to use a "blur-up" lazy loading effect for better perceived performance.
+-   **Photography Page:** Enhanced the image hover overlay with a backdrop-blur effect and added a "Tech Stack" note to the page.
 
 ### Fixed
 
@@ -29,6 +31,10 @@ This release focuses on a major overhaul of the portfolio's content strategy, pe
 
 -   **Old SEO Implementation:** Removed the previous manual `useSeo` hook and `useStructuredData` hook in favor of the new, more robust `react-helmet-async` implementation.
 -   **Broken Article Logic:** Removed broken logic for rendering individual article pages, as the new strategy links to external platforms.
+
+### Internal
+
+-   **Development Workflow:** Fixed the pre-commit hook by implementing `lint-staged`. This resolves previous blocking errors and ensures only staged files are linted, improving the local development experience.
 
 ### Internal
 
