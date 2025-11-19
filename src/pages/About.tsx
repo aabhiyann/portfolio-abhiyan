@@ -8,11 +8,11 @@ import useStructuredData from "../utils/useStructuredData";
 
 function About() {
   useSeo({
-    title: "About Abhiyan Sainju – Software Engineer & Photographer",
+    title: "About Abhiyan Sainju | Software Engineer",
     description:
-      "Learn more about Abhiyan Sainju, a passionate software engineer and photographer based in Washington D.C., with a focus on cloud infrastructure, AI, and visual storytelling.",
+      "A Software Engineer based in Washington, DC, with a passion for scalable architecture and AI integration.",
     keywords:
-      "Abhiyan Sainju, about me, software engineer, photographer, cloud computing, AI, Washington D.C., Kathmandu, Nepal",
+      "Abhiyan Sainju, about me, software engineer, AI, scalable architecture, Washington D.C., GWU",
   });
 
   useStructuredData({
@@ -140,30 +140,23 @@ function About() {
 
                 <div className="prose prose-lg max-w-none text-white/80">
                   <p className="text-xl mb-6">
-                    I'm a passionate software engineer and photographer based in
-                    Washington D.C., originally from the vibrant city of
-                    Kathmandu, Nepal.
+                    I am a Software Engineer based in Washington, DC, with a
+                    passion for scalable architecture and AI integration.
                   </p>
 
                   <p className="mb-6">
-                    My journey in technology began with a curiosity about how
-                    things work, which led me to pursue software engineering
-                    with a focus on cloud infrastructure and artificial
-                    intelligence. I believe in building solutions that not only
-                    solve problems but also create meaningful impact.
-                  </p>
-
-                  <p className="mb-6">
-                    When I'm not coding, you'll find me with a camera in hand,
-                    capturing the world around me. Photography has taught me to
-                    see beauty in everyday moments and to appreciate the stories
-                    that unfold in front of my lens.
+                    My journey began in Kathmandu, where I led digital
+                    transformations as an IT Lead, but my curiosity for code
+                    drove me to software engineering. Now, I specialize in
+                    building SaaS platforms that solve expensive problems—whether
+                    that's cutting cloud costs by 70% or reducing document
+                    analysis time by half.
                   </p>
 
                   <p>
-                    I'm always excited to collaborate on innovative projects,
-                    discuss the latest in tech, or share stories about our
-                    favorite football club (Visca Barça!).
+                    When I'm not building RAG architectures or optimizing React
+                    renders, I'm teaching Algorithms to graduate students at
+                    George Washington University.
                   </p>
                 </div>
               </motion.div>
