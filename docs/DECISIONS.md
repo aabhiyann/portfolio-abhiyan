@@ -72,3 +72,19 @@ The pre-commit workflow was rebuilt according to modern best practices.
 -   The `package.json` was configured to use `lint-staged` to run `eslint --fix` and `prettier --write` *only* on staged `.ts` and `.tsx` files.
 -   The `.husky/pre-commit` script was updated from `npm run lint` to `npx lint-staged`.
 -   This change makes the pre-commit hook significantly faster and more reliable. Full-project type checking (`tsc`) is now correctly deferred to the CI/CD pipeline.
+
+---
+
+### 5. Decision: Implement "Chat with my Resume" AI Feature
+
+**Date:** 2025-11-19
+
+**Context:**
+To provide a compelling, interactive demonstration of AI/ML skills—a core competency—the idea of a "Chat with my Resume" feature was proposed. The project already contained a placeholder UI for a chatbot.
+
+**Decision & Implementation:**
+The decision was made to build a live, functional chatbot using the Google Gemini API, as the free tier was deemed sufficient for portfolio traffic.
+-   **Knowledge Base:** A new `src/data/ResumeContext.ts` file was created to act as a structured, textual "brain" for the AI, containing all relevant professional information.
+-   **API Integration:** The placeholder logic in `src/components/AIChatbot.tsx` was replaced with a `fetch` call to the Gemini API.
+-   **Prompt Engineering:** A prompt was engineered to instruct the AI to act as a professional assistant and answer questions based *only* on the provided context, ensuring factual and relevant responses.
+-   **UX:** The component was enhanced with a welcome message, loading indicators, and robust error handling for missing API keys or network failures.

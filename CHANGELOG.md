@@ -8,6 +8,7 @@ This release focuses on a major overhaul of the portfolio's content strategy, pe
 
 ### Added
 
+-   **"Chat with my Resume" AI Feature:** Implemented a live, interactive chatbot powered by the Gemini API. The chatbot can answer questions about Abhiyan's skills and experience, providing a direct demonstration of AI integration capabilities.
 -   **Critical SEO Functionality:** Implemented `react-helmet-async` to provide unique, descriptive titles and meta tags for every page, significantly improving SEO.
 -   **New `<SEO>` Component:** Created a dedicated, type-safe component (`src/components/SEO.tsx`) for managing all page metadata.
 -   **Scroll Progress Bar:** Added a new `ScrollProgressBar` component to the main layout for a polished UX on long pages.
