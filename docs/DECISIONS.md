@@ -88,3 +88,4 @@ The decision was made to build a live, functional chatbot using the Google Gemin
 -   **API Integration:** The placeholder logic in `src/components/AIChatbot.tsx` was replaced with a `fetch` call to the Gemini API.
 -   **Prompt Engineering:** A prompt was engineered to instruct the AI to act as a professional assistant and answer questions based *only* on the provided context, ensuring factual and relevant responses.
 -   **UX:** The component was enhanced with a welcome message, loading indicators, and robust error handling for missing API keys or network failures.
+-   **Context Enhancement:** The knowledge base in `src/data/ResumeContext.ts` was later "supercharged" with personality details, contact information, and a "System Instructions" section to guide the AI's tone and behavior, enabling it to handle a wider range of questions professionally and build a human connection.
