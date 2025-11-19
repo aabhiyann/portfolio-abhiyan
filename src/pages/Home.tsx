@@ -16,11 +16,11 @@ import { useState, useEffect } from "react";
 
 function Home() {
   useSeo({
-    title: "Abhiyan Sainju – Creative Software Engineer",
+    title: "Abhiyan Sainju | Full Stack Engineer & AI Researcher",
     description:
-      "Building intelligent systems at the intersection of engineering and creativity. Full-stack developer passionate about creating meaningful digital experiences.",
+      "Building enterprise-grade AI and full-stack solutions to bridge the gap between complex algorithms and real-world business value.",
     keywords:
-      "Abhiyan Sainju, portfolio, creative software engineer, photographer, web development, React, TypeScript, projects, photography gallery",
+      "Abhiyan Sainju, portfolio, software engineer, full-stack, AI, machine learning, React, TypeScript, Python, AWS",
   });
 
   const [isMobile, setIsMobile] = useState(false);
@@ -153,11 +153,10 @@ function Home() {
                 delay: 0.1,
               }}
             >
-              Creative <span className="italic font-semibold">Software</span>{" "}
-              Engineer.
+              Building Enterprise-Grade AI & Full-Stack Solutions.
             </motion.h1>
             <motion.p
-              className="text-base sm:text-lg lg:text-xl text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto"
+              className="text-base sm:text-lg lg:text-xl text-gray-400 mb-10 leading-relaxed max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -165,8 +164,9 @@ function Home() {
                 delay: 0.2,
               }}
             >
-              Building intelligent systems at the intersection of engineering
-              and creativity.
+              Hi, I’m Abhiyan Sainju. I bridge the gap between complex
+              algorithms and real-world business value. Currently pursuing my MS
+              in CS at GWU (4.0 GPA).
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -176,13 +176,23 @@ function Home() {
                 delay: 0.4,
               }}
             >
-              <Link
-                to="/projects"
-                className="inline-block bg-white text-black px-6 sm:px-8 py-3 rounded-md font-semibold hover:opacity-85 transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
-                style={{ fontFamily: "'Inter', sans-serif" }}
-              >
-                Explore my work
-              </Link>
+              <div className="flex justify-center gap-4">
+                <Link
+                  to="/projects"
+                  className="inline-block bg-white text-black px-6 sm:px-8 py-3 rounded-md font-semibold hover:opacity-85 transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
+                  View My Projects
+                </Link>
+                <a
+                  href="/Abhiyan_Sainju_Resume.pdf"
+                  download
+                  className="inline-block bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-black transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
+                  Download Resume
+                </a>
+              </div>
             </motion.div>
           </div>
         </div>
