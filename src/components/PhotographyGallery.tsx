@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { photographyImages } from "../data/images";
 import { ImageMetadata } from "../types/image";
 import FocusMode from "./FocusMode";
+import LazyImage from "./LazyImage";
 
 function PhotographyGallery({ limit }: { limit?: number }) {
   const [selectedImage, setSelectedImage] = useState<ImageMetadata | null>(
@@ -31,15 +32,15 @@ function PhotographyGallery({ limit }: { limit?: number }) {
             transition={{ duration: 0.6, delay: index * 0.1 }}
             onClick={() => openLightbox(image)}
           >
-            <img
+            <LazyImage
               src={image.src}
+              thumbnailSrc={image.thumbnailSrc}
               alt={image.alt}
               className="w-full h-auto group-hover:scale-[1.02] transition duration-300"
-              loading="lazy"
             />
 
             {/* EXIF Overlay on Hover */}
-            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm">
               <div className="text-white text-sm space-y-1">
                 <div className="font-medium">
                   {image.exif?.focalLength} · {image.exif?.settings}
