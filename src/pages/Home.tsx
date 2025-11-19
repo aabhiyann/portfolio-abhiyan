@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
 import PhotographyGallery from "../components/PhotographyGallery";
 import { projects } from "../data/Projects";
+import { articles } from "../data/Articles";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/ui/Button";
@@ -280,6 +281,43 @@ function Home() {
               View Gallery
             </Button>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Digital Footprint Section */}
+      <section className="py-24" style={{ backgroundColor: "#000000" }}>
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <SectionTitle
+            title="Digital Footprint"
+            subtitle="I believe in sharing knowledge. Here are some of my thoughts and findings."
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {articles.map((article, index) => (
+              <MotionCard
+                key={article.id}
+                className="project-card group relative h-full flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:border-white/30 hover:bg-white/15"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: motionTokens.duration.slow / 1000,
+                  delay: 0.1 + index * 0.1,
+                }}
+                whileHover={{ y: -8 }}
+              >
+                <a href={article.url} target="_blank" rel="noopener noreferrer" className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-semibold mb-3 text-white">
+                    {article.title}
+                  </h3>
+                  <div className="mt-auto">
+                    <span className="text-white/80 text-sm">
+                      Read on {article.source}
+                    </span>
+                  </div>
+                </a>
+              </MotionCard>
+            ))}
+          </div>
         </div>
       </section>
 
