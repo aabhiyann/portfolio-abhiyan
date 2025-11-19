@@ -3,45 +3,9 @@ import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
-import useSeo from "../utils/useSeo";
-import useStructuredData from "../utils/useStructuredData";
+import SEO from '../components/SEO';
 
 function About() {
-  useSeo({
-    title: "About Abhiyan Sainju | Software Engineer",
-    description:
-      "A Software Engineer based in Washington, DC, with a passion for scalable architecture and AI integration.",
-    keywords:
-      "Abhiyan Sainju, about me, software engineer, AI, scalable architecture, Washington D.C., GWU",
-  });
-
-  useStructuredData({
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: "Abhiyan Sainju",
-      url: "https://www.abhiyansainju.com", // Replace with actual domain
-      image: "/og-image.jpg", // Replace with actual portrait image
-      sameAs: [
-        "https://github.com/aabhiyann",
-        "https://linkedin.com/in/abhiyansainju",
-        // Add other social media profiles
-      ],
-      jobTitle: "Software Engineer",
-      worksFor: {
-        "@type": "Organization",
-        name: "[Your Company Name]", // Replace with actual company name
-      },
-      alumniOf: "[Your University Name]", // Replace with actual university
-      hasOccupation: {
-        "@type": "Occupation",
-        name: "Photographer",
-        description: "Capturing moments and stories through the lens.",
-      },
-      description:
-        "A passionate software engineer and photographer based in Washington D.C., focusing on cloud infrastructure, AI, and visual storytelling.",
-    },
-  });
   const timeline = [
     {
       year: "2021",
@@ -121,6 +85,10 @@ function About() {
 
   return (
     <Page>
+      <SEO 
+        title='About Abhiyan Sainju | Software Engineer' 
+        description='A Software Engineer based in Washington, DC, with a passion for scalable architecture and AI integration.' 
+      />
       {/* Hero Section */}
       <section
         className="relative py-24 min-h-screen flex items-center"

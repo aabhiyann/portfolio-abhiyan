@@ -8,7 +8,7 @@ import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/ui/Button";
 import { MotionCard } from "../components/ui/MotionCard";
-import useSeo from "../utils/useSeo";
+import SEO from '../components/SEO';
 import DottedBackground from "../components/DottedBackground";
 import DraggableCards from "../components/DraggableCards";
 import CanvasConnections from "../components/CanvasConnections";
@@ -16,14 +16,6 @@ import SkillsSlider from "../components/SkillsSlider";
 import { useState, useEffect } from "react";
 
 function Home() {
-  useSeo({
-    title: "Abhiyan Sainju | Full Stack Engineer & AI Researcher",
-    description:
-      "Building enterprise-grade AI and full-stack solutions to bridge the gap between complex algorithms and real-world business value.",
-    keywords:
-      "Abhiyan Sainju, portfolio, software engineer, full-stack, AI, machine learning, React, TypeScript, Python, AWS",
-  });
-
   const [isMobile, setIsMobile] = useState(false);
   const [cards, setCards] = useState([
     {
@@ -133,6 +125,10 @@ function Home() {
 
   return (
     <Page>
+      <SEO 
+        title='Abhiyan Sainju | Full Stack & AI Engineer' 
+        description='Master’s student at GWU building enterprise-grade AI/ML solutions.' 
+      />
       {/* Hero Section */}
       <section
         id="hero"
