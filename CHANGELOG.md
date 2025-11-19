@@ -29,3 +29,5 @@ This release focuses on a major overhaul of the portfolio's content strategy, pe
 
 -   **Old SEO Implementation:** Removed the previous manual `useSeo` hook and `useStructuredData` hook in favor of the new, more robust `react-helmet-async` implementation.
 -   **Broken Article Logic:** Removed broken logic for rendering individual article pages, as the new strategy links to external platforms.
+
+<!-- Test commit -->
