@@ -30,4 +30,6 @@ This release focuses on a major overhaul of the portfolio's content strategy, pe
 -   **Old SEO Implementation:** Removed the previous manual `useSeo` hook and `useStructuredData` hook in favor of the new, more robust `react-helmet-async` implementation.
 -   **Broken Article Logic:** Removed broken logic for rendering individual article pages, as the new strategy links to external platforms.
 
-<!-- Test commit -->
+### Internal
+
+-   **Development Workflow:** Fixed the pre-commit hook by implementing `lint-staged`. This resolves previous blocking errors and ensures only staged files are linted, improving the local development experience.
