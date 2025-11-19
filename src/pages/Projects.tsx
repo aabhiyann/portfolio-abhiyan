@@ -72,7 +72,7 @@ function Projects() {
                     <div className="p-8 flex flex-col flex-grow">
                       <div className="mb-4">
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/10 backdrop-blur-md text-white border border-white/20 shadow-md shadow-black/10">
-                          💡 {project.impact}
+                          {project.impact}
                         </span>
                       </div>
 
