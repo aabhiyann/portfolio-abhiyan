@@ -76,6 +76,9 @@ const Footer: React.FC = () => {
           <p>
             &copy; {new Date().getFullYear()} Abhiyan Sainju. Built with React & Tailwind.
           </p>
+          <p className="text-xs text-white/50 mt-2">
+            Built with accessibility in mind (ARIA compliant).
+          </p>
         </div>
       </div>
     </footer>
