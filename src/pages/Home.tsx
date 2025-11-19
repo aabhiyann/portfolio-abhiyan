@@ -305,9 +305,12 @@ function Home() {
                   <h3 className="text-xl font-semibold mb-3 text-white">
                     {article.title}
                   </h3>
+                  <p className="text-white/70 text-sm mb-4 flex-grow">
+                    {article.summary}
+                  </p>
                   <div className="mt-auto">
-                    <span className="text-white/80 text-sm">
-                      Read on {article.source}
+                    <span className="text-white/80 text-sm font-medium">
+                      Read on {article.source} &rarr;
                     </span>
                   </div>
                 </a>

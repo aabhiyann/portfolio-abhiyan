@@ -1,19 +1,22 @@
 export const articles = [
   {
     id: 1,
-    title: "How I reduced React load times by 43% using Code-Splitting.",
-    url: "#",
-    source: "dev.to",
-  },
-  {
-    id: 2,
-    title: "Building a RAG System: Lessons learned scaling Vector Search with Pinecone.",
+    title: "From 12s to 200ms: Optimizing RAG Pipelines",
+    summary: "A deep dive into how I used Pinecone and LangChain to reduce query latency in my TalkifyDocs project.",
     url: "#",
     source: "Medium",
   },
   {
+    id: 2,
+    title: "Why I Chose Random Forest over Deep Learning for InfraSight",
+    summary: "Exploring the trade-offs between model complexity and inference cost in cloud billing anomaly detection.",
+    url: "#",
+    source: "Dev.to",
+  },
+  {
     id: 3,
-    title: "From Legacy to Lead Gen: Rebuilding a Security Consultancy's Digital Presence.",
+    title: "React Performance: Beyond `useMemo`",
+    summary: "Lessons learned optimizing a Fintech dashboard at ECS Tech to boost conversion rates by 4%.",
     url: "#",
     source: "LinkedIn",
   },
