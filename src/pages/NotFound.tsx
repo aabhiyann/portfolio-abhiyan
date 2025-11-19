@@ -2,10 +2,15 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
 import Page from "../components/Page";
+import SEO from "../components/SEO";
 
 function NotFound() {
   return (
     <Page>
+      <SEO 
+        title="404: Page Not Found"
+        description="The page you were looking for could not be found."
+      />
       <div
         className="relative min-h-screen flex items-center justify-center"
         style={{ backgroundColor: "#000000" }}
