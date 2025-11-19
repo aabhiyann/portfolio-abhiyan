@@ -8,6 +8,7 @@ import AIChatbot from "./AIChatbot";
 import FloatingActionButton from "./FloatingActionButton";
 import CustomCursor from "./CustomCursor";
 import LivingBackground from "./LivingBackground";
+import ScrollProgressBar from "./ScrollProgressBar";
 
 function Layout({ children }) {
   const { themeState, toggleTheme, setCurrentTheme } = useTheme();
@@ -16,6 +17,7 @@ function Layout({ children }) {
   return (
     <div className="min-h-screen relative bg-bg-primary text-text-primary">
       <LivingBackground />
+      <ScrollProgressBar />
       <CustomCursor />
       <SkipLink />
       <div className="relative z-10">
