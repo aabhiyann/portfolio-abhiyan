@@ -49,6 +49,9 @@ const Footer: React.FC = () => {
               <ExternalFooterLink href="mailto:aabhiyansainju@gmail.com">
                 Email
               </ExternalFooterLink>
+              <ExternalFooterLink href="https://github.com/aabhiyann/portfolio-abhiyan">
+                View Source
+              </ExternalFooterLink>
             </nav>
           </div>
           <div className="flex flex-col space-y-4">
@@ -79,6 +82,9 @@ const Footer: React.FC = () => {
           <p className="text-xs text-white/50 mt-2">
             Built with accessibility in mind (ARIA compliant).
           </p>
+          <div className="flex justify-center mt-4">
+            <img src="https://img.shields.io/github/last-commit/aabhiyann/portfolio-abhiyan?style=flat-square&color=black" alt="Last Commit" />
+          </div>
         </div>
       </div>
     </footer>

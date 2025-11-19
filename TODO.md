@@ -17,3 +17,10 @@ This document tracks the "cherry-on-top" features and improvements to be impleme
 - [ ] **404 Easter Egg:** Refactor the 404 page to be a creative, terminal-themed "Page Not Found" message relevant to the AI/developer niche.
 - [ ] **Full Accessibility Audit:** Run a Lighthouse audit to get the Accessibility score to 100. Add ARIA attributes and fix any contrast or navigation issues.
   - *After completion, add an "ARIA compliant" note to the footer.*
+
+---
+
+### Finishing Touches / Polish (Post-Launch)
+- [ ] **Implement a Contact Form:** Replace the `mailto:` link in the footer with a proper contact form using a service like Formspree or EmailJS to improve UX.
+- [ ] **Integrate Analytics:** After deploying to Vercel, enable Vercel Web Analytics and Speed Insights to track user engagement and performance.
+- [ ] **Test Social Previews:** Once live, use a tool like 'metatags.io' to verify that the SEO Open Graph tags are rendering correctly on platforms like LinkedIn.
