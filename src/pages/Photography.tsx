@@ -70,6 +70,10 @@ function Photography() {
 
             {/* Photography Gallery */}
             <PhotographyGallery />
+
+            <div className="text-center mt-16 text-sm text-white/60">
+              <p>Built with React, Framer Motion, and a custom masonry layout engine.</p>
+            </div>
           </div>
         </div>
       </section>
