@@ -43,6 +43,7 @@
     "prettier": "^3.6.2",
     "sharp": "^0.34.4",
     "tailwindcss": "^4.0.0",
+    "typescript": "^5.9.3",
     "typescript-eslint": "^8.44.1",
     "vite": "^7.1.7",
     "vite-plugin-sitemap": "^0.8.2"
