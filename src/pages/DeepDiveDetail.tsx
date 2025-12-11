@@ -5,17 +5,18 @@ import SEO from "../components/SEO";
 function DeepDiveDetail() {
   return (
     <Page>
-      <SEO 
+      <SEO
         title="Deep Dive Article"
         description="In-depth articles by Abhiyan Sainju are hosted on external platforms like Medium and Dev.to."
       />
-      <section className="py-24 min-h-screen flex items-center justify-center" style={{ backgroundColor: "#000000" }}>
+      <section className="py-24 min-h-screen flex items-center justify-center bg-background">
         <div className="max-w-3xl mx-auto px-6 md:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 font-heading">
             Article Not Found
           </h1>
           <p className="text-xl text-white/80 mb-8 leading-relaxed">
-            This article could not be found. My in-depth articles are hosted on external platforms.
+            This article could not be found. My in-depth articles are hosted on
+            external platforms.
           </p>
           <Link
             to="/#digital-footprint"

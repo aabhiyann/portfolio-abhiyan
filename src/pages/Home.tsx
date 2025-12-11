@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
 import PhotographyGallery from "../components/PhotographyGallery";
-import { projects } from "../data/Projects";
+import { projects } from "../data/projects";
 import { articles } from "../data/Articles";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
@@ -132,8 +132,7 @@ function Home() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{ backgroundColor: "#000000" }}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
       >
         <DottedBackground />
         <CanvasConnections cards={cards} />
@@ -141,10 +140,10 @@ function Home() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 pointer-events-none">
           <div className="max-w-4xl mx-auto text-center pointer-events-auto">
             <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white mb-6 leading-tight"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-text-primary mb-6 leading-tight font-heading"
+              variants={motionTokens.variants.fadeUp}
+              initial="initial"
+              animate="animate"
               transition={{
                 duration: motionTokens.duration.slow / 1000,
                 delay: 0.1,
@@ -153,9 +152,10 @@ function Home() {
               Building Enterprise-Grade AI & Full-Stack Solutions.
             </motion.h1>
             <motion.p
-              className="text-base sm:text-lg lg:text-xl text-gray-400 mb-10 leading-relaxed max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="text-base sm:text-lg lg:text-xl text-text-muted mb-10 leading-relaxed max-w-3xl mx-auto"
+              variants={motionTokens.variants.fadeUp}
+              initial="initial"
+              animate="animate"
               transition={{
                 duration: motionTokens.duration.slow / 1000,
                 delay: 0.2,
@@ -166,31 +166,28 @@ function Home() {
               in CS at GWU (4.0 GPA).
             </motion.p>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              variants={motionTokens.variants.fadeUp}
+              initial="initial"
+              animate="animate"
               transition={{
                 duration: motionTokens.duration.slow / 1000,
                 delay: 0.4,
               }}
             >
               <div className="flex justify-center gap-4">
-                <Link
-                  to="/projects"
-                  className="inline-block bg-white text-black px-6 sm:px-8 py-3 rounded-md font-semibold hover:opacity-85 transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                >
+                <Button as={Link} to="/projects" variant="primary" size="lg">
                   View My Projects
-                </Link>
-                <a
+                </Button>
+                <Button
+                  as="a"
                   href="/Abhiyan_Sainju_Resume.pdf"
-                  download
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-black transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
+                  variant="outline"
+                  size="lg"
                 >
                   Download Resume
-                </a>
+                </Button>
               </div>
             </motion.div>
           </div>
@@ -205,11 +202,7 @@ function Home() {
       </section>
 
       {/* Projects Teaser */}
-      <section
-        id="projects"
-        className="py-24"
-        style={{ backgroundColor: "#000000" }}
-      >
+      <section id="projects" className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Featured Projects"
@@ -219,9 +212,10 @@ function Home() {
             {projects.slice(0, 3).map((project, index) => (
               <MotionCard
                 key={project.id}
-                className="project-card group relative h-full flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:border-white/30 hover:bg-white/15"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="h-full"
+                variants={motionTokens.variants.fadeUp}
+                initial="initial"
+                whileInView="animate"
                 viewport={{ once: true }}
                 transition={{
                   duration: motionTokens.duration.slow / 1000,
@@ -229,11 +223,11 @@ function Home() {
                 }}
                 whileHover={{ y: -8 }}
               >
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-3 text-white">
+                <div className="p-6 flex flex-col h-full">
+                  <h3 className="text-xl font-semibold mb-3 text-text-primary font-heading">
                     {project.title}
                   </h3>
-                  <p className="text-white/80 mb-4 flex-grow">
+                  <p className="text-text-muted mb-4 flex-grow">
                     {project.description}
                   </p>
                 </div>
@@ -242,8 +236,9 @@ function Home() {
           </div>
           <motion.div
             className="text-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={motionTokens.variants.fadeUp}
+            initial="initial"
+            whileInView="animate"
             viewport={{ once: true }}
             transition={{
               duration: motionTokens.duration.slow / 1000,
@@ -258,7 +253,7 @@ function Home() {
       </section>
 
       {/* Photography Teaser */}
-      <section className="py-24" style={{ backgroundColor: "#000000" }}>
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Photography"
@@ -267,8 +262,9 @@ function Home() {
           <PhotographyGallery limit={6} />
           <motion.div
             className="text-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={motionTokens.variants.fadeUp}
+            initial="initial"
+            whileInView="animate"
             viewport={{ once: true }}
             transition={{
               duration: motionTokens.duration.slow / 1000,
@@ -283,7 +279,7 @@ function Home() {
       </section>
 
       {/* Digital Footprint Section */}
-      <section className="py-24" style={{ backgroundColor: "#000000" }}>
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Digital Footprint"
@@ -293,9 +289,10 @@ function Home() {
             {articles.map((article, index) => (
               <MotionCard
                 key={article.id}
-                className="project-card group relative h-full flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:border-white/30 hover:bg-white/15"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="h-full"
+                variants={motionTokens.variants.fadeUp}
+                initial="initial"
+                whileInView="animate"
                 viewport={{ once: true }}
                 transition={{
                   duration: motionTokens.duration.slow / 1000,
@@ -307,16 +304,16 @@ function Home() {
                   href={article.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-6 flex flex-col flex-grow"
+                  className="p-6 flex flex-col h-full"
                 >
-                  <h3 className="text-xl font-semibold mb-3 text-white">
+                  <h3 className="text-xl font-semibold mb-3 text-text-primary font-heading">
                     {article.title}
                   </h3>
-                  <p className="text-white/70 text-sm mb-4 flex-grow">
+                  <p className="text-text-muted text-sm mb-4 flex-grow">
                     {article.summary}
                   </p>
                   <div className="mt-auto">
-                    <span className="text-white/80 text-sm font-medium">
+                    <span className="text-accent-primary text-sm font-medium hover:text-accent-hover transition-colors">
                       Read on {article.source} &rarr;
                     </span>
                   </div>
@@ -328,7 +325,7 @@ function Home() {
       </section>
 
       {/* About Teaser */}
-      <section className="py-24" style={{ backgroundColor: "#000000" }}>
+      <section className="py-24 bg-background">
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
           <SectionTitle
             title="About Me"

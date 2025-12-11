@@ -21,7 +21,11 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <Typography variant="h2" {...typographyProps} className="text-white">
+      <Typography
+        variant="h2"
+        {...typographyProps}
+        className="text-text-primary"
+      >
         {title}
       </Typography>
       {subtitle && (
@@ -30,13 +34,13 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
           color="secondary"
           {...typographyProps}
           style={{ maxWidth: "48rem", margin: "1rem auto 0" }}
-          className="text-white/80"
+          className="text-text-muted"
         >
           {subtitle}
         </Typography>
       )}
       <motion.div
-        className="absolute -bottom-2 left-1/2 w-24 h-1 bg-white/30"
+        className="absolute -bottom-2 left-1/2 w-24 h-1 bg-accent-primary"
         style={{ x: "-50%" }}
         initial={{ width: 0 }}
         whileInView={{ width: "6rem" }}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
-import { projects as initialProjects, Project } from "../data/Projects";
+import { projects as initialProjects, Project } from "../data/projects";
 import Page from "../components/Page";
 import { Card } from "../components/ui/Card";
 import SectionTitle from "../components/SectionTitle";
@@ -54,7 +54,7 @@ function Projects() {
       />
       <section
         className="relative py-24 min-h-screen"
-        style={{ backgroundColor: "#000000" }}
+        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
       >
         <div className="relative z-20">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
