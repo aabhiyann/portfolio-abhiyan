@@ -5,6 +5,7 @@ import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";
 import Testimonials from "../components/Testimonials";
+import Button from "../components/ui/Button";
 
 function About() {
   const timeline = [
@@ -97,10 +98,10 @@ function About() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: motionTokens.duration.slow / 1000 }}
               >
-                <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 font-heading text-white">
+                <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 font-heading text-text-primary">
                   About Me
                 </h1>
-                <div className="prose prose-lg max-w-none text-white/80">
+                <div className="prose prose-lg max-w-none text-text-muted">
                   <p className="text-xl mb-6">
                     I am a Software Engineer based in Washington, DC, with a
                     passion for scalable architecture and AI integration.
@@ -152,7 +153,7 @@ function About() {
             subtitle="A timeline of my journey through technology and photography"
           />
           <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-white/20"></div>
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border-primary"></div>
             <div className="space-y-12">
               {timeline.map((item, index) => (
                 <motion.div
@@ -166,20 +167,20 @@ function About() {
                     delay: index * 0.1,
                   }}
                 >
-                  <div className="relative z-10 flex-shrink-0 w-16 h-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center shadow-lg shadow-black/10">
-                    <div className="w-3 h-3 bg-white rounded-full"></div>
+                  <div className="relative z-10 flex-shrink-0 w-16 h-16 bg-surface backdrop-blur-md border border-border-primary rounded-full flex items-center justify-center shadow-lg shadow-black/5">
+                    <div className="w-3 h-3 bg-accent-primary rounded-full"></div>
                   </div>
                   <div className="flex-1 pt-2">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                      <h3 className="text-xl font-semibold text-white">
+                      <h3 className="text-xl font-semibold text-text-primary">
                         {item.title}
                       </h3>
-                      <span className="text-white/80 font-medium">
+                      <span className="text-accent-primary font-medium">
                         {item.year}
                       </span>
                     </div>
-                    <p className="text-white/70 mb-2">{item.description}</p>
-                    <p className="text-sm text-white/60">{item.location}</p>
+                    <p className="text-text-muted mb-2">{item.description}</p>
+                    <p className="text-sm text-text-muted">{item.location}</p>
                   </div>
                 </motion.div>
               ))}
@@ -199,7 +200,7 @@ function About() {
             {passions.map((passion, index) => (
               <motion.div
                 key={index}
-                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:shadow-2xl hover:shadow-white/10 hover:border-white/30 hover:bg-white/15 transition-all duration-300"
+                className="bg-white/80 dark:bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-black/5 dark:border-white/20 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-white/10 hover:border-accent-primary/30 dark:hover:border-white/30 transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -208,10 +209,10 @@ function About() {
                   delay: index * 0.1,
                 }}
               >
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-text-primary mb-3">
                   {passion.title}
                 </h3>
-                <p className="text-white/70">{passion.description}</p>
+                <p className="text-text-muted">{passion.description}</p>
               </motion.div>
             ))}
           </div>
@@ -233,23 +234,17 @@ function About() {
             viewport={{ once: true }}
             transition={{ duration: motionTokens.duration.slow / 1000 }}
           >
-            <p className="text-xl text-white/80 mb-8">
+            <p className="text-xl text-text-muted mb-8">
               I'm always excited to collaborate on innovative projects, discuss
               technology, or share stories about photography!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/about"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black shadow-sm hover:bg-gray-200 transition-colors"
-              >
+              <Button as={Link} to="/about" variant="primary">
                 Get In Touch
-              </Link>
-              <Link
-                to="/photography"
-                className="rounded-full bg-white/10 backdrop-blur-md px-6 py-3 text-sm font-semibold text-white shadow-md shadow-black/10 ring-1 ring-inset ring-white/20 hover:bg-white/15 hover:ring-white/30 hover:shadow-lg hover:shadow-white/5 transition-all duration-300"
-              >
+              </Button>
+              <Button as={Link} to="/photography" variant="secondary">
                 View My Photography
-              </Link>
+              </Button>
             </div>
           </motion.div>
         </div>

@@ -11,10 +11,10 @@ function DeepDiveDetail() {
       />
       <section className="py-24 min-h-screen flex items-center justify-center bg-background">
         <div className="max-w-3xl mx-auto px-6 md:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 font-heading">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-6 font-heading">
             Article Not Found
           </h1>
-          <p className="text-xl text-white/80 mb-8 leading-relaxed">
+          <p className="text-xl text-text-muted mb-8 leading-relaxed">
             This article could not be found. My in-depth articles are hosted on
             external platforms.
           </p>

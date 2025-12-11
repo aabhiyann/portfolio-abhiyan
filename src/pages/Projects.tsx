@@ -88,7 +88,7 @@ function Projects() {
                       />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
                       <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
+                        <h3 className="text-2xl font-bold text-text-primary mb-2 group-hover:text-accent-primary transition-colors">
                           {project.title}
                         </h3>
                       </div>
@@ -101,7 +101,7 @@ function Projects() {
                         </span>
                       </div>
 
-                      <p className="text-white/80 mb-6 leading-relaxed flex-grow">
+                      <p className="text-text-muted mb-6 leading-relaxed flex-grow">
                         {project.description}
                       </p>
 
