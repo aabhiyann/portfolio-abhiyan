@@ -1,3 +1,7 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from '../contexts/useTheme';
+import Typography from './ui/Typography';
 import { resumeContext } from '../data/ResumeContext';
 
 interface Message {
@@ -165,3 +169,5 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     </AnimatePresence>
   );
 };
+
+export default AIChatbot;

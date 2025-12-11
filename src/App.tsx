@@ -19,9 +19,9 @@ function App() {
   return (
     <ThemeProvider>
       <Layout>
-        <AnimatePresence mode="wait">
-          <ErrorBoundary>
-            <Suspense fallback={<div>Loading...</div>}>
+        <ErrorBoundary>
+          <Suspense fallback={<div>Loading...</div>}>
+            <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<Projects />} />
@@ -31,9 +31,9 @@ function App() {
                 <Route path="/deep-dives/:slug" element={<DeepDiveDetail />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
-            </Suspense>
-          </ErrorBoundary>
-        </AnimatePresence>
+            </AnimatePresence>
+          </Suspense>
+        </ErrorBoundary>
       </Layout>
     </ThemeProvider>
   );
