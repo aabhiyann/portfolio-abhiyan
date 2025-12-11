@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useTheme } from "../contexts/useTheme";
 
-const NavLinks = () => (
+const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => (
   <>
     <NavLink
       to="/projects"
+      onClick={onLinkClick}
       className={({ isActive }) =>
         `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
           isActive ? "text-white" : "text-white/70"
@@ -16,6 +17,7 @@ const NavLinks = () => (
     </NavLink>
     <NavLink
       to="/photography"
+      onClick={onLinkClick}
       className={({ isActive }) =>
         `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
           isActive ? "text-white" : "text-white/70"
@@ -26,6 +28,7 @@ const NavLinks = () => (
     </NavLink>
     <NavLink
       to="/deep-dives"
+      onClick={onLinkClick}
       className={({ isActive }) =>
         `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
           isActive ? "text-white" : "text-white/70"
@@ -36,6 +39,7 @@ const NavLinks = () => (
     </NavLink>
     <NavLink
       to="/about"
+      onClick={onLinkClick}
       className={({ isActive }) =>
         `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
           isActive ? "text-white" : "text-white/70"
@@ -51,12 +55,14 @@ const Navbar: React.FC = () => {
   const { themeState, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
   return (
     <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-black/70 border-b border-white/20 transition-colors duration-300 shadow-lg shadow-black/20 before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="font-heading font-bold text-xl text-white">
+            <Link to="/" onClick={closeMobileMenu} className="font-heading font-bold text-xl text-white">
               AS
             </Link>
           </div>
@@ -149,7 +155,7 @@ const Navbar: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden relative z-10 bg-black/80 backdrop-blur-md border-t border-white/10">
           <nav className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <NavLinks />
+            <NavLinks onLinkClick={closeMobileMenu} />
           </nav>
         </div>
       )}
