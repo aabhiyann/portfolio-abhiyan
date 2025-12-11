@@ -16,7 +16,7 @@ function Layout({ children }) {
 
   useEffect(() => {
     const originalTitle = "Abhiyan Sainju | Full Stack & AI Engineer"; // Store a consistent original title
-    
+
     const handleVisibilityChange = () => {
       if (document.hidden) {
         document.title = "👀 Come back to the code!";
@@ -28,7 +28,7 @@ function Layout({ children }) {
         }, 100);
       }
     };
-  
+
     document.addEventListener("visibilitychange", handleVisibilityChange);
     return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, []);
@@ -50,9 +50,6 @@ function Layout({ children }) {
         <motion.main
           id="content"
           className="relative z-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
         >
           {children}
         </motion.main>
