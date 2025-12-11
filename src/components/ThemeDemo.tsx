@@ -33,7 +33,7 @@ export const ThemeDemo: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-surface-light dark:bg-surface-dark transition-colors duration-500 p-8">
+    <div className="min-h-screen bg-surface dark:bg-surface transition-colors duration-500 p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div
@@ -96,8 +96,8 @@ export const ThemeDemo: React.FC = () => {
                 onClick={() => setCurrentTheme(theme.key)}
                 className={`p-6 rounded-lg border-2 transition-all duration-300 ${
                   themeState.currentTheme === theme.key
-                    ? "border-accent bg-accent/10"
-                    : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
+                    ? "border-accent-primary bg-accent-primary/10"
+                    : "border-white/20 dark:border-white/10 hover:border-white/30 dark:hover:border-white/20"
                 }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -126,7 +126,7 @@ export const ThemeDemo: React.FC = () => {
 
         {/* Current State Display */}
         <motion.div
-          className="bg-card-light dark:bg-card-dark rounded-lg p-6 border border-slate-200 dark:border-slate-700"
+          className="bg-card dark:bg-card rounded-lg p-6 border border-white/20 dark:border-white/10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -191,14 +191,14 @@ export const ThemeDemo: React.FC = () => {
                 {(() => {
                   const currentHour = Math.floor(themeState.timeRatio * 24);
                   const currentMinute = Math.floor(
-                    (themeState.timeRatio * 24 - currentHour) * 60
+                    (themeState.timeRatio * 24 - currentHour) * 60,
                   );
                   const displayHour =
                     currentHour === 0
                       ? 12
                       : currentHour > 12
-                      ? currentHour - 12
-                      : currentHour;
+                        ? currentHour - 12
+                        : currentHour;
                   const ampm = currentHour < 12 ? "AM" : "PM";
                   return `${displayHour}:${currentMinute
                     .toString()
@@ -218,7 +218,7 @@ export const ThemeDemo: React.FC = () => {
         >
           <button
             onClick={toggleTheme}
-            className="px-6 py-3 bg-accent text-white rounded-lg hover:opacity-80 transition-opacity font-medium"
+            className="px-6 py-3 bg-accent-primary text-white rounded-lg hover:opacity-80 transition-opacity font-medium"
           >
             Toggle Theme Manually
           </button>

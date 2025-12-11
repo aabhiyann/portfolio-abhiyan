@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
 import PhotographyGallery from "../components/PhotographyGallery";
-import { projects } from "../data/Projects";
-import { articles } from "../data/Articles";
+import { projects } from "../data/projects";
+import { articles } from "../data/articles";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/ui/Button";
 import { MotionCard } from "../components/ui/MotionCard";
-import SEO from '../components/SEO';
+import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
 import DraggableCards from "../components/DraggableCards";
 import CanvasConnections from "../components/CanvasConnections";
@@ -77,7 +77,7 @@ function Home() {
           ...card,
           width: isMobileSize ? card.width * 0.75 : card.width,
           height: isMobileSize ? card.height * 0.75 : card.height,
-        }))
+        })),
       );
     };
     checkMobile();
@@ -113,7 +113,7 @@ function Home() {
           default:
             return card;
         }
-      })
+      }),
     );
 
     return () => window.removeEventListener("resize", checkMobile);
@@ -125,9 +125,9 @@ function Home() {
 
   return (
     <Page>
-      <SEO 
-        title='Abhiyan Sainju | Full Stack & AI Engineer' 
-        description='Master’s student at GWU building enterprise-grade AI/ML solutions.' 
+      <SEO
+        title="Abhiyan Sainju | Full Stack & AI Engineer"
+        description="Master’s student at GWU building enterprise-grade AI/ML solutions."
       />
       {/* Hero Section */}
       <section
@@ -303,7 +303,12 @@ function Home() {
                 }}
                 whileHover={{ y: -8 }}
               >
-                <a href={article.url} target="_blank" rel="noopener noreferrer" className="p-6 flex flex-col flex-grow">
+                <a
+                  href={article.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-6 flex flex-col flex-grow"
+                >
                   <h3 className="text-xl font-semibold mb-3 text-white">
                     {article.title}
                   </h3>
