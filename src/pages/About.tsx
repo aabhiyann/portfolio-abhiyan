@@ -11,31 +11,36 @@ function About() {
     {
       year: "2021",
       title: "Started Photography Journey",
-      description: "Began capturing moments with Canon EOS 750D, exploring the art of visual storytelling.",
+      description:
+        "Began capturing moments with Canon EOS 750D, exploring the art of visual storytelling.",
       location: "Kathmandu, Nepal",
     },
     {
       year: "2022",
       title: "Software Engineering Career",
-      description: "Started my journey as a software engineer, focusing on cloud infrastructure and AI applications.",
+      description:
+        "Started my journey as a software engineer, focusing on cloud infrastructure and AI applications.",
       location: "Kathmandu, Nepal",
     },
     {
       year: "2023",
       title: "Moved to Washington D.C.",
-      description: "Relocated to the U.S. capital to pursue advanced opportunities in cloud computing and AI.",
+      description:
+        "Relocated to the U.S. capital to pursue advanced opportunities in cloud computing and AI.",
       location: "Washington D.C., USA",
     },
     {
       year: "2024",
       title: "iPhone 15 Pro Max Era",
-      description: "Upgraded to iPhone 15 Pro Max, capturing daily life with professional-grade mobile photography.",
+      description:
+        "Upgraded to iPhone 15 Pro Max, capturing daily life with professional-grade mobile photography.",
       location: "Washington D.C., USA",
     },
     {
       year: "2025",
       title: "Portfolio Launch",
-      description: "Created this comprehensive portfolio showcasing both technical skills and artistic vision.",
+      description:
+        "Created this comprehensive portfolio showcasing both technical skills and artistic vision.",
       location: "Washington D.C., USA",
     },
   ];
@@ -43,40 +48,46 @@ function About() {
   const passions = [
     {
       title: "Cloud Architecture",
-      description: "Designing and building scalable, resilient systems on cloud platforms like AWS is both a professional skill and a personal passion.",
+      description:
+        "Designing and building scalable, resilient systems on cloud platforms like AWS is both a professional skill and a personal passion.",
     },
     {
       title: "AI & Machine Learning",
-      description: "Beyond my academic and project work, I am constantly exploring new machine learning models and AI-powered application architectures.",
+      description:
+        "Beyond my academic and project work, I am constantly exploring new machine learning models and AI-powered application architectures.",
     },
     {
       title: "Open Source Contribution",
-      description: "I believe in the power of community-driven software and enjoy contributing to open-source projects and sharing knowledge.",
+      description:
+        "I believe in the power of community-driven software and enjoy contributing to open-source projects and sharing knowledge.",
     },
     {
       title: "Photography",
-      description: "Photography is a creative outlet that has taught me to appreciate composition and storytelling, principles I apply to my design and development work.",
+      description:
+        "Photography is a creative outlet that has taught me to appreciate composition and storytelling, principles I apply to my design and development work.",
     },
     {
       title: "FC Barcelona",
-      description: "As a dedicated supporter of FC Barcelona, I appreciate the strategic thinking and teamwork required to compete at the highest level.",
+      description:
+        "As a dedicated supporter of FC Barcelona, I appreciate the strategic thinking and teamwork required to compete at the highest level.",
     },
     {
       title: "Travel",
-      description: "Exploring new places and cultures, from the Himalayas to the Potomac River, provides fresh perspectives that influence my problem-solving approach.",
+      description:
+        "Exploring new places and cultures, from the Himalayas to the Potomac River, provides fresh perspectives that influence my problem-solving approach.",
     },
   ];
 
   return (
     <Page>
-      <SEO 
-        title='About Abhiyan Sainju | Software Engineer' 
-        description='A Software Engineer based in Washington, DC, with a passion for scalable architecture and AI integration.' 
+      <SEO
+        title="About Abhiyan Sainju | Software Engineer"
+        description="A Software Engineer based in Washington, DC, with a passion for scalable architecture and AI integration."
       />
       {/* Hero Section */}
       <section
         className="relative py-24 min-h-screen flex items-center"
-        style={{ backgroundColor: "#000000" }}
+        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
       >
         <div className="relative z-20 w-full">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -98,9 +109,9 @@ function About() {
                     My journey began in Kathmandu, where I led digital
                     transformations as an IT Lead, but my curiosity for code
                     drove me to software engineering. Now, I specialize in
-                    building SaaS platforms that solve expensive problems—whether
-                    that's cutting cloud costs by 70% or reducing document
-                    analysis time by half.
+                    building SaaS platforms that solve expensive
+                    problems—whether that's cutting cloud costs by 70% or
+                    reducing document analysis time by half.
                   </p>
                   <p>
                     When I'm not building RAG architectures or optimizing React
@@ -134,7 +145,7 @@ function About() {
       </section>
 
       {/* Journey Timeline */}
-      <section className="py-24" style={{ backgroundColor: "#000000" }}>
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="My Journey"
@@ -178,7 +189,7 @@ function About() {
       </section>
 
       {/* Interests & Passions */}
-      <section className="py-24" style={{ backgroundColor: "#000000" }}>
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Interests & Passions"
@@ -210,7 +221,7 @@ function About() {
       <Testimonials />
 
       {/* CTA Section */}
-      <section className="py-24" style={{ backgroundColor: "#000000" }}>
+      <section className="py-24 bg-background">
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
           <SectionTitle
             title="Let's Connect"
