@@ -57,9 +57,10 @@ export const projectImages: Record<string, ImageMetadata[]> = {
 };
 
 // Generate photography images with real EXIF data
+// Note: Using main image as thumbnail since dedicated thumbnails don't exist yet
 export const photographyImages: ImageMetadata[] = imageEXIFData.map((exif) => ({
   src: `/images/photography/${exif.filename}.webp`,
-  thumbnailSrc: `/images/photography/${exif.filename}-thumb.webp`,
+  thumbnailSrc: `/images/photography/${exif.filename}.webp`, // Fallback to main image
   alt: `Photography by Abhiyan - ${exif.filename}`,
   width: 1200,
   height: 1500,
