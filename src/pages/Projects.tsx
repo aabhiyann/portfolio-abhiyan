@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
-import { projects as initialProjects, Project } from "../data/Projects";
+import { projects as initialProjects, Project } from "../data/projects";
 import Page from "../components/Page";
 import { Card } from "../components/ui/Card";
 import SectionTitle from "../components/SectionTitle";
