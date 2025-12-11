@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const FooterLink = ({ to, children }) => (
+interface FooterLinkProps {
+  to: string;
+  children: React.ReactNode;
+}
+
+const FooterLink: React.FC<FooterLinkProps> = ({ to, children }) => (
   <Link
     to={to}
     className="text-white/70 hover:text-white transition-colors duration-300"
@@ -10,7 +15,15 @@ const FooterLink = ({ to, children }) => (
   </Link>
 );
 
-const ExternalFooterLink = ({ href, children }) => (
+interface ExternalFooterLinkProps {
+  href: string;
+  children: React.ReactNode;
+}
+
+const ExternalFooterLink: React.FC<ExternalFooterLinkProps> = ({
+  href,
+  children,
+}) => (
   <a
     href={href}
     target="_blank"
@@ -71,19 +84,24 @@ const Footer: React.FC = () => {
           <div className="flex flex-col space-y-4">
             <h4 className="font-semibold text-white">Side Quests</h4>
             <p className="text-sm text-white/70">
-              Currently experimenting with Agentic AI workflows and reading 'Designing Data-Intensive Applications'.
+              Currently experimenting with Agentic AI workflows and reading
+              'Designing Data-Intensive Applications'.
             </p>
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-white/70">
           <p>
-            &copy; {new Date().getFullYear()} Abhiyan Sainju. Built with React & Tailwind.
+            &copy; {new Date().getFullYear()} Abhiyan Sainju. Built with React &
+            Tailwind.
           </p>
           <p className="text-xs text-white/50 mt-2">
             Built with accessibility in mind (ARIA compliant).
           </p>
           <div className="flex justify-center mt-4">
-            <img src="https://img.shields.io/github/last-commit/aabhiyann/portfolio-abhiyan?style=flat-square&color=black" alt="Last Commit" />
+            <img
+              src="https://img.shields.io/github/last-commit/aabhiyann/portfolio-abhiyan?style=flat-square&color=black"
+              alt="Last Commit"
+            />
           </div>
         </div>
       </div>
