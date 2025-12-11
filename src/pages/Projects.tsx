@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
-import { projects as initialProjects } from "../data/Projects";
+import { projects as initialProjects, Project } from "../data/Projects";
 import Page from "../components/Page";
 import { Card } from "../components/ui/Card";
 import SectionTitle from "../components/SectionTitle";
 import ProjectDeconstructor from "../components/ProjectDeconstructor";
 import { Button, Chip } from "../components/ui";
-import SEO from '../components/SEO';
+import SEO from "../components/SEO";
 
 interface Architecture {
   nodes: Array<{
@@ -20,12 +20,37 @@ interface Architecture {
 
 function Projects() {
   const [selectedArch, setSelectedArch] = useState<Architecture | null>(null);
+  const [projects, setProjects] = useState<Project[]>(initialProjects);
+
+  // Elaborate function - generates a more detailed description (placeholder for AI integration)
+  const handleElaborate = async (projectId: number) => {
+    setProjects((prev) =>
+      prev.map((p) => (p.id === projectId ? { ...p, isLoading: true } : p)),
+    );
+
+    // Simulate API call delay - in production, this would call an AI API
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    setProjects((prev) =>
+      prev.map((p) =>
+        p.id === projectId
+          ? {
+              ...p,
+              isLoading: false,
+              elaboratedDescription:
+                p.story ||
+                "This project showcases advanced engineering practices and innovative problem-solving approaches.",
+            }
+          : p,
+      ),
+    );
+  };
 
   return (
     <Page>
-      <SEO 
-        title='Projects | Abhiyan Sainju' 
-        description='Explore a collection of my projects, from AI-driven SaaS platforms to full-stack web applications.' 
+      <SEO
+        title="Projects | Abhiyan Sainju"
+        description="Explore a collection of my projects, from AI-driven SaaS platforms to full-stack web applications."
       />
       <section
         className="relative py-24 min-h-screen"
@@ -40,7 +65,7 @@ function Projects() {
 
             {/* Projects Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {initialProjects.map((project, index) => (
+              {projects.map((project, index) => (
                 <motion.div
                   key={project.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -118,7 +143,7 @@ function Projects() {
                         {project.architecture && (
                           <Button
                             onClick={() =>
-                              setSelectedArch(project.architecture)
+                              setSelectedArch(project.architecture ?? null)
                             }
                             variant="ghost"
                             size="sm"
@@ -139,8 +164,8 @@ function Projects() {
                           {project.isLoading
                             ? "Generating..."
                             : project.elaboratedDescription
-                            ? "Done"
-                            : "Elaborate"}
+                              ? "Done"
+                              : "Elaborate"}
                         </Button>
                       </div>
                     </div>
