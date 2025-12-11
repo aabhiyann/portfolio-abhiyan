@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
 import { useTheme } from "../../contexts/useTheme";
 
-export interface CardProps {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
   variant?: "default" | "elevated" | "outlined";
@@ -11,20 +11,33 @@ export interface CardProps {
   interactive?: boolean;
 }
 
-export const Card: React.FC<CardProps> = ({
+export const Card = React.forwardRef<HTMLDivElement, CardProps>(({
   children,
   className = "",
   variant = "default",
   padding = "md",
   style = {},
   interactive = false,
-}) => {
+  ...props
+}, ref) => {
   const { themeState } = useTheme();
-  const tiltRef = useRef<HTMLDivElement>(null);
+  // Internal ref for VanillaTilt
+  const internalRef = useRef<HTMLDivElement>(null);
+
+  // Combine refs to support both VanillaTilt and parent refs (Framer Motion)
+  const setRefs = (node: HTMLDivElement | null) => {
+    internalRef.current = node;
+
+    if (typeof ref === "function") {
+      ref(node);
+    } else if (ref) {
+      (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+    }
+  };
 
   useEffect(() => {
-    if (interactive && tiltRef.current) {
-      VanillaTilt.init(tiltRef.current, {
+    if (interactive && internalRef.current) {
+      VanillaTilt.init(internalRef.current, {
         max: 3,
         speed: 800,
         glare: true,
@@ -62,14 +75,17 @@ export const Card: React.FC<CardProps> = ({
 
   return (
     <div
-      ref={tiltRef}
+      ref={setRefs}
       className={`${baseClasses} ${getVariantClasses()} ${getPaddingClasses()} ${className}`}
       style={style}
       data-theme={themeState.isDarkMode ? "dark" : "light"}
+      {...props}
     >
       <div className="relative z-10">{children}</div>
     </div>
   );
-};
+});
+
+Card.displayName = "Card";
 
 export default Card;

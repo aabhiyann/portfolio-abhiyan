@@ -1,126 +1,57 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { motionTokens } from "../utils/motion";
-import { projects as initialProjects } from "../data/Projects";
+import { motionTokens } from "../utils/Motion";
+import { projects as initialProjects, Project } from "../data/Projects";
 import Page from "../components/Page";
 import { Card } from "../components/ui/Card";
 import SectionTitle from "../components/SectionTitle";
 import ProjectDeconstructor from "../components/ProjectDeconstructor";
 import { Button, Chip } from "../components/ui";
-import useSeo from "../utils/useSeo";
-import useStructuredData from "../utils/useStructuredData";
+import SEO from "../components/SEO";
+
+interface Architecture {
+  nodes: Array<{
+    id: string;
+    label: string;
+    position: { x: number; y: number };
+  }>;
+  connections: Array<{ from: string; to: string }>;
+}
 
 function Projects() {
-  const [selectedArch, setSelectedArch] = useState(null);
-  const [projects, setProjects] = useState(
-    initialProjects.map((p) => ({
-      ...p,
-      elaboratedDescription: null,
-      isLoading: false,
-    }))
-  );
-  const [apiError, setApiError] = useState<string | null>(null);
+  const [selectedArch, setSelectedArch] = useState<Architecture | null>(null);
+  const [projects, setProjects] = useState<Project[]>(initialProjects);
 
-  useSeo({
-    title: "Projects – Abhiyan Sainju",
-    description:
-      "Explore a collection of software engineering projects by Abhiyan Sainju, showcasing expertise in web development, cloud, and AI.",
-    keywords:
-      "Abhiyan Sainju projects, software development portfolio, web projects, cloud projects, AI projects",
-  });
-
-  useStructuredData({
-    jsonLd: {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      itemListElement: projects.map((project, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        item: {
-          "@type": "CreativeWork", // Or SoftwareSourceCode if more appropriate
-          name: project.title,
-          description: project.description,
-          url: `https://www.abhiyansainju.com/projects/${project.id}`, // Adjust URL structure if needed
-          image: project.image,
-          keywords: project.tech.join(", "),
-          author: {
-            "@type": "Person",
-            name: "Abhiyan Sainju",
-          },
-        },
-      })),
-    },
-  });
-
-  const handleElaborate = async (projectId) => {
-    setApiError(null); // Clear previous errors
-    setProjects(
-      projects.map((p) => (p.id === projectId ? { ...p, isLoading: true } : p))
+  // Elaborate function - generates a more detailed description (placeholder for AI integration)
+  const handleElaborate = async (projectId: number) => {
+    setProjects((prev) =>
+      prev.map((p) => (p.id === projectId ? { ...p, isLoading: true } : p)),
     );
 
-    const project = projects.find((p) => p.id === projectId);
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    // Simulate API call delay - in production, this would call an AI API
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    if (!apiKey) {
-      console.error("Gemini API key is missing.");
-      setApiError(
-        "Gemini API Key is not configured. Please add VITE_GEMINI_API_KEY to your .env file."
-      );
-      setProjects(
-        projects.map((p) =>
-          p.id === projectId ? { ...p, isLoading: false } : p
-        )
-      );
-      return;
-    }
-
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
-    const prompt = `You are a professional tech writer. Given the project title '${
-      project.title
-    }', its technologies '${project.tech.join(
-      ", "
-    )}', and its brief description '${
-      project.description
-    }', write a professional, engaging paragraph (3-4 sentences) that elaborates on what this project might entail, its potential impact, and the technical challenges involved.`;
-
-    const payload = { contents: [{ parts: [{ text: prompt }] }] };
-
-    try {
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error.message || "API Error");
-      }
-      const result = await response.json();
-      const elaboratedText =
-        result.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "Could not generate elaboration.";
-      setProjects(
-        projects.map((p) =>
-          p.id === projectId
-            ? { ...p, elaboratedDescription: elaboratedText, isLoading: false }
-            : p
-        )
-      );
-    } catch (error) {
-      console.error("Elaboration failed:", error);
-      setApiError(`Elaboration failed: ${error.message}. Please try again.`);
-      setProjects(
-        projects.map((p) =>
-          p.id === projectId
-            ? { ...p, elaboratedDescription: null, isLoading: false }
-            : p
-        )
-      );
-    }
+    setProjects((prev) =>
+      prev.map((p) =>
+        p.id === projectId
+          ? {
+              ...p,
+              isLoading: false,
+              elaboratedDescription:
+                p.story ||
+                "This project showcases advanced engineering practices and innovative problem-solving approaches.",
+            }
+          : p,
+      ),
+    );
   };
 
   return (
     <Page>
+      <SEO
+        title="Projects | Abhiyan Sainju"
+        description="Explore a collection of my projects, from AI-driven SaaS platforms to full-stack web applications."
+      />
       <section
         className="relative py-24 min-h-screen"
         style={{ backgroundColor: "#000000" }}
@@ -131,16 +62,6 @@ function Projects() {
               title="Projects"
               subtitle="A collection of projects that showcase my passion for building innovative solutions that solve real-world problems with modern technology."
             />
-
-            {apiError && (
-              <div
-                className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-8"
-                role="alert"
-              >
-                <strong className="font-bold">Error: </strong>
-                <span className="block sm:inline">{apiError}</span>
-              </div>
-            )}
 
             {/* Projects Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -176,7 +97,7 @@ function Projects() {
                     <div className="p-8 flex flex-col flex-grow">
                       <div className="mb-4">
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/10 backdrop-blur-md text-white border border-white/20 shadow-md shadow-black/10">
-                          💡 {project.impact}
+                          {project.impact}
                         </span>
                       </div>
 
@@ -222,7 +143,7 @@ function Projects() {
                         {project.architecture && (
                           <Button
                             onClick={() =>
-                              setSelectedArch(project.architecture)
+                              setSelectedArch(project.architecture ?? null)
                             }
                             variant="ghost"
                             size="sm"
@@ -233,7 +154,8 @@ function Projects() {
                         <Button
                           onClick={() => handleElaborate(project.id)}
                           disabled={
-                            project.isLoading || project.elaboratedDescription
+                            !!project.isLoading ||
+                            !!project.elaboratedDescription
                           }
                           variant="primary"
                           size="sm"
@@ -242,8 +164,8 @@ function Projects() {
                           {project.isLoading
                             ? "Generating..."
                             : project.elaboratedDescription
-                            ? "Done"
-                            : "Elaborate"}
+                              ? "Done"
+                              : "Elaborate"}
                         </Button>
                       </div>
                     </div>

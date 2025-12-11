@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const FooterLink = ({ to, children }) => (
+interface FooterLinkProps {
+  to: string;
+  children: React.ReactNode;
+}
+
+const FooterLink: React.FC<FooterLinkProps> = ({ to, children }) => (
   <Link
     to={to}
     className="text-white/70 hover:text-white transition-colors duration-300"
@@ -10,7 +15,15 @@ const FooterLink = ({ to, children }) => (
   </Link>
 );
 
-const ExternalFooterLink = ({ href, children }) => (
+interface ExternalFooterLinkProps {
+  href: string;
+  children: React.ReactNode;
+}
+
+const ExternalFooterLink: React.FC<ExternalFooterLinkProps> = ({
+  href,
+  children,
+}) => (
   <a
     href={href}
     target="_blank"
@@ -46,8 +59,11 @@ const Footer: React.FC = () => {
               <ExternalFooterLink href="https://linkedin.com/in/abhiyansainju">
                 LinkedIn
               </ExternalFooterLink>
-              <ExternalFooterLink href="mailto:abhiyan.sainju@email.com">
+              <ExternalFooterLink href="mailto:aabhiyansainju@gmail.com">
                 Email
+              </ExternalFooterLink>
+              <ExternalFooterLink href="https://github.com/aabhiyann/portfolio-abhiyan">
+                View Source
               </ExternalFooterLink>
             </nav>
           </div>
@@ -56,7 +72,7 @@ const Footer: React.FC = () => {
             <nav className="flex flex-col space-y-2">
               <FooterLink to="/about">About</FooterLink>
               <a
-                href="/resume.pdf"
+                href="/Abhiyan_Sainju_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/70 hover:text-white transition-colors duration-300"
@@ -66,19 +82,27 @@ const Footer: React.FC = () => {
             </nav>
           </div>
           <div className="flex flex-col space-y-4">
-            <h4 className="font-semibold text-white">Other</h4>
+            <h4 className="font-semibold text-white">Side Quests</h4>
             <p className="text-sm text-white/70">
-              Currently Listening:{" "}
-              <span className="font-medium text-white">IVE - Either Way</span>
+              Currently experimenting with Agentic AI workflows and reading
+              'Designing Data-Intensive Applications'.
             </p>
-            <p className="text-sm text-white/70">Visca Barça! 🔵🔴</p>
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-white/10 text-center text-sm text-white/70">
           <p>
-            &copy; {new Date().getFullYear()} Abhiyan Sainju. All Rights
-            Reserved.
+            &copy; {new Date().getFullYear()} Abhiyan Sainju. Built with React &
+            Tailwind.
           </p>
+          <p className="text-xs text-white/50 mt-2">
+            Built with accessibility in mind (ARIA compliant).
+          </p>
+          <div className="flex justify-center mt-4">
+            <img
+              src="https://img.shields.io/github/last-commit/aabhiyann/portfolio-abhiyan?style=flat-square&color=black"
+              alt="Last Commit"
+            />
+          </div>
         </div>
       </div>
     </footer>

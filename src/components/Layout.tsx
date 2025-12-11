@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../contexts/useTheme";
 import Navbar from "./Navbar";
@@ -8,17 +8,41 @@ import AIChatbot from "./AIChatbot";
 import FloatingActionButton from "./FloatingActionButton";
 import CustomCursor from "./CustomCursor";
 import LivingBackground from "./LivingBackground";
+import ScrollProgressBar from "./ScrollProgressBar";
 
-function Layout({ children }) {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+function Layout({ children }: LayoutProps) {
   const { themeState, toggleTheme, setCurrentTheme } = useTheme();
   const [isChatbotOpen, setChatbotOpen] = useState(false);
 
+  useEffect(() => {
+    const originalTitle = "Abhiyan Sainju | Full Stack & AI Engineer"; // Store a consistent original title
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.title = "👀 Come back to the code!";
+      } else {
+        // On returning, restore the title from the Helmet component, or the original.
+        // Helmet will win if the component re-renders, which is what we want.
+        setTimeout(() => {
+          document.title =
+            document.querySelector("title")?.innerText || originalTitle;
+        }, 100);
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, []);
+
   return (
-    <div
-      className="min-h-screen relative"
-      style={{ backgroundColor: "#000000", color: "#ffffff" }}
-    >
+    <div className="min-h-screen relative bg-bg-primary text-text-primary">
       <LivingBackground />
+      <ScrollProgressBar />
       <CustomCursor />
       <SkipLink />
       <div className="relative z-10">
@@ -29,13 +53,7 @@ function Layout({ children }) {
           switchColorTheme={setCurrentTheme}
         />
 
-        <motion.main
-          id="content"
-          className="relative z-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
+        <motion.main id="content" className="relative z-10">
           {children}
         </motion.main>
 
