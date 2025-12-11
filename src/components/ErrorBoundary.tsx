@@ -32,7 +32,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
               Something went wrong.
             </h1>
             <div className="bg-gray-900 p-6 rounded-lg overflow-auto border border-gray-800">
-              <p className="font-mono text-sm text-gray-300">
+              <p className="font-mono text-sm text-text-muted">
                 {this.state.error && this.state.error.toString()}
               </p>
             </div>

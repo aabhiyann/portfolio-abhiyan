@@ -52,10 +52,7 @@ function Projects() {
         title="Projects | Abhiyan Sainju"
         description="Explore a collection of my projects, from AI-driven SaaS platforms to full-stack web applications."
       />
-      <section
-        className="relative py-24 min-h-screen"
-        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-      >
+      <section className="relative py-24 min-h-screen font-heading">
         <div className="relative z-20">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <SectionTitle
@@ -78,7 +75,7 @@ function Projects() {
                 >
                   <Card
                     interactive
-                    className="flex flex-col bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent before:pointer-events-none"
+                    className="flex flex-col bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/5 dark:border-white/20 hover:border-accent-primary/30 dark:hover:border-white/30 hover:bg-white/90 dark:hover:bg-white/15 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-white/10 transition-all duration-300 relative overflow-hidden group"
                   >
                     <div className="aspect-video bg-gradient-to-br from-white/15 to-white/5 relative overflow-hidden group border-b border-white/10">
                       <img

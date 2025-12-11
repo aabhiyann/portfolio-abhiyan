@@ -11,10 +11,7 @@ function Photography() {
         title="Photography – Abhiyan Sainju"
         description="Explore the photography portfolio of Abhiyan Sainju, featuring moments captured with iPhone 15 Pro Max and Canon EOS 750D."
       />
-      <section
-        className="relative py-24 min-h-screen"
-        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-      >
+      <section className="relative py-24 min-h-screen font-heading">
         <div className="relative z-20">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <motion.div
