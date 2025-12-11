@@ -12,10 +12,7 @@ function DeepDives() {
         description="Explore in-depth articles and deep dives by Abhiyan Sainju on technology, mathematics, and the intersection of code and creativity."
       />
       {/* Hero Section */}
-      <section
-        className="relative py-24 min-h-screen"
-        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-      >
+      <section className="relative py-24 min-h-screen font-heading">
         <div className="relative z-20">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <motion.div
@@ -45,7 +42,7 @@ function DeepDives() {
                 {articles.map((article, index) => (
                   <motion.article
                     key={article.id}
-                    className="group bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6 hover:shadow-2xl hover:shadow-white/10 hover:border-white/30 hover:bg-white/15 transition-all duration-300 relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent before:pointer-events-none"
+                    className="group bg-white/80 dark:bg-white/10 backdrop-blur-md rounded-xl border border-black/5 dark:border-white/20 p-6 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-white/10 hover:border-accent-primary/30 dark:hover:border-white/30 hover:bg-white/90 dark:hover:bg-white/15 transition-all duration-300 relative"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}

@@ -36,10 +36,7 @@ const ExternalFooterLink: React.FC<ExternalFooterLinkProps> = ({
 
 const Footer: React.FC = () => {
   return (
-    <footer
-      className="border-t border-white/10 backdrop-blur-sm bg-black/50 relative before:absolute before:inset-0 before:bg-gradient-to-t before:from-white/5 before:to-transparent before:pointer-events-none"
-      style={{ backgroundColor: "#000000" }}
-    >
+    <footer className="border-t border-white/10 backdrop-blur-sm bg-black relative before:absolute before:inset-0 before:bg-gradient-to-t before:from-white/5 before:to-transparent before:pointer-events-none">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="flex flex-col space-y-4">
