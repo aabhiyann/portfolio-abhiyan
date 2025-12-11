@@ -24,11 +24,11 @@ function DeepDives() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: motionTokens.duration.slow / 1000 }}
             >
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 font-heading">
+              <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-text-primary mb-6 font-heading">
                 Deep Dives
               </h1>
 
-              <p className="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
+              <p className="text-xl text-text-muted mb-8 max-w-3xl mx-auto">
                 In-depth explorations of technology, mathematics, and the
                 intersection of code and creativity. Each article represents
                 hours of research, analysis, and thoughtful writing.
@@ -37,7 +37,7 @@ function DeepDives() {
 
             {/* All Articles */}
             <div>
-              <h2 className="text-2xl font-semibold text-white mb-8 font-heading">
+              <h2 className="text-2xl font-semibold text-text-primary mb-8 font-heading">
                 All Articles
               </h2>
 
@@ -56,11 +56,11 @@ function DeepDives() {
                   >
                     <div className="flex flex-col md:flex-row md:items-center gap-4">
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-white/80 transition-colors">
+                        <h3 className="text-xl font-semibold text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
                           {article.title}
                         </h3>
 
-                        <p className="text-white/70 mb-3 leading-relaxed">
+                        <p className="text-text-muted mb-3 leading-relaxed">
                           {article.summary}
                         </p>
                       </div>
@@ -70,7 +70,7 @@ function DeepDives() {
                           href={article.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-white hover:text-white/80 transition-colors font-medium"
+                          className="inline-flex items-center gap-2 text-accent-primary hover:text-accent-hover transition-colors font-medium"
                         >
                           Read on {article.source}
                           <svg
