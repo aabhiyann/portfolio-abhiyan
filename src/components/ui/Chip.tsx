@@ -3,7 +3,7 @@ import React from "react";
 type ChipVariant = "default" | "accent" | "muted";
 type ChipSize = "sm" | "md" | "lg";
 
-interface ChipProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface ChipProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: ChipVariant;
   size?: ChipSize;
   children?: React.ReactNode;
@@ -33,7 +33,7 @@ const getChipClasses = (variant: ChipVariant, size: ChipSize) => {
 export const Chip = React.forwardRef<HTMLSpanElement, ChipProps>(
   (
     { variant = "default", size = "md", className = "", children, ...props },
-    ref
+    ref,
   ) => {
     const classes = getChipClasses(variant, size);
     return (
@@ -41,7 +41,7 @@ export const Chip = React.forwardRef<HTMLSpanElement, ChipProps>(
         {children}
       </span>
     );
-  }
+  },
 );
 
 Chip.displayName = "Chip";

@@ -1,8 +1,14 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { ImageMetadata } from "../types/image";
 
-const FocusMode = ({ image, onClose }) => {
+interface FocusModeProps {
+  image: ImageMetadata | null;
+  onClose: () => void;
+}
+
+const FocusMode: React.FC<FocusModeProps> = ({ image, onClose }) => {
   if (!image) return null;
 
   return (
@@ -27,8 +33,24 @@ const FocusMode = ({ image, onClose }) => {
             />
           </TransformComponent>
         </TransformWrapper>
-        <button onClick={onClose} className="absolute top-6 right-6 p-2 rounded-full text-white hover:bg-white/20">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+        <button
+          onClick={onClose}
+          className="absolute top-6 right-6 p-2 rounded-full text-white hover:bg-white/20"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
         </button>
         <div className="absolute bottom-6 left-6 text-white bg-black/30 p-4 rounded-lg">
           <p className="font-bold">{image.exif?.camera}</p>

@@ -10,7 +10,11 @@ import CustomCursor from "./CustomCursor";
 import LivingBackground from "./LivingBackground";
 import ScrollProgressBar from "./ScrollProgressBar";
 
-function Layout({ children }) {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+function Layout({ children }: LayoutProps) {
   const { themeState, toggleTheme, setCurrentTheme } = useTheme();
   const [isChatbotOpen, setChatbotOpen] = useState(false);
 
@@ -24,13 +28,15 @@ function Layout({ children }) {
         // On returning, restore the title from the Helmet component, or the original.
         // Helmet will win if the component re-renders, which is what we want.
         setTimeout(() => {
-          document.title = document.querySelector('title')?.innerText || originalTitle;
+          document.title =
+            document.querySelector("title")?.innerText || originalTitle;
         }, 100);
       }
     };
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, []);
 
   return (
@@ -47,10 +53,7 @@ function Layout({ children }) {
           switchColorTheme={setCurrentTheme}
         />
 
-        <motion.main
-          id="content"
-          className="relative z-10"
-        >
+        <motion.main id="content" className="relative z-10">
           {children}
         </motion.main>
 

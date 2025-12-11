@@ -1,6 +1,7 @@
 // src/types/image.ts
 export interface ImageMetadata {
   src: string;
+  thumbnailSrc?: string;
   alt: string;
   width: number;
   height: number;
