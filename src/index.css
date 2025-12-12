@@ -1,38 +1,36 @@
 @import "tailwindcss";
 
-@import "tailwindcss";
-
 @theme {
   /* Theme: Clean & Modern with Better Contrast */
-  --color-light-background: #fafafa; /* Clean white-gray */
+  --color-light-background: #fafafa;
   --color-light-navbar: #ffffff;
   --color-light-surface: #ffffff;
   --color-light-card: #ffffff;
-  --color-light-text: #1a1a1a; /* Near black for better readability */
-  --color-light-textSecondary: #4a5568; /* Darker gray for better contrast */
-  --color-light-textMuted: #718096; /* Medium gray for subtle text */
-  --color-light-border: #e2e8f0; /* Light gray border */
-  --color-light-borderMuted: #f1f5f9; /* Very light border */
+  --color-light-text: #1a1a1a;
+  --color-light-textSecondary: #4a5568;
+  --color-light-textMuted: #718096;
+  --color-light-border: #e2e8f0;
+  --color-light-borderMuted: #f1f5f9;
 
-  --color-dark-background: #0f172a; /* Darker slate for better contrast */
+  --color-dark-background: #0f172a;
   --color-dark-navbar: #0f172a;
-  --color-dark-surface: #1e293b; /* Dark slate */
+  --color-dark-surface: #1e293b;
   --color-dark-card: #1e293b;
-  --color-dark-text: #f8fafc; /* Near white for better readability */
-  --color-dark-textSecondary: #cbd5e1; /* Light gray for better contrast */
-  --color-dark-textMuted: #94a3b8; /* Medium light gray for subtle text */
-  --color-dark-border: #334155; /* Dark border */
-  --color-dark-borderMuted: #475569; /* Muted border */
+  --color-dark-text: #f8fafc;
+  --color-dark-textSecondary: #cbd5e1;
+  --color-dark-textMuted: #94a3b8;
+  --color-dark-border: #334155;
+  --color-dark-borderMuted: #475569;
 
-  /* Accent Color - Better contrast options */
-  --color-primary-light: #3b82f6; /* Blue - better contrast on light */
-  --color-primary-dark: #8b5cf6; /* Purple */
-  --color-secondary-light: #f59e0b; /* Amber - better contrast on light */
-  --color-secondary-dark: #22c55e; /* Emerald */
-  --color-hover-light: #2563eb; /* Darker Blue */
-  --color-hover-dark: #7c3aed; /* Darker Purple */
-  --color-focus-light: #3b82f6; /* Blue focus */
-  --color-focus-dark: #8b5cf6; /* Purple focus */
+  /* Accent Color */
+  --color-primary-light: #3b82f6; 
+  --color-primary-dark: #8b5cf6; 
+  --color-secondary-light: #f59e0b; 
+  --color-secondary-dark: #22c55e;
+  --color-hover-light: #2563eb;
+  --color-hover-dark: #7c3aed;
+  --color-focus-light: #3b82f6;
+  --color-focus-dark: #8b5cf6;
 
   /* State Colors */
   --color-success: #10b981;
@@ -40,199 +38,65 @@
   --color-error: #ef4444;
   --color-info: #3b82f6;
 
-  /* Semantic Colors - Better contrast */
-  --color-link-light: #3b82f6; /* Blue links */
-  --color-link-dark: #22c55e; /* Green links */
-  --color-button-primary-light: #3b82f6; /* Blue buttons */
-  --color-button-primary-dark: #8b5cf6; /* Purple buttons */
-  --color-button-secondary-light: #f59e0b; /* Amber buttons */
-  --color-button-secondary-dark: #22c55e; /* Green buttons */
-  --color-chip-light: #3b82f6; /* Blue chips */
-  --color-chip-dark: #22c55e; /* Green chips */
-
-  /* Font Families */
+  /* Fonts */
   --font-family-heading: "Space Grotesk", sans-serif;
   --font-family-body: "Inter", sans-serif;
 }
 
-/* Light Theme Variants */
-.theme-warm {
-  --color-light-background: #fefefe; /* Warm white */
-  --color-light-navbar: #fdf6e3; /* Warm cream */
-  --color-light-text: #2d3748; /* Dark gray */
-  --color-light-textSecondary: #4a5568; /* Medium dark gray */
-  --color-light-textMuted: #718096; /* Medium gray */
-  --color-light-border: #d6d3d1; /* Warm border */
-  --color-light-borderMuted: #f3f4f6; /* Light warm border */
+/* Dynamic Token Mapping */
+:root {
+  /* Default to Light Theme */
+  --color-bg-primary: var(--color-light-background);
+  --color-bg-surface: var(--color-light-surface);
+  --color-bg-card: var(--color-light-card);
+  --color-bg-navbar: var(--color-light-navbar);
+  
+  --color-text-primary: var(--color-light-text);
+  --color-text-secondary: var(--color-light-textSecondary);
+  --color-text-muted: var(--color-light-textMuted);
+  
+  --color-border-primary: var(--color-light-border);
+  --color-border-secondary: var(--color-light-borderMuted);
+  
+  --color-accent-primary: var(--color-primary-light);
+  --color-accent-secondary: var(--color-secondary-light);
+  --color-accent-hover: var(--color-hover-light);
+  --color-accent-focus: var(--color-focus-light);
 }
 
-.theme-cool {
-  --color-light-background: #f8fafc; /* Cool white */
-  --color-light-navbar: #f1f5f9; /* Cool light gray */
-  --color-light-text: #0f172a; /* Dark slate */
-  --color-light-textSecondary: #475569; /* Slate gray */
-  --color-light-textMuted: #64748b; /* Light slate */
-  --color-light-border: #cbd5e1; /* Cool border */
-  --color-light-borderMuted: #e2e8f0; /* Light cool border */
+:root[class~="dark"] {
+  --color-bg-primary: var(--color-dark-background);
+  --color-bg-surface: var(--color-dark-surface);
+  --color-bg-card: var(--color-dark-card);
+  --color-bg-navbar: var(--color-dark-navbar);
+  
+  --color-text-primary: var(--color-dark-text);
+  --color-text-secondary: var(--color-dark-textSecondary);
+  --color-text-muted: var(--color-dark-textMuted);
+  
+  --color-border-primary: var(--color-dark-border);
+  --color-border-secondary: var(--color-dark-borderMuted);
+  
+  --color-accent-primary: var(--color-primary-dark);
+  --color-accent-secondary: var(--color-secondary-dark);
+  --color-accent-hover: var(--color-hover-dark);
+  --color-accent-focus: var(--color-focus-dark);
 }
 
-/* Base styles */
+/* Global Styles */
 body {
   margin: 0;
   font-family: var(--font-family-body);
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s, color 0.3s;
 }
 
-html,
-body,
-#root {
+html, body, #root {
   height: 100%;
 }
 
-/* Dark mode */
-.dark {
-  background-color: var(--color-dark-background);
-  color: var(--color-dark-text);
-}
-
-/* Theme-aware utility classes */
-.bg-primary {
-  background-color: var(--color-light-background);
-}
-
-.dark .bg-primary {
-  background-color: var(--color-dark-background);
-}
-
-.bg-surface {
-  background-color: var(--color-light-surface);
-}
-
-.dark .bg-surface {
-  background-color: var(--color-dark-surface);
-}
-
-.bg-card {
-  background-color: var(--color-light-card);
-}
-
-.dark .bg-card {
-  background-color: var(--color-dark-card);
-}
-
-.text-primary {
-  color: var(--color-light-text);
-}
-
-.dark .text-primary {
-  color: var(--color-dark-text);
-}
-
-.text-secondary {
-  color: var(--color-light-textSecondary);
-}
-
-.dark .text-secondary {
-  color: var(--color-dark-textSecondary);
-}
-
-.text-muted {
-  color: var(--color-light-textMuted);
-}
-
-.dark .text-muted {
-  color: var(--color-dark-textMuted);
-}
-
-.border-primary {
-  border-color: var(--color-light-border);
-}
-
-.dark .border-primary {
-  border-color: var(--color-dark-border);
-}
-
-.border-secondary {
-  border-color: var(--color-light-borderMuted);
-}
-
-.dark .border-secondary {
-  border-color: var(--color-dark-borderMuted);
-}
-
-/* Accent colors */
-.text-accent {
-  color: var(--color-primary-light);
-}
-
-.dark .text-accent {
-  color: var(--color-primary-dark);
-}
-
-.bg-accent {
-  background-color: var(--color-primary-light);
-}
-
-.dark .bg-accent {
-  background-color: var(--color-primary-dark);
-}
-
-.text-accent-secondary {
-  color: var(--color-secondary-light);
-}
-
-.dark .text-accent-secondary {
-  color: var(--color-secondary-dark);
-}
-
-.bg-accent-secondary {
-  background-color: var(--color-secondary-light);
-}
-
-.dark .bg-accent-secondary {
-  background-color: var(--color-secondary-dark);
-}
-
-/* Hover states */
-.hover-accent:hover {
-  color: var(--color-hover-light);
-}
-
-.dark .hover-accent:hover {
-  color: var(--color-hover-dark);
-}
-
-.hover-accent-bg:hover {
-  background-color: var(--color-hover-light);
-}
-
-.dark .hover-accent-bg:hover {
-  background-color: var(--color-hover-dark);
-}
-
-/* Animations */
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleHover {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.02);
-  }
-}
-
-/* Utility classes */
+/* Utility Classes */
 .font-heading {
   font-family: var(--font-family-heading);
 }
@@ -241,29 +105,24 @@ body,
   font-family: var(--font-family-body);
 }
 
-/* Smooth transitions for theme changes */
-* {
-  transition-property: color, background-color, border-color,
-    text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
+/* Animations */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Skills slider animation for hero section */
+@keyframes scaleHover {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.02); }
+}
+
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* Reduced motion support for accessibility */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
