@@ -168,7 +168,7 @@ function Home() {
                 delay: 0.1,
               }}
             >
-              Building Enterprise-Grade AI & Full-Stack Solutions.
+              Full-Stack & ML Engineer.
             </motion.h1>
             <motion.p
               className="text-base sm:text-lg lg:text-xl text-text-muted mb-10 leading-relaxed max-w-3xl mx-auto"
@@ -180,9 +180,9 @@ function Home() {
                 delay: 0.2,
               }}
             >
-              Hi, I'm Abhiyan Sainju. I bridge the gap between complex
-              algorithms and real-world business value. Currently pursuing my MS
-              in CS at GWU (4.0 GPA).
+              Turning algorithms into production-ready products. Master's
+              Student at GWU specializing in Cloud, Security, and AI. Background
+              in Fintech, EdTech, and Digital Transformation.
             </motion.p>
             <motion.div
               variants={motionTokens.variants.fadeUp}
@@ -276,7 +276,7 @@ function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Photography"
-            subtitle="Capturing moments and stories through the lens. From street photography to landscape shots, each image tells a unique story."
+            subtitle="Debugging the real world. Finding patterns in chaos and framing what matters—a philosophy I apply to both code and composition."
           />
           <PhotographyGallery limit={6} />
           <motion.div
