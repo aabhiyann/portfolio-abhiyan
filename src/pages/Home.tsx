@@ -1,23 +1,22 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
-import PhotographyGallery from "../components/PhotographyGallery";
-import { projects } from "../data/Projects";
-import { articles } from "../data/Articles";
+import { projects } from "../data/projects";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/ui/Button";
 import { MotionCard } from "../components/ui/MotionCard";
 import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
-import DraggableCards from "../components/DraggableCards";
+import DraggableCards, { Card } from "../components/DraggableCards";
 import CanvasConnections from "../components/CanvasConnections";
 import SkillsSlider from "../components/SkillsSlider";
 import { useState, useEffect } from "react";
+import TerminalCard from "../components/TerminalCard";
 
 function Home() {
   const [isMobile, setIsMobile] = useState(false);
-  const [cards, setCards] = useState([
+  const [cards, setCards] = useState<Card[]>([
     {
       id: 1,
       tag: "Cloud Intelligence",
@@ -44,14 +43,13 @@ function Home() {
     },
     {
       id: 3,
-      tag: "Photography",
-      title: "iPhone 15 Pro Max",
-      width: 280,
-      height: 200,
+      tag: "Tech Stack",
+      title: "Full-Stack + ML",
+      width: 320,
+      height: 240,
       x: 0,
       y: 0,
-      image:
-        "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&h=300&fit=crop&q=80",
+      component: <TerminalCard />,
       connections: [1, 4],
     },
     {
@@ -69,54 +67,74 @@ function Home() {
   ]);
 
   useEffect(() => {
-    const checkMobile = () => {
-      const isMobileSize = window.innerWidth < 768;
+    // Responsive card positioning logic
+    const updateCardPositions = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const isMobileSize = width < 768;
+
       setIsMobile(isMobileSize);
+
       setCards((prev) =>
-        prev.map((card) => ({
-          ...card,
-          width: isMobileSize ? card.width * 0.75 : card.width,
-          height: isMobileSize ? card.height * 0.75 : card.height,
-        })),
+        prev.map((card) => {
+          // Resize dimensions based on device
+          const newWidth = isMobileSize ? 300 * 0.75 : 300;
+          const newHeight = isMobileSize ? 220 * 0.75 : 220;
+
+          let x = 0;
+          let y = 0;
+
+          // Responsive positions
+          switch (card.id) {
+            case 1: // Top Left
+              x = width * (isMobileSize ? 0.1 : 0.15);
+              y = height * (isMobileSize ? 0.2 : 0.22);
+              break;
+            case 2: // Top Right
+              x = width * (isMobileSize ? 0.6 : 0.68);
+              y = height * (isMobileSize ? 0.15 : 0.18);
+              break;
+            case 3: // Bottom Left
+              x = width * (isMobileSize ? 0.1 : 0.12);
+              y = height * (isMobileSize ? 0.6 : 0.58);
+              break;
+            case 4: // Bottom Right
+              x = width * (isMobileSize ? 0.55 : 0.65);
+              y = height * (isMobileSize ? 0.5 : 0.55);
+              break;
+            default:
+              x = card.x;
+              y = card.y;
+          }
+
+          return {
+            ...card,
+            width: card.id === 3 ? 320 : newWidth,
+            height: card.id === 3 ? 240 : newHeight,
+            x,
+            y,
+            component: card.id === 3 ? <TerminalCard /> : undefined,
+            image: card.id === 3 ? undefined : card.image,
+          };
+        }),
       );
     };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
 
-    setCards((prev) =>
-      prev.map((card) => {
-        switch (card.id) {
-          case 1:
-            return {
-              ...card,
-              x: window.innerWidth * 0.15,
-              y: window.innerHeight * 0.22,
-            };
-          case 2:
-            return {
-              ...card,
-              x: window.innerWidth * 0.68,
-              y: window.innerHeight * 0.18,
-            };
-          case 3:
-            return {
-              ...card,
-              x: window.innerWidth * 0.12,
-              y: window.innerHeight * 0.58,
-            };
-          case 4:
-            return {
-              ...card,
-              x: window.innerWidth * 0.65,
-              y: window.innerHeight * 0.55,
-            };
-          default:
-            return card;
-        }
-      }),
-    );
+    // Initial call
+    updateCardPositions();
 
-    return () => window.removeEventListener("resize", checkMobile);
+    // Debounced resize handler for performance
+    let timeoutId: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(updateCardPositions, 100);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   const handleCardMove = (id: number, x: number, y: number) => {
@@ -132,8 +150,7 @@ function Home() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{ backgroundColor: "#000000" }}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-bg-primary"
       >
         <DottedBackground />
         <CanvasConnections cards={cards} />
@@ -141,56 +158,54 @@ function Home() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 pointer-events-none">
           <div className="max-w-4xl mx-auto text-center pointer-events-auto">
             <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white mb-6 leading-tight"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-text-primary mb-6 leading-tight font-heading"
+              variants={motionTokens.variants.fadeUp}
+              initial="initial"
+              animate="animate"
               transition={{
                 duration: motionTokens.duration.slow / 1000,
                 delay: 0.1,
               }}
             >
-              Building Enterprise-Grade AI & Full-Stack Solutions.
+              Full-Stack & ML Engineer.
             </motion.h1>
             <motion.p
-              className="text-base sm:text-lg lg:text-xl text-gray-400 mb-10 leading-relaxed max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="text-base sm:text-lg lg:text-xl text-text-muted mb-10 leading-relaxed max-w-3xl mx-auto"
+              variants={motionTokens.variants.fadeUp}
+              initial="initial"
+              animate="animate"
               transition={{
                 duration: motionTokens.duration.slow / 1000,
                 delay: 0.2,
               }}
             >
-              Hi, I’m Abhiyan Sainju. I bridge the gap between complex
-              algorithms and real-world business value. Currently pursuing my MS
-              in CS at GWU (4.0 GPA).
+              Turning algorithms into production-ready products. Master's
+              Student at GWU specializing in Cloud, Security, and AI. Background
+              in Fintech, EdTech, and Digital Transformation.
             </motion.p>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              variants={motionTokens.variants.fadeUp}
+              initial="initial"
+              animate="animate"
               transition={{
                 duration: motionTokens.duration.slow / 1000,
                 delay: 0.4,
               }}
             >
               <div className="flex justify-center gap-4">
-                <Link
-                  to="/projects"
-                  className="inline-block bg-white text-black px-6 sm:px-8 py-3 rounded-md font-semibold hover:opacity-85 transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                >
+                <Button as={Link} to="/projects" variant="primary" size="lg">
                   View My Projects
-                </Link>
-                <a
-                  href="/Abhiyan_Sainju_Resume.pdf"
-                  download
+                </Button>
+                <Button
+                  as="a"
+                  href="/Abhiyan_Resume_2025_Data_Engineering.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-transparent border border-white text-white px-6 sm:px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-black transition-all duration-200 hover:-translate-y-0.5 shadow-lg"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
+                  variant="outline"
+                  size="lg"
                 >
                   Download Resume
-                </a>
+                </Button>
               </div>
             </motion.div>
           </div>
@@ -205,11 +220,7 @@ function Home() {
       </section>
 
       {/* Projects Teaser */}
-      <section
-        id="projects"
-        className="py-24"
-        style={{ backgroundColor: "#000000" }}
-      >
+      <section id="projects" className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Featured Projects"
@@ -219,9 +230,10 @@ function Home() {
             {projects.slice(0, 3).map((project, index) => (
               <MotionCard
                 key={project.id}
-                className="project-card group relative h-full flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:border-white/30 hover:bg-white/15"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="h-full"
+                variants={motionTokens.variants.fadeUp}
+                initial="initial"
+                whileInView="animate"
                 viewport={{ once: true }}
                 transition={{
                   duration: motionTokens.duration.slow / 1000,
@@ -229,11 +241,11 @@ function Home() {
                 }}
                 whileHover={{ y: -8 }}
               >
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-3 text-white">
+                <div className="p-6 flex flex-col h-full">
+                  <h3 className="text-xl font-semibold mb-3 text-text-primary font-heading">
                     {project.title}
                   </h3>
-                  <p className="text-white/80 mb-4 flex-grow">
+                  <p className="text-text-muted mb-4 flex-grow">
                     {project.description}
                   </p>
                 </div>
@@ -242,8 +254,9 @@ function Home() {
           </div>
           <motion.div
             className="text-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={motionTokens.variants.fadeUp}
+            initial="initial"
+            whileInView="animate"
             viewport={{ once: true }}
             transition={{
               duration: motionTokens.duration.slow / 1000,
@@ -257,78 +270,8 @@ function Home() {
         </div>
       </section>
 
-      {/* Photography Teaser */}
-      <section className="py-24" style={{ backgroundColor: "#000000" }}>
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <SectionTitle
-            title="Photography"
-            subtitle="Capturing moments and stories through the lens. From street photography to landscape shots, each image tells a unique story."
-          />
-          <PhotographyGallery limit={6} />
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: motionTokens.duration.slow / 1000,
-              delay: 0.2,
-            }}
-          >
-            <Button as={Link} to="/photography" variant="ghost" size="lg">
-              View Gallery
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Digital Footprint Section */}
-      <section className="py-24" style={{ backgroundColor: "#000000" }}>
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <SectionTitle
-            title="Digital Footprint"
-            subtitle="I believe in sharing knowledge. Here are some of my thoughts and findings."
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {articles.map((article, index) => (
-              <MotionCard
-                key={article.id}
-                className="project-card group relative h-full flex flex-col bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:border-white/30 hover:bg-white/15"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: motionTokens.duration.slow / 1000,
-                  delay: 0.1 + index * 0.1,
-                }}
-                whileHover={{ y: -8 }}
-              >
-                <a
-                  href={article.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-6 flex flex-col flex-grow"
-                >
-                  <h3 className="text-xl font-semibold mb-3 text-white">
-                    {article.title}
-                  </h3>
-                  <p className="text-white/70 text-sm mb-4 flex-grow">
-                    {article.summary}
-                  </p>
-                  <div className="mt-auto">
-                    <span className="text-white/80 text-sm font-medium">
-                      Read on {article.source} &rarr;
-                    </span>
-                  </div>
-                </a>
-              </MotionCard>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* About Teaser */}
-      <section className="py-24" style={{ backgroundColor: "#000000" }}>
+      <section className="py-24 bg-bg-primary">
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
           <SectionTitle
             title="About Me"

@@ -26,7 +26,7 @@ const CanvasConnections: React.FC<CanvasConnectionsProps> = ({
   useEffect(() => {
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
     if (prefersReducedMotion || isReducedMotion) {
       setIsVisible(false);
@@ -62,7 +62,7 @@ const CanvasConnections: React.FC<CanvasConnectionsProps> = ({
       x1: number,
       y1: number,
       x2: number,
-      y2: number
+      y2: number,
     ) => {
       const dx = x2 - x1;
       const dy = y2 - y1;
@@ -79,8 +79,14 @@ const CanvasConnections: React.FC<CanvasConnectionsProps> = ({
       const cp2x = x2 - dx * 0.25 + perpX * curveStrength;
       const cp2y = y2 - dy * 0.25 + perpY * curveStrength;
 
+      // Determine colors based on theme (check for 'dark' class on html/body)
+      const isDark = document.documentElement.classList.contains("dark");
+      const strokeColor = isDark
+        ? "rgba(255, 255, 255, 0.06)"
+        : "rgba(0, 0, 0, 0.06)";
+
       // Draw the curved line
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.06)";
+      ctx.strokeStyle = strokeColor;
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.moveTo(x1, y1);
@@ -107,13 +113,21 @@ const CanvasConnections: React.FC<CanvasConnectionsProps> = ({
 
         const fadeIn = Math.min(t * 3, 1);
         const fadeOut = Math.min((1 - t) * 3, 1);
-        const opacity = 0.4 * fadeIn * fadeOut;
+        const opacity = 0.4 * fadeIn * fadeOut; // Re-calculate opacity for particle loop
 
         const size = 2 + fadeIn * fadeOut * 1.5;
 
         const gradient = ctx.createRadialGradient(x, y, 0, x, y, size);
-        gradient.addColorStop(0, `rgba(255, 255, 255, ${opacity})`);
-        gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+        gradient.addColorStop(
+          0,
+          isDark
+            ? `rgba(255, 255, 255, ${opacity})`
+            : `rgba(0, 0, 0, ${opacity})`,
+        );
+        gradient.addColorStop(
+          1,
+          isDark ? `rgba(255, 255, 255, 0)` : `rgba(0, 0, 0, 0)`,
+        );
 
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -175,4 +189,3 @@ const CanvasConnections: React.FC<CanvasConnectionsProps> = ({
 };
 
 export default CanvasConnections;
-

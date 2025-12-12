@@ -5,20 +5,27 @@ const SkillsSlider: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   const skills = [
+    // Languages
     "Python",
-    "React",
-    "Node.js",
+    "Java",
+    "C++",
     "TypeScript",
-    "PostgreSQL",
+    // AI/ML
+    "PyTorch",
+    "TensorFlow",
+    "RAG Systems",
+    "LangChain",
+    "Scikit-learn",
+    // Web & Cloud
+    "React",
+    "Next.js",
+    "FastAPI",
+    "Node.js",
     "AWS",
     "Docker",
-    "FastAPI",
-    "Next.js",
-    "Machine Learning",
-    "scikit-learn",
-    "TensorFlow",
-    "MongoDB",
-    "Framer Motion",
+    "Kubernetes",
+    "PostgreSQL",
+    "System Design",
   ];
 
   // Duplicate skills for seamless infinite scroll
@@ -33,7 +40,7 @@ const SkillsSlider: React.FC = () => {
 
         // Show slider when hero section is visible
         setIsVisible(
-          scrollPosition > heroSection.offsetTop && window.scrollY < heroBottom
+          scrollPosition > heroSection.offsetTop && window.scrollY < heroBottom,
         );
       }
     };
@@ -57,10 +64,7 @@ const SkillsSlider: React.FC = () => {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div
-        className="text-center text-xs text-gray-500 mb-8 uppercase tracking-wider font-semibold"
-        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-      >
+      <div className="text-center text-xs text-text-muted mb-8 uppercase tracking-wider font-semibold font-heading">
         Technical Arsenal
       </div>
       <div className="overflow-hidden whitespace-nowrap">
@@ -73,8 +77,7 @@ const SkillsSlider: React.FC = () => {
           {duplicatedSkills.map((skill, index) => (
             <span
               key={index}
-              className="inline-block mx-10 text-sm font-semibold text-gray-500 tracking-wide"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+              className="inline-block mx-10 text-sm font-semibold text-text-muted tracking-wide font-heading"
             >
               {skill}
             </span>

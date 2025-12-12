@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
-import { projects as initialProjects, Project } from "../data/Projects";
+import { projects as initialProjects, Project } from "../data/projects";
 import Page from "../components/Page";
 import { Card } from "../components/ui/Card";
 import SectionTitle from "../components/SectionTitle";
@@ -52,10 +52,7 @@ function Projects() {
         title="Projects | Abhiyan Sainju"
         description="Explore a collection of my projects, from AI-driven SaaS platforms to full-stack web applications."
       />
-      <section
-        className="relative py-24 min-h-screen"
-        style={{ backgroundColor: "#000000" }}
-      >
+      <section className="relative py-24 min-h-screen font-heading">
         <div className="relative z-20">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <SectionTitle
@@ -78,35 +75,35 @@ function Projects() {
                 >
                   <Card
                     interactive
-                    className="flex flex-col bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/30 hover:bg-white/15 hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent before:pointer-events-none"
+                    className="flex flex-col bg-card border border-border-primary hover:border-accent-primary/50 hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                   >
-                    <div className="aspect-video bg-gradient-to-br from-white/15 to-white/5 relative overflow-hidden group border-b border-white/10">
+                    <div className="aspect-video relative overflow-hidden group border-b border-border-primary">
                       <img
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
                       />
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                       <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
+                        <h3 className="text-2xl font-bold text-white drop-shadow-lg">
                           {project.title}
                         </h3>
                       </div>
                     </div>
 
-                    <div className="p-8 flex flex-col flex-grow">
+                    <div className="p-6 flex flex-col flex-grow">
                       <div className="mb-4">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/10 backdrop-blur-md text-white border border-white/20 shadow-md shadow-black/10">
+                        <Chip variant="accent" size="sm">
                           {project.impact}
-                        </span>
+                        </Chip>
                       </div>
 
-                      <p className="text-white/80 mb-6 leading-relaxed flex-grow">
+                      <p className="text-text-muted mb-6 leading-relaxed flex-grow">
                         {project.description}
                       </p>
 
                       {project.elaboratedDescription && (
-                        <p className="mb-6 text-sm text-slate-500 dark:text-slate-300 bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg border border-purple-200 dark:border-purple-800">
+                        <p className="mb-6 text-sm text-text-muted bg-bg-surface/50 p-3 rounded-lg border border-border-primary">
                           {project.elaboratedDescription}
                         </p>
                       )}
@@ -119,7 +116,7 @@ function Projects() {
                         ))}
                       </div>
 
-                      <div className="flex gap-4 items-center mt-auto pt-4 border-t border-white/10">
+                      <div className="flex gap-4 items-center mt-auto pt-4 border-t border-border-primary">
                         <Button
                           as="a"
                           href={project.github}

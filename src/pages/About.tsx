@@ -5,79 +5,81 @@ import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";
 import Testimonials from "../components/Testimonials";
+import Button from "../components/ui/Button";
 
 function About() {
   const timeline = [
     {
-      year: "2021",
-      title: "Started Photography Journey",
-      description: "Began capturing moments with Canon EOS 750D, exploring the art of visual storytelling.",
-      location: "Kathmandu, Nepal",
-    },
-    {
-      year: "2022",
-      title: "Software Engineering Career",
-      description: "Started my journey as a software engineer, focusing on cloud infrastructure and AI applications.",
-      location: "Kathmandu, Nepal",
-    },
-    {
-      year: "2023",
-      title: "Moved to Washington D.C.",
-      description: "Relocated to the U.S. capital to pursue advanced opportunities in cloud computing and AI.",
-      location: "Washington D.C., USA",
+      year: "2024",
+      title: "Master of Science in CS",
+      description:
+        "Specializing in Cloud Computing and AI at George Washington University. 4.0 GPA.",
+      location: "Washington, DC",
     },
     {
       year: "2024",
-      title: "iPhone 15 Pro Max Era",
-      description: "Upgraded to iPhone 15 Pro Max, capturing daily life with professional-grade mobile photography.",
-      location: "Washington D.C., USA",
+      title: "Graduate Teaching Assistant",
+      description:
+        "Leading 60+ graduate students in Design & Analysis of Algorithms. Mentoring on NP-Completeness and Graph Theory.",
+      location: "GWU, Washington DC",
     },
     {
-      year: "2025",
-      title: "Portfolio Launch",
-      description: "Created this comprehensive portfolio showcasing both technical skills and artistic vision.",
-      location: "Washington D.C., USA",
+      year: "2023",
+      title: "Software Engineer Intern",
+      description:
+        "Shipped production React/Node features for ECS Tech, optimizing database queries for 1,200+ users.",
+      location: "Lalitpur, Nepal",
+    },
+    {
+      year: "2022",
+      title: "IT Solutions Lead",
+      description:
+        "Led digital transformation initiatives at Intel Security, managing IT infrastructure and vendor contracts.",
+      location: "Kathmandu, Nepal",
     },
   ];
 
   const passions = [
     {
-      title: "Cloud Architecture",
-      description: "Designing and building scalable, resilient systems on cloud platforms like AWS is both a professional skill and a personal passion.",
+      title: "System Architecture",
+      description:
+        "I obsess over designing scalable, fault-tolerant distributed systems. Why build a monolith when you can orchestrate microservices?",
     },
     {
-      title: "AI & Machine Learning",
-      description: "Beyond my academic and project work, I am constantly exploring new machine learning models and AI-powered application architectures.",
+      title: "AI & Large Language Models",
+      description:
+        "Building RAG pipelines and fine-tuning models to solve specific business problems is my current playground.",
     },
     {
-      title: "Open Source Contribution",
-      description: "I believe in the power of community-driven software and enjoy contributing to open-source projects and sharing knowledge.",
+      title: "Open Source",
+      description:
+        "Contributing to the community that taught me everything. I believe in transparent, collaborative software development.",
     },
     {
-      title: "Photography",
-      description: "Photography is a creative outlet that has taught me to appreciate composition and storytelling, principles I apply to my design and development work.",
+      title: "Visual Pattern Recognition",
+      description:
+        "My photography isn't just art; it's training data for my brain. Finding symmetry in chaos helps me debug complex codebases.",
     },
     {
-      title: "FC Barcelona",
-      description: "As a dedicated supporter of FC Barcelona, I appreciate the strategic thinking and teamwork required to compete at the highest level.",
+      title: "Optimization Mindset",
+      description:
+        "Whether it's reducing O(n^2) to O(n log n) or saving 20ms on a render cycle, I live for efficiency.",
     },
     {
-      title: "Travel",
-      description: "Exploring new places and cultures, from the Himalayas to the Potomac River, provides fresh perspectives that influence my problem-solving approach.",
+      title: "Mentorship",
+      description:
+        "Teaching algorithms has reinforced my own understanding. I love breaking down complex topics for others.",
     },
   ];
 
   return (
     <Page>
-      <SEO 
-        title='About Abhiyan Sainju | Software Engineer' 
-        description='A Software Engineer based in Washington, DC, with a passion for scalable architecture and AI integration.' 
+      <SEO
+        title="About Abhiyan Sainju | Software Engineer"
+        description="A Software Engineer based in Washington, DC, with a passion for scalable architecture and AI integration."
       />
       {/* Hero Section */}
-      <section
-        className="relative py-24 min-h-screen flex items-center"
-        style={{ backgroundColor: "#000000" }}
-      >
+      <section className="relative py-24 min-h-screen flex items-center font-heading">
         <div className="relative z-20 w-full">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -86,26 +88,34 @@ function About() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: motionTokens.duration.slow / 1000 }}
               >
-                <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 font-heading text-white">
-                  About Me
+                <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 font-heading text-text-primary">
+                  I bridge the gap between complex algorithms and real-world
+                  value.
                 </h1>
-                <div className="prose prose-lg max-w-none text-white/80">
+                <div className="prose prose-lg max-w-none text-text-muted">
                   <p className="text-xl mb-6">
-                    I am a Software Engineer based in Washington, DC, with a
-                    passion for scalable architecture and AI integration.
+                    I am a Computer Science Graduate Student at{" "}
+                    <span className="text-text-primary font-semibold">
+                      George Washington University
+                    </span>{" "}
+                    (4.0 GPA), specializing in Cloud Architecture and AI
+                    Systems.
                   </p>
                   <p className="mb-6">
-                    My journey began in Kathmandu, where I led digital
-                    transformations as an IT Lead, but my curiosity for code
-                    drove me to software engineering. Now, I specialize in
-                    building SaaS platforms that solve expensive problems—whether
-                    that's cutting cloud costs by 70% or reducing document
-                    analysis time by half.
+                    Currently, I serve as a{" "}
+                    <span className="text-text-primary font-semibold">
+                      Graduate Teaching Assistant
+                    </span>{" "}
+                    for Design & Analysis of Algorithms, where I break down
+                    NP-completeness and Graph Theory for the next generation of
+                    engineers.
                   </p>
                   <p>
-                    When I'm not building RAG architectures or optimizing React
-                    renders, I'm teaching Algorithms to graduate students at
-                    George Washington University.
+                    Previously, I built fintech platforms processing 1,200+
+                    users as a Software Development Intern and led digital
+                    transformation initiatives that secured $35K in contracts. I
+                    focus on building systems that are not just theoretically
+                    sound, but production-ready.
                   </p>
                 </div>
               </motion.div>
@@ -119,12 +129,16 @@ function About() {
                 }}
               >
                 <div className="aspect-square rounded-2xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 relative overflow-hidden backdrop-blur-md shadow-xl shadow-black/20 before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/10 before:via-transparent before:to-transparent before:pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  {/* TODO: Replace with real profile image */}
+                  <img
+                    src="https://github.com/aabhiyann.png"
+                    alt="Abhiyan Sainju"
+                    className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 text-white">
                     <h3 className="text-xl font-semibold">Abhiyan Sainju</h3>
-                    <p className="text-white/80">
-                      Software Engineer & Photographer
-                    </p>
+                    <p className="text-white/80">Full-Stack & ML Engineer</p>
                   </div>
                 </div>
               </motion.div>
@@ -133,15 +147,15 @@ function About() {
         </div>
       </section>
 
-      {/* Journey Timeline */}
-      <section className="py-24" style={{ backgroundColor: "#000000" }}>
+      {/* Engineering Career */}
+      <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="My Journey"
-            subtitle="A timeline of my journey through technology and photography"
+            title="Engineering Career"
+            subtitle="My path from legacy systems to distributed cloud architecture."
           />
           <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-white/20"></div>
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border-primary"></div>
             <div className="space-y-12">
               {timeline.map((item, index) => (
                 <motion.div
@@ -155,20 +169,20 @@ function About() {
                     delay: index * 0.1,
                   }}
                 >
-                  <div className="relative z-10 flex-shrink-0 w-16 h-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center shadow-lg shadow-black/10">
-                    <div className="w-3 h-3 bg-white rounded-full"></div>
+                  <div className="relative z-10 flex-shrink-0 w-16 h-16 bg-surface backdrop-blur-md border border-border-primary rounded-full flex items-center justify-center shadow-lg shadow-black/5">
+                    <div className="w-3 h-3 bg-accent-primary rounded-full"></div>
                   </div>
                   <div className="flex-1 pt-2">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                      <h3 className="text-xl font-semibold text-white">
+                      <h3 className="text-xl font-semibold text-text-primary">
                         {item.title}
                       </h3>
-                      <span className="text-white/80 font-medium">
+                      <span className="text-accent-primary font-medium">
                         {item.year}
                       </span>
                     </div>
-                    <p className="text-white/70 mb-2">{item.description}</p>
-                    <p className="text-sm text-white/60">{item.location}</p>
+                    <p className="text-text-muted mb-2">{item.description}</p>
+                    <p className="text-sm text-text-muted">{item.location}</p>
                   </div>
                 </motion.div>
               ))}
@@ -177,18 +191,18 @@ function About() {
         </div>
       </section>
 
-      {/* Interests & Passions */}
-      <section className="py-24" style={{ backgroundColor: "#000000" }}>
+      {/* Engineering Philosophy */}
+      <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="Interests & Passions"
-            subtitle="Beyond the code, here are a few things that drive me."
+            title="Engineering Philosophy"
+            subtitle="The core principles that drive my development and design decisions."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {passions.map((passion, index) => (
               <motion.div
                 key={index}
-                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:shadow-2xl hover:shadow-white/10 hover:border-white/30 hover:bg-white/15 transition-all duration-300"
+                className="bg-card backdrop-blur-md rounded-2xl p-6 border border-border-primary hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-black/20 hover:border-accent-primary/30 transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -197,10 +211,10 @@ function About() {
                   delay: index * 0.1,
                 }}
               >
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-text-primary mb-3">
                   {passion.title}
                 </h3>
-                <p className="text-white/70">{passion.description}</p>
+                <p className="text-text-muted">{passion.description}</p>
               </motion.div>
             ))}
           </div>
@@ -210,7 +224,7 @@ function About() {
       <Testimonials />
 
       {/* CTA Section */}
-      <section className="py-24" style={{ backgroundColor: "#000000" }}>
+      <section className="py-24 bg-bg-primary">
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
           <SectionTitle
             title="Let's Connect"
@@ -222,23 +236,17 @@ function About() {
             viewport={{ once: true }}
             transition={{ duration: motionTokens.duration.slow / 1000 }}
           >
-            <p className="text-xl text-white/80 mb-8">
+            <p className="text-xl text-text-muted mb-8">
               I'm always excited to collaborate on innovative projects, discuss
               technology, or share stories about photography!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/about"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black shadow-sm hover:bg-gray-200 transition-colors"
-              >
+              <Button as={Link} to="/about" variant="primary">
                 Get In Touch
-              </Link>
-              <Link
-                to="/photography"
-                className="rounded-full bg-white/10 backdrop-blur-md px-6 py-3 text-sm font-semibold text-white shadow-md shadow-black/10 ring-1 ring-inset ring-white/20 hover:bg-white/15 hover:ring-white/30 hover:shadow-lg hover:shadow-white/5 transition-all duration-300"
-              >
+              </Button>
+              <Button as={Link} to="/photography" variant="secondary">
                 View My Photography
-              </Link>
+              </Button>
             </div>
           </motion.div>
         </div>

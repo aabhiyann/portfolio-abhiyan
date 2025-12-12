@@ -6,22 +6,23 @@ type ButtonSize = "sm" | "md" | "lg";
 
 const getButtonClasses = (variant: ButtonVariant, size: ButtonSize) => {
   const baseClasses =
-    "inline-flex items-center justify-center rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 focus:ring-offset-black";
+    "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-primary focus:ring-offset-bg-primary disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variantClasses = {
-    primary: "bg-white text-black hover:bg-gray-200 shadow-lg shadow-black/20",
+    primary:
+      "bg-accent-primary text-white hover:bg-accent-hover shadow-lg shadow-accent-primary/20",
     secondary:
-      "bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/15 hover:border-white/30 shadow-md shadow-black/10 hover:shadow-lg hover:shadow-white/5",
+      "bg-surface text-text-primary border border-border-primary hover:bg-bg-primary hover:border-accent-primary/50 shadow-md",
     ghost:
-      "bg-white/5 backdrop-blur-sm text-white border border-white/20 hover:bg-white/10 hover:border-white/30 transition-all",
+      "bg-transparent text-text-secondary hover:text-text-primary hover:bg-accent-primary/10",
     outline:
-      "bg-transparent backdrop-blur-sm text-white border border-white/20 hover:bg-white/10 hover:border-white/30 transition-all",
+      "bg-transparent text-text-primary border border-border-primary hover:border-accent-primary hover:text-accent-primary",
   };
 
   const sizeClasses = {
     sm: "px-3 py-1.5 text-sm",
-    md: "px-4 py-2 text-base",
-    lg: "px-6 py-3 text-lg",
+    md: "px-5 py-2.5 text-base",
+    lg: "px-8 py-3.5 text-lg",
   };
 
   return `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`;
@@ -48,7 +49,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const classes = getButtonClasses(variant, size);
 
@@ -84,7 +85,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
         {children}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

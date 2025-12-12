@@ -12,6 +12,15 @@ const LivingBackground: React.FC = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Helper to get CSS variable value
+    const getCssColor = (variable: string) => {
+      return getComputedStyle(document.documentElement)
+        .getPropertyValue(variable)
+        .trim();
+    };
+
+    const bgPrimary = getCssColor("--color-bg-primary"); // Fetch initial color
+
     let animationFrameId: number;
     let fallingStars: FallingStar[] = [];
     let time = 0;
@@ -37,7 +46,7 @@ const LivingBackground: React.FC = () => {
         index: number,
         total: number,
         canvasWidth: number,
-        canvasHeight: number
+        canvasHeight: number,
       ) {
         // Start from anywhere in the canvas
         this.x = Math.random() * canvasWidth;
@@ -94,7 +103,7 @@ const LivingBackground: React.FC = () => {
         gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`); // Bright at head (bottom)
         gradient.addColorStop(
           0.5,
-          `rgba(255, 255, 255, ${this.opacity * 0.6})`
+          `rgba(255, 255, 255, ${this.opacity * 0.6})`,
         );
         gradient.addColorStop(1, `rgba(255, 255, 255, 0)`); // Transparent at tail (top)
 
@@ -122,8 +131,10 @@ const LivingBackground: React.FC = () => {
 
       if (!ctx) return;
 
-      // Clear canvas with deep black background
-      ctx.fillStyle = themeState.isDarkMode ? "#000000" : "#FAFAFA";
+      // Clear canvas with semantic background color
+      // re-fetch on frame in case of transition, or ideally on theme change (which triggers effect)
+      // Since this effect re-runs on themeState.isDarkMode, we can just use the fetched value
+      ctx.fillStyle = bgPrimary;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Update and draw falling stars, remove dead ones
@@ -140,7 +151,7 @@ const LivingBackground: React.FC = () => {
       if (Math.random() < 0.01) {
         const newIndex = fallingStars.length;
         fallingStars.push(
-          new FallingStar(newIndex, 15, canvas.width, canvas.height)
+          new FallingStar(newIndex, 15, canvas.width, canvas.height),
         );
       }
 
@@ -153,7 +164,7 @@ const LivingBackground: React.FC = () => {
     const numStars = 5;
     for (let i = 0; i < numStars; i++) {
       fallingStars.push(
-        new FallingStar(i, numStars, canvas.width, canvas.height)
+        new FallingStar(i, numStars, canvas.width, canvas.height),
       );
     }
 
@@ -167,7 +178,7 @@ const LivingBackground: React.FC = () => {
       const numStars = 15;
       for (let i = 0; i < numStars; i++) {
         fallingStars.push(
-          new FallingStar(i, numStars, canvas.width, canvas.height)
+          new FallingStar(i, numStars, canvas.width, canvas.height),
         );
       }
     };
@@ -178,10 +189,12 @@ const LivingBackground: React.FC = () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
     };
-  }, [themeState.isDarkMode]);
+  }, [themeState.isDarkMode]); // Dependency ensures effect re-runs on theme change
 
+  // Force re-render of canvas element itself on theme change to ensure clean state
   return (
     <canvas
+      key={themeState.isDarkMode ? "dark" : "light"}
       ref={canvasRef}
       style={{
         position: "absolute",
