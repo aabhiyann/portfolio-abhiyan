@@ -1,5 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+const script = [
+  "> implai --init",
+  "> ✨ Initializing Neural Network...",
+  "> 🧠 Loading PyTorch weights...",
+  "> 📡 Connecting to AWS Region: us-east-1...",
+  "> 🚀 Deploying Microservices...",
+  "> ✅ System Online: Ready to Build.",
+];
 
 const TerminalCard: React.FC = () => {
   const [lines, setLines] = useState<string[]>([]);
@@ -7,15 +13,6 @@ const TerminalCard: React.FC = () => {
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
 
   useEffect(() => {
-    const script = [
-      "> implai --init",
-      "> ✨ Initializing Neural Network...",
-      "> 🧠 Loading PyTorch weights...",
-      "> 📡 Connecting to AWS Region: us-east-1...",
-      "> 🚀 Deploying Microservices...",
-      "> ✅ System Online: Ready to Build.",
-    ];
-
     if (currentLineIndex >= script.length) return;
 
     const currentLineText = script[currentLineIndex];
