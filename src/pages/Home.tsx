@@ -8,214 +8,99 @@ import Button from "../components/ui/Button";
 import { MotionCard } from "../components/ui/MotionCard";
 import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
-import DraggableCards, { Card } from "../components/DraggableCards";
-import CanvasConnections from "../components/CanvasConnections";
+import HeroBento from "../components/HeroBento";
 import SkillsSlider from "../components/SkillsSlider";
-import { useState, useEffect } from "react";
-import TerminalCard from "../components/TerminalCard";
+import { ArrowRight } from "lucide-react";
 
 function Home() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [cards, setCards] = useState<Card[]>([
-    {
-      id: 1,
-      tag: "Cloud Intelligence",
-      title: "InfraSight",
-      width: 300,
-      height: 220,
-      x: 0,
-      y: 0,
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80",
-      connections: [2, 3],
-    },
-    {
-      id: 2,
-      tag: "Teaching",
-      title: "GWU Algorithms TA",
-      width: 300,
-      height: 220,
-      x: 0,
-      y: 0,
-      image:
-        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=300&fit=crop&q=80",
-      connections: [1, 4],
-    },
-    {
-      id: 3,
-      tag: "Tech Stack",
-      title: "Full-Stack + ML",
-      width: 320,
-      height: 240,
-      x: 0,
-      y: 0,
-      component: <TerminalCard />,
-      connections: [1, 4],
-    },
-    {
-      id: 4,
-      tag: "AI SaaS",
-      title: "TalkifyDocs",
-      width: 320,
-      height: 240,
-      x: 0,
-      y: 0,
-      image:
-        "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&q=80",
-      connections: [2, 3],
-    },
-  ]);
-
-  useEffect(() => {
-    // Responsive card positioning logic
-    const updateCardPositions = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const isMobileSize = width < 768;
-
-      setIsMobile(isMobileSize);
-
-      setCards((prev) =>
-        prev.map((card) => {
-          // Resize dimensions based on device
-          const newWidth = isMobileSize ? 300 * 0.75 : 300;
-          const newHeight = isMobileSize ? 220 * 0.75 : 220;
-
-          let x = 0;
-          let y = 0;
-
-          // Responsive positions
-          switch (card.id) {
-            case 1: // Top Left
-              x = width * (isMobileSize ? 0.1 : 0.15);
-              y = height * (isMobileSize ? 0.2 : 0.22);
-              break;
-            case 2: // Top Right
-              x = width * (isMobileSize ? 0.6 : 0.68);
-              y = height * (isMobileSize ? 0.15 : 0.18);
-              break;
-            case 3: // Bottom Left
-              x = width * (isMobileSize ? 0.1 : 0.12);
-              y = height * (isMobileSize ? 0.6 : 0.58);
-              break;
-            case 4: // Bottom Right
-              x = width * (isMobileSize ? 0.55 : 0.65);
-              y = height * (isMobileSize ? 0.5 : 0.55);
-              break;
-            default:
-              x = card.x;
-              y = card.y;
-          }
-
-          return {
-            ...card,
-            width: card.id === 3 ? 320 : newWidth,
-            height: card.id === 3 ? 240 : newHeight,
-            x,
-            y,
-            component: card.id === 3 ? <TerminalCard /> : undefined,
-            image: card.id === 3 ? undefined : card.image,
-          };
-        }),
-      );
-    };
-
-    // Initial call
-    updateCardPositions();
-
-    // Debounced resize handler for performance
-    let timeoutId: NodeJS.Timeout;
-    const handleResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(updateCardPositions, 100);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(timeoutId);
-    };
-  }, []);
-
-  const handleCardMove = (id: number, x: number, y: number) => {
-    setCards((prev) => prev.map((c) => (c.id === id ? { ...c, x, y } : c)));
-  };
-
   return (
     <Page>
       <SEO
         title="Abhiyan Sainju | Full Stack & AI Engineer"
         description="Master’s student at GWU building enterprise-grade AI/ML solutions."
       />
-      {/* Hero Section */}
-      <section
-        id="hero"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-bg-primary"
-      >
-        <DottedBackground />
-        <CanvasConnections cards={cards} />
+      <DottedBackground />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 pointer-events-none">
-          <div className="max-w-4xl mx-auto text-center pointer-events-auto">
-            <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-text-primary mb-6 leading-tight font-heading"
-              variants={motionTokens.variants.fadeUp}
-              initial="initial"
-              animate="animate"
-              transition={{
-                duration: motionTokens.duration.slow / 1000,
-                delay: 0.1,
-              }}
-            >
-              Full-Stack & ML Engineer.
-            </motion.h1>
-            <motion.p
-              className="text-base sm:text-lg lg:text-xl text-text-muted mb-10 leading-relaxed max-w-3xl mx-auto"
-              variants={motionTokens.variants.fadeUp}
-              initial="initial"
-              animate="animate"
-              transition={{
-                duration: motionTokens.duration.slow / 1000,
-                delay: 0.2,
-              }}
-            >
-              Turning algorithms into production-ready products. Master's
-              Student at GWU specializing in Cloud, Security, and AI. Background
-              in Fintech, EdTech, and Digital Transformation.
-            </motion.p>
-            <motion.div
-              variants={motionTokens.variants.fadeUp}
-              initial="initial"
-              animate="animate"
-              transition={{
-                duration: motionTokens.duration.slow / 1000,
-                delay: 0.4,
-              }}
-            >
-              <div className="flex justify-center gap-4">
-                <Button as={Link} to="/projects" variant="primary" size="lg">
-                  View My Projects
-                </Button>
-                <Button
-                  as="a"
-                  href="/Abhiyan_Resume_2025_Data_Engineering.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="outline"
-                  size="lg"
-                >
-                  Download Resume
-                </Button>
-              </div>
-            </motion.div>
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] flex flex-col justify-center py-20 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 w-full z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            {/* Left Column: Text & CTA */}
+            <div className="flex-1 max-w-2xl text-center lg:text-left">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: motionTokens.duration.normal / 1000 }}
+              >
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-accent-primary text-sm font-medium font-mono mb-6 backdrop-blur-sm">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-primary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-primary"></span>
+                  </span>
+                  Available for new opportunities
+                </div>
+
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.1]">
+                  Full-Stack & <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">
+                    ML Engineer.
+                  </span>
+                </h1>
+
+                <p className="text-lg md:text-xl text-text-muted mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Turning algorithms into production-ready products. Master's
+                  Student at GWU specializing in Cloud, Security, and AI.
+                  Background in Fintech, EdTech, and Digital Transformation.
+                </p>
+
+                <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                  <Link to="/projects">
+                    <Button
+                      variant="primary"
+                      size="lg"
+                      className="group flex items-center gap-2"
+                    >
+                      View Architecture
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                  <Link to="/about">
+                    <Button variant="ghost" size="lg">
+                      About Me
+                    </Button>
+                  </Link>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Bento Grid Visuals */}
+            <div className="flex-1 w-full max-w-md lg:max-w-full">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <HeroBento />
+              </motion.div>
+            </div>
           </div>
         </div>
 
-        <DraggableCards
-          cards={cards}
-          onCardMove={handleCardMove}
-          isMobile={isMobile}
-        />
+        {/* Scroll Indicator */}
+        <motion.div
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-text-muted opacity-50 z-10"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+        >
+          <span className="text-xs font-mono uppercase tracking-widest">
+            Scroll
+          </span>
+          <div className="w-px h-12 bg-gradient-to-b from-text-muted to-transparent"></div>
+        </motion.div>
+      </section>
+
+      {/* Skills Marquee */}
+      <section className="py-0 relative z-10 border-y border-border-primary/50 bg-bg-surface/50 backdrop-blur-sm">
         <SkillsSlider />
       </section>
 
