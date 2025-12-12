@@ -4,7 +4,7 @@ export const articles = [
     title: "From 12s to 200ms: Optimizing RAG Pipelines",
     summary:
       "A deep dive into how I used Pinecone and LangChain to reduce query latency in my TalkifyDocs project.",
-    url: "#",
+    url: "https://medium.com/@aabhiyann",
     source: "Medium",
   },
   {
@@ -12,7 +12,7 @@ export const articles = [
     title: "Why I Chose Random Forest over Deep Learning for InfraSight",
     summary:
       "Exploring the trade-offs between model complexity and inference cost in cloud billing anomaly detection.",
-    url: "#",
+    url: "https://dev.to/aabhiyann",
     source: "Dev.to",
   },
   {
@@ -20,7 +20,7 @@ export const articles = [
     title: "React Performance: Beyond `useMemo`",
     summary:
       "Lessons learned optimizing a Fintech dashboard at ECS Tech to boost conversion rates by 4%.",
-    url: "#",
+    url: "https://linkedin.com/in/abhiyansainju",
     source: "LinkedIn",
   },
 ];
