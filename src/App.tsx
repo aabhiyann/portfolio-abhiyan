@@ -9,6 +9,7 @@ const Home = lazy(() => import("./pages/Home"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Photography = lazy(() => import("./pages/Photography"));
 const About = lazy(() => import("./pages/About"));
+const Resume = lazy(() => import("./pages/Resume"));
 const DeepDives = lazy(() => import("./pages/DeepDives"));
 const DeepDiveDetail = lazy(() => import("./pages/DeepDiveDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/photography" element={<Photography />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/resume" element={<Resume />} />
                 <Route path="/deep-dives" element={<DeepDives />} />
                 <Route path="/deep-dives/:slug" element={<DeepDiveDetail />} />
                 <Route path="*" element={<NotFound />} />
