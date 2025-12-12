@@ -39,7 +39,7 @@
   --color-info: #3b82f6;
 
   /* Fonts */
-  --font-family-heading: "Space Grotesk", sans-serif;
+  --font-family-heading: "Inter", sans-serif;
   --font-family-body: "Inter", sans-serif;
 }
 
@@ -90,6 +90,12 @@ body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   transition: background-color 0.3s, color 0.3s;
+
+  /* Apple-style Font Smoothing & Features */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv05", "cv08", "ss01";
+  /* Tail 'l', Serif 'I', Alt Digits */
 }
 
 html,
