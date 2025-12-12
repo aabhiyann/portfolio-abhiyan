@@ -5,20 +5,27 @@ const SkillsSlider: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   const skills = [
+    // Languages
     "Python",
-    "React",
-    "Node.js",
+    "Java",
+    "C++",
     "TypeScript",
-    "PostgreSQL",
+    // AI/ML
+    "PyTorch",
+    "TensorFlow",
+    "RAG Systems",
+    "LangChain",
+    "Scikit-learn",
+    // Web & Cloud
+    "React",
+    "Next.js",
+    "FastAPI",
+    "Node.js",
     "AWS",
     "Docker",
-    "FastAPI",
-    "Next.js",
-    "Machine Learning",
-    "scikit-learn",
-    "TensorFlow",
-    "MongoDB",
-    "Framer Motion",
+    "Kubernetes",
+    "PostgreSQL",
+    "System Design",
   ];
 
   // Duplicate skills for seamless infinite scroll
