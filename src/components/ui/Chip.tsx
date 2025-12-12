@@ -11,14 +11,15 @@ export interface ChipProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 const getChipClasses = (variant: ChipVariant, size: ChipSize) => {
   const baseClasses =
-    "inline-flex items-center justify-center rounded-full font-medium";
+    "inline-flex items-center justify-center rounded-full font-medium transition-colors";
 
   const variantClasses = {
     default:
-      "bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-md shadow-black/10",
-    accent: "bg-white text-black border-transparent shadow-lg",
+      "bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200",
+    accent:
+      "bg-accent-primary/10 text-accent-primary border border-accent-primary/20",
     muted:
-      "bg-white/10 backdrop-blur-md border border-white/20 text-white/70 shadow-sm shadow-black/5",
+      "bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400",
   };
 
   const sizeClasses = {

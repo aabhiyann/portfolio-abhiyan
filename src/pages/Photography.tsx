@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Camera, Image as ImageIcon, Clock } from "lucide-react";
 import { motionTokens } from "../utils/Motion";
 import PhotographyGallery from "../components/PhotographyGallery";
 import Page from "../components/Page";
@@ -11,10 +12,7 @@ function Photography() {
         title="Photography – Abhiyan Sainju"
         description="Explore the photography portfolio of Abhiyan Sainju, featuring moments captured with iPhone 15 Pro Max and Canon EOS 750D."
       />
-      <section
-        className="relative py-24 min-h-screen"
-        style={{ backgroundColor: "#000000" }}
-      >
+      <section className="relative py-24 min-h-screen font-heading">
         <div className="relative z-20">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <motion.div
@@ -23,47 +21,35 @@ function Photography() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: motionTokens.duration.slow / 1000 }}
             >
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 font-heading">
+              <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-text-primary mb-6 font-heading">
                 Photography
               </h1>
 
-              <p className="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
-                Capturing moments through the lens of both my iPhone 15 Pro Max
-                and Canon EOS 750D. Each image tells a story of places I've
-                been, people I've met, and experiences that have shaped my
-                journey.
+              <p className="text-xl text-text-muted mb-8 max-w-3xl mx-auto">
+                Think of it as debugging the real world—finding patterns in
+                chaos, framing what matters, and capturing the edge cases of
+                daily life. My attention to detail in code mirrors my
+                composition in photography.
               </p>
 
-              <div className="flex flex-wrap justify-center gap-4 text-sm text-white/60">
+              <div className="flex flex-wrap justify-center gap-4 text-sm text-text-muted">
                 <span className="flex items-center gap-2">
-                  <svg
-                    className="w-4 h-4"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                  </svg>
-                  Authentic EXIF Data
+                  <span className="flex items-center gap-2">
+                    <Camera className="w-4 h-4" />
+                    Visual Debugging
+                  </span>
                 </span>
                 <span className="flex items-center gap-2">
-                  <svg
-                    className="w-4 h-4"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                  </svg>
-                  Professional Equipment
+                  <span className="flex items-center gap-2">
+                    <ImageIcon className="w-4 h-4" />
+                    Pattern Recognition
+                  </span>
                 </span>
                 <span className="flex items-center gap-2">
-                  <svg
-                    className="w-4 h-4"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                  </svg>
-                  4-Year Timeline
+                  <span className="flex items-center gap-2">
+                    <Clock className="w-4 h-4" />
+                    Frozen Moments
+                  </span>
                 </span>
               </div>
             </motion.div>
@@ -71,8 +57,11 @@ function Photography() {
             {/* Photography Gallery */}
             <PhotographyGallery />
 
-            <div className="text-center mt-16 text-sm text-white/60">
-              <p>Built with React, Framer Motion, and a custom masonry layout engine.</p>
+            <div className="text-center mt-16 text-sm text-text-muted">
+              <p>
+                A collection of my favorite compositions. No AI generation, just
+                optics and light.
+              </p>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import SectionTitle from "./SectionTitle";
 
 const Testimonials = () => {
   return (
-    <section className="py-24" style={{ backgroundColor: "#000000" }}>
+    <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <SectionTitle
           title="Testimonials"
@@ -14,16 +14,22 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 flex flex-col"
+              className="bg-card backdrop-blur-md rounded-2xl p-6 border border-border-primary flex flex-col"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <p className="text-white/80 mb-6 flex-grow italic">"{testimonial.quote}"</p>
+              <p className="text-text-muted mb-6 flex-grow italic">
+                "{testimonial.quote}"
+              </p>
               <div className="mt-auto">
-                <p className="font-semibold text-white">{testimonial.author}</p>
-                <p className="text-sm text-white/60">{testimonial.role}, {testimonial.company}</p>
+                <p className="font-semibold text-text-primary">
+                  {testimonial.author}
+                </p>
+                <p className="text-sm text-text-muted">
+                  {testimonial.role}, {testimonial.company}
+                </p>
               </div>
             </motion.div>
           ))}

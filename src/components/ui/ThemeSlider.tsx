@@ -30,7 +30,7 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
     (ratio: number) => {
       updateThemeFromTime(ratio);
     },
-    [updateThemeFromTime]
+    [updateThemeFromTime],
   );
 
   // Handle mouse/touch interactions
@@ -46,7 +46,7 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
       updateTheme(newRatio);
       setIsAutoMode(true); // Enable auto mode when user interacts
     },
-    [setTimeRatio, updateTheme, setIsAutoMode]
+    [setTimeRatio, updateTheme, setIsAutoMode],
   );
 
   // Set initial time on component mount and window resize
@@ -76,7 +76,7 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
       const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
       handleInteraction(clientX);
     },
-    [isDragging, handleInteraction]
+    [isDragging, handleInteraction],
   );
 
   const handleInteractionEnd = useCallback(() => {
@@ -137,7 +137,7 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
       {/* Interactive Timeline */}
       <div
         ref={timelineRef}
-        className="w-full h-10 flex items-center justify-between px-2 cursor-pointer relative touch-none bg-slate-100 dark:bg-slate-800 rounded-full"
+        className="w-full h-10 flex items-center justify-between px-2 cursor-pointer relative touch-none bg-surface border border-border-primary rounded-full shadow-inner"
         onMouseDown={handleInteractionStart}
         onTouchStart={handleInteractionStart}
         role="slider"
@@ -170,9 +170,7 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
           >
             <div
               className={`w-0.5 h-3 rounded-full transition-colors duration-300 ${
-                isNight
-                  ? "bg-slate-400 dark:bg-slate-500"
-                  : "bg-slate-300 dark:bg-slate-600"
+                isNight ? "bg-border-primary" : "bg-border-secondary"
               }`}
             />
           </div>
@@ -200,17 +198,17 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
           {isDarkMode ? (
             <Moon size={16} className="text-white" />
           ) : (
-            <Sun size={16} className="text-slate-900" />
+            <Sun size={16} className="text-black" />
           )}
         </motion.div>
 
         {/* Day/Night indicators */}
         <div className="absolute -top-8 left-0 right-0 flex justify-between pointer-events-none">
-          <div className="flex items-center space-x-1 text-xs text-slate-500 dark:text-slate-400">
+          <div className="flex items-center space-x-1 text-xs text-text-muted">
             <Sun size={12} />
             <span>Day</span>
           </div>
-          <div className="flex items-center space-x-1 text-xs text-slate-500 dark:text-slate-400">
+          <div className="flex items-center space-x-1 text-xs text-text-muted">
             <Moon size={12} />
             <span>Night</span>
           </div>
@@ -219,18 +217,18 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
 
       {/* Current time display */}
       <div className="text-center">
-        <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
+        <p className="text-sm font-medium text-text-primary">
           {(() => {
             const currentHour = Math.floor(themeState.timeRatio * 24);
             const currentMinute = Math.floor(
-              (themeState.timeRatio * 24 - currentHour) * 60
+              (themeState.timeRatio * 24 - currentHour) * 60,
             );
             const displayHour =
               currentHour === 0
                 ? 12
                 : currentHour > 12
-                ? currentHour - 12
-                : currentHour;
+                  ? currentHour - 12
+                  : currentHour;
             const ampm = currentHour < 12 ? "AM" : "PM";
             return `${displayHour}:${currentMinute
               .toString()
@@ -238,7 +236,7 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
           })()}
         </p>
         {showLabel && (
-          <p className="text-xs text-slate-400 dark:text-slate-500 select-none mt-1">
+          <p className="text-xs text-text-muted select-none mt-1">
             {themeState.isAutoMode
               ? "Auto mode: Drag to change time"
               : "Manual mode: Theme locked"}
