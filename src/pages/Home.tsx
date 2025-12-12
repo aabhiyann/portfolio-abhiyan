@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
-import PhotographyGallery from "../components/PhotographyGallery";
 import { projects } from "../data/projects";
-import { articles } from "../data/Articles";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/ui/Button";
@@ -44,14 +42,14 @@ function Home() {
     },
     {
       id: 3,
-      tag: "Photography",
-      title: "iPhone 15 Pro Max",
+      tag: "Tech Stack",
+      title: "Full-Stack + ML",
       width: 280,
       height: 200,
       x: 0,
       y: 0,
       image:
-        "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=400&h=300&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop&q=80",
       connections: [1, 4],
     },
     {
@@ -268,78 +266,6 @@ function Home() {
               View All Projects
             </Button>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Photography Teaser */}
-      <section className="py-24 bg-bg-primary">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <SectionTitle
-            title="Photography"
-            subtitle="Debugging the real world. Finding patterns in chaos and framing what matters—a philosophy I apply to both code and composition."
-          />
-          <PhotographyGallery limit={6} />
-          <motion.div
-            className="text-center mt-12"
-            variants={motionTokens.variants.fadeUp}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            transition={{
-              duration: motionTokens.duration.slow / 1000,
-              delay: 0.2,
-            }}
-          >
-            <Button as={Link} to="/photography" variant="ghost" size="lg">
-              View Gallery
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Digital Footprint Section */}
-      <section className="py-24 bg-bg-primary">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <SectionTitle
-            title="Digital Footprint"
-            subtitle="I believe in sharing knowledge. Here are some of my thoughts and findings."
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {articles.map((article, index) => (
-              <MotionCard
-                key={article.id}
-                className="h-full"
-                variants={motionTokens.variants.fadeUp}
-                initial="initial"
-                whileInView="animate"
-                viewport={{ once: true }}
-                transition={{
-                  duration: motionTokens.duration.slow / 1000,
-                  delay: 0.1 + index * 0.1,
-                }}
-                whileHover={{ y: -8 }}
-              >
-                <a
-                  href={article.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-6 flex flex-col h-full"
-                >
-                  <h3 className="text-xl font-semibold mb-3 text-text-primary group-hover:text-accent-primary transition-colors font-heading">
-                    {article.title}
-                  </h3>
-                  <p className="text-text-muted text-sm mb-4 flex-grow">
-                    {article.summary}
-                  </p>
-                  <div className="mt-auto">
-                    <span className="text-accent-primary text-sm font-medium hover:text-accent-hover transition-colors">
-                      Read on {article.source} &rarr;
-                    </span>
-                  </div>
-                </a>
-              </MotionCard>
-            ))}
-          </div>
         </div>
       </section>
 
