@@ -5,7 +5,7 @@ const DottedBackground: React.FC = () => {
     <div
       className="fixed inset-0 pointer-events-none"
       style={{
-        zIndex: 1,
+        zIndex: 0,
       }}
     >
       {/* Dark mode override using CSS classes if needed, or relying on the variable change */}

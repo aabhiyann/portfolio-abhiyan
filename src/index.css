@@ -3,9 +3,9 @@
 @theme {
   /* Theme: Clean & Modern with Better Contrast */
   --color-light-background: #fafafa;
-  --color-light-navbar: #ffffff;
+  --color-light-navbar: rgba(255, 255, 255, 0.8);
   --color-light-surface: #ffffff;
-  --color-light-card: #ffffff;
+  --color-light-card: rgba(255, 255, 255, 0.8);
   --color-light-text: #1a1a1a;
   --color-light-textSecondary: #4a5568;
   --color-light-textMuted: #718096;
@@ -13,9 +13,9 @@
   --color-light-borderMuted: #f1f5f9;
 
   --color-dark-background: #0f172a;
-  --color-dark-navbar: #0f172a;
+  --color-dark-navbar: rgba(15, 23, 42, 0.7);
   --color-dark-surface: #1e293b;
-  --color-dark-card: #1e293b;
+  --color-dark-card: rgba(30, 41, 59, 0.6);
   --color-dark-text: #f8fafc;
   --color-dark-textSecondary: #cbd5e1;
   --color-dark-textMuted: #94a3b8;
@@ -23,9 +23,9 @@
   --color-dark-borderMuted: #475569;
 
   /* Accent Color */
-  --color-primary-light: #3b82f6; 
-  --color-primary-dark: #8b5cf6; 
-  --color-secondary-light: #f59e0b; 
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #8b5cf6;
+  --color-secondary-light: #f59e0b;
   --color-secondary-dark: #22c55e;
   --color-hover-light: #2563eb;
   --color-hover-dark: #7c3aed;
@@ -50,14 +50,14 @@
   --color-bg-surface: var(--color-light-surface);
   --color-bg-card: var(--color-light-card);
   --color-bg-navbar: var(--color-light-navbar);
-  
+
   --color-text-primary: var(--color-light-text);
   --color-text-secondary: var(--color-light-textSecondary);
   --color-text-muted: var(--color-light-textMuted);
-  
+
   --color-border-primary: var(--color-light-border);
   --color-border-secondary: var(--color-light-borderMuted);
-  
+
   --color-accent-primary: var(--color-primary-light);
   --color-accent-secondary: var(--color-secondary-light);
   --color-accent-hover: var(--color-hover-light);
@@ -69,14 +69,14 @@
   --color-bg-surface: var(--color-dark-surface);
   --color-bg-card: var(--color-dark-card);
   --color-bg-navbar: var(--color-dark-navbar);
-  
+
   --color-text-primary: var(--color-dark-text);
   --color-text-secondary: var(--color-dark-textSecondary);
   --color-text-muted: var(--color-dark-textMuted);
-  
+
   --color-border-primary: var(--color-dark-border);
   --color-border-secondary: var(--color-dark-borderMuted);
-  
+
   --color-accent-primary: var(--color-primary-dark);
   --color-accent-secondary: var(--color-secondary-dark);
   --color-accent-hover: var(--color-hover-dark);
@@ -92,7 +92,9 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
@@ -107,22 +109,42 @@ html, body, #root {
 
 /* Animations */
 @keyframes fadeUp {
-  0% { opacity: 0; transform: translateY(16px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes scaleHover {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.02); }
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.02);
+  }
 }
 
 @keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

@@ -14,7 +14,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              className="bg-white/80 dark:bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-black/5 dark:border-white/20 flex flex-col"
+              className="bg-card backdrop-blur-md rounded-2xl p-6 border border-border-primary flex flex-col"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

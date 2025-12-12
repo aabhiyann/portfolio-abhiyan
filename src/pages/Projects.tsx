@@ -75,9 +75,9 @@ function Projects() {
                 >
                   <Card
                     interactive
-                    className="flex flex-col bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-accent-primary/50 hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                    className="flex flex-col bg-card border border-border-primary hover:border-accent-primary/50 hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                   >
-                    <div className="aspect-video relative overflow-hidden group border-b border-slate-200 dark:border-slate-700">
+                    <div className="aspect-video relative overflow-hidden group border-b border-border-primary">
                       <img
                         src={project.image}
                         alt={project.title}
@@ -93,17 +93,17 @@ function Projects() {
 
                     <div className="p-6 flex flex-col flex-grow">
                       <div className="mb-4">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-accent-primary/10 text-accent-primary border border-accent-primary/20">
+                        <Chip variant="accent" size="sm">
                           {project.impact}
-                        </span>
+                        </Chip>
                       </div>
 
-                      <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed flex-grow">
+                      <p className="text-text-muted mb-6 leading-relaxed flex-grow">
                         {project.description}
                       </p>
 
                       {project.elaboratedDescription && (
-                        <p className="mb-6 text-sm text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700/50 p-3 rounded-lg border border-slate-200 dark:border-slate-600">
+                        <p className="mb-6 text-sm text-text-muted bg-bg-surface/50 p-3 rounded-lg border border-border-primary">
                           {project.elaboratedDescription}
                         </p>
                       )}
@@ -116,7 +116,7 @@ function Projects() {
                         ))}
                       </div>
 
-                      <div className="flex gap-4 items-center mt-auto pt-4 border-t border-slate-200 dark:border-slate-700">
+                      <div className="flex gap-4 items-center mt-auto pt-4 border-t border-border-primary">
                         <Button
                           as="a"
                           href={project.github}

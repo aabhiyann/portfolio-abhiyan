@@ -143,7 +143,7 @@ function About() {
       </section>
 
       {/* Journey Timeline */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="My Journey"
@@ -187,7 +187,7 @@ function About() {
       </section>
 
       {/* Interests & Passions */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Interests & Passions"
@@ -197,7 +197,7 @@ function About() {
             {passions.map((passion, index) => (
               <motion.div
                 key={index}
-                className="bg-white/80 dark:bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-black/5 dark:border-white/20 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-white/10 hover:border-accent-primary/30 dark:hover:border-white/30 transition-all duration-300"
+                className="bg-card backdrop-blur-md rounded-2xl p-6 border border-border-primary hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-black/20 hover:border-accent-primary/30 transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -219,7 +219,7 @@ function About() {
       <Testimonials />
 
       {/* CTA Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-bg-primary">
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
           <SectionTitle
             title="Let's Connect"
