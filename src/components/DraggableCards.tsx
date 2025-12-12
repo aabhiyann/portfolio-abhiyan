@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-interface Card {
+export interface Card {
   id: number;
   tag: string;
   title: string;
@@ -10,7 +10,8 @@ interface Card {
   height: number;
   x: number;
   y: number;
-  image: string;
+  image?: string;
+  component?: React.ReactNode;
   connections: number[];
   link?: string;
   description?: string;
@@ -108,22 +109,32 @@ const DraggableCards: React.FC<DraggableCardsProps> = ({
               height: card.height,
             }}
           >
-            <img
-              src={card.image}
-              alt={card.title}
-              className="w-full h-full object-cover pointer-events-none"
-              loading="lazy"
-            />
-            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-250 font-heading">
-              <div className="text-white text-sm sm:text-base font-semibold tracking-tight mb-1">
-                {card.title}
+            {card.component ? (
+              <div className="w-full h-full pointer-events-auto">
+                {card.component}
               </div>
-              {card.description && (
-                <div className="text-white/70 text-xs sm:text-sm">
-                  {card.description}
+            ) : (
+              <>
+                {card.image && (
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full h-full object-cover pointer-events-none"
+                    loading="lazy"
+                  />
+                )}
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-250 font-heading">
+                  <div className="text-white text-sm sm:text-base font-semibold tracking-tight mb-1">
+                    {card.title}
+                  </div>
+                  {card.description && (
+                    <div className="text-white/70 text-xs sm:text-sm">
+                      {card.description}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
+              </>
+            )}
           </div>
         </motion.div>
       ))}

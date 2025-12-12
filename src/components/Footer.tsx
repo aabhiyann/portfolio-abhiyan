@@ -68,14 +68,7 @@ const Footer: React.FC = () => {
             <h4 className="font-semibold text-text-primary">Resources</h4>
             <nav className="flex flex-col space-y-2">
               <FooterLink to="/about">About</FooterLink>
-              <a
-                href="/Abhiyan_Resume_2025_Data_Engineering.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-text-muted hover:text-text-primary transition-colors duration-300"
-              >
-                Resume
-              </a>
+              <FooterLink to="/resume">Resume</FooterLink>
             </nav>
           </div>
           <div className="flex flex-col space-y-4">

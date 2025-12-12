@@ -8,14 +8,15 @@ import Button from "../components/ui/Button";
 import { MotionCard } from "../components/ui/MotionCard";
 import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
-import DraggableCards from "../components/DraggableCards";
+import DraggableCards, { Card } from "../components/DraggableCards";
 import CanvasConnections from "../components/CanvasConnections";
 import SkillsSlider from "../components/SkillsSlider";
 import { useState, useEffect } from "react";
+import TerminalCard from "../components/TerminalCard";
 
 function Home() {
   const [isMobile, setIsMobile] = useState(false);
-  const [cards, setCards] = useState([
+  const [cards, setCards] = useState<Card[]>([
     {
       id: 1,
       tag: "Cloud Intelligence",
@@ -44,12 +45,11 @@ function Home() {
       id: 3,
       tag: "Tech Stack",
       title: "Full-Stack + ML",
-      width: 280,
-      height: 200,
+      width: 320,
+      height: 240,
       x: 0,
       y: 0,
-      image:
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop&q=80",
+      component: <TerminalCard />,
       connections: [1, 4],
     },
     {
@@ -109,11 +109,12 @@ function Home() {
 
           return {
             ...card,
-            width: card.id === 3 ? (isMobileSize ? 280 * 0.75 : 280) : newWidth,
-            height:
-              card.id === 3 ? (isMobileSize ? 200 * 0.75 : 200) : newHeight,
+            width: card.id === 3 ? 320 : newWidth,
+            height: card.id === 3 ? 240 : newHeight,
             x,
             y,
+            component: card.id === 3 ? <TerminalCard /> : undefined,
+            image: card.id === 3 ? undefined : card.image,
           };
         }),
       );

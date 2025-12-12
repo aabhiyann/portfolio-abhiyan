@@ -43,7 +43,7 @@ function DeepDives() {
                 {articles.map((article, index) => (
                   <MotionCard
                     key={article.id}
-                    className="group relative"
+                    className="group relative border border-border-primary/50 bg-card/50"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -54,37 +54,28 @@ function DeepDives() {
                   >
                     <div className="p-6 flex flex-col md:flex-row md:items-center gap-4">
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-text-primary mb-2 group-hover:text-accent-primary transition-colors">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent-primary/10 text-accent-primary border border-accent-primary/20">
+                            Upcoming
+                          </span>
+                          <span className="text-xs text-text-muted font-mono uppercase tracking-wider">
+                            {article.source}
+                          </span>
+                        </div>
+                        <h3 className="text-xl font-semibold text-text-muted mb-2">
                           {article.title}
                         </h3>
 
-                        <p className="text-text-muted mb-3 leading-relaxed">
+                        <p className="text-text-muted/60 mb-3 leading-relaxed">
                           {article.summary}
                         </p>
                       </div>
 
-                      <div className="flex-shrink-0">
-                        <a
-                          href={article.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-accent-primary hover:text-accent-hover transition-colors font-medium"
-                        >
-                          Read on {article.source}
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M9 5l7 7-7 7"
-                            />
-                          </svg>
-                        </a>
+                      <div className="flex-shrink-0 opacity-50 cursor-not-allowed">
+                        <div className="inline-flex items-center gap-2 text-text-muted font-medium">
+                          Drafting...
+                          <span className="animate-pulse">_</span>
+                        </div>
                       </div>
                     </div>
                   </MotionCard>
