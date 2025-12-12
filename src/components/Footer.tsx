@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
             <nav className="flex flex-col space-y-2">
               <FooterLink to="/about">About</FooterLink>
               <a
-                href="/Abhiyan_Sainju_Resume.pdf"
+                href="/Abhiyan_Resume_2025_Data_Engineering.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/70 hover:text-white transition-colors duration-300"

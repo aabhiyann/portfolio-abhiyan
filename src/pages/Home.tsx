@@ -69,54 +69,73 @@ function Home() {
   ]);
 
   useEffect(() => {
-    const checkMobile = () => {
-      const isMobileSize = window.innerWidth < 768;
+    // Responsive card positioning logic
+    const updateCardPositions = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const isMobileSize = width < 768;
+
       setIsMobile(isMobileSize);
+
       setCards((prev) =>
-        prev.map((card) => ({
-          ...card,
-          width: isMobileSize ? card.width * 0.75 : card.width,
-          height: isMobileSize ? card.height * 0.75 : card.height,
-        })),
+        prev.map((card) => {
+          // Resize dimensions based on device
+          const newWidth = isMobileSize ? 300 * 0.75 : 300;
+          const newHeight = isMobileSize ? 220 * 0.75 : 220;
+
+          let x = 0;
+          let y = 0;
+
+          // Responsive positions
+          switch (card.id) {
+            case 1: // Top Left
+              x = width * (isMobileSize ? 0.1 : 0.15);
+              y = height * (isMobileSize ? 0.2 : 0.22);
+              break;
+            case 2: // Top Right
+              x = width * (isMobileSize ? 0.6 : 0.68);
+              y = height * (isMobileSize ? 0.15 : 0.18);
+              break;
+            case 3: // Bottom Left
+              x = width * (isMobileSize ? 0.1 : 0.12);
+              y = height * (isMobileSize ? 0.6 : 0.58);
+              break;
+            case 4: // Bottom Right
+              x = width * (isMobileSize ? 0.55 : 0.65);
+              y = height * (isMobileSize ? 0.5 : 0.55);
+              break;
+            default:
+              x = card.x;
+              y = card.y;
+          }
+
+          return {
+            ...card,
+            width: card.id === 3 ? (isMobileSize ? 280 * 0.75 : 280) : newWidth,
+            height:
+              card.id === 3 ? (isMobileSize ? 200 * 0.75 : 200) : newHeight,
+            x,
+            y,
+          };
+        }),
       );
     };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
 
-    setCards((prev) =>
-      prev.map((card) => {
-        switch (card.id) {
-          case 1:
-            return {
-              ...card,
-              x: window.innerWidth * 0.15,
-              y: window.innerHeight * 0.22,
-            };
-          case 2:
-            return {
-              ...card,
-              x: window.innerWidth * 0.68,
-              y: window.innerHeight * 0.18,
-            };
-          case 3:
-            return {
-              ...card,
-              x: window.innerWidth * 0.12,
-              y: window.innerHeight * 0.58,
-            };
-          case 4:
-            return {
-              ...card,
-              x: window.innerWidth * 0.65,
-              y: window.innerHeight * 0.55,
-            };
-          default:
-            return card;
-        }
-      }),
-    );
+    // Initial call
+    updateCardPositions();
 
-    return () => window.removeEventListener("resize", checkMobile);
+    // Debounced resize handler for performance
+    let timeoutId: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(updateCardPositions, 100);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   const handleCardMove = (id: number, x: number, y: number) => {
@@ -180,7 +199,7 @@ function Home() {
                 </Button>
                 <Button
                   as="a"
-                  href="/Abhiyan_Sainju_Resume.pdf"
+                  href="/Abhiyan_Resume_2025_Data_Engineering.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="outline"
