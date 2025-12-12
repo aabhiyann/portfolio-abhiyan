@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Page from "../components/Page";
 import SEO from "../components/SEO";
+import Button from "../components/ui/Button";
 
 function DeepDiveDetail() {
   return (
@@ -18,12 +19,16 @@ function DeepDiveDetail() {
             This article could not be found. My in-depth articles are hosted on
             external platforms.
           </p>
-          <Link
-            to="/#digital-footprint"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-semibold text-black shadow-sm hover:bg-gray-200 transition-colors"
-          >
-            View All Articles
-          </Link>
+          <div className="flex justify-center">
+            <Button
+              as={Link}
+              to="/#digital-footprint"
+              variant="primary"
+              size="lg"
+            >
+              View All Articles
+            </Button>
+          </div>
         </div>
       </section>
     </Page>
