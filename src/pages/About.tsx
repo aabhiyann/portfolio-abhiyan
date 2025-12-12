@@ -10,72 +10,65 @@ import Button from "../components/ui/Button";
 function About() {
   const timeline = [
     {
-      year: "2021",
-      title: "Started Photography Journey",
+      year: "2024",
+      title: "Master of Science in CS",
       description:
-        "Began capturing moments with Canon EOS 750D, exploring the art of visual storytelling.",
-      location: "Kathmandu, Nepal",
-    },
-    {
-      year: "2022",
-      title: "Software Engineering Career",
-      description:
-        "Started my journey as a software engineer, focusing on cloud infrastructure and AI applications.",
-      location: "Kathmandu, Nepal",
-    },
-    {
-      year: "2023",
-      title: "Moved to Washington D.C.",
-      description:
-        "Relocated to the U.S. capital to pursue advanced opportunities in cloud computing and AI.",
-      location: "Washington D.C., USA",
+        "Specializing in Cloud Computing and AI at George Washington University. 4.0 GPA.",
+      location: "Washington, DC",
     },
     {
       year: "2024",
-      title: "iPhone 15 Pro Max Era",
+      title: "Graduate Teaching Assistant",
       description:
-        "Upgraded to iPhone 15 Pro Max, capturing daily life with professional-grade mobile photography.",
-      location: "Washington D.C., USA",
+        "Leading 60+ graduate students in Design & Analysis of Algorithms. Mentoring on NP-Completeness and Graph Theory.",
+      location: "GWU, Washington DC",
     },
     {
-      year: "2025",
-      title: "Portfolio Launch",
+      year: "2023",
+      title: "Software Engineer Intern",
       description:
-        "Created this comprehensive portfolio showcasing both technical skills and artistic vision.",
-      location: "Washington D.C., USA",
+        "Shipped production React/Node features for ECS Tech, optimizing database queries for 1,200+ users.",
+      location: "Lalitpur, Nepal",
+    },
+    {
+      year: "2022",
+      title: "IT Solutions Lead",
+      description:
+        "Led digital transformation initiatives at Intel Security, managing IT infrastructure and vendor contracts.",
+      location: "Kathmandu, Nepal",
     },
   ];
 
   const passions = [
     {
-      title: "Cloud Architecture",
+      title: "System Architecture",
       description:
-        "Designing and building scalable, resilient systems on cloud platforms like AWS is both a professional skill and a personal passion.",
+        "I obsess over designing scalable, fault-tolerant distributed systems. Why build a monolith when you can orchestrate microservices?",
     },
     {
-      title: "AI & Machine Learning",
+      title: "AI & Large Language Models",
       description:
-        "Beyond my academic and project work, I am constantly exploring new machine learning models and AI-powered application architectures.",
+        "Building RAG pipelines and fine-tuning models to solve specific business problems is my current playground.",
     },
     {
-      title: "Open Source Contribution",
+      title: "Open Source",
       description:
-        "I believe in the power of community-driven software and enjoy contributing to open-source projects and sharing knowledge.",
+        "Contributing to the community that taught me everything. I believe in transparent, collaborative software development.",
     },
     {
-      title: "Photography",
+      title: "Visual Pattern Recognition",
       description:
-        "Photography is a creative outlet that has taught me to appreciate composition and storytelling, principles I apply to my design and development work.",
+        "My photography isn't just art; it's training data for my brain. Finding symmetry in chaos helps me debug complex codebases.",
     },
     {
-      title: "FC Barcelona",
+      title: "Optimization Mindset",
       description:
-        "As a dedicated supporter of FC Barcelona, I appreciate the strategic thinking and teamwork required to compete at the highest level.",
+        "Whether it's reducing O(n^2) to O(n log n) or saving 20ms on a render cycle, I live for efficiency.",
     },
     {
-      title: "Travel",
+      title: "Mentorship",
       description:
-        "Exploring new places and cultures, from the Himalayas to the Potomac River, provides fresh perspectives that influence my problem-solving approach.",
+        "Teaching algorithms has reinforced my own understanding. I love breaking down complex topics for others.",
     },
   ];
 
@@ -154,12 +147,12 @@ function About() {
         </div>
       </section>
 
-      {/* Journey Timeline */}
+      {/* Engineering Career */}
       <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="My Journey"
-            subtitle="A timeline of my journey through technology and photography"
+            title="Engineering Career"
+            subtitle="My path from legacy systems to distributed cloud architecture."
           />
           <div className="relative">
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border-primary"></div>
@@ -198,12 +191,12 @@ function About() {
         </div>
       </section>
 
-      {/* Interests & Passions */}
+      {/* Engineering Philosophy */}
       <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="Interests & Passions"
-            subtitle="Beyond the code, here are a few things that drive me."
+            title="Engineering Philosophy"
+            subtitle="The core principles that drive my development and design decisions."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {passions.map((passion, index) => (
