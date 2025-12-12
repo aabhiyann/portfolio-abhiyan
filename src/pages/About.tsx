@@ -96,25 +96,33 @@ function About() {
                 transition={{ duration: motionTokens.duration.slow / 1000 }}
               >
                 <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 font-heading text-text-primary">
-                  About Me
+                  I bridge the gap between complex algorithms and real-world
+                  value.
                 </h1>
                 <div className="prose prose-lg max-w-none text-text-muted">
                   <p className="text-xl mb-6">
-                    I am a Software Engineer based in Washington, DC, with a
-                    passion for scalable architecture and AI integration.
+                    I am a Computer Science Graduate Student at{" "}
+                    <span className="text-text-primary font-semibold">
+                      George Washington University
+                    </span>{" "}
+                    (4.0 GPA), specializing in Cloud Architecture and AI
+                    Systems.
                   </p>
                   <p className="mb-6">
-                    My journey began in Kathmandu, where I led digital
-                    transformations as an IT Lead, but my curiosity for code
-                    drove me to software engineering. Now, I specialize in
-                    building SaaS platforms that solve expensive
-                    problems—whether that's cutting cloud costs by 70% or
-                    reducing document analysis time by half.
+                    Currently, I serve as a{" "}
+                    <span className="text-text-primary font-semibold">
+                      Graduate Teaching Assistant
+                    </span>{" "}
+                    for Design & Analysis of Algorithms, where I break down
+                    NP-completeness and Graph Theory for the next generation of
+                    engineers.
                   </p>
                   <p>
-                    When I'm not building RAG architectures or optimizing React
-                    renders, I'm teaching Algorithms to graduate students at
-                    George Washington University.
+                    Previously, I built fintech platforms processing 1,200+
+                    users as a Software Development Intern and led digital
+                    transformation initiatives that secured $35K in contracts. I
+                    focus on building systems that are not just theoretically
+                    sound, but production-ready.
                   </p>
                 </div>
               </motion.div>
@@ -128,12 +136,16 @@ function About() {
                 }}
               >
                 <div className="aspect-square rounded-2xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 relative overflow-hidden backdrop-blur-md shadow-xl shadow-black/20 before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/10 before:via-transparent before:to-transparent before:pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  {/* TODO: Replace with real profile image */}
+                  <img
+                    src="https://github.com/aabhiyann.png"
+                    alt="Abhiyan Sainju"
+                    className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 text-white">
                     <h3 className="text-xl font-semibold">Abhiyan Sainju</h3>
-                    <p className="text-white/80">
-                      Software Engineer & Photographer
-                    </p>
+                    <p className="text-white/80">Full-Stack & ML Engineer</p>
                   </div>
                 </div>
               </motion.div>
