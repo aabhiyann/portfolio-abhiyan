@@ -217,7 +217,7 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
 
       {/* Current time display */}
       <div className="text-center">
-        <p className="text-sm font-medium text-slate-700 dark:text-slate-300">
+        <p className="text-sm font-medium text-text-primary">
           {(() => {
             const currentHour = Math.floor(themeState.timeRatio * 24);
             const currentMinute = Math.floor(

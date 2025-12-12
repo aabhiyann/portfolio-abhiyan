@@ -42,7 +42,7 @@ function DeepDives() {
                 {articles.map((article, index) => (
                   <motion.article
                     key={article.id}
-                    className="group bg-white/80 dark:bg-white/10 backdrop-blur-md rounded-xl border border-black/5 dark:border-white/20 p-6 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-white/10 hover:border-accent-primary/30 dark:hover:border-white/30 hover:bg-white/90 dark:hover:bg-white/15 transition-all duration-300 relative"
+                    className="group bg-card backdrop-blur-md rounded-xl border border-border-primary p-6 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-black/20 hover:border-accent-primary/30 transition-all duration-300 relative"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}

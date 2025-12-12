@@ -15,11 +15,11 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold tracking-tight text-slate-900 dark:text-white">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold tracking-tight text-text-primary">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mt-4">
+        <p className="text-base sm:text-lg text-text-muted max-w-3xl mx-auto mt-4">
           {subtitle}
         </p>
       )}

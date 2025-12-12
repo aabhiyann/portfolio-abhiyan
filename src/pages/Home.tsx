@@ -151,7 +151,7 @@ function Home() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-bg-primary"
       >
         <DottedBackground />
         <CanvasConnections cards={cards} />
@@ -159,7 +159,7 @@ function Home() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 pointer-events-none">
           <div className="max-w-4xl mx-auto text-center pointer-events-auto">
             <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-6 leading-tight font-heading"
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-text-primary mb-6 leading-tight font-heading"
               variants={motionTokens.variants.fadeUp}
               initial="initial"
               animate="animate"
@@ -171,7 +171,7 @@ function Home() {
               Building Enterprise-Grade AI & Full-Stack Solutions.
             </motion.h1>
             <motion.p
-              className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto"
+              className="text-base sm:text-lg lg:text-xl text-text-muted mb-10 leading-relaxed max-w-3xl mx-auto"
               variants={motionTokens.variants.fadeUp}
               initial="initial"
               animate="animate"
@@ -221,7 +221,7 @@ function Home() {
       </section>
 
       {/* Projects Teaser */}
-      <section id="projects" className="py-24 bg-background">
+      <section id="projects" className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Featured Projects"
@@ -243,10 +243,10 @@ function Home() {
                 whileHover={{ y: -8 }}
               >
                 <div className="p-6 flex flex-col h-full">
-                  <h3 className="text-xl font-semibold mb-3 text-slate-900 dark:text-white font-heading">
+                  <h3 className="text-xl font-semibold mb-3 text-text-primary font-heading">
                     {project.title}
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-300 mb-4 flex-grow">
+                  <p className="text-text-muted mb-4 flex-grow">
                     {project.description}
                   </p>
                 </div>
@@ -272,7 +272,7 @@ function Home() {
       </section>
 
       {/* Photography Teaser */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Photography"
@@ -298,7 +298,7 @@ function Home() {
       </section>
 
       {/* Digital Footprint Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Digital Footprint"
@@ -325,10 +325,10 @@ function Home() {
                   rel="noopener noreferrer"
                   className="p-6 flex flex-col h-full"
                 >
-                  <h3 className="text-xl font-semibold mb-3 text-slate-900 dark:text-white font-heading">
+                  <h3 className="text-xl font-semibold mb-3 text-text-primary group-hover:text-accent-primary transition-colors font-heading">
                     {article.title}
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 flex-grow">
+                  <p className="text-text-muted text-sm mb-4 flex-grow">
                     {article.summary}
                   </p>
                   <div className="mt-auto">
@@ -344,7 +344,7 @@ function Home() {
       </section>
 
       {/* About Teaser */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-bg-primary">
         <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
           <SectionTitle
             title="About Me"
