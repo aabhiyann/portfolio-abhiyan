@@ -53,12 +53,12 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     const getVariantClasses = () => {
       switch (variant) {
         case "elevated":
-          return "bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/5 dark:border-white/20 shadow-lg shadow-black/5 dark:shadow-black/20";
+          return "bg-white dark:bg-slate-800 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-lg";
         case "outlined":
-          return "bg-transparent border border-black/10 dark:border-white/20";
+          return "bg-transparent border border-slate-200 dark:border-slate-700";
         default:
-          // Default is subtle glass
-          return "bg-white/50 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-sm";
+          // Default card with good contrast
+          return "bg-white dark:bg-slate-800/90 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-sm";
       }
     };
 

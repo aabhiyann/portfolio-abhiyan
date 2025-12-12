@@ -1,18 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Typography, TypographyProps } from "./ui/Typography";
 
-interface SectionTitleProps
-  extends Omit<TypographyProps, "color" | "children"> {
+interface SectionTitleProps {
   title: string;
   subtitle?: string;
 }
 
-const SectionTitle: React.FC<SectionTitleProps> = ({
-  title,
-  subtitle,
-  ...typographyProps
-}) => {
+const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle }) => {
   return (
     <motion.div
       className="relative w-full text-center mb-16"
@@ -21,23 +15,13 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <Typography
-        variant="h2"
-        {...typographyProps}
-        className="text-text-primary"
-      >
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold tracking-tight text-slate-900 dark:text-white">
         {title}
-      </Typography>
+      </h2>
       {subtitle && (
-        <Typography
-          variant="body"
-          color="secondary"
-          {...typographyProps}
-          style={{ maxWidth: "48rem", margin: "1rem auto 0" }}
-          className="text-text-muted"
-        >
+        <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mt-4">
           {subtitle}
-        </Typography>
+        </p>
       )}
       <motion.div
         className="absolute -bottom-2 left-1/2 w-24 h-1 bg-accent-primary"
