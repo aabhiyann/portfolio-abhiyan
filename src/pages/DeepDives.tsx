@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
+import { MotionCard } from "../components/ui/MotionCard";
 import { articles } from "../data/Articles";
 import Page from "../components/Page";
 import SEO from "../components/SEO";
@@ -40,9 +41,9 @@ function DeepDives() {
 
               <div className="space-y-6">
                 {articles.map((article, index) => (
-                  <motion.article
+                  <MotionCard
                     key={article.id}
-                    className="group bg-card backdrop-blur-md rounded-xl border border-border-primary p-6 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-black/20 hover:border-accent-primary/30 transition-all duration-300 relative"
+                    className="group relative"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -51,9 +52,9 @@ function DeepDives() {
                       delay: index * 0.05,
                     }}
                   >
-                    <div className="flex flex-col md:flex-row md:items-center gap-4">
+                    <div className="p-6 flex flex-col md:flex-row md:items-center gap-4">
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-text-primary mb-2 group-hover:text-text-secondary transition-colors">
+                        <h3 className="text-xl font-semibold text-text-primary mb-2 group-hover:text-accent-primary transition-colors">
                           {article.title}
                         </h3>
 
@@ -86,7 +87,7 @@ function DeepDives() {
                         </a>
                       </div>
                     </div>
-                  </motion.article>
+                  </MotionCard>
                 ))}
               </div>
             </div>
