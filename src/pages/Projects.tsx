@@ -75,35 +75,35 @@ function Projects() {
                 >
                   <Card
                     interactive
-                    className="flex flex-col bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/5 dark:border-white/20 hover:border-accent-primary/30 dark:hover:border-white/30 hover:bg-white/90 dark:hover:bg-white/15 hover:shadow-2xl hover:shadow-black/5 dark:hover:shadow-white/10 transition-all duration-300 relative overflow-hidden group"
+                    className="flex flex-col bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-accent-primary/50 hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                   >
-                    <div className="aspect-video bg-gradient-to-br from-white/15 to-white/5 relative overflow-hidden group border-b border-white/10">
+                    <div className="aspect-video relative overflow-hidden group border-b border-slate-200 dark:border-slate-700">
                       <img
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
                       />
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                       <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="text-2xl font-bold text-text-primary mb-2 group-hover:text-accent-primary transition-colors">
+                        <h3 className="text-2xl font-bold text-white drop-shadow-lg">
                           {project.title}
                         </h3>
                       </div>
                     </div>
 
-                    <div className="p-8 flex flex-col flex-grow">
+                    <div className="p-6 flex flex-col flex-grow">
                       <div className="mb-4">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white/10 backdrop-blur-md text-white border border-white/20 shadow-md shadow-black/10">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-accent-primary/10 text-accent-primary border border-accent-primary/20">
                           {project.impact}
                         </span>
                       </div>
 
-                      <p className="text-text-muted mb-6 leading-relaxed flex-grow">
+                      <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed flex-grow">
                         {project.description}
                       </p>
 
                       {project.elaboratedDescription && (
-                        <p className="mb-6 text-sm text-slate-500 dark:text-slate-300 bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg border border-purple-200 dark:border-purple-800">
+                        <p className="mb-6 text-sm text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-700/50 p-3 rounded-lg border border-slate-200 dark:border-slate-600">
                           {project.elaboratedDescription}
                         </p>
                       )}
@@ -116,7 +116,7 @@ function Projects() {
                         ))}
                       </div>
 
-                      <div className="flex gap-4 items-center mt-auto pt-4 border-t border-white/10">
+                      <div className="flex gap-4 items-center mt-auto pt-4 border-t border-slate-200 dark:border-slate-700">
                         <Button
                           as="a"
                           href={project.github}
