@@ -21,41 +21,41 @@ const BentoCard: React.FC<BentoCardProps> = ({
   bgImage,
 }) => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay }}
-    className={`relative group overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl ${className}`}
+    initial={{ opacity: 0, scale: 0.95, y: 10 }}
+    animate={{ opacity: 1, scale: 1, y: 0 }}
+    transition={{ type: "spring", stiffness: 300, damping: 30, delay }}
+    className={`relative group overflow-hidden rounded-3xl border border-border-primary bg-card/50 backdrop-blur-xl shadow-2xl ${className}`}
   >
-    {/* Specular Highlight (Top Border) */}
-    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-50" />
+    {/* Specular Highlight (Top Border) - Adaptive Opacity */}
+    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-text-primary/20 to-transparent opacity-50" />
 
     {bgImage && (
       <div className="absolute inset-0 z-0">
         <img
           src={bgImage}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40"
+          className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105 opacity-60 group-hover:opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/90 via-bg-primary/40 to-transparent" />
       </div>
     )}
 
     <div className="relative z-10 p-6 h-full flex flex-col justify-between pointer-events-none">
       <div className="pointer-events-auto">{children}</div>
       <div>
-        <h4 className="text-white/60 text-xs font-semibold uppercase tracking-widest mb-2">
+        <h4 className="text-text-muted text-xs font-semibold uppercase tracking-widest mb-2">
           {subtitle}
         </h4>
-        <h3 className="text-white text-xl font-bold tracking-tight group-hover:text-accent-primary transition-colors">
+        <h3 className="text-text-primary text-xl font-bold tracking-tight group-hover:text-accent-primary transition-colors">
           {title}
         </h3>
       </div>
     </div>
 
-    {/* Hover Effect Glow */}
+    {/* Hover Effect Glow - Theme Aware */}
     <div className="absolute inset-0 border-2 border-transparent group-hover:border-accent-primary/20 rounded-3xl transition-colors duration-300 pointer-events-none" />
 
-    {/* Noise Texture (Optional, adds realism) */}
+    {/* Noise Texture */}
     <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
   </motion.div>
 );
