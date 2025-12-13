@@ -98,8 +98,8 @@ function Projects() {
                         </Chip>
                       </div>
 
-                      <p className="text-text-muted mb-6 leading-relaxed flex-grow">
-                        {project.description}
+                      <p className="text-text-muted mb-6 leading-relaxed flex-grow line-clamp-3">
+                        {project.story || project.description}
                       </p>
 
                       {project.elaboratedDescription && (
