@@ -9,7 +9,8 @@ import { MotionCard } from "../components/ui/MotionCard";
 import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
 import HeroBento from "../components/HeroBento";
-import SkillsSlider from "../components/SkillsSlider";
+// import SkillsSlider from "../components/SkillsSlider"; // Removing as per blueprint
+import WhyHireMe from "../components/WhyHireMe";
 import StatsBar from "../components/StatsBar";
 import ContactSection from "../components/ContactSection";
 import TypeWriter from "../components/ui/TypeWriter";
@@ -40,49 +41,40 @@ function Home() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-primary opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-primary"></span>
                   </span>
-                  <span className="flex gap-2">
-                    Hi, I'm Abhiyan 👋{" "}
-                    <TypeWriter
-                      words={[
-                        "I build ML-powered products",
-                        "I teach algorithms at GWU",
-                        "I ship code, not just notebooks",
-                        "I debug code and photograph the world",
-                      ]}
-                    />
-                  </span>
+                  <span className="flex gap-2">Hi, I'm Abhiyan Sainju 👋</span>
                 </div>
 
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.2] pb-4">
                   Full-Stack & <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">
-                    ML Engineer.
+                    ML Engineer
                   </span>
                 </h1>
 
-                <p className="text-lg md:text-xl text-text-muted mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  Full-Stack & ML Engineer | 4.0 GPA @ GWU | Graduating Dec
-                  2025. Turning algorithms into production-ready applications.
+                <div className="text-xl md:text-2xl text-text-secondary font-medium mb-4 h-[60px]">
+                  <TypeWriter
+                    words={[
+                      "I ship ML-powered applications",
+                      "I teach algorithms at GWU",
+                      "I turn theory into production code",
+                      "I debug code and photograph the world",
+                    ]}
+                  />
+                </div>
+
+                <p className="text-lg text-text-muted mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Building Production-Ready Systems.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                  <Button
-                    as="a"
-                    href="mailto:aabhiyansainju@gmail.com"
-                    variant="primary"
-                    size="lg"
-                    className="group flex items-center gap-2"
-                  >
-                    Email Me
-                  </Button>
                   <Link to="/projects">
-                    <Button variant="ghost" size="lg" className="group">
-                      View My Work
+                    <Button variant="primary" size="lg" className="group">
+                      View Projects
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
                   <Link to="/resume">
-                    <Button variant="ghost" size="lg" className="group">
+                    <Button variant="outline" size="lg" className="group">
                       Download Resume
                       <Download className="w-4 h-4 ml-2" />
                     </Button>
@@ -120,10 +112,8 @@ function Home() {
       {/* Stats Bar */}
       <StatsBar />
 
-      {/* Skills Marquee */}
-      <section className="py-12 border-b border-border-primary/50 bg-bg-surface/50 backdrop-blur-md">
-        <SkillsSlider />
-      </section>
+      {/* Why Hire Me Section */}
+      <WhyHireMe />
 
       {/* Projects Teaser */}
       <section id="projects" className="py-24 bg-bg-primary">
@@ -136,7 +126,7 @@ function Home() {
             {projects.slice(0, 3).map((project, index) => (
               <MotionCard
                 key={project.id}
-                className="h-full"
+                className="h-full flex flex-col"
                 variants={motionTokens.variants.fadeUp}
                 initial="initial"
                 whileInView="animate"
@@ -148,15 +138,61 @@ function Home() {
                 whileHover={{ y: -8 }}
               >
                 <div className="p-6 flex flex-col h-full">
+                  <div className="mb-4 overflow-hidden rounded-lg aspect-video relative group">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                      {(project.live || project.github) && (
+                        <Button
+                          as="a"
+                          href={project.live || project.github}
+                          target="_blank"
+                          size="sm"
+                          variant="primary"
+                        >
+                          View Project
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+
                   <h3 className="text-xl font-semibold mb-3 text-text-primary font-heading">
                     {project.title}
                   </h3>
-                  <p className="text-text-muted mb-4 flex-grow">
+                  <p className="text-text-muted mb-4 flex-grow line-clamp-3 text-sm">
                     {project.description}
                   </p>
-                  <p className="text-xs font-mono text-accent-primary mt-2">
-                    {project.impact}
-                  </p>
+
+                  {/* Stats */}
+                  {project.stats && (
+                    <div className="flex gap-4 mb-4 border-y border-border-primary/50 py-2">
+                      {project.stats.slice(0, 2).map((stat) => (
+                        <div key={stat.label} className="text-xs">
+                          <span className="text-text-muted block text-[10px] uppercase tracking-wider">
+                            {stat.label}
+                          </span>
+                          <span className="font-mono text-accent-primary font-medium">
+                            {stat.value}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Tech Badges */}
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {project.tech.slice(0, 3).map((t) => (
+                      <span
+                        key={t}
+                        className="px-2 py-1 text-xs rounded bg-accent-primary/10 text-accent-primary border border-accent-primary/20"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </MotionCard>
             ))}

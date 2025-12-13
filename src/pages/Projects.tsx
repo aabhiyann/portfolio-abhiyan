@@ -32,7 +32,7 @@ function Projects() {
   }, [projects, activeCategory]);
 
   // Elaborate function - generates a more detailed description (placeholder for AI integration)
-  const handleElaborate = async (projectId: number) => {
+  const handleElaborate = async (projectId: string) => {
     setProjects((prev) =>
       prev.map((p) => (p.id === projectId ? { ...p, isLoading: true } : p)),
     );
@@ -110,9 +110,6 @@ function Projects() {
 
                       <div className="p-6 flex flex-col flex-grow">
                         <div className="mb-4 flex flex-wrap gap-2">
-                          <Chip variant="accent" size="sm">
-                            {project.impact}
-                          </Chip>
                           <Chip
                             variant="default"
                             size="sm"
@@ -120,6 +117,11 @@ function Projects() {
                           >
                             {project.category}
                           </Chip>
+                          {project.stats?.slice(0, 2).map((stat) => (
+                            <Chip key={stat.label} variant="accent" size="sm">
+                              {stat.value}
+                            </Chip>
+                          ))}
                         </div>
 
                         <p className="text-text-muted mb-6 leading-relaxed flex-grow line-clamp-3">

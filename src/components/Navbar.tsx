@@ -16,6 +16,28 @@ const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => (
       Projects
     </NavLink>
     <NavLink
+      to="/experience"
+      onClick={onLinkClick}
+      className={({ isActive }) =>
+        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          isActive ? "text-text-primary" : "text-text-muted"
+        } hover:text-text-primary`
+      }
+    >
+      Experience
+    </NavLink>
+    <NavLink
+      to="/skills"
+      onClick={onLinkClick}
+      className={({ isActive }) =>
+        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          isActive ? "text-text-primary" : "text-text-muted"
+        } hover:text-text-primary`
+      }
+    >
+      Skills
+    </NavLink>
+    <NavLink
       to="/photography"
       onClick={onLinkClick}
       className={({ isActive }) =>
@@ -27,7 +49,7 @@ const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => (
       Photography
     </NavLink>
     <NavLink
-      to="/deep-dives"
+      to="/contact"
       onClick={onLinkClick}
       className={({ isActive }) =>
         `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -35,29 +57,7 @@ const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => (
         } hover:text-text-primary`
       }
     >
-      Deep Dives
-    </NavLink>
-    <NavLink
-      to="/resume"
-      onClick={onLinkClick}
-      className={({ isActive }) =>
-        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-          isActive ? "text-text-primary" : "text-text-muted"
-        } hover:text-text-primary`
-      }
-    >
-      Resume
-    </NavLink>
-    <NavLink
-      to="/about"
-      onClick={onLinkClick}
-      className={({ isActive }) =>
-        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-          isActive ? "text-text-primary" : "text-text-muted"
-        } hover:text-text-primary`
-      }
-    >
-      About
+      Contact
     </NavLink>
   </>
 );
