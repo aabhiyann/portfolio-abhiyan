@@ -66,7 +66,7 @@ I chose Linear Regression, Z-score, and K-means over more complex models (LSTM, 
 
 Business stakeholders need to understand why the system flagged a cost spike. Linear Regression provides clear coefficients and confidence intervals. Z-score is statistically grounded and requires no training data. These choices made the system production-ready faster and more maintainable.
 
-*Future iteration: I'd explore ARIMA or Prophet for time-series forecasting to capture seasonality better, and Isolation Forest for anomaly detection to compare with Z-score. But for an MVP, pragmatic choices ship faster.*
+_Future iteration: I'd explore ARIMA or Prophet for time-series forecasting to capture seasonality better, and Isolation Forest for anomaly detection to compare with Z-score. But for an MVP, pragmatic choices ship faster._
 
 ## What I Learned
 
@@ -104,4 +104,3 @@ Deploying to production means thinking about Docker multi-stage builds (smaller 
 **What's your experience with production ML? Have you faced similar challenges with interpretability vs. accuracy trade-offs? I'd love to hear your thoughts in the comments.**
 
 #MachineLearning #FullStack #CloudComputing #SoftwareEngineering #Python #React #MLOps #DevOps
-
