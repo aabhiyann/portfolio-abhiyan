@@ -69,15 +69,16 @@ function Projects() {
                   >
                     <Card
                       interactive
-                      className="flex flex-col bg-card border border-border-primary hover:border-accent-primary/50 hover:shadow-xl transition-all duration-300 relative overflow-hidden group h-full"
+                      className="flex flex-col bg-card/40 backdrop-blur-md border border-border-primary/50 hover:border-accent-primary/50 hover:shadow-xl transition-all duration-300 relative overflow-hidden group h-full"
                     >
-                      <div className="aspect-video relative overflow-hidden group border-b border-border-primary">
+                      <div className="aspect-video relative overflow-hidden group border-b border-border-primary/50">
                         <img
                           src={project.image}
                           alt={project.title}
                           className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                        {/* Glassy overlay on hover - like photography gallery */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-bg-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] flex items-center justify-center gap-4">
                           {project.caseStudyUrl && (
                             <Button
                               as={Link}

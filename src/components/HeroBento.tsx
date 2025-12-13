@@ -26,19 +26,20 @@ const BentoCard: React.FC<BentoCardProps> = ({
     initial={{ opacity: 0, scale: 0.95, y: 10 }}
     animate={{ opacity: 1, scale: 1, y: 0 }}
     transition={{ type: "spring", stiffness: 300, damping: 30, delay }}
-    className={`relative group overflow-hidden rounded-3xl border border-border-primary bg-card/30 backdrop-blur-xl shadow-2xl ${className}`}
+    className={`relative group overflow-hidden rounded-3xl border border-border-primary/50 bg-card/40 backdrop-blur-md shadow-2xl ${className}`}
   >
     {/* Specular Highlight (Top Border) - Adaptive Opacity */}
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-text-primary/20 to-transparent opacity-50" />
 
     {bgImage && (
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
         <img
           src={bgImage}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105 opacity-60 group-hover:opacity-40"
+          className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110 opacity-80 group-hover:opacity-90"
         />
-        <div className="absolute inset-0 gradient-overlay-top" />
+        {/* Subtle glassy overlay - only on hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-[1px]" />
       </div>
     )}
 

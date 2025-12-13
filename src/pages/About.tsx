@@ -113,19 +113,22 @@ function About() {
                   delay: 0.2,
                 }}
               >
-                <div className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-text-primary/10 to-text-primary/5 border border-border-primary relative overflow-hidden backdrop-blur-sm shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
+                <div className="aspect-[4/5] rounded-2xl bg-card/40 backdrop-blur-md border border-border-primary/50 relative overflow-hidden shadow-2xl hover:shadow-accent-primary/20 transition-all duration-500 group/portrait">
                   <img
                     src="/images/about/portrait.jpg"
                     alt="Abhiyan Sainju"
-                    className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover/portrait:scale-105"
                   />
-                  <div className="absolute inset-0 gradient-overlay-top-full opacity-80"></div>
-                  <div className="absolute bottom-8 left-8 text-white">
-                    <div className="text-sm font-mono text-accent-primary mb-2">
+                  {/* Glassy overlay on hover - like photography gallery */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/70 via-bg-primary/20 to-transparent opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500 backdrop-blur-[2px]"></div>
+                  <div className="absolute bottom-8 left-8 text-white opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500">
+                    <div className="text-sm font-mono text-accent-primary mb-2 drop-shadow-lg">
                       EST. 2024
                     </div>
-                    <h3 className="text-3xl font-bold">Abhiyan Sainju</h3>
-                    <p className="text-white/80 mt-1">
+                    <h3 className="text-3xl font-bold drop-shadow-lg">
+                      Abhiyan Sainju
+                    </h3>
+                    <p className="text-white/90 mt-1 drop-shadow-lg">
                       Full-Stack & ML Engineer
                     </p>
                   </div>
