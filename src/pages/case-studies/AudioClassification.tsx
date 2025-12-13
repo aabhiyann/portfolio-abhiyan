@@ -6,7 +6,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
     <CaseStudyLayout
       title="Audio Classification CNN"
       subtitle="Deep learning research: Training a custom CNN from scratch to outperform transfer learning by 26%."
-      heroImage="/images/case-studies/audio-classification.png"
+      heroImage="/images/projects/audio-cnn.png"
       tags={["TensorFlow", "Keras", "Deep Learning", "Research"]}
       stats={[
         { label: "Accuracy", value: "92%" },
