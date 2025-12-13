@@ -4,14 +4,14 @@ import { imageEXIFData } from "./ExifData";
 
 export const heroImages: ImageMetadata[] = [
   {
-    src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&crop=center",
+    src: "/images/photography/IMG_6355Ben.webp",
     alt: "Landscape by Abhiyan",
     width: 1920,
     height: 1080,
-    format: "jpg",
+    format: "webp",
     exif: {
-      camera: "Fujifilm X-T3",
-      lens: "23mm f/2",
+      camera: "Canon EOS 750D",
+      lens: "18-55mm",
       settings: "f/8 · 1/125 · ISO 200",
       location: "Mountain Landscape",
       date: "2024-01-15",

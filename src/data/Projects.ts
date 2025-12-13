@@ -39,7 +39,7 @@ export const projects: Project[] = [
     tech: ["Python", "FastAPI", "React", "Docker", "AsyncPG"],
     live: "https://infrasight.netlify.app/",
     github: "https://github.com/aabhiyann/infrasight",
-    image: "/Images/projects/infrasight.png",
+    image: "/images/projects/infrasight.png",
     category: "ML/AI",
     featured: true,
     stats: [{ label: "Architecture", value: "Microservice" }],
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "GPT-4", "Pinecone", "LangChain", "Stripe"],
     live: "", // Not publicly deployed
     github: "https://github.com/aabhiyann/talkifydocs",
-    image: "/Images/projects/talkifydocs.png",
+    image: "/images/projects/talkifydocs.png",
     category: "ML/AI",
     featured: true,
     stats: [
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     tech: ["TensorFlow", "Keras", "librosa", "YAMNet"],
     live: "https://github.com/aabhiyann/audio-classification",
     github: "https://github.com/aabhiyann/audio-classification",
-    image: "/Images/projects/audio-cnn.png",
+    image: "/images/projects/audio-cnn.png",
     category: "ML/AI",
     featured: true,
     stats: [
@@ -90,7 +90,7 @@ export const projects: Project[] = [
     tech: ["React", "Node.js", "Socket.IO", "MongoDB", "Clerk"],
     live: "https://udaymelodyhhub.vercel.app/",
     github: "https://github.com/aabhiyann/MelodyHub",
-    image: "/Images/projects/melodyhub.png",
+    image: "/images/projects/melodyhub.png",
     category: "Full Stack",
     featured: true,
     stats: [
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     tech: ["Python", "Scikit-Learn", "Pandas", "Flush"],
     live: "https://github.com/aabhiyann/disease-prediction",
     github: "https://github.com/aabhiyann/disease-prediction",
-    image: "/Images/projects/disease-prediction.png",
+    image: "/images/projects/disease-prediction.png",
     category: "ML/AI",
     featured: false,
     stats: [
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     tech: ["Python", "Elasticsearch", "NLP", "API"],
     live: "https://github.com/aabhiyann/multi-source-retrieval",
     github: "https://github.com/aabhiyann/multi-source-retrieval",
-    image: "/Images/projects/retrieval.png",
+    image: "/images/projects/retrieval.png",
     category: "ML/AI",
     featured: false,
     stats: [
