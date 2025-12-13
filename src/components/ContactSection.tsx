@@ -25,7 +25,7 @@ const ContactSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center gap-8"
         >
-          <div className="p-8 rounded-3xl bg-surface/50 backdrop-blur-md border border-border-primary w-full shadow-2xl">
+          <div className="p-8 rounded-3xl glass-card w-full shadow-2xl">
             <h3 className="text-2xl font-bold text-text-primary mb-2">
               Drop me a message
             </h3>
@@ -47,7 +47,7 @@ const ContactSection: React.FC = () => {
                 href="https://linkedin.com/in/abhiyansainju"
                 target="_blank"
                 rel="noopener noreferrer"
-                variant="secondary"
+                variant="outline"
                 size="lg"
                 className="flex items-center gap-2"
               >
@@ -59,7 +59,7 @@ const ContactSection: React.FC = () => {
                 href="https://github.com/aabhiyann"
                 target="_blank"
                 rel="noopener noreferrer"
-                variant="ghost"
+                variant="outline"
                 size="lg"
                 className="flex items-center gap-2"
               >
@@ -71,7 +71,7 @@ const ContactSection: React.FC = () => {
                 href="https://instagram.com/abhiyan.sainju"
                 target="_blank"
                 rel="noopener noreferrer"
-                variant="ghost"
+                variant="outline"
                 size="lg"
                 className="flex items-center gap-2"
               >
