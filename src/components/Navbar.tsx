@@ -5,6 +5,17 @@ import { useTheme } from "../contexts/useTheme";
 const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => (
   <>
     <NavLink
+      to="/about"
+      onClick={onLinkClick}
+      className={({ isActive }) =>
+        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          isActive ? "text-text-primary" : "text-text-muted"
+        } hover:text-text-primary`
+      }
+    >
+      About
+    </NavLink>
+    <NavLink
       to="/projects"
       onClick={onLinkClick}
       className={({ isActive }) =>
