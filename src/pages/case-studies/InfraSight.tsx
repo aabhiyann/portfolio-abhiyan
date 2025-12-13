@@ -105,6 +105,88 @@ const InfraSightCaseStudy: React.FC = () => {
       </section>
 
       <section className="mb-12">
+        <h2>What It Looks Like</h2>
+        <p className="mb-6">
+          Here are screenshots from the live production app showing the key
+          features:
+        </p>
+
+        <div className="space-y-8">
+          {/* Cost Forecasting Dashboard */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">
+              Cost Forecasting Dashboard
+            </h3>
+            <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+              <img
+                src="/images/case-studies/infrasight/forecasting-dashboard.png"
+                alt="InfraSight Cost Forecasting Dashboard showing predictions with confidence intervals"
+                className="w-full h-auto"
+                onError={(e) => {
+                  // Hide image if it doesn't exist yet
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+            </div>
+            <p className="mt-3 text-sm text-text-muted italic">
+              Predicts future spending per service with 95% confidence
+              intervals. Interactive Chart.js visualizations.
+            </p>
+          </div>
+
+          {/* Anomaly Detection View */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">
+              Anomaly Detection View
+            </h3>
+            <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+              <img
+                src="/images/case-studies/infrasight/anomaly-detection.png"
+                alt="InfraSight Anomaly Detection showing Z-score analysis with configurable thresholds"
+                className="w-full h-auto"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+            </div>
+            <p className="mt-3 text-sm text-text-muted italic">
+              Z-score statistical method with configurable sensitivity.
+              Service-level filtering and historical comparison.
+            </p>
+          </div>
+
+          {/* Spending Insights */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Spending Insights</h3>
+            <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+              <img
+                src="/images/case-studies/infrasight/spending-insights.png"
+                alt="InfraSight Spending Insights showing K-means clustering and cost attribution"
+                className="w-full h-auto"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+            </div>
+            <p className="mt-3 text-sm text-text-muted italic">
+              K-means clustering of services, cost attribution analysis, and CSV
+              export functionality.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-6 p-4 rounded-xl bg-bg-surface/50 border border-border-primary/50">
+          <p className="text-sm text-text-muted">
+            <strong>Note:</strong> Screenshots will appear here once you add
+            images to{" "}
+            <code className="px-2 py-1 rounded bg-bg-surface">
+              /public/images/case-studies/infrasight/
+            </code>
+          </p>
+        </div>
+      </section>
+
+      <section className="mb-12">
         <h2>Technical Architecture</h2>
         <div className="mb-6 p-6 rounded-2xl glass-card">
           <pre className="text-sm font-mono overflow-x-auto">
