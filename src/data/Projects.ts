@@ -11,7 +11,7 @@ export interface Project {
   github?: string;
   live: string;
   tech: string[];
-  category: string;
+  categories: string[]; // Changed from category: string to support multiple categories
   featured?: boolean;
   stats?: ProjectStats[];
   badges?: string[];
@@ -40,7 +40,7 @@ export const projects: Project[] = [
     live: "https://infrasight.netlify.app/",
     github: "https://github.com/aabhiyann/infrasight",
     image: "/images/projects/infrasight.png",
-    category: "ML/AI",
+    categories: ["ML/AI", "Full Stack"],
     featured: true,
     stats: [{ label: "Architecture", value: "Microservice" }],
     badges: ["Production", "ML"],
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     live: "", // Not publicly deployed
     github: "https://github.com/aabhiyann/talkifydocs",
     image: "/images/projects/talkifydocs.png",
-    category: "ML/AI",
+    categories: ["ML/AI", "Full Stack"],
     featured: true,
     stats: [
       { label: "Status", value: "Dev" },
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     live: "https://github.com/aabhiyann/audio-classification",
     github: "https://github.com/aabhiyann/audio-classification",
     image: "/images/projects/audio-cnn.png",
-    category: "ML/AI",
+    categories: ["ML/AI"],
     featured: true,
     stats: [
       { label: "Accuracy", value: "92%" },
@@ -91,7 +91,7 @@ export const projects: Project[] = [
     live: "https://udaymelodyhhub.vercel.app/",
     github: "https://github.com/aabhiyann/MelodyHub",
     image: "/images/projects/melodyhub.png",
-    category: "Full Stack",
+    categories: ["Full Stack"],
     featured: true,
     stats: [
       { label: "Type", value: "Team Project" },
@@ -109,7 +109,7 @@ export const projects: Project[] = [
     live: "https://github.com/aabhiyann/disease-prediction",
     github: "https://github.com/aabhiyann/disease-prediction",
     image: "/images/projects/disease-prediction.png",
-    category: "ML/AI",
+    categories: ["ML/AI"],
     featured: false,
     stats: [
       { label: "Precision", value: "89%" },
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     live: "https://github.com/aabhiyann/multi-source-retrieval",
     github: "https://github.com/aabhiyann/multi-source-retrieval",
     image: "/images/projects/retrieval.png",
-    category: "ML/AI",
+    categories: ["ML/AI"],
     featured: false,
     stats: [
       { label: "Sources", value: "10+" },
