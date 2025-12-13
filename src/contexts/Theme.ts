@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 export interface ThemeState {
   isDarkMode: boolean;
   currentTheme: string;

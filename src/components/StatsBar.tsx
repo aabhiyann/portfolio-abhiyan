@@ -28,8 +28,8 @@ const StatsBar: React.FC = () => {
   const stats = [
     { value: "4.0", label: "GPA @ GWU" },
     { value: "60+", label: "Students Taught" },
-    { value: "5", label: "Shipped Projects" },
-    { value: "20%", label: "Test Score Boost" },
+    { value: "6", label: "Shipped Projects" },
+    { value: "92%", label: "ML Accuracy" },
   ];
 
   return (
