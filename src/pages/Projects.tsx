@@ -102,7 +102,7 @@ function Projects() {
                           <Chip
                             variant="default"
                             size="sm"
-                            className="bg-surface/50"
+                            className="bg-bg-surface/50"
                           >
                             {project.category}
                           </Chip>

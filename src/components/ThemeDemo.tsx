@@ -97,7 +97,7 @@ export const ThemeDemo: React.FC = () => {
                 className={`p-6 rounded-lg border-2 transition-all duration-300 ${
                   themeState.currentTheme === theme.key
                     ? "border-accent-primary bg-accent-primary/10"
-                    : "border-white/20 dark:border-white/10 hover:border-white/30 dark:hover:border-white/20"
+                    : "border-border-primary hover:border-accent-primary/50"
                 }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -126,7 +126,7 @@ export const ThemeDemo: React.FC = () => {
 
         {/* Current State Display */}
         <motion.div
-          className="bg-card dark:bg-card rounded-lg p-6 border border-white/20 dark:border-white/10"
+          className="bg-card rounded-lg p-6 border border-border-primary"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
