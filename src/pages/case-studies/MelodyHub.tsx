@@ -4,85 +4,114 @@ import CaseStudyLayout from "../../components/CaseStudyLayout";
 const MelodyHubCaseStudy: React.FC = () => {
   return (
     <CaseStudyLayout
-      title="Audio Classification CNN"
-      subtitle="Deep Learning model for real-time music genre classification and audio analysis."
+      title="MelodyHub"
+      subtitle="Real-time social music platform that combines Spotify streaming with Discord-style social features."
       heroImage="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1600&h=900&fit=crop&q=80"
-      tags={["PyTorch", "React", "Librosa", "Deep Learning"]}
+      tags={["React", "Socket.IO", "Node.js", "MongoDB"]}
       stats={[
-        { label: "Model Accuracy", value: "92%" },
-        { label: "Genres", value: "10" },
-        { label: "Inference", value: "Real-time" },
-        { label: "Dataset", value: "GTZAN" },
+        { label: "Tech", value: "Socket.IO" },
+        { label: "Type", value: "Team Project" },
+        { label: "Role", value: "Full Stack" },
+        { label: "Users", value: "100+ Beta" },
       ]}
       links={{
-        github: "https://github.com/aabhiyann/audio-cnn",
-        live: "https://melodyhub-demo.vercel.app",
+        github: "https://github.com/aabhiyann/MelodyHub",
+        live: "https://udaymelodyhhub.vercel.app",
       }}
     >
       <section className="mb-12">
         <h2>At a Glance</h2>
         <p>
-          This project explores the intersection of signal processing and deep
-          learning. I built a Convolutional Neural Network (CNN) capable of
-          classifying audio tracks into 10 distinct genres (Jazz, Rock,
-          Classical, etc.) with high accuracy, visualizing the results via a
-          React frontend.
+          MelodyHub is a real-time social music platform that combines the
+          streaming capabilities of Spotify with the social features of Discord.
+          Built as a team project for our Object-Oriented Design course, it
+          allows users to listen to music together in synchronized rooms.
         </p>
       </section>
 
       <section className="mb-12">
-        <h2>The Problem</h2>
+        <h2>The Concept</h2>
         <p>
-          Music recommendation systems often rely on metadata (tags, artist
-          name) rather than the actual audio content. I wanted to build a system
-          that could "listen" to the raw audio waveform and understand its
-          structural patterns to categorize it automatically, a critical
-          component for content-based filtering.
+          <strong>"Spotify meets Discord"</strong>
+        </p>
+        <p>
+          Music is inherently social, but most streaming platforms are isolated
+          experiences. We wanted to build a platform where friends could
+          virtually hang out, chat, and listen to the same song at the exact
+          same time—no matter where they are.
         </p>
       </section>
 
       <section className="mb-12">
-        <h2>The Methodology</h2>
+        <h2>The Solution</h2>
         <p>
-          The core challenge was converting time-domain audio signals into a
-          format suitable for image-based CNN architectures.
+          We architected a real-time system that synchronizes audio playback
+          across all clients.
         </p>
-        <ul>
+        <ul className="mb-6">
           <li>
-            **Spectrogram generation:** Used `librosa` to convert audio clips
-            into Mel-frequency cepstral coefficients (MFCCs).
+            <strong>Synchronized Playback:</strong> When the DJ hits play,
+            everyone hears music. If someone seeks to 1:30, everyone jumps to
+            1:30 in sync.
           </li>
           <li>
-            **Data Augmentation:** Applied time-stretching, pitch-shifting, and
-            noise injection to the GTZAN dataset to prevent overfitting.
+            <strong>Social Rooms:</strong> Users can create public or private
+            listening rooms based on genres or moods.
           </li>
           <li>
-            **Model Architecture:** Designed a 5-layer 2D CNN with Batch
-            Normalization and Dropout layers.
+            <strong>Room State Management:</strong> Used the Observer pattern to
+            handle real-time updates for user presence and chat.
           </li>
         </ul>
       </section>
 
       <section className="mb-12">
-        <h2>Technical Stack</h2>
+        <h2>Technical Architecture</h2>
+        <h3>Real-Time Sync Engine</h3>
         <p>
-          <strong>Model Training:</strong> PyTorch, Python, Jupyter Notebooks.
-          <br />
-          <strong>Backend:</strong> FastAPI server serving the ONNX-exported
-          model.
-          <br />
-          <strong>Frontend:</strong> React dashboard visualizing the audio
-          waveform and confidence scores for each genre.
+          The core challenge was latency. We used <strong>Socket.IO</strong> to
+          broadcast playback events (play/pause/seek).
+        </p>
+        <pre className="bg-bg-surface p-4 rounded-lg overflow-x-auto text-sm mb-4">
+          {`// Server broadcasts playback state
+socket.to(roomId).emit('sync-playback', {
+  songId,
+  timestamp,
+  isPlaying
+});`}
+        </pre>
+        <h3>Audio Infrastructure</h3>
+        <p>
+          We integrated <strong>Cloudinary</strong> as our audio CDN to ensure
+          fast, reliable streaming. The backend (Node.js/Express) manages
+          metadata in MongoDB, while the frontend fetches the optimal audio
+          format for the user's device.
+        </p>
+        <h3>Authentication</h3>
+        <p>
+          We implemented <strong>Clerk</strong> for secure, easy-to-use
+          authentication, allowing us to focus on the core social features like
+          room management and chat.
         </p>
       </section>
 
       <section className="mb-12">
-        <h2>Key Findings</h2>
+        <h2>Team Collaboration</h2>
         <p>
-          The model achieved 92% validation accuracy. Interestingly, it
-          struggled distinguishing between 'Rock' and 'Blues' due to similar
-          spectral features, which I addressed by increasing the resolution of
-          the MFCC inputs.
+          This was a 3-person Agile project. We held daily standups, worked in
+          2-week sprints, and used GitHub for code reviews. I learned how to
+          decouple modules so we could work in parallel without breaking each
+          other's code.
+        </p>
+      </section>
+
+      <section className="mb-12">
+        <h2>Why This Matters</h2>
+        <p>
+          MelodyHub demonstrates my ability to build{" "}
+          <strong>real-time, event-driven systems</strong>. It explores the
+          complexities of state synchronization, WebSocket communication, and
+          collaborative software design patterns.
         </p>
       </section>
     </CaseStudyLayout>
