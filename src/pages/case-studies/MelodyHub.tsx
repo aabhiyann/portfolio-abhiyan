@@ -6,7 +6,7 @@ const MelodyHubCaseStudy: React.FC = () => {
     <CaseStudyLayout
       title="MelodyHub"
       subtitle="Real-time social music platform that combines Spotify streaming with Discord-style social features."
-      heroImage="/images/case-studies/melodyhub.png"
+      heroImage="/images/projects/melodyhub.png"
       tags={["React", "Socket.IO", "Node.js", "MongoDB"]}
       stats={[
         { label: "Tech", value: "Socket.IO" },

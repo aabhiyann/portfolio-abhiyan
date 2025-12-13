@@ -6,7 +6,7 @@ const TalkifyDocsCaseStudy: React.FC = () => {
     <CaseStudyLayout
       title="TalkifyDocs"
       subtitle="SaaS platform transforming static PDF documents into interactive, AI-powered conversations."
-      heroImage="/images/case-studies/talkifydocs.png"
+      heroImage="/images/projects/talkifydocs.png"
       tags={["Next.js", "OpenAI", "Pinecone", "Stripe"]}
       stats={[
         { label: "Architecture", value: "RAG SaaS" },
