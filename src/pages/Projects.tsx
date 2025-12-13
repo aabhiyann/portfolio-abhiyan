@@ -28,7 +28,7 @@ function Projects() {
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === "All") return projects;
-    return projects.filter((p) => p.category === activeCategory);
+    return projects.filter((p) => p.categories.includes(activeCategory));
   }, [projects, activeCategory]);
 
   return (
@@ -115,13 +115,16 @@ function Projects() {
                         </h3>
 
                         <div className="mb-4 flex flex-wrap gap-2">
-                          <Chip
-                            variant="default"
-                            size="sm"
-                            className="bg-bg-surface/50"
-                          >
-                            {project.category}
-                          </Chip>
+                          {project.categories.map((category) => (
+                            <Chip
+                              key={category}
+                              variant="default"
+                              size="sm"
+                              className="bg-bg-surface/50"
+                            >
+                              {category}
+                            </Chip>
+                          ))}
                           {project.stats?.slice(0, 2).map((stat) => (
                             <Chip key={stat.label} variant="accent" size="sm">
                               {stat.value}
