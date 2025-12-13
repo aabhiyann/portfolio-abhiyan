@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects as initialProjects, Project } from "../data/Projects";
 import Page from "../components/Page";
@@ -142,7 +143,18 @@ function Projects() {
                           ))}
                         </div>
 
-                        <div className="flex gap-4 items-center mt-auto pt-4 border-t border-border-primary">
+                        <div className="flex gap-4 items-center mt-auto pt-4 border-t border-border-primary flex-wrap">
+                          {project.caseStudyUrl && (
+                            <Button
+                              as={Link}
+                              to={project.caseStudyUrl}
+                              variant="primary"
+                              size="sm"
+                              className="font-medium"
+                            >
+                              Case Study
+                            </Button>
+                          )}
                           <Button
                             as="a"
                             href={project.github}

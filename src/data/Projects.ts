@@ -18,6 +18,7 @@ export interface Project {
   story?: string;
   impact?: string;
   elaboratedDescription?: string;
+  caseStudyUrl?: string;
   architecture?: {
     nodes: Array<{
       id: string;
