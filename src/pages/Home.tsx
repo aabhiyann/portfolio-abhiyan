@@ -44,11 +44,9 @@ function Home() {
                   <span className="flex gap-2">Hi, I'm Abhiyan Sainju 👋</span>
                 </div>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.2] pb-4">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading theme-text-primary leading-[1.2] pb-4">
                   Full-Stack & <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">
-                    ML Engineer
-                  </span>
+                  <span className="gradient-text">ML Engineer</span>
                 </h1>
 
                 <div className="text-xl md:text-2xl text-text-secondary font-medium mb-4 h-[60px]">

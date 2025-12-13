@@ -226,6 +226,26 @@ body,
   color: #ffffff;
 }
 
+/* Gradient Text - for headings and stats */
+.gradient-text {
+  background: linear-gradient(to right, var(--color-accent-primary), var(--color-accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-br {
+  background: linear-gradient(to bottom right, var(--color-accent-primary), var(--color-accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Gradient Background - for progress bars, decorative elements */
+.gradient-bg {
+  background: linear-gradient(to right, var(--color-accent-primary), var(--color-accent-secondary));
+}
+
 /* Animations */
 @keyframes fadeUp {
   0% {

@@ -55,11 +55,9 @@ function About() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: motionTokens.duration.slow / 1000 }}
               >
-                <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-8 font-heading text-text-primary leading-tight">
+                <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-8 font-heading theme-text-primary leading-tight">
                   I don't just write code. <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">
-                    I solve problems.
-                  </span>
+                  <span className="gradient-text">I solve problems.</span>
                 </h1>
 
                 <div className="space-y-6 text-lg text-text-muted leading-relaxed">
