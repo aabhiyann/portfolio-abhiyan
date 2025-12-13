@@ -1,38 +1,39 @@
 # The Abhiyan Sainju Portfolio
 
-A modern, responsive portfolio website built with React, Vite, and Tailwind CSS, featuring professional photography with authentic EXIF data display.
+A high-performance, engineer-focused portfolio website built with **React 19**, **Vite 7**, and **Tailwind CSS 4**. Designed with a "Strict Professionalism" philosophy, featuring a live terminal interface, bento grid layout, and PDF resume embedding.
 
-## Features
+![Portfolio Banner](/Images/portfolio_banner.png)
 
-### Professional Photography Gallery
+## ✨ Key Features
 
-- **Real EXIF Data**: Authentic iPhone 15 Pro Max camera settings displayed like professional photographers
-- **Lightbox Gallery**: Full-screen viewing with navigation arrows and detailed technical panels
-- **Masonry Layout**: Pinterest-style responsive grid with smooth hover effects
-- **Technical Details**: Shows camera, lens, focal length, aperture, shutter speed, ISO, and date
+### 🚀 Engineering First
+- **Terminal Hero Interface**: A live, typing terminal component (`TerminalCard.tsx`) demonstrating CLI proficiency and system architecture skills.
+- **Bento Grid Layout**: A static, high-performance grid layout (`HeroBento.tsx`) for immediate visual impact without cognitive overload.
+- **"Deep Dives" Technical Content**: A dedicated section for upcoming engineering case studies (e.g., InfraSight, TalkifyDocs).
 
-### Image Optimization
+### 📄 Professional Resume Integration
+- **Embedded PDF Viewer**: Dedicated `/resume` page allowing recruiters to view the resume directly in-browser.
+- **Smart Actions**: One-click download and "Open in New Tab" functionality.
 
-- **95%+ Size Reduction**: Original 13MB images optimized to ~300KB
-- **WebP Primary**: Modern format with JPEG fallbacks for compatibility
-- **Automated Processing**: Scripts for batch optimization and EXIF extraction
-- **Responsive Images**: Multiple sizes for different screen densities
+### 🎨 Modern Design System
+- **Strict Professionalism**: "High-Signal / Low-Noise" content strategy.
+- **Lucide Icons**: Consistent, lightweight iconography.
+- **Glassmorphism & Gradients**: Subtle, premium UI elements using `backdrop-blur` and semantic tokens.
+- **Dark/Light Mode**: Fully theme-aware with persistent preferences.
 
-### Modern Design System
+### 📸 Engineering & Art
+- **Photography "Texture"**: Photography is integrated as a subtle texture rather than a dominant column, using authentic EXIF data display.
+- **Optimization**: WebP primary images with automated optimization scripts.
 
-- **Design Tokens**: Centralized color palette, typography, and motion tokens
-- **Dark/Light Mode**: Smooth theme switching with persistent storage
-- **Framer Motion**: Sophisticated animations and micro-interactions
-- **Tailwind CSS**: Utility-first styling with custom design system
+## 🛠 Tech Stack
 
-### Developer Experience
+- **Core**: React 19, TypeScript, Vite 7
+- **Styling**: Tailwind CSS 4, CSS Variables (Semantic Theming)
+- **Animation**: Framer Motion 12 (Orchestrated entrance animations)
+- **Icons**: Lucide React
+- **Tooling**: ESLint, Prettier, Husky (Git Hooks)
 
-- **Automation Scripts**: Image optimization and EXIF data extraction
-- **TypeScript Support**: Type-safe image metadata and component props
-- **ESLint + Husky**: Code quality and commit message standards
-- **Vite**: Lightning-fast development and optimized production builds
-
-## Quick Start
+## ⚡ Quick Start
 
 ```bash
 # Install dependencies
@@ -43,12 +44,6 @@ npm run dev
 
 # Build for production
 npm run build
-
-# Optimize images (processes Images/ folder)
-npm run optimize-images
-
-# Extract EXIF data from images
-npm run extract-exif
 ```
 
 ## 📁 Project Structure
@@ -56,144 +51,27 @@ npm run extract-exif
 ```
 src/
 ├── components/
-│   ├── PhotographyGallery.jsx    # Professional photo gallery with EXIF display
-│   └── ui/
-│       └── buttons.css           # Reusable button components
+│   ├── HeroBento.tsx         # Static grid layout for Hero section
+│   ├── TerminalCard.tsx      # Live typing terminal component
+│   └── ui/                   # Reusable UI components (Button, Card)
+├── pages/
+│   ├── Home.tsx              # Landing page with Bento Grid
+│   ├── Resume.tsx            # PDF Viewer page
+│   └── DeepDives.tsx         # Technical articles section
 ├── data/
-│   ├── images.ts                 # Image metadata and organization
-│   └── exif-data.ts             # Extracted camera settings
-├── types/
-│   └── image.ts                  # TypeScript interfaces for images
-├── utils/
-│   └── motion.ts                 # Centralized animation tokens
-└── App.jsx                       # Main application component
-
-scripts/
-├── optimize-images.js            # Batch image optimization with Sharp
-└── extract-exif.js               # EXIF data extraction from photos
-
-Images/                           # Original high-res images (gitignored)
-public/images/photography/        # Optimized WebP/JPEG versions
+│   ├── projects.ts           # Centralized project data
+│   └── articles.ts           # Article metadata
+└── utils/
+    └── Motion.ts             # Centralized animation tokens
 ```
 
-## Photography Features
+## 🏗 Development Workflow
 
-### EXIF Data Display
-
-The photography gallery displays authentic camera metadata:
-
-- **Camera**: iPhone 15 Pro Max
-- **Lens**: Triple camera system (6.765mm f/1.78, 15.66mm f/2.8)
-- **Settings**: Aperture, shutter speed, ISO, focal length
-- **Metadata**: Date taken, dimensions, location
-
-### Image Processing Workflow
-
-1. **Add Images**: Place original `.JPG` files in `Images/` folder
-2. **Optimize**: Run `npm run optimize-images` to create WebP/JPEG versions
-3. **Extract EXIF**: Run `npm run extract-exif` to get camera metadata
-4. **Display**: Gallery automatically shows technical details
-
-### Example EXIF Display
-
-```
-Camera: iPhone 15 Pro Max
-Lens: iPhone 15 Pro Max back triple camera 6.765mm f/1.78
-Settings: f/1.8 · 1/5300s · ISO 100
-Date: March 24, 2024
-```
-
-## Design System
-
-### Color Palette
-
-- **Light Background**: `#F8F7F4` (warm off-white)
-- **Dark Background**: `#1A1A1A` (deep charcoal)
-- **Accent**: `#FF7A00` (vibrant orange)
-- **Surface**: White/`#151821` for cards and components
-
-### Typography
-
-- **Headings**: Space Grotesk (modern, geometric)
-- **Body**: Inter (highly readable, web-optimized)
-
-### Motion Tokens
-
-- **Fast**: 150ms (tap interactions)
-- **Normal**: 250ms (hover/fade transitions)
-- **Slow**: 400ms (page/section entrances)
-
-## Development
-
-### Available Scripts
-
-```bash
-npm run dev              # Start development server
-npm run build            # Build for production
-npm run preview          # Preview production build
-npm run lint             # Run ESLint
-npm run optimize-images  # Optimize images in Images/ folder
-npm run extract-exif     # Extract EXIF data from images
-```
-
-### Git Workflow
-
-This project follows conventional commits and feature branch workflow:
-
-- **Feature branches**: `feat/feature-name`
-- **Bug fixes**: `fix/bug-description`
-- **Chores**: `chore/task-description`
-- **Commits**: Use conventional commit format (`feat:`, `fix:`, `chore:`)
-
-### Image Guidelines
-
-- **Formats**: WebP primary, JPEG fallback
-- **Sizes**: Max width 1200px for web optimization
-- **Quality**: WebP 80%, JPEG 85% for optimal balance
-- **Storage**: Originals in `Images/`, optimized in `public/images/`
-
-## Dependencies
-
-### Core
-
-- **React 19**: Latest React with concurrent features
-- **Vite**: Fast build tool and dev server
-- **Tailwind CSS**: Utility-first CSS framework
-
-### UI & Animation
-
-- **Framer Motion**: Production-ready motion library
-- **React DOM**: React rendering
-
-### Image Processing
-
-- **Sharp**: High-performance image processing
-- **exifr**: EXIF data extraction
-
-### Development
-
-- **ESLint**: Code linting and formatting
-- **Husky**: Git hooks for code quality
-
-## Deployment
-
-The project is optimized for modern hosting platforms:
-
-- **Vercel**: Recommended for automatic deployments
-- **Netlify**: Great for static sites with form handling
-- **GitHub Pages**: Free hosting for public repositories
-
-### Build Output
-
-- **CSS**: ~20KB gzipped (Tailwind + custom styles)
-- **JS**: ~107KB gzipped (React + Framer Motion)
-- **Images**: Optimized WebP/JPEG with 95%+ size reduction
+This project follows a professional git workflow:
+- **Feature Branches**: `feature/feature-name`
+- **Atomic Commits**: Descriptive commit messages (Conventional Commits).
+- **Linting**: Automated pre-commit checks via Husky.
 
 ## 📄 License
 
-This project is private and proprietary to Abhiyan Sainju.
-
----
-
-**Built with ❤️ by Abhiyan Sainju**  
-_Professional portfolio showcasing photography, development, and design skills_
+Proprietary to Abhiyan Sainju.
