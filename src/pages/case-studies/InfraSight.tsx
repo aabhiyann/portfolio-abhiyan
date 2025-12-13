@@ -9,10 +9,10 @@ const InfraSightCaseStudy: React.FC = () => {
       heroImage="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop&q=80"
       tags={["Next.js", "Python", "AWS", "Machine Learning"]}
       stats={[
-        { label: "Cost Reduction", value: "40%" },
-        { label: "Detection Accuracy", value: "94%" },
-        { label: "Processing Time", value: "-60%" },
-        { label: "Active Users", value: "250+" },
+        { label: "Predictive Model", value: "Linear Reg" },
+        { label: "Anomaly Method", value: "Z-Score" },
+        { label: "Architecture", value: "Async/Docker" },
+        { label: "Status", value: "Live Prod" },
       ]}
       links={{
         github: "https://github.com/aabhiyann/infrasight", // Placeholder or actual
@@ -22,85 +22,102 @@ const InfraSightCaseStudy: React.FC = () => {
       <section className="mb-12">
         <h2>At a Glance</h2>
         <p>
-          InfraSight is an intelligent dashboard that helps DevOps teams
-          visualize and optimize their cloud infrastructure. By analyzing usage
-          patterns using machine learning, it identifies idle resources and
-          suggests rightsizing opportunities, leading to significant cost
-          savings.
+          InfraSight is a comprehensive cloud cost analytics platform that uses
+          statistical analysis to provide actionable insights. By combining
+          forecasting, anomaly detection, and clustering, it empowers DevOps
+          teams to take control of their cloud spending.
         </p>
       </section>
 
       <section className="mb-12">
         <h2>The Problem</h2>
         <p>
-          Cloud waste is a massive issue. Companies over-provision resources
-          "just in case," leading to bloated bills. Existing tools are either
-          too complex (AWS Cost Explorer) or too expensive (Datadog). There was
-          no simple, AI-driven solution for mid-sized teams to instantly spot
-          inefficiencies.
+          Managing cloud budgets is reactive. Teams often discover cost spikes
+          only after the bill arrives. Analyzing billing data manually is
+          time-consuming, and simple threshold alerts are noisy. I wanted to
+          build a proactive solution that treats cost as a first-class
+          engineering metric.
         </p>
       </section>
 
       <section className="mb-12">
         <h2>The Solution</h2>
         <p>
-          I built InfraSight to be the "financial thermostat" for cloud ops. It
-          connects to your AWS account (read-only), ingests CloudWatch metrics,
-          and uses a custom Anomaly Detection model to flag unusual spending or
-          underutilized EC2 instances.
+          InfraSight provides a real-time dashboard for proactive cost
+          intelligence.
         </p>
-        <ul>
+        <ul className="mb-6">
           <li>
-            **Real-time Visualization:** Interactive graphs showing CPU/Memory
-            usage vs Cost.
+            <strong>Cost Forecasting:</strong> Linear Regression models with 95%
+            confidence intervals to predict future spending trends.
           </li>
           <li>
-            **Smart Alerts:** Slack notifications when potential savings exceed
-            $50/mo.
+            <strong>Anomaly Detection:</strong> Z-score statistical analysis to
+            flag unusual spending spikes without training complex models.
           </li>
           <li>
-            **One-Click Reports:** Generates PDF summaries for engineering
-            managers.
+            <strong>Service Clustering:</strong> K-means clustering to group
+            services with similar cost behaviors.
           </li>
         </ul>
       </section>
 
       <section className="mb-12">
-        <h2>Technical Deep Dive</h2>
-        <h3>Architecture</h3>
-        <p>The system follows a modern serverless architecture.</p>
-        <ul>
-          <li>
-            <strong>Frontend:</strong> Next.js 14 with Server Components for
-            fast initial load.
-          </li>
-          <li>
-            <strong>Backend:</strong> FastAPI service running on AWS Lambda
-            (containerized).
-          </li>
-          <li>
-            <strong>Data Pipeline:</strong> EventBridge triggers a daily fetch
-            of metrics into TimescaleDB.
-          </li>
-          <li>
-            <strong>ML Model:</strong> Isolation Forest algorithm trained on 3
-            months of historical data to detect anomalies.
-          </li>
-        </ul>
-        <h3>Challenge: Handling High-Cardinality Metrics</h3>
+        <h2>Technical Architecture</h2>
+        <h3>Stack</h3>
         <p>
-          Ingesting metrics from thousands of instances created a bottleneck. I
-          optimized this by implementing a streaming pipeline using distinct
-          workers for data processing, reducing ingestion time by 60%.
+          Built with <strong>FastAPI (Python)</strong> and{" "}
+          <strong>React 19 (TypeScript)</strong>, deployed via Docker
+          containers.
+        </p>
+        <h3>Backend Design</h3>
+        <p>
+          The backend leverages <strong>Async Python</strong> (FastAPI +
+          asyncpg) to handle concurrent requests efficiently. It connects to a
+          serverless <strong>PostgreSQL</strong> database on Neon.tech. The API
+          is fully typed and validated using Pydantic schemas.
+        </p>
+        <h3>ML Pipeline</h3>
+        <p>
+          I prioritized interpretability and speed over complexity.
+          <ul>
+            <li>
+              <strong>Forecasting:</strong> Selected Linear Regression for its
+              speed and explainability to business stakeholders.
+            </li>
+            <li>
+              <strong>Anomaly Detection:</strong> Implemented Z-score analysis
+              with configurable sensitivity (1.0 - 5.0) to reduce false
+              positives.
+            </li>
+          </ul>
         </p>
       </section>
 
       <section className="mb-12">
-        <h2>Results</h2>
+        <h2>Engineering Challenges</h2>
+        <h3>Real-Time Performance</h3>
         <p>
-          Deployed internally at a startup partner, InfraSight identified
-          $1,200/month in wasted resources within the first week. The system now
-          monitors over 500 instances with 99.9% uptime.
+          ML computations can block API responses. I solved this by using async
+          database queries and optimizing Pandas operations with vectorization,
+          ensuring the dashboard remains responsive even while processing
+          billing data.
+        </p>
+        <h3>Handling Real-World Data</h3>
+        <p>
+          Cloud billing data is messy. I built a robust preprocessing pipeline
+          to handle missing intervals and normalize data structures before
+          feeding it into the analysis engine.
+        </p>
+      </section>
+
+      <section className="mb-12">
+        <h2>Why This Matters</h2>
+        <p>
+          This project demonstrates end-to-end ownership—from designing the
+          database schema to deploying the Docker container. It’s not just a
+          notebook script; it’s a living, production-ready application that
+          solves a real business problem.
         </p>
       </section>
     </CaseStudyLayout>
