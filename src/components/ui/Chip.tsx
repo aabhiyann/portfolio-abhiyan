@@ -14,12 +14,10 @@ const getChipClasses = (variant: ChipVariant, size: ChipSize) => {
     "inline-flex items-center justify-center rounded-full font-medium transition-colors";
 
   const variantClasses = {
-    default:
-      "bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300",
+    default: "bg-bg-surface border border-border-primary text-text-secondary",
     accent:
-      "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800",
-    muted:
-      "bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-500",
+      "bg-accent-primary/10 text-accent-primary border border-accent-primary/30",
+    muted: "bg-bg-surface/50 border border-border-secondary text-text-muted",
   };
 
   const sizeClasses = {
