@@ -12,11 +12,11 @@ const getButtonClasses = (variant: ButtonVariant, size: ButtonSize) => {
     primary:
       "bg-blue-600 dark:bg-blue-500 text-white font-semibold hover:bg-blue-700 dark:hover:bg-blue-400 shadow-lg hover:shadow-xl",
     secondary:
-      "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 shadow-md",
+      "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white border-2 border-gray-400 dark:border-gray-500 hover:border-blue-500 shadow-md",
     ghost:
-      "bg-transparent text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20",
+      "bg-transparent text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20",
     outline:
-      "bg-transparent text-gray-900 dark:text-gray-100 border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400",
+      "bg-white dark:bg-transparent text-gray-800 dark:text-white border-2 border-gray-400 dark:border-gray-500 hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-transparent",
   };
 
   const sizeClasses = {
