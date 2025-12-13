@@ -28,7 +28,8 @@ const getButtonClasses = (variant: ButtonVariant, size: ButtonSize) => {
   return `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`;
 };
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   as?: React.ElementType | typeof Link;
   variant?: ButtonVariant;
   size?: ButtonSize;

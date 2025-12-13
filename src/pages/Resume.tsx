@@ -25,7 +25,6 @@ function Resume() {
           >
             <SectionTitle
               title="Resume"
-              center
               subtitle="My professional experience and qualifications in a nutshell."
             />
 
