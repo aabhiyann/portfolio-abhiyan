@@ -122,13 +122,13 @@ function About() {
                   {/* Glassy overlay on hover - like photography gallery */}
                   <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/70 via-bg-primary/20 to-transparent opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500 backdrop-blur-[2px]"></div>
                   <div className="absolute bottom-8 left-8 text-white opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500">
-                    <div className="text-sm font-mono text-accent-primary mb-2 drop-shadow-lg">
+                    <div className="text-sm font-mono text-accent-primary mb-2 drop-shadow-2xl">
                       EST. 2024
                     </div>
-                    <h3 className="text-3xl font-bold drop-shadow-lg">
+                    <h3 className="text-3xl font-bold text-white drop-shadow-2xl">
                       Abhiyan Sainju
                     </h3>
-                    <p className="text-white/90 mt-1 drop-shadow-lg">
+                    <p className="text-white/95 mt-1 drop-shadow-2xl">
                       Full-Stack & ML Engineer
                     </p>
                   </div>

@@ -165,7 +165,7 @@ function Home() {
                           target="_blank"
                           size="sm"
                           variant={project.caseStudyUrl ? "outline" : "primary"}
-                          className="w-full max-w-[140px] bg-overlay-dark backdrop-blur-sm border-white/20 hover:bg-white/10"
+                          className="w-full max-w-[140px] btn-overlay"
                         >
                           View Project
                         </Button>
