@@ -22,14 +22,13 @@ const AudioClassificationCaseStudy: React.FC = () => {
         <h2>Overview</h2>
         <p className="text-lg leading-relaxed mb-6">
           This was a research project for my Neural Networks & Deep Learning
-          course at GWU, where I worked with two teammates to systematically
-          compare different approaches to audio classification. We tested five
-          architectures—from simple CNNs to Vision Transformers—on a three-class
-          animal sound classification task (dog, cat, bird). Our key finding
-          challenged a common assumption in deep learning: a task-specific CNN
-          trained from scratch achieved 92% test accuracy, significantly
-          outperforming YAMNet transfer learning at 66% accuracy—a 26%
-          improvement.
+          course at GWU, where I systematically compared different approaches to
+          audio classification. I tested five architectures—from simple CNNs to
+          Vision Transformers—on a three-class animal sound classification task
+          (dog, cat, bird). My key finding challenged a common assumption in
+          deep learning: a task-specific CNN trained from scratch achieved 92%
+          test accuracy, significantly outperforming YAMNet transfer learning at
+          66% accuracy—a 26% improvement.
         </p>
 
         <div className="mb-6 p-6 rounded-2xl bg-accent-primary/5 border border-accent-primary/10">
@@ -46,22 +45,6 @@ const AudioClassificationCaseStudy: React.FC = () => {
             significantly outperform large pre-trained models.
           </p>
         </div>
-
-        <div className="mb-6 p-6 rounded-2xl bg-bg-surface/50 border border-border-primary/50">
-          <p className="text-sm font-semibold mb-3">TEAM</p>
-          <div className="space-y-2 text-sm">
-            <p>
-              <strong>Members:</strong> Shambhavi Adhikari, Rakshitha Mamilla,
-              Abhiyan Sainju
-            </p>
-            <p>
-              <strong>My Contributions:</strong> Implemented baseline CNN and
-              regularization experiments, conducted transfer learning
-              comparisons, documented results and findings, collaborative
-              experimentation and analysis
-            </p>
-          </div>
-        </div>
       </section>
 
       <section className="mb-12">
@@ -75,9 +58,9 @@ const AudioClassificationCaseStudy: React.FC = () => {
           transfer learning.
         </p>
         <p className="leading-relaxed">
-          Our goal was to compare multiple approaches to audio classification
-          and determine which works best for a focused three-class animal sound
-          classification task. We systematically tested five different
+          My goal was to compare multiple approaches to audio classification and
+          determine which works best for a focused three-class animal sound
+          classification task. I systematically tested five different
           architectures to understand when transfer learning helps and when it
           doesn't.
         </p>
@@ -85,17 +68,10 @@ const AudioClassificationCaseStudy: React.FC = () => {
 
       <section className="mb-12">
         <h2>My Approach</h2>
-        <p className="text-lg leading-relaxed mb-6">
-          We designed a rigorous experimental methodology: start with a simple
-          baseline, systematically add complexity, and compare against transfer
-          learning. We tested five architectures—baseline CNN, CNN with dropout,
-          CRNN (CNN + Bidirectional GRU), Vision Transformer, and YAMNet
-          transfer learning—using the same dataset and evaluation methodology.
-        </p>
 
         <h3 className="text-xl font-semibold mb-4">Dataset & Preprocessing</h3>
         <p className="leading-relaxed mb-4">
-          We used the{" "}
+          I used the{" "}
           <a
             href="https://www.kaggle.com/datasets/chiragchhaya/human-words-audio-classification"
             target="_blank"
@@ -105,13 +81,43 @@ const AudioClassificationCaseStudy: React.FC = () => {
             Human Words Audio Classification
           </a>{" "}
           dataset from Kaggle, which contains 610 audio clips (dog, cat, bird)
-          of 1-second duration at 16 kHz. We converted audio to Mel-spectrograms
+          of 1-second duration at 16 kHz. I converted audio to Mel-spectrograms
           (128×128 resolution) using librosa, normalized using min-max scaling,
-          and reshaped to (128, 128, 1) for CNN input. We used stratified
-          splits: 440 train / 78 validation / 92 test.
+          and reshaped to (128, 128, 1) for CNN input. This transformation
+          converts 1-second audio clips into 2D image-like representations that
+          CNNs can process effectively.
+        </p>
+
+        <div className="mb-6 rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+          <img
+            src="/images/case-studies/audio-classification/1_mel_spectrograms.png"
+            alt="Mel-spectrograms for dog, cat, and bird sounds showing distinct patterns"
+            className="w-full h-auto"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+        </div>
+        <p className="text-sm text-text-muted italic mb-4">
+          Mel-spectrograms for each class (dog, cat, bird) showing distinct
+          frequency patterns. This visual representation demonstrates why
+          converting audio to spectrograms enables CNNs to learn class-specific
+          features effectively.
+        </p>
+
+        <p className="leading-relaxed mb-4">
+          I used stratified splits to maintain class distribution: 440 train /
+          78 validation / 92 test. This ensured each split had balanced
+          representation of all three classes.
         </p>
 
         <h3 className="text-xl font-semibold mb-4">Architectures Explored</h3>
+        <p className="leading-relaxed mb-4">
+          I designed a rigorous experimental methodology: start with a simple
+          baseline, systematically add complexity, and compare against transfer
+          learning. I tested five architectures using the same dataset and
+          evaluation methodology to ensure fair comparison.
+        </p>
         <div className="space-y-6">
           <div className="p-6 rounded-xl bg-bg-surface/50 border border-border-primary/50">
             <h4 className="font-semibold text-lg mb-2">
@@ -147,6 +153,40 @@ const AudioClassificationCaseStudy: React.FC = () => {
               Key insight: Regularization significantly improved generalization
               without increasing model complexity.
             </p>
+
+            <div className="mt-4 space-y-4">
+              <div className="rounded-xl overflow-hidden border border-border-primary/50 shadow-lg">
+                <img
+                  src="/images/case-studies/audio-classification/6_training_curves.png"
+                  alt="Training and validation curves showing model convergence"
+                  className="w-full h-auto"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+              </div>
+              <p className="text-xs text-text-muted italic">
+                Training curves showing stable learning with no severe
+                overfitting. The model converges smoothly, demonstrating proper
+                regularization.
+              </p>
+
+              <div className="rounded-xl overflow-hidden border border-border-primary/50 shadow-lg">
+                <img
+                  src="/images/case-studies/audio-classification/4_cnn_confusion_matrix.png"
+                  alt="CNN confusion matrix showing per-class performance"
+                  className="w-full h-auto"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+              </div>
+              <p className="text-xs text-text-muted italic">
+                Confusion matrix for the best model (CNN + Dropout) showing
+                balanced performance across all three classes. 92% accuracy with
+                minimal confusion between classes.
+              </p>
+            </div>
           </div>
 
           <div className="p-6 rounded-xl bg-bg-surface/50 border border-border-primary/50">
@@ -203,12 +243,62 @@ const AudioClassificationCaseStudy: React.FC = () => {
               audio events), but our task is focused (dog/cat/bird). Domain
               mismatch between pre-training and target task.
             </p>
+
+            <div className="mt-4">
+              <div className="rounded-xl overflow-hidden border border-border-primary/50 shadow-lg">
+                <img
+                  src="/images/case-studies/audio-classification/5_yamnet_confusion_matrix.png"
+                  alt="YAMNet confusion matrix showing poor performance, especially dog→bird confusion"
+                  className="w-full h-auto"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+              </div>
+              <p className="text-xs text-text-muted italic mt-2">
+                YAMNet confusion matrix reveals significant misclassification,
+                particularly dog→bird confusion (33%). This visual evidence
+                explains why transfer learning underperformed—the pre-trained
+                model struggles with the domain-specific task.
+              </p>
+            </div>
           </div>
         </div>
+
+        <div className="mt-6 rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+          <img
+            src="/images/case-studies/audio-classification/7_architecture_diagram.png"
+            alt="Visual architecture diagram of the CNN + Dropout model"
+            className="w-full h-auto"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+        </div>
+        <p className="text-sm text-text-muted italic mt-3">
+          Architecture diagram of the winning model (CNN + Dropout). The
+          simplicity of this design—three convolutional layers with dropout
+          regularization—proved more effective than complex architectures.
+        </p>
       </section>
 
       <section className="mb-12">
         <h2>Results Comparison</h2>
+        <p className="leading-relaxed mb-4">
+          Here's a comprehensive comparison of all five architectures I tested,
+          showing that the simple CNN + Dropout outperformed more complex
+          approaches:
+        </p>
+        <div className="mb-6 rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+          <img
+            src="/images/case-studies/audio-classification/3_comparison_table.png"
+            alt="Comprehensive model comparison table"
+            className="w-full h-auto"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+        </div>
         <div className="overflow-x-auto mb-6">
           <table className="case-study-table w-full">
             <thead>
@@ -301,12 +391,26 @@ const AudioClassificationCaseStudy: React.FC = () => {
 
       <section className="mb-12">
         <h2>Key Research Finding</h2>
+        <div className="mb-6 rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+          <img
+            src="/images/case-studies/audio-classification/8_key_finding.png"
+            alt="Bar chart comparing CNN (92%) vs YAMNet (66%) accuracy"
+            className="w-full h-auto"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+        </div>
+        <p className="text-sm text-text-muted italic mb-6">
+          Visual comparison showing the 26% accuracy gap between task-specific
+          CNN (92%) and transfer learning with YAMNet (66%).
+        </p>
         <div className="p-6 rounded-xl bg-accent-primary/5 border border-accent-primary/20 mb-6">
           <h3 className="text-xl font-semibold mb-4">
             Transfer Learning Is Not Always Better
           </h3>
           <p className="leading-relaxed mb-4">
-            Our experiment showed that a task-specific CNN (92% accuracy)
+            My experiment showed that a task-specific CNN (92% accuracy)
             significantly outperformed transfer learning with YAMNet (66%
             accuracy)—a <strong>26% improvement</strong>. This challenges the
             common assumption that transfer learning is always superior.
@@ -357,7 +461,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
         <h2>Technical Implementation</h2>
         <h3 className="text-xl font-semibold mb-4">Data Pipeline</h3>
         <p className="leading-relaxed mb-4">
-          We used librosa for audio processing: load audio at 16 kHz, compute
+          I used librosa for audio processing: load audio at 16 kHz, compute
           Mel-spectrograms (n_fft=1024, hop_length=512, n_mels=128), convert to
           dB scale, normalize to [0, 1], and reshape to (128, 128, 1) for CNN
           input. This transforms 1-second audio clips into 2D image-like
@@ -367,20 +471,20 @@ const AudioClassificationCaseStudy: React.FC = () => {
         <h3 className="text-xl font-semibold mb-4">Training Configuration</h3>
         <p className="leading-relaxed mb-4">
           All models used Adam optimizer, categorical crossentropy loss, and
-          comprehensive metrics (accuracy, precision, recall, F1-score). We
+          comprehensive metrics (accuracy, precision, recall, F1-score). I
           implemented early stopping (patience=10), model checkpointing, and
-          learning rate scheduling. We used stratified splits to maintain class
+          learning rate scheduling. I used stratified splits to maintain class
           distribution and kept a separate test set that was never seen during
           training.
         </p>
 
         <h3 className="text-xl font-semibold mb-4">Evaluation Methodology</h3>
         <p className="leading-relaxed">
-          We used stratified splits to maintain class distribution, kept a
+          I used stratified splits to maintain class distribution, kept a
           separate test set never seen during training, computed comprehensive
           metrics (not just accuracy), generated confusion matrices for
           per-class analysis, and ran multiple random seeds to verify
-          consistency. This rigorous methodology ensured our findings were
+          consistency. This rigorous methodology ensured my findings were
           reliable and reproducible.
         </p>
       </section>
