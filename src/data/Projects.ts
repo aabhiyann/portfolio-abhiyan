@@ -52,18 +52,18 @@ export const projects: Project[] = [
     id: "talkifydocs",
     title: "TalkifyDocs",
     description:
-      "Enterprise RAG app: Chat with your PDFs using GPT-4. Full SaaS with auth, billing, and subscriptions.",
-    tech: ["Next.js", "GPT-4", "LangChain", "Pinecone", "Stripe"],
-    live: "https://talkifydocs.com",
+      "Enterprise RAG application combining LangChain, Pinecone, and GPT-4. Features full SaaS architecture with Stripe/Clerk.",
+    tech: ["Next.js", "GPT-4", "Pinecone", "LangChain", "Stripe"],
+    live: "", // Not publicly deployed
     github: "https://github.com/aabhiyann/talkifydocs",
     image: "/Images/projects/talkifydocs.png",
     category: "Production Apps",
     featured: true,
     stats: [
-      { label: "Query Speed", value: "<2s" },
-      { label: "User Growth", value: "150%" },
+      { label: "Status", value: "Dev" },
+      { label: "Type", value: "SaaS RAG" },
     ],
-    badges: ["Next.js", "OpenAI", "Stripe"],
+    badges: ["Next.js", "AI", "SaaS"],
     caseStudyUrl: "/case-studies/talkifydocs",
   },
   {
