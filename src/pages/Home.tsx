@@ -144,14 +144,26 @@ function Home() {
                       alt={project.title}
                       className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-3 p-4">
+                      {project.caseStudyUrl && (
+                        <Button
+                          as={Link}
+                          to={project.caseStudyUrl}
+                          size="sm"
+                          variant="primary"
+                          className="w-full max-w-[140px]"
+                        >
+                          Read Case Study
+                        </Button>
+                      )}
                       {(project.live || project.github) && (
                         <Button
                           as="a"
                           href={project.live || project.github}
                           target="_blank"
                           size="sm"
-                          variant="primary"
+                          variant={project.caseStudyUrl ? "outline" : "primary"}
+                          className="w-full max-w-[140px] bg-black/50 backdrop-blur-sm border-white/20 hover:bg-white/10"
                         >
                           View Project
                         </Button>
