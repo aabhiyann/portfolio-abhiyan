@@ -26,8 +26,8 @@ const SkillsSlider: React.FC = () => {
   return (
     <div className="w-full py-10 border-y border-border-primary/30 bg-bg-primary overflow-hidden relative group">
       {/* Gradient Masks */}
-      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-bg-primary via-bg-primary/80 to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-bg-primary via-bg-primary/80 to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute inset-y-0 left-0 w-24 gradient-from-bg-primary-via z-10 pointer-events-none"></div>
+      <div className="absolute inset-y-0 right-0 w-24 gradient-to-bg-primary-via z-10 pointer-events-none"></div>
 
       <div className="flex">
         <motion.div

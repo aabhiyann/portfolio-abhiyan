@@ -135,7 +135,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
             </Typography>
             <button
               onClick={onClose}
-              className={`p-1 rounded-full transition-colors ${themeState.isDarkMode ? "hover:bg-white/10" : "hover:bg-black/10"}`}
+              className="p-1 rounded-full transition-colors hover:bg-chat-bot"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +163,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
                   className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-xs px-4 py-2 rounded-2xl ${msg.sender === "user" ? "btn-primary" : themeState.isDarkMode ? "bg-white/10" : "bg-black/10"}`}
+                    className={`max-w-xs px-4 py-2 rounded-2xl ${msg.sender === "user" ? "btn-primary" : "bg-chat-bot"}`}
                   >
                     <Typography variant="body">{msg.text}</Typography>
                   </div>
@@ -171,9 +171,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div
-                    className={`max-w-xs px-4 py-2 rounded-2xl ${themeState.isDarkMode ? "bg-white/10" : "bg-black/10"}`}
-                  >
+                  <div className="max-w-xs px-4 py-2 rounded-2xl bg-chat-bot">
                     <Typography variant="body" className="animate-pulse">
                       ...
                     </Typography>
@@ -185,9 +183,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
           </div>
 
           {/* Input */}
-          <div
-            className={`p-4 border-t ${themeState.isDarkMode ? "border-white/10" : "border-black/10"}`}
-          >
+          <div className="p-4 border-t border-chat">
             {error && (
               <p className="text-center pb-2 text-sm text-red-500">{error}</p>
             )}
@@ -200,7 +196,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
                   e.key === "Enter" && !isLoading && handleSend()
                 }
                 placeholder="Ask about Abhiyan..."
-                className={`w-full px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-accent-primary ${themeState.isDarkMode ? "bg-white/10 text-white" : "bg-black/10 text-black"}`}
+                className="w-full px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-accent-primary bg-chat-input"
                 disabled={isLoading}
               />
               <button
