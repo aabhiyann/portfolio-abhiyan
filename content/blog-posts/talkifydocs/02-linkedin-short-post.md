@@ -13,6 +13,7 @@ I just built a RAG-powered document chat application. Here's what I learned abou
 ### 1. RAG is 80% Data Engineering, 20% AI
 
 The hard problems aren't about calling GPT-4. They're about:
+
 - Document chunking (how do you preserve context?)
 - Embedding generation (how do you batch API calls?)
 - Vector search (how do you retrieve relevant chunks?)
@@ -34,6 +35,7 @@ Why 1000 tokens? Too small loses context. Too large introduces noise.
 ### 3. SaaS Means Orchestrating Many Services
 
 I integrated:
+
 - Clerk (authentication)
 - Stripe (billing + webhooks)
 - Pinecone (vector database)
@@ -51,7 +53,7 @@ Each service has its own patterns, error handling, and secrets management.
 ✅ Clerk authentication (OAuth + email/password)  
 ✅ Stripe subscription billing with webhook handlers  
 ✅ PostgreSQL + Prisma ORM  
-✅ 91.9% TypeScript · 99 commits  
+✅ 91.9% TypeScript · 99 commits
 
 **The biggest lesson:** Production AI is about data engineering, API orchestration, and cost management—not just model selection.
 
@@ -66,4 +68,3 @@ Each service has its own patterns, error handling, and secrets management.
 ---
 
 **Note:** This is designed to be posted directly on LinkedIn (not as an article). The shorter format performs better in the feed and encourages comments.
-

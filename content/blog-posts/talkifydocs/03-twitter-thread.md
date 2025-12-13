@@ -198,8 +198,8 @@ And if you found this helpful, RT the first tweet!
 ---
 
 **Pro Tips:**
+
 1. Add a screenshot of the chat interface to Tweet 1
 2. Post during peak hours (9-11 AM or 1-3 PM EST on weekdays)
 3. Engage with replies quickly (first hour is critical)
 4. Consider adding a demo GIF to Tweet 4 (RAG pipeline)
-

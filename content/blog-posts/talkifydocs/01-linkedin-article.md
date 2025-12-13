@@ -19,12 +19,14 @@ I designed TalkifyDocs around the RAG architecture: upload documents, chunk and 
 ### The RAG Pipeline
 
 **Document Processing:**
+
 1. User uploads a PDF
 2. System extracts text and splits it into overlapping chunks (1000 tokens, 200 overlap)
 3. Generate vector embeddings using OpenAI's text-embedding model
 4. Store embeddings in Pinecone for semantic search
 
 **Query Flow:**
+
 1. User asks a question
 2. Question is embedded using OpenAI
 3. Pinecone retrieves the most relevant document chunks
@@ -34,6 +36,7 @@ I designed TalkifyDocs around the RAG architecture: upload documents, chunk and 
 ### SaaS Infrastructure
 
 Beyond the RAG pipeline, I integrated:
+
 - **Clerk** for authentication (OAuth and email/password)
 - **Stripe** for subscription billing with webhook handling
 - **PostgreSQL + Prisma** for managing users, documents, and chat history
@@ -74,6 +77,7 @@ Beyond the RAG pipeline, I integrated:
 ### 1. RAG is 80% Data Engineering, 20% AI
 
 Building a RAG application involves:
+
 - Document preprocessing (text extraction, chunking)
 - Embedding generation (API calls, batching)
 - Vector database management (indexing, querying)
@@ -87,6 +91,7 @@ The AI model is just one piece. Most of the work is data engineering.
 ### 2. SaaS Requires Many Integrations
 
 Integrating Clerk, Stripe, Pinecone, OpenAI, and PostgreSQL taught me that each service has its own patterns:
+
 - Clerk uses middleware for auth
 - Stripe requires webhook handlers for subscription events
 - Pinecone has rate limits
@@ -116,9 +121,10 @@ Using TypeScript for frontend, backend, and database queries (Prisma) provided t
 ✅ RAG pipeline with GPT-4  
 ✅ User authentication  
 ✅ Database schema  
-✅ Subscription billing integration  
+✅ Subscription billing integration
 
 **Not yet deployed publicly** - Would require:
+
 - Production deployment setup
 - Cost optimization for API usage
 - User testing and feedback
@@ -127,6 +133,7 @@ Using TypeScript for frontend, backend, and database queries (Prisma) provided t
 ## Why This Matters
 
 This project demonstrates:
+
 - **RAG architecture design** - Production-ready document processing and retrieval
 - **Third-party service integration** - Orchestrating 6 major systems
 - **SaaS application patterns** - Auth, billing, webhooks
@@ -138,4 +145,3 @@ This project demonstrates:
 **What's your experience with RAG applications? Have you faced similar challenges with chunking or cost management? I'd love to hear your thoughts in the comments.**
 
 #AI #MachineLearning #RAG #NextJS #TypeScript #SaaS #LLM #GPT4 #FullStack
-

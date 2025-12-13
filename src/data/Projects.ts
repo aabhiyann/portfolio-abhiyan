@@ -70,8 +70,8 @@ export const projects: Project[] = [
     description:
       "Built CNN achieving 92% accuracy on animal sounds. Outperformed transfer learning by 26%.",
     tech: ["TensorFlow", "Keras", "librosa", "YAMNet"],
-    live: "https://github.com/aabhiyann/audio-classification",
-    github: "https://github.com/aabhiyann/audio-classification",
+    live: "https://github.com/aabhiyann/audio-classification-cnn",
+    github: "https://github.com/aabhiyann/audio-classification-cnn",
     image: "/images/projects/audio-cnn.png",
     categories: ["ML/AI"],
     featured: true,
