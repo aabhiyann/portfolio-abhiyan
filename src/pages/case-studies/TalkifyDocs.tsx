@@ -64,6 +64,38 @@ const TalkifyDocsCaseStudy: React.FC = () => {
 
       <section className="mb-12">
         <h2>Technical Architecture</h2>
+        <h3>RAG Workflow</h3>
+        <p>
+          The core is a <strong>Retrieval-Augmented Generation (RAG)</strong>{" "}
+          pipeline.
+        </p>
+        <ul>
+          <li>
+            <strong>Ingestion:</strong> PDFs are parsed and split into
+            overlapping chunks (RecursiveCharacterTextSplitter) to preserve
+            context.
+          </li>
+          <li>
+            <strong>Storage:</strong> Chunks are embedded via OpenAI's
+            `text-embedding-3-small` and stored in a <strong>Pinecone</strong>{" "}
+            vector index.
+          </li>
+          <li>
+            <strong>Retrieval:</strong> User queries trigger a cosine similarity
+            search to find the top 3 relevant chunks.
+          </li>
+          <li>
+            <strong>Generation:</strong> GPT-4 synthesizes an answer using the
+            retrieved context.
+          </li>
+        </ul>
+        <h3>Full-Stack SaaS Stack</h3>
+        <p>
+          Built on <strong>Next.js</strong> for server-side rendering and API
+          routes. Data is managed with <strong>Prisma</strong> (PostgreSQL),
+          while <strong>Clerk</strong> handles secure authentication and{" "}
+          <strong>Stripe</strong> manages subscription webhooks.
+        </p>
         <h2>Results</h2>
         <p>
           TalkifyDocs successfully processed over 10,000 documents during its

@@ -22,6 +22,9 @@ const TalkifyDocsCaseStudy = lazy(
   () => import("./pages/case-studies/TalkifyDocs"),
 );
 const MelodyHubCaseStudy = lazy(() => import("./pages/case-studies/MelodyHub"));
+const AudioClassificationCaseStudy = lazy(
+  () => import("./pages/case-studies/AudioClassification"),
+);
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
@@ -57,6 +60,10 @@ function App() {
                 <Route
                   path="/case-studies/melodyhub"
                   element={<MelodyHubCaseStudy />}
+                />
+                <Route
+                  path="/case-studies/audio-classification"
+                  element={<AudioClassificationCaseStudy />}
                 />
                 <Route path="*" element={<NotFound />} />
               </Routes>
