@@ -179,7 +179,7 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       {isMobileMenuOpen && (
-        <div className="md:hidden relative z-10 bg-surface/90 dark:bg-black/80 backdrop-blur-md border-t border-border-primary">
+        <div className="md:hidden relative z-10 bg-bg-surface/90 dark:bg-black/80 backdrop-blur-md border-t border-border-primary">
           <nav className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <NavLinks onLinkClick={closeMobileMenu} />
           </nav>

@@ -135,7 +135,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
             </Typography>
             <button
               onClick={onClose}
-              className="p-1 rounded-full hover:bg-white/10 transition-colors"
+              className={`p-1 rounded-full transition-colors ${themeState.isDarkMode ? "hover:bg-white/10" : "hover:bg-black/10"}`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

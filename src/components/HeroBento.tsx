@@ -89,7 +89,7 @@ const HeroBento: React.FC = () => {
         delay={0.2}
         href="https://github.com/aabhiyann/infrasight"
       >
-        <div className="absolute top-4 right-4 text-white/50">
+        <div className="absolute top-4 right-4 text-text-primary/50">
           <ArrowUpRight className="w-5 h-5" />
         </div>
       </BentoCard>
@@ -103,7 +103,7 @@ const HeroBento: React.FC = () => {
         delay={0.3}
         href="https://github.com/aabhiyann/talkifydocs"
       >
-        <div className="absolute top-4 right-4 text-white/50">
+        <div className="absolute top-4 right-4 text-text-primary/50">
           <ArrowUpRight className="w-5 h-5" />
         </div>
       </BentoCard>

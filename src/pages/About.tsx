@@ -115,7 +115,7 @@ function About() {
                   delay: 0.2,
                 }}
               >
-                <div className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 relative overflow-hidden backdrop-blur-sm shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
+                <div className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-text-primary/10 to-text-primary/5 border border-border-primary relative overflow-hidden backdrop-blur-sm shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
                   <img
                     src="/images/about/portrait.jpg"
                     alt="Abhiyan Sainju"

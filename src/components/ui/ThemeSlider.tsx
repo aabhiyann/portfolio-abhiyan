@@ -178,7 +178,7 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
 
         {/* Draggable handle */}
         <motion.div
-          className="absolute top-1/2 w-8 h-8 rounded-full flex items-center justify-center shadow-lg border-2 border-white dark:border-slate-950 transition-colors duration-300 transform-gpu cursor-grab active:cursor-grabbing"
+          className="absolute top-1/2 w-8 h-8 rounded-full flex items-center justify-center shadow-lg border-2 border-bg-primary transition-colors duration-300 transform-gpu cursor-grab active:cursor-grabbing"
           style={{
             left: `${handlePosition}%`,
             transform: `translateX(-50%) translateY(-50%)`,

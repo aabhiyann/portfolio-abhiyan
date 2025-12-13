@@ -119,7 +119,7 @@ const SkillsMatrix: React.FC = () => {
                     </div>
 
                     {/* Progress Bar */}
-                    <div className="h-1.5 w-full bg-surface rounded-full overflow-hidden">
+                    <div className="h-1.5 w-full bg-bg-surface rounded-full overflow-hidden">
                       <motion.div
                         className="h-full bg-gradient-to-r from-accent-primary to-accent-secondary"
                         initial={{ width: 0 }}
