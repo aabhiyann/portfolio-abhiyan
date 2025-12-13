@@ -6,7 +6,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
     <CaseStudyLayout
       title="Audio Classification CNN"
       subtitle="Deep learning research comparing CNN architectures for audio classification. Task-specific model achieved 92% accuracy, outperforming transfer learning by 26%."
-      heroImage="/images/projects/audio-cnn.png"
+      heroImage="/images/case-studies/audio-classification/8_key_finding.png"
       tags={["TensorFlow", "Keras", "librosa", "YAMNet", "Deep Learning"]}
       stats={[
         { label: "Status", value: "Complete" },
@@ -22,13 +22,14 @@ const AudioClassificationCaseStudy: React.FC = () => {
         <h2>Overview</h2>
         <p className="text-lg leading-relaxed mb-6">
           This was a research project for my Neural Networks & Deep Learning
-          course at GWU, where I systematically compared different approaches to
-          audio classification. I tested five architectures—from simple CNNs to
-          Vision Transformers—on a three-class animal sound classification task
-          (dog, cat, bird). My key finding challenged a common assumption in
-          deep learning: a task-specific CNN trained from scratch achieved 92%
-          test accuracy, significantly outperforming YAMNet transfer learning at
-          66% accuracy—a 26% improvement.
+          course at GWU, where I worked with two teammates to systematically
+          compare different approaches to audio classification. I tested five
+          architectures—from simple CNNs to Vision Transformers—on a three-class
+          animal sound classification task (dog, cat, bird). My key finding
+          challenged a common assumption in deep learning: a task-specific CNN
+          trained from scratch achieved 92% test accuracy, significantly
+          outperforming YAMNet transfer learning at 66% accuracy—a 26%
+          improvement.
         </p>
 
         <div className="mb-6 p-6 rounded-2xl bg-accent-primary/5 border border-accent-primary/10">
@@ -54,7 +55,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
           for specific tasks, the common assumption that transfer learning is
           always superior, and uncertainty about whether pre-trained models
           (trained on large datasets like AudioSet) generalize well to all audio
-          tasks. We wanted to understand the tradeoffs between custom models and
+          tasks. I wanted to understand the tradeoffs between custom models and
           transfer learning.
         </p>
         <p className="leading-relaxed">
@@ -289,16 +290,24 @@ const AudioClassificationCaseStudy: React.FC = () => {
           showing that the simple CNN + Dropout outperformed more complex
           approaches:
         </p>
-        <div className="mb-6 rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
-          <img
-            src="/images/case-studies/audio-classification/3_comparison_table.png"
-            alt="Comprehensive model comparison table"
-            className="w-full h-auto"
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-            }}
-          />
+
+        <div className="mb-6 flex justify-center">
+          <div className="max-w-md rounded-xl overflow-hidden border border-border-primary/50 shadow-lg">
+            <img
+              src="/images/case-studies/audio-classification/3_comparison_table.png"
+              alt="Quick visual summary of model comparison"
+              className="w-full h-auto"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
+          </div>
         </div>
+        <p className="text-sm text-text-muted italic text-center mb-6">
+          Quick visual summary above. Detailed comparison table below.
+        </p>
+
+        <h3 className="text-lg font-semibold mb-3">Detailed Comparison</h3>
         <div className="overflow-x-auto mb-6">
           <table className="case-study-table w-full">
             <thead>
