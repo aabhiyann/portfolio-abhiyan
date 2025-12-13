@@ -120,7 +120,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.9 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className={`fixed bottom-24 right-8 w-96 h-[32rem] shadow-2xl rounded-2xl overflow-hidden flex flex-col z-50 ${themeState.isDarkMode ? "bg-dark-bg" : "bg-light-bg"}`}
+          className="fixed bottom-24 right-8 w-96 h-[32rem] shadow-2xl rounded-2xl overflow-hidden flex flex-col z-50 bg-bg-surface border border-border-primary"
         >
           {/* Header */}
           <header

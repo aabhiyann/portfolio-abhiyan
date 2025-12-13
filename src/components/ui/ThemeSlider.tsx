@@ -137,7 +137,7 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
       {/* Interactive Timeline */}
       <div
         ref={timelineRef}
-        className="w-full h-10 flex items-center justify-between px-2 cursor-pointer relative touch-none bg-surface border border-border-primary rounded-full shadow-inner"
+        className="w-full h-10 flex items-center justify-between px-2 cursor-pointer relative touch-none bg-bg-surface border border-border-primary rounded-full shadow-inner"
         onMouseDown={handleInteractionStart}
         onTouchStart={handleInteractionStart}
         role="slider"

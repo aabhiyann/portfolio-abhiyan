@@ -33,7 +33,7 @@ export const ThemeDemo: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-surface dark:bg-surface transition-colors duration-500 p-8">
+    <div className="min-h-screen bg-bg-surface transition-colors duration-500 p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <motion.div

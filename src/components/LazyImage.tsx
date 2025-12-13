@@ -39,7 +39,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
   if (hasError) {
     return (
       <div
-        className={`flex items-center justify-center bg-surface ${className}`}
+        className={`flex items-center justify-center bg-bg-surface ${className}`}
       >
         <svg
           className="w-12 h-12 text-text-muted"
