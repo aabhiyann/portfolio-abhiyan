@@ -218,7 +218,7 @@ export const ThemeDemo: React.FC = () => {
         >
           <button
             onClick={toggleTheme}
-            className="px-6 py-3 bg-accent-primary text-white rounded-lg hover:opacity-80 transition-opacity font-medium"
+            className="px-6 py-3 btn-primary rounded-lg transition-opacity font-medium"
           >
             Toggle Theme Manually
           </button>

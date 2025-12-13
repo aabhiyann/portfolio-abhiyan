@@ -163,7 +163,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
                   className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-xs px-4 py-2 rounded-2xl ${msg.sender === "user" ? "bg-accent-primary text-white" : themeState.isDarkMode ? "bg-white/10" : "bg-black/10"}`}
+                    className={`max-w-xs px-4 py-2 rounded-2xl ${msg.sender === "user" ? "btn-primary" : themeState.isDarkMode ? "bg-white/10" : "bg-black/10"}`}
                   >
                     <Typography variant="body">{msg.text}</Typography>
                   </div>
@@ -205,7 +205,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
               />
               <button
                 onClick={handleSend}
-                className="p-3 bg-accent-primary text-white rounded-full hover:bg-opacity-90 transition-colors disabled:opacity-50"
+                className="p-3 btn-primary rounded-full transition-colors disabled:opacity-50"
                 disabled={isLoading}
               >
                 <svg

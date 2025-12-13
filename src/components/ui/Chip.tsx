@@ -14,10 +14,9 @@ const getChipClasses = (variant: ChipVariant, size: ChipSize) => {
     "inline-flex items-center justify-center rounded-full font-medium transition-colors";
 
   const variantClasses = {
-    default: "bg-bg-surface border border-border-primary text-text-secondary",
-    accent:
-      "bg-accent-primary/10 text-accent-primary border border-accent-primary/30",
-    muted: "bg-bg-surface/50 border border-border-secondary text-text-muted",
+    default: "theme-bg-surface theme-border border theme-text-secondary",
+    accent: "accent-subtle",
+    muted: "theme-bg-surface border theme-border theme-text-muted opacity-70",
   };
 
   const sizeClasses = {

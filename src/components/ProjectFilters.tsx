@@ -22,14 +22,14 @@ const ProjectFilters: React.FC<ProjectFiltersProps> = ({
           className={cn(
             "relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
             activeCategory === category
-              ? "text-white"
+              ? "active-filter"
               : "text-text-muted hover:text-text-primary hover:bg-bg-surface/50",
           )}
         >
           {activeCategory === category && (
             <motion.div
               layoutId="activeFilter"
-              className="absolute inset-0 bg-accent-primary rounded-full"
+              className="absolute inset-0 btn-primary rounded-full -z-10"
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
           )}

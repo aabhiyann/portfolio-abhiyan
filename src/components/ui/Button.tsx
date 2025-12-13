@@ -6,17 +6,14 @@ type ButtonSize = "sm" | "md" | "lg";
 
 const getButtonClasses = (variant: ButtonVariant, size: ButtonSize) => {
   const baseClasses =
-    "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-primary disabled:opacity-50 disabled:cursor-not-allowed";
+    "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
 
+  // Using CSS classes defined in index.css that properly use CSS variables
   const variantClasses = {
-    primary:
-      "bg-accent-primary text-white font-semibold hover:bg-accent-hover shadow-lg hover:shadow-xl",
-    secondary:
-      "bg-bg-surface text-text-primary border-2 border-border-primary hover:border-accent-primary shadow-md",
-    ghost:
-      "bg-transparent text-text-secondary hover:text-accent-primary hover:bg-accent-primary/10",
-    outline:
-      "bg-bg-card text-text-primary border-2 border-border-primary hover:border-accent-primary hover:text-accent-primary",
+    primary: "btn-primary font-semibold shadow-lg hover:shadow-xl",
+    secondary: "btn-secondary shadow-md",
+    ghost: "btn-ghost",
+    outline: "btn-outline",
   };
 
   const sizeClasses = {
