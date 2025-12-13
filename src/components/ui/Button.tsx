@@ -6,7 +6,7 @@ type ButtonSize = "sm" | "md" | "lg";
 
 const getButtonClasses = (variant: ButtonVariant, size: ButtonSize) => {
   const baseClasses =
-    "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-primary focus:ring-offset-bg-primary disabled:opacity-50 disabled:cursor-not-allowed";
+    "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:ring-offset-white dark:focus:ring-offset-gray-900 disabled:opacity-50 disabled:cursor-not-allowed";
 
   const variantClasses = {
     primary:
