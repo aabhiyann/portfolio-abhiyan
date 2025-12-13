@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { projects as initialProjects, Project } from "../data/Projects";
 import Page from "../components/Page";
-import { Card } from "../components/ui/Card";
 import SectionTitle from "../components/SectionTitle";
 import ProjectDeconstructor from "../components/ProjectDeconstructor";
 import { Button, Chip } from "../components/ui";
@@ -67,17 +66,20 @@ function Projects() {
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <Card
-                      interactive
-                      className="flex flex-col bg-card/40 backdrop-blur-md border border-border-primary/50 hover:border-accent-primary/50 hover:shadow-xl transition-all duration-300 relative overflow-hidden group h-full"
+                    <motion.div
+                      className="flex flex-col glass-card glass-card-hover group h-full overflow-hidden rounded-2xl"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
                     >
-                      <div className="aspect-video relative overflow-hidden group border-b border-border-primary/50">
+                      <div className="aspect-video relative overflow-hidden border-b border-border-primary/50">
                         <img
                           src={project.image}
                           alt={project.title}
-                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                          className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                         />
-                        {/* Glassy overlay on hover - like photography gallery */}
+                        {/* Glassy overlay on hover - consistent with photography gallery */}
                         <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-bg-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] flex items-center justify-center gap-4">
                           {project.caseStudyUrl && (
                             <Button
@@ -85,20 +87,33 @@ function Projects() {
                               to={project.caseStudyUrl}
                               variant="primary"
                               size="sm"
-                              className="shadow-xl scale-95 group-hover:scale-100 transition-transform"
+                              className="shadow-xl"
                             >
                               Read Case Study
                             </Button>
                           )}
-                        </div>
-                        <div className="absolute bottom-4 left-4 right-4 group-hover:opacity-0 transition-opacity duration-300">
-                          <h3 className="text-2xl font-bold text-white drop-shadow-lg">
-                            {project.title}
-                          </h3>
+                          {(project.live || project.github) &&
+                            !project.caseStudyUrl && (
+                              <Button
+                                as="a"
+                                href={project.live || project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                variant="primary"
+                                size="sm"
+                                className="shadow-xl"
+                              >
+                                View Project
+                              </Button>
+                            )}
                         </div>
                       </div>
 
                       <div className="p-6 flex flex-col flex-grow">
+                        <h3 className="text-xl font-bold text-text-primary mb-3 font-heading group-hover:text-accent-primary transition-colors">
+                          {project.title}
+                        </h3>
+
                         <div className="mb-4 flex flex-wrap gap-2">
                           <Chip
                             variant="default"
@@ -175,7 +190,7 @@ function Projects() {
                           {/* Elaborate button removed for authenticity */}
                         </div>
                       </div>
-                    </Card>
+                    </motion.div>
                   </motion.div>
                 ))}
               </AnimatePresence>
