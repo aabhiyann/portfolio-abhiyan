@@ -1,26 +1,47 @@
-export const articles = [
+export interface Article {
+  id: string;
+  title: string;
+  summary: string;
+  date: string;
+  readTime: string;
+  content: string; // Markdown content or path
+  tags: string[];
+  source: string; // "Medium", "Dev.to", "Personal"
+  link?: string; // External link if applicable
+}
+
+export const articles: Article[] = [
   {
-    id: 1,
-    title: "From 12s to 200ms: Optimizing RAG Pipelines",
+    id: "scaling-socket-io",
+    title: "Scaling Socket.IO to 10k Concurrent Users",
     summary:
-      "A deep dive into how I used Pinecone and LangChain to reduce query latency in my TalkifyDocs project.",
-    url: "https://medium.com/@aabhiyann",
+      "A deep dive into optimizing WebSocket connections, handling redis adapters, and load balancing for real-time applications.",
+    date: "Coming Soon",
+    readTime: "8 min read",
+    content: "",
+    tags: ["WebSockets", "Node.js", "System Design"],
+    source: "Personal Blog",
+  },
+  {
+    id: "rag-from-scratch",
+    title: "Building a Production RAG Pipeline",
+    summary:
+      "Lessons learned from processing 10,000 documents with LangChain, Pinecone, and GPT-4. Handling hallucinations and citation accuracy.",
+    date: "Coming Soon",
+    readTime: "12 min read",
+    content: "",
+    tags: ["AI", "RAG", "LLM"],
     source: "Medium",
   },
   {
-    id: 2,
-    title: "Why I Chose Random Forest over Deep Learning for InfraSight",
+    id: "visual-pattern-recognition",
+    title: "The Math Behind Visual Pattern Recognition",
     summary:
-      "Exploring the trade-offs between model complexity and inference cost in cloud billing anomaly detection.",
-    url: "https://dev.to/aabhiyann",
-    source: "Dev.to",
-  },
-  {
-    id: 3,
-    title: "React Performance: Beyond `useMemo`",
-    summary:
-      "Lessons learned optimizing a Fintech dashboard at ECS Tech to boost conversion rates by 4%.",
-    url: "https://linkedin.com/in/abhiyansainju",
-    source: "LinkedIn",
+      "Exploring the parallels between Convolutional Neural Networks and human visual processing in photography.",
+    date: "Coming Soon",
+    readTime: "10 min read",
+    content: "",
+    tags: ["ML", "Photography", "Math"],
+    source: "Personal Blog",
   },
 ];

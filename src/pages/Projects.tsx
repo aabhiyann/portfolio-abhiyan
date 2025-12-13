@@ -22,7 +22,7 @@ interface Architecture {
 
 function Projects() {
   const [selectedArch, setSelectedArch] = useState<Architecture | null>(null);
-  const [projects, setProjects] = useState<Project[]>(initialProjects);
+  const projects = initialProjects;
   const [activeCategory, setActiveCategory] = useState("All");
 
   const categories = ["All", "Full Stack", "ML/AI", "Research"];
@@ -31,30 +31,6 @@ function Projects() {
     if (activeCategory === "All") return projects;
     return projects.filter((p) => p.category === activeCategory);
   }, [projects, activeCategory]);
-
-  // Elaborate function - generates a more detailed description (placeholder for AI integration)
-  const handleElaborate = async (projectId: string) => {
-    setProjects((prev) =>
-      prev.map((p) => (p.id === projectId ? { ...p, isLoading: true } : p)),
-    );
-
-    // Simulate API call delay - in production, this would call an AI API
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setProjects((prev) =>
-      prev.map((p) =>
-        p.id === projectId
-          ? {
-              ...p,
-              isLoading: false,
-              elaboratedDescription:
-                p.story ||
-                "This project showcases advanced engineering practices and innovative problem-solving approaches.",
-            }
-          : p,
-      ),
-    );
-  };
 
   return (
     <Page>
@@ -141,11 +117,7 @@ function Projects() {
                           {project.story || project.description}
                         </p>
 
-                        {project.elaboratedDescription && (
-                          <p className="mb-6 text-sm text-text-muted bg-bg-surface/50 p-3 rounded-lg border border-border-primary">
-                            {project.elaboratedDescription}
-                          </p>
-                        )}
+                        {/* Elaborated description removed */}
 
                         <div className="flex flex-wrap gap-2 mb-6">
                           {project.tech.map((tech) => (
@@ -199,22 +171,7 @@ function Projects() {
                               Architecture
                             </Button>
                           )}
-                          <Button
-                            onClick={() => handleElaborate(project.id)}
-                            disabled={
-                              !!project.isLoading ||
-                              !!project.elaboratedDescription
-                            }
-                            variant="primary"
-                            size="sm"
-                            className="ml-auto"
-                          >
-                            {project.isLoading
-                              ? "Generating..."
-                              : project.elaboratedDescription
-                                ? "Done"
-                                : "Elaborate"}
-                          </Button>
+                          {/* Elaborate button removed for authenticity */}
                         </div>
                       </div>
                     </Card>

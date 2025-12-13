@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useTheme } from "../contexts/useTheme";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SkipLink from "./SkipLink";
@@ -15,7 +14,6 @@ interface LayoutProps {
 }
 
 function Layout({ children }: LayoutProps) {
-  const { themeState, toggleTheme, setCurrentTheme } = useTheme();
   const [isChatbotOpen, setChatbotOpen] = useState(false);
 
   useEffect(() => {
@@ -46,12 +44,7 @@ function Layout({ children }: LayoutProps) {
       <CustomCursor />
       <SkipLink />
       <div className="relative z-10">
-        <Navbar
-          isDark={themeState.isDarkMode}
-          toggleTheme={toggleTheme}
-          currentTheme={themeState.currentTheme}
-          switchColorTheme={setCurrentTheme}
-        />
+        <Navbar />
 
         <motion.main id="content" className="relative z-10">
           {children}
