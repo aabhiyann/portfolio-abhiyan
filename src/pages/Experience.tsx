@@ -51,7 +51,7 @@ function Experience() {
             <h3 className="text-2xl font-bold font-heading mb-6">
               Why I Teach
             </h3>
-            <blockquote className="p-6 border-l-4 border-accent-primary bg-bg-surface/50 italic text-xl text-text-muted mb-6">
+            <blockquote className="p-6 border-l-4 border-accent-primary bg-bg-surface/50 italic text-xl text-text-muted mb-6 rounded-r-lg">
               "The best engineers can make complex ideas simple. If you can't
               explain it, you don't truly understand it."
             </blockquote>
@@ -61,7 +61,7 @@ function Experience() {
               theory (DP, graph algorithms, NP-completeness) into industry case
               studies.
             </p>
-            <div className="p-4 bg-accent-success/10 border border-accent-success/20 rounded-lg inline-block">
+            <div className="p-4 bg-accent-success/10 border border-accent-success/20 rounded-xl inline-block">
               <span className="text-accent-success font-bold">Result:</span> 22%
               average midterm improvement.
             </div>

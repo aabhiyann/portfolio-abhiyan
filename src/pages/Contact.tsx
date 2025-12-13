@@ -21,7 +21,7 @@ function Contact() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
             <div>
-              <div className="mb-8 p-6 rounded-xl bg-accent-primary/5 border border-accent-primary/10">
+              <div className="mb-8 p-6 rounded-2xl bg-accent-primary/5 border border-accent-primary/10">
                 <h3 className="font-bold text-lg mb-4 text-accent-primary">
                   What I'm Looking For
                 </h3>
@@ -40,7 +40,7 @@ function Contact() {
                 </div>
               </div>
 
-              <div className="mb-8 p-6 rounded-xl bg-accent-success/5 border border-accent-success/10">
+              <div className="mb-8 p-6 rounded-2xl bg-accent-success/5 border border-accent-success/10">
                 <h3 className="font-bold text-lg mb-4 text-accent-success">
                   What I Bring
                 </h3>

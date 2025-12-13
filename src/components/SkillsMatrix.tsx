@@ -101,7 +101,7 @@ const SkillsMatrix: React.FC = () => {
                 .map((skill) => (
                   <motion.div
                     key={skill.name}
-                    className="relative bg-card border border-border-primary p-4 rounded-lg cursor-default group"
+                    className="relative glass-card p-4 rounded-lg cursor-default group"
                     onMouseEnter={() => setHoveredSkill(skill.name)}
                     onMouseLeave={() => setHoveredSkill(null)}
                     whileHover={{
