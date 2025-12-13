@@ -40,7 +40,7 @@ function Home() {
                   Available for new opportunities
                 </div>
 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.1]">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.2] pb-4">
                   Full-Stack & <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary to-accent-secondary">
                     ML Engineer.
@@ -86,21 +86,21 @@ function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Adjusted Z-Index and Position */}
         <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-text-muted opacity-50 z-10"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-text-muted opacity-50 z-20 pointer-events-none"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
           <span className="text-xs font-mono uppercase tracking-widest">
             Scroll
+            <div className="w-px h-12 bg-gradient-to-b from-text-muted to-transparent mx-auto mt-2"></div>
           </span>
-          <div className="w-px h-12 bg-gradient-to-b from-text-muted to-transparent"></div>
         </motion.div>
       </section>
 
-      {/* Skills Marquee */}
-      <section className="py-0 relative z-10 border-y border-border-primary/50 bg-bg-surface/50 backdrop-blur-sm">
+      {/* Skills Marquee - Sticky */}
+      <section className="sticky top-16 z-30 py-0 border-y border-border-primary/50 bg-bg-surface/80 backdrop-blur-md shadow-sm">
         <SkillsSlider />
       </section>
 

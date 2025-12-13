@@ -38,6 +38,17 @@ const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => (
       Deep Dives
     </NavLink>
     <NavLink
+      to="/resume"
+      onClick={onLinkClick}
+      className={({ isActive }) =>
+        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          isActive ? "text-text-primary" : "text-text-muted"
+        } hover:text-text-primary`
+      }
+    >
+      Resume
+    </NavLink>
+    <NavLink
       to="/about"
       onClick={onLinkClick}
       className={({ isActive }) =>

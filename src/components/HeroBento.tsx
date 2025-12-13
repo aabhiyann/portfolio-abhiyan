@@ -10,6 +10,7 @@ interface BentoCardProps {
   children?: React.ReactNode;
   delay?: number;
   bgImage?: string;
+  href?: string;
 }
 
 const BentoCard: React.FC<BentoCardProps> = ({
@@ -19,12 +20,13 @@ const BentoCard: React.FC<BentoCardProps> = ({
   children,
   delay = 0,
   bgImage,
+  href,
 }) => (
   <motion.div
     initial={{ opacity: 0, scale: 0.95, y: 10 }}
     animate={{ opacity: 1, scale: 1, y: 0 }}
     transition={{ type: "spring", stiffness: 300, damping: 30, delay }}
-    className={`relative group overflow-hidden rounded-3xl border border-border-primary bg-card/50 backdrop-blur-xl shadow-2xl ${className}`}
+    className={`relative group overflow-hidden rounded-3xl border border-border-primary bg-card/30 backdrop-blur-xl shadow-2xl ${className}`}
   >
     {/* Specular Highlight (Top Border) - Adaptive Opacity */}
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-text-primary/20 to-transparent opacity-50" />
@@ -57,6 +59,16 @@ const BentoCard: React.FC<BentoCardProps> = ({
 
     {/* Noise Texture */}
     <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
+    {href && (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute inset-0 z-20"
+        aria-label={`View ${title}`}
+      />
+    )}
   </motion.div>
 );
 
@@ -75,6 +87,7 @@ const HeroBento: React.FC = () => {
         className="col-span-1 md:col-span-2 md:row-span-3"
         bgImage="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80"
         delay={0.2}
+        href="https://github.com/aabhiyann/infrasight"
       >
         <div className="absolute top-4 right-4 text-white/50">
           <ArrowUpRight className="w-5 h-5" />
@@ -88,6 +101,7 @@ const HeroBento: React.FC = () => {
         className="col-span-1 md:col-span-2 md:row-span-3"
         bgImage="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&q=80"
         delay={0.3}
+        href="https://github.com/aabhiyann/talkifydocs"
       >
         <div className="absolute top-4 right-4 text-white/50">
           <ArrowUpRight className="w-5 h-5" />
