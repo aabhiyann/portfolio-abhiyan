@@ -27,10 +27,8 @@ dist-ssr
 .env
 .env.*
 
-# Large original images (keep optimized versions only)
-Images/
-*.JPG
-*.JPEG
-*.PNG
+# Allow all images in public/images (the canonical location)
 !public/images/**/*.jpg
+!public/images/**/*.jpeg
+!public/images/**/*.png
 !public/images/**/*.webp

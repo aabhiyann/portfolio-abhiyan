@@ -117,7 +117,7 @@ function About() {
               >
                 <div className="aspect-[4/5] rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 relative overflow-hidden backdrop-blur-sm shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
                   <img
-                    src="https://github.com/aabhiyann.png"
+                    src="/images/about/portrait.jpg"
                     alt="Abhiyan Sainju"
                     className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
                   />
