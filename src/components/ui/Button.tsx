@@ -10,13 +10,13 @@ const getButtonClasses = (variant: ButtonVariant, size: ButtonSize) => {
 
   const variantClasses = {
     primary:
-      "bg-accent-primary text-white hover:bg-accent-hover shadow-lg shadow-accent-primary/20",
+      "bg-accent-primary text-white font-semibold hover:bg-accent-hover shadow-lg shadow-accent-primary/30 hover:shadow-accent-primary/40",
     secondary:
-      "bg-surface text-text-primary border border-border-primary hover:bg-bg-primary hover:border-accent-primary/50 shadow-md",
+      "bg-surface text-text-primary border-2 border-border-primary hover:bg-bg-primary hover:border-accent-primary shadow-md",
     ghost:
-      "bg-transparent text-text-secondary hover:text-text-primary hover:bg-accent-primary/10",
+      "bg-transparent text-text-secondary hover:text-accent-primary hover:bg-accent-primary/10",
     outline:
-      "bg-transparent text-text-primary border border-border-primary hover:border-accent-primary hover:text-accent-primary",
+      "bg-transparent text-text-primary border-2 border-border-primary hover:border-accent-primary hover:text-accent-primary hover:bg-accent-primary/5",
   };
 
   const sizeClasses = {
