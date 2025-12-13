@@ -91,6 +91,88 @@ const TalkifyDocsCaseStudy: React.FC = () => {
           needed to build a complete SaaS platform with user management,
           subscription billing, and a polished UI.
         </p>
+      </section>
+
+      <section className="mb-12">
+        <h2>What It Looks Like</h2>
+        <p className="mb-6">Here are screenshots showing the key features:</p>
+
+        <div className="space-y-8">
+          {/* Document Upload Interface */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">
+              Document Upload Interface
+            </h3>
+            <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+              <img
+                src="/images/case-studies/talkifydocs/document-upload.png"
+                alt="TalkifyDocs document upload interface"
+                className="w-full h-auto"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+            </div>
+            <p className="mt-3 text-sm text-text-muted italic">
+              Drag-and-drop PDF upload with processing status. Documents are
+              automatically chunked and embedded for semantic search.
+            </p>
+          </div>
+
+          {/* Chat Interface */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">
+              Chat Interface with Citations
+            </h3>
+            <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+              <img
+                src="/images/case-studies/talkifydocs/chat-interface.png"
+                alt="TalkifyDocs chat interface showing Q&A with source citations"
+                className="w-full h-auto"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+            </div>
+            <p className="mt-3 text-sm text-text-muted italic">
+              Natural language chat interface powered by GPT-4. Answers include
+              source citations from the uploaded documents.
+            </p>
+          </div>
+
+          {/* User Dashboard */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">User Dashboard</h3>
+            <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+              <img
+                src="/images/case-studies/talkifydocs/dashboard.png"
+                alt="TalkifyDocs user dashboard showing document management"
+                className="w-full h-auto"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+            </div>
+            <p className="mt-3 text-sm text-text-muted italic">
+              User dashboard for managing uploaded documents, viewing chat
+              history, and subscription management.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-6 p-4 rounded-xl bg-bg-surface/50 border border-border-primary/50">
+          <p className="text-sm text-text-muted">
+            <strong>Note:</strong> Screenshots will appear here once you add
+            images to{" "}
+            <code className="px-2 py-1 rounded bg-bg-surface">
+              /public/images/case-studies/talkifydocs/
+            </code>
+          </p>
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2>Core Workflow</h2>
 
         <h3 className="text-xl font-semibold mb-4">Core Workflow</h3>
         <div className="space-y-6">
