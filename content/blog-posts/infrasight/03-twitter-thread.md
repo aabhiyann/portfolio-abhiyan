@@ -175,8 +175,8 @@ And if you found this helpful, RT the first tweet to help other ML engineers!
 ---
 
 **Pro Tips:**
+
 1. Post the thread during peak hours (9-11 AM or 1-3 PM EST on weekdays)
 2. Add a screenshot of the app to Tweet 1 for better engagement
 3. Engage with replies quickly (first hour is critical for algorithm)
 4. Consider pinning the thread to your profile
-

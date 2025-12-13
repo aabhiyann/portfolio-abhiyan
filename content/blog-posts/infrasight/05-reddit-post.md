@@ -18,6 +18,7 @@ I just shipped a live ML platform that predicts cloud costs and detects spending
 ## The Project
 
 InfraSight is a cloud cost analytics platform with:
+
 - Cost forecasting (Linear Regression with 95% confidence intervals)
 - Anomaly detection (Z-score statistical analysis)
 - Service clustering (K-means for pattern grouping)
@@ -73,6 +74,7 @@ I built a preprocessing pipeline that normalizes timestamps, fills gaps with for
 In notebooks, you optimize for accuracy.
 
 In production, you optimize for:
+
 - Speed
 - Interpretability
 - Reliability
@@ -88,9 +90,9 @@ This mindset shift changed how I approach ML engineering.
 ---
 
 **Note for posting:**
+
 - Best subreddits: r/MachineLearning, r/webdev, r/cscareerquestions, r/learnmachinelearning
 - Post on weekdays during peak hours (9-11 AM or 1-3 PM EST)
 - Engage with comments quickly (first hour is critical)
 - Be prepared for technical questions and constructive criticism
 - Consider adding a screenshot of the app in the post
-
