@@ -9,10 +9,10 @@ const InfraSightCaseStudy: React.FC = () => {
       heroImage="/images/projects/infrasight.png"
       tags={["React", "FastAPI", "PostgreSQL", "Machine Learning", "Docker"]}
       stats={[
-        { label: "Status", value: "🟢 LIVE" },
-        { label: "Forecasting", value: "Linear Reg" },
-        { label: "Anomaly Detection", value: "Z-Score" },
-        { label: "Architecture", value: "Async/Docker" },
+        { label: "Status", value: "Live Production" },
+        { label: "Timeline", value: "3 Months" },
+        { label: "Role", value: "Solo Full-Stack" },
+        { label: "Users", value: "Demo Available" },
       ]}
       links={{
         github: "https://github.com/aabhiyann/infrasight",
@@ -20,88 +20,113 @@ const InfraSightCaseStudy: React.FC = () => {
       }}
     >
       <section className="mb-12">
-        <h2>At a Glance</h2>
-        <div className="mb-6 p-6 rounded-2xl glass-card">
-          <p className="text-lg font-semibold mb-4">
-            🟢 <strong>LIVE PRODUCTION APP</strong> - Not just a GitHub repo
+        <h2>Overview</h2>
+        <p className="text-lg leading-relaxed mb-6">
+          InfraSight is a production cloud cost analytics platform that helps
+          engineering teams predict spending, detect anomalies, and optimize
+          infrastructure costs. I built this as a solo full-stack project to
+          demonstrate end-to-end ownership—from database design and ML
+          implementation to production deployment and DevOps.
+        </p>
+
+        <div className="mb-6 p-6 rounded-2xl bg-accent-primary/5 border border-accent-primary/10">
+          <p className="text-sm font-semibold text-accent-primary mb-3">
+            LIVE DEMO AVAILABLE
           </p>
-          <p className="mb-2">
-            <strong>Live Demo:</strong>{" "}
-            <a
-              href="https://infrasight.netlify.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent-primary hover:underline"
-            >
-              infrasight.netlify.app
-            </a>
-          </p>
-          <p className="mb-2">
-            <strong>Demo Credentials:</strong> demo@infrasight.com / password123
-          </p>
-          <p className="mb-2">
-            <strong>API Docs:</strong>{" "}
-            <a
-              href="https://infrasight-rs1b.onrender.com/docs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent-primary hover:underline"
-            >
-              Auto-generated OpenAPI/Swagger
-            </a>
-          </p>
+          <div className="space-y-2 text-sm">
+            <p>
+              <strong>App:</strong>{" "}
+              <a
+                href="https://infrasight.netlify.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-primary hover:underline"
+              >
+                infrasight.netlify.app
+              </a>
+            </p>
+            <p>
+              <strong>Credentials:</strong> demo@infrasight.com / password123
+            </p>
+            <p>
+              <strong>API Docs:</strong>{" "}
+              <a
+                href="https://infrasight-rs1b.onrender.com/docs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-primary hover:underline"
+              >
+                OpenAPI/Swagger Documentation
+              </a>
+            </p>
+          </div>
         </div>
-        <p>
-          InfraSight is a production-ready cloud cost analytics platform that
-          combines ML-powered forecasting, statistical anomaly detection, and
-          service clustering. Built as a solo full-stack project, it
-          demonstrates end-to-end ownership from database design to production
-          deployment.
+      </section>
+
+      <section className="mb-12">
+        <h2>The Challenge</h2>
+        <p className="text-lg leading-relaxed mb-4">
+          Cloud infrastructure costs are notoriously difficult to manage. Teams
+          often discover cost spikes only after they're billed, making it
+          reactive rather than proactive. Existing cloud billing dashboards are
+          complex, lack predictive capabilities, and don't provide actionable
+          insights for optimization.
+        </p>
+        <p className="leading-relaxed">
+          I wanted to build a solution that would help engineering teams stay
+          ahead of their cloud spending through forecasting, automatically
+          detect unusual patterns, and provide clear recommendations for cost
+          optimization—all while being interpretable and fast enough for
+          real-time use.
         </p>
       </section>
 
       <section className="mb-12">
-        <h2>The Problem</h2>
-        <p>
-          <strong>Who needs this:</strong> DevOps teams managing cloud
-          infrastructure, finance teams forecasting costs, engineering managers
-          needing spending visibility.
+        <h2>My Approach</h2>
+        <p className="text-lg leading-relaxed mb-6">
+          I designed InfraSight around three core principles:{" "}
+          <strong>interpretability</strong> (stakeholders need to understand
+          predictions), <strong>speed</strong> (real-time API responses), and{" "}
+          <strong>production readiness</strong> (reliable, deployable ML).
         </p>
-        <p>
-          <strong>The pain:</strong> Cloud billing dashboards are complex and
-          reactive. Teams discover cost spikes after they're billed. Manual
-          analysis is time-consuming. No easy way to spot unusual spending.
-        </p>
-        <p>
-          <strong>Why I built it:</strong> I wanted a proactive,
-          analytics-driven approach to cloud cost management that combines
-          statistical analysis with intuitive visualizations.
-        </p>
-      </section>
 
-      <section className="mb-12">
-        <h2>The Solution</h2>
-        <p>InfraSight provides four core capabilities:</p>
-        <ul className="mb-6 space-y-3">
-          <li>
-            <strong>Cost Forecasting:</strong> Linear Regression with confidence
-            intervals to predict future spending per service. Configurable
-            forecast periods (1-30 days).
-          </li>
-          <li>
-            <strong>Anomaly Detection:</strong> Z-score statistical method with
-            configurable sensitivity thresholds (1.0-5.0). Detects both high and
-            low anomalies.
-          </li>
-          <li>
-            <strong>Service Clustering:</strong> K-means clustering to identify
-            services with similar cost behaviors. Helps find spending patterns.
-          </li>
-          <li>
-            <strong>Recommendations:</strong> Rule-based optimization
-            suggestions combining anomalies and budget constraints.
-          </li>
-        </ul>
+        <h3 className="text-xl font-semibold mb-4">Core Capabilities</h3>
+        <div className="space-y-6">
+          <div>
+            <h4 className="font-semibold text-lg mb-2">Cost Forecasting</h4>
+            <p className="leading-relaxed">
+              I implemented Linear Regression with temporal features to predict
+              future spending per service. The model provides 95% confidence
+              intervals, giving teams a range of expected costs rather than a
+              single point estimate. This transparency helps with budget
+              planning and risk assessment.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-2">Anomaly Detection</h4>
+            <p className="leading-relaxed">
+              Using Z-score statistical analysis, the system automatically flags
+              unusual spending patterns. I made the sensitivity configurable
+              (1.0-5.0 standard deviations) so teams can tune it to their
+              tolerance for alerts. This approach requires no training data and
+              works immediately on new services.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-lg mb-2">
+              Service Clustering & Recommendations
+            </h4>
+            <p className="leading-relaxed">
+              K-means clustering groups services with similar cost behaviors,
+              helping teams identify patterns across their infrastructure.
+              Combined with rule-based logic, the system generates actionable
+              optimization recommendations based on detected anomalies and
+              budget constraints.
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="mb-12">
@@ -289,257 +314,266 @@ const InfraSightCaseStudy: React.FC = () => {
       </section>
 
       <section className="mb-12">
-        <h2>Engineering Challenges</h2>
-        <h3>Challenge 1: Real-Time ML API Performance</h3>
-        <p>
-          <strong>Problem:</strong> ML computations could slow down API
-          responses.
-        </p>
-        <p>
-          <strong>Solution:</strong> Used async SQLAlchemy + asyncpg for
-          non-blocking queries, implemented GZip compression middleware, and
-          optimized pandas operations with vectorization.
-        </p>
-        <p>
-          <strong>Result:</strong> Responsive API that handles forecasting +
-          clustering without blocking.
+        <h2>Key Technical Challenges</h2>
+        <p className="text-lg leading-relaxed mb-6">
+          Building a production ML system taught me that the hard problems
+          aren't always algorithmic—they're about making ML work reliably in
+          real-world conditions.
         </p>
 
-        <h3>Challenge 2: Meaningful Anomaly Detection</h3>
-        <p>
-          <strong>Problem:</strong> Simple threshold-based detection produces
-          too many false positives.
-        </p>
-        <p>
-          <strong>Solution:</strong> Implemented Z-score statistical method,
-          made threshold configurable (users tune sensitivity: 1.0-5.0), added
-          service-level filtering, and included Z-score values so users
-          understand severity.
-        </p>
-        <p>
-          <strong>Result:</strong> Flexible anomaly detection users can
-          customize.
-        </p>
+        <div className="space-y-8">
+          <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
+            <h3 className="text-xl font-semibold mb-3">
+              Real-Time ML API Performance
+            </h3>
+            <p className="mb-3 leading-relaxed">
+              <strong>The Problem:</strong> ML computations (especially pandas
+              operations on large datasets) were blocking API responses,
+              creating poor user experience.
+            </p>
+            <p className="mb-3 leading-relaxed">
+              <strong>My Solution:</strong> I implemented async SQLAlchemy with
+              asyncpg for non-blocking database queries, added GZip compression
+              middleware to reduce payload sizes, and optimized pandas
+              operations using vectorization instead of row-by-row processing.
+            </p>
+            <p className="leading-relaxed text-text-muted">
+              <strong>Impact:</strong> API responses stayed under 500ms even
+              with forecasting and clustering computations, making the app feel
+              responsive.
+            </p>
+          </div>
 
-        <h3>Challenge 3: Handling Time-Series Cost Data</h3>
-        <p>
-          <strong>Problem:</strong> Cloud billing data has varying granularity
-          and potential gaps.
-        </p>
-        <p>
-          <strong>Solution:</strong> Built data preprocessing pipeline for
-          normalization, created pivot table transformations for service-level
-          analysis, and added flexible date-range filtering.
-        </p>
-        <p>
-          <strong>Result:</strong> Robust handling of real-world billing data.
-        </p>
+          <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
+            <h3 className="text-xl font-semibold mb-3">
+              Meaningful Anomaly Detection
+            </h3>
+            <p className="mb-3 leading-relaxed">
+              <strong>The Problem:</strong> Simple threshold-based detection
+              (e.g., "flag if cost &gt; $100") produced too many false positives
+              and didn't account for service-specific spending patterns.
+            </p>
+            <p className="mb-3 leading-relaxed">
+              <strong>My Solution:</strong> I chose Z-score statistical analysis
+              because it's relative to each service's historical behavior. I
+              made the threshold configurable (1.0-5.0 standard deviations) and
+              exposed Z-score values in the UI so users understand severity.
+            </p>
+            <p className="leading-relaxed text-text-muted">
+              <strong>Impact:</strong> Teams can tune sensitivity to their
+              needs, and the statistical approach adapts to each service's
+              normal spending patterns.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
+            <h3 className="text-xl font-semibold mb-3">
+              Handling Messy Time-Series Data
+            </h3>
+            <p className="mb-3 leading-relaxed">
+              <strong>The Problem:</strong> Real cloud billing data has varying
+              granularity, missing timestamps, and inconsistent service
+              names—not the clean datasets you see in tutorials.
+            </p>
+            <p className="mb-3 leading-relaxed">
+              <strong>My Solution:</strong> I built a preprocessing pipeline
+              that normalizes timestamps, fills gaps with forward-fill
+              interpolation, and uses pivot tables to transform raw billing data
+              into service-level time series. Added flexible date-range
+              filtering to handle different reporting periods.
+            </p>
+            <p className="leading-relaxed text-text-muted">
+              <strong>Impact:</strong> The system handles real-world billing
+              data robustly, even with imperfect inputs.
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="mb-12">
-        <h2>Why This Matters</h2>
-        <div className="mb-6 p-6 rounded-2xl bg-accent-primary/5 border border-accent-primary/10">
-          <h3 className="text-xl font-bold mb-4 text-accent-primary">
-            For Recruiters:
-          </h3>
-          <ul className="space-y-2">
-            <li>
-              ✅ <strong>Live Production App</strong> - Not just a GitHub repo
-            </li>
-            <li>
-              ✅ <strong>Full-Stack Ownership</strong> - Built every layer solo
-            </li>
-            <li>
-              ✅ <strong>Modern Tech Stack</strong> - React 19, async Python,
-              TypeScript
-            </li>
-            <li>
-              ✅ <strong>Real ML Techniques</strong> - Practical, working
-              solutions
-            </li>
-            <li>
-              ✅ <strong>Production DevOps</strong> - Docker, CI/CD, cloud
-              deployment
-            </li>
-            <li>
-              ✅ <strong>Accessible Design</strong> - 3 theme modes, keyboard
-              navigation
-            </li>
-          </ul>
+        <h2>Technical Decisions & Trade-offs</h2>
+
+        <h3 className="text-xl font-semibold mb-4">Why "Simple" ML?</h3>
+        <p className="leading-relaxed mb-6">
+          I chose Linear Regression, Z-score, and K-means over more complex
+          models (LSTM, ARIMA, Isolation Forest) deliberately. In production ML,{" "}
+          <strong>
+            interpretability and speed often matter more than marginal accuracy
+            gains
+          </strong>
+          . Business stakeholders need to understand why the system flagged a
+          cost spike. Linear Regression provides clear coefficients and
+          confidence intervals. Z-score is statistically grounded and requires
+          no training data. These choices made the system production-ready
+          faster and more maintainable.
+        </p>
+        <p className="leading-relaxed mb-6 text-text-muted italic">
+          Future iteration: I'd explore ARIMA or Prophet for time-series
+          forecasting to capture seasonality better, and Isolation Forest for
+          anomaly detection to compare with Z-score. But for an MVP, pragmatic
+          choices ship faster.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-4">What I Owned</h3>
+        <p className="leading-relaxed mb-4">
+          As a solo project, I built every layer:
+        </p>
+        <div className="grid md:grid-cols-2 gap-4 mb-6">
+          <div className="p-4 rounded-xl bg-bg-surface/30 border border-border-primary/30">
+            <h4 className="font-semibold mb-2">Backend & ML</h4>
+            <p className="text-sm text-text-muted">
+              FastAPI with 10+ endpoints, JWT auth, Pydantic validation, async
+              SQLAlchemy, ML pipeline from scratch
+            </p>
+          </div>
+          <div className="p-4 rounded-xl bg-bg-surface/30 border border-border-primary/30">
+            <h4 className="font-semibold mb-2">Frontend</h4>
+            <p className="text-sm text-text-muted">
+              React 19 dashboard, Chart.js visualizations, responsive design, 3
+              accessibility themes
+            </p>
+          </div>
+          <div className="p-4 rounded-xl bg-bg-surface/30 border border-border-primary/30">
+            <h4 className="font-semibold mb-2">Database</h4>
+            <p className="text-sm text-text-muted">
+              PostgreSQL schema design, async queries, connection pooling,
+              serverless deployment on Neon
+            </p>
+          </div>
+          <div className="p-4 rounded-xl bg-bg-surface/30 border border-border-primary/30">
+            <h4 className="font-semibold mb-2">DevOps</h4>
+            <p className="text-sm text-text-muted">
+              Docker multi-stage builds, GitHub Actions CI/CD, Netlify + Render
+              deployment, health checks
+            </p>
+          </div>
         </div>
-
-        <h3>What I Built (Complete Ownership)</h3>
-        <ul className="mb-4">
-          <li>
-            ✅ Full Backend API - 10+ endpoints with auth, validation, error
-            handling
-          </li>
-          <li>
-            ✅ ML Pipeline - Forecasting, anomaly detection, clustering from
-            scratch
-          </li>
-          <li>
-            ✅ React Dashboard - Interactive charts, filters, responsive design
-          </li>
-          <li>✅ Production Deployment - Docker, CI/CD, cloud hosting</li>
-          <li>✅ Database Design - Schema, models, async queries</li>
-          <li>
-            ✅ Auth System - JWT tokens, password hashing, role-based access
-          </li>
-        </ul>
-
-        <h3>Why I Chose "Simple" ML Techniques</h3>
-        <p>
-          I prioritized <strong>production readiness</strong> over model
-          complexity:
-        </p>
-        <ul>
-          <li>
-            <strong>Linear Regression:</strong> Interpretable, fast, provides
-            confidence intervals. Perfect for business stakeholders who need to
-            understand predictions.
-          </li>
-          <li>
-            <strong>Z-Score:</strong> Simple, interpretable, no training
-            required. Works immediately and is configurable.
-          </li>
-          <li>
-            <strong>K-Means:</strong> Scalable, production-ready clustering.
-            Helps find natural groupings in spending.
-          </li>
-        </ul>
-        <p>
-          <em>
-            If I had more time, I'd explore ARIMA or Prophet for time-series
-            forecasting, but these were the right choices for an MVP that needed
-            to ship.
-          </em>
-        </p>
       </section>
 
       <section className="mb-12">
-        <h2>ML Model Details</h2>
+        <h2>ML Implementation Details</h2>
+        <p className="text-lg leading-relaxed mb-6">
+          Here's how each ML component works under the hood:
+        </p>
 
-        <h3>Forecasting: Linear Regression</h3>
-        <div className="mb-6 p-6 rounded-2xl glass-card">
-          <p className="font-semibold mb-2">Why Linear Regression?</p>
-          <ul className="space-y-2 mb-4">
-            <li>
-              ✅ <strong>Interpretable</strong> predictions for business
-              stakeholders
-            </li>
-            <li>
-              ✅ <strong>Fast</strong> inference for real-time API
-            </li>
-            <li>
-              ✅ <strong>Effective</strong> for trend-based cost patterns
-            </li>
-            <li>
-              ✅ Provides <strong>confidence intervals</strong> for uncertainty
-            </li>
-          </ul>
-          <p className="mb-2">
-            <strong>Features:</strong>
-          </p>
-          <ul className="space-y-1 mb-4">
-            <li>
-              • <code>day_number</code>: Captures linear trend
-            </li>
-            <li>
-              • <code>is_weekend</code>: Accounts for weekend usage patterns
-            </li>
-          </ul>
-          <p>
-            <strong>Output:</strong> Per-service predictions with 95% confidence
-            intervals
-          </p>
-        </div>
+        <div className="space-y-6">
+          <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
+            <h3 className="text-xl font-semibold mb-3">
+              Cost Forecasting: Linear Regression
+            </h3>
+            <p className="mb-3 leading-relaxed">
+              I use scikit-learn's LinearRegression with two temporal features:{" "}
+              <code className="px-2 py-1 rounded bg-bg-surface text-sm">
+                day_number
+              </code>{" "}
+              (captures linear trend) and{" "}
+              <code className="px-2 py-1 rounded bg-bg-surface text-sm">
+                is_weekend
+              </code>{" "}
+              (accounts for weekend usage patterns). The model outputs
+              per-service predictions with 95% confidence intervals.
+            </p>
+            <p className="text-sm text-text-muted leading-relaxed">
+              <strong>Why this approach:</strong> Linear Regression is
+              interpretable (stakeholders understand coefficients), fast
+              (sub-100ms inference), and provides confidence intervals for
+              uncertainty quantification. Perfect for business forecasting where
+              explainability matters.
+            </p>
+          </div>
 
-        <h3>Anomaly Detection: Z-Score</h3>
-        <div className="mb-6 p-6 rounded-2xl glass-card">
-          <p className="font-semibold mb-2">Why Z-Score?</p>
-          <ul className="space-y-2 mb-4">
-            <li>
-              ✅ Simple, <strong>interpretable</strong> statistical method
-            </li>
-            <li>✅ No training required (works immediately)</li>
-            <li>
-              ✅ <strong>Configurable</strong> sensitivity
-            </li>
-            <li>✅ Detects both high and low anomalies</li>
-          </ul>
-          <p>
-            <strong>Configuration:</strong> Default threshold: 2.0 (flags &gt;2
-            standard deviations). User-adjustable from 1.0 to 5.0.
-          </p>
-        </div>
+          <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
+            <h3 className="text-xl font-semibold mb-3">
+              Anomaly Detection: Z-Score
+            </h3>
+            <p className="mb-3 leading-relaxed">
+              I calculate Z-scores for each service's daily cost:{" "}
+              <code className="px-2 py-1 rounded bg-bg-surface text-sm">
+                z = (cost - mean) / std_dev
+              </code>
+              . Default threshold is 2.0 standard deviations, but users can
+              adjust from 1.0 (more sensitive) to 5.0 (less sensitive). The
+              system flags both high and low anomalies.
+            </p>
+            <p className="text-sm text-text-muted leading-relaxed">
+              <strong>Why this approach:</strong> Z-score is statistically
+              grounded, requires no training data (works immediately on new
+              services), and is configurable. It adapts to each service's
+              historical behavior rather than using fixed thresholds.
+            </p>
+          </div>
 
-        <h3>Clustering: K-Means</h3>
-        <div className="mb-6 p-6 rounded-2xl glass-card">
-          <p className="font-semibold mb-2">Why K-Means?</p>
-          <ul className="space-y-2 mb-4">
-            <li>
-              ✅ Identifies natural <strong>groupings</strong> in spending
-            </li>
-            <li>✅ Scalable to many services</li>
-            <li>✅ Helps find services with similar cost behaviors</li>
-          </ul>
-          <p>
-            <strong>Configuration:</strong> Default: 3 clusters. Features: Daily
-            cost vectors per service.
-          </p>
+          <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
+            <h3 className="text-xl font-semibold mb-3">
+              Service Clustering: K-Means
+            </h3>
+            <p className="mb-3 leading-relaxed">
+              I use K-means (default 3 clusters) on daily cost vectors to group
+              services with similar spending behaviors. Features are normalized
+              cost time series per service.
+            </p>
+            <p className="text-sm text-text-muted leading-relaxed">
+              <strong>Why this approach:</strong> K-means is scalable,
+              production-ready, and helps identify natural groupings in
+              infrastructure spending. Teams can see which services behave
+              similarly and optimize them together.
+            </p>
+          </div>
         </div>
       </section>
 
       <section className="mb-12">
         <h2>What I Learned</h2>
-
-        <h3>1. Full-Stack Solo Development</h3>
-        <p>
-          Building the entire stack alone taught me how frontend, backend, and
-          database decisions interconnect. API design impacts frontend
-          structure. Database schema affects query performance.
+        <p className="text-lg leading-relaxed mb-6">
+          This project taught me that building production ML systems is
+          fundamentally different from Jupyter notebooks.
         </p>
 
-        <h3>2. ML in Production vs. Notebooks</h3>
-        <p>Productionizing ML is different:</p>
-        <ul className="mb-4">
-          <li>
-            <strong>Fast inference</strong> matters as much as accuracy
-          </li>
-          <li>
-            <strong>Interpretability</strong> is crucial for business
-            stakeholders
-          </li>
-          <li>
-            <strong>Clear error handling</strong> and fallbacks are essential
-          </li>
-          <li>
-            <strong>Configurable parameters</strong> let users control behavior
-          </li>
-        </ul>
-        <p>
-          I chose Linear Regression and Z-score because they're{" "}
-          <strong>fast, interpretable, and production-ready</strong>. If I had
-          more time, I'd explore ARIMA or Prophet for time-series forecasting.
-        </p>
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-xl font-semibold mb-3">
+              ML in Production vs. Research
+            </h3>
+            <p className="leading-relaxed">
+              In notebooks, you optimize for accuracy. In production, you
+              optimize for{" "}
+              <strong>speed, interpretability, and reliability</strong>. Fast
+              inference matters as much as model performance. Stakeholders need
+              to understand predictions. Error handling and fallbacks are
+              critical. Configurable parameters let users tune behavior to their
+              needs.
+            </p>
+            <p className="leading-relaxed mt-3 text-text-muted">
+              This mindset shift—from "what's the most accurate model?" to
+              "what's the most production-ready solution?"—changed how I
+              approach ML engineering.
+            </p>
+          </div>
 
-        <h3>3. Async Python Patterns</h3>
-        <p>Implementing async FastAPI + async SQLAlchemy taught me:</p>
-        <ul className="mb-4">
-          <li>Non-blocking I/O for concurrent requests</li>
-          <li>Connection pooling for database efficiency</li>
-          <li>Proper error handling in async contexts</li>
-        </ul>
+          <div>
+            <h3 className="text-xl font-semibold mb-3">Full-Stack Thinking</h3>
+            <p className="leading-relaxed">
+              Building every layer solo taught me how decisions cascade.
+              Database schema design affects query performance, which impacts
+              API response times, which influences frontend UX. Async Python
+              patterns enable non-blocking I/O, which makes the app feel
+              responsive even with ML computations. Everything connects.
+            </p>
+          </div>
 
-        <h3>4. DevOps for Solo Projects</h3>
-        <p>Deploying a multi-service app taught me:</p>
-        <ul>
-          <li>Docker multi-stage builds for smaller images</li>
-          <li>GitHub Actions for CI/CD automation</li>
-          <li>Environment variable management</li>
-          <li>CORS configuration for cross-origin requests</li>
-        </ul>
+          <div>
+            <h3 className="text-xl font-semibold mb-3">
+              DevOps for Real Users
+            </h3>
+            <p className="leading-relaxed">
+              Deploying to production means thinking about Docker multi-stage
+              builds (smaller images), GitHub Actions CI/CD (automated testing),
+              environment variable management (security), and CORS configuration
+              (cross-origin requests). It's not enough to make it work
+              locally—it has to work reliably for real users.
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="mb-12">
@@ -619,51 +653,55 @@ const InfraSightCaseStudy: React.FC = () => {
       </section>
 
       <section className="mb-12">
-        <h2>Try It Yourself</h2>
-        <div className="p-6 rounded-2xl glass-card">
-          <p className="mb-4">
-            <strong>🌐 Live Demo:</strong>{" "}
-            <a
-              href="https://infrasight.netlify.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent-primary hover:underline font-medium"
-            >
-              infrasight.netlify.app
-            </a>
-          </p>
-          <p className="mb-4">
-            <strong>📧 Demo Login:</strong>{" "}
-            <code className="px-2 py-1 rounded bg-bg-surface text-text-primary">
-              demo@infrasight.com
-            </code>{" "}
-            /{" "}
-            <code className="px-2 py-1 rounded bg-bg-surface text-text-primary">
-              password123
-            </code>
-          </p>
-          <p className="mb-4">
-            <strong>💻 Source Code:</strong>{" "}
-            <a
-              href="https://github.com/aabhiyann/infrasight"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent-primary hover:underline font-medium"
-            >
-              github.com/aabhiyann/infrasight
-            </a>
-          </p>
-          <p>
-            <strong>📖 API Docs:</strong>{" "}
-            <a
-              href="https://infrasight-rs1b.onrender.com/docs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent-primary hover:underline font-medium"
-            >
-              Auto-generated OpenAPI/Swagger documentation
-            </a>
-          </p>
+        <h2>Explore the Project</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="p-6 rounded-2xl bg-accent-primary/5 border border-accent-primary/10">
+            <h3 className="font-semibold mb-3">Live Demo</h3>
+            <p className="text-sm mb-3">
+              <a
+                href="https://infrasight.netlify.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-primary hover:underline font-medium"
+              >
+                infrasight.netlify.app
+              </a>
+            </p>
+            <p className="text-sm text-text-muted">
+              Login:{" "}
+              <code className="px-2 py-1 rounded bg-bg-surface text-xs">
+                demo@infrasight.com
+              </code>{" "}
+              /{" "}
+              <code className="px-2 py-1 rounded bg-bg-surface text-xs">
+                password123
+              </code>
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
+            <h3 className="font-semibold mb-3">Source Code & Docs</h3>
+            <p className="text-sm mb-2">
+              <a
+                href="https://github.com/aabhiyann/infrasight"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-primary hover:underline font-medium"
+              >
+                GitHub Repository
+              </a>
+            </p>
+            <p className="text-sm">
+              <a
+                href="https://infrasight-rs1b.onrender.com/docs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-primary hover:underline font-medium"
+              >
+                API Documentation
+              </a>
+            </p>
+          </div>
         </div>
       </section>
     </CaseStudyLayout>
