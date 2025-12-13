@@ -246,6 +246,260 @@ body,
   background: linear-gradient(to right, var(--color-accent-primary), var(--color-accent-secondary));
 }
 
+/* ============================================
+   COMPREHENSIVE THEME-AWARE UTILITY CLASSES
+   These replace Tailwind's broken CSS variable classes
+   ============================================ */
+
+/* Text Colors - Accent */
+.text-accent-primary {
+  color: var(--color-accent-primary) !important;
+}
+
+.text-accent-secondary {
+  color: var(--color-accent-secondary) !important;
+}
+
+.text-accent-success {
+  color: var(--color-success) !important;
+}
+
+.text-accent-hover {
+  color: var(--color-accent-hover) !important;
+}
+
+/* Background Colors - Accent with opacity */
+.bg-accent-primary {
+  background-color: var(--color-accent-primary) !important;
+}
+
+.bg-accent-primary\/5 {
+  background-color: color-mix(in srgb, var(--color-accent-primary) 5%, transparent) !important;
+}
+
+.bg-accent-primary\/10 {
+  background-color: color-mix(in srgb, var(--color-accent-primary) 10%, transparent) !important;
+}
+
+.bg-accent-primary\/20 {
+  background-color: color-mix(in srgb, var(--color-accent-primary) 20%, transparent) !important;
+}
+
+.bg-accent-secondary {
+  background-color: var(--color-accent-secondary) !important;
+}
+
+.bg-accent-success\/5 {
+  background-color: color-mix(in srgb, var(--color-success) 5%, transparent) !important;
+}
+
+.bg-accent-success\/10 {
+  background-color: color-mix(in srgb, var(--color-success) 10%, transparent) !important;
+}
+
+/* Border Colors - Accent with opacity */
+.border-accent-primary {
+  border-color: var(--color-accent-primary) !important;
+}
+
+.border-accent-primary\/10 {
+  border-color: color-mix(in srgb, var(--color-accent-primary) 10%, transparent) !important;
+}
+
+.border-accent-primary\/20 {
+  border-color: color-mix(in srgb, var(--color-accent-primary) 20%, transparent) !important;
+}
+
+.border-accent-primary\/30 {
+  border-color: color-mix(in srgb, var(--color-accent-primary) 30%, transparent) !important;
+}
+
+.border-accent-primary\/50 {
+  border-color: color-mix(in srgb, var(--color-accent-primary) 50%, transparent) !important;
+}
+
+.border-accent-success\/10 {
+  border-color: color-mix(in srgb, var(--color-success) 10%, transparent) !important;
+}
+
+.border-accent-success\/20 {
+  border-color: color-mix(in srgb, var(--color-success) 20%, transparent) !important;
+}
+
+/* Ring Colors */
+.ring-accent-primary {
+  --tw-ring-color: var(--color-accent-primary) !important;
+}
+
+.ring-bg-primary {
+  --tw-ring-color: var(--color-bg-primary) !important;
+}
+
+/* Hover states for accent colors */
+.hover\:text-accent-primary:hover {
+  color: var(--color-accent-primary) !important;
+}
+
+.hover\:border-accent-primary:hover {
+  border-color: var(--color-accent-primary) !important;
+}
+
+.hover\:border-accent-primary\/30:hover {
+  border-color: color-mix(in srgb, var(--color-accent-primary) 30%, transparent) !important;
+}
+
+.hover\:border-accent-primary\/50:hover {
+  border-color: color-mix(in srgb, var(--color-accent-primary) 50%, transparent) !important;
+}
+
+.hover\:bg-accent-primary:hover {
+  background-color: var(--color-accent-primary) !important;
+}
+
+.group-hover\:text-accent-primary:is(.group:hover *) {
+  color: var(--color-accent-primary) !important;
+}
+
+.group-hover\:border-accent-primary\/20:is(.group:hover *) {
+  border-color: color-mix(in srgb, var(--color-accent-primary) 20%, transparent) !important;
+}
+
+.group-hover\:bg-accent-primary:is(.group:hover *) {
+  background-color: var(--color-accent-primary) !important;
+}
+
+/* Focus states */
+.focus\:ring-accent-primary:focus {
+  --tw-ring-color: var(--color-accent-primary) !important;
+}
+
+/* ============================================
+   SEMANTIC THEME COLORS
+   These are the main theme colors that change with light/dark mode
+   ============================================ */
+
+/* Text colors */
+.text-text-primary {
+  color: var(--color-text-primary) !important;
+}
+
+.text-text-secondary {
+  color: var(--color-text-secondary) !important;
+}
+
+.text-text-muted {
+  color: var(--color-text-muted) !important;
+}
+
+/* Background colors */
+.bg-bg-primary {
+  background-color: var(--color-bg-primary) !important;
+}
+
+.bg-bg-surface {
+  background-color: var(--color-bg-surface) !important;
+}
+
+.bg-bg-surface\/30 {
+  background-color: color-mix(in srgb, var(--color-bg-surface) 30%, transparent) !important;
+}
+
+.bg-bg-surface\/50 {
+  background-color: color-mix(in srgb, var(--color-bg-surface) 50%, transparent) !important;
+}
+
+.bg-bg-surface\/90 {
+  background-color: color-mix(in srgb, var(--color-bg-surface) 90%, transparent) !important;
+}
+
+.bg-bg-card {
+  background-color: var(--color-bg-card) !important;
+}
+
+.bg-bg-navbar {
+  background-color: var(--color-bg-navbar) !important;
+}
+
+/* Border colors */
+.border-border-primary {
+  border-color: var(--color-border-primary) !important;
+}
+
+.border-border-primary\/20 {
+  border-color: color-mix(in srgb, var(--color-border-primary) 20%, transparent) !important;
+}
+
+.border-border-primary\/30 {
+  border-color: color-mix(in srgb, var(--color-border-primary) 30%, transparent) !important;
+}
+
+.border-border-secondary {
+  border-color: var(--color-border-secondary) !important;
+}
+
+/* Divide colors */
+.divide-border-primary\/20 > :not([hidden]) ~ :not([hidden]) {
+  border-color: color-mix(in srgb, var(--color-border-primary) 20%, transparent) !important;
+}
+
+/* Hover states for semantic colors */
+.hover\:text-text-primary:hover {
+  color: var(--color-text-primary) !important;
+}
+
+.hover\:bg-bg-surface:hover {
+  background-color: var(--color-bg-surface) !important;
+}
+
+.hover\:bg-bg-surface\/50:hover {
+  background-color: color-mix(in srgb, var(--color-bg-surface) 50%, transparent) !important;
+}
+
+.hover\:bg-bg-primary:hover {
+  background-color: var(--color-bg-primary) !important;
+}
+
+.hover\:border-border-primary:hover {
+  border-color: var(--color-border-primary) !important;
+}
+
+/* Additional opacity variants */
+.text-text-primary\/50 {
+  color: color-mix(in srgb, var(--color-text-primary) 50%, transparent) !important;
+}
+
+.border-border-primary\/50 {
+  border-color: color-mix(in srgb, var(--color-border-primary) 50%, transparent) !important;
+}
+
+/* Shadow with accent color */
+.shadow-accent-primary\/5 {
+  --tw-shadow-color: color-mix(in srgb, var(--color-accent-primary) 5%, transparent);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+/* Prose typography overrides for accent links */
+.prose-a\:text-accent-primary :where(a):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  color: var(--color-accent-primary) !important;
+}
+
+.prose-a\:text-accent-primary :where(a):not(:where([class~="not-prose"],[class~="not-prose"] *)):hover {
+  color: var(--color-accent-hover) !important;
+}
+
+/* Card background with opacity */
+.bg-card\/30 {
+  background-color: color-mix(in srgb, var(--color-bg-card) 30%, transparent) !important;
+}
+
+.bg-card\/50 {
+  background-color: color-mix(in srgb, var(--color-bg-card) 50%, transparent) !important;
+}
+
+.bg-card {
+  background-color: var(--color-bg-card) !important;
+}
+
 /* Animations */
 @keyframes fadeUp {
   0% {
