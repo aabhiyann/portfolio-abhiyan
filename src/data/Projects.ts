@@ -6,6 +6,7 @@ export interface Project {
   github: string;
   live: string;
   tech: string[];
+  category: "Full Stack" | "ML/AI" | "Research";
   story: string;
   impact: string;
   architecture?: {
@@ -33,6 +34,7 @@ export const projects: Project[] = [
     github: "https://github.com/aabhiyann/infrasight",
     live: "https://infrasight.netlify.app",
     tech: ["Python", "FastAPI", "React", "Docker", "AWS", "Scikit-learn"],
+    category: "ML/AI",
     story:
       "Built a full-stack ML platform that helps finance teams detect budget inefficiencies. Implemented anomaly detection using Random Forest + LSTM ensembles enabling finance teams to catch cost spikes before billing cycles.",
     architecture: {
@@ -65,6 +67,7 @@ export const projects: Project[] = [
     github: "https://github.com/aabhiyann/talkifydocs",
     live: "",
     tech: ["Next.js", "OpenAI GPT-4", "LangChain", "Pinecone", "Stripe"],
+    category: "Full Stack",
     story:
       "Engineered an enterprise RAG application capable of querying 10GB+ repositories with sub-200ms response times. Features full SaaS architecture with Stripe billing and multi-tenant auth.",
   },
@@ -78,6 +81,7 @@ export const projects: Project[] = [
     github: "https://github.com/aabhiyann/MelodyHub",
     live: "https://udaymelodyhhub.vercel.app/",
     tech: ["Node.js", "Socket.IO", "MongoDB", "Cloudinary", "React"],
+    category: "Full Stack",
     story:
       "Spotify-meets-Discord. Architected a synchronized music playback engine that supports 100+ concurrent users with zero latency drift. Focused on OOP principals for scalable backend logic.",
   },
@@ -91,6 +95,7 @@ export const projects: Project[] = [
     github: "https://github.com/aabhiyann/ml-disease-prediction-system",
     live: "",
     tech: ["Python", "Scikit-learn", "Pandas", "React", "Tailwind"],
+    category: "ML/AI",
     story:
       "Developed a Random Forest classifier trained on 4,920 medical records to predict 41 disease classes. Designed a lightweight React UI for potential telemedicine deployment in rural areas.",
   },
@@ -104,6 +109,7 @@ export const projects: Project[] = [
     github: "https://github.com/aabhiyann/audio-classification-cnn",
     live: "",
     tech: ["TensorFlow", "Keras", "Librosa", "CNN", "YAMNet"],
+    category: "Research",
     story:
       "Built and trained a custom CNN from scratch that outperformed pre-trained transfer learning models by 26% on specific animal sound classification tasks. Utilized Mel-spectrograms for feature extraction.",
   },
@@ -118,6 +124,7 @@ export const projects: Project[] = [
       "https://github.com/aabhiyann/Conversational-Interface-for-Multi-Source-Information-Retrieval",
     live: "",
     tech: ["Python", "Mistral 7B", "FAISS", "LangChain", "NLP"],
+    category: "Research",
     story:
       "Created a privacy-first RAG system integrating local LLMs (Mistral) for sensitive data environments. Processes PDFs, YouTube transcripts, and audio files into a unified knowledge graph.",
   },
