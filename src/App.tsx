@@ -7,6 +7,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 
 const Home = lazy(() => import("./pages/Home"));
 const Projects = lazy(() => import("./pages/Projects"));
+const About = lazy(() => import("./pages/About")); // Restored
 const Experience = lazy(() => import("./pages/Experience"));
 const Skills = lazy(() => import("./pages/Skills"));
 const Photography = lazy(() => import("./pages/Photography"));
@@ -34,6 +35,7 @@ function App() {
             <AnimatePresence mode="wait">
               <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} /> {/* Restored */}
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/experience" element={<Experience />} />
                 <Route path="/skills" element={<Skills />} />
