@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/Motion";
-import { projects } from "../data/projects";
+import { projects } from "../data/Projects";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import Button from "../components/ui/Button";
@@ -10,7 +10,10 @@ import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
 import HeroBento from "../components/HeroBento";
 import SkillsSlider from "../components/SkillsSlider";
-import { ArrowRight } from "lucide-react";
+import StatsBar from "../components/StatsBar";
+import ContactSection from "../components/ContactSection";
+import TypeWriter from "../components/ui/TypeWriter";
+import { ArrowRight, Download } from "lucide-react";
 
 function Home() {
   return (
@@ -22,7 +25,7 @@ function Home() {
       <DottedBackground />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center py-20 overflow-hidden">
+      <section className="relative min-h-[95vh] flex flex-col justify-center py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-8 w-full z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             {/* Left Column: Text & CTA */}
@@ -37,7 +40,17 @@ function Home() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-primary opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-primary"></span>
                   </span>
-                  Available for new opportunities
+                  <span className="flex gap-2">
+                    Hi, I'm Abhiyan 👋{" "}
+                    <TypeWriter
+                      words={[
+                        "I build ML-powered products",
+                        "I teach algorithms at GWU",
+                        "I ship code, not just notebooks",
+                        "I debug code and photograph the world",
+                      ]}
+                    />
+                  </span>
                 </div>
 
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.2] pb-4">
@@ -48,25 +61,30 @@ function Home() {
                 </h1>
 
                 <p className="text-lg md:text-xl text-text-muted mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  Turning algorithms into production-ready products. Master's
-                  Student at GWU specializing in Cloud, Security, and AI.
-                  Background in Fintech, EdTech, and Digital Transformation.
+                  Full-Stack & ML Engineer | 4.0 GPA @ GWU | Graduating Dec
+                  2025. Turning algorithms into production-ready applications.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                  <Button
+                    as="a"
+                    href="mailto:aabhiyansainju@gmail.com"
+                    variant="primary"
+                    size="lg"
+                    className="group flex items-center gap-2"
+                  >
+                    Email Me
+                  </Button>
                   <Link to="/projects">
-                    <Button
-                      variant="primary"
-                      size="lg"
-                      className="group flex items-center gap-2"
-                    >
-                      View Architecture
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <Button variant="ghost" size="lg" className="group">
+                      View My Work
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
-                  <Link to="/about">
-                    <Button variant="ghost" size="lg">
-                      About Me
+                  <Link to="/resume">
+                    <Button variant="ghost" size="lg" className="group">
+                      Download Resume
+                      <Download className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
                 </div>
@@ -86,21 +104,24 @@ function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator - Adjusted Z-Index and Position */}
+        {/* Scroll Indicator */}
         <motion.div
           className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-text-muted opacity-50 z-20 pointer-events-none"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
           <span className="text-xs font-mono uppercase tracking-widest">
-            Scroll
+            Scroll to explore
             <div className="w-px h-12 bg-gradient-to-b from-text-muted to-transparent mx-auto mt-2"></div>
           </span>
         </motion.div>
       </section>
 
-      {/* Skills Marquee - Sticky */}
-      <section className="sticky top-16 z-30 py-0 border-y border-border-primary/50 bg-bg-surface/80 backdrop-blur-md shadow-sm">
+      {/* Stats Bar */}
+      <StatsBar />
+
+      {/* Skills Marquee */}
+      <section className="py-12 border-b border-border-primary/50 bg-bg-surface/50 backdrop-blur-md">
         <SkillsSlider />
       </section>
 
@@ -133,6 +154,9 @@ function Home() {
                   <p className="text-text-muted mb-4 flex-grow">
                     {project.description}
                   </p>
+                  <p className="text-xs font-mono text-accent-primary mt-2">
+                    {project.impact}
+                  </p>
                 </div>
               </MotionCard>
             ))}
@@ -156,17 +180,21 @@ function Home() {
       </section>
 
       {/* About Teaser */}
-      <section className="py-24 bg-bg-primary">
-        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
+      <section className="py-24 bg-bg-surface relative overflow-hidden">
+        <div className="absolute inset-0 bg-accent-primary/5 opacity-20 pointer-events-none"></div>
+        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center relative z-10">
           <SectionTitle
-            title="About Me"
-            subtitle="I'm a passionate developer with a love for creating digital experiences that matter. When I'm not coding, you'll find me exploring new places with my camera or diving deep into the latest technology trends."
+            title="My Journey"
+            subtitle="I don't just write code—I solve problems. From teaching algorithms to 60+ grad students to shipping production apps used by thousands."
           />
           <Button as={Link} to="/about" variant="primary" size="lg">
             Read My Story
           </Button>
         </div>
       </section>
+
+      {/* Contact Section */}
+      <ContactSection />
     </Page>
   );
 }
