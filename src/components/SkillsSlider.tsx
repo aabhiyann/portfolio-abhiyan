@@ -2,22 +2,45 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const skills = [
+  // Languages
   "Python",
-  "React",
   "TypeScript",
-  "PyTorch",
+  "JavaScript",
+  "Java",
+  "C++",
+  // Frontend
+  "React",
   "Next.js",
+  "Tailwind",
+  // Backend
+  "Node.js",
+  "FastAPI",
+  // Databases
+  "PostgreSQL",
+  "MongoDB",
+  "Elasticsearch",
+  // AI/ML
+  "PyTorch",
+  "TensorFlow",
+  "Keras",
+  "Scikit-learn",
+  "LangChain",
+  "GPT-4",
+  "NLP",
+  // Cloud & DevOps
   "AWS",
   "Docker",
-  "PostgreSQL",
-  "FastAPI",
-  "Node.js",
-  "Tailwind",
+  // Tools & Libraries
   "Git",
-  "C++",
-  "Java",
-  "Scikit-learn",
-  "TensorFlow",
+  "Socket.IO",
+  "Pinecone",
+  "Pandas",
+  "librosa",
+  "YAMNet",
+  "AsyncPG",
+  // Services
+  "Stripe",
+  "Clerk",
 ];
 
 const duplicatedSkills = [...skills, ...skills, ...skills]; // Triple for smoother loop
@@ -47,7 +70,7 @@ const SkillsSlider: React.FC = () => {
               key={index}
               className="relative flex items-center justify-center group/skill cursor-default"
             >
-              <span className="text-xl md:text-2xl font-bold font-heading text-text-muted/30 grayscale transition-all duration-300 group-hover/skill:text-text-primary group-hover/skill:grayscale-0 group-hover/skill:opacity-100 group-hover/skill:scale-110">
+              <span className="text-xl md:text-2xl font-bold font-heading text-text-muted/60 grayscale transition-all duration-300 group-hover/skill:text-text-primary group-hover/skill:grayscale-0 group-hover/skill:opacity-100 group-hover/skill:scale-110">
                 {skill}
               </span>
             </div>
