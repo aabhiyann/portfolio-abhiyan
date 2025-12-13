@@ -496,8 +496,117 @@ body,
   background-color: color-mix(in srgb, var(--color-bg-card) 50%, transparent) !important;
 }
 
+.bg-card\/60 {
+  background-color: color-mix(in srgb, var(--color-bg-card) 60%, transparent) !important;
+}
+
 .bg-card {
   background-color: var(--color-bg-card) !important;
+}
+
+/* Additional opacity variants for text */
+.text-text-muted\/30 {
+  color: color-mix(in srgb, var(--color-text-muted) 30%, transparent) !important;
+}
+
+.text-text-muted\/60 {
+  color: color-mix(in srgb, var(--color-text-muted) 60%, transparent) !important;
+}
+
+.text-text-muted\/80 {
+  color: color-mix(in srgb, var(--color-text-muted) 80%, transparent) !important;
+}
+
+/* Additional opacity variants for backgrounds */
+.bg-bg-primary\/40 {
+  background-color: color-mix(in srgb, var(--color-bg-primary) 40%, transparent) !important;
+}
+
+.bg-bg-primary\/80 {
+  background-color: color-mix(in srgb, var(--color-bg-primary) 80%, transparent) !important;
+}
+
+.bg-bg-primary\/90 {
+  background-color: color-mix(in srgb, var(--color-bg-primary) 90%, transparent) !important;
+}
+
+/* Gradient backgrounds using CSS variables */
+.gradient-from-bg-primary {
+  background: linear-gradient(to right, var(--color-bg-primary), transparent);
+}
+
+.gradient-to-bg-primary {
+  background: linear-gradient(to left, var(--color-bg-primary), transparent);
+}
+
+.gradient-from-bg-primary-via {
+  background: linear-gradient(to right, var(--color-bg-primary), color-mix(in srgb, var(--color-bg-primary) 80%, transparent), transparent);
+}
+
+.gradient-to-bg-primary-via {
+  background: linear-gradient(to left, var(--color-bg-primary), color-mix(in srgb, var(--color-bg-primary) 80%, transparent), transparent);
+}
+
+.gradient-overlay-top {
+  background: linear-gradient(to top, var(--color-bg-primary), color-mix(in srgb, var(--color-bg-primary) 40%, transparent), transparent);
+}
+
+.gradient-overlay-top-full {
+  background: linear-gradient(to top, var(--color-bg-primary), transparent);
+}
+
+/* Theme-aware overlay backgrounds */
+.bg-overlay {
+  background-color: color-mix(in srgb, var(--color-bg-primary) 60%, transparent) !important;
+}
+
+.bg-overlay-dark {
+  background-color: color-mix(in srgb, var(--color-text-primary) 60%, transparent) !important;
+}
+
+.bg-overlay-light {
+  background-color: color-mix(in srgb, var(--color-text-primary) 10%, transparent) !important;
+}
+
+/* Theme-aware hover backgrounds */
+.hover\:bg-overlay-light:hover {
+  background-color: color-mix(in srgb, var(--color-text-primary) 5%, transparent) !important;
+}
+
+.dark .hover\:bg-overlay-light:hover {
+  background-color: color-mix(in srgb, var(--color-text-primary) 10%, transparent) !important;
+}
+
+/* Theme-aware shadows */
+.shadow-theme {
+  box-shadow: 0 10px 15px -3px color-mix(in srgb, var(--color-text-primary) 5%, transparent), 0 4px 6px -2px color-mix(in srgb, var(--color-text-primary) 5%, transparent) !important;
+}
+
+.dark .shadow-theme {
+  box-shadow: 0 10px 15px -3px color-mix(in srgb, var(--color-text-primary) 20%, transparent), 0 4px 6px -2px color-mix(in srgb, var(--color-text-primary) 20%, transparent) !important;
+}
+
+/* Navbar background with opacity */
+.bg-navbar\/80 {
+  background-color: color-mix(in srgb, var(--color-bg-navbar) 80%, transparent) !important;
+}
+
+/* Chat/Message backgrounds - theme aware */
+.bg-chat-bot {
+  background-color: color-mix(in srgb, var(--color-text-primary) 10%, transparent) !important;
+}
+
+.bg-chat-input {
+  background-color: color-mix(in srgb, var(--color-text-primary) 10%, transparent) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.border-chat {
+  border-color: color-mix(in srgb, var(--color-text-primary) 10%, transparent) !important;
+}
+
+.hover\:bg-chat-bot:hover {
+  background-color: color-mix(in srgb, var(--color-text-primary) 10%, transparent) !important;
 }
 
 /* Animations */

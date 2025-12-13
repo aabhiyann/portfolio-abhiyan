@@ -38,7 +38,7 @@ const BentoCard: React.FC<BentoCardProps> = ({
           alt={title}
           className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105 opacity-60 group-hover:opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/90 via-bg-primary/40 to-transparent" />
+        <div className="absolute inset-0 gradient-overlay-top" />
       </div>
     )}
 

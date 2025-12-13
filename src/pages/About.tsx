@@ -119,7 +119,7 @@ function About() {
                     alt="Abhiyan Sainju"
                     className="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent opacity-80"></div>
+                  <div className="absolute inset-0 gradient-overlay-top-full opacity-80"></div>
                   <div className="absolute bottom-8 left-8 text-white">
                     <div className="text-sm font-mono text-accent-primary mb-2">
                       EST. 2024
