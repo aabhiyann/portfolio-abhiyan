@@ -119,18 +119,15 @@ const InfraSightCaseStudy: React.FC = () => {
             </h3>
             <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
               <img
-                src="/images/case-studies/infrasight/forecasting-dashboard.png"
+                src="/images/case-studies/infrasight/Overview page showing Cost graph for each service.png"
                 alt="InfraSight Cost Forecasting Dashboard showing predictions with confidence intervals"
                 className="w-full h-auto"
-                onError={(e) => {
-                  // Hide image if it doesn't exist yet
-                  e.currentTarget.style.display = "none";
-                }}
               />
             </div>
             <p className="mt-3 text-sm text-text-muted italic">
-              Predicts future spending per service with 95% confidence
-              intervals. Interactive Chart.js visualizations.
+              Overview page showing cost graphs for each service. Predicts
+              future spending per service with 95% confidence intervals.
+              Interactive Chart.js visualizations.
             </p>
           </div>
 
@@ -141,12 +138,9 @@ const InfraSightCaseStudy: React.FC = () => {
             </h3>
             <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
               <img
-                src="/images/case-studies/infrasight/anomaly-detection.png"
+                src="/images/case-studies/infrasight/anomalies.png"
                 alt="InfraSight Anomaly Detection showing Z-score analysis with configurable thresholds"
                 className="w-full h-auto"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
               />
             </div>
             <p className="mt-3 text-sm text-text-muted italic">
@@ -160,42 +154,82 @@ const InfraSightCaseStudy: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">Spending Insights</h3>
             <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
               <img
-                src="/images/case-studies/infrasight/spending-insights.png"
-                alt="InfraSight Spending Insights showing K-means clustering and cost attribution"
+                src="/images/case-studies/infrasight/Top 5 services.png"
+                alt="InfraSight Spending Insights showing top services and cost attribution"
                 className="w-full h-auto"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
               />
             </div>
             <p className="mt-3 text-sm text-text-muted italic">
-              K-means clustering of services, cost attribution analysis, and CSV
-              export functionality.
+              Top services analysis with cost attribution. K-means clustering
+              helps identify services with similar cost behaviors.
+            </p>
+          </div>
+
+          {/* Recommendations */}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">
+              Optimization Recommendations
+            </h3>
+            <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+              <img
+                src="/images/case-studies/infrasight/Recommendations.png"
+                alt="InfraSight Recommendations showing rule-based optimization suggestions"
+                className="w-full h-auto"
+              />
+            </div>
+            <p className="mt-3 text-sm text-text-muted italic">
+              Rule-based optimization suggestions combining anomalies and budget
+              constraints to help reduce cloud costs.
             </p>
           </div>
         </div>
 
-        <div className="mt-6 p-4 rounded-xl bg-bg-surface/50 border border-border-primary/50">
-          <p className="text-sm text-text-muted">
-            <strong>Note:</strong> Screenshots will appear here once you add
-            images to{" "}
-            <code className="px-2 py-1 rounded bg-bg-surface">
-              /public/images/case-studies/infrasight/
-            </code>
-          </p>
+        {/* Additional Features */}
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
+          {/* Accessibility - Dark Mode */}
+          <div>
+            <h3 className="text-lg font-semibold mb-3">
+              Accessibility Features
+            </h3>
+            <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+              <img
+                src="/images/case-studies/infrasight/Dark Mode.png"
+                alt="InfraSight Dark Mode theme showing accessibility options"
+                className="w-full h-auto"
+              />
+            </div>
+            <p className="mt-3 text-sm text-text-muted italic">
+              Three theme modes: Dark, Light, and High-Contrast for improved
+              accessibility and user preference.
+            </p>
+          </div>
+
+          {/* Responsive Design - Mobile */}
+          <div>
+            <h3 className="text-lg font-semibold mb-3">Responsive Design</h3>
+            <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+              <img
+                src="/images/case-studies/infrasight/Mobile View side menu.png"
+                alt="InfraSight Mobile View showing responsive design"
+                className="w-full h-auto"
+              />
+            </div>
+            <p className="mt-3 text-sm text-text-muted italic">
+              Fully responsive design with mobile-optimized navigation and
+              touch-friendly interactions.
+            </p>
+          </div>
         </div>
       </section>
 
       <section className="mb-12">
         <h2>Technical Architecture</h2>
-        <div className="mb-6 p-6 rounded-2xl glass-card">
-          <pre className="text-sm font-mono overflow-x-auto">
-            {`┌──────────────┐     REST API      ┌──────────────┐     SQL      ┌──────────────┐
-│  React + TS  │◄─────────────────►│   FastAPI    │◄────────────►│ PostgreSQL   │
-│  Chart.js    │                    │  + ML Engine │              │ (Neon.tech)  │
-│  (Netlify)   │                    │  (Render)    │              │              │
-└──────────────┘                    └──────────────┘              └──────────────┘`}
-          </pre>
+        <div className="mb-6 rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
+          <img
+            src="/images/case-studies/infrasight/infrasight_architecture.png"
+            alt="InfraSight Technical Architecture Diagram"
+            className="w-full h-auto"
+          />
         </div>
 
         <h3>Backend (FastAPI + PostgreSQL)</h3>
