@@ -60,10 +60,11 @@ export const projects: Project[] = [
     category: "Production Apps",
     featured: true,
     stats: [
-      { label: "Processing", value: "47% Faster" },
-      { label: "Latency", value: "<200ms" },
+      { label: "Query Speed", value: "<2s" },
+      { label: "User Growth", value: "150%" },
     ],
-    badges: ["SaaS", "AI"],
+    badges: ["Next.js", "OpenAI", "Stripe"],
+    caseStudyUrl: "/case-studies/talkifydocs",
   },
   {
     id: "audio-classification-cnn",
