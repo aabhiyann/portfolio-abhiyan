@@ -136,7 +136,7 @@ const SkillsMatrix: React.FC = () => {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute inset-0 z-10 bg-accent-primary/95 text-white p-4 rounded-lg flex items-center justify-center text-center shadow-xl backdrop-blur-sm"
+                          className="absolute inset-0 z-10 btn-primary p-4 rounded-lg flex items-center justify-center text-center shadow-xl backdrop-blur-sm"
                         >
                           <p className="text-sm font-medium leading-tight">
                             "{skill.description}"
