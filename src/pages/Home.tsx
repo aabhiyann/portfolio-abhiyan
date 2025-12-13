@@ -9,7 +9,7 @@ import { MotionCard } from "../components/ui/MotionCard";
 import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
 import HeroBento from "../components/HeroBento";
-// import SkillsSlider from "../components/SkillsSlider"; // Removing as per blueprint (distracting)
+import SkillsSlider from "../components/SkillsSlider"; // Skills Slider 2.0
 import WhyHireMe from "../components/WhyHireMe";
 import StatsBar from "../components/StatsBar";
 import ContactSection from "../components/ContactSection";
@@ -111,6 +111,9 @@ function Home() {
 
       {/* Stats Bar */}
       <StatsBar />
+
+      {/* Skills Slider 2.0 */}
+      <SkillsSlider />
 
       {/* Why Hire Me Section */}
       <WhyHireMe />
