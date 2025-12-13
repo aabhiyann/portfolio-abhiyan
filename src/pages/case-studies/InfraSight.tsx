@@ -6,7 +6,7 @@ const InfraSightCaseStudy: React.FC = () => {
     <CaseStudyLayout
       title="InfraSight"
       subtitle="AI-powered cloud resource optimization platform reducing infrastructure costs by 40%."
-      heroImage="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop&q=80"
+      heroImage="/images/case-studies/infrasight.png"
       tags={["Next.js", "Python", "AWS", "Machine Learning"]}
       stats={[
         { label: "Predictive Model", value: "Linear Reg" },

@@ -85,7 +85,7 @@ const HeroBento: React.FC = () => {
         title="InfraSight"
         subtitle="Cloud Intelligence"
         className="col-span-1 md:col-span-2 md:row-span-3"
-        bgImage="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80"
+        bgImage="/images/hero/infrasight.png"
         delay={0.2}
         href="https://github.com/aabhiyann/infrasight"
       >
@@ -99,7 +99,7 @@ const HeroBento: React.FC = () => {
         title="TalkifyDocs"
         subtitle="AI SaaS"
         className="col-span-1 md:col-span-2 md:row-span-3"
-        bgImage="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&q=80"
+        bgImage="/images/hero/talkifydocs.png"
         delay={0.3}
         href="https://github.com/aabhiyann/talkifydocs"
       >

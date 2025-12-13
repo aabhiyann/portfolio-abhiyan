@@ -55,7 +55,7 @@ export const projects: Project[] = [
     live: "", // Not publicly deployed
     github: "https://github.com/aabhiyann/talkifydocs",
     image: "/Images/projects/talkifydocs.png",
-    category: "Production Apps",
+    category: "ML/AI",
     featured: true,
     stats: [
       { label: "Status", value: "Dev" },

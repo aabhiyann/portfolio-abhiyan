@@ -25,7 +25,7 @@ function Projects() {
   const projects = initialProjects;
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const categories = ["All", "Full Stack", "ML/AI", "Research"];
+  const categories = ["All", "Full Stack", "ML/AI"];
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === "All") return projects;
