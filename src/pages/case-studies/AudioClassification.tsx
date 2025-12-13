@@ -6,7 +6,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
     <CaseStudyLayout
       title="Audio Classification CNN"
       subtitle="Deep learning research comparing CNN architectures for audio classification. Task-specific model achieved 92% accuracy, outperforming transfer learning by 26%."
-      heroImage="/images/case-studies/audio-classification/8_key_finding.png"
+      heroImage="/images/case-studies/audio-classification/6_training_curves.png"
       tags={["TensorFlow", "Keras", "librosa", "YAMNet", "Deep Learning"]}
       stats={[
         { label: "Status", value: "Complete" },
