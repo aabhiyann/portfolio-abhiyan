@@ -121,7 +121,7 @@ const SkillsMatrix: React.FC = () => {
                     {/* Progress Bar */}
                     <div className="h-1.5 w-full bg-bg-surface rounded-full overflow-hidden">
                       <motion.div
-                        className="h-full bg-gradient-to-r from-accent-primary to-accent-secondary"
+                        className="h-full gradient-bg"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.proficiency}%` }}
                         transition={{ duration: 1, ease: "easeOut" }}
