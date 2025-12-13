@@ -22,7 +22,10 @@
   --color-dark-border: #3d444d;
   --color-dark-borderMuted: #2d333b;
 
-  /* Accent Color */
+  /* Accent Color - Different shades for optimal contrast in each theme
+     Light mode: Darker blue (#0550ae) for visibility on white/light backgrounds
+     Dark mode: Lighter blue (#58a6ff) for visibility on dark backgrounds
+     This is a best practice - same color intensity would be invisible in one theme */
   --color-primary-light: #0550ae;
   --color-primary-dark: #58a6ff;
   --color-secondary-light: #1f2328;
@@ -630,6 +633,32 @@ body,
 .group:hover .glass-overlay,
 .group\/portrait:hover .glass-overlay {
   opacity: 1 !important;
+}
+
+/* Overlay button - for buttons on dark/light overlays */
+.btn-overlay {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: rgb(17, 24, 39) !important; /* gray-900 */
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.btn-overlay:hover {
+  background-color: rgba(255, 255, 255, 1) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.dark .btn-overlay {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: rgb(255, 255, 255) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark .btn-overlay:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 /* Chat/Message backgrounds - theme aware */
