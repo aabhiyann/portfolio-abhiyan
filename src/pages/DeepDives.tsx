@@ -43,7 +43,7 @@ function DeepDives() {
                 {articles.map((article, index) => (
                   <MotionCard
                     key={article.id}
-                    className="group relative border border-border-primary/50 bg-card/50"
+                    className="group relative glass-card glass-card-hover"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}

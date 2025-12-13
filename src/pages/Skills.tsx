@@ -28,7 +28,7 @@ function Skills() {
               Certifications
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-xl border border-border-primary bg-card/50 backdrop-blur-sm">
+              <div className="p-6 rounded-2xl glass-card">
                 <h4 className="text-lg font-bold text-text-primary mb-2">
                   AWS Academy Graduate - Cloud Foundations
                 </h4>
@@ -39,7 +39,7 @@ function Skills() {
                   Cloud Computing
                 </span>
               </div>
-              <div className="p-6 rounded-xl border border-border-primary bg-card/50 backdrop-blur-sm">
+              <div className="p-6 rounded-2xl glass-card">
                 <h4 className="text-lg font-bold text-text-primary mb-2">
                   AWS Academy Graduate - Cloud Operations
                 </h4>
