@@ -23,7 +23,7 @@ const ProjectFilters: React.FC<ProjectFiltersProps> = ({
             "relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
             activeCategory === category
               ? "text-white"
-              : "text-text-muted hover:text-text-primary hover:bg-surface/50",
+              : "text-text-muted hover:text-text-primary hover:bg-bg-surface/50",
           )}
         >
           {activeCategory === category && (

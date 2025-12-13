@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 interface DiagramNodeProps {
   label: string;
@@ -8,7 +8,12 @@ interface DiagramNodeProps {
   onHoverEnd: () => void;
 }
 
-const DiagramNode: React.FC<DiagramNodeProps> = ({ label, position, onHoverStart, onHoverEnd }) => {
+const DiagramNode: React.FC<DiagramNodeProps> = ({
+  label,
+  position,
+  onHoverStart,
+  onHoverEnd,
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -16,7 +21,7 @@ const DiagramNode: React.FC<DiagramNodeProps> = ({ label, position, onHoverStart
       transition={{ duration: 0.3 }}
       onHoverStart={onHoverStart}
       onHoverEnd={onHoverEnd}
-      className="absolute p-4 bg-surface-light dark:bg-surface-dark border border-black/10 dark:border-white/10 rounded-lg shadow-md cursor-pointer"
+      className="absolute p-4 bg-bg-surface border border-border-primary rounded-lg shadow-md cursor-pointer"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
