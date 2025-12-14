@@ -1,5 +1,6 @@
 import React from "react";
 import CaseStudyLayout from "../../components/CaseStudyLayout";
+import MermaidDiagram from "../../components/MermaidDiagram";
 
 const TalkifyDocsCaseStudy: React.FC = () => {
   return (
@@ -225,35 +226,49 @@ const TalkifyDocsCaseStudy: React.FC = () => {
           keys, and ensure data consistency.
         </p>
 
-        <div className="mb-6 p-6 rounded-2xl glass-card">
-          <pre className="text-sm font-mono overflow-x-auto">
-            {`┌──────────────┐     API Routes     ┌──────────────┐     Vector DB    ┌──────────────┐
-│   Next.js    │◄──────────────────►│  LangChain   │◄────────────────►│   Pinecone   │
-│  + TypeScript│                    │  + OpenAI    │                  │  (Embeddings)│
-└──────────────┘                    └──────────────┘                  └──────────────┘
-       │                                    │
-       │ Auth                              │ API
-       ↓                                   ↓
-┌──────────────┐                    ┌──────────────┐
-│    Clerk     │                    │  OpenAI API  │
-│  (Auth)      │                    │  (GPT-4)     │
-└──────────────┘                    └──────────────┘
-       │
-       │ Billing
-       ↓
-┌──────────────┐
-│   Stripe     │
-│  (Payments)  │
-└──────────────┘
-       │
-       │ Database
-       ↓
-┌──────────────┐
-│  PostgreSQL  │
-│  + Prisma    │
-└──────────────┘`}
-          </pre>
-        </div>
+        <MermaidDiagram
+          chart={`
+graph TB
+    subgraph Frontend["Frontend Layer"]
+        NextJS["Next.js + TypeScript<br/>React Components"]
+    end
+    
+    subgraph RAG["RAG Pipeline"]
+        LangChain["LangChain<br/>Orchestration"]
+        OpenAI_Embed["OpenAI Embeddings<br/>text-embedding-ada-002"]
+        OpenAI_GPT["OpenAI GPT-4<br/>Generation"]
+        Pinecone["Pinecone<br/>Vector Database"]
+    end
+    
+    subgraph Services["Third-Party Services"]
+        Clerk["Clerk<br/>Authentication"]
+        Stripe["Stripe<br/>Subscription Billing"]
+    end
+    
+    subgraph Database["Data Layer"]
+        PostgreSQL["PostgreSQL<br/>User & Document Data"]
+        Prisma["Prisma ORM<br/>Type-Safe Queries"]
+    end
+    
+    NextJS -->|API Routes| LangChain
+    LangChain -->|Embed Documents| OpenAI_Embed
+    LangChain -->|Query| Pinecone
+    LangChain -->|Generate Answer| OpenAI_GPT
+    NextJS -->|Auth| Clerk
+    NextJS -->|Billing| Stripe
+    NextJS -->|Database| Prisma
+    Prisma -->|Queries| PostgreSQL
+    
+    style NextJS fill:#8B5CF6,stroke:#A78BFA,color:#F4F4F7
+    style LangChain fill:#22C55E,stroke:#4ADE80,color:#F4F4F7
+    style Pinecone fill:#3B82F6,stroke:#60A5FA,color:#F4F4F7
+    style OpenAI_GPT fill:#F9A825,stroke:#FBC02D,color:#0F172A
+    style Clerk fill:#EC4899,stroke:#F472B6,color:#F4F4F7
+    style Stripe fill:#635BFF,stroke:#818CF8,color:#F4F4F7
+    style PostgreSQL fill:#336791,stroke:#4A90A4,color:#F4F4F7
+          `}
+          title="RAG Architecture"
+        />
 
         <h3>Next.js Full-Stack Application</h3>
         <p className="leading-relaxed mb-4">
@@ -643,22 +658,38 @@ const TalkifyDocsCaseStudy: React.FC = () => {
 
       <section className="mb-12">
         <h2>Explore the Project</h2>
-        <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
-          <h3 className="font-semibold mb-3">Source Code</h3>
-          <p className="text-sm mb-3">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
+            <h3 className="font-semibold mb-3">Source Code</h3>
+            <p className="text-sm mb-3">
+              <a
+                href="https://github.com/aabhiyann/talkifydocs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-primary hover:underline font-medium"
+              >
+                github.com/aabhiyann/talkifydocs
+              </a>
+            </p>
+            <p className="text-sm text-text-muted">
+              91.9% TypeScript · 99 commits · Well-organized codebase with setup
+              documentation
+            </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
+            <h3 className="font-semibold mb-3">Technical Deep Dive</h3>
+            <p className="text-sm mb-3 text-text-muted">
+              Read my in-depth analysis of building a production RAG pipeline,
+              managing API costs, and integrating multiple third-party services.
+            </p>
             <a
-              href="https://github.com/aabhiyann/talkifydocs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent-primary hover:underline font-medium"
+              href="/deep-dives/talkifydocs-rag-pipeline"
+              className="text-accent-primary hover:underline font-medium text-sm inline-flex items-center gap-1"
             >
-              github.com/aabhiyann/talkifydocs
+              Read Deep Dive →
             </a>
-          </p>
-          <p className="text-sm text-text-muted">
-            91.9% TypeScript · 99 commits · Well-organized codebase with setup
-            documentation
-          </p>
+          </div>
         </div>
       </section>
     </CaseStudyLayout>

@@ -19,6 +19,7 @@ export interface Project {
   impact?: string;
   elaboratedDescription?: string;
   caseStudyUrl?: string;
+  deepDiveId?: string; // New field for linking to deep dive articles
   architecture?: {
     nodes: Array<{
       id: string;
@@ -45,6 +46,7 @@ export const projects: Project[] = [
     stats: [{ label: "Architecture", value: "Microservice" }],
     badges: ["Production", "ML"],
     caseStudyUrl: "/case-studies/infrasight",
+    deepDiveId: "infrasight-production-ml",
   },
   {
     id: "talkifydocs",
@@ -63,6 +65,7 @@ export const projects: Project[] = [
     ],
     badges: ["Next.js", "AI", "SaaS"],
     caseStudyUrl: "/case-studies/talkifydocs",
+    deepDiveId: "talkifydocs-rag-pipeline",
   },
   {
     id: "audio-classification-cnn",
@@ -81,6 +84,7 @@ export const projects: Project[] = [
     ],
     badges: ["Deep Learning", "Research"],
     caseStudyUrl: "/case-studies/audio-classification",
+    deepDiveId: "audio-classification-research",
   },
   {
     id: "melodyhub",
@@ -99,6 +103,7 @@ export const projects: Project[] = [
     ],
     badges: ["Socket.IO", "Team Work"],
     caseStudyUrl: "/case-studies/melodyhub",
+    deepDiveId: "melodyhub-realtime-architecture",
   },
   {
     id: "disease-prediction",
