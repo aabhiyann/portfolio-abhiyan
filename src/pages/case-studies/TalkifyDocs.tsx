@@ -99,11 +99,11 @@ const TalkifyDocsCaseStudy: React.FC = () => {
 
       <CaseStudySection title="The Challenge">
         <CaseStudyText>
-          Knowledge workers spend hours manually reviewing documents—researchers
-          analyzing papers, legal teams reviewing contracts, students extracting
-          information from PDFs. Traditional search doesn't understand context
-          or meaning, and finding specific information across multiple documents
-          is tedious and error-prone.
+          Knowledge workers spend hours manually reviewing documents
+          (researchers analyzing papers, legal teams reviewing contracts,
+          students extracting information from PDFs. Traditional search doesn't
+          understand context or meaning, and finding specific information across
+          multiple documents is tedious and error-prone.
         </CaseStudyText>
         <CaseStudyText>
           I wanted to build a production-ready RAG application that would let
@@ -118,7 +118,7 @@ const TalkifyDocsCaseStudy: React.FC = () => {
         <CaseStudyText>
           I designed TalkifyDocs around the RAG architecture: upload documents,
           chunk and embed them for semantic search, then use retrieved context
-          to generate accurate, cited answers. But RAG is just the core—I also
+          to generate accurate, cited answers. But RAG is just the core; I also
           needed to build a complete SaaS platform with user management,
           subscription billing, and a polished UI.
         </CaseStudyText>
@@ -322,7 +322,7 @@ graph TB
       <CaseStudySection title="Key Technical Challenges">
         <CaseStudyText>
           Building a production RAG application taught me that the hard problems
-          aren't just about AI—they're about data engineering, cost management,
+          aren't just about AI. They're about data engineering, cost management,
           and integrating multiple complex systems.
         </CaseStudyText>
 
@@ -341,7 +341,7 @@ graph TB
               RecursiveCharacterTextSplitter with configurable chunk size (1000
               tokens) and overlap (200 tokens). I tested different
               configurations on sample documents to find the sweet spot. Overlap
-              is critical—it ensures that information spanning chunk boundaries
+              is critical; it ensures that information spanning chunk boundaries
               isn't lost.
             </CaseStudyText>
             <Typography variant="body" color="muted" className="text-sm">
@@ -397,7 +397,7 @@ graph TB
             <Typography variant="body" color="muted" className="text-sm">
               <strong>Impact:</strong> Building production SaaS requires
               orchestrating many services. Webhook handling is particularly
-              tricky—you need idempotency, error recovery, and careful testing.
+              tricky: you need idempotency, error recovery, and careful testing.
               Local development is more complex when you depend on external
               services.
             </Typography>
@@ -427,7 +427,7 @@ graph TB
               Why LangChain?
             </Typography>
             <CaseStudyText>
-              LangChain abstracts the RAG pipeline complexity—text splitting,
+              LangChain abstracts the RAG pipeline complexity (text splitting,
               embedding, retrieval, and generation. Without it, I'd need to
               manually orchestrate OpenAI API calls, vector search, and prompt
               engineering. LangChain's RecursiveCharacterTextSplitter handles
@@ -559,7 +559,7 @@ graph TB
         <CaseStudyText>
           Building TalkifyDocs taught me that RAG applications are 80% data
           engineering and integration, 20% AI. The hard problems aren't about
-          calling GPT-4—they're about chunking, retrieval, cost management, and
+          calling GPT-4. They're about chunking, retrieval, cost management, and
           orchestrating multiple services.
         </CaseStudyText>
 

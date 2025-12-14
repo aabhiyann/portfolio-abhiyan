@@ -89,7 +89,7 @@ function About() {
                     </strong>
                     <p>
                       I've shipped 5 production apps with real users. Not
-                      textbook exercises—actual products. From real-time music
+                      textbook exercises: actual products. From real-time music
                       platforms to AI document assistants, I build end-to-end.
                     </p>
                   </div>

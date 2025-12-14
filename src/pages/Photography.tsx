@@ -26,7 +26,7 @@ function Photography() {
               </h1>
 
               <p className="text-xl text-text-muted mb-8 max-w-3xl mx-auto">
-                Think of it as debugging the real world—finding patterns in
+                Think of it as debugging the real world: finding patterns in
                 chaos, framing what matters, and capturing the edge cases of
                 daily life. My attention to detail in code mirrors my
                 composition in photography.
@@ -34,22 +34,16 @@ function Photography() {
 
               <div className="flex flex-wrap justify-center gap-4 text-sm text-text-muted">
                 <span className="flex items-center gap-2">
-                  <span className="flex items-center gap-2">
-                    <Camera className="w-4 h-4" />
-                    Visual Debugging
-                  </span>
+                  <Camera className="w-4 h-4" />
+                  Visual Debugging
                 </span>
                 <span className="flex items-center gap-2">
-                  <span className="flex items-center gap-2">
-                    <ImageIcon className="w-4 h-4" />
-                    Pattern Recognition
-                  </span>
+                  <ImageIcon className="w-4 h-4" />
+                  Pattern Recognition
                 </span>
                 <span className="flex items-center gap-2">
-                  <span className="flex items-center gap-2">
-                    <Clock className="w-4 h-4" />
-                    Frozen Moments
-                  </span>
+                  <Clock className="w-4 h-4" />
+                  Frozen Moments
                 </span>
               </div>
             </motion.div>
