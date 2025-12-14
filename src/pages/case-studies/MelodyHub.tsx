@@ -8,7 +8,7 @@ const MelodyHubCaseStudy: React.FC = () => {
   return (
     <CaseStudyLayout
       title="MelodyHub"
-      subtitle="Real-time social music platform with synchronized playback and live chat. Built with Socket.IO, React, and MongoDB—supporting 100+ concurrent users."
+      subtitle="Real-time social music platform with synchronized playback and live chat. Built with Socket.IO, React, and MongoDB, supporting 100+ concurrent users."
       heroImage="/images/projects/melodyhub.png"
       tags={["React", "Node.js", "Socket.IO", "MongoDB", "Clerk", "Cloudinary"]}
       stats={[
@@ -109,7 +109,7 @@ const MelodyHubCaseStudy: React.FC = () => {
         </CaseStudyText>
         <CaseStudyText>
           I wanted to build a platform where friends could virtually hang out,
-          chat, and listen to the same song at the exact same time—no matter
+          chat, and listen to the same song at the exact same time (no matter
           where they are. The technical challenge was synchronizing playback
           state across all clients in real-time, handling network latency,
           managing disconnections, and scaling to support multiple rooms with
@@ -123,7 +123,7 @@ const MelodyHubCaseStudy: React.FC = () => {
           Socket.IO. The architecture separates concerns: frontend handles UI
           and local state, backend manages room state and synchronization, and a
           CDN delivers audio reliably. I applied Object-Oriented Design
-          principles from the course—using inheritance for user roles, the
+          principles from the course (using inheritance for user roles, the
           Strategy pattern for playback modes, and the Observer pattern for
           real-time updates.
         </CaseStudyText>
@@ -135,7 +135,7 @@ const MelodyHubCaseStudy: React.FC = () => {
           {[
             {
               title: "1. Real-Time Music Rooms",
-              text: "Users can create or join rooms organized by music genre or interest. Each room maintains its own state—current song, playback position, user list, and chat history. Rooms are isolated using Socket.IO namespaces, ensuring efficient broadcasting and scalability.",
+              text: "Users can create or join rooms organized by music genre or interest. Each room maintains its own state: current song, playback position, user list, and chat history. Rooms are isolated using Socket.IO namespaces, ensuring efficient broadcasting and scalability.",
             },
             {
               title: "2. Synchronized Playback",
@@ -324,7 +324,7 @@ const MelodyHubCaseStudy: React.FC = () => {
               Challenge 3: Handling Disconnections
             </Typography>
             <CaseStudyText className="mb-3">
-              <strong>Problem:</strong> Users disconnect unexpectedly—network
+              <strong>Problem:</strong> Users disconnect unexpectedly (network
               issues, browser closes, etc. The system needs to handle this
               gracefully without breaking synchronization for other users.
             </CaseStudyText>
@@ -359,7 +359,7 @@ const MelodyHubCaseStudy: React.FC = () => {
             },
             {
               title: "4. Full-Stack Integration",
-              text: "Connecting multiple technologies—React frontend, Node.js backend, Socket.IO for real-time, MongoDB for persistence, Clerk for auth, and Cloudinary for CDN—taught me how to integrate third-party services, design APIs for frontend-backend communication, and handle deployment and DevOps considerations.",
+              text: "Connecting multiple technologies (React frontend, Node.js backend, Socket.IO for real-time, MongoDB for persistence, Clerk for auth, and Cloudinary for CDN) taught me how to integrate third-party services, design APIs for frontend-backend communication, and handle deployment and DevOps considerations.",
             },
           ].map((item) => (
             <div key={item.title}>
@@ -455,7 +455,7 @@ const MelodyHubCaseStudy: React.FC = () => {
           Our approach included UML diagrams for system design, comprehensive
           class hierarchies, documented design patterns (Strategy, Observer,
           Factory), and iterative development with feedback. The project
-          demonstrated that good architecture improves team velocity—we reduced
+          demonstrated that good architecture improves team velocity (we reduced
           feature development time by 60% through clear separation of concerns
           and reusable components.
         </CaseStudyText>
