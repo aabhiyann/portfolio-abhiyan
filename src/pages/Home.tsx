@@ -21,7 +21,7 @@ function Home() {
     <Page>
       <SEO
         title="Abhiyan Sainju | Full Stack & AI Engineer"
-        description="Master’s student at GWU building enterprise-grade AI/ML solutions."
+        description="Software Engineer at GWU building enterprise-grade AI/ML solutions."
       />
       <DottedBackground />
 

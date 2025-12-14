@@ -87,66 +87,102 @@ const SkillsMatrix: React.FC = () => {
 
   const categories = Array.from(new Set(skills.map((s) => s.category)));
 
+  const [openCategory, setOpenCategory] = useState<string | null>(
+    categories[0],
+  ); // Accordion state
+
+  const toggleCategory = (category: string) => {
+    setOpenCategory(openCategory === category ? null : category);
+  };
+
   return (
     <div className="w-full max-w-5xl mx-auto py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {categories.map((category) => (
           <div key={category} className="space-y-4">
-            <h3 className="text-xl font-bold text-accent-primary border-b border-border-primary pb-2 mb-4">
+            {/* Mobile Accordion Header */}
+            <div
+              className="md:hidden flex justify-between items-center py-2 border-b border-border-primary cursor-pointer"
+              onClick={() => toggleCategory(category)}
+            >
+              <h3 className="text-xl font-bold text-accent-primary">
+                {category}
+              </h3>
+              <span className="text-text-muted text-2xl">
+                {openCategory === category ? "−" : "+"}
+              </span>
+            </div>
+
+            {/* Desktop Header */}
+            <h3 className="hidden md:block text-xl font-bold text-accent-primary border-b border-border-primary pb-2 mb-4">
               {category}
             </h3>
-            <div className="grid grid-cols-2 gap-4">
-              {skills
-                .filter((s) => s.category === category)
-                .map((skill) => (
-                  <motion.div
-                    key={skill.name}
-                    className="relative glass-card p-4 rounded-lg cursor-default group"
-                    onMouseEnter={() => setHoveredSkill(skill.name)}
-                    onMouseLeave={() => setHoveredSkill(null)}
-                    whileHover={{
-                      scale: 1.02,
-                      borderColor: "var(--accent-primary)",
-                    }}
-                  >
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="font-semibold text-text-primary">
-                        {skill.name}
-                      </span>
-                      <span className="text-xs text-text-muted font-mono">
-                        {skill.proficiency}%
-                      </span>
-                    </div>
 
-                    {/* Progress Bar */}
-                    <div className="h-1.5 w-full bg-bg-surface rounded-full overflow-hidden">
+            {/* Skills Grid - Collapsible on Mobile */}
+            <AnimatePresence>
+              {/* Show if desktop OR if mobile category is open */}
+              {/* Note: We use a simple CSS class for desktop visibility and Framer Motion for mobile toggle */}
+              <div
+                className={`${
+                  openCategory === category ? "block" : "hidden"
+                } md:block`}
+              >
+                <div className="grid grid-cols-2 gap-4">
+                  {skills
+                    .filter((s) => s.category === category)
+                    .map((skill) => (
                       <motion.div
-                        className="h-full gradient-bg"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.proficiency}%` }}
-                        transition={{ duration: 1, ease: "easeOut" }}
-                      />
-                    </div>
+                        key={skill.name}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="relative glass-card p-4 rounded-lg cursor-default group"
+                        onMouseEnter={() => setHoveredSkill(skill.name)}
+                        onMouseLeave={() => setHoveredSkill(null)}
+                        whileHover={{
+                          scale: 1.02,
+                          borderColor: "var(--accent-primary)",
+                        }}
+                      >
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="font-semibold text-text-primary">
+                            {skill.name}
+                          </span>
+                          <span className="text-xs text-text-muted font-mono">
+                            {skill.proficiency}%
+                          </span>
+                        </div>
 
-                    {/* Hover Tooltip - "Skill in Action" */}
-                    <AnimatePresence>
-                      {hoveredSkill === skill.name && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute inset-0 z-10 btn-primary p-4 rounded-lg flex items-center justify-center text-center shadow-xl backdrop-blur-sm"
-                        >
-                          <p className="text-sm font-medium leading-tight">
-                            "{skill.description}"
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                ))}
-            </div>
+                        {/* Progress Bar */}
+                        <div className="h-1.5 w-full bg-bg-surface rounded-full overflow-hidden">
+                          <motion.div
+                            className="h-full gradient-bg"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.proficiency}%` }}
+                            transition={{ duration: 1, ease: "easeOut" }}
+                          />
+                        </div>
+
+                        {/* Hover Tooltip - "Skill in Action" */}
+                        <AnimatePresence>
+                          {hoveredSkill === skill.name && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                              transition={{ duration: 0.2 }}
+                              className="absolute inset-0 z-10 btn-primary p-4 rounded-lg flex items-center justify-center text-center shadow-xl backdrop-blur-sm"
+                            >
+                              <p className="text-sm font-medium leading-tight">
+                                "{skill.description}"
+                              </p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    ))}
+                </div>
+              </div>
+            </AnimatePresence>
           </div>
         ))}
       </div>
