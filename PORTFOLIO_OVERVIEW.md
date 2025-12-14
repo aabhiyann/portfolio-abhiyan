@@ -421,6 +421,7 @@
 ### InfraSight Case Study (`/case-studies/infrasight`)
 
 **Hero:**
+
 - Title: "InfraSight"
 - Subtitle: "ML-powered cloud cost analytics platform with forecasting, anomaly detection, and clustering. Live production app."
 - Tags: React, FastAPI, PostgreSQL, Machine Learning, Docker
@@ -430,9 +431,11 @@
 #### Section 1: Overview
 
 **Content:**
+
 - "InfraSight is a production cloud cost analytics platform that helps engineering teams predict spending, detect anomalies, and optimize infrastructure costs. I built this as a solo full-stack project to demonstrate end-to-end ownership—from database design and ML implementation to production deployment and DevOps."
 
 **Live Demo Box:**
+
 - App: https://infrasight.netlify.app
 - Credentials: demo@infrasight.com / password123
 - API Docs: https://infrasight-rs1b.onrender.com/docs
@@ -440,12 +443,14 @@
 #### Section 2: The Challenge
 
 **Content:**
+
 - "Cloud infrastructure costs are notoriously difficult to manage. Teams often discover cost spikes only after they're billed, making it reactive rather than proactive. Existing cloud billing dashboards are complex, lack predictive capabilities, and don't provide actionable insights for optimization."
 - "I wanted to build a solution that would help engineering teams stay ahead of their cloud spending through forecasting, automatically detect unusual patterns, and provide clear recommendations for cost optimization—all while being interpretable and fast enough for real-time use."
 
 #### Section 3: My Approach
 
 **Core Principles:**
+
 1. **Interpretability** - Stakeholders need to understand predictions
 2. **Speed** - Real-time API responses
 3. **Production Readiness** - Reliable, deployable ML
@@ -510,10 +515,12 @@
 #### Section 5: Technical Architecture
 
 **Architecture Diagram:**
+
 - Image: `/images/case-studies/infrasight/infrasight_architecture.png`
 - Shows React → FastAPI → PostgreSQL flow
 
 **Backend (FastAPI + PostgreSQL):**
+
 - **API Design:** 10+ RESTful endpoints, JWT authentication, role-based access (admin/user), Pydantic schemas for validation, auto-generated OpenAPI/Swagger docs, async request handling with asyncio
 - **Database:** Async SQLAlchemy + asyncpg for non-blocking queries, Serverless PostgreSQL on Neon.tech, Connection pooling for efficiency
 - **ML Pipeline:**
@@ -523,6 +530,7 @@
   - Recommendations: Rule-based engine combining anomalies and budgets
 
 **Frontend (React 19 + TypeScript):**
+
 - Component-based design with custom hooks
 - Chart.js (react-chartjs-2) for interactive visualizations
 - Custom CSS with responsive utilities
@@ -530,6 +538,7 @@
 - Accessibility-focused (keyboard nav, color contrast)
 
 **Deployment:**
+
 - Frontend: Netlify (CDN, auto-deploy from main)
 - Backend: Render (Docker container, health checks)
 - Database: Neon.tech (Serverless PostgreSQL)
@@ -538,16 +547,19 @@
 #### Section 6: Key Technical Challenges
 
 **Challenge 1: Real-Time ML API Performance**
+
 - **Problem:** ML computations (especially pandas operations) were blocking API responses, creating poor UX
 - **Solution:** Async SQLAlchemy with asyncpg for non-blocking queries, GZip compression middleware, optimized pandas operations using vectorization
 - **Impact:** API responses stayed under 500ms even with forecasting and clustering computations
 
 **Challenge 2: Meaningful Anomaly Detection**
+
 - **Problem:** Simple threshold-based detection produced too many false positives and didn't account for service-specific patterns
 - **Solution:** Z-score analysis is relative to each service's historical behavior. Made threshold configurable (1.0-5.0) and exposed Z-score values in UI
 - **Impact:** Teams can tune sensitivity to their needs, statistical approach adapts to each service's normal spending patterns
 
 **Challenge 3: Handling Messy Time-Series Data**
+
 - **Problem:** Real cloud billing data has varying granularity, missing timestamps, inconsistent service names
 - **Solution:** Preprocessing pipeline that normalizes timestamps, fills gaps with forward-fill interpolation, uses pivot tables to transform raw billing data into service-level time series. Added flexible date-range filtering
 - **Impact:** System handles real-world billing data robustly, even with imperfect inputs
@@ -555,6 +567,7 @@
 #### Section 7: Technical Decisions & Trade-offs
 
 **Why "Simple" ML?**
+
 - Chose Linear Regression, Z-score, and K-means over more complex models (LSTM, ARIMA, Isolation Forest)
 - In production ML, **interpretability and speed often matter more than marginal accuracy gains**
 - Business stakeholders need to understand why the system flagged a cost spike
@@ -564,6 +577,7 @@
 - **Future iteration:** Would explore ARIMA or Prophet for time-series forecasting, Isolation Forest for anomaly detection comparison
 
 **What I Owned:**
+
 - **Backend & ML:** FastAPI with 10+ endpoints, JWT auth, Pydantic validation, async SQLAlchemy, ML pipeline from scratch
 - **Frontend:** React 19 dashboard, Chart.js visualizations, responsive design, 3 accessibility themes
 - **Database:** PostgreSQL schema design, async queries, connection pooling, serverless deployment on Neon
@@ -572,12 +586,14 @@
 #### Section 8: ML Implementation Details
 
 **Cost Forecasting: Linear Regression**
+
 - Uses scikit-learn's LinearRegression
 - Temporal features: `day_number` (captures linear trend), `is_weekend` (accounts for weekend usage patterns)
 - Outputs per-service predictions with 95% confidence intervals
 - **Why:** Interpretable (stakeholders understand coefficients), fast (sub-100ms inference), provides confidence intervals for uncertainty quantification
 
 **Anomaly Detection: Z-Score**
+
 - Formula: `z = (cost - mean) / std_dev`
 - Default threshold: 2.0 standard deviations
 - User-adjustable: 1.0 (more sensitive) to 5.0 (less sensitive)
@@ -585,6 +601,7 @@
 - **Why:** Statistically grounded, requires no training data (works immediately on new services), configurable, adapts to each service's historical behavior
 
 **Service Clustering: K-Means**
+
 - Default: 3 clusters
 - Features: Daily cost vectors per service (normalized)
 - **Why:** Scalable, production-ready, helps identify natural groupings in infrastructure spending
@@ -592,6 +609,7 @@
 #### Section 9: What I Learned
 
 **1. ML in Production vs. Research**
+
 - In notebooks, you optimize for accuracy. In production, you optimize for **speed, interpretability, and reliability**
 - Fast inference matters as much as model performance
 - Stakeholders need to understand predictions
@@ -600,12 +618,14 @@
 - Mindset shift: from "what's the most accurate model?" to "what's the most production-ready solution?"
 
 **2. Full-Stack Thinking**
+
 - Building every layer solo taught how decisions cascade
 - Database schema design affects query performance → impacts API response times → influences frontend UX
 - Async Python patterns enable non-blocking I/O → makes app feel responsive even with ML computations
 - Everything connects
 
 **3. DevOps for Real Users**
+
 - Docker multi-stage builds (smaller images)
 - GitHub Actions CI/CD (automated testing)
 - Environment variable management (security)
@@ -614,24 +634,26 @@
 
 #### Section 10: Tech Stack Breakdown
 
-| Category | Technologies |
-|----------|-------------|
+| Category     | Technologies                                     |
+| ------------ | ------------------------------------------------ |
 | **Frontend** | React 19, TypeScript, Chart.js, Vite, Custom CSS |
-| **Backend** | Python 3.11, FastAPI, Pydantic, SQLAlchemy |
-| **ML** | scikit-learn, pandas, NumPy |
-| **Database** | PostgreSQL (Neon.tech), asyncpg |
-| **Auth** | JWT (python-jose), bcrypt |
-| **DevOps** | Docker, GitHub Actions, Netlify, Render |
+| **Backend**  | Python 3.11, FastAPI, Pydantic, SQLAlchemy       |
+| **ML**       | scikit-learn, pandas, NumPy                      |
+| **Database** | PostgreSQL (Neon.tech), asyncpg                  |
+| **Auth**     | JWT (python-jose), bcrypt                        |
+| **DevOps**   | Docker, GitHub Actions, Netlify, Render          |
 
 #### Section 11: Current Status & Next Steps
 
 **Immediate Roadmap:**
+
 - ARIMA or Prophet for improved time-series forecasting
 - Isolation Forest for comparison with Z-score
 - Slack/Teams integration for alerts
 - Budget alerting system
 
 **Long-term Vision:**
+
 - Multi-cloud support (Azure, GCP)
 - Team collaboration features
 - Mobile app for monitoring
@@ -640,6 +662,7 @@
 #### Section 12: Explore the Project
 
 **Links:**
+
 - Live Demo: https://infrasight.netlify.app
 - GitHub: https://github.com/aabhiyann/infrasight
 - API Docs: https://infrasight-rs1b.onrender.com/docs
@@ -649,6 +672,7 @@
 ### TalkifyDocs Case Study (`/case-studies/talkifydocs`)
 
 **Hero:**
+
 - Title: "TalkifyDocs"
 - Subtitle: "RAG-powered document chat application with SaaS features for interactive information retrieval."
 - Tags: Next.js, GPT-4, LangChain, Pinecone, Stripe, TypeScript
@@ -658,21 +682,25 @@
 #### Section 1: Overview
 
 **Content:**
+
 - "TalkifyDocs is a SaaS application designed to transform how users interact with large document collections. It leverages Retrieval-Augmented Generation (RAG) to enable natural language chat with PDFs, providing cited answers and intelligent insights. As a solo full-stack project, it showcases end-to-end development of a modern AI-powered SaaS platform, from frontend to complex third-party integrations."
 
 **Project Status Box:**
+
 - Status: Development (not publicly deployed)
 - Repository: 91.9% TypeScript, 99 commits, Full RAG pipeline implemented
 
 #### Section 2: The Challenge
 
 **Content:**
+
 - "Knowledge workers spend hours manually reviewing documents—researchers analyzing papers, legal teams reviewing contracts, students extracting information from PDFs. Traditional search doesn't understand context or meaning, and finding specific information across multiple documents is tedious and error-prone."
 - "I wanted to build a production-ready RAG application that would let users have natural conversations with their documents. The challenge wasn't just integrating GPT-4—it was designing an entire pipeline for document processing, vector search, and conversational AI, while building a complete SaaS platform with authentication and billing."
 
 #### Section 3: My Approach
 
 **Content:**
+
 - "I designed TalkifyDocs around the RAG architecture: upload documents, chunk and embed them for semantic search, then use retrieved context to generate accurate, cited answers. But RAG is just the core—I also needed to build a complete SaaS platform with user management, subscription billing, and a polished UI."
 
 **Core Workflow:**
@@ -720,6 +748,7 @@
 #### Section 5: Technical Architecture
 
 **Architecture Diagram:**
+
 - ASCII diagram showing:
   - Next.js + TypeScript → LangChain + OpenAI → Pinecone
   - Clerk (Auth) → OpenAI API (GPT-4)
@@ -727,6 +756,7 @@
   - PostgreSQL + Prisma (Database)
 
 **Next.js Full-Stack Application:**
+
 - Server-side rendering for better SEO
 - API routes for backend logic
 - TypeScript support throughout
@@ -734,6 +764,7 @@
 - Responsive design
 
 **RAG Pipeline with LangChain:**
+
 - LangChain orchestrates the RAG workflow
 - RecursiveCharacterTextSplitter for text splitting
 - Chunk size: 1000 tokens, overlap: 200 tokens
@@ -742,6 +773,7 @@
 - GPT-4 for generation
 
 **Third-Party Integrations:**
+
 - Clerk: OAuth and email/password authentication
 - Stripe: Subscription billing with webhook handlers
 - Prisma ORM: Type-safe database queries with automatic migrations
@@ -750,16 +782,19 @@
 #### Section 6: Key Technical Challenges
 
 **Challenge 1: RAG Pipeline Design**
+
 - **Problem:** How to chunk documents effectively for both context preservation and retrieval precision. Too small loses context, too large introduces noise.
 - **Solution:** RecursiveCharacterTextSplitter with configurable chunk size (1000 tokens) and overlap (200 tokens). Tested different configurations to find the sweet spot. Overlap ensures information spanning chunk boundaries isn't lost.
 - **Impact:** Chunk size significantly affects answer quality. The 1000/200 configuration balanced context retention with retrieval precision, but it's document-dependent and would need tuning for different use cases.
 
 **Challenge 2: Managing API Costs**
+
 - **Problem:** OpenAI API calls are expensive at scale. Embedding costs for document processing, GPT-4 costs for query answering, and Pinecone costs for vector storage add up quickly.
 - **Approach:** Designed system with cost awareness: batch embedding generation where possible, implement usage limits per subscription tier, consider caching frequently asked questions. For production, would add rate limiting and monitor per-user costs.
 - **Learning:** Production AI applications require careful cost management. Every API call has a price, and without limits, costs can spiral. Subscription tiers and usage caps are essential for SaaS AI products.
 
 **Challenge 3: Integrating Multiple Third-Party Services**
+
 - **Problem:** Building a SaaS requires integrating authentication (Clerk), billing (Stripe), vector database (Pinecone), AI (OpenAI), and database (PostgreSQL). Each has its own patterns, error handling, and secrets management.
 - **Solution:** Structured codebase with clear separation of concerns: API routes for backend logic, webhook handlers for Stripe events, Prisma for database operations. Used environment variables for all API keys and implemented error handling for each service.
 - **Impact:** Building production SaaS requires orchestrating many services. Webhook handling is particularly tricky—need idempotency, error recovery, and careful testing. Local development is more complex when you depend on external services.
@@ -767,6 +802,7 @@
 #### Section 7: Technical Decisions & Trade-offs
 
 **Why Next.js for RAG?**
+
 - Provides both frontend and backend in one framework
 - API routes handle document processing and RAG queries without needing separate backend
 - Server-side rendering improves SEO
@@ -774,6 +810,7 @@
 - For a solo project, this full-stack approach is faster than building separate frontend and backend
 
 **Why LangChain?**
+
 - Abstracts the RAG pipeline complexity—text splitting, embedding, retrieval, and generation
 - Without it, would need to manually orchestrate OpenAI API calls, vector search, and prompt engineering
 - RecursiveCharacterTextSplitter handles document chunking intelligently
@@ -781,12 +818,14 @@
 - Trade-off is added dependency, but for RAG, it's worth it
 
 **Why Pinecone?**
+
 - Managed vector database service
 - Handles scaling and infrastructure
 - Fast similarity search
 - Metadata filtering capabilities
 
 **What I Owned:**
+
 - **Frontend:** Next.js with TypeScript, React components, responsive UI, document upload interface, chat interface
 - **RAG Pipeline:** LangChain integration, document chunking, embedding generation, vector search, GPT-4 query handling
 - **SaaS Features:** Clerk authentication, Stripe billing, webhook handlers, subscription management
@@ -795,6 +834,7 @@
 #### Section 8: RAG Implementation Details
 
 **Document Processing:**
+
 - Extract text using PDF parser
 - Split into chunks using LangChain's RecursiveCharacterTextSplitter (chunk size: 1000 tokens, overlap: 200 tokens)
 - Generate vector embeddings using OpenAI's text-embedding-ada-002
@@ -802,6 +842,7 @@
 - **Why:** RecursiveCharacterTextSplitter intelligently splits on paragraph boundaries, preserving semantic coherence. Overlap ensures context isn't lost at chunk boundaries.
 
 **Query Execution:**
+
 - Embed the query using the same OpenAI model
 - Search Pinecone for the top-k most similar chunks (k=4)
 - Pass retrieved chunks as context to GPT-4 with prompt instructing it to answer based on provided context
@@ -809,6 +850,7 @@
 - **Why:** Semantic search (vector similarity) finds relevant chunks even when exact keywords don't match. GPT-4 generates natural language answers grounded in retrieved context.
 
 **Context Window Management:**
+
 - GPT-4 has limited context window (8k or 32k tokens depending on model)
 - Retrieve only top-k most relevant chunks to stay within limits
 - If chunks too large, truncate them
@@ -818,12 +860,14 @@
 #### Section 9: What I Learned
 
 **1. RAG is More Than Just AI**
+
 - Building a RAG application involves document preprocessing (text extraction, chunking), embedding generation (API calls, batching), vector database management (indexing, querying), prompt engineering (context formatting, instruction design), and answer post-processing (citation extraction, formatting)
 - The AI model is just one piece. Most of the work is data engineering
 - Production AI applications require strong software engineering skills, not just ML knowledge
 - Need to understand APIs, databases, error handling, and system design
 
 **2. SaaS Requires Many Integrations**
+
 - Integrating Clerk, Stripe, Pinecone, OpenAI, and PostgreSQL taught that each service has its own patterns
 - Clerk uses middleware for auth
 - Stripe requires webhook handlers for subscription events
@@ -833,6 +877,7 @@
 - Testing locally is harder when you depend on external services
 
 **3. TypeScript Throughout is Worth It**
+
 - Using TypeScript for frontend, backend, and database queries (Prisma) provided type safety everywhere
 - Caught errors at compile time instead of runtime
 - IDE autocomplete made development faster
@@ -841,20 +886,21 @@
 
 #### Section 10: Tech Stack Breakdown
 
-| Category | Technologies |
-|----------|-------------|
-| **Frontend** | Next.js, TypeScript, React, Tailwind CSS |
-| **Backend** | Next.js API Routes, LangChain |
-| **AI/ML** | OpenAI GPT-4, OpenAI Embeddings |
-| **Vector DB** | Pinecone |
-| **Auth** | Clerk |
-| **Payments** | Stripe |
-| **Database** | PostgreSQL, Prisma ORM |
-| **Deployment** | (Development - not yet deployed) |
+| Category       | Technologies                             |
+| -------------- | ---------------------------------------- |
+| **Frontend**   | Next.js, TypeScript, React, Tailwind CSS |
+| **Backend**    | Next.js API Routes, LangChain            |
+| **AI/ML**      | OpenAI GPT-4, OpenAI Embeddings          |
+| **Vector DB**  | Pinecone                                 |
+| **Auth**       | Clerk                                    |
+| **Payments**   | Stripe                                   |
+| **Database**   | PostgreSQL, Prisma ORM                   |
+| **Deployment** | (Development - not yet deployed)         |
 
 #### Section 11: Current Status & Next Steps
 
 **Development Phase - Core Features Implemented:**
+
 - ✅ Document upload and processing
 - ✅ RAG pipeline with GPT-4
 - ✅ User authentication
@@ -862,12 +908,14 @@
 - ✅ Subscription billing integration
 
 **Not Yet Deployed Publicly - Would Require:**
+
 - Production deployment setup
 - Cost optimization for API usage
 - User testing and feedback
 - Performance optimization at scale
 
 **Future Enhancements:**
+
 - Deploy to production (Vercel)
 - Implement caching for repeated queries
 - Add support for more document types (Word, Excel)
@@ -880,6 +928,7 @@
 #### Section 12: Explore the Project
 
 **Links:**
+
 - GitHub: https://github.com/aabhiyann/talkifydocs
 
 ---
@@ -887,6 +936,7 @@
 ### Audio Classification CNN Case Study (`/case-studies/audio-classification`)
 
 **Hero:**
+
 - Title: "Audio Classification CNN"
 - Subtitle: "Deep learning research comparing CNN architectures for audio classification. Task-specific model achieved 92% accuracy, outperforming transfer learning by 26%."
 - Tags: TensorFlow, Keras, librosa, YAMNet, Deep Learning
@@ -896,18 +946,21 @@
 #### Section 1: Overview
 
 **Content:**
+
 - "This was a research project for my Neural Networks & Deep Learning course (CSCI 6366) at GWU. I worked with two teammates to systematically compare different CNN architectures for audio classification, with a focus on understanding when transfer learning works and when training from scratch is better."
 - "Research Question: Can a task-specific CNN outperform transfer learning with a pre-trained model (YAMNet) for focused audio classification tasks?"
 
 #### Section 2: The Challenge
 
 **Content:**
+
 - "Audio classification is challenging because raw audio waveforms are high-dimensional and don't have the spatial structure that images have. CNNs work well on images, but audio requires preprocessing to convert it into a format CNNs can process effectively."
 - "The common assumption is that transfer learning with large pre-trained models (like YAMNet) should always outperform training from scratch. But is this true for focused, domain-specific tasks with sufficient labeled data?"
 
 #### Section 3: My Approach
 
 **Dataset & Preprocessing:**
+
 - Dataset: Human Words Audio Classification from Kaggle (610 audio clips: 203 dog, 203 cat, 204 bird)
 - Each clip: 1 second, 16 kHz sample rate
 - Preprocessing: Convert audio to Mel-spectrograms using librosa
@@ -949,47 +1002,54 @@
    - Why it underperformed: Domain mismatch between AudioSet (general audio) and our focused task (dog/cat/bird)
 
 **Architecture Diagram:**
+
 - Image: `/images/case-studies/audio-classification/7_architecture_diagram.png` - Visual diagram of the winning CNN + Dropout model
 
 #### Section 4: Results Comparison
 
 **Visual Summary:**
+
 - Image: `/images/case-studies/audio-classification/3_comparison_table.png` - Quick visual summary
 
 **Detailed Comparison Table:**
 
-| Model | Test/Val Accuracy | Precision | Recall | F1-Score | Loss | Notes |
-|-------|-------------------|-----------|--------|----------|------|-------|
-| **CNN + Dropout** | **92%** (test) | **92%** | **92%** | **92%** | **0.24** | **Best model** |
-| Baseline CNN | 90% (test) | 90% | 90% | 90% | 0.57 | Good baseline |
-| CRNN | 78.69% (val) | N/A | N/A | N/A | 0.80 | Temporal modeling |
-| YAMNet (sequence) | 66% (test) | 60% | 58% | 58% | 0.96 | Transfer learning |
-| YAMNet (averaged) | 62% (test) | N/A | N/A | N/A | 0.90 | Transfer learning |
-| ViT | 35-40% (val) | N/A | N/A | N/A | 1.10 | Underfits |
+| Model             | Test/Val Accuracy | Precision | Recall  | F1-Score | Loss     | Notes             |
+| ----------------- | ----------------- | --------- | ------- | -------- | -------- | ----------------- |
+| **CNN + Dropout** | **92%** (test)    | **92%**   | **92%** | **92%**  | **0.24** | **Best model**    |
+| Baseline CNN      | 90% (test)        | 90%       | 90%     | 90%      | 0.57     | Good baseline     |
+| CRNN              | 78.69% (val)      | N/A       | N/A     | N/A      | 0.80     | Temporal modeling |
+| YAMNet (sequence) | 66% (test)        | 60%       | 58%     | 58%      | 0.96     | Transfer learning |
+| YAMNet (averaged) | 62% (test)        | N/A       | N/A     | N/A      | 0.90     | Transfer learning |
+| ViT               | 35-40% (val)      | N/A       | N/A     | N/A      | 1.10     | Underfits         |
 
 All metrics macro-averaged across three classes (dog, cat, bird)
 
 #### Section 5: Key Research Finding
 
 **Key Finding Chart:**
+
 - Image: `/images/case-studies/audio-classification/8_key_finding.png` - Bar chart comparing CNN (92%) vs YAMNet (66%) accuracy
 
 **Transfer Learning Is Not Always Better:**
+
 - Task-specific CNN (92% accuracy) significantly outperformed transfer learning with YAMNet (66% accuracy)
 - **26% improvement** challenges the common assumption that transfer learning is always superior
 
 **Why Transfer Learning Underperformed:**
+
 - YAMNet trained on AudioSet (general audio events like "car horn," "dog bark," "footsteps")
 - Our task is focused (dog/cat/bird classification)
 - Domain mismatch between pre-training and target task
 - Small dataset size (610 clips) makes task-specific training viable
 
 **When Transfer Learning Works:**
+
 - Very limited labeled data
 - Task similar to pre-training domain
 - Need quick baseline without compute for training
 
 **When Training From Scratch Works:**
+
 - Sufficient labeled data (our case: 610 clips)
 - Focused, specific task
 - Domain mismatch with available pre-trained models
@@ -997,6 +1057,7 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 #### Section 6: Technical Implementation
 
 **Data Pipeline:**
+
 - librosa for audio processing
 - Load audio at 16 kHz
 - Compute Mel-spectrograms (n_fft=1024, hop_length=512, n_mels=128)
@@ -1005,6 +1066,7 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 - Transforms 1-second audio clips into 2D image-like representations
 
 **Training Configuration:**
+
 - Adam optimizer
 - Categorical crossentropy loss
 - Comprehensive metrics (accuracy, precision, recall, F1-score)
@@ -1015,6 +1077,7 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 - Separate test set never seen during training
 
 **Evaluation Methodology:**
+
 - Stratified splits to maintain class distribution
 - Separate test set never seen during training
 - Comprehensive metrics (not just accuracy)
@@ -1025,12 +1088,14 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 #### Section 7: What I Learned
 
 **1. Transfer Learning Isn't Automatic**
+
 - Transfer learning isn't always the best approach
 - Domain alignment matters more than model size
 - Task-specific models can outperform large pre-trained models when there's a domain mismatch
 - Small, focused datasets can favor custom training over transfer learning
 
 **2. Regularization Is Critical**
+
 - Dropout(0.5) significantly improved results
 - Reduced test loss from 0.57 → 0.24
 - Maintained high accuracy (92%)
@@ -1038,6 +1103,7 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 - Proper regularization can make a substantial difference even with relatively simple architectures
 
 **3. Complexity ≠ Performance**
+
 - Simpler CNN outperformed complex architectures
 - CRNN with GRU: 78.69%
 - Vision Transformer: 35-40%
@@ -1045,6 +1111,7 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 - Model complexity should match the problem complexity and dataset size
 
 **4. Research Process**
+
 - Conducting systematic experiments taught the importance of proper train/val/test splits
 - Comprehensive metrics beyond accuracy
 - Comparing multiple approaches rigorously
@@ -1053,24 +1120,26 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 
 #### Section 8: Tech Stack Breakdown
 
-| Category | Technologies |
-|----------|-------------|
-| **Deep Learning** | TensorFlow, Keras |
-| **Audio Processing** | librosa |
-| **Transfer Learning** | YAMNet |
-| **Data Processing** | NumPy, pandas |
-| **Visualization** | Matplotlib, seaborn |
-| **Evaluation** | scikit-learn (metrics) |
+| Category              | Technologies           |
+| --------------------- | ---------------------- |
+| **Deep Learning**     | TensorFlow, Keras      |
+| **Audio Processing**  | librosa                |
+| **Transfer Learning** | YAMNet                 |
+| **Data Processing**   | NumPy, pandas          |
+| **Visualization**     | Matplotlib, seaborn    |
+| **Evaluation**        | scikit-learn (metrics) |
 
 #### Section 9: Repository Highlights
 
 **Project Structure:**
+
 - Well-organized codebase with clear separation of concerns
 - Modular architecture for easy experimentation
 - Comprehensive documentation
 - 205 commits showing iterative development
 
 **Key Files:**
+
 - Model architectures
 - Data preprocessing pipeline
 - Training scripts
@@ -1081,6 +1150,7 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 #### Section 10: Explore the Project
 
 **Links:**
+
 - GitHub: https://github.com/aabhiyann/audio-classification-cnn
 - Final Report PDF: https://github.com/aabhiyann/audio-classification-cnn/blob/main/Audio%20Classification%20CNN.pdf
 
@@ -1089,6 +1159,7 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 ### MelodyHub Case Study (`/case-studies/melodyhub`)
 
 **Hero:**
+
 - Title: "MelodyHub"
 - Subtitle: "Real-time social music platform with synchronized playback and live chat. Built with Socket.IO, React, and MongoDB—supporting 100+ concurrent users."
 - Tags: React, Node.js, Socket.IO, MongoDB, Clerk, Cloudinary
@@ -1098,9 +1169,11 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 #### Section 1: Overview
 
 **Content:**
+
 - "MelodyHub is a real-time social music platform that combines music streaming with social interaction—think 'Spotify meets Discord.' I built this with two teammates for my Object-Oriented Design course at GWU. The platform lets users create music rooms, listen together with synchronized playback, and chat in real-time. The core challenge was building a real-time system that keeps all users perfectly synchronized, even across different network conditions."
 
 **Project Status Box:**
+
 - Status: Deployed (by teammate)
 - Live Demo: https://udaymelodyhhub.vercel.app/
 - Note: Project is live but maintained by teammate
@@ -1108,6 +1181,7 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 #### Section 2: The Challenge
 
 **Content:**
+
 - "Existing music platforms are isolated—you listen alone. There's no way to share the experience in real-time with friends. Social features are missing, and synchronization across multiple users is technically challenging."
 - "I wanted to build a platform where users could create music rooms, invite friends, and listen together with perfectly synchronized playback. The challenge was handling real-time state synchronization, network latency, and maintaining consistency across all connected clients."
 
@@ -1138,6 +1212,7 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 #### Section 4: Technical Architecture
 
 **Architecture Diagram (ASCII):**
+
 ```
 ┌──────────────┐     WebSocket      ┌──────────────┐     Audio CDN    ┌──────────────┐
 │    React     │◄──────────────────►│  Socket.IO   │◄────────────────►│  Cloudinary  │
@@ -1154,29 +1229,33 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 ```
 
 **Real-Time Synchronization:**
+
 - Socket.IO handles WebSocket communication for real-time updates
 - When a user performs an action (play, pause, seek), the client emits an event to the server
 - Server broadcasts it to all other clients in the room
 - Server maintains the authoritative state, ensuring consistency
 
 **Code Example - Server broadcasts playback state:**
+
 ```javascript
-socket.to(roomId).emit('sync-playback', {
+socket.to(roomId).emit("sync-playback", {
   songId,
   timestamp,
-  isPlaying
+  isPlaying,
 });
 ```
 
 **Code Example - Clients apply the same state:**
+
 ```javascript
-socket.on('sync-playback', ({ songId, timestamp, isPlaying }) => {
+socket.on("sync-playback", ({ songId, timestamp, isPlaying }) => {
   audioPlayer.currentTime = timestamp;
   if (isPlaying) audioPlayer.play();
 });
 ```
 
 **Backend (Node.js + Express):**
+
 - Object-Oriented Design principles applied:
   - **Inheritance:** User roles (admin, member, guest) extend a base User class
   - **Strategy Pattern:** Different playback modes (synchronized, independent) as interchangeable strategies
@@ -1186,6 +1265,7 @@ socket.on('sync-playback', ({ songId, timestamp, isPlaying }) => {
 - MongoDB for persistent storage
 
 **Frontend (React):**
+
 - React components handle UI and local state
 - Socket.IO client connects to server and listens for real-time events
 - Key components:
@@ -1195,6 +1275,7 @@ socket.on('sync-playback', ({ songId, timestamp, isPlaying }) => {
   - User list with presence indicators
 
 **Audio Delivery (Cloudinary CDN):**
+
 - Cloudinary provides reliable global CDN for audio files
 - Handles format optimization, automatic transcoding, and fast delivery worldwide
 - Ensures sub-3-second song loading across different network conditions
@@ -1203,16 +1284,19 @@ socket.on('sync-playback', ({ songId, timestamp, isPlaying }) => {
 #### Section 5: Key Technical Challenges
 
 **Challenge 1: Real-Time Synchronization**
+
 - **Problem:** Keeping all users in a room perfectly synchronized despite network latency and varying connection speeds
 - **Solution:** Server maintains authoritative playback state and broadcasts events with timestamps. Clients apply state updates and adjust for their own network delay. Implemented timestamp-based sync mechanism that accounts for latency differences
 - **Impact:** Users stay synchronized within ~100ms, creating a seamless shared listening experience
 
 **Challenge 2: Scalable Room Architecture**
+
 - **Problem:** Supporting multiple rooms with many users each, without performance degradation or resource conflicts
 - **Solution:** Socket.IO namespaces isolate rooms, ensuring broadcasts only go to relevant clients. MongoDB stores persistent room state, while in-memory cache handles active rooms for fast lookups. Each room operates independently
 - **Impact:** System supports 100+ concurrent users across multiple rooms with 99.2% uptime during beta testing
 
 **Challenge 3: Handling Disconnections**
+
 - **Problem:** Users disconnect unexpectedly—network issues, browser closes, etc. The system needs to handle this gracefully without breaking synchronization for other users
 - **Solution:** Socket.IO connection events detect disconnections and notify other users. Room state persists in MongoDB, so reconnecting users can resume where they left off. Implemented reconnection logic that restores playback state
 - **Impact:** Graceful handling of disconnections with automatic reconnection and state restoration
@@ -1220,6 +1304,7 @@ socket.on('sync-playback', ({ songId, timestamp, isPlaying }) => {
 #### Section 6: What I Learned
 
 **1. Real-Time Architecture Patterns**
+
 - Building a synchronized real-time app taught WebSocket patterns with Socket.IO
 - State synchronization challenges
 - Handling network latency
@@ -1227,6 +1312,7 @@ socket.on('sync-playback', ({ songId, timestamp, isPlaying }) => {
 - Key insight: The server must be the source of truth, and clients apply updates optimistically while respecting server authority
 
 **2. Object-Oriented Design in Practice**
+
 - Applying OOP principles from the course to a real application showed how design patterns solve actual problems
 - Inheritance for role hierarchies
 - Strategy pattern for interchangeable behaviors
@@ -1234,6 +1320,7 @@ socket.on('sync-playback', ({ songId, timestamp, isPlaying }) => {
 - All made the codebase more maintainable and extensible
 
 **3. Team Collaboration**
+
 - Working on a 3-person team with Agile methodology taught the importance of:
   - Clear API design for parallel development
   - Code reviews for quality
@@ -1242,6 +1329,7 @@ socket.on('sync-playback', ({ songId, timestamp, isPlaying }) => {
 - Good architecture reduced feature development time by 60% through clear separation of concerns
 
 **4. Full-Stack Integration**
+
 - Connecting multiple technologies—React frontend, Node.js backend, Socket.IO for real-time, MongoDB for persistence, Clerk for auth, and Cloudinary for CDN
 - Taught how to integrate third-party services
 - Design APIs for frontend-backend communication
@@ -1249,24 +1337,26 @@ socket.on('sync-playback', ({ songId, timestamp, isPlaying }) => {
 
 #### Section 7: Tech Stack Breakdown
 
-| Category | Technologies |
-|----------|-------------|
-| **Frontend** | React, JavaScript, CSS |
-| **Backend** | Node.js, Express, Socket.IO |
-| **Database** | MongoDB |
+| Category           | Technologies                  |
+| ------------------ | ----------------------------- |
+| **Frontend**       | React, JavaScript, CSS        |
+| **Backend**        | Node.js, Express, Socket.IO   |
+| **Database**       | MongoDB                       |
 | **Authentication** | Clerk (OAuth, email/password) |
-| **Audio CDN** | Cloudinary |
-| **Deployment** | Vercel (deployed by teammate) |
+| **Audio CDN**      | Cloudinary                    |
+| **Deployment**     | Vercel (deployed by teammate) |
 
 #### Section 8: Performance & Scale
 
 **Beta Testing Results:**
+
 - **100+ concurrent users** supported across multiple rooms
 - **99.2% uptime** during 2-month beta period
 - **50+ community members** actively using music rooms
 - **Sub-3-second song loading** across different network conditions
 
 **Optimizations:**
+
 - CDN for audio delivery (reducing latency)
 - Socket.IO rooms for efficient broadcasting (only relevant clients receive updates)
 - Connection pooling for database (improving query performance)
@@ -1275,6 +1365,7 @@ socket.on('sync-playback', ({ songId, timestamp, isPlaying }) => {
 #### Section 9: Course Project Context
 
 **CSCI 6234: Object-Oriented Design @ GWU**
+
 - Project goals:
   - Apply OOP principles in a real application
   - Use design patterns appropriately
@@ -1282,18 +1373,21 @@ socket.on('sync-playback', ({ songId, timestamp, isPlaying }) => {
   - Document design decisions
 
 **Our Approach:**
+
 - UML diagrams for system design
 - Comprehensive class hierarchies
 - Documented design patterns (Strategy, Observer, Factory)
 - Iterative development with feedback
 
 **Impact:**
+
 - Project demonstrated that good architecture improves team velocity
 - Reduced feature development time by 60% through clear separation of concerns and reusable components
 
 #### Section 10: Explore the Project
 
 **Links:**
+
 - Live Demo: https://udaymelodyhhub.vercel.app/
 - GitHub: https://github.com/aabhiyann/MelodyHub
 

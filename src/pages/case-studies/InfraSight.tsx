@@ -1,5 +1,6 @@
 import React from "react";
 import CaseStudyLayout from "../../components/CaseStudyLayout";
+import MermaidDiagram from "../../components/MermaidDiagram";
 
 const InfraSightCaseStudy: React.FC = () => {
   return (
@@ -249,6 +250,48 @@ const InfraSightCaseStudy: React.FC = () => {
 
       <section className="mb-12">
         <h2>Technical Architecture</h2>
+
+        <MermaidDiagram
+          chart={`
+graph TB
+    subgraph Frontend["Frontend Layer"]
+        React["React 19 + TypeScript<br/>Chart.js Visualizations"]
+    end
+    
+    subgraph Backend["Backend Layer"]
+        FastAPI["FastAPI<br/>REST API + ML Engine"]
+        Auth["JWT Authentication<br/>Role-Based Access"]
+    end
+    
+    subgraph Database["Data Layer"]
+        PostgreSQL["PostgreSQL<br/>Neon.tech Serverless"]
+        AsyncPG["asyncpg<br/>Connection Pooling"]
+    end
+    
+    subgraph ML["ML Pipeline"]
+        Forecasting["Linear Regression<br/>Cost Forecasting"]
+        Anomaly["Z-Score Analysis<br/>Anomaly Detection"]
+        Clustering["K-Means<br/>Service Clustering"]
+    end
+    
+    React -->|REST API| FastAPI
+    FastAPI -->|Async Queries| PostgreSQL
+    FastAPI -->|ML Processing| Forecasting
+    FastAPI -->|ML Processing| Anomaly
+    FastAPI -->|ML Processing| Clustering
+    FastAPI -->|Auth| Auth
+    PostgreSQL -->|Connection Pool| AsyncPG
+    
+    style React fill:#8B5CF6,stroke:#A78BFA,color:#F4F4F7
+    style FastAPI fill:#22C55E,stroke:#4ADE80,color:#F4F4F7
+    style PostgreSQL fill:#3B82F6,stroke:#60A5FA,color:#F4F4F7
+    style Forecasting fill:#F9A825,stroke:#FBC02D,color:#0F172A
+    style Anomaly fill:#F9A825,stroke:#FBC02D,color:#0F172A
+    style Clustering fill:#F9A825,stroke:#FBC02D,color:#0F172A
+          `}
+          title="System Architecture"
+        />
+
         <div className="mb-6 rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl">
           <img
             src="/images/case-studies/infrasight/infrasight_architecture.png"
@@ -654,7 +697,7 @@ const InfraSightCaseStudy: React.FC = () => {
 
       <section className="mb-12">
         <h2>Explore the Project</h2>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="p-6 rounded-2xl bg-accent-primary/5 border border-accent-primary/10">
             <h3 className="font-semibold mb-3">Live Demo</h3>
             <p className="text-sm mb-3">
@@ -701,6 +744,20 @@ const InfraSightCaseStudy: React.FC = () => {
                 API Documentation
               </a>
             </p>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
+            <h3 className="font-semibold mb-3">Technical Deep Dive</h3>
+            <p className="text-sm mb-3 text-text-muted">
+              Read my in-depth analysis of the technical decisions, challenges,
+              and learnings from building this production ML platform.
+            </p>
+            <a
+              href="/deep-dives/infrasight-production-ml"
+              className="text-accent-primary hover:underline font-medium text-sm inline-flex items-center gap-1"
+            >
+              Read Deep Dive →
+            </a>
           </div>
         </div>
       </section>

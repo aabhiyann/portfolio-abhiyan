@@ -483,7 +483,7 @@ const MelodyHubCaseStudy: React.FC = () => {
 
       <section className="mb-12">
         <h2>Explore the Project</h2>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           <a
             href="https://github.com/aabhiyann/MelodyHub"
             target="_blank"
@@ -510,6 +510,18 @@ const MelodyHubCaseStudy: React.FC = () => {
             <p className="text-sm text-text-muted">
               Deployed on Vercel (may be down, deployed by teammate). Experience
               real-time synchronized playback and chat.
+            </p>
+          </a>
+          <a
+            href="/deep-dives/melodyhub-realtime-architecture"
+            className="p-6 rounded-xl bg-bg-surface/50 border border-border-primary/50 hover:border-accent-primary/50 transition-colors group"
+          >
+            <h3 className="font-semibold text-lg mb-2 group-hover:text-accent-primary transition-colors">
+              Technical Deep Dive
+            </h3>
+            <p className="text-sm text-text-muted">
+              Read my analysis on WebSocket architecture, state synchronization,
+              and building scalable real-time systems
             </p>
           </a>
         </div>

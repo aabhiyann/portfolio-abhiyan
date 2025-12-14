@@ -9,6 +9,7 @@ import { Button, Chip } from "../components/ui";
 import SEO from "../components/SEO";
 import ProjectFilters from "../components/ProjectFilters";
 import ContactSection from "../components/ContactSection";
+import { FileText } from "lucide-react";
 
 interface Architecture {
   nodes: Array<{
@@ -136,8 +137,6 @@ function Projects() {
                           {project.story || project.description}
                         </p>
 
-                        {/* Elaborated description removed */}
-
                         <div className="flex flex-wrap gap-2 mb-6">
                           {project.tech.map((tech) => (
                             <Chip key={tech} size="sm">
@@ -158,6 +157,23 @@ function Projects() {
                               Case Study
                             </Button>
                           )}
+
+                          {/* New Deep Dive Button */}
+                          {project.deepDiveId && (
+                            <Button
+                              as={Link}
+                              to={`/deep-dives/${project.deepDiveId}`}
+                              variant="outline"
+                              size="sm"
+                              className="font-medium inline-flex items-center gap-2"
+                            >
+                              <FileText className="w-3.5 h-3.5" />
+                              Technical Deep Dive
+                            </Button>
+                          )}
+
+                          <div className="flex-grow"></div>
+
                           <Button
                             as="a"
                             href={project.github}
@@ -190,7 +206,6 @@ function Projects() {
                               Architecture
                             </Button>
                           )}
-                          {/* Elaborate button removed for authenticity */}
                         </div>
                       </div>
                     </motion.div>
