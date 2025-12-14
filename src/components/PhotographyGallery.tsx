@@ -20,16 +20,16 @@ function PhotographyGallery({ limit }: { limit?: number }) {
 
   return (
     <>
-      {/* Gallery Grid - Preserves original aspect ratios */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {/* Gallery Grid */}
+      <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">
         {photographyImages.slice(0, limit).map((image, index) => (
           <motion.figure
             key={index}
-            className="relative break-inside-avoid rounded-xl overflow-hidden border border-border-primary/50 group cursor-pointer bg-card/50"
+            className="relative mb-4 break-inside-avoid rounded-xl overflow-hidden border border-border-primary/50 group cursor-pointer bg-card/50"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: (index % 6) * 0.1 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
             onClick={() => openLightbox(image)}
           >
             <div className="overflow-hidden">
