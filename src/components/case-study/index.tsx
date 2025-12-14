@@ -45,22 +45,26 @@ export const CaseStudyImage = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("mb-8", className)}>
-      <div className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-xl bg-bg-surface/30">
-        <img
-          src={src}
-          alt={alt}
-          className="w-full h-auto object-cover"
-          onError={(e) => {
-            e.currentTarget.style.display = "none";
-          }}
-        />
+    <div className={cn("mb-12 group", className)}>
+      <div className="rounded-2xl overflow-hidden border border-border-primary/50 bg-card/40 backdrop-blur-md relative shadow-2xl transition-all duration-500 hover:shadow-accent-primary/20">
+        <div className="relative overflow-hidden">
+          <img
+            src={src}
+            alt={alt}
+            className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+          {/* Liquid Glass Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-[1px]" />
+        </div>
       </div>
       {caption && (
         <Typography
           variant="caption"
           color="muted"
-          className="mt-3 block text-center italic"
+          className="mt-4 block text-center italic opacity-80 group-hover:opacity-100 transition-opacity"
         >
           {caption}
         </Typography>
