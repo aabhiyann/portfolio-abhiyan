@@ -16,7 +16,7 @@ export const articles: Article[] = [
     title:
       "InfraSight: Building a Production ML Platform for Cloud Cost Analytics",
     summary:
-      "What I learned building a live ML platform with forecasting, anomaly detection, and optimization recommendations—and why 'simple' ML often wins in production.",
+      "What I learned building a live ML platform with forecasting, anomaly detection, and optimization recommendations, and why 'simple' ML often wins in production.",
     date: "Oct 15, 2025",
     readTime: "8 min read",
     tags: ["Machine Learning", "Python", "React", "DevOps"],
@@ -34,9 +34,9 @@ export const articles: Article[] = [
 
 ## The Problem
 
-Cloud infrastructure costs are notoriously difficult to manage. Teams discover cost spikes only after they're billed—reactive, not proactive. Existing cloud billing dashboards are complex, lack predictive capabilities, and don't provide actionable insights for optimization.
+Cloud infrastructure costs are notoriously difficult to manage. Teams discover cost spikes only after they're billed (reactive, not proactive). Existing cloud billing dashboards are complex, lack predictive capabilities, and don't provide actionable insights for optimization.
 
-I wanted to build a solution that would help engineering teams stay ahead of their cloud spending through forecasting, automatically detect unusual patterns, and provide clear recommendations for cost optimization—all while being interpretable and fast enough for real-time use.
+I wanted to build a solution that would help engineering teams stay ahead of their cloud spending through forecasting, automatically detect unusual patterns, and provide clear recommendations for cost optimization, all while being interpretable and fast enough for real-time use.
 
 ---
 
@@ -44,9 +44,9 @@ I wanted to build a solution that would help engineering teams stay ahead of the
 
 I designed InfraSight around three core principles:
 
-1. **Interpretability** — Stakeholders need to understand predictions
-2. **Speed** — Real-time API responses (< 500ms)
-3. **Production Readiness** — Reliable, deployable ML
+1. **Interpretability**: Stakeholders need to understand predictions
+2. **Speed**: Real-time API responses (< 500ms)
+3. **Production Readiness**: Reliable, deployable ML
 
 ### Core Capabilities
 
@@ -74,7 +74,7 @@ K-means clustering groups services with similar cost behaviors, helping teams id
 
 ## Key Technical Challenges
 
-Building a production ML system taught me that the hard problems aren't always algorithmic—they're about making ML work reliably in real-world conditions.
+Building a production ML system taught me that the hard problems aren't always algorithmic. They're about making ML work reliably in real-world conditions.
 
 ### Challenge 1: Real-Time ML API Performance
 
@@ -94,7 +94,7 @@ Building a production ML system taught me that the hard problems aren't always a
 
 ### Challenge 3: Handling Messy Time-Series Data
 
-**The Problem:** Real cloud billing data has varying granularity, missing timestamps, and inconsistent service names—not the clean datasets you see in tutorials.
+**The Problem:** Real cloud billing data has varying granularity, missing timestamps, and inconsistent service names (not the clean datasets you see in tutorials).
 
 **My Solution:** I built a preprocessing pipeline that normalizes timestamps, fills gaps with forward-fill interpolation, and uses pivot tables to transform raw billing data into service-level time series. Added flexible date-range filtering to handle different reporting periods.
 
@@ -150,7 +150,7 @@ This project taught me that building production ML systems is fundamentally diff
 
 In notebooks, you optimize for accuracy. In production, you optimize for **speed, interpretability, and reliability**. Fast inference matters as much as model performance. Stakeholders need to understand predictions. Error handling and fallbacks are critical. Configurable parameters let users tune behavior to their needs.
 
-This mindset shift—from "what's the most accurate model?" to "what's the most production-ready solution?"—changed how I approach ML engineering.
+This mindset shift (from "what's the most accurate model?" to "what's the most production-ready solution?") changed how I approach ML engineering.
 
 ### Full-Stack Thinking
 
@@ -158,7 +158,7 @@ Building every layer solo taught me how decisions cascade. Database schema desig
 
 ### DevOps for Real Users
 
-Deploying to production means thinking about Docker multi-stage builds (smaller images), GitHub Actions CI/CD (automated testing), environment variable management (security), and CORS configuration (cross-origin requests). It's not enough to make it work locally—it has to work reliably for real users.
+Deploying to production means thinking about Docker multi-stage builds (smaller images), GitHub Actions CI/CD (automated testing), environment variable management (security), and CORS configuration (cross-origin requests). It's not enough to make it work locally; it has to work reliably for real users.
 
 ---
 
@@ -225,7 +225,7 @@ graph TB
 
 ## Conclusion
 
-Building InfraSight taught me that production ML is fundamentally different from research ML. The best model isn't always the most accurate—it's the one that's interpretable, fast, and reliable. "Simple" ML techniques like Linear Regression and Z-score can be more valuable than complex deep learning models when you need to ship quickly and maintain stakeholder trust.
+Building InfraSight taught me that production ML is fundamentally different from research ML. The best model isn't always the most accurate; it's the one that's interpretable, fast, and reliable. "Simple" ML techniques like Linear Regression and Z-score can be more valuable than complex deep learning models when you need to ship quickly and maintain stakeholder trust.
     `,
   },
   {
@@ -241,7 +241,7 @@ Building InfraSight taught me that production ML is fundamentally different from
     content: `
 # Audio Classification Research: When Task-Specific Models Beat Transfer Learning
 
-**TL;DR:** I systematically compared 5 deep learning architectures for audio classification. The result? A simple task-specific CNN achieved 92% accuracy, outperforming YAMNet transfer learning by 26%. Here's what I learned about when transfer learning works—and when it doesn't.
+**TL;DR:** I systematically compared 5 deep learning architectures for audio classification. The result? A simple task-specific CNN achieved 92% accuracy, outperforming YAMNet transfer learning by 26%. Here's what I learned about when transfer learning works (and when it doesn't).
 
 💻 **[Source Code](https://github.com/aabhiyann/audio-classification-cnn)**
 
@@ -251,7 +251,7 @@ Building InfraSight taught me that production ML is fundamentally different from
 
 **Can task-specific CNNs trained from scratch outperform transfer learning for audio classification?**
 
-This was my research project for Neural Networks & Deep Learning at GWU. I wanted to challenge the common assumption that transfer learning is always superior—especially when you have sufficient labeled data and a focused task.
+This was my research project for Neural Networks & Deep Learning at GWU. I wanted to challenge the common assumption that transfer learning is always superior, especially when you have sufficient labeled data and a focused task.
 
 ---
 
@@ -287,7 +287,7 @@ I designed a rigorous experimental methodology: start with a simple baseline, sy
 
 4. **Vision Transformer (ViT)** (35-40% val accuracy)
    - Implemented with patch-based attention
-   - Severely underfits—transformers need much more data
+   - Severely underfits; transformers need much more data
 
 5. **Transfer Learning - YAMNet** (66% test accuracy)
    - Pre-trained on AudioSet
@@ -407,7 +407,7 @@ This research demonstrates that transfer learning isn't always the answer. When 
     id: "talkifydocs-rag-pipeline",
     title: "TalkifyDocs: Building a RAG-Powered Document Chat Application",
     summary:
-      "What I learned building a SaaS RAG application with GPT-4, LangChain, and Pinecone—and why production AI is 80% data engineering.",
+      "What I learned building a SaaS RAG application with GPT-4, LangChain, and Pinecone, and why production AI is 80% data engineering.",
     date: "Dec 8, 2025",
     readTime: "12 min read",
     tags: ["AI", "RAG", "Next.js", "TypeScript"],
@@ -423,15 +423,15 @@ This research demonstrates that transfer learning isn't always the answer. When 
 
 ## The Problem
 
-Knowledge workers spend hours manually reviewing documents—researchers analyzing papers, legal teams reviewing contracts, students extracting information from PDFs. Traditional search doesn't understand context or meaning, and finding specific information across multiple documents is tedious and error-prone.
+Knowledge workers spend hours manually reviewing documents: researchers analyzing papers, legal teams reviewing contracts, students extracting information from PDFs. Traditional search doesn't understand context or meaning, and finding specific information across multiple documents is tedious and error-prone.
 
-I wanted to build a production-ready RAG (Retrieval-Augmented Generation) application that would let users have natural conversations with their documents. The challenge wasn't just integrating GPT-4—it was designing an entire pipeline for document processing, vector search, and conversational AI, while building a complete SaaS platform with authentication and billing.
+I wanted to build a production-ready RAG (Retrieval-Augmented Generation) application that would let users have natural conversations with their documents. The challenge wasn't just integrating GPT-4; it was designing an entire pipeline for document processing, vector search, and conversational AI, while building a complete SaaS platform with authentication and billing.
 
 ---
 
 ## My Approach
 
-I designed TalkifyDocs around the RAG architecture: upload documents, chunk and embed them for semantic search, then use retrieved context to generate accurate, cited answers. But RAG is just the core—I also needed to build a complete SaaS platform with user management, subscription billing, and a polished UI.
+I designed TalkifyDocs around the RAG architecture: upload documents, chunk and embed them for semantic search, then use retrieved context to generate accurate, cited answers. But RAG is just the core; I also needed to build a complete SaaS platform with user management, subscription billing, and a polished UI.
 
 ### The RAG Pipeline
 
@@ -509,13 +509,13 @@ graph TB
 
 ## Key Technical Challenges
 
-Building a production RAG application taught me that the hard problems aren't just about AI—they're about data engineering, cost management, and integrating multiple complex systems.
+Building a production RAG application taught me that the hard problems aren't just about AI. They're about data engineering, cost management, and integrating multiple complex systems.
 
 ### Challenge 1: RAG Pipeline Design
 
 **The Problem:** How to chunk documents effectively for both context preservation and retrieval precision. Too small, and you lose context. Too large, and you introduce noise.
 
-**My Solution:** I implemented RecursiveCharacterTextSplitter with configurable chunk size (1000 tokens) and overlap (200 tokens). I tested different configurations on sample documents to find the sweet spot. Overlap is critical—it ensures that information spanning chunk boundaries isn't lost.
+**My Solution:** I implemented RecursiveCharacterTextSplitter with configurable chunk size (1000 tokens) and overlap (200 tokens). I tested different configurations on sample documents to find the sweet spot. Overlap is critical; it ensures that information spanning chunk boundaries isn't lost.
 
 **Impact:** Chunk size significantly affects answer quality. The 1000/200 configuration balanced context retention with retrieval precision, but it's document-dependent and would need tuning for different use cases.
 
@@ -533,7 +533,7 @@ Building a production RAG application taught me that the hard problems aren't ju
 
 **My Solution:** I structured the codebase with clear separation of concerns: API routes for backend logic, webhook handlers for Stripe events, and Prisma for database operations. Used environment variables for all API keys and implemented error handling for each service.
 
-**Impact:** Building production SaaS requires orchestrating many services. Webhook handling is particularly tricky—you need idempotency, error recovery, and careful testing. Local development is more complex when you depend on external services.
+**Impact:** Building production SaaS requires orchestrating many services. Webhook handling is particularly tricky: you need idempotency, error recovery, and careful testing. Local development is more complex when you depend on external services.
 
 ---
 
@@ -563,7 +563,7 @@ GPT-4 has a limited context window (8k or 32k tokens depending on the model). I 
 
 ## What I Learned
 
-Building TalkifyDocs taught me that RAG applications are 80% data engineering and integration, 20% AI. The hard problems aren't about calling GPT-4—they're about chunking, retrieval, cost management, and orchestrating multiple services.
+Building TalkifyDocs taught me that RAG applications are 80% data engineering and integration, 20% AI. The hard problems aren't about calling GPT-4; they're about chunking, retrieval, cost management, and orchestrating multiple services.
 
 ### 1. RAG is More Than Just AI
 
@@ -606,7 +606,7 @@ Using TypeScript for frontend, backend, and database queries (Prisma) provided t
 
 Building TalkifyDocs taught me that production RAG applications are fundamentally about data engineering and system integration. The AI model is important, but it's just one piece of a complex puzzle that includes document processing, vector search, cost management, authentication, billing, and database design.
 
-**The biggest lesson:** Production AI is 80% data engineering, 20% AI. If you're building RAG applications, focus on chunking strategy, cost management, and system architecture—not just model selection.
+**The biggest lesson:** Production AI is 80% data engineering, 20% AI. If you're building RAG applications, focus on chunking strategy, cost management, and system architecture (not just model selection).
     `,
   },
   {
@@ -632,7 +632,7 @@ Building TalkifyDocs taught me that production RAG applications are fundamentall
 
 Existing music platforms lack real-time social features. You can't listen together with friends remotely, there's no synchronized playback across multiple users, and there's no way to chat while listening. Music is inherently social, but most streaming platforms are isolated experiences.
 
-I wanted to build a platform where friends could virtually hang out, chat, and listen to the same song at the exact same time—no matter where they are. Think "Spotify meets Discord."
+I wanted to build a platform where friends could virtually hang out, chat, and listen to the same song at the exact same time (no matter where they are). Think "Spotify meets Discord."
 
 The technical challenge was synchronizing playback state across all clients in real-time, handling network latency, managing disconnections, and scaling to support multiple rooms with many users each.
 
@@ -645,16 +645,16 @@ I designed MelodyHub around real-time WebSocket communication using Socket.IO. T
 ### Core Features
 
 **1. Real-Time Music Rooms**  
-Users can create or join rooms organized by music genre or interest. Each room maintains its own state—current song, playback position, user list, and chat history. Rooms are isolated using Socket.IO namespaces, ensuring efficient broadcasting and scalability.
+Users can create or join rooms organized by music genre or interest. Each room maintains its own state: current song, playback position, user list, and chat history. Rooms are isolated using Socket.IO namespaces, ensuring efficient broadcasting and scalability.
 
 **2. Synchronized Playback**  
-When one user plays, pauses, or seeks, all users in the room receive the same state update. The server broadcasts playback events with timestamps, and clients apply the state synchronously. I implemented timestamp-based sync to handle network latency—clients adjust for their own delay to stay in sync.
+When one user plays, pauses, or seeks, all users in the room receive the same state update. The server broadcasts playback events with timestamps, and clients apply the state synchronously. I implemented timestamp-based sync to handle network latency; clients adjust for their own delay to stay in sync.
 
 **3. Live Chat**  
 Real-time text chat while listening together. Messages are broadcast to all users in the room via Socket.IO, with chat history persisted in MongoDB. The chat interface updates instantly without page refreshes.
 
 **4. User Authentication & Presence**  
-Clerk-powered authentication with OAuth and email/password. User presence is tracked in real-time—when someone joins or leaves a room, all users see the update immediately. This uses the Observer pattern to notify all clients of state changes.
+Clerk-powered authentication with OAuth and email/password. User presence is tracked in real-time; when someone joins or leaves a room, all users see the update immediately. This uses the Observer pattern to notify all clients of state changes.
 
 ---
 
@@ -751,7 +751,7 @@ Cloudinary provides reliable global CDN for audio files. It handles format optim
 
 ### Challenge 3: Handling Disconnections
 
-**The Problem:** Users disconnect unexpectedly—network issues, browser closes, etc. The system needs to handle this gracefully without breaking synchronization for other users.
+**The Problem:** Users disconnect unexpectedly (network issues, browser closes, etc.). The system needs to handle this gracefully without breaking synchronization for other users.
 
 **My Solution:** Socket.IO connection events detect disconnections and notify other users. Room state persists in MongoDB, so reconnecting users can resume where they left off. I implemented reconnection logic that restores playback state.
 
@@ -802,7 +802,7 @@ Optimizations included CDN for audio delivery (reducing latency), Socket.IO room
 
 ## Conclusion
 
-Building MelodyHub taught me that real-time systems require careful state management. The server must be authoritative, clients must handle latency gracefully, and disconnections must be handled elegantly. Good architecture—using design patterns and clear separation of concerns—improves team velocity and code maintainability.
+Building MelodyHub taught me that real-time systems require careful state management. The server must be authoritative, clients must handle latency gracefully, and disconnections must be handled elegantly. Good architecture (using design patterns and clear separation of concerns) improves team velocity and code maintainability.
 
 **The biggest lesson:** Real-time synchronization is hard, but solvable with a source-of-truth architecture.
     `,
