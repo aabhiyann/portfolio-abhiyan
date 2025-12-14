@@ -1,13 +1,25 @@
+export interface ProjectStats {
+  label: string;
+  value: string;
+}
+
 export interface Project {
-  id: number;
+  id: string;
   title: string;
   description: string;
   image: string;
-  github: string;
+  github?: string;
   live: string;
   tech: string[];
-  story: string;
-  impact: string;
+  categories: string[]; // Changed from category: string to support multiple categories
+  featured?: boolean;
+  stats?: ProjectStats[];
+  badges?: string[];
+  story?: string;
+  impact?: string;
+  elaboratedDescription?: string;
+  caseStudyUrl?: string;
+  deepDiveId?: string; // New field for linking to deep dive articles
   architecture?: {
     nodes: Array<{
       id: string;
@@ -17,108 +29,122 @@ export interface Project {
     connections: Array<{ from: string; to: string }>;
   };
   isLoading?: boolean;
-  elaboratedDescription?: string;
 }
 
-// NOTE: Using placeholder images until real project screenshots are added
-// TODO: Add real screenshots to /public/images/projects/
 export const projects: Project[] = [
   {
-    id: 1,
+    id: "infrasight",
     title: "InfraSight",
-    description: "Cloud Cost Intelligence Platform",
-    impact: "Cuts AWS analysis time by 70%",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop&q=80",
+    description:
+      "Production cloud cost analytics platform using Linear Regression and Z-Score analysis. Live demo available.",
+    tech: ["Python", "FastAPI", "React", "Docker", "AsyncPG"],
+    live: "https://infrasight.netlify.app/",
     github: "https://github.com/aabhiyann/infrasight",
-    live: "https://infrasight.netlify.app",
-    tech: ["Python", "FastAPI", "React", "Docker", "AWS", "Scikit-learn"],
-    story:
-      "Built a full-stack ML platform that helps finance teams detect budget inefficiencies. Implemented anomaly detection using Random Forest + LSTM ensembles enabling finance teams to catch cost spikes before billing cycles.",
-    architecture: {
-      nodes: [
-        {
-          id: "frontend",
-          label: "React Dashboard",
-          position: { x: 100, y: 200 },
-        },
-        { id: "api", label: "FastAPI Backend", position: { x: 400, y: 200 } },
-        { id: "ml", label: "LSTM Model", position: { x: 400, y: 400 } },
-        { id: "db", label: "PostgreSQL", position: { x: 700, y: 100 } },
-        { id: "aws", label: "AWS Cost Explorer", position: { x: 700, y: 300 } },
-      ],
-      connections: [
-        { from: "frontend", to: "api" },
-        { from: "api", to: "ml" },
-        { from: "api", to: "db" },
-        { from: "api", to: "aws" },
-      ],
-    },
+    image: "/images/projects/infrasight.png",
+    categories: ["ML/AI", "Full Stack"],
+    featured: true,
+    stats: [{ label: "Architecture", value: "Microservice" }],
+    badges: ["Production", "ML"],
+    caseStudyUrl: "/case-studies/infrasight",
+    deepDiveId: "infrasight-production-ml",
   },
   {
-    id: 2,
+    id: "talkifydocs",
     title: "TalkifyDocs",
-    description: "AI Document Assistant (SaaS)",
-    impact: "Processes docs 47% faster",
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop&q=80",
+    description:
+      "Enterprise RAG application combining LangChain, Pinecone, and GPT-4. Features full SaaS architecture with Stripe/Clerk.",
+    tech: ["Next.js", "GPT-4", "Pinecone", "LangChain", "Stripe"],
+    live: "", // Not publicly deployed
     github: "https://github.com/aabhiyann/talkifydocs",
-    live: "",
-    tech: ["Next.js", "OpenAI GPT-4", "LangChain", "Pinecone", "Stripe"],
-    story:
-      "Engineered an enterprise RAG application capable of querying 10GB+ repositories with sub-200ms response times. Features full SaaS architecture with Stripe billing and multi-tenant auth.",
+    image: "/images/projects/talkifydocs.png",
+    categories: ["ML/AI", "Full Stack"],
+    featured: true,
+    stats: [
+      { label: "Status", value: "Dev" },
+      { label: "Type", value: "SaaS RAG" },
+    ],
+    badges: ["Next.js", "AI", "SaaS"],
+    caseStudyUrl: "/case-studies/talkifydocs",
+    deepDiveId: "talkifydocs-rag-pipeline",
   },
   {
-    id: 3,
-    title: "MelodyHub",
-    description: "Real-Time Social Music Platform",
-    impact: "99.2% Uptime / 100+ Users",
-    image:
-      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop&q=80",
-    github: "https://github.com/aabhiyann/MelodyHub",
-    live: "https://udaymelodyhhub.vercel.app/",
-    tech: ["Node.js", "Socket.IO", "MongoDB", "Cloudinary", "React"],
-    story:
-      "Spotify-meets-Discord. Architected a synchronized music playback engine that supports 100+ concurrent users with zero latency drift. Focused on OOP principals for scalable backend logic.",
-  },
-  {
-    id: 4,
-    title: "Disease Prediction ML",
-    description: "Clinical Decision Support System",
-    impact: "98.7% Diagnostic Accuracy",
-    image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop&q=80",
-    github: "https://github.com/aabhiyann/ml-disease-prediction-system",
-    live: "",
-    tech: ["Python", "Scikit-learn", "Pandas", "React", "Tailwind"],
-    story:
-      "Developed a Random Forest classifier trained on 4,920 medical records to predict 41 disease classes. Designed a lightweight React UI for potential telemedicine deployment in rural areas.",
-  },
-  {
-    id: 5,
+    id: "audio-classification-cnn",
     title: "Audio Classification CNN",
-    description: "Deep Learning for Audio Analysis",
-    impact: "92% Classification Accuracy",
-    image:
-      "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=600&fit=crop&q=80",
+    description:
+      "Built CNN achieving 92% accuracy on animal sounds. Outperformed transfer learning by 26%.",
+    tech: ["TensorFlow", "Keras", "librosa", "YAMNet"],
+    live: "https://github.com/aabhiyann/audio-classification-cnn",
     github: "https://github.com/aabhiyann/audio-classification-cnn",
-    live: "",
-    tech: ["TensorFlow", "Keras", "Librosa", "CNN", "YAMNet"],
-    story:
-      "Built and trained a custom CNN from scratch that outperformed pre-trained transfer learning models by 26% on specific animal sound classification tasks. Utilized Mel-spectrograms for feature extraction.",
+    image: "/images/projects/audio-cnn.png",
+    categories: ["ML/AI"],
+    featured: true,
+    stats: [
+      { label: "Accuracy", value: "92%" },
+      { label: "Vs Transfer", value: "+26%" },
+    ],
+    badges: ["Deep Learning", "Research"],
+    caseStudyUrl: "/case-studies/audio-classification",
+    deepDiveId: "audio-classification-research",
   },
   {
-    id: 6,
-    title: "Multi-Source Retrieval",
-    description: "NLP Knowledge Engine",
-    impact: "Reduces research time by 70%",
-    image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop&q=80",
-    github:
-      "https://github.com/aabhiyann/Conversational-Interface-for-Multi-Source-Information-Retrieval",
-    live: "",
-    tech: ["Python", "Mistral 7B", "FAISS", "LangChain", "NLP"],
-    story:
-      "Created a privacy-first RAG system integrating local LLMs (Mistral) for sensitive data environments. Processes PDFs, YouTube transcripts, and audio files into a unified knowledge graph.",
+    id: "melodyhub",
+    title: "MelodyHub",
+    description:
+      "Real-time social music platform with synchronized playback. Built with Socket.IO, React, and Clerk.",
+    tech: ["React", "Node.js", "Socket.IO", "MongoDB", "Clerk"],
+    live: "https://udaymelodyhhub.vercel.app/",
+    github: "https://github.com/aabhiyann/MelodyHub",
+    image: "/images/projects/melodyhub.png",
+    categories: ["Full Stack"],
+    featured: true,
+    stats: [
+      { label: "Type", value: "Team Project" },
+      { label: "Feature", value: "Real-Time Sync" },
+    ],
+    badges: ["Socket.IO", "Team Work"],
+    caseStudyUrl: "/case-studies/melodyhub",
+    deepDiveId: "melodyhub-realtime-architecture",
   },
+  {
+    id: "disease-prediction",
+    title: "Disease Prediction ML",
+    description:
+      "Machine learning model to predict disease outbreaks based on historical data and environmental factors.",
+    tech: ["Python", "Scikit-Learn", "Pandas", "Flush"],
+    live: "https://github.com/aabhiyann/disease-prediction",
+    github: "https://github.com/aabhiyann/disease-prediction",
+    image: "/images/projects/disease-prediction.png",
+    categories: ["ML/AI"],
+    featured: false,
+    stats: [
+      { label: "Precision", value: "89%" },
+      { label: "Recall", value: "91%" },
+    ],
+    badges: ["Healthcare", "Predictive"],
+  },
+  {
+    id: "multi-source-retrieval",
+    title: "Multi-Source Retrieval",
+    description:
+      "Advanced information retrieval system aggregating results from multiple disparate data sources.",
+    tech: ["Python", "Elasticsearch", "NLP", "API"],
+    live: "https://github.com/aabhiyann/multi-source-retrieval",
+    github: "https://github.com/aabhiyann/multi-source-retrieval",
+    image: "/images/projects/retrieval.png",
+    categories: ["ML/AI"],
+    featured: false,
+    stats: [
+      { label: "Sources", value: "10+" },
+      { label: "Relevance", value: "High" },
+    ],
+    badges: ["Search", "Backend"],
+  },
+];
+
+export const categories = [
+  "All",
+  "Production Apps",
+  "ML/AI",
+  "Full-Stack",
+  "Team Projects",
 ];

@@ -13,13 +13,16 @@
     "extract-exif": "node scripts/extract-exif.js"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "framer-motion": "^12.23.22",
     "lucide-react": "^0.544.0",
+    "mermaid": "^11.12.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-helmet-async": "2.0.5",
     "react-router-dom": "^7.9.2",
     "react-zoom-pan-pinch": "^3.7.0",
+    "tailwind-merge": "^3.4.0",
     "vanilla-tilt": "^1.8.1"
   },
   "devDependencies": {

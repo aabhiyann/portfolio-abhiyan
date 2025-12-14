@@ -1,13 +1,15 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { motionTokens } from "../utils/Motion";
-import { projects as initialProjects, Project } from "../data/projects";
+import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { projects as initialProjects, Project } from "../data/Projects";
 import Page from "../components/Page";
-import { Card } from "../components/ui/Card";
 import SectionTitle from "../components/SectionTitle";
 import ProjectDeconstructor from "../components/ProjectDeconstructor";
 import { Button, Chip } from "../components/ui";
 import SEO from "../components/SEO";
+import ProjectFilters from "../components/ProjectFilters";
+import ContactSection from "../components/ContactSection";
+import { FileText } from "lucide-react";
 
 interface Architecture {
   nodes: Array<{
@@ -20,31 +22,15 @@ interface Architecture {
 
 function Projects() {
   const [selectedArch, setSelectedArch] = useState<Architecture | null>(null);
-  const [projects, setProjects] = useState<Project[]>(initialProjects);
+  const projects = initialProjects;
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  // Elaborate function - generates a more detailed description (placeholder for AI integration)
-  const handleElaborate = async (projectId: number) => {
-    setProjects((prev) =>
-      prev.map((p) => (p.id === projectId ? { ...p, isLoading: true } : p)),
-    );
+  const categories = ["All", "Full Stack", "ML/AI"];
 
-    // Simulate API call delay - in production, this would call an AI API
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setProjects((prev) =>
-      prev.map((p) =>
-        p.id === projectId
-          ? {
-              ...p,
-              isLoading: false,
-              elaboratedDescription:
-                p.story ||
-                "This project showcases advanced engineering practices and innovative problem-solving approaches.",
-            }
-          : p,
-      ),
-    );
-  };
+  const filteredProjects = useMemo(() => {
+    if (activeCategory === "All") return projects;
+    return projects.filter((p) => p.categories.includes(activeCategory));
+  }, [projects, activeCategory]);
 
   return (
     <Page>
@@ -60,119 +46,179 @@ function Projects() {
               subtitle="A collection of projects that showcase my passion for building innovative solutions that solve real-world problems with modern technology."
             />
 
+            <ProjectFilters
+              categories={categories}
+              activeCategory={activeCategory}
+              onSelectCategory={setActiveCategory}
+            />
+
             {/* Projects Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {projects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: motionTokens.duration.slow / 1000,
-                    delay: index * 0.1,
-                  }}
-                >
-                  <Card
-                    interactive
-                    className="flex flex-col bg-card border border-border-primary hover:border-accent-primary/50 hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+            <motion.div
+              layout
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+            >
+              <AnimatePresence mode="popLayout">
+                {filteredProjects.map((project) => (
+                  <motion.div
+                    layout
+                    key={project.id}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <div className="aspect-video relative overflow-hidden group border-b border-border-primary">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="text-2xl font-bold text-white drop-shadow-lg">
+                    <motion.div
+                      className="flex flex-col glass-card glass-card-hover group h-full overflow-hidden rounded-2xl"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="aspect-video relative overflow-hidden border-b border-border-primary/50">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+                        />
+                        {/* Glassy overlay on hover - consistent with photography gallery */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-bg-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] flex items-center justify-center gap-4">
+                          {project.caseStudyUrl && (
+                            <Button
+                              as={Link}
+                              to={project.caseStudyUrl}
+                              variant="primary"
+                              size="sm"
+                              className="shadow-xl"
+                            >
+                              Read Case Study
+                            </Button>
+                          )}
+                          {(project.live || project.github) &&
+                            !project.caseStudyUrl && (
+                              <Button
+                                as="a"
+                                href={project.live || project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                variant="primary"
+                                size="sm"
+                                className="shadow-xl"
+                              >
+                                View Project
+                              </Button>
+                            )}
+                        </div>
+                      </div>
+
+                      <div className="p-6 flex flex-col flex-grow">
+                        <h3 className="text-xl font-bold text-text-primary mb-3 font-heading group-hover:text-accent-primary transition-colors">
                           {project.title}
                         </h3>
-                      </div>
-                    </div>
 
-                    <div className="p-6 flex flex-col flex-grow">
-                      <div className="mb-4">
-                        <Chip variant="accent" size="sm">
-                          {project.impact}
-                        </Chip>
-                      </div>
+                        <div className="mb-4 flex flex-wrap gap-2">
+                          {project.categories.map((category) => (
+                            <Chip
+                              key={category}
+                              variant="default"
+                              size="sm"
+                              className="bg-bg-surface/50"
+                            >
+                              {category}
+                            </Chip>
+                          ))}
+                          {project.stats?.slice(0, 2).map((stat) => (
+                            <Chip key={stat.label} variant="accent" size="sm">
+                              {stat.value}
+                            </Chip>
+                          ))}
+                        </div>
 
-                      <p className="text-text-muted mb-6 leading-relaxed flex-grow line-clamp-3">
-                        {project.story || project.description}
-                      </p>
-
-                      {project.elaboratedDescription && (
-                        <p className="mb-6 text-sm text-text-muted bg-bg-surface/50 p-3 rounded-lg border border-border-primary">
-                          {project.elaboratedDescription}
+                        <p className="text-text-muted mb-6 leading-relaxed flex-grow line-clamp-3">
+                          {project.story || project.description}
                         </p>
-                      )}
 
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tech.map((tech) => (
-                          <Chip key={tech} size="sm">
-                            {tech}
-                          </Chip>
-                        ))}
-                      </div>
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {project.tech.map((tech) => (
+                            <Chip key={tech} size="sm">
+                              {tech}
+                            </Chip>
+                          ))}
+                        </div>
 
-                      <div className="flex gap-4 items-center mt-auto pt-4 border-t border-border-primary">
-                        <Button
-                          as="a"
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          variant="ghost"
-                          size="sm"
-                        >
-                          GitHub
-                        </Button>
-                        <Button
-                          as="a"
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          variant="ghost"
-                          size="sm"
-                        >
-                          Live Demo
-                        </Button>
-                        {project.architecture && (
+                        <div className="flex gap-4 items-center mt-auto pt-4 border-t border-border-primary flex-wrap">
+                          {project.caseStudyUrl && (
+                            <Button
+                              as={Link}
+                              to={project.caseStudyUrl}
+                              variant="primary"
+                              size="sm"
+                              className="font-medium"
+                            >
+                              Case Study
+                            </Button>
+                          )}
+
+                          {/* New Deep Dive Button */}
+                          {project.deepDiveId && (
+                            <Button
+                              as={Link}
+                              to={`/deep-dives/${project.deepDiveId}`}
+                              variant="outline"
+                              size="sm"
+                              className="font-medium inline-flex items-center gap-2"
+                            >
+                              <FileText className="w-3.5 h-3.5" />
+                              Technical Deep Dive
+                            </Button>
+                          )}
+
+                          <div className="flex-grow"></div>
+
                           <Button
-                            onClick={() =>
-                              setSelectedArch(project.architecture ?? null)
-                            }
+                            as="a"
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             variant="ghost"
                             size="sm"
                           >
-                            Architecture
+                            GitHub
                           </Button>
-                        )}
-                        <Button
-                          onClick={() => handleElaborate(project.id)}
-                          disabled={
-                            !!project.isLoading ||
-                            !!project.elaboratedDescription
-                          }
-                          variant="primary"
-                          size="sm"
-                          className="ml-auto"
-                        >
-                          {project.isLoading
-                            ? "Generating..."
-                            : project.elaboratedDescription
-                              ? "Done"
-                              : "Elaborate"}
-                        </Button>
+                          <Button
+                            as="a"
+                            href={project.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            variant="ghost"
+                            size="sm"
+                            disabled={!project.live}
+                          >
+                            Live Demo
+                          </Button>
+                          {project.architecture && (
+                            <Button
+                              onClick={() =>
+                                setSelectedArch(project.architecture ?? null)
+                              }
+                              variant="ghost"
+                              size="sm"
+                            >
+                              Architecture
+                            </Button>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
           </div>
         </div>
       </section>
+
+      <ContactSection />
+
       {selectedArch && (
         <ProjectDeconstructor
           architecture={selectedArch}

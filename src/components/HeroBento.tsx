@@ -26,19 +26,20 @@ const BentoCard: React.FC<BentoCardProps> = ({
     initial={{ opacity: 0, scale: 0.95, y: 10 }}
     animate={{ opacity: 1, scale: 1, y: 0 }}
     transition={{ type: "spring", stiffness: 300, damping: 30, delay }}
-    className={`relative group overflow-hidden rounded-3xl border border-border-primary bg-card/30 backdrop-blur-xl shadow-2xl ${className}`}
+    className={`relative group overflow-hidden rounded-3xl border border-border-primary/50 bg-card/40 backdrop-blur-md shadow-2xl ${className}`}
   >
     {/* Specular Highlight (Top Border) - Adaptive Opacity */}
     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-text-primary/20 to-transparent opacity-50" />
 
     {bgImage && (
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
         <img
           src={bgImage}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105 opacity-60 group-hover:opacity-40"
+          className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110 opacity-80 group-hover:opacity-90"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/90 via-bg-primary/40 to-transparent" />
+        {/* Subtle glassy overlay - only on hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-[1px]" />
       </div>
     )}
 
@@ -85,11 +86,11 @@ const HeroBento: React.FC = () => {
         title="InfraSight"
         subtitle="Cloud Intelligence"
         className="col-span-1 md:col-span-2 md:row-span-3"
-        bgImage="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&q=80"
+        bgImage="/images/projects/infrasight.png"
         delay={0.2}
         href="https://github.com/aabhiyann/infrasight"
       >
-        <div className="absolute top-4 right-4 text-white/50">
+        <div className="absolute top-4 right-4 text-text-primary/50">
           <ArrowUpRight className="w-5 h-5" />
         </div>
       </BentoCard>
@@ -99,11 +100,11 @@ const HeroBento: React.FC = () => {
         title="TalkifyDocs"
         subtitle="AI SaaS"
         className="col-span-1 md:col-span-2 md:row-span-3"
-        bgImage="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&q=80"
+        bgImage="/images/projects/talkifydocs.png"
         delay={0.3}
         href="https://github.com/aabhiyann/talkifydocs"
       >
-        <div className="absolute top-4 right-4 text-white/50">
+        <div className="absolute top-4 right-4 text-text-primary/50">
           <ArrowUpRight className="w-5 h-5" />
         </div>
       </BentoCard>

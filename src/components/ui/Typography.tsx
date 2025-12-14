@@ -3,7 +3,7 @@
  *
  * A centralized typography component that follows the design system standards.
  * All text in the application should use this component for consistency.
- * 
+ *
  * Features:
  * - Theme-aware styling
  * - Consistent prop interface
@@ -121,7 +121,11 @@ export const Typography: React.FC<TypographyProps> = ({
         };
       case "secondary":
         return {
-          color: colorUtils.getThemeColor("textSecondary", isDark, currentTheme),
+          color: colorUtils.getThemeColor(
+            "textSecondary",
+            isDark,
+            currentTheme,
+          ),
         };
       case "muted":
         return {
@@ -129,7 +133,7 @@ export const Typography: React.FC<TypographyProps> = ({
         };
       case "accent":
         return {
-          color: colorUtils.getAccentColor("primary", isDark, currentTheme),
+          color: colorUtils.getAccentColor("primary", isDark),
         };
       default:
         return {};
