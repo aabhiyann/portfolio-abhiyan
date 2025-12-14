@@ -15,12 +15,12 @@ function About() {
     {
       title: "System Architecture",
       description:
-        "Designing scalable, fault-tolerant systems. From microservices to async pipelines—I build for production.",
+        "Designing scalable, fault-tolerant systems. From microservices to async pipelines, I build for production.",
     },
     {
       title: "AI & ML in Production",
       description:
-        "Building RAG pipelines, ML forecasting, and anomaly detection. Not just notebooks—deployed systems.",
+        "Building RAG pipelines, ML forecasting, and anomaly detection. Not just notebooks, but deployed systems.",
     },
     {
       title: "Teaching & Mentorship",
@@ -77,7 +77,7 @@ function About() {
                     </strong>
                     <p>
                       As a TA for Design & Analysis of Algorithms, I don't just
-                      grade—I transform how students think. My interactive
+                      grade. I transform how students think. My interactive
                       tutorials helped improve midterm scores by 22%. If I can't
                       explain it simply, I don't understand it well enough.
                     </p>

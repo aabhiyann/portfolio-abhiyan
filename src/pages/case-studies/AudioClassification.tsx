@@ -29,12 +29,12 @@ const AudioClassificationCaseStudy: React.FC = () => {
           This was a research project for my Neural Networks & Deep Learning
           course at GWU, where I worked with two teammates to systematically
           compare different approaches to audio classification. I tested five
-          architectures—from simple CNNs to Vision Transformers—on a three-class
-          animal sound classification task (dog, cat, bird). My key finding
-          challenged a common assumption in deep learning: a task-specific CNN
-          trained from scratch achieved 92% test accuracy, significantly
-          outperforming YAMNet transfer learning at 66% accuracy—a 26%
-          improvement.
+          architectures, from simple CNNs to Vision Transformers, on a
+          three-class animal sound classification task (dog, cat, bird). My key
+          finding challenged a common assumption in deep learning: a
+          task-specific CNN trained from scratch achieved 92% test accuracy,
+          significantly outperforming YAMNet transfer learning at 66% accuracy,
+          a 26% improvement.
         </CaseStudyText>
 
         <div className="mb-6 p-6 rounded-2xl bg-accent-primary/5 border border-accent-primary/10">
@@ -49,7 +49,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
             learning for audio classification?
           </Typography>
           <Typography variant="body" color="muted" className="text-sm">
-            <strong>Answer:</strong> Yes—when domain alignment is poor and you
+            <strong>Answer:</strong> Yes, when domain alignment is poor and you
             have sufficient labeled data, task-specific training can
             significantly outperform large pre-trained models.
           </Typography>
@@ -177,7 +177,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
             {
               title: "4. Vision Transformer (ViT) (35-40% val accuracy)",
               arch: "PatchLayer (16×16) → PatchEmbedding → Transformer encoder blocks → GlobalAveragePooling1D → Dense(3, softmax)",
-              desc: "Implemented Vision Transformer with patch-based attention. Achieved only 35-40% validation accuracy (near random guessing). Loss: 1.09-1.12. Severely underfits—transformers need much more data than we had (610 clips).",
+              desc: "Implemented Vision Transformer with patch-based attention. Achieved only 35-40% validation accuracy (near random guessing). Loss: 1.09-1.12. Severely underfits; transformers need much more data than we had (610 clips).",
             },
             {
               title: "5. Transfer Learning - YAMNet (66% test accuracy)",
@@ -202,7 +202,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
           <CaseStudyImage
             src="/images/case-studies/audio-classification/7_architecture_diagram.png"
             alt="Visual architecture diagram of the CNN + Dropout model"
-            caption="Architecture diagram of the winning model (CNN + Dropout). The simplicity of this design—three convolutional layers with dropout regularization—proved more effective than complex architectures."
+            caption="Architecture diagram of the winning model (CNN + Dropout). The simplicity of this design (three convolutional layers with dropout regularization) proved more effective than complex architectures."
           />
         </div>
       </CaseStudySection>
@@ -355,7 +355,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
           <CaseStudyText>
             My experiment showed that a task-specific CNN (92% accuracy)
             significantly outperformed transfer learning with YAMNet (66%
-            accuracy)—a <strong>26% improvement</strong>. This challenges the
+            accuracy), a <strong>26% improvement</strong>. This challenges the
             common assumption that transfer learning is always superior.
           </CaseStudyText>
 
