@@ -132,12 +132,12 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
             {stats.map((stat, i) => (
               <div
                 key={i}
-                className="text-center flex flex-col justify-center h-full"
+                className="text-center flex flex-col justify-center min-h-[80px]"
               >
-                <div className="text-3xl font-bold font-heading text-accent-primary mb-1 whitespace-nowrap">
+                <div className="text-3xl font-bold font-heading text-accent-primary mb-1 whitespace-nowrap overflow-hidden text-ellipsis">
                   {stat.value}
                 </div>
-                <div className="text-xs text-text-muted uppercase tracking-wider">
+                <div className="text-xs text-text-muted uppercase tracking-wider line-clamp-2">
                   {stat.label}
                 </div>
               </div>
