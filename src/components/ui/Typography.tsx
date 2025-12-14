@@ -12,7 +12,6 @@
  */
 
 import React from "react";
-import { colorUtils } from "../../design/colors";
 import { designSystem } from "../../design/system";
 
 export interface TypographyProps {
@@ -28,8 +27,6 @@ export interface TypographyProps {
     | "caption"
     | "small";
   color?: "primary" | "secondary" | "muted" | "accent";
-  isDark?: boolean;
-  currentTheme?: string;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -38,8 +35,6 @@ export const Typography: React.FC<TypographyProps> = ({
   children,
   variant = "body",
   color = "primary",
-  isDark = false,
-  currentTheme = "default",
   className = "",
   style = {},
 }) => {
@@ -113,37 +108,24 @@ export const Typography: React.FC<TypographyProps> = ({
     }
   };
 
-  const getColorStyles = (): React.CSSProperties => {
+  const getColorClass = (): string => {
     switch (color) {
       case "primary":
-        return {
-          color: colorUtils.getThemeColor("text", isDark, currentTheme),
-        };
+        return "text-text-primary";
       case "secondary":
-        return {
-          color: colorUtils.getThemeColor(
-            "textSecondary",
-            isDark,
-            currentTheme,
-          ),
-        };
+        return "text-text-secondary";
       case "muted":
-        return {
-          color: colorUtils.getThemeColor("textMuted", isDark, currentTheme),
-        };
+        return "text-text-muted";
       case "accent":
-        return {
-          color: colorUtils.getAccentColor("primary", isDark),
-        };
+        return "text-accent-primary";
       default:
-        return {};
+        return "text-text-primary";
     }
   };
 
   const baseStyles: React.CSSProperties = {
     margin: 0,
     ...getVariantStyles(),
-    ...getColorStyles(),
     ...style,
   };
 
@@ -175,7 +157,7 @@ export const Typography: React.FC<TypographyProps> = ({
   const Tag = getTag() as React.ElementType;
 
   return (
-    <Tag className={className} style={baseStyles}>
+    <Tag className={`${getColorClass()} ${className}`} style={baseStyles}>
       {children}
     </Tag>
   );
