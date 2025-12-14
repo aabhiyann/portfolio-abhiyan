@@ -5,6 +5,17 @@ import { useTheme } from "../contexts/useTheme";
 const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => (
   <>
     <NavLink
+      to="/about"
+      onClick={onLinkClick}
+      className={({ isActive }) =>
+        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          isActive ? "text-text-primary" : "text-text-muted"
+        } hover:text-text-primary`
+      }
+    >
+      About
+    </NavLink>
+    <NavLink
       to="/projects"
       onClick={onLinkClick}
       className={({ isActive }) =>
@@ -14,6 +25,28 @@ const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => (
       }
     >
       Projects
+    </NavLink>
+    <NavLink
+      to="/experience"
+      onClick={onLinkClick}
+      className={({ isActive }) =>
+        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          isActive ? "text-text-primary" : "text-text-muted"
+        } hover:text-text-primary`
+      }
+    >
+      Experience
+    </NavLink>
+    <NavLink
+      to="/skills"
+      onClick={onLinkClick}
+      className={({ isActive }) =>
+        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+          isActive ? "text-text-primary" : "text-text-muted"
+        } hover:text-text-primary`
+      }
+    >
+      Skills
     </NavLink>
     <NavLink
       to="/photography"
@@ -27,7 +60,7 @@ const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => (
       Photography
     </NavLink>
     <NavLink
-      to="/deep-dives"
+      to="/contact"
       onClick={onLinkClick}
       className={({ isActive }) =>
         `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
@@ -35,29 +68,7 @@ const NavLinks = ({ onLinkClick }: { onLinkClick?: () => void }) => (
         } hover:text-text-primary`
       }
     >
-      Deep Dives
-    </NavLink>
-    <NavLink
-      to="/resume"
-      onClick={onLinkClick}
-      className={({ isActive }) =>
-        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-          isActive ? "text-text-primary" : "text-text-muted"
-        } hover:text-text-primary`
-      }
-    >
-      Resume
-    </NavLink>
-    <NavLink
-      to="/about"
-      onClick={onLinkClick}
-      className={({ isActive }) =>
-        `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-          isActive ? "text-text-primary" : "text-text-muted"
-        } hover:text-text-primary`
-      }
-    >
-      About
+      Contact
     </NavLink>
   </>
 );
@@ -69,7 +80,7 @@ const Navbar: React.FC = () => {
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-navbar/80 border-b border-border-primary transition-colors duration-300 shadow-lg shadow-black/5 dark:shadow-black/20 overflow-hidden">
+    <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-navbar/80 border-b border-border-primary transition-colors duration-300 shadow-lg shadow-theme overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -89,7 +100,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full text-text-muted hover:text-text-primary hover:bg-black/5 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-accent-primary transition-colors"
+              className="p-2 rounded-full text-text-muted hover:text-text-primary hover:bg-overlay-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-primary transition-colors"
               aria-label={`Switch to ${
                 themeState.isDarkMode ? "light" : "dark"
               } mode`}
@@ -129,7 +140,7 @@ const Navbar: React.FC = () => {
             <div className="-mr-2 flex md:hidden">
               <button
                 onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-text-muted hover:text-text-primary hover:bg-black/5 dark:hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-accent-primary transition-colors"
+                className="inline-flex items-center justify-center p-2 rounded-md text-text-muted hover:text-text-primary hover:bg-overlay-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-primary transition-colors"
               >
                 {isMobileMenuOpen ? (
                   <svg
@@ -168,7 +179,7 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       {isMobileMenuOpen && (
-        <div className="md:hidden relative z-10 bg-surface/90 dark:bg-black/80 backdrop-blur-md border-t border-border-primary">
+        <div className="md:hidden relative z-10 bg-bg-surface/90 backdrop-blur-md border-t border-border-primary">
           <nav className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <NavLinks onLinkClick={closeMobileMenu} />
           </nav>

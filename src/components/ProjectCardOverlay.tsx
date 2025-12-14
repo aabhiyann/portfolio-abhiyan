@@ -12,7 +12,7 @@ const ProjectCardOverlay: React.FC<ProjectCardOverlayProps> = ({
     <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none group-hover:pointer-events-auto">
       <Link
         to={projectUrl}
-        className="px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium text-sm hover:bg-white/20 transition-colors pointer-events-auto"
+        className="px-6 py-3 rounded-full btn-overlay font-medium text-sm pointer-events-auto"
       >
         View Project
       </Link>

@@ -137,7 +137,7 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
       {/* Interactive Timeline */}
       <div
         ref={timelineRef}
-        className="w-full h-10 flex items-center justify-between px-2 cursor-pointer relative touch-none bg-surface border border-border-primary rounded-full shadow-inner"
+        className="w-full h-10 flex items-center justify-between px-2 cursor-pointer relative touch-none bg-bg-surface border border-border-primary rounded-full shadow-inner"
         onMouseDown={handleInteractionStart}
         onTouchStart={handleInteractionStart}
         role="slider"
@@ -178,7 +178,7 @@ export const ThemeSlider: React.FC<ThemeSliderProps> = ({
 
         {/* Draggable handle */}
         <motion.div
-          className="absolute top-1/2 w-8 h-8 rounded-full flex items-center justify-center shadow-lg border-2 border-white dark:border-slate-950 transition-colors duration-300 transform-gpu cursor-grab active:cursor-grabbing"
+          className="absolute top-1/2 w-8 h-8 rounded-full flex items-center justify-center shadow-lg border-2 border-bg-primary transition-colors duration-300 transform-gpu cursor-grab active:cursor-grabbing"
           style={{
             left: `${handlePosition}%`,
             transform: `translateX(-50%) translateY(-50%)`,

@@ -6,17 +6,14 @@ type ButtonSize = "sm" | "md" | "lg";
 
 const getButtonClasses = (variant: ButtonVariant, size: ButtonSize) => {
   const baseClasses =
-    "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-primary focus:ring-offset-bg-primary disabled:opacity-50 disabled:cursor-not-allowed";
+    "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
 
+  // Using CSS classes defined in index.css that properly use CSS variables
   const variantClasses = {
-    primary:
-      "bg-accent-primary text-white hover:bg-accent-hover shadow-lg shadow-accent-primary/20",
-    secondary:
-      "bg-surface text-text-primary border border-border-primary hover:bg-bg-primary hover:border-accent-primary/50 shadow-md",
-    ghost:
-      "bg-transparent text-text-secondary hover:text-text-primary hover:bg-accent-primary/10",
-    outline:
-      "bg-transparent text-text-primary border border-border-primary hover:border-accent-primary hover:text-accent-primary",
+    primary: "btn-primary font-semibold shadow-lg hover:shadow-xl",
+    secondary: "btn-secondary shadow-md",
+    ghost: "btn-ghost",
+    outline: "btn-outline",
   };
 
   const sizeClasses = {
@@ -28,7 +25,8 @@ const getButtonClasses = (variant: ButtonVariant, size: ButtonSize) => {
   return `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`;
 };
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   as?: React.ElementType | typeof Link;
   variant?: ButtonVariant;
   size?: ButtonSize;

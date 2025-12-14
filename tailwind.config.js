@@ -12,6 +12,10 @@ export default {
         "bg-surface": "var(--color-bg-surface)",
         "bg-card": "var(--color-bg-card)",
         "bg-navbar": "var(--color-bg-navbar)",
+        // Alias for direct use
+        "navbar": "var(--color-bg-navbar)",
+        "surface": "var(--color-bg-surface)",
+        "card": "var(--color-bg-card)",
 
         // Text colors
         "text-primary": "var(--color-text-primary)",
