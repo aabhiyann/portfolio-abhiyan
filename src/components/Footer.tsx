@@ -87,12 +87,6 @@ const Footer: React.FC = () => {
           <p className="text-xs text-text-muted/60 mt-2">
             Built with accessibility in mind (ARIA compliant).
           </p>
-          <div className="flex justify-center mt-4">
-            <img
-              src="https://img.shields.io/github/last-commit/aabhiyann/portfolio-abhiyan?style=flat-square&color=black"
-              alt="Last Commit"
-            />
-          </div>
         </div>
       </div>
     </footer>
