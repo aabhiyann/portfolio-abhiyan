@@ -7,12 +7,7 @@ import { cn } from "../../utils/cn"; // Assuming you have a cn utility, or I wil
 // I will assume standard clsx/tailwind-merge pattern or just use template strings to be safe if I don't look.
 // Update: I will use template strings to be 100% safe without looking, or import from clsx if I see it in package.json (I saw clsx in Step 19).
 
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+// Local cn implementation removed in favor of import from utils
 
 export const CaseStudySection = ({
   title,
