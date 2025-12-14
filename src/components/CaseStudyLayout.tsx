@@ -104,13 +104,24 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="rounded-2xl overflow-hidden border border-border-primary/50 shadow-2xl shadow-accent-primary/5"
+              className="rounded-2xl overflow-hidden border border-border-primary/50 bg-card/40 backdrop-blur-md relative shadow-2xl transition-all duration-500 hover:shadow-accent-primary/20 group"
             >
-              <img
-                src={heroImage}
-                alt={`${title} preview`}
-                className="w-full h-auto object-cover max-h-[600px]"
-              />
+              <div className="relative overflow-hidden">
+                <img
+                  src={heroImage}
+                  alt={`${title} preview`}
+                  className="w-full h-auto object-cover max-h-[600px] transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* Liquid Glass Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-[1px]" />
+
+                {/* Optional Hover Text/Badge */}
+                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
+                  <div className="bg-bg-surface/80 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-lg text-xs font-medium text-text-primary shadow-lg">
+                    View Project
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         )}
