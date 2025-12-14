@@ -128,16 +128,13 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
 
         {/* Quick Stats Grid */}
         <div className="max-w-4xl mx-auto px-6 mb-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-card/30 border border-border-primary/50 backdrop-blur-sm">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 p-4 md:p-6 rounded-2xl bg-card/30 border border-border-primary/50 backdrop-blur-sm">
             {stats.map((stat, i) => (
-              <div
-                key={i}
-                className="text-center flex flex-col justify-center min-h-[80px]"
-              >
-                <div className="text-3xl font-bold font-heading text-accent-primary mb-1 whitespace-nowrap overflow-hidden text-ellipsis">
+              <div key={i} className="text-center flex flex-col justify-center">
+                <div className="text-xl md:text-3xl font-bold font-heading text-accent-primary mb-1">
                   {stat.value}
                 </div>
-                <div className="text-xs text-text-muted uppercase tracking-wider line-clamp-2">
+                <div className="text-xs text-text-muted uppercase tracking-wider">
                   {stat.label}
                 </div>
               </div>
