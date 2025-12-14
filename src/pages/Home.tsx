@@ -14,7 +14,7 @@ import WhyHireMe from "../components/WhyHireMe";
 import StatsBar from "../components/StatsBar";
 import ContactSection from "../components/ContactSection";
 import TypeWriter from "../components/ui/TypeWriter";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Hand } from "lucide-react";
 
 function Home() {
   return (
@@ -41,7 +41,9 @@ function Home() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-primary opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-primary"></span>
                   </span>
-                  <span className="flex gap-2">Hi, I'm Abhiyan Sainju 👋</span>
+                  <span className="flex gap-2 items-center">
+                    Hi, I'm Abhiyan Sainju
+                  </span>
                 </div>
 
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading theme-text-primary leading-[1.2] pb-4">

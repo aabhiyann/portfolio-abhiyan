@@ -1,4 +1,6 @@
 import React from "react";
+import { ArrowLeft, ExternalLink, Github, Rocket } from "lucide-react";
+import Button from "../../components/ui/Button";
 import CaseStudyLayout from "../../components/CaseStudyLayout";
 import MermaidDiagram from "../../components/MermaidDiagram";
 import {
@@ -36,7 +38,7 @@ const TalkifyDocsCaseStudy: React.FC = () => {
         <CaseStudyText>
           TalkifyDocs is a SaaS application that lets users chat with their PDF
           documents using AI. Upload a document, ask questions in natural
-          language, and get answers with source citations—powered by GPT-4,
+          language, and get answers with source citations, powered by GPT-4,
           LangChain, and vector search. I built this to explore production RAG
           (Retrieval-Augmented Generation) architecture and modern SaaS
           patterns, integrating authentication, billing, and AI into a cohesive
@@ -73,13 +75,10 @@ const TalkifyDocsCaseStudy: React.FC = () => {
         </div>
       </CaseStudySection>
 
-      <div className="mb-12 p-8 rounded-2xl bg-gradient-to-br from-accent-primary/10 to-transparent border border-accent-primary/20">
-        <Typography
-          variant="h3"
-          className="text-xl font-bold text-accent-primary mb-4 flex items-center gap-2"
-        >
-          <span className="text-2xl">🚀</span> Business Impact
-        </Typography>
+      <div className="bg-accent-primary/5 border border-accent-primary/10 rounded-2xl p-6 mb-8">
+        <h3 className="text-lg font-bold text-accent-primary mb-4 flex items-center gap-2">
+          <Rocket className="w-5 h-5" /> Business Impact
+        </h3>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
             <div className="text-3xl font-bold text-text-primary mb-1">50%</div>
@@ -109,7 +108,7 @@ const TalkifyDocsCaseStudy: React.FC = () => {
         <CaseStudyText>
           I wanted to build a production-ready RAG application that would let
           users have natural conversations with their documents. The challenge
-          wasn't just integrating GPT-4—it was designing an entire pipeline for
+          wasn't just integrating GPT-4, it was designing an entire pipeline for
           document processing, vector search, and conversational AI, while
           building a complete SaaS platform with authentication and billing.
         </CaseStudyText>

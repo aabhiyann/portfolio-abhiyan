@@ -56,7 +56,7 @@ function Experience() {
               explain it, you don't truly understand it."
             </blockquote>
             <p className="text-text-secondary leading-relaxed mb-4">
-              As a TA for Design & Analysis of Algorithms, I don't just grade—I
+              As a TA for Design & Analysis of Algorithms, I don't just grade. I
               transform how students think. My interactive tutorials translate
               theory (DP, graph algorithms, NP-completeness) into industry case
               studies.
