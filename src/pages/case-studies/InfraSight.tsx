@@ -1,4 +1,5 @@
 import React from "react";
+import { Rocket } from "lucide-react";
 import CaseStudyLayout from "../../components/CaseStudyLayout";
 import MermaidDiagram from "../../components/MermaidDiagram";
 import {
@@ -31,7 +32,7 @@ const InfraSightCaseStudy: React.FC = () => {
           InfraSight is a production cloud cost analytics platform that helps
           engineering teams predict spending, detect anomalies, and optimize
           infrastructure costs. I built this as a solo full-stack project to
-          demonstrate end-to-end ownership—from database design and ML
+          demonstrate end-to-end ownership, from database design and ML
           implementation to production deployment and DevOps.
         </CaseStudyText>
 
@@ -77,7 +78,7 @@ const InfraSightCaseStudy: React.FC = () => {
           variant="h3"
           className="text-xl font-bold text-accent-primary mb-4 flex items-center gap-2"
         >
-          <span className="text-2xl">🚀</span> Business Impact
+          <Rocket className="w-5 h-5" /> Business Impact
         </Typography>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
@@ -109,7 +110,7 @@ const InfraSightCaseStudy: React.FC = () => {
           I wanted to build a solution that would help engineering teams stay
           ahead of their cloud spending through forecasting, automatically
           detect unusual patterns, and provide clear recommendations for cost
-          optimization—all while being interpretable and fast enough for
+          optimization, all while being interpretable and fast enough for
           real-time use.
         </CaseStudyText>
       </CaseStudySection>
@@ -233,40 +234,40 @@ const InfraSightCaseStudy: React.FC = () => {
           chart={`
 graph TB
     subgraph Frontend["Frontend Layer"]
-        React["React 19 + TypeScript<br/>Chart.js Visualizations"]
-    end
+React["React 19 + TypeScript<br/>Chart.js Visualizations"]
+end
     
     subgraph Backend["Backend Layer"]
-        FastAPI["FastAPI<br/>REST API + ML Engine"]
-        Auth["JWT Authentication<br/>Role-Based Access"]
-    end
+FastAPI["FastAPI<br/>REST API + ML Engine"]
+Auth["JWT Authentication<br/>Role-Based Access"]
+end
     
     subgraph Database["Data Layer"]
-        PostgreSQL["PostgreSQL<br/>Neon.tech Serverless"]
-        AsyncPG["asyncpg<br/>Connection Pooling"]
-    end
+PostgreSQL["PostgreSQL<br/>Neon.tech Serverless"]
+AsyncPG["asyncpg<br/>Connection Pooling"]
+end
     
     subgraph ML["ML Pipeline"]
-        Forecasting["Linear Regression<br/>Cost Forecasting"]
-        Anomaly["Z-Score Analysis<br/>Anomaly Detection"]
-        Clustering["K-Means<br/>Service Clustering"]
-    end
+Forecasting["Linear Regression<br/>Cost Forecasting"]
+Anomaly["Z-Score Analysis<br/>Anomaly Detection"]
+Clustering["K-Means<br/>Service Clustering"]
+end
+
+React-- >| REST API | FastAPI
+FastAPI-- >| Async Queries | PostgreSQL
+FastAPI-- >| ML Processing | Forecasting
+FastAPI-- >| ML Processing | Anomaly
+FastAPI-- >| ML Processing | Clustering
+FastAPI-- >| Auth | Auth
+PostgreSQL-- >| Connection Pool | AsyncPG
     
-    React -->|REST API| FastAPI
-    FastAPI -->|Async Queries| PostgreSQL
-    FastAPI -->|ML Processing| Forecasting
-    FastAPI -->|ML Processing| Anomaly
-    FastAPI -->|ML Processing| Clustering
-    FastAPI -->|Auth| Auth
-    PostgreSQL -->|Connection Pool| AsyncPG
-    
-    style React fill:#8B5CF6,stroke:#A78BFA,color:#F4F4F7
-    style FastAPI fill:#22C55E,stroke:#4ADE80,color:#F4F4F7
-    style PostgreSQL fill:#3B82F6,stroke:#60A5FA,color:#F4F4F7
-    style Forecasting fill:#F9A825,stroke:#FBC02D,color:#0F172A
-    style Anomaly fill:#F9A825,stroke:#FBC02D,color:#0F172A
-    style Clustering fill:#F9A825,stroke:#FBC02D,color:#0F172A
-          `}
+    style React fill:#8B5CF6, stroke: #A78BFA, color: #F4F4F7
+    style FastAPI fill:#22C55E, stroke:#4ADE80, color: #F4F4F7
+    style PostgreSQL fill:#3B82F6, stroke:#60A5FA, color: #F4F4F7
+    style Forecasting fill: #F9A825, stroke: #FBC02D, color:#0F172A
+    style Anomaly fill: #F9A825, stroke: #FBC02D, color:#0F172A
+    style Clustering fill: #F9A825, stroke: #FBC02D, color:#0F172A
+  `}
           title="System Architecture"
         />
 
@@ -342,7 +343,7 @@ graph TB
       <CaseStudySection title="Key Technical Challenges">
         <CaseStudyText>
           Building a production ML system taught me that the hard problems
-          aren't always algorithmic—they're about making ML work reliably in
+          aren't always algorithmic. They're about making ML work reliably in
           real-world conditions.
         </CaseStudyText>
 

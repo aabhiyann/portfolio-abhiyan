@@ -130,8 +130,11 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
         <div className="max-w-4xl mx-auto px-6 mb-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-card/30 border border-border-primary/50 backdrop-blur-sm">
             {stats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl font-bold font-heading text-accent-primary mb-1">
+              <div
+                key={i}
+                className="text-center flex flex-col justify-center h-full"
+              >
+                <div className="text-3xl font-bold font-heading text-accent-primary mb-1 whitespace-nowrap">
                   {stat.value}
                 </div>
                 <div className="text-xs text-text-muted uppercase tracking-wider">

@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
             </nav>
           </div>
           <div className="flex flex-col space-y-4">
-            <h4 className="font-semibold text-text-primary">Side Quests</h4>
+            <h4 className="font-semibold text-text-primary">Current Focus</h4>
             <p className="text-sm text-text-muted">
               Currently experimenting with Agentic AI workflows and reading
               'Designing Data-Intensive Applications'.
