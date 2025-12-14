@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import mermaid from "mermaid";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 interface MermaidDiagramProps {
   chart: string;
@@ -14,26 +15,41 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
 }) => {
   const mermaidRef = useRef<HTMLDivElement>(null);
   const [error, setError] = React.useState<string | null>(null);
+  const { themeState } = useContext(ThemeContext);
+  const { isDarkMode } = themeState;
 
   useEffect(() => {
     if (!mermaidRef.current) return;
 
-    // Initialize Mermaid with theme
+    // Initialize Mermaid with dynamic theme
     mermaid.initialize({
       startOnLoad: false,
-      theme: "dark",
-      themeVariables: {
-        primaryColor: "#8B5CF6",
-        primaryTextColor: "#F4F4F7",
-        primaryBorderColor: "#A78BFA",
-        lineColor: "#64748B",
-        secondaryColor: "#22C55E",
-        tertiaryColor: "#1A202C",
-        background: "#0F172A",
-        mainBkg: "#0F172A",
-        secondBkg: "#1A202C",
-        textColor: "#F4F4F7",
-      },
+      theme: isDarkMode ? "dark" : "default",
+      themeVariables: isDarkMode
+        ? {
+            primaryColor: "#8B5CF6",
+            primaryTextColor: "#F4F4F7",
+            primaryBorderColor: "#A78BFA",
+            lineColor: "#64748B",
+            secondaryColor: "#22C55E",
+            tertiaryColor: "#1A202C",
+            background: "#0F172A",
+            mainBkg: "#0F172A",
+            secondBkg: "#1A202C",
+            textColor: "#F4F4F7",
+          }
+        : {
+            primaryColor: "#8B5CF6", // Keep brand colors
+            primaryTextColor: "#1A202C", // Dark text for light mode
+            primaryBorderColor: "#8B5CF6",
+            lineColor: "#64748B",
+            secondaryColor: "#22C55E",
+            tertiaryColor: "#F4F4F7",
+            background: "#FFFFFF",
+            mainBkg: "#FFFFFF",
+            secondBkg: "#F4F4F7",
+            textColor: "#1A202C",
+          },
       flowchart: {
         useMaxWidth: true,
         htmlLabels: true,
@@ -42,7 +58,12 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
     });
 
     const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
-    mermaidRef.current.id = id;
+    // Clear previous content before re-rendering
+    mermaidRef.current.innerHTML = "";
+
+    // We need to create a temporary element because mermaid.render expects one
+    // But in newer versions it wraps it.
+    // The render API signature is: render(id, text, container?)
 
     mermaid
       .render(id, chart)
@@ -56,7 +77,7 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
         console.error("Mermaid rendering error:", err);
         setError("Failed to render diagram");
       });
-  }, [chart]);
+  }, [chart, isDarkMode]); // Re-render when theme changes
 
   return (
     <div className={`my-8 ${className}`}>
@@ -72,7 +93,10 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
             <p className="text-sm mt-2">{error}</p>
           </div>
         ) : (
-          <div ref={mermaidRef} className="flex justify-center items-center" />
+          <div
+            ref={mermaidRef}
+            className="flex justify-center items-center overflow-x-auto"
+          />
         )}
       </div>
     </div>
