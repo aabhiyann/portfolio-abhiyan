@@ -21,11 +21,11 @@ function PhotographyGallery({ limit }: { limit?: number }) {
   return (
     <>
       {/* Gallery Grid */}
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">
+      <div className="columns-2 md:columns-3 gap-2 md:gap-4 [column-fill:_balance] space-y-2 md:space-y-4">
         {photographyImages.slice(0, limit).map((image, index) => (
           <motion.figure
             key={index}
-            className="relative mb-4 break-inside-avoid rounded-xl overflow-hidden border border-border-primary/50 group cursor-pointer bg-card/50"
+            className="relative mb-2 md:mb-4 break-inside-avoid rounded-xl overflow-hidden border border-border-primary/50 group cursor-pointer bg-card/50"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
