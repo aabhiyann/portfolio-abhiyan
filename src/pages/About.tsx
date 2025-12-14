@@ -3,7 +3,8 @@ import { motionTokens } from "../utils/Motion";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";
-import Testimonials from "../components/Testimonials";
+
+// Testimonials removed to focus on data-driven impact
 import VisualTimeline from "../components/VisualTimeline";
 import ContactSection from "../components/ContactSection";
 import SkillsMatrix from "../components/SkillsMatrix";
@@ -14,27 +15,17 @@ function About() {
     {
       title: "System Architecture",
       description:
-        "I obsess over designing scalable, fault-tolerant distributed systems. Why build a monolith when you can orchestrate microservices?",
+        "Designing scalable, fault-tolerant systems. From microservices to async pipelines—I build for production.",
     },
     {
-      title: "AI & Large Language Models",
+      title: "AI & ML in Production",
       description:
-        "Building RAG pipelines and fine-tuning models to solve specific business problems is my current playground.",
+        "Building RAG pipelines, ML forecasting, and anomaly detection. Not just notebooks—deployed systems.",
     },
     {
-      title: "Visual Pattern Recognition",
+      title: "Teaching & Mentorship",
       description:
-        "My photography isn't just art; it's training data for my brain. Finding symmetry in chaos helps me debug complex codebases.",
-    },
-    {
-      title: "Optimization Mindset",
-      description:
-        "Whether it's reducing O(n^2) to O(n log n) or saving 20ms on a render cycle, I live for efficiency.",
-    },
-    {
-      title: "Mentorship",
-      description:
-        "Teaching algorithms has reinforced my own understanding. I love breaking down complex topics for others.",
+        "Teaching algorithms to 60+ grad students. If I can't explain it simply, I don't understand it well enough.",
     },
   ];
 
@@ -62,9 +53,10 @@ function About() {
 
                 <div className="space-y-6 text-lg text-text-muted leading-relaxed">
                   <p>
-                    I'm Abhiyan, a Computer Science grad student at{" "}
-                    <strong className="text-text-primary">GWU (4.0 GPA)</strong>{" "}
-                    graduating Dec 2025. But here's what grades don't show:
+                    I'm Abhiyan, a <strong>Software Engineer</strong> and MS CS
+                    Graduate from{" "}
+                    <strong className="text-text-primary">GWU (4.0 GPA)</strong>
+                    . Building reliable systems is my craft.
                   </p>
 
                   <div>
@@ -144,10 +136,10 @@ function About() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { label: "GPA", value: "4.0" },
+              { label: "ML Accuracy", value: "92%" },
+              { label: "Users Served", value: "1,200+" },
               { label: "Students Taught", value: "60+" },
-              { label: "Production Apps", value: "5" },
-              { label: "Users Impacted", value: "1.2k+" },
+              { label: "GPA @ GWU", value: "4.0" },
             ].map((stat, i) => (
               <div key={i}>
                 <div className="text-4xl font-bold text-text-primary mb-1 font-heading">
@@ -175,6 +167,7 @@ function About() {
               title: `${exp.role} @ ${exp.company}`,
               description: exp.description,
               location: exp.location,
+              achievements: exp.achievements, // Pass achievements for display
             }))}
           />
         </div>
@@ -222,8 +215,6 @@ function About() {
           </div>
         </div>
       </section>
-
-      <Testimonials />
 
       <ContactSection />
     </Page>

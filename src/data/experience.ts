@@ -14,7 +14,7 @@ export const experiences: Experience[] = [
     id: "gwu-ta",
     role: "Graduate Teaching Assistant (Algorithms)",
     company: "George Washington University",
-    dates: "Aug 2024 – Present",
+    dates: "Aug 2024 – Dec 2025",
     location: "Washington, DC",
     description:
       "Teaching Design & Analysis of Algorithms (CSCI 6212) to 60+ graduate students. Designed interactive tutorials relating graph theory to industry supply chain problems.",

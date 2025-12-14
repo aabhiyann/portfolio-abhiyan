@@ -71,6 +71,33 @@ const MelodyHubCaseStudy: React.FC = () => {
         </div>
       </CaseStudySection>
 
+      <div className="mb-12 p-8 rounded-2xl bg-gradient-to-br from-accent-primary/10 to-transparent border border-accent-primary/20">
+        <Typography
+          variant="h3"
+          className="text-xl font-bold text-accent-primary mb-4 flex items-center gap-2"
+        >
+          <span className="text-2xl">🚀</span> Business Impact
+        </Typography>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <div className="text-3xl font-bold text-text-primary mb-1">
+              100+
+            </div>
+            <div className="text-sm text-text-muted">
+              Concurrent users supported with stable socket connections
+            </div>
+          </div>
+          <div>
+            <div className="text-3xl font-bold text-text-primary mb-1">
+              &lt;100ms
+            </div>
+            <div className="text-sm text-text-muted">
+              Synchronization latency for seamless shared playback
+            </div>
+          </div>
+        </div>
+      </div>
+
       <CaseStudySection title="The Challenge">
         <CaseStudyText>
           Existing music platforms lack real-time social features. You can't
