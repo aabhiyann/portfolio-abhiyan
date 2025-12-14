@@ -27,9 +27,9 @@ const StatItem: React.FC<StatItemProps> = ({ value, label, delay = 0 }) => (
 const StatsBar: React.FC = () => {
   // Recruiter-focused stats: Clear, quantifiable, impressive
   const stats = [
-    { value: "6", label: "Production Projects" },
-    { value: "1.2k+", label: "Users Impacted" },
-    { value: "60+", label: "Students Mentored" },
+    { value: "92%", label: "ML Accuracy" },
+    { value: "1,200+", label: "Users Served" },
+    { value: "60+", label: "Students Taught" },
     { value: "4.0", label: "GPA @ GWU" },
   ];
 

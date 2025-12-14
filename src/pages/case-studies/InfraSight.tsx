@@ -72,6 +72,31 @@ const InfraSightCaseStudy: React.FC = () => {
         </div>
       </CaseStudySection>
 
+      <div className="mb-12 p-8 rounded-2xl bg-gradient-to-br from-accent-primary/10 to-transparent border border-accent-primary/20">
+        <Typography
+          variant="h3"
+          className="text-xl font-bold text-accent-primary mb-4 flex items-center gap-2"
+        >
+          <span className="text-2xl">🚀</span> Business Impact
+        </Typography>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <div className="text-3xl font-bold text-text-primary mb-1">70%</div>
+            <div className="text-sm text-text-muted">
+              Reduction in cloud cost analysis time for DevOps teams
+            </div>
+          </div>
+          <div>
+            <div className="text-3xl font-bold text-text-primary mb-1">
+              $2.5k+
+            </div>
+            <div className="text-sm text-text-muted">
+              Wasted monthly spend detected during beta testing
+            </div>
+          </div>
+        </div>
+      </div>
+
       <CaseStudySection title="The Challenge">
         <CaseStudyText>
           Cloud infrastructure costs are notoriously difficult to manage. Teams

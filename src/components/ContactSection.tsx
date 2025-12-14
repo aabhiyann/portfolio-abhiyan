@@ -31,7 +31,7 @@ const ContactSection: React.FC = () => {
             </h3>
             <p className="text-text-muted mb-8">aabhiyansainju@gmail.com</p>
 
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4">
               <Button
                 as="a"
                 href="mailto:aabhiyansainju@gmail.com"

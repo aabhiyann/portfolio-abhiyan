@@ -6,6 +6,7 @@ interface TimelineItemProps {
   title: string;
   description: string;
   location: string;
+  achievements?: string[]; // Added optional achievements
   index: number;
 }
 
@@ -14,6 +15,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   title,
   description,
   location,
+  achievements,
   index,
 }) => {
   return (
@@ -34,9 +36,16 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
       <p className="text-text-muted mb-2 text-sm uppercase tracking-wider">
         {location}
       </p>
-      <p className="text-text-muted/80 leading-relaxed max-w-2xl">
+      <p className="text-text-muted/80 leading-relaxed max-w-2xl mb-4">
         {description}
       </p>
+      {achievements && achievements.length > 0 && (
+        <ul className="list-disc pl-5 space-y-2 text-text-muted/80 text-sm">
+          {achievements.map((achievement, i) => (
+            <li key={i}>{achievement}</li>
+          ))}
+        </ul>
+      )}
     </motion.div>
   );
 };
