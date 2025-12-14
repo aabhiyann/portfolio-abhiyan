@@ -1,4 +1,5 @@
 import React from "react";
+import { Rocket } from "lucide-react";
 import CaseStudyLayout from "../../components/CaseStudyLayout";
 import { CaseStudySection, CaseStudyText } from "../../components/case-study";
 import { Typography } from "../../components/ui";
@@ -24,7 +25,7 @@ const MelodyHubCaseStudy: React.FC = () => {
       <CaseStudySection title="Overview">
         <CaseStudyText>
           MelodyHub is a real-time social music platform that combines music
-          streaming with social interaction—think "Spotify meets Discord." I
+          streaming with social interaction, think "Spotify meets Discord." I
           built this with two teammates for my Object-Oriented Design course at
           GWU. The platform lets users create music rooms, listen together with
           synchronized playback, and chat in real-time. The core challenge was
@@ -76,7 +77,7 @@ const MelodyHubCaseStudy: React.FC = () => {
           variant="h3"
           className="text-xl font-bold text-accent-primary mb-4 flex items-center gap-2"
         >
-          <span className="text-2xl">🚀</span> Business Impact
+          <Rocket className="w-5 h-5" /> Business Impact
         </Typography>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
@@ -138,7 +139,7 @@ const MelodyHubCaseStudy: React.FC = () => {
             },
             {
               title: "2. Synchronized Playback",
-              text: "When one user plays, pauses, or seeks, all users in the room receive the same state update. The server broadcasts playback events with timestamps, and clients apply the state synchronously. I implemented timestamp-based sync to handle network latency—clients adjust for their own delay to stay in sync.",
+              text: "When one user plays, pauses, or seeks, all users in the room receive the same state update. The server broadcasts playback events with timestamps, and clients apply the state synchronously. I implemented timestamp-based sync to handle network latency; clients adjust for their own delay to stay in sync.",
             },
             {
               title: "3. Live Chat",
@@ -146,7 +147,7 @@ const MelodyHubCaseStudy: React.FC = () => {
             },
             {
               title: "4. User Authentication & Presence",
-              text: "Clerk-powered authentication with OAuth and email/password. User presence is tracked in real-time—when someone joins or leaves a room, all users see the update immediately. This uses the Observer pattern to notify all clients of state changes.",
+              text: "Clerk-powered authentication with OAuth and email/password. User presence is tracked in real-time; when someone joins or leaves a room, all users see the update immediately. This uses the Observer pattern to notify all clients of state changes.",
             },
           ].map((item) => (
             <div key={item.title}>
@@ -176,7 +177,7 @@ const MelodyHubCaseStudy: React.FC = () => {
        ↓                                   ↓
 ┌──────────────┐                    ┌──────────────┐
 │    Clerk     │                    │   MongoDB    │
-│    Auth      │                    │  (Rooms/     │
+│    Auth      │                    │  (Rooms /     │
 └──────────────┘                    │   Users)     │
                                     └──────────────┘`}
           </pre>
@@ -206,7 +207,7 @@ const MelodyHubCaseStudy: React.FC = () => {
   songId,
   timestamp,
   isPlaying
-});`}
+}); `}
           </pre>
         </div>
 
@@ -222,7 +223,7 @@ const MelodyHubCaseStudy: React.FC = () => {
             {`socket.on('sync-playback', ({ songId, timestamp, isPlaying }) => {
   audioPlayer.currentTime = timestamp;
   if (isPlaying) audioPlayer.play();
-});`}
+}); `}
           </pre>
         </div>
 

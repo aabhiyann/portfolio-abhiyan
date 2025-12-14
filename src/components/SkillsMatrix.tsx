@@ -14,71 +14,110 @@ const skills: Skill[] = [
   {
     name: "Python",
     category: "Languages",
-    proficiency: 95,
+    proficiency: 98,
     description: "Built custom RAG pipelines and finetuned Llama-2 models.",
   },
   {
     name: "TypeScript",
     category: "Languages",
-    proficiency: 90,
+    proficiency: 95,
     description:
       "Refactored legacy JS codebase to TS, reducing runtime errors by 40%.",
   },
   {
-    name: "Java",
+    name: "C++",
     category: "Languages",
     proficiency: 85,
+    description:
+      "Implemented high-performance algorithms for system optimization.",
+  },
+  {
+    name: "Java",
+    category: "Languages",
+    proficiency: 90,
     description:
       "Architected distributed backend systems for high-throughput data processing.",
   },
   // Frameworks
   {
-    name: "React",
+    name: "React & Next.js",
+    category: "Frameworks",
+    proficiency: 95,
+    description:
+      "Built SEO-optimized SaaS platforms with SSR and dynamic routing.",
+  },
+  {
+    name: "Node.js",
     category: "Frameworks",
     proficiency: 92,
     description:
-      "Developed complex visualization dashboards for fintech analytics.",
+      "Developed scalable real-time microservices handling 10k+ requests/m.",
   },
   {
     name: "FastAPI",
     category: "Frameworks",
-    proficiency: 88,
-    description: "Created async microservices handling 10k+ requests/minute.",
+    proficiency: 90,
+    description: "Created async Python APIs for ML model serving.",
   },
   {
-    name: "Next.js",
+    name: "Tailwind CSS",
     category: "Frameworks",
-    proficiency: 90,
-    description: "Implemented SSR/ISR for SEO-optimized content delivery.",
+    proficiency: 98,
+    description: "Rapidly prototyped responsive, theme-aware design systems.",
   },
+  // AI/ML
   {
     name: "PyTorch",
     category: "AI/ML",
-    proficiency: 85,
+    proficiency: 90,
     description:
       "Implemented custom loss functions for medical image segmentation.",
   },
-  // Tools
   {
-    name: "Docker",
-    category: "Tools",
-    proficiency: 85,
-    description:
-      "Containerized multi-service architectures for consistent dev/prod parity.",
+    name: "LangChain",
+    category: "AI/ML",
+    proficiency: 95,
+    description: "Orchestrated complex RAG workflows with multi-agent systems.",
   },
   {
-    name: "AWS",
+    name: "TensorFlow",
+    category: "AI/ML",
+    proficiency: 85,
+    description: "Built and deployed CNNs for audio classification.",
+  },
+  {
+    name: "RAG & LLMs",
+    category: "AI/ML",
+    proficiency: 92,
+    description: "Engineered context-aware document retrieval systems.",
+  },
+  // Tools
+  {
+    name: "AWS & Cloud",
     category: "Tools",
-    proficiency: 80,
+    proficiency: 88,
     description:
       "Managed EC2, S3, and Lambda resources for cost-effective scaling.",
   },
   {
-    name: "Git",
+    name: "Docker",
+    category: "Tools",
+    proficiency: 90,
+    description:
+      "Containerized multi-service architectures for consistent dev/prod parity.",
+  },
+  {
+    name: "PostgreSQL",
+    category: "Tools",
+    proficiency: 92,
+    description: "Optimized complex SQL queries for sub-millisecond latency.",
+  },
+  {
+    name: "Git & CI/CD",
     category: "Tools",
     proficiency: 95,
     description:
-      "Managed complex branching strategies for widespread team collaboration.",
+      "Automated testing and deployment pipelines via GitHub Actions.",
   },
 ];
 
