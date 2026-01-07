@@ -46,7 +46,7 @@ function About() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: motionTokens.duration.slow / 1000 }}
               >
-                <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-8 font-heading theme-text-primary leading-tight">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-tight">
                   I don't just write code. <br />
                   <span className="gradient-text">I solve problems.</span>
                 </h1>
