@@ -113,7 +113,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
                   className="w-full h-auto object-cover max-h-[600px] transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Liquid Glass Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-[1px]" />
+                <div className="absolute inset-0 gradient-overlay-card opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-[1px]" />
 
                 {/* Optional Hover Text/Badge */}
                 <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">

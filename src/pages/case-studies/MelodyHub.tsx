@@ -72,7 +72,7 @@ const MelodyHubCaseStudy: React.FC = () => {
         </div>
       </CaseStudySection>
 
-      <div className="mb-12 p-8 rounded-2xl bg-gradient-to-br from-accent-primary/10 to-transparent border border-accent-primary/20">
+      <div className="mb-12 p-8 rounded-2xl gradient-accent-subtle">
         <Typography
           variant="h3"
           className="text-xl font-bold text-accent-primary mb-4 flex items-center gap-2"
