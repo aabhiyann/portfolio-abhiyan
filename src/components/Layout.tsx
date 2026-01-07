@@ -22,7 +22,7 @@ function Layout({ children }: LayoutProps) {
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        document.title = "👀 Come back to the code!";
+        document.title = "Come back to the code!";
       } else {
         // On returning, restore the title from the Helmet component, or the original.
         // Helmet will win if the component re-renders, which is what we want.
