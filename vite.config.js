@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     sitemap({
-      hostname: "https://www.abhiyansainju.com", // Replace with your actual domain
+      hostname: "https://www.abhiyansainju.com",
       routes: [
         "/",
         "/projects",
@@ -19,6 +19,8 @@ export default defineConfig({
         // Dynamic routes like /deep-dives/:slug would need to be generated dynamically
         // from your articles data. This often requires a custom script or pre-rendering.
       ],
+      // robots.txt is provided in public/, so disable plugin generation
+      // The plugin might still try to generate it, but our static file will take precedence
     }),
   ],
 });
