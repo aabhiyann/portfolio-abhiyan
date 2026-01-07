@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Camera, Image as ImageIcon, Clock } from "lucide-react";
-import { motionTokens } from "../utils/Motion";
+import { motionTokens } from "../utils/motion";
 import PhotographyGallery from "../components/PhotographyGallery";
 import Page from "../components/Page";
 import SEO from "../components/SEO";

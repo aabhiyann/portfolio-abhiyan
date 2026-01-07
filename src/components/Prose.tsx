@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { motionTokens } from "../utils/Motion";
+import { motionTokens } from "../utils/motion";
 
 interface ProseProps {
   children: React.ReactNode;

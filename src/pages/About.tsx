@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { motionTokens } from "../utils/Motion";
+import { motionTokens } from "../utils/motion";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";

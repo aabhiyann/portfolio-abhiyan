@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { motionTokens } from "../utils/Motion";
+import { motionTokens } from "../utils/motion";
 import { MotionCard } from "../components/ui/MotionCard";
 import { articles } from "../data/Articles";
 import Page from "../components/Page";
