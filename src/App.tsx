@@ -45,8 +45,6 @@ function App() {
                 <Route path="/photography" element={<Photography />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/resume" element={<Resume />} />
-                <Route path="/brief" element={<Resume />} />{" "}
-                {/* Alias for resume if needed, or keep /resume */}
                 <Route path="/deep-dives" element={<DeepDives />} />
                 <Route path="/deep-dives/:slug" element={<DeepDiveDetail />} />
                 <Route
