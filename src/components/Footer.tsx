@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { content } from "../data/Content";
 
 interface FooterLinkProps {
   to: string;
@@ -73,10 +74,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="flex flex-col space-y-4">
             <h4 className="font-semibold text-text-primary">Current Focus</h4>
-            <p className="text-sm text-text-muted">
-              Currently experimenting with Agentic AI workflows and reading
-              'Designing Data-Intensive Applications'.
-            </p>
+            <p className="text-sm text-text-muted">{content.currentFocus}</p>
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-border-primary text-center text-sm text-text-muted">
