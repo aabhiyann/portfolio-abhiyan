@@ -42,19 +42,12 @@ export const ThemeDemo: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Typography
-            variant="h1"
-            color="primary"
-            isDark={themeState.isDarkMode}
-            currentTheme={themeState.currentTheme}
-          >
+          <Typography variant="h1" color="primary">
             Interactive Theme Timeline
           </Typography>
           <Typography
             variant="body"
             color="secondary"
-            isDark={themeState.isDarkMode}
-            currentTheme={themeState.currentTheme}
             className="mt-4 max-w-2xl mx-auto"
           >
             Experience the power of time-based theming. Drag the slider to
@@ -80,13 +73,7 @@ export const ThemeDemo: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Typography
-            variant="h3"
-            color="primary"
-            isDark={themeState.isDarkMode}
-            currentTheme={themeState.currentTheme}
-            className="mb-6 text-center"
-          >
+          <Typography variant="h3" color="primary" className="mb-6 text-center">
             Choose Your Palette
           </Typography>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -102,21 +89,10 @@ export const ThemeDemo: React.FC = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Typography
-                  variant="h5"
-                  color="primary"
-                  isDark={themeState.isDarkMode}
-                  currentTheme={themeState.currentTheme}
-                >
+                <Typography variant="h5" color="primary">
                   {theme.name}
                 </Typography>
-                <Typography
-                  variant="body"
-                  color="secondary"
-                  isDark={themeState.isDarkMode}
-                  currentTheme={themeState.currentTheme}
-                  className="mt-2"
-                >
+                <Typography variant="body" color="secondary" className="mt-2">
                   {theme.description}
                 </Typography>
               </motion.button>
@@ -131,62 +107,31 @@ export const ThemeDemo: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <Typography
-            variant="h4"
-            color="primary"
-            isDark={themeState.isDarkMode}
-            currentTheme={themeState.currentTheme}
-            className="mb-4"
-          >
+          <Typography variant="h4" color="primary" className="mb-4">
             Current Theme State
           </Typography>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Typography
-                variant="body"
-                color="secondary"
-                isDark={themeState.isDarkMode}
-                currentTheme={themeState.currentTheme}
-              >
+              <Typography variant="body" color="secondary">
                 <strong>Mode:</strong>{" "}
                 {themeState.isDarkMode ? "Dark" : "Light"}
               </Typography>
-              <Typography
-                variant="body"
-                color="secondary"
-                isDark={themeState.isDarkMode}
-                currentTheme={themeState.currentTheme}
-              >
+              <Typography variant="body" color="secondary">
                 <strong>Palette:</strong>{" "}
                 {themes.find((t) => t.key === themeState.currentTheme)?.name ||
                   themeState.currentTheme}
               </Typography>
-              <Typography
-                variant="body"
-                color="secondary"
-                isDark={themeState.isDarkMode}
-                currentTheme={themeState.currentTheme}
-              >
+              <Typography variant="body" color="secondary">
                 <strong>Auto Mode:</strong>{" "}
                 {themeState.isAutoMode ? "Enabled" : "Disabled"}
               </Typography>
             </div>
             <div>
-              <Typography
-                variant="body"
-                color="secondary"
-                isDark={themeState.isDarkMode}
-                currentTheme={themeState.currentTheme}
-              >
+              <Typography variant="body" color="secondary">
                 <strong>Time Ratio:</strong>{" "}
                 {(themeState.timeRatio * 100).toFixed(1)}%
               </Typography>
-              <Typography
-                variant="body"
-                color="secondary"
-                isDark={themeState.isDarkMode}
-                currentTheme={themeState.currentTheme}
-              >
+              <Typography variant="body" color="secondary">
                 <strong>Current Time:</strong>{" "}
                 {(() => {
                   const currentHour = Math.floor(themeState.timeRatio * 24);

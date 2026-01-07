@@ -126,11 +126,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
           <header
             className={`p-4 flex justify-between items-center border-b ${themeState.isDarkMode ? "border-white/10" : "border-black/10"}`}
           >
-            <Typography
-              variant="h6"
-              color="primary"
-              isDark={themeState.isDarkMode}
-            >
+            <Typography variant="h6" color="primary">
               AI Concierge
             </Typography>
             <button

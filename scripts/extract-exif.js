@@ -11,6 +11,14 @@ const __dirname = path.dirname(__filename);
 // Configuration
 const inputDir = "./Images";
 
+if (!fs.existsSync(inputDir)) {
+  console.log(
+    `[extract-exif] Skipping: input directory not found: ${inputDir}\n` +
+      `If you want to (re)generate EXIF data from original JPG/PNG assets, place them in ${inputDir}/ and rerun.`,
+  );
+  process.exit(0);
+}
+
 // Get all image files
 const imageFiles = fs
   .readdirSync(inputDir)

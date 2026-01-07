@@ -44,10 +44,19 @@ function Contact() {
                 <h3 className="font-bold text-lg mb-4 text-accent-success">
                   What I Bring
                 </h3>
-                <ul className="space-y-2 text-text-secondary">
-                  <li>✅ Ship fast, iterate smart</li>
-                  <li>✅ End-to-end ownership (API → ML → Deploy)</li>
-                  <li>✅ Technical storytelling for all audiences</li>
+                <ul className="space-y-3 text-text-secondary">
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-success flex-shrink-0"></span>
+                    <span>Ship fast, iterate smart</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-success flex-shrink-0"></span>
+                    <span>End-to-end ownership (API → ML → Deploy)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-success flex-shrink-0"></span>
+                    <span>Technical storytelling for all audiences</span>
+                  </li>
                 </ul>
               </div>
             </div>

@@ -119,7 +119,7 @@ function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Featured Projects"
-            subtitle="A showcase of my recent work spanning web development, mobile applications, and creative coding projects."
+            subtitle="A showcase of my recent work spanning AI/ML platforms, full‑stack web applications, and production‑grade systems."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {projects.slice(0, 3).map((project, index) => (
