@@ -8,6 +8,7 @@ import FloatingActionButton from "./FloatingActionButton";
 import CustomCursor from "./CustomCursor";
 import LivingBackground from "./LivingBackground";
 import ScrollProgressBar from "./ScrollProgressBar";
+import StructuredData from "./StructuredData";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -39,6 +40,7 @@ function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen relative bg-bg-primary text-text-primary">
+      <StructuredData />
       <LivingBackground />
       <ScrollProgressBar />
       <CustomCursor />
