@@ -26,9 +26,9 @@ export const articles: Article[] = [
 
 **TL;DR:** I built a live cloud cost analytics platform with ML-powered forecasting and anomaly detection. Here's what I learned about production ML vs. notebooks, and why "simple" models often win in production.
 
-🔗 **[Live Demo](https://infrasight.netlify.app)** (demo@infrasight.com / password123)  
-💻 **[Source Code](https://github.com/aabhiyann/infrasight)**  
-📖 **[API Documentation](https://infrasight-rs1b.onrender.com/docs)**
+**[Live Demo](https://infrasight.netlify.app)** (demo@infrasight.com / password123)  
+**[Source Code](https://github.com/aabhiyann/infrasight)**  
+**[API Documentation](https://infrasight-rs1b.onrender.com/docs)**
 
 ---
 
@@ -243,7 +243,7 @@ Building InfraSight taught me that production ML is fundamentally different from
 
 **TL;DR:** I systematically compared 5 deep learning architectures for audio classification. The result? A simple task-specific CNN achieved 92% accuracy, outperforming YAMNet transfer learning by 26%. Here's what I learned about when transfer learning works (and when it doesn't).
 
-💻 **[Source Code](https://github.com/aabhiyann/audio-classification-cnn)**
+**[Source Code](https://github.com/aabhiyann/audio-classification-cnn)**
 
 ---
 
@@ -417,8 +417,8 @@ This research demonstrates that transfer learning isn't always the answer. When 
 
 **TL;DR:** I built a production SaaS application that lets you chat with your PDF documents using AI for $0/month. Here's what I learned about RAG architecture, integrating multiple third-party services, and why production AI is 80% data engineering.
 
-🔗 **[Live Demo](https://talkifydocs.vercel.app)**  
-💻 **[Source Code](https://github.com/aabhiyann/talkifydocs)**
+**[Live Demo](https://talkifydocs.vercel.app)**  
+**[Source Code](https://github.com/aabhiyann/talkifydocs)**
 
 ---
 
@@ -636,8 +636,8 @@ Building TalkifyDocs taught me that production RAG applications are fundamentall
 
 **TL;DR:** I built a real-time social music platform where users listen together with synchronized playback and live chat. Here's what I learned about WebSocket architecture, state synchronization, and building scalable real-time systems.
 
-🌐 **[Live Demo](https://udaymelodyhhub.vercel.app)**  
-💻 **[Source Code](https://github.com/aabhiyann/MelodyHub)**
+**[Live Demo](https://udaymelodyhhub.vercel.app)**  
+**[Source Code](https://github.com/aabhiyann/MelodyHub)**
 
 ---
 

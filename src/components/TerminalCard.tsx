@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 
 const script = [
   "> implai --init",
-  "> ✨ Initializing Neural Network...",
-  "> 🧠 Loading PyTorch weights...",
-  "> 📡 Connecting to AWS Region: us-east-1...",
-  "> 🚀 Deploying Microservices...",
-  "> ✅ System Online: Ready to Build.",
+  "> Initializing Neural Network...",
+  "> Loading PyTorch weights...",
+  "> Connecting to AWS Region: us-east-1...",
+  "> Deploying Microservices...",
+  "> System Online: Ready to Build.",
 ];
 
 const TerminalCard: React.FC = () => {
