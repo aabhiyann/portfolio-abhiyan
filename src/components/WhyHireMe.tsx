@@ -1,5 +1,4 @@
 import React from "react";
-// import { motion } from "framer-motion"; // Unused
 import { MotionCard } from "./ui/MotionCard";
 import { GraduationCap, Rocket, Code2 } from "lucide-react";
 import SectionTitle from "./SectionTitle";
