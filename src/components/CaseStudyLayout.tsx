@@ -1,4 +1,6 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 import Page from "./Page"; // Assuming Page is in components
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
@@ -28,9 +30,57 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
   tags,
   children,
 }) => {
+  const location = useLocation();
+  const SITE_URL = "https://www.abhiyansainju.com";
+  const caseStudyUrl = `${SITE_URL}${location.pathname}`;
+  const imageUrl = heroImage
+    ? `${SITE_URL}${heroImage.startsWith("/") ? heroImage : `/${heroImage}`}`
+    : `${SITE_URL}/og-image.png`;
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: `${title} - Case Study`,
+    description: subtitle,
+    author: {
+      "@type": "Person",
+      name: "Abhiyan Sainju",
+      url: SITE_URL,
+      sameAs: [
+        "https://linkedin.com/in/abhiyansainju",
+        "https://github.com/aabhiyann",
+      ],
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Abhiyan Sainju",
+      url: SITE_URL,
+    },
+    image: imageUrl,
+    datePublished: new Date().toISOString(),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": caseStudyUrl,
+    },
+    keywords: tags.join(", "),
+    articleSection: "Technology Case Study",
+    inLanguage: "en-US",
+  };
+
   return (
     <Page>
-      <SEO title={`${title} - Case Study`} description={subtitle} />
+      <SEO
+        title={`${title} - Case Study | Abhiyan Sainju`}
+        description={subtitle}
+        keywords={tags}
+        type="article"
+        image={imageUrl}
+      />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(articleSchema)}
+        </script>
+      </Helmet>
 
       <article className="min-h-screen pb-24">
         {/* Back Link */}
