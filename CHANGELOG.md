@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased] - 2025-01-XX
+
+### Design System Consistency Refactor
+
+This release focuses on establishing consistent design patterns, removing duplicate code, and standardizing styling across the entire portfolio.
+
+### Added
+
+- **Reusable Gradient Utility Classes:** Created consolidated gradient overlay classes (`gradient-overlay-image`, `gradient-overlay-card`, `gradient-overlay-image-light`, `gradient-accent-subtle`) in `index.css` to replace duplicate inline gradient patterns.
+- **Centralized Content Data:** Added `src/data/Content.ts` for managing shared content like "Current Focus" text, enabling single source of truth.
+
+### Changed
+
+- **Hero Section:** Removed duplicate project cards (InfraSight and TalkifyDocs) from HeroBento component, keeping only the TerminalCard for cleaner hero section.
+- **Project Categories:** Standardized category naming to "Full Stack" (with space) across `Projects.ts` and `Projects.tsx` for consistency.
+- **Gradient Patterns:** Replaced all inline gradient patterns with reusable utility classes across 7+ files (Home, About, ProjectCard, CaseStudyLayout, and case study pages).
+- **Typography:** Standardized heading typography classes in Home and About pages to use consistent patterns (`text-text-primary` instead of `theme-text-primary`, consistent responsive sizing).
+- **Spacing:** Standardized section padding from `py-20` to `py-24` in hero section and `py-10` to `py-12` in SkillsSlider for consistency.
+
+### Removed
+
+- **Unused Route Alias:** Removed `/brief` route alias from `App.tsx` as it was not needed.
+- **Commented Code:** Removed commented-out `motion` import from `WhyHireMe.tsx`.
+
+### Internal
+
+- **Code Organization:** All design patterns now follow consistent standards for spacing, typography, and visual effects.
+- **Maintainability:** Gradient patterns and shared content are now centralized, making future updates easier.
+
 ## [Unreleased] - 2025-11-19
 
 This release focuses on a major overhaul of the portfolio's content strategy, performance, and SEO, using project feedback.
