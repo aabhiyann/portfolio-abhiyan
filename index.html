@@ -29,6 +29,19 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Set dark mode immediately to prevent flash of light mode -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        // Default to dark mode unless explicitly set to light
+        const shouldBeDark = savedTheme !== 'light';
+        if (shouldBeDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

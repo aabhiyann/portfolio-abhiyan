@@ -18,9 +18,8 @@ const getInitialState = (): ThemeState => {
   const initialRatio = totalMinutes / (24 * 60);
 
   const isAutoMode = savedAutoMode === "true" || !savedAutoMode;
-  let isDarkMode =
-    savedTheme === "dark" ||
-    (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  // Default to dark mode if no saved theme preference
+  let isDarkMode = savedTheme !== "light"; // Dark by default, unless explicitly set to light
 
   if (isAutoMode) {
     isDarkMode = initialRatio < 0.25 || initialRatio > 0.75;
