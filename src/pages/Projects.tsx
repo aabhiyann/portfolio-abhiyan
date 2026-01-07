@@ -1,7 +1,11 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { projects as initialProjects, Project } from "../data/Projects";
+import {
+  projects as initialProjects,
+  Project,
+  categories as projectCategories,
+} from "../data/Projects";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import ProjectDeconstructor from "../components/ProjectDeconstructor";
@@ -25,7 +29,7 @@ function Projects() {
   const projects = initialProjects;
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const categories = ["All", "Full Stack", "ML/AI"];
+  const categories = projectCategories;
 
   const filteredProjects = useMemo(() => {
     if (activeCategory === "All") return projects;
