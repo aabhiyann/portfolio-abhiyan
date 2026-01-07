@@ -11,7 +11,6 @@ import DottedBackground from "../components/DottedBackground";
 import HeroBento from "../components/HeroBento";
 import SkillsSlider from "../components/SkillsSlider"; // Skills Slider 2.0
 import WhyHireMe from "../components/WhyHireMe";
-import StatsBar from "../components/StatsBar";
 import ContactSection from "../components/ContactSection";
 import TypeWriter from "../components/ui/TypeWriter";
 import { ArrowRight, Download, Hand } from "lucide-react";
@@ -108,9 +107,6 @@ function Home() {
           </span>
         </motion.div>
       </section>
-
-      {/* Stats Bar */}
-      <StatsBar />
 
       {/* Skills Slider 2.0 */}
       <SkillsSlider />
