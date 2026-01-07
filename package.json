@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "prepare": "husky",
     "optimize-images": "node scripts/optimize-images.js",
-    "extract-exif": "node scripts/extract-exif.js"
+    "extract-exif": "node scripts/extract-exif.js",
+    "generate-favicon": "node scripts/generate-favicon.js"
   },
   "dependencies": {
     "clsx": "^2.1.1",
