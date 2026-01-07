@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Page from "../components/Page";
 import SEO from "../components/SEO";
 import Button from "../components/ui/Button";
@@ -52,12 +53,62 @@ const DeepDiveDetail: React.FC = () => {
     );
   }
 
+  const SITE_URL = "https://www.abhiyansainju.com";
+  const articleUrl = `${SITE_URL}/deep-dives/${article.id}`;
+
+  // Parse date for structured data
+  const publishedDate =
+    article.date !== "Coming Soon"
+      ? new Date(article.date).toISOString()
+      : new Date().toISOString();
+
+  // Extract read time number
+  const readTimeMinutes = parseInt(article.readTime.match(/\d+/)?.[0] || "5");
+
+  const blogPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.summary,
+    author: {
+      "@type": "Person",
+      name: "Abhiyan Sainju",
+      url: SITE_URL,
+      sameAs: [
+        "https://linkedin.com/in/abhiyansainju",
+        "https://github.com/aabhiyann",
+      ],
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Abhiyan Sainju",
+      url: SITE_URL,
+    },
+    datePublished: publishedDate,
+    dateModified: publishedDate,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": articleUrl,
+    },
+    keywords: article.tags.join(", "),
+    articleSection: "Technology",
+    wordCount: article.content.split(/\s+/).length,
+    timeRequired: `PT${readTimeMinutes}M`,
+  };
+
   return (
     <Page>
       <SEO
         title={`${article.title} | Abhiyan Sainju`}
         description={article.summary}
+        keywords={article.tags}
+        type="article"
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(blogPostingSchema)}
+        </script>
+      </Helmet>
 
       <ReadingProgress />
 
