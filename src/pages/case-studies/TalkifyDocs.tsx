@@ -14,84 +14,90 @@ const TalkifyDocsCaseStudy: React.FC = () => {
   return (
     <CaseStudyLayout
       title="TalkifyDocs"
-      subtitle="RAG-powered document chat application with SaaS features. Chat with your PDFs using GPT-4 and vector search."
+      subtitle="AI-powered PDF chat application with RAG pipeline. Live production app using Gemini 3.0 + Groq for fast, intelligent document analysis."
       heroImage="/images/projects/talkifydocs.png"
       tags={[
-        "Next.js",
+        "Next.js 16",
+        "React 19",
         "TypeScript",
-        "OpenAI GPT-4",
-        "LangChain",
+        "Google Gemini",
+        "Groq",
         "Pinecone",
-        "Stripe",
+        "tRPC",
       ]}
       stats={[
-        { label: "Status", value: "Development" },
-        { label: "Timeline", value: "2 Months" },
+        { label: "Status", value: "Live Production" },
+        { label: "Timeline", value: "4-6 Weeks" },
         { label: "Role", value: "Solo Full-Stack" },
-        { label: "Architecture", value: "RAG Pipeline" },
+        { label: "Cost", value: "$0/month" },
       ]}
       links={{
         github: "https://github.com/aabhiyann/talkifydocs",
+        live: "https://talkifydocs.vercel.app",
       }}
     >
       <CaseStudySection title="Overview">
         <CaseStudyText>
-          TalkifyDocs is a SaaS application that lets users chat with their PDF
-          documents using AI. Upload a document, ask questions in natural
-          language, and get answers with source citations, powered by GPT-4,
-          LangChain, and vector search. I built this to explore production RAG
-          (Retrieval-Augmented Generation) architecture and modern SaaS
-          patterns, integrating authentication, billing, and AI into a cohesive
-          full-stack application.
+          TalkifyDocs is a production SaaS application that lets users chat with
+          their PDF documents using AI. Upload a document, ask questions in
+          natural language, and get streaming answers with source citations,
+          powered by Google Gemini 3.0 Flash, Groq (Llama 3.3), and vector
+          search. I built this to explore production RAG (Retrieval-Augmented
+          Generation) architecture using 100% free tier services while
+          maintaining enterprise-grade performance and features.
         </CaseStudyText>
 
-        <div className="mb-6 p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
+        <div className="mb-6 p-6 rounded-2xl bg-accent-primary/5 border border-accent-primary/10">
           <Typography
             variant="small"
-            className="font-semibold text-text-primary mb-3 block uppercase tracking-wider"
+            className="font-semibold text-accent-primary mb-3 block uppercase tracking-wider"
           >
-            PROJECT STATUS
+            LIVE DEMO AVAILABLE
           </Typography>
           <div className="space-y-2 text-sm">
             <Typography variant="body" className="text-sm">
-              <strong>Stage:</strong> Development (core features complete, not
-              publicly deployed)
-            </Typography>
-            <Typography variant="body" className="text-sm">
-              <strong>Source Code:</strong>{" "}
+              <strong>App:</strong>{" "}
               <a
-                href="https://github.com/aabhiyann/talkifydocs"
+                href="https://talkifydocs.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent-primary hover:underline"
               >
-                github.com/aabhiyann/talkifydocs
+                talkifydocs.vercel.app
               </a>
             </Typography>
+            <Typography variant="body" className="text-sm">
+              <strong>Tech Stack:</strong> Next.js 16, React 19, TypeScript,
+              Gemini 3.0, Groq (Llama 3.3), Pinecone
+            </Typography>
             <Typography variant="body" color="muted" className="text-sm">
-              91.9% TypeScript · 99 commits · Full RAG pipeline implemented
+              100% free tier · No API costs · Production deployment on Vercel
             </Typography>
           </div>
         </div>
       </CaseStudySection>
 
-      <div className="bg-accent-primary/5 border border-accent-primary/10 rounded-2xl p-6 mb-8">
-        <h3 className="text-lg font-bold text-accent-primary mb-4 flex items-center gap-2">
+      <div className="mb-12 p-8 rounded-2xl gradient-accent-subtle">
+        <Typography
+          variant="h3"
+          className="text-xl font-bold text-accent-primary mb-4 flex items-center gap-2"
+        >
           <Rocket className="w-5 h-5" /> Business Impact
-        </h3>
+        </Typography>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <div className="text-3xl font-bold text-text-primary mb-1">50%</div>
+            <div className="text-3xl font-bold text-text-primary mb-1">$0</div>
             <div className="text-sm text-text-muted">
-              Reduction in research time via natural language queries
+              Monthly operating cost using 100% free tier (Gemini, Neon,
+              Pinecone)
             </div>
           </div>
           <div>
             <div className="text-3xl font-bold text-text-primary mb-1">
-              SaaS
+              &lt;2s
             </div>
             <div className="text-sm text-text-muted">
-              Production-ready architecture with multi-tenant billing
+              Streaming chat responses with real-time document analysis
             </div>
           </div>
         </div>
@@ -99,18 +105,21 @@ const TalkifyDocsCaseStudy: React.FC = () => {
 
       <CaseStudySection title="The Challenge">
         <CaseStudyText>
-          Knowledge workers spend hours manually reviewing documents
-          (researchers analyzing papers, legal teams reviewing contracts,
-          students extracting information from PDFs. Traditional search doesn't
-          understand context or meaning, and finding specific information across
-          multiple documents is tedious and error-prone.
+          Modern document analysis suffers from manual inefficiency. Knowledge
+          workers spend hours manually reviewing documents—researchers analyzing
+          papers, legal teams reviewing contracts, students extracting
+          information from PDFs. Traditional search doesn't understand context
+          or meaning, and finding specific information across multiple documents
+          is tedious and error-prone.
         </CaseStudyText>
         <CaseStudyText>
           I wanted to build a production-ready RAG application that would let
-          users have natural conversations with their documents. The challenge
-          wasn't just integrating GPT-4, it was designing an entire pipeline for
-          document processing, vector search, and conversational AI, while
-          building a complete SaaS platform with authentication and billing.
+          users have natural conversations with their documents using completely
+          free AI services. The challenge wasn't just integrating AI—it was
+          designing an entire pipeline for document processing, vector search,
+          and conversational AI, while achieving 100% free tier operation
+          through strategic technology choices (Gemini 3.0, Groq, Neon, Pinecone
+          free).
         </CaseStudyText>
       </CaseStudySection>
 
@@ -118,43 +127,45 @@ const TalkifyDocsCaseStudy: React.FC = () => {
         <CaseStudyText>
           I designed TalkifyDocs around the RAG architecture: upload documents,
           chunk and embed them for semantic search, then use retrieved context
-          to generate accurate, cited answers. But RAG is just the core; I also
-          needed to build a complete SaaS platform with user management,
-          subscription billing, and a polished UI.
+          to generate accurate, cited answers. I migrated from OpenAI to Google
+          Gemini 3.0 Flash for embeddings and chat (completely free), with Groq
+          (Llama 3.3 70B) as a high-speed fallback. This dual-provider setup
+          ensures reliability while maintaining $0/month operating costs.
         </CaseStudyText>
       </CaseStudySection>
 
       <CaseStudySection title="What It Looks Like">
         <CaseStudyText>
-          Here are screenshots showing the key features:
+          Here are screenshots from the live production app showing the key
+          features:
         </CaseStudyText>
 
-        <div className="space-y-12">
-          {/* Document Upload Interface */}
+        <div className="space-y-12 mt-6">
+          {/* Landing Page */}
           <div>
             <Typography variant="h3" className="mb-4">
-              Document Upload Interface
+              Landing Page
             </Typography>
             <CaseStudyImage
-              src="/images/case-studies/talkifydocs/document-upload.png"
-              alt="TalkifyDocs document upload interface"
-              caption="Drag-and-drop PDF upload with processing status. Documents are automatically chunked and embedded for semantic search."
+              src="/images/case-studies/talkifydocs/landing-dark-mode.png"
+              alt="TalkifyDocs landing page showing hero section and features"
+              caption="Modern landing page with dark mode. Clean design showcasing AI-powered PDF chat features and easy onboarding."
             />
           </div>
 
           {/* Chat Interface */}
           <div>
             <Typography variant="h3" className="mb-4">
-              Chat Interface with Citations
+              AI Chat Interface
             </Typography>
             <CaseStudyImage
-              src="/images/case-studies/talkifydocs/chat-interface.png"
-              alt="TalkifyDocs chat interface showing Q&A with source citations"
-              caption="Natural language chat interface powered by GPT-4. Answers include source citations from the uploaded documents."
+              src="/images/case-studies/talkifydocs/chat-dark-mode.png"
+              alt="TalkifyDocs chat interface with streaming AI responses"
+              caption="Real-time chat interface powered by Gemini 3.0 Flash. Streaming responses with source citations and conversation history."
             />
           </div>
 
-          {/* User Dashboard */}
+          {/* Dashboard */}
           <div>
             <Typography variant="h3" className="mb-4">
               User Dashboard
@@ -162,19 +173,45 @@ const TalkifyDocsCaseStudy: React.FC = () => {
             <CaseStudyImage
               src="/images/case-studies/talkifydocs/dashboard.png"
               alt="TalkifyDocs user dashboard showing document management"
-              caption="User dashboard for managing uploaded documents, viewing chat history, and subscription management."
+              caption="Clean dashboard for managing uploaded PDFs, viewing upload status, and accessing chat conversations."
+            />
+          </div>
+
+          {/* How It Works */}
+          <div>
+            <Typography variant="h3" className="mb-4">
+              Feature Explanation
+            </Typography>
+            <CaseStudyImage
+              src="/images/case-studies/talkifydocs/how-it-works.png"
+              alt="TalkifyDocs how it works section explaining RAG pipeline"
+              caption="Clear visual explanation of the RAG pipeline: Upload → Process → Chat. Helps users understand the technology."
             />
           </div>
         </div>
 
-        <div className="mt-6 p-4 rounded-xl bg-bg-surface/50 border border-border-primary/50">
-          <Typography variant="body" color="muted" className="text-sm">
-            <strong>Note:</strong> Screenshots will appear here once you add
-            images to{" "}
-            <code className="px-2 py-1 rounded bg-bg-surface border border-border-primary/30">
-              /public/images/case-studies/talkifydocs/
-            </code>
-          </Typography>
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
+          <div>
+            <Typography variant="h3" className="mb-3 text-lg">
+              Subscription Tiers
+            </Typography>
+            <CaseStudyImage
+              src="/images/case-studies/talkifydocs/pricing-page.png"
+              alt="TalkifyDocs pricing page with Free and Pro tiers"
+              caption="Stripe-integrated subscription billing with Free and Pro tiers. Clear value proposition for each plan."
+            />
+          </div>
+
+          <div>
+            <Typography variant="h3" className="mb-3 text-lg">
+              Account Management
+            </Typography>
+            <CaseStudyImage
+              src="/images/case-studies/talkifydocs/user-profile.png"
+              alt="TalkifyDocs user profile and account settings"
+              caption="Clerk-powered authentication with user profile management, settings, and subscription control."
+            />
+          </div>
         </div>
       </CaseStudySection>
 
@@ -187,9 +224,10 @@ const TalkifyDocsCaseStudy: React.FC = () => {
             <CaseStudyText>
               When a user uploads a PDF, the system extracts text, splits it
               into overlapping chunks (to preserve context), generates vector
-              embeddings using OpenAI's text-embedding model, and stores them in
-              Pinecone for semantic search. Chunk size and overlap are critical
-              for balancing context retention vs. retrieval precision.
+              embeddings using Gemini's embedding-001 model (768 dimensions),
+              and stores them in Pinecone for semantic search. Chunk size and
+              overlap are critical for balancing context retention vs. retrieval
+              precision.
             </CaseStudyText>
           </div>
 
@@ -200,9 +238,10 @@ const TalkifyDocsCaseStudy: React.FC = () => {
             <CaseStudyText>
               When a user asks a question, the system embeds the query, searches
               Pinecone for the most relevant document chunks, and passes them as
-              context to GPT-4. The model generates an answer grounded in the
-              retrieved content, and the response includes source citations so
-              users can verify the information.
+              context to Gemini 3.0 Flash (or Groq as fallback). The model
+              generates a streaming answer grounded in the retrieved content,
+              and the response includes source citations so users can verify the
+              information.
             </CaseStudyText>
           </div>
 
@@ -223,11 +262,12 @@ const TalkifyDocsCaseStudy: React.FC = () => {
 
       <CaseStudySection title="Technical Architecture">
         <CaseStudyText>
-          TalkifyDocs integrates six major systems: frontend (Next.js), RAG
-          pipeline (LangChain + OpenAI), vector database (Pinecone),
-          authentication (Clerk), billing (Stripe), and database (PostgreSQL).
-          Each integration required careful design to handle errors, manage API
-          keys, and ensure data consistency.
+          TalkifyDocs integrates multiple modern services: frontend (Next.js 16
+          + React 19), dual AI providers (Gemini 3.0 + Groq), vector database
+          (Pinecone), authentication (Clerk), billing (Stripe), and database
+          (PostgreSQL). The architecture prioritizes cost efficiency (100% free
+          tier) while maintaining production-grade reliability through
+          dual-provider fallback.
         </CaseStudyText>
 
         <div className="my-8">
@@ -235,14 +275,17 @@ const TalkifyDocsCaseStudy: React.FC = () => {
             chart={`
 graph TB
     subgraph Frontend["Frontend Layer"]
-        NextJS["Next.js + TypeScript<br/>React Components"]
+        NextJS["Next.js 16 + React 19<br/>TypeScript + tRPC"]
+    end
+    
+    subgraph AIProviders["Dual AI Providers"]
+        Gemini["Google Gemini 3.0 Flash<br/>Embeddings (768-d) + Chat"]
+        Groq["Groq (Llama 3.3 70B)<br/>High-Speed Fallback"]
     end
     
     subgraph RAG["RAG Pipeline"]
         LangChain["LangChain<br/>Orchestration"]
-        OpenAI_Embed["OpenAI Embeddings<br/>text-embedding-ada-002"]
-        OpenAI_GPT["OpenAI GPT-4<br/>Generation"]
-        Pinecone["Pinecone<br/>Vector Database"]
+        Pinecone["Pinecone<br/>Vector Database (768-d)"]
     end
     
     subgraph Services["Third-Party Services"]
@@ -251,28 +294,30 @@ graph TB
     end
     
     subgraph Database["Data Layer"]
-        PostgreSQL["PostgreSQL<br/>User & Document Data"]
+        PostgreSQL["PostgreSQL (Neon.tech)<br/>User & Document Data"]
         Prisma["Prisma ORM<br/>Type-Safe Queries"]
     end
     
-    NextJS -->|API Routes| LangChain
-    LangChain -->|Embed Documents| OpenAI_Embed
-    LangChain -->|Query| Pinecone
-    LangChain -->|Generate Answer| OpenAI_GPT
+    NextJS -->|tRPC API| LangChain
+    LangChain -->|Embed Documents| Gemini
+    LangChain -->|Fallback| Groq
+    LangChain -->|Vector Search| Pinecone
+    Gemini -->|Primary Chat| LangChain
     NextJS -->|Auth| Clerk
     NextJS -->|Billing| Stripe
     NextJS -->|Database| Prisma
     Prisma -->|Queries| PostgreSQL
     
     style NextJS fill:#8B5CF6,stroke:#A78BFA,color:#F4F4F7
+    style Gemini fill:#4285F4,stroke:#669DF6,color:#F4F4F7
+    style Groq fill:#F9A825,stroke:#FBC02D,color:#0F172A
     style LangChain fill:#22C55E,stroke:#4ADE80,color:#F4F4F7
     style Pinecone fill:#3B82F6,stroke:#60A5FA,color:#F4F4F7
-    style OpenAI_GPT fill:#F9A825,stroke:#FBC02D,color:#0F172A
     style Clerk fill:#EC4899,stroke:#F472B6,color:#F4F4F7
     style Stripe fill:#635BFF,stroke:#818CF8,color:#F4F4F7
     style PostgreSQL fill:#336791,stroke:#4A90A4,color:#F4F4F7
             `}
-            title="RAG Architecture"
+            title="RAG Architecture with Dual AI Providers"
           />
         </div>
 
@@ -282,11 +327,12 @@ graph TB
               Next.js Full-Stack Application
             </Typography>
             <CaseStudyText>
-              I chose Next.js for its server-side rendering (better SEO), API
-              routes (backend logic), and TypeScript support. The frontend
-              includes a document upload interface, chat UI with message
-              history, user dashboard, and subscription management. API routes
-              handle document processing, query execution, and webhook events.
+              I chose Next.js 16 (App Router) for its server-side rendering
+              (better SEO), tRPC for type-safe API routes, and full TypeScript
+              support. The frontend includes a document upload interface, chat
+              UI with streaming responses, user dashboard, and subscription
+              management. tRPC procedures handle document processing, query
+              execution, and webhook events with end-to-end type safety.
             </CaseStudyText>
           </div>
 
@@ -296,10 +342,11 @@ graph TB
             </Typography>
             <CaseStudyText>
               LangChain orchestrates the RAG workflow: text splitting with
-              RecursiveCharacterTextSplitter, embedding generation with OpenAI,
-              vector storage in Pinecone, and retrieval-augmented generation
-              with GPT-4. I configured chunk size (1000 tokens) and overlap (200
-              tokens) to preserve context across chunks.
+              RecursiveCharacterTextSplitter, embedding generation with Gemini
+              Embeddings (768-d), vector storage in Pinecone, and
+              retrieval-augmented generation with Gemini 3.0 Flash or Groq
+              (Llama 3.3 70B). I configured chunk size (1000 tokens) and overlap
+              (200 tokens) to preserve context across chunks.
             </CaseStudyText>
           </div>
 
@@ -354,26 +401,25 @@ graph TB
 
           <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
             <Typography variant="h3" className="mb-3 text-xl">
-              Managing API Costs
+              Achieving 100% Free Tier Operation
             </Typography>
             <CaseStudyText className="text-base">
-              <strong>The Problem:</strong> OpenAI API calls are expensive at
-              scale. Embedding costs for document processing, GPT-4 costs for
-              query answering, and Pinecone costs for vector storage add up
-              quickly with many users.
+              <strong>The Challenge:</strong> Originally built with OpenAI
+              (GPT-4 + ada-002 embeddings), which would cost $100+/month at
+              scale. When ChatGPT added PDF support, I paused. Two years later,
+              revived for portfolio using completely free services.
             </CaseStudyText>
             <CaseStudyText className="text-base">
-              <strong>My Approach:</strong> I designed the system with cost
-              awareness: batch embedding generation where possible, implement
-              usage limits per subscription tier, and consider caching
-              frequently asked questions. For production, I'd add rate limiting
-              and monitor per-user costs.
+              <strong>My Solution:</strong> Migrated to Gemini 3.0 Flash (free
+              embeddings 768-d + chat) and Groq (Llama 3.3 70B fallback).
+              Updated Pinecone vector dimensions from 1536 to 768. Result:
+              $0/month cost while maintaining production-grade performance.
             </CaseStudyText>
             <Typography variant="body" color="muted" className="text-sm">
-              <strong>Learning:</strong> Production AI applications require
-              careful cost management. Every API call has a price, and without
-              limits, costs can spiral. This is why subscription tiers and usage
-              caps are essential for SaaS AI products.
+              <strong>Impact:</strong> Dual-provider reliability at zero cost.
+              Gemini 3.0 Flash outperforms GPT-4 in speed with excellent
+              quality. Proof that modern free-tier AI services enable production
+              apps.
             </Typography>
           </div>
 
@@ -384,8 +430,9 @@ graph TB
             <CaseStudyText className="text-base">
               <strong>The Problem:</strong> Building a SaaS requires integrating
               authentication (Clerk), billing (Stripe), vector database
-              (Pinecone), AI (OpenAI), and database (PostgreSQL). Each has its
-              own patterns, error handling, and secrets management.
+              (Pinecone), dual AI providers (Gemini + Groq), and database
+              (PostgreSQL). Each has its own patterns, error handling, and
+              secrets management.
             </CaseStudyText>
             <CaseStudyText className="text-base">
               <strong>My Solution:</strong> I structured the codebase with clear
@@ -452,7 +499,7 @@ graph TB
                 },
                 {
                   title: "RAG Pipeline",
-                  desc: "LangChain integration, document chunking, embedding generation, vector search, GPT-4 query handling",
+                  desc: "LangChain integration, document chunking, embedding generation, vector search, Gemini/Groq query handling",
                 },
                 {
                   title: "SaaS Features",
@@ -501,9 +548,9 @@ graph TB
                 RecursiveCharacterTextSplitter
               </code>{" "}
               (chunk size: 1000 tokens, overlap: 200 tokens), generate vector
-              embeddings using OpenAI's{" "}
+              embeddings using Gemini's{" "}
               <code className="px-2 py-1 rounded bg-bg-surface text-sm border border-border-primary/30">
-                text-embedding-ada-002
+                embedding-001 (768-d)
               </code>
               , and store them in Pinecone with metadata (document ID, page
               number, source text).
@@ -512,7 +559,7 @@ graph TB
               <strong>Why this approach:</strong> RecursiveCharacterTextSplitter
               intelligently splits on paragraph boundaries, preserving semantic
               coherence. Overlap ensures context isn't lost at chunk boundaries.
-              OpenAI embeddings are high-quality and fast.
+              Gemini embeddings are high-quality, fast, and completely free.
             </Typography>
           </div>
 
@@ -522,16 +569,18 @@ graph TB
             </Typography>
             <CaseStudyText className="text-base">
               When a user asks a question, I embed the query using the same
-              OpenAI model, search Pinecone for the top-k most similar chunks
-              (k=4), pass the retrieved chunks as context to GPT-4 with a prompt
-              instructing it to answer based on the provided context, and return
-              the answer with source citations.
+              Gemini model, search Pinecone for the top-k most similar chunks
+              (k=4), pass the retrieved chunks as context to Gemini 3.0 Flash
+              (or Groq as fallback) with a prompt instructing it to answer based
+              on the provided context, and return the answer with source
+              citations.
             </CaseStudyText>
             <Typography variant="body" color="muted" className="text-sm">
               <strong>Why this approach:</strong> Semantic search (vector
               similarity) finds relevant chunks even when exact keywords don't
-              match. GPT-4 generates natural language answers grounded in the
-              retrieved context. Citations let users verify the information.
+              match. Gemini 3.0 Flash generates natural language answers
+              grounded in the retrieved context with streaming support.
+              Citations let users verify the information.
             </Typography>
           </div>
 
@@ -540,10 +589,10 @@ graph TB
               Context Window Management
             </Typography>
             <CaseStudyText className="text-base">
-              GPT-4 has a limited context window (8k or 32k tokens depending on
-              the model). I retrieve only the top-k most relevant chunks to stay
-              within limits. If chunks are too large, I truncate them. If
-              there's room, I include more chunks for better context.
+              Gemini models have limited context windows (varies by version). I
+              retrieve only the top-k most relevant chunks to stay within
+              limits. If chunks are too large, I truncate them. If there's room,
+              I include more chunks for better context.
             </CaseStudyText>
             <Typography variant="body" color="muted" className="text-sm">
               <strong>Why this approach:</strong> Context window management is
@@ -559,8 +608,8 @@ graph TB
         <CaseStudyText>
           Building TalkifyDocs taught me that RAG applications are 80% data
           engineering and integration, 20% AI. The hard problems aren't about
-          calling GPT-4. They're about chunking, retrieval, cost management, and
-          orchestrating multiple services.
+          calling AI models. They're about chunking, retrieval, cost management,
+          and orchestrating multiple services.
         </CaseStudyText>
 
         <div className="space-y-6 mt-6">
@@ -571,7 +620,7 @@ graph TB
             },
             {
               title: "SaaS Requires Many Integrations",
-              text: "Integrating Clerk, Stripe, Pinecone, OpenAI, and PostgreSQL taught me that each service has its own patterns. Clerk uses middleware for auth. Stripe requires webhook handlers for subscription events. Pinecone has rate limits. OpenAI has token limits. Each integration needs error handling, retry logic, and secrets management. Testing locally is harder when you depend on external services.",
+              text: "Integrating Clerk, Stripe, Pinecone, Gemini, Groq, and PostgreSQL taught me that each service has its own patterns. Clerk uses middleware for auth. Stripe requires webhook handlers for subscription events. Pinecone has rate limits. Gemini and Groq have different API patterns. Each integration needs error handling, retry logic, and secrets management. Testing locally is harder when you depend on external services.",
             },
             {
               title: "TypeScript Throughout is Worth It",
@@ -608,7 +657,10 @@ graph TB
                   tech: "Next.js, TypeScript, React, Tailwind CSS",
                 },
                 { category: "Backend", tech: "Next.js API Routes, LangChain" },
-                { category: "AI/ML", tech: "OpenAI GPT-4, OpenAI Embeddings" },
+                {
+                  category: "AI/ML",
+                  tech: "Google Gemini 3.0, Groq (Llama 3.3 70B)",
+                },
                 { category: "Vector DB", tech: "Pinecone" },
                 { category: "Auth", tech: "Clerk" },
                 { category: "Payments", tech: "Stripe" },
@@ -642,7 +694,7 @@ graph TB
             </Typography>
             <ul className="space-y-2 mb-6 list-disc list-inside text-text-secondary">
               <li>Document upload and processing pipeline</li>
-              <li>RAG pipeline with GPT-4 and vector search</li>
+              <li>RAG pipeline with Gemini and Groq</li>
               <li>User authentication with Clerk</li>
               <li>Subscription billing with Stripe</li>
               <li>Database schema and Prisma ORM</li>

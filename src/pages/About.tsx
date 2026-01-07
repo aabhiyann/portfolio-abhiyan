@@ -112,7 +112,7 @@ function About() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover/portrait:scale-105"
                   />
                   {/* Glassy overlay on hover - like photography gallery */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/70 via-bg-primary/20 to-transparent opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500 backdrop-blur-[2px]"></div>
+                  <div className="absolute inset-0 gradient-overlay-image-light opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500 backdrop-blur-[2px]"></div>
                   <div className="absolute bottom-8 left-8 text-white opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500">
                     <div className="text-sm font-mono text-accent-primary mb-2 drop-shadow-2xl">
                       Portfolio Established 2024
