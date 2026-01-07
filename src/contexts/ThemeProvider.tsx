@@ -17,7 +17,7 @@ const getInitialState = (): ThemeState => {
   const totalMinutes = now.getHours() * 60 + now.getMinutes();
   const initialRatio = totalMinutes / (24 * 60);
 
-  const isAutoMode = savedAutoMode === "true" || !savedAutoMode;
+  const isAutoMode = savedAutoMode === "true"; // Disabled by default, user must explicitly enable
   // Default to light mode if no saved theme preference
   let isDarkMode = savedTheme === "dark"; // Light by default, only dark if explicitly set
 
