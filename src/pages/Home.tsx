@@ -148,7 +148,7 @@ function Home() {
                       className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                     />
                     {/* Glassy overlay on hover - consistent with photography gallery */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/80 via-bg-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] flex flex-col items-center justify-center gap-3 p-4">
+                    <div className="absolute inset-0 gradient-overlay-image opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] flex flex-col items-center justify-center gap-3 p-4">
                       {project.caseStudyUrl && (
                         <Button
                           as={Link}
