@@ -558,6 +558,47 @@ body,
   background: linear-gradient(to top, var(--color-bg-primary), transparent);
 }
 
+/* ============================================
+   REUSABLE GRADIENT OVERLAYS - Consolidated Patterns
+   These replace duplicate inline gradient patterns throughout the codebase
+   ============================================ */
+
+.gradient-overlay-image {
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-bg-primary) 80%, transparent),
+    color-mix(in srgb, var(--color-bg-primary) 40%, transparent),
+    transparent
+  ) !important;
+}
+
+.gradient-overlay-image-light {
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-bg-primary) 70%, transparent),
+    color-mix(in srgb, var(--color-bg-primary) 20%, transparent),
+    transparent
+  ) !important;
+}
+
+.gradient-overlay-card {
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-bg-primary) 60%, transparent),
+    transparent
+  ) !important;
+}
+
+.gradient-accent-subtle {
+  background: linear-gradient(
+    to bottom right,
+    color-mix(in srgb, var(--color-accent-primary) 10%, transparent),
+    transparent
+  ) !important;
+  border: 1px solid
+    color-mix(in srgb, var(--color-accent-primary) 20%, transparent) !important;
+}
+
 /* Theme-aware overlay backgrounds */
 .bg-overlay {
   background-color: color-mix(in srgb, var(--color-bg-primary) 60%, transparent) !important;
