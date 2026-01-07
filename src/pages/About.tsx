@@ -131,29 +131,6 @@ function About() {
         </div>
       </section>
 
-      {/* By The Numbers */}
-      <section className="py-12 border-y border-border-primary/50 bg-bg-surface/30">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { label: "ML Accuracy", value: "92%" },
-              { label: "Users Served", value: "1,200+" },
-              { label: "Students Taught", value: "60+" },
-              { label: "GPA @ GWU", value: "4.0" },
-            ].map((stat, i) => (
-              <div key={i}>
-                <div className="text-4xl font-bold text-text-primary mb-1 font-heading">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-text-muted uppercase tracking-wider">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Engineering Career */}
       <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
