@@ -47,52 +47,45 @@ function About() {
                 transition={{ duration: motionTokens.duration.slow / 1000 }}
               >
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-tight">
-                  I don't just write code. <br />
-                  <span className="gradient-text">I solve problems.</span>
+                  Building Things <br />
+                  <span className="gradient-text">That Matter.</span>
                 </h1>
 
                 <div className="space-y-6 text-lg text-text-muted leading-relaxed">
                   <p>
                     I'm Abhiyan, a <strong>Software Engineer</strong> and MS CS
-                    Graduate from{" "}
+                    graduate from{" "}
                     <strong className="text-text-primary">GWU (4.0 GPA)</strong>
                     . Building reliable systems is my craft.
                   </p>
 
-                  <div>
-                    <strong className="block text-text-primary text-xl mb-1">
-                      The Problem Solver
-                    </strong>
-                    <p>
-                      When I saw DevOps teams spending hours analyzing AWS
-                      bills, I built <em>InfraSight</em>, an ML platform that
-                      cut analysis time by 70%. I believe software should kill
-                      inefficiencies.
-                    </p>
-                  </div>
+                  <p>
+                    Currently, I'm a TA for Design & Analysis of Algorithms,
+                    where I help 60+ grad students understand complex concepts.
+                    My interactive tutorials improved midterm scores by 22%.
+                    Teaching forces me to truly understand what I'm building—if
+                    I can't explain it simply, I don't understand it well
+                    enough.
+                  </p>
 
-                  <div>
-                    <strong className="block text-text-primary text-xl mb-1">
-                      The Teacher
-                    </strong>
-                    <p>
-                      As a TA for Design & Analysis of Algorithms, I don't just
-                      grade. I transform how students think. My interactive
-                      tutorials helped improve midterm scores by 22%. If I can't
-                      explain it simply, I don't understand it well enough.
-                    </p>
-                  </div>
+                  <p>
+                    I've built production apps with real users—from{" "}
+                    <em>InfraSight</em> (an ML platform that cut AWS analysis
+                    time by 70%) to <em>TalkifyDocs</em> (AI document chat with
+                    1,200+ active users). Not textbook exercises, but actual
+                    products people use every day.
+                  </p>
 
-                  <div>
-                    <strong className="block text-text-primary text-xl mb-1">
-                      The Builder
-                    </strong>
-                    <p>
-                      I've shipped 5 production apps with real users. Not
-                      textbook exercises: actual products. From real-time music
-                      platforms to AI document assistants, I build end-to-end.
-                    </p>
-                  </div>
+                  <p>
+                    When I'm not coding, I'm photographing. Check out my{" "}
+                    <a
+                      href="/photography"
+                      className="text-accent-primary hover:underline font-medium"
+                    >
+                      gallery
+                    </a>
+                    .
+                  </p>
                 </div>
               </motion.div>
 
@@ -190,6 +183,114 @@ function About() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Beyond Code - Photography Only */}
+      <section className="py-24 bg-bg-primary">
+        <div className="max-w-6xl mx-auto px-6 md:px-8">
+          <SectionTitle
+            title="Beyond Code"
+            subtitle="When I'm not writing software, I'm capturing the world through a lens."
+          />
+
+          {/* Photo Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <motion.div
+              className="aspect-square rounded-xl overflow-hidden group cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              whileHover={{ y: -4 }}
+            >
+              <img
+                src="/images/photography/IMG_9398Ben-Ben-2.webp"
+                alt="Photography sample 1"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </motion.div>
+
+            <motion.div
+              className="aspect-square rounded-xl overflow-hidden group cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ y: -4 }}
+            >
+              <img
+                src="/images/photography/IMG_7916Ben-Ben-2.webp"
+                alt="Photography sample 2"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </motion.div>
+
+            <motion.div
+              className="aspect-square rounded-xl overflow-hidden group cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ y: -4 }}
+            >
+              <img
+                src="/images/photography/IMG_6544PatKay.webp"
+                alt="Photography sample 3"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </motion.div>
+
+            <motion.div
+              className="aspect-square rounded-xl overflow-hidden group cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ y: -4 }}
+            >
+              <img
+                src="/images/photography/IMG_0566.webp"
+                alt="Photography sample 4"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </motion.div>
+          </div>
+
+          {/* Description and CTA */}
+          <motion.div
+            className="text-center max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <p className="text-text-muted mb-6 leading-relaxed">
+              Photography teaches me composition, timing, and attention to
+              detail— skills that translate directly to writing clean,
+              maintainable code. The same eye for structure I use in framing
+              shots, I use in architecting systems.
+            </p>
+            <a
+              href="/photography"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent-primary text-white rounded-lg font-medium hover:bg-accent-primary/90 transition-colors"
+            >
+              View Full Gallery
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          </motion.div>
         </div>
       </section>
 

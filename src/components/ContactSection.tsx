@@ -14,8 +14,8 @@ const ContactSection: React.FC = () => {
 
       <div className="max-w-4xl mx-auto px-6 md:px-8 text-center relative z-10">
         <SectionTitle
-          title="Let's Connect"
-          subtitle="I'm currently looking for full-time Software Engineering roles starting January 2026. Whether you have a question or just want to say hi, I'll try my best to get back to you!"
+          title="Get in Touch"
+          subtitle="Whether you have a question or just want to say hi, I'll try my best to get back to you!"
         />
 
         <motion.div

@@ -13,58 +13,47 @@ function Contact() {
       />
 
       <section className="py-24 min-h-screen">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="max-w-4xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Let's Connect"
-            subtitle="I'm actively seeking full-time Software Engineer, ML/AI Engineer, or Cloud/Data Engineer roles starting January 2026."
+            subtitle="Open to new opportunities. Let's chat about what we could build together."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
-            <div>
-              <div className="mb-8 p-6 rounded-2xl bg-accent-primary/5 border border-accent-primary/10">
-                <h3 className="font-bold text-lg mb-4 text-accent-primary">
-                  What I'm Looking For
-                </h3>
-                <ul className="space-y-2 text-text-secondary">
-                  <li>• Software Engineer (Backend/Full-Stack)</li>
-                  <li>• ML/AI Engineer</li>
-                  <li>• Cloud/Data Engineer</li>
-                </ul>
-                <div className="mt-4 pt-4 border-t border-accent-primary/10 text-sm">
-                  <p>
-                    <strong>Start Date:</strong> January 2026
-                  </p>
-                  <p>
-                    <strong>Location:</strong> US-based or remote-friendly
-                  </p>
+          {/* Info Card */}
+          <div className="max-w-2xl mx-auto mb-12">
+            <div className="p-6 rounded-2xl bg-card/40 backdrop-blur-md border border-border-primary">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <span className="block text-sm text-text-muted mb-1">
+                    Status
+                  </span>
+                  <span className="text-text-primary font-medium">
+                    Open to opportunities
+                  </span>
+                </div>
+                <div>
+                  <span className="block text-sm text-text-muted mb-1">
+                    Location
+                  </span>
+                  <span className="text-text-primary font-medium">
+                    Washington, DC
+                  </span>
+                </div>
+                <div>
+                  <span className="block text-sm text-text-muted mb-1">
+                    Response Time
+                  </span>
+                  <span className="text-text-primary font-medium">
+                    Within 24 hours
+                  </span>
                 </div>
               </div>
-
-              <div className="mb-8 p-6 rounded-2xl bg-accent-success/5 border border-accent-success/10">
-                <h3 className="font-bold text-lg mb-4 text-accent-success">
-                  What I Bring
-                </h3>
-                <ul className="space-y-3 text-text-secondary">
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-success flex-shrink-0"></span>
-                    <span>Ship fast, iterate smart</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-success flex-shrink-0"></span>
-                    <span>End-to-end ownership (API → ML → Deploy)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-success flex-shrink-0"></span>
-                    <span>Technical storytelling for all audiences</span>
-                  </li>
-                </ul>
-              </div>
             </div>
+          </div>
 
-            <div>
-              {/* Reusing existing Contact Logic but styling might need adjustment to fit page vs section */}
-              <ContactSection />
-            </div>
+          <div className="mt-12">
+            {/* Reusing existing ContactSection component with clean layout */}
+            <ContactSection />
           </div>
         </div>
       </section>
