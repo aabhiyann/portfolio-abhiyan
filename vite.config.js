@@ -5,6 +5,32 @@ import sitemap from "vite-plugin-sitemap";
 import { mkdirSync } from "fs";
 import { resolve } from "path";
 
+// All routes for sitemap - includes static pages, blog posts, and case studies
+const allRoutes = [
+  // Static pages
+  "/",
+  "/projects",
+  "/photography",
+  "/deep-dives",
+  "/about",
+  "/experience",
+  "/skills",
+  "/contact",
+  "/resume",
+  
+  // Blog posts (Deep Dives)
+  "/deep-dives/infrasight-production-ml",
+  "/deep-dives/audio-classification-research",
+  "/deep-dives/talkifydocs-rag-pipeline",
+  "/deep-dives/melodyhub-realtime-architecture",
+  
+  // Case studies
+  "/case-studies/infrasight",
+  "/case-studies/talkifydocs",
+  "/case-studies/melodyhub",
+  "/case-studies/audio-classification",
+];
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -24,15 +50,7 @@ export default defineConfig({
     },
     sitemap({
       hostname: "https://www.abhiyansainju.com",
-      routes: [
-        "/",
-        "/projects",
-        "/photography",
-        "/deep-dives",
-        "/about",
-        // Dynamic routes like /deep-dives/:slug would need to be generated dynamically
-        // from your articles data. This often requires a custom script or pre-rendering.
-      ],
+      routes: allRoutes,
     }),
   ],
 });
