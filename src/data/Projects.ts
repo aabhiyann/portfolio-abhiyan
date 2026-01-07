@@ -109,8 +109,8 @@ export const projects: Project[] = [
     id: "disease-prediction",
     title: "Disease Prediction ML",
     description:
-      "Machine learning model to predict disease outbreaks based on historical data and environmental factors.",
-    tech: ["Python", "Scikit-Learn", "Pandas", "Flush"],
+      "Clinical decision support proof-of-concept achieving 98.7% diagnostic accuracy on 4,920 medical records (131 symptoms, 41 disease classes) designed for resource-limited healthcare deployment.",
+    tech: ["Python", "Scikit-Learn", "Pandas", "Flask"],
     live: "https://github.com/aabhiyann/disease-prediction",
     github: "https://github.com/aabhiyann/disease-prediction",
     image: "/images/projects/disease-prediction.png",
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     id: "multi-source-retrieval",
     title: "Multi-Source Retrieval",
     description:
-      "Advanced information retrieval system aggregating results from multiple disparate data sources.",
+      "NLP retrieval system reducing research query times by 70% through semantic search. Extracts information from PDFs, YouTube transcripts, and audio files via conversational interface.",
     tech: ["Python", "Elasticsearch", "NLP", "API"],
     live: "https://github.com/aabhiyann/multi-source-retrieval",
     github: "https://github.com/aabhiyann/multi-source-retrieval",
