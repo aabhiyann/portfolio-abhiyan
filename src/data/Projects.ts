@@ -52,18 +52,18 @@ export const projects: Project[] = [
     id: "talkifydocs",
     title: "TalkifyDocs",
     description:
-      "Enterprise RAG application combining LangChain, Pinecone, and GPT-4. Features full SaaS architecture with Stripe/Clerk.",
-    tech: ["Next.js", "GPT-4", "Pinecone", "LangChain", "Stripe"],
-    live: "", // Not publicly deployed
+      "AI-powered PDF chat using RAG architecture. Built with Gemini 3.0 + Groq for $0/month operation. Live production SaaS.",
+    tech: ["Next.js 16", "Gemini", "Groq", "Pinecone", "tRPC", "Stripe"],
+    live: "https://talkifydocs.vercel.app",
     github: "https://github.com/aabhiyann/talkifydocs",
     image: "/images/projects/talkifydocs.png",
     categories: ["ML/AI", "Full Stack"],
     featured: true,
     stats: [
-      { label: "Status", value: "Dev" },
-      { label: "Type", value: "SaaS RAG" },
+      { label: "Status", value: "Live" },
+      { label: "Cost", value: "$0/mo" },
     ],
-    badges: ["Next.js", "AI", "SaaS"],
+    badges: ["AI", "Free Tier", "SaaS"],
     caseStudyUrl: "/case-studies/talkifydocs",
     deepDiveId: "talkifydocs-rag-pipeline",
   },
@@ -141,10 +141,4 @@ export const projects: Project[] = [
   },
 ];
 
-export const categories = [
-  "All",
-  "Production Apps",
-  "ML/AI",
-  "Full-Stack",
-  "Team Projects",
-];
+export const categories = ["All", "Full Stack", "ML/AI"];
