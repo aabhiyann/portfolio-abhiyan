@@ -41,8 +41,8 @@ const WhyHireMe: React.FC = () => {
     <section className="py-24 bg-bg-surface/50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <SectionTitle
-          title="Why Hire Me"
-          subtitle="Combining academic rigor with practical engineering skills to deliver robust solutions."
+          title="What Sets Me Apart"
+          subtitle="Most engineers are either academic or hands-on. I bridge both: teaching algorithms to grad students while shipping production ML systems."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
