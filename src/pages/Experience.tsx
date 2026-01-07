@@ -2,6 +2,7 @@ import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";
 import VisualTimeline from "../components/VisualTimeline"; // Utilizing existing timeline component if compatible or placeholder
+import { experiences } from "../data/experience";
 
 function Experience() {
   return (
@@ -21,29 +22,13 @@ function Experience() {
 
           <div className="mt-12">
             <VisualTimeline
-              items={[
-                {
-                  year: "2024-2025",
-                  title: "Graduate TA - Algorithms",
-                  location: "GWU, Washington DC",
-                  description:
-                    "Teaching 60+ grad students. 22% midterm score improvement. Onboarded 8 TAs (2 weeks → 4 days). Curriculum redesign with 3 faculty.",
-                },
-                {
-                  year: "2023",
-                  title: "Software Dev Intern",
-                  location: "ECS Tech",
-                  description:
-                    "Fintech platform (1,200+ users). 7 production features shipped. 89% fewer scheduling conflicts. 43% load time improvement.",
-                },
-                {
-                  year: "2022-2023",
-                  title: "IT Solutions Lead",
-                  location: "Intel Security",
-                  description:
-                    "Digital transformation. 73% increase in qualified leads. $35K new contracts (Q1). 40% cost reduction.",
-                },
-              ]}
+              items={experiences.map((exp) => ({
+                year: exp.dates,
+                title: `${exp.role} @ ${exp.company}`,
+                location: exp.location,
+                description: exp.description,
+                achievements: exp.achievements,
+              }))}
             />
           </div>
 
@@ -63,7 +48,7 @@ function Experience() {
             </p>
             <div className="p-4 bg-accent-success/10 border border-accent-success/20 rounded-xl inline-block">
               <span className="text-accent-success font-bold">Result:</span> 22%
-              average midterm improvement.
+              average midterm improvement versus previous cohorts.
             </div>
           </div>
         </div>

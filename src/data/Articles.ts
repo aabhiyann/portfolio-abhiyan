@@ -407,7 +407,7 @@ This research demonstrates that transfer learning isn't always the answer. When 
     id: "talkifydocs-rag-pipeline",
     title: "TalkifyDocs: Building a RAG-Powered Document Chat Application",
     summary:
-      "What I learned building a SaaS RAG application with GPT-4, LangChain, and Pinecone, and why production AI is 80% data engineering.",
+      "What I learned building a production RAG application with Gemini 3.0, Groq, and Pinecone for $0/month, and why production AI is 80% data engineering.",
     date: "Dec 8, 2025",
     readTime: "12 min read",
     tags: ["AI", "RAG", "Next.js", "TypeScript"],
@@ -415,8 +415,9 @@ This research demonstrates that transfer learning isn't always the answer. When 
     content: `
 # TalkifyDocs: Building a RAG-Powered Document Chat Application
 
-**TL;DR:** I built a SaaS application that lets you chat with your PDF documents using AI. Here's what I learned about RAG architecture, integrating multiple third-party services, and why production AI is 80% data engineering.
+**TL;DR:** I built a production SaaS application that lets you chat with your PDF documents using AI for $0/month. Here's what I learned about RAG architecture, integrating multiple third-party services, and why production AI is 80% data engineering.
 
+🔗 **[Live Demo](https://talkifydocs.vercel.app)**  
 💻 **[Source Code](https://github.com/aabhiyann/talkifydocs)**
 
 ---
@@ -425,32 +426,44 @@ This research demonstrates that transfer learning isn't always the answer. When 
 
 Knowledge workers spend hours manually reviewing documents: researchers analyzing papers, legal teams reviewing contracts, students extracting information from PDFs. Traditional search doesn't understand context or meaning, and finding specific information across multiple documents is tedious and error-prone.
 
-I wanted to build a production-ready RAG (Retrieval-Augmented Generation) application that would let users have natural conversations with their documents. The challenge wasn't just integrating GPT-4; it was designing an entire pipeline for document processing, vector search, and conversational AI, while building a complete SaaS platform with authentication and billing.
+I wanted to build a production-ready RAG (Retrieval-Augmented Generation) application that would let users have natural conversations with their documents. The challenge wasn't just integrating Gemini 3.0 Flash; it was designing an entire pipeline for document processing, vector search, and conversational AI, while building a complete SaaS platform with authentication and billing.
 
 ---
 
 ## My Approach
 
-I designed TalkifyDocs around the RAG architecture: upload documents, chunk and embed them for semantic search, then use retrieved context to generate accurate, cited answers. But RAG is just the core; I also needed to build a complete SaaS platform with user management, subscription billing, and a polished UI.
+I designed TalkifyDocs around the RAG architecture: upload documents, chunk and embed them for semantic search, then use retrieved context to generate accurate, cited answers. I migrated from OpenAI (expensive) to Google Gemini 3.0 Flash + Groq for completely free operation while building a complete SaaS platform with authentication and billing.
 
 ### The RAG Pipeline
 
 **Document Processing:**
 1. User uploads a PDF
 2. System extracts text and splits it into overlapping chunks (1000 tokens, 200 overlap)
-3. Generate vector embeddings using OpenAI's text-embedding model
+3. Generate vector embeddings using Gemini's embedding-001 model (768-d)
 4. Store embeddings in Pinecone for semantic search
 
-![Document upload interface with drag-and-drop PDF upload and processing status](/images/case-studies/talkifydocs/document-upload.png)
+![TalkifyDocs dashboard showing document management and upload interface](/images/case-studies/talkifydocs/dashboard.png)
 
 **Query Flow:**
 1. User asks a question
-2. Question is embedded using OpenAI
+2. Question is embedded using Gemini
 3. Pinecone retrieves the most relevant document chunks (top-k=4)
-4. GPT-4 generates an answer using retrieved context
+4. Gemini 3.0 Flash generates an answer using retrieved context
 5. Response includes source citations
 
-![Chat interface showing natural language Q&A with source citations from uploaded documents](/images/case-studies/talkifydocs/chat-interface.png)
+![AI chat interface with streaming responses and source citations powered by Gemini 3.0 Flash](/images/case-studies/talkifydocs/chat-dark-mode.png)
+
+### Advanced Features
+
+Beyond the core RAG pipeline, TalkifyDocs includes:
+- **Multi-Document Conversations**: Chat with up to 5 PDFs simultaneously with full context awareness
+- **Highlights & Bookmarks**: Save important passages and bookmark conversations
+- **Chat Export & Sharing**: Export conversation history via shareable links
+- **Demo Mode**: Try the app with pre-loaded samples, no sign-up required
+- **Streaming Responses**: Real-time AI responses (<2s) for immediate feedback
+- **Admin Dashboard**: Comprehensive analytics and user management
+
+![TalkifyDocs landing page showing features and call-to-action](/images/case-studies/talkifydocs/landing-dark-mode.png)
 
 ### SaaS Infrastructure
 
@@ -472,8 +485,8 @@ graph TB
     
     subgraph RAG["RAG Pipeline"]
         LangChain["LangChain<br/>Orchestration"]
-        OpenAI_Embed["OpenAI Embeddings<br/>text-embedding-ada-002"]
-        OpenAI_GPT["OpenAI GPT-4<br/>Generation"]
+        Gemini_Embed["Gemini Embeddings (768-d)<br/>embedding-001"]
+        Gemini_GPT["Gemini 3.0 Flash + Groq<br/>Generation"]
         Pinecone["Pinecone<br/>Vector Database"]
     end
     
@@ -488,9 +501,9 @@ graph TB
     end
     
     NextJS -->|API Routes| LangChain
-    LangChain -->|Embed Documents| OpenAI_Embed
+    LangChain -->|Embed Documents| Gemini_Embed
     LangChain -->|Query| Pinecone
-    LangChain -->|Generate Answer| OpenAI_GPT
+    LangChain -->|Generate Answer| Gemini_GPT
     NextJS -->|Auth| Clerk
     NextJS -->|Billing| Stripe
     NextJS -->|Database| Prisma
@@ -499,7 +512,7 @@ graph TB
     style NextJS fill:#8B5CF6,stroke:#A78BFA,color:#F4F4F7
     style LangChain fill:#22C55E,stroke:#4ADE80,color:#F4F4F7
     style Pinecone fill:#3B82F6,stroke:#60A5FA,color:#F4F4F7
-    style OpenAI_GPT fill:#F9A825,stroke:#FBC02D,color:#0F172A
+    style Gemini_GPT fill:#4285F4,stroke:#669DF6,color:#F4F4F7
     style Clerk fill:#EC4899,stroke:#F472B6,color:#F4F4F7
     style Stripe fill:#635BFF,stroke:#818CF8,color:#F4F4F7
     style PostgreSQL fill:#336791,stroke:#4A90A4,color:#F4F4F7
@@ -521,7 +534,7 @@ Building a production RAG application taught me that the hard problems aren't ju
 
 ### Challenge 2: Managing API Costs
 
-**The Problem:** OpenAI API calls are expensive at scale. Embedding costs for document processing, GPT-4 costs for query answering, and Pinecone costs for vector storage add up quickly with many users.
+**The Problem:** OpenAI API calls are expensive at scale. Embedding costs for document processing, Gemini 3.0 Flash costs for query answering, and Pinecone costs for vector storage add up quickly with many users.
 
 **My Approach:** I designed the system with cost awareness: batch embedding generation where possible, implement usage limits per subscription tier, and consider caching frequently asked questions. For production, I'd add rate limiting and monitor per-user costs.
 
@@ -529,7 +542,7 @@ Building a production RAG application taught me that the hard problems aren't ju
 
 ### Challenge 3: Integrating Multiple Third-Party Services
 
-**The Problem:** Building a SaaS requires integrating authentication (Clerk), billing (Stripe), vector database (Pinecone), AI (OpenAI), and database (PostgreSQL). Each has its own patterns, error handling, and secrets management.
+**The Problem:** Building a SaaS requires integrating authentication (Clerk), billing (Stripe), vector database (Pinecone), AI (Gemini + Groq), and database (PostgreSQL). Each has its own patterns, error handling, and secrets management.
 
 **My Solution:** I structured the codebase with clear separation of concerns: API routes for backend logic, webhook handlers for Stripe events, and Prisma for database operations. Used environment variables for all API keys and implemented error handling for each service.
 
@@ -543,19 +556,19 @@ Here's how the RAG pipeline works under the hood:
 
 ### Document Processing
 
-When a user uploads a PDF, I extract text using a PDF parser, split it into chunks using LangChain's \`RecursiveCharacterTextSplitter\` (chunk size: 1000 tokens, overlap: 200 tokens), generate vector embeddings using OpenAI's \`text-embedding-ada-002\`, and store them in Pinecone with metadata (document ID, page number, source text).
+When a user uploads a PDF, I extract text using a PDF parser, split it into chunks using LangChain's \`RecursiveCharacterTextSplitter\` (chunk size: 1000 tokens, overlap: 200 tokens), generate vector embeddings using Gemini's \`embedding-001\` (768-d), and store them in Pinecone with metadata (document ID, page number, source text).
 
-**Why this approach:** RecursiveCharacterTextSplitter intelligently splits on paragraph boundaries, preserving semantic coherence. Overlap ensures context isn't lost at chunk boundaries. OpenAI embeddings are high-quality and fast.
+**Why this approach:** RecursiveCharacterTextSplitter intelligently splits on paragraph boundaries, preserving semantic coherence. Overlap ensures context isn't lost at chunk boundaries. Gemini embeddings are high-quality, fast, and completely free.
 
 ### Query Execution
 
-When a user asks a question, I embed the query using the same OpenAI model, search Pinecone for the top-k most similar chunks (k=4), pass the retrieved chunks as context to GPT-4 with a prompt instructing it to answer based on the provided context, and return the answer with source citations.
+When a user asks a question, I embed the query using the same Gemini model, search Pinecone for the top-k most similar chunks (k=4), pass the retrieved chunks as context to Gemini 3.0 Flash (or Groq as fallback) with a prompt instructing it to answer based on the provided context, and return the answer with source citations.
 
-**Why this approach:** Semantic search (vector similarity) finds relevant chunks even when exact keywords don't match. GPT-4 generates natural language answers grounded in the retrieved context. Citations let users verify the information.
+**Why this approach:** Semantic search (vector similarity) finds relevant chunks even when exact keywords don't match. Gemini 3.0 Flash generates natural language answers grounded in the retrieved context. Citations let users verify the information.
 
 ### Context Window Management
 
-GPT-4 has a limited context window (8k or 32k tokens depending on the model). I retrieve only the top-k most relevant chunks to stay within limits. If chunks are too large, I truncate them. If there's room, I include more chunks for better context.
+Gemini 3.0 Flash has a limited context window (8k or 32k tokens depending on the model). I retrieve only the top-k most relevant chunks to stay within limits. If chunks are too large, I truncate them. If there's room, I include more chunks for better context.
 
 **Why this approach:** Context window management is critical for RAG. Too much context wastes tokens and increases cost. Too little context reduces answer quality. Retrieving top-k chunks balances relevance and token usage.
 
@@ -563,7 +576,7 @@ GPT-4 has a limited context window (8k or 32k tokens depending on the model). I 
 
 ## What I Learned
 
-Building TalkifyDocs taught me that RAG applications are 80% data engineering and integration, 20% AI. The hard problems aren't about calling GPT-4; they're about chunking, retrieval, cost management, and orchestrating multiple services.
+Building TalkifyDocs taught me that RAG applications are 80% data engineering and integration, 20% AI. The hard problems aren't about calling Gemini 3.0 Flash; they're about chunking, retrieval, cost management, and orchestrating multiple services.
 
 ### 1. RAG is More Than Just AI
 
@@ -580,7 +593,7 @@ The AI model is just one piece. Most of the work is data engineering.
 
 ### 2. SaaS Requires Many Integrations
 
-Integrating Clerk, Stripe, Pinecone, OpenAI, and PostgreSQL taught me that each service has its own patterns. Clerk uses middleware for auth. Stripe requires webhook handlers for subscription events. Pinecone has rate limits. OpenAI has token limits. Each integration needs error handling, retry logic, and secrets management. Testing locally is harder when you depend on external services.
+Integrating Clerk, Stripe, Pinecone, Gemini, Groq, and PostgreSQL taught me that each service has its own patterns. Clerk uses middleware for auth. Stripe requires webhook handlers for subscription events. Pinecone has rate limits. Gemini and Groq have different API patterns and rate limits. Each integration needs error handling, retry logic, and secrets management. Testing locally is harder when you depend on external services.
 
 ### 3. TypeScript Throughout is Worth It
 
@@ -594,7 +607,7 @@ Using TypeScript for frontend, backend, and database queries (Prisma) provided t
 |----------|-------------|
 | **Frontend** | Next.js, TypeScript, React, Tailwind CSS |
 | **Backend** | Next.js API Routes, LangChain |
-| **AI/ML** | OpenAI GPT-4, OpenAI Embeddings |
+| **AI/ML** | Google Gemini 3.0, Groq (Llama 3.3 70B) |
 | **Vector DB** | Pinecone |
 | **Auth** | Clerk |
 | **Payments** | Stripe |

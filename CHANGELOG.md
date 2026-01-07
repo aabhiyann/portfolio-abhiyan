@@ -8,6 +8,15 @@ All notable changes to this project will be documented in this file.
 
 This release focuses on establishing consistent design patterns, removing duplicate code, and standardizing styling across the entire portfolio.
 
+### Content Improvements & Professional Polish
+
+- Removed duplicate stats: dropped homepage StatsBar and the \"By The Numbers\" section from About
+- Made Contact page professional: replaced emojis with styled bullet points in \"What I Bring\"
+- Fixed homepage projects subtitle to accurately reflect project types
+- Enhanced Experience timeline by mapping to detailed resume data (achievements, technologies)
+- Corrected project data: \"Flush\" → \"Flask\"; improved Multi‑Source Retrieval and Disease Prediction descriptions with concrete metrics
+- Clarified \"Why I Teach\" result copy (adds \"versus previous cohorts\")
+
 ### Added
 
 - **Reusable Gradient Utility Classes:** Created consolidated gradient overlay classes (`gradient-overlay-image`, `gradient-overlay-card`, `gradient-overlay-image-light`, `gradient-accent-subtle`) in `index.css` to replace duplicate inline gradient patterns.

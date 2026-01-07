@@ -15,6 +15,15 @@ const maxWidth = 1200; // Max width for web images
 const quality = 85; // WebP quality
 const jpgQuality = 90; // JPEG fallback quality
 
+if (!fs.existsSync(inputDir)) {
+  console.log(
+    `[optimize-images] Skipping: input directory not found: ${inputDir}\n` +
+      `If you have original JPG/PNG assets to optimize, place them in ${inputDir}/ and rerun.\n` +
+      `Current site assets already include WebP photography in ${outputDir}/.`,
+  );
+  process.exit(0);
+}
+
 // Ensure output directory exists
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
