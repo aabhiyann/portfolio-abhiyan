@@ -1,7 +1,7 @@
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";
-import VisualTimeline from "../components/VisualTimeline"; // Utilizing existing timeline component if compatible or placeholder
+import VisualTimeline from "../components/VisualTimeline";
 import { experiences } from "../data/experience";
 
 function Experience() {
