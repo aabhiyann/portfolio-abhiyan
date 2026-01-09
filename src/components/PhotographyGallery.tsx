@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { photographyImages } from "../data/images";
 import { ImageMetadata } from "../types/image";
 import FocusMode from "./FocusMode";
 import LazyImage from "./LazyImage";
 
+// Fisher-Yates shuffle algorithm
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 function PhotographyGallery({ limit }: { limit?: number }) {
   const [selectedImage, setSelectedImage] = useState<ImageMetadata | null>(
     null,
+  );
+
+  // Randomize photos once on component mount
+  const shuffledImages = useMemo(
+    () => shuffleArray(photographyImages),
+    [], // Empty deps = shuffle only once per mount
   );
 
   const openLightbox = (image: ImageMetadata) => {
@@ -22,7 +38,7 @@ function PhotographyGallery({ limit }: { limit?: number }) {
     <>
       {/* Gallery Grid */}
       <div className="columns-2 md:columns-3 gap-2 md:gap-4 [column-fill:_balance] space-y-2 md:space-y-4">
-        {photographyImages.slice(0, limit).map((image, index) => (
+        {shuffledImages.slice(0, limit).map((image, index) => (
           <motion.figure
             key={index}
             className="relative mb-2 md:mb-4 break-inside-avoid rounded-xl overflow-hidden border border-border-primary/50 group cursor-pointer bg-card/50"
