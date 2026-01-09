@@ -32,3 +32,6 @@ dist-ssr
 !public/images/**/*.jpeg
 !public/images/**/*.png
 !public/images/**/*.webp
+
+# Generated files
+public/sitemap.xml
