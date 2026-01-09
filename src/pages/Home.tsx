@@ -13,7 +13,8 @@ import SkillsSlider from "../components/SkillsSlider"; // Skills Slider 2.0
 import WhyHireMe from "../components/WhyHireMe";
 import ContactSection from "../components/ContactSection";
 import TypeWriter from "../components/ui/TypeWriter";
-import { ArrowRight, Download, Hand } from "lucide-react";
+import { SafeImage } from "../components/ui";
+import { ArrowRight, Download } from "lucide-react";
 
 function Home() {
   return (
@@ -138,10 +139,11 @@ function Home() {
               >
                 <div className="p-6 flex flex-col h-full">
                   <div className="mb-4 overflow-hidden rounded-lg aspect-video relative group">
-                    <img
+                    <SafeImage
                       src={project.image}
                       alt={project.title}
                       className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                      fallback="/images/project-placeholder.png"
                     />
                     {/* Glassy overlay on hover - consistent with photography gallery */}
                     <div className="absolute inset-0 gradient-overlay-image opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] flex flex-col items-center justify-center gap-3 p-4">
