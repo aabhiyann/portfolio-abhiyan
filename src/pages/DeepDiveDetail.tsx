@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import Page from "../components/Page";
 import SEO from "../components/SEO";
 import Button from "../components/ui/Button";
