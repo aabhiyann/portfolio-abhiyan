@@ -10,7 +10,7 @@ interface FooterLinkProps {
 const FooterLink: React.FC<FooterLinkProps> = ({ to, children }) => (
   <Link
     to={to}
-    className="text-text-muted hover:text-text-primary transition-colors duration-300"
+    className="text-text-muted hover:text-text-primary transition-colors duration-300 block py-1.5"
   >
     {children}
   </Link>
@@ -29,7 +29,7 @@ const ExternalFooterLink: React.FC<ExternalFooterLinkProps> = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="text-text-muted hover:text-text-primary transition-colors duration-300"
+    className="text-text-muted hover:text-text-primary transition-colors duration-300 block py-1.5"
   >
     {children}
   </a>
