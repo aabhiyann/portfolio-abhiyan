@@ -50,25 +50,10 @@ export const useAppStore = create<AppState>()(
         // Theme state
         theme: "dark",
         toggleTheme: () =>
-          set((state) => {
-            const newTheme = state.theme === "dark" ? "light" : "dark";
-            // Apply theme to DOM
-            const root = window.document.documentElement;
-            root.classList.remove("light", "dark");
-            root.classList.add(newTheme);
-            // Sync with ThemeProvider's localStorage key
-            localStorage.setItem("portfolio-theme", newTheme);
-            return { theme: newTheme };
-          }),
-        setTheme: (theme) => {
-          // Apply theme to DOM
-          const root = window.document.documentElement;
-          root.classList.remove("light", "dark");
-          root.classList.add(theme);
-          // Sync with ThemeProvider's localStorage key
-          localStorage.setItem("portfolio-theme", theme);
-          set({ theme });
-        },
+          set((state) => ({
+            theme: state.theme === "dark" ? "light" : "dark",
+          })),
+        setTheme: (theme) => set({ theme }),
 
         // UI state
         isChatbotOpen: false,
