@@ -42,9 +42,18 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
   useEffect(scrollToBottom, [messages]);
 
   const handleSend = async () => {
-    if (!input.trim()) return;
+    const sanitizeInput = (text: string) => {
+      // Basic sanitization to prevent XSS and common injection patterns
+      return text
+        .replace(/<[^>]*>?/gm, "") // Remove HTML tags
+        .replace(/javascript:/gi, "") // Remove javascript: protocol
+        .slice(0, 500); // Limit length to 500 chars
+    };
 
-    const userMessage: Message = { text: input, sender: "user" };
+    const cleanInput = sanitizeInput(input);
+    if (!cleanInput) return;
+
+    const userMessage: Message = { text: cleanInput, sender: "user" };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
 
