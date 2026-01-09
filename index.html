@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="9BgQykozictjI7m3RwWej1NIcQ470YxwY1U7qeT1yQY" />
-    
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    
-    <title>Abhiyan Sainju | Full Stack Engineer & AI Researcher</title>
-    <meta
-      name="description"
-      content="Portfolio of Abhiyan Sainju, a GWU Computer Science Master's student specializing in AI-driven SaaS, React, Python, and Cloud Infrastructure."
-    />
-    <meta
-      name="keywords"
-      content="Software Engineer DC, Next.js Developer, AI Engineer, LangChain, AWS, Abhiyan Sainju Portfolio"
-    />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Set light mode immediately to prevent flash of dark mode -->
-    <script>
-      (function() {
-        const savedTheme = localStorage.getItem('portfolio-theme');
-        // Default to light mode unless explicitly set to dark
-        const shouldBeDark = savedTheme === 'dark';
-        if (shouldBeDark) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.add('light');
-        }
-      })();
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="9BgQykozictjI7m3RwWej1NIcQ470YxwY1U7qeT1yQY" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <title>Abhiyan Sainju | Full Stack Engineer & AI Researcher</title>
+  <meta name="description"
+    content="Portfolio of Abhiyan Sainju, a Full Stack & AI Engineer specializing in AI-driven SaaS, React, Python, and Cloud Infrastructure." />
+  <meta name="keywords"
+    content="Software Engineer DC, Next.js Developer, AI Engineer, LangChain, AWS, Abhiyan Sainju Portfolio" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- Set light mode immediately to prevent flash of dark mode -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      // Default to light mode unless explicitly set to dark
+      const shouldBeDark = savedTheme === 'dark';
+      if (shouldBeDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.add('light');
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>
