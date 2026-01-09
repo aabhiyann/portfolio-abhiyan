@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
+import React from "react";
+import { Link } from "react-router-dom";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";
@@ -52,39 +54,32 @@ function About() {
                   <span className="gradient-text">That Matter.</span>
                 </h1>
 
-                <div className="space-y-6 text-lg text-text-muted leading-relaxed">
+                <div className="space-y-4 text-text-secondary leading-relaxed">
                   <p>
-                    I'm Abhiyan, a <strong>Software Engineer</strong> and MS CS
-                    graduate from{" "}
-                    <strong className="text-text-primary">GWU (4.0 GPA)</strong>
-                    . Building reliable systems is my craft.
+                    I'm Abhiyan, a Software Engineer and MS CS graduate from GWU
+                    with a 4.0 GPA. I build systems that work reliably in
+                    production.
                   </p>
-
                   <p>
-                    Currently, I'm a TA for Design & Analysis of Algorithms,
-                    where I help 60+ grad students understand complex concepts.
-                    My interactive tutorials improved midterm scores by 22%.
-                    Teaching forces me to truly understand what I'm building—if
-                    I can't explain it simply, I don't understand it well
-                    enough.
+                    Right now, I'm teaching Design & Analysis of Algorithms to
+                    60+ grad students. My interactive tutorials improved midterm
+                    scores by 22%. Teaching is the ultimate test: if I can't
+                    explain something simply, I don't understand it well enough.
                   </p>
-
                   <p>
-                    I've built production apps with real users—from{" "}
-                    <em>InfraSight</em> (an ML platform that cut AWS analysis
-                    time by 70%) to <em>TalkifyDocs</em> (AI document chat with
-                    1,200+ active users). Not textbook exercises, but actual
-                    products people use every day.
+                    I've shipped real products with actual users. InfraSight (an
+                    ML platform) cut AWS analysis time by 70%. TalkifyDocs (AI
+                    document chat) has 1,200+ active users. These aren't school
+                    projects. They're tools people depend on daily.
                   </p>
-
                   <p>
-                    When I'm not coding, I'm photographing. Check out my{" "}
-                    <a
-                      href="/photography"
-                      className="text-accent-primary hover:underline font-medium"
+                    When I'm not coding, I'm{" "}
+                    <Link
+                      to="/photography"
+                      className="text-accent-primary hover:underline"
                     >
-                      gallery
-                    </a>
+                      behind a camera
+                    </Link>
                     .
                   </p>
                 </div>
@@ -269,9 +264,9 @@ function About() {
           >
             <p className="text-text-muted mb-6 leading-relaxed">
               Photography teaches me composition, timing, and attention to
-              detail— skills that translate directly to writing clean,
-              maintainable code. The same eye for structure I use in framing
-              shots, I use in architecting systems.
+              detail, skills that translate directly to writing clean,
+              maintainable code. Photography teaches patience and precision, two
+              things every engineer needs.architecting systems.
             </p>
             <a
               href="/photography"
