@@ -4,6 +4,7 @@ import { lazy, Suspense } from "react";
 import Layout from "./components/Layout";
 import { ThemeProvider } from "./contexts/ThemeProvider";
 import ErrorBoundary from "./components/ErrorBoundary";
+import PageErrorFallback from "./components/PageErrorFallback";
 
 const Home = lazy(() => import("./pages/Home"));
 const Projects = lazy(() => import("./pages/Projects"));
@@ -33,41 +34,125 @@ function App() {
   return (
     <ThemeProvider>
       <Layout>
-        <ErrorBoundary>
-          <Suspense fallback={<div>Loading...</div>}>
-            <AnimatePresence mode="wait">
-              <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/experience" element={<Experience />} />
-                <Route path="/skills" element={<Skills />} />
-                <Route path="/photography" element={<Photography />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/resume" element={<Resume />} />
-                <Route path="/deep-dives" element={<DeepDives />} />
-                <Route path="/deep-dives/:slug" element={<DeepDiveDetail />} />
-                <Route
-                  path="/case-studies/infrasight"
-                  element={<InfraSightCaseStudy />}
-                />
-                <Route
-                  path="/case-studies/talkifydocs"
-                  element={<TalkifyDocsCaseStudy />}
-                />
-                <Route
-                  path="/case-studies/melodyhub"
-                  element={<MelodyHubCaseStudy />}
-                />
-                <Route
-                  path="/case-studies/audio-classification"
-                  element={<AudioClassificationCaseStudy />}
-                />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </AnimatePresence>
-          </Suspense>
-        </ErrorBoundary>
+        <Suspense fallback={<div>Loading...</div>}>
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route
+                path="/"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <Home />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/about"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <About />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/projects"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <Projects />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/experience"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <Experience />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/skills"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <Skills />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/photography"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <Photography />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/contact"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <Contact />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/resume"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <Resume />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/deep-dives"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <DeepDives />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/deep-dives/:slug"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <DeepDiveDetail />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/case-studies/infrasight"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <InfraSightCaseStudy />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/case-studies/talkifydocs"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <TalkifyDocsCaseStudy />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/case-studies/melodyhub"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <MelodyHubCaseStudy />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/case-studies/audio-classification"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <AudioClassificationCaseStudy />
+                  </ErrorBoundary>
+                }
+              />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AnimatePresence>
+        </Suspense>
       </Layout>
     </ThemeProvider>
   );

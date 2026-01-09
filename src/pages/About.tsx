@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
+import React from "react";
+import { Link } from "react-router-dom";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";
+import { SafeImage } from "../components/ui";
 
 // Testimonials removed to focus on data-driven impact
 import VisualTimeline from "../components/VisualTimeline";
@@ -51,39 +54,34 @@ function About() {
                   <span className="gradient-text">That Matter.</span>
                 </h1>
 
-                <div className="space-y-6 text-lg text-text-muted leading-relaxed">
+                <div className="space-y-4 text-text-secondary leading-relaxed">
                   <p>
-                    I'm Abhiyan, a <strong>Software Engineer</strong> and MS CS
-                    graduate from{" "}
-                    <strong className="text-text-primary">GWU (4.0 GPA)</strong>
-                    . Building reliable systems is my craft.
+                    I'm Abhiyan, a Software Engineer based in Washington DC.
+                    Born and raised in Nepal, I earned my MS in Computer Science
+                    from GWU with a 4.0 GPA. I build systems that work reliably
+                    in production.
                   </p>
-
                   <p>
-                    Currently, I'm a TA for Design & Analysis of Algorithms,
-                    where I help 60+ grad students understand complex concepts.
-                    My interactive tutorials improved midterm scores by 22%.
-                    Teaching forces me to truly understand what I'm building—if
-                    I can't explain it simply, I don't understand it well
-                    enough.
+                    At GWU, I focused on algorithms, distributed systems, and
+                    machine learning. I taught Design & Analysis of Algorithms
+                    to grad students, where my interactive tutorials improved
+                    learning outcomes significantly.
                   </p>
-
                   <p>
-                    I've built production apps with real users—from{" "}
-                    <em>InfraSight</em> (an ML platform that cut AWS analysis
-                    time by 70%) to <em>TalkifyDocs</em> (AI document chat with
-                    1,200+ active users). Not textbook exercises, but actual
-                    products people use every day.
+                    I've built production systems that solve real problems.
+                    InfraSight uses ML to analyze AWS infrastructure patterns.
+                    TalkifyDocs lets users chat with PDF documents using RAG
+                    architecture. I focus on shipping working software, not just
+                    prototypes.
                   </p>
-
                   <p>
-                    When I'm not coding, I'm photographing. Check out my{" "}
-                    <a
-                      href="/photography"
-                      className="text-accent-primary hover:underline font-medium"
+                    When I'm not coding, I'm{" "}
+                    <Link
+                      to="/photography"
+                      className="text-accent-primary hover:underline"
                     >
-                      gallery
-                    </a>
+                      behind a camera
+                    </Link>
                     .
                   </p>
                 </div>
@@ -99,10 +97,11 @@ function About() {
                 }}
               >
                 <div className="aspect-[4/5] rounded-2xl bg-card/40 backdrop-blur-md border border-border-primary/50 relative overflow-hidden shadow-2xl hover:shadow-accent-primary/20 transition-all duration-500 group/portrait">
-                  <img
+                  <SafeImage
                     src="/images/about/portrait.jpg"
                     alt="Abhiyan Sainju"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover/portrait:scale-105"
+                    fallback="/images/placeholder-portrait.png"
                   />
                   {/* Glassy overlay on hover - like photography gallery */}
                   <div className="absolute inset-0 gradient-overlay-image-light opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500 backdrop-blur-[2px]"></div>
@@ -267,9 +266,9 @@ function About() {
           >
             <p className="text-text-muted mb-6 leading-relaxed">
               Photography teaches me composition, timing, and attention to
-              detail— skills that translate directly to writing clean,
-              maintainable code. The same eye for structure I use in framing
-              shots, I use in architecting systems.
+              detail, skills that translate directly to writing clean,
+              maintainable code. Photography teaches patience and precision, two
+              things every engineer needs.architecting systems.
             </p>
             <a
               href="/photography"

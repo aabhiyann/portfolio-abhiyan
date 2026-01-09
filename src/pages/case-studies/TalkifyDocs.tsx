@@ -106,20 +106,19 @@ const TalkifyDocsCaseStudy: React.FC = () => {
       <CaseStudySection title="The Challenge">
         <CaseStudyText>
           Modern document analysis suffers from manual inefficiency. Knowledge
-          workers spend hours manually reviewing documents—researchers analyzing
-          papers, legal teams reviewing contracts, students extracting
-          information from PDFs. Traditional search doesn't understand context
-          or meaning, and finding specific information across multiple documents
-          is tedious and error-prone.
+          workers spend hours manually reviewing documents: researchers
+          analyzing papers, legal teams reviewing contracts, students processing
+          study materials. The process is tedious, time-consuming, and
+          error-prone.
         </CaseStudyText>
         <CaseStudyText>
           I wanted to build a production-ready RAG application that would let
           users have natural conversations with their documents using completely
-          free AI services. The challenge wasn't just integrating AI—it was
-          designing an entire pipeline for document processing, vector search,
-          and conversational AI, while achieving 100% free tier operation
-          through strategic technology choices (Gemini 3.0, Groq, Neon, Pinecone
-          free).
+          free AI services. The challenge wasn't just integrating AI, it was
+          building a platform that could handle real documents at scale while
+          keeping costs sustainable. AI, while achieving 100% free tier
+          operation through strategic technology choices (Gemini 3.0, Groq,
+          Neon, Pinecone free).
         </CaseStudyText>
       </CaseStudySection>
 
