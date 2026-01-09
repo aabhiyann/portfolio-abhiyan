@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../contexts/useTheme";
 import Typography from "./ui/Typography";
+import { TypingIndicator } from "./ui/Skeleton";
 import { resumeContext } from "../data/ResumeContext";
 
 interface Message {
@@ -167,11 +168,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="max-w-xs px-4 py-2 rounded-2xl bg-chat-bot">
-                    <Typography variant="body" className="animate-pulse">
-                      ...
-                    </Typography>
-                  </div>
+                  <TypingIndicator />
                 </div>
               )}
               <div ref={messagesEndRef} />
