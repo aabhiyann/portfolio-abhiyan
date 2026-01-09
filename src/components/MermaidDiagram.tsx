@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useContext } from "react";
+import React, { useEffect, useRef } from "react";
 import mermaid from "mermaid";
-import { ThemeContext } from "../contexts/ThemeContext";
+import { useAppStore } from "../store/store";
 import ImageLightbox from "./ui/ImageLightbox";
 
 interface MermaidDiagramProps {
@@ -16,9 +16,8 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
 }) => {
   const mermaidRef = useRef<HTMLDivElement>(null);
   const [error, setError] = React.useState<string | null>(null);
-  const context = useContext(ThemeContext);
-  const themeState = context?.themeState;
-  const isDarkMode = themeState?.isDarkMode ?? false;
+  const theme = useAppStore((state) => state.theme);
+  const isDarkMode = theme === "dark";
 
   const [isLightboxOpen, setIsLightboxOpen] = React.useState(false);
   const [svgDataUrl, setSvgDataUrl] = React.useState<string | null>(null);

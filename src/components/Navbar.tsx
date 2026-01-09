@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { useTheme } from "../contexts/useTheme";
+import { useAppStore } from "../store/store";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -41,8 +41,13 @@ const NavLinks = ({
 );
 
 const Navbar: React.FC = () => {
-  const { themeState, toggleTheme } = useTheme();
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme, isMobileMenuOpen, setMobileMenuOpen } =
+    useAppStore((state) => ({
+      theme: state.theme,
+      toggleTheme: state.toggleTheme,
+      isMobileMenuOpen: state.isMobileMenuOpen,
+      setMobileMenuOpen: state.setMobileMenuOpen,
+    }));
   const location = useLocation();
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
@@ -56,10 +61,12 @@ const Navbar: React.FC = () => {
     }
   }, [isMobileMenuOpen]);
 
-  // Close menu on route change
+  // Close menu on route change (only depends on pathname, not full location)
   useEffect(() => {
-    closeMobileMenu();
-  }, [location]);
+    setMobileMenuOpen(false);
+  }, [location.pathname, setMobileMenuOpen]);
+
+  const isDarkMode = theme === "dark";
 
   return (
     <>
@@ -84,11 +91,9 @@ const Navbar: React.FC = () => {
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-full text-text-muted hover:text-text-primary hover:bg-overlay-light focus:outline-none transition-colors relative z-50"
-                aria-label={`Switch to ${
-                  themeState.isDarkMode ? "light" : "dark"
-                } mode`}
+                aria-label={`Switch to ${isDarkMode ? "light" : "dark"} mode`}
               >
-                {themeState.isDarkMode ? (
+                {isDarkMode ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -120,26 +125,29 @@ const Navbar: React.FC = () => {
                   </svg>
                 )}
               </button>
-
-              {/* Mobile Menu Button */}
-              <div className="md:hidden relative z-50">
-                <button
-                  onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-                  className="p-2 text-text-muted hover:text-text-primary transition-colors"
-                >
-                  {isMobileMenuOpen ? (
-                    <X className="w-6 h-6" />
-                  ) : (
-                    <Menu className="w-6 h-6" />
-                  )}
-                </button>
-              </div>
+              <Link
+                to="/resume"
+                className="hidden md:block px-4 py-2 rounded-md text-sm font-medium bg-accent-primary text-white hover:bg-accent-primary/90 transition-colors relative z-50"
+              >
+                Resume
+              </Link>
+              <button
+                onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden p-2 rounded-md text-text-muted hover:text-text-primary focus:outline-none relative z-50"
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Full Screen Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -147,10 +155,10 @@ const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-30 bg-bg-surface/95 backdrop-blur-xl md:hidden pt-24 px-6"
+            className="md:hidden fixed inset-0 z-30 bg-bg-primary/95 backdrop-blur-xl overflow-y-auto"
           >
-            <nav className="flex flex-col items-center justify-center space-y-8 h-full pb-24">
-              <NavLinks mobile onLinkClick={closeMobileMenu} />
+            <nav className="flex flex-col items-center justify-center min-h-screen gap-8 px-6">
+              <NavLinks onLinkClick={closeMobileMenu} mobile />
             </nav>
           </motion.div>
         )}
