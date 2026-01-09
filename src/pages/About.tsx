@@ -56,15 +56,16 @@ function About() {
 
                 <div className="space-y-4 text-text-secondary leading-relaxed">
                   <p>
-                    I'm Abhiyan, a Software Engineer and MS CS graduate from GWU
-                    with a 4.0 GPA. I build systems that work reliably in
-                    production.
+                    I'm Abhiyan, a Software Engineer from Nepal with an MS in
+                    Computer Science from GWU (4.0 GPA). I build systems that
+                    work reliably in production.
                   </p>
                   <p>
-                    Right now, I'm teaching Design & Analysis of Algorithms to
-                    60+ grad students. My interactive tutorials improved midterm
-                    scores by 22%. Teaching is the ultimate test: if I can't
-                    explain something simply, I don't understand it well enough.
+                    At GWU, I focused on algorithms, distributed systems, and
+                    machine learning. I also taught Design & Analysis of
+                    Algorithms to 60+ grad students, where my interactive
+                    tutorials improved midterm scores by 22%. Teaching forced me
+                    to truly understand complex concepts.
                   </p>
                   <p>
                     I've shipped real products with actual users. InfraSight (an
