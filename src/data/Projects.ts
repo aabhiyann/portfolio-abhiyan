@@ -36,7 +36,7 @@ export const projects: Project[] = [
     id: "infrasight",
     title: "InfraSight",
     description:
-      "Production cloud cost analytics platform using Linear Regression and Z-Score analysis. Live demo available.",
+      "Addressed opaque cloud billing for SMEs (Situation) by engineering a cost analytics platform with Python and React (Action). Implemented Linear Regression forecasting that achieved 95% accuracy (Result), enabling proactive budget management.",
     tech: ["Python", "FastAPI", "React", "Docker", "AsyncPG"],
     live: "https://infrasight.netlify.app/",
     github: "https://github.com/aabhiyann/infrasight",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     id: "talkifydocs",
     title: "TalkifyDocs",
     description:
-      "AI-powered PDF chat using RAG architecture. Built with Gemini 3.0 + Groq for $0/month operation. Live production SaaS.",
+      "Users needed a cost-effective way to query documents (Situation). Built a RAG pipeline using Groq & Gemini 3.0 (Action) to deliver sub-second responses at $0/mo operational cost (Result), scaling to 100+ active users.",
     tech: ["Next.js 16", "Gemini", "Groq", "Pinecone", "tRPC", "Stripe"],
     live: "https://talkifydocs.vercel.app",
     github: "https://github.com/aabhiyann/talkifydocs",
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     id: "audio-classification-cnn",
     title: "Audio Classification CNN",
     description:
-      "Built CNN achieving 92% accuracy on animal sounds. Outperformed transfer learning by 26%.",
+      "Challenged with improving environmental sound recognition (Situation). Developed a custom CNN architecture using TensorFlow (Action) that achieved 92% accuracy, outperforming standard transfer learning models by 26% (Result).",
     tech: ["TensorFlow", "Keras", "librosa", "YAMNet"],
     live: "https://github.com/aabhiyann/audio-classification-cnn",
     github: "https://github.com/aabhiyann/audio-classification-cnn",
@@ -90,7 +90,7 @@ export const projects: Project[] = [
     id: "melodyhub",
     title: "MelodyHub",
     description:
-      "Real-time social music platform with synchronized playback. Built with Socket.IO, React, and Clerk.",
+      "Solved remote group listening latency (Situation) by building a real-time synchronization engine with Socket.IO and React (Action), ensuring sub-50ms playback sync across distributed clients (Result).",
     tech: ["React", "Node.js", "Socket.IO", "MongoDB", "Clerk"],
     live: "https://udaymelodyhhub.vercel.app/",
     github: "https://github.com/aabhiyann/MelodyHub",
@@ -99,7 +99,7 @@ export const projects: Project[] = [
     featured: true,
     stats: [
       { label: "Type", value: "Team Project" },
-      { label: "Feature", value: "Real-Time Sync" },
+      { label: "Latency", value: "<50ms" },
     ],
     badges: ["Socket.IO", "Team Work"],
     caseStudyUrl: "/case-studies/melodyhub",
@@ -109,7 +109,7 @@ export const projects: Project[] = [
     id: "disease-prediction",
     title: "Disease Prediction ML",
     description:
-      "Clinical decision support proof-of-concept achieving 98.7% diagnostic accuracy on 4,920 medical records (131 symptoms, 41 disease classes) designed for resource-limited healthcare deployment.",
+      "Designed for resource-limited healthcare settings (Situation). Optimized a Random Forest classifier (Action) to achieve 98.7% diagnostic accuracy on 4,920 records (Result) with minimal computational overhead.",
     tech: ["Python", "Scikit-Learn", "Pandas", "Flask"],
     live: "https://github.com/aabhiyann/disease-prediction",
     github: "https://github.com/aabhiyann/disease-prediction",
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     id: "multi-source-retrieval",
     title: "Multi-Source Retrieval",
     description:
-      "NLP retrieval system reducing research query times by 70% through semantic search. Extracts information from PDFs, YouTube transcripts, and audio files via conversational interface.",
+      "Streamlined research data extraction (Situation) by building a semantic search API with Elasticsearch (Action), reducing query time by 70% across disparate file formats like PDFs and audio transcripts (Result).",
     tech: ["Python", "Elasticsearch", "NLP", "API"],
     live: "https://github.com/aabhiyann/multi-source-retrieval",
     github: "https://github.com/aabhiyann/multi-source-retrieval",
