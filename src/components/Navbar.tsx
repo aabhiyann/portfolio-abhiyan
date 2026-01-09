@@ -11,35 +11,45 @@ const NavLinks = ({
 }: {
   onLinkClick?: () => void;
   mobile?: boolean;
-}) => (
-  <>
-    {[
-      { path: "/about", label: "About" },
-      { path: "/projects", label: "Projects" },
-      { path: "/experience", label: "Experience" },
-      { path: "/skills", label: "Skills" },
-      { path: "/photography", label: "Photography" },
-      { path: "/contact", label: "Contact" },
-    ].map((link) => (
-      <NavLink
-        key={link.path}
-        to={link.path}
-        onClick={onLinkClick}
-        className={({ isActive }) =>
-          mobile
-            ? `text-3xl font-bold transition-colors ${
-                isActive ? "text-accent-primary" : "text-text-muted"
-              } hover:text-text-primary`
-            : `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive ? "text-text-primary" : "text-text-muted"
-              } hover:text-text-primary`
-        }
-      >
-        {link.label}
-      </NavLink>
-    ))}
-  </>
-);
+}) => {
+  const links = [
+    { path: "/about", label: "About" },
+    { path: "/projects", label: "Projects" },
+    { path: "/experience", label: "Experience" },
+    { path: "/skills", label: "Skills" },
+    { path: "/photography", label: "Photography" },
+    { path: "/contact", label: "Contact" },
+  ];
+
+  return (
+    <div
+      className={
+        mobile
+          ? "flex flex-col gap-6 items-center"
+          : "flex items-baseline space-x-4"
+      }
+    >
+      {links.map((link) => (
+        <NavLink
+          key={link.path}
+          to={link.path}
+          onClick={onLinkClick}
+          className={({ isActive }) =>
+            mobile
+              ? `text-3xl font-bold transition-colors ${
+                  isActive ? "text-accent-primary" : "text-text-muted"
+                } hover:text-text-primary`
+              : `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  isActive ? "text-text-primary" : "text-text-muted"
+                } hover:text-text-primary`
+          }
+        >
+          {link.label}
+        </NavLink>
+      ))}
+    </div>
+  );
+};
 
 const Navbar: React.FC = () => {
   // Use ThemeContext for theme (not Zustand - ThemeProvider handles DOM updates)
