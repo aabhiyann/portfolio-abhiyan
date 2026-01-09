@@ -20,6 +20,8 @@ export { ProjectCard } from "./ProjectCard";
 
 export { SafeImage } from "./SafeImage";
 
+export { ProjectGrid } from "./ProjectGrid";
+
 // Re-export design system utilities for convenience
 export { colorUtils } from "../../design/colors";
 export { designSystem } from "../../design/system";
