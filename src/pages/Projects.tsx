@@ -62,21 +62,61 @@ function Projects() {
               className="grid grid-cols-1 lg:grid-cols-2 gap-12"
             >
               <AnimatePresence mode="popLayout">
-                {filteredProjects.map((project) => (
+                {filteredProjects.length === 0 ? (
                   <motion.div
-                    layout
-                    key={project.id}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.3 }}
+                    className="col-span-full text-center py-24"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
                   >
-                    <ProjectCard
-                      project={project}
-                      onArchitectureClick={setSelectedArch}
-                    />
+                    <div className="inline-block p-12 rounded-3xl glass-card max-w-md">
+                      <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-primary/10 flex items-center justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-8 h-8 text-accent-primary"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                          />
+                        </svg>
+                      </div>
+                      <h3 className="text-2xl font-bold text-text-primary mb-2">
+                        No Projects Found
+                      </h3>
+                      <p className="text-text-muted mb-6">
+                        No projects match the "{activeCategory}" category
+                      </p>
+                      <button
+                        onClick={() => setActiveCategory("All")}
+                        className="px-6 py-3 rounded-lg bg-accent-primary text-white font-medium hover:bg-accent-primary/90 transition-colors"
+                      >
+                        View All Projects
+                      </button>
+                    </div>
                   </motion.div>
-                ))}
+                ) : (
+                  filteredProjects.map((project) => (
+                    <motion.div
+                      layout
+                      key={project.id}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ProjectCard
+                        project={project}
+                        onArchitectureClick={setSelectedArch}
+                      />
+                    </motion.div>
+                  ))
+                )}
               </AnimatePresence>
             </motion.div>
           </div>
