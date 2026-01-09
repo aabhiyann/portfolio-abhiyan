@@ -39,8 +39,16 @@ function Projects() {
   return (
     <Page>
       <SEO
-        title="Projects | Abhiyan Sainju"
-        description="Explore a collection of my projects, from AI-driven SaaS platforms to full-stack web applications."
+        title="Software Engineering Projects | Abhiyan Sainju"
+        description="Explore a collection of my projects, from AI-driven SaaS platforms to full-stack web applications. Built with React, Python, and scalable architecture."
+        keywords={[
+          "Projects",
+          "Portfolio",
+          "Case Studies",
+          "Source Code",
+          "React Projects",
+          "AI Projects",
+        ]}
       />
       <section className="relative py-24 min-h-screen font-heading">
         <div className="relative z-20">
