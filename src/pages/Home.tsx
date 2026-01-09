@@ -18,8 +18,22 @@ function Home() {
   return (
     <Page>
       <SEO
-        title="Abhiyan Sainju | Full Stack & AI Engineer"
-        description="Software Engineer at GWU building enterprise-grade AI/ML solutions."
+        title="Abhiyan Sainju | Software Engineer | Open to Relocation (US)"
+        description="Full-stack engineer building AI/ML solutions. Top-tier software engineering portfolio. Open to roles in DC, NYC, SF, Chicago, Austin, Charlotte, and nationwide."
+        keywords={[
+          "Software Engineer",
+          "Full Stack Developer",
+          "Machine Learning Engineer",
+          "Open to Relocation",
+          "Washington DC",
+          "New York City",
+          "San Francisco",
+          "Chicago",
+          "Austin",
+          "Charlotte",
+          "React",
+          "Python",
+        ]}
       />
       <DottedBackground />
 

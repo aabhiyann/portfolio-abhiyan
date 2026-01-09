@@ -63,6 +63,45 @@ export default function StructuredData() {
       },
       {
         "@type": "Place",
+        name: "Chicago, IL",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Chicago",
+          addressRegion: "IL",
+          addressCountry: "US",
+        },
+      },
+      {
+        "@type": "Place",
+        name: "Austin, TX",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Austin",
+          addressRegion: "TX",
+          addressCountry: "US",
+        },
+      },
+      {
+        "@type": "Place",
+        name: "Charlotte, NC",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Charlotte",
+          addressRegion: "NC",
+          addressCountry: "US",
+        },
+      },
+      {
+        "@type": "Place",
+        name: "United States",
+        description: "Open to relocation anywhere in the US",
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "US",
+        },
+      },
+      {
+        "@type": "Place",
         name: "Remote",
       },
     ],
