@@ -3,17 +3,15 @@ import { motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
 import { projects } from "../data/Projects";
 import Page from "../components/Page";
-import SectionTitle from "../components/SectionTitle";
 import Button from "../components/ui/Button";
-import { MotionCard } from "../components/ui/MotionCard";
 import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
 import HeroBento from "../components/HeroBento";
-import SkillsSlider from "../components/SkillsSlider"; // Skills Slider 2.0
+import SkillsSlider from "../components/SkillsSlider";
 import WhyHireMe from "../components/WhyHireMe";
 import ContactSection from "../components/ContactSection";
 import TypeWriter from "../components/ui/TypeWriter";
-import { SafeImage } from "../components/ui";
+import { FeaturedProjectsSection, AboutTeaser } from "../components/sections";
 import { ArrowRight, Download } from "lucide-react";
 
 function Home() {
@@ -115,133 +113,11 @@ function Home() {
       {/* Why Hire Me Section */}
       <WhyHireMe />
 
-      {/* Projects Teaser */}
-      <section id="projects" className="py-24 bg-bg-primary">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <SectionTitle
-            title="Featured Projects"
-            subtitle="A showcase of my recent work spanning AI/ML platforms, full‑stack web applications, and production‑grade systems."
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {projects.slice(0, 3).map((project, index) => (
-              <MotionCard
-                key={project.id}
-                className="h-full flex flex-col"
-                variants={motionTokens.variants.fadeUp}
-                initial="initial"
-                whileInView="animate"
-                viewport={{ once: true }}
-                transition={{
-                  duration: motionTokens.duration.slow / 1000,
-                  delay: 0.1 + index * 0.1,
-                }}
-                whileHover={{ y: -8 }}
-              >
-                <div className="p-6 flex flex-col h-full">
-                  <div className="mb-4 overflow-hidden rounded-lg aspect-video relative group">
-                    <SafeImage
-                      src={project.image}
-                      alt={project.title}
-                      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
-                      fallback="/images/project-placeholder.png"
-                    />
-                    {/* Glassy overlay on hover - consistent with photography gallery */}
-                    <div className="absolute inset-0 gradient-overlay-image opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] flex flex-col items-center justify-center gap-3 p-4">
-                      {project.caseStudyUrl && (
-                        <Button
-                          as={Link}
-                          to={project.caseStudyUrl}
-                          size="sm"
-                          variant="primary"
-                          className="w-full max-w-[140px]"
-                        >
-                          Read Case Study
-                        </Button>
-                      )}
-                      {(project.live || project.github) && (
-                        <Button
-                          as="a"
-                          href={project.live || project.github}
-                          target="_blank"
-                          size="sm"
-                          variant={project.caseStudyUrl ? "outline" : "primary"}
-                          className="w-full max-w-[140px] btn-overlay"
-                        >
-                          View Project
-                        </Button>
-                      )}
-                    </div>
-                  </div>
+      {/* Projects Teaser - Now using extracted component */}
+      <FeaturedProjectsSection projects={projects.slice(0, 3)} />
 
-                  <h3 className="text-xl font-semibold mb-3 text-text-primary font-heading">
-                    {project.title}
-                  </h3>
-                  <p className="text-text-muted mb-4 flex-grow line-clamp-3 text-sm">
-                    {project.description}
-                  </p>
-
-                  {/* Stats */}
-                  {project.stats && (
-                    <div className="flex gap-4 mb-4 border-y border-border-primary/50 py-2">
-                      {project.stats.slice(0, 2).map((stat) => (
-                        <div key={stat.label} className="text-xs">
-                          <span className="text-text-muted block text-[10px] uppercase tracking-wider">
-                            {stat.label}
-                          </span>
-                          <span className="font-mono text-accent-primary font-medium">
-                            {stat.value}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Tech Badges */}
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.tech.slice(0, 3).map((t) => (
-                      <span
-                        key={t}
-                        className="px-2 py-1 text-xs rounded bg-accent-primary/10 text-accent-primary border border-accent-primary/20"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </MotionCard>
-            ))}
-          </div>
-          <motion.div
-            className="text-center mt-12"
-            variants={motionTokens.variants.fadeUp}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            transition={{
-              duration: motionTokens.duration.slow / 1000,
-              delay: 0.4,
-            }}
-          >
-            <Button as={Link} to="/projects" variant="primary" size="lg">
-              View All Projects
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* About Teaser */}
-      <section className="py-24 bg-bg-surface relative overflow-hidden">
-        <div className="absolute inset-0 bg-accent-primary/5 opacity-20 pointer-events-none"></div>
-        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center relative z-10">
-          <SectionTitle
-            title="My Journey"
-            subtitle="I don't just write code; I solve problems. From teaching algorithms to 60+ grad students to shipping production apps used by thousands."
-          />
-          <Button as={Link} to="/about" variant="primary" size="lg">
-            Read My Story
-          </Button>
-        </div>
-      </section>
+      {/* About Teaser - Now using extracted component */}
+      <AboutTeaser />
 
       {/* Contact Section */}
       <ContactSection />
