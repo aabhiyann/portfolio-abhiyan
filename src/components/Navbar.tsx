@@ -41,13 +41,11 @@ const NavLinks = ({
 );
 
 const Navbar: React.FC = () => {
-  const { theme, toggleTheme, isMobileMenuOpen, setMobileMenuOpen } =
-    useAppStore((state) => ({
-      theme: state.theme,
-      toggleTheme: state.toggleTheme,
-      isMobileMenuOpen: state.isMobileMenuOpen,
-      setMobileMenuOpen: state.setMobileMenuOpen,
-    }));
+  // Use individual selectors to avoid creating new objects on each render
+  const theme = useAppStore((state) => state.theme);
+  const toggleTheme = useAppStore((state) => state.toggleTheme);
+  const isMobileMenuOpen = useAppStore((state) => state.isMobileMenuOpen);
+  const setMobileMenuOpen = useAppStore((state) => state.setMobileMenuOpen);
   const location = useLocation();
 
   const closeMobileMenu = () => setMobileMenuOpen(false);

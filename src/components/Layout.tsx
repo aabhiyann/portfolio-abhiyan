@@ -20,13 +20,10 @@ interface LayoutProps {
  * Now uses Zustand for global state management instead of local useState.
  */
 function Layout({ children }: LayoutProps) {
-  const { isChatbotOpen, toggleChatbot, closeChatbot } = useAppStore(
-    (state) => ({
-      isChatbotOpen: state.isChatbotOpen,
-      toggleChatbot: state.toggleChatbot,
-      closeChatbot: state.closeChatbot,
-    }),
-  );
+  // Use individual selectors to avoid creating new objects on each render
+  const isChatbotOpen = useAppStore((state) => state.isChatbotOpen);
+  const toggleChatbot = useAppStore((state) => state.toggleChatbot);
+  const closeChatbot = useAppStore((state) => state.closeChatbot);
 
   return (
     <div className="min-h-screen relative bg-bg-primary text-text-primary">
