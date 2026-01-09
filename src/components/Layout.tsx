@@ -33,13 +33,17 @@ function Layout({ children }: LayoutProps) {
       <CustomCursor />
       <SkipLink />
       <div className="relative z-10">
-        <Navbar />
+        <header>
+          <Navbar />
+        </header>
 
         <motion.main id="content" className="relative z-10">
           {children}
         </motion.main>
 
-        <Footer />
+        <footer>
+          <Footer />
+        </footer>
       </div>
 
       <FloatingActionButton onClick={toggleChatbot} isOpen={isChatbotOpen} />
