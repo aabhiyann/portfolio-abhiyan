@@ -56,10 +56,12 @@ function About() {
 
                 <div className="space-y-4 text-text-secondary leading-relaxed">
                   <p>
-                    I'm Abhiyan, a Software Engineer based in Washington DC.
-                    Born and raised in Nepal, I earned my MS in Computer Science
-                    from GWU with a 4.0 GPA. I build systems that work reliably
-                    in production.
+                    I'm Abhiyan, a Software Engineer based in Washington DC,
+                    currently open to relocation anywhere in the US (especially
+                    SF/Bay Area, NYC, Chicago, Austin, or Charlotte). Born and
+                    raised in Nepal, I earned my MS in Computer Science from GWU
+                    with a 4.0 GPA. I build systems that work reliably in
+                    production.
                   </p>
                   <p>
                     At GWU, I focused on algorithms, distributed systems, and

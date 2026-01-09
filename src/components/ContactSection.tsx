@@ -29,7 +29,13 @@ const ContactSection: React.FC = () => {
             <h3 className="text-2xl font-bold text-text-primary mb-2">
               Drop me a message
             </h3>
-            <p className="text-text-muted mb-8">aabhiyansainju@gmail.com</p>
+            <p className="text-text-muted mb-4">aabhiyansainju@gmail.com</p>
+            <div className="mb-8 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-accent-primary text-sm font-medium">
+              <span className="relative flex h-2 w-2">
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-primary"></span>
+              </span>
+              Based in DC • Open to Relocation (US)
+            </div>
 
             <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4">
               <Button
