@@ -3,6 +3,7 @@ import { motionTokens } from "../utils/motion";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";
+import { SafeImage } from "../components/ui";
 
 // Testimonials removed to focus on data-driven impact
 import VisualTimeline from "../components/VisualTimeline";
@@ -99,10 +100,11 @@ function About() {
                 }}
               >
                 <div className="aspect-[4/5] rounded-2xl bg-card/40 backdrop-blur-md border border-border-primary/50 relative overflow-hidden shadow-2xl hover:shadow-accent-primary/20 transition-all duration-500 group/portrait">
-                  <img
+                  <SafeImage
                     src="/images/about/portrait.jpg"
                     alt="Abhiyan Sainju"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover/portrait:scale-105"
+                    fallback="/images/placeholder-portrait.png"
                   />
                   {/* Glassy overlay on hover - like photography gallery */}
                   <div className="absolute inset-0 gradient-overlay-image-light opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500 backdrop-blur-[2px]"></div>

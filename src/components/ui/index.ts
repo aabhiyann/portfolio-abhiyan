@@ -18,6 +18,8 @@ export type { ChipProps } from "./Chip";
 
 export { ProjectCard } from "./ProjectCard";
 
+export { SafeImage } from "./SafeImage";
+
 // Re-export design system utilities for convenience
 export { colorUtils } from "../../design/colors";
 export { designSystem } from "../../design/system";
