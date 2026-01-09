@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FileText } from "lucide-react";
 import { Project } from "../../data/Projects";
-import { Button, Chip } from "./";
+import { Button, Chip, SafeImage } from "./";
 
 interface ProjectCardProps {
   project: Project;
@@ -24,7 +24,7 @@ export const ProjectCard = ({
       transition={{ duration: 0.3 }}
     >
       <div className="aspect-video relative overflow-hidden border-b border-border-primary/50">
-        <img
+        <SafeImage
           src={project.image}
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
