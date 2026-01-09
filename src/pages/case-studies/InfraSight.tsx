@@ -253,13 +253,13 @@ Anomaly["Z-Score Analysis<br/>Anomaly Detection"]
 Clustering["K-Means<br/>Service Clustering"]
 end
 
-React-- >| REST API | FastAPI
-FastAPI-- >| Async Queries | PostgreSQL
-FastAPI-- >| ML Processing | Forecasting
-FastAPI-- >| ML Processing | Anomaly
-FastAPI-- >| ML Processing | Clustering
-FastAPI-- >| Auth | Auth
-PostgreSQL-- >| Connection Pool | AsyncPG
+React--> | REST API | FastAPI
+FastAPI--> | Async Queries | PostgreSQL
+FastAPI--> | ML Processing | Forecasting
+FastAPI--> | ML Processing | Anomaly
+FastAPI--> | ML Processing | Clustering
+FastAPI--> | Auth | Auth
+PostgreSQL--> | Connection Pool | AsyncPG
     
     style React fill:#8B5CF6, stroke: #A78BFA, color: #F4F4F7
     style FastAPI fill:#22C55E, stroke:#4ADE80, color: #F4F4F7
