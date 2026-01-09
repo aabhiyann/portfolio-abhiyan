@@ -1,4 +1,5 @@
-import React from "react";
+import { ChevronLeft, ChevronRight, X as CloseIcon } from "lucide-react";
+import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { ImageMetadata } from "../types/image";
@@ -6,9 +7,38 @@ import { ImageMetadata } from "../types/image";
 interface FocusModeProps {
   image: ImageMetadata | null;
   onClose: () => void;
+  onNext?: () => void;
+  onPrev?: () => void;
+  hasNext?: boolean;
+  hasPrev?: boolean;
 }
 
-const FocusMode: React.FC<FocusModeProps> = ({ image, onClose }) => {
+const FocusMode: React.FC<FocusModeProps> = ({
+  image,
+  onClose,
+  onNext,
+  onPrev,
+  hasNext,
+  hasPrev,
+}) => {
+  useEffect(() => {
+    if (!image) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight" && onNext) onNext();
+      if (e.key === "ArrowLeft" && onPrev) onPrev();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden"; // Trap scroll
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, [image, onClose, onNext, onPrev]);
+
   if (!image) return null;
 
   return (
@@ -17,45 +47,82 @@ const FocusMode: React.FC<FocusModeProps> = ({ image, onClose }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center"
+        className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center backdrop-blur-sm"
         onClick={onClose}
       >
-        <TransformWrapper>
-          <TransformComponent>
+        <TransformWrapper
+          centerOnInit
+          initialScale={1}
+          minScale={0.5}
+          maxScale={3}
+        >
+          <TransformComponent
+            wrapperClass="!w-full !h-full flex items-center justify-center"
+            contentClass="!w-full !h-full flex items-center justify-center"
+          >
             <motion.img
+              key={image.src} // Key change triggers re-render/animation
               src={image.src}
               alt={image.alt}
-              className="max-w-screen-xl max-h-screen"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
+              className="max-w-[90vw] max-h-[85vh] object-contain shadow-2xl"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()} // Prevent closing when clicking image
             />
           </TransformComponent>
         </TransformWrapper>
+
+        {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 p-2 rounded-full text-white hover:bg-white/20"
+          className="absolute top-6 right-6 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors z-[60] border border-white/10 backdrop-blur-md"
+          aria-label="Close gallery"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          <CloseIcon className="w-6 h-6" />
         </button>
-        <div className="absolute bottom-6 left-6 text-white bg-black/30 p-4 rounded-lg">
-          <p className="font-bold">{image.exif?.camera}</p>
-          <p>{image.exif?.settings}</p>
-          {image.exif?.focalLength && <p>{image.exif.focalLength}</p>}
+
+        {/* Navigation Buttons */}
+        {hasPrev && onPrev && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onPrev();
+            }}
+            className="absolute left-6 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors z-[60] border border-white/10 backdrop-blur-md hidden md:block"
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </button>
+        )}
+
+        {hasNext && onNext && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onNext();
+            }}
+            className="absolute right-6 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors z-[60] border border-white/10 backdrop-blur-md hidden md:block"
+            aria-label="Next image"
+          >
+            <ChevronRight className="w-8 h-8" />
+          </button>
+        )}
+
+        {/* Info Overlay */}
+        <div
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-6 text-white bg-black/40 backdrop-blur-md p-4 rounded-xl border border-white/10 max-w-[90vw]"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex flex-col">
+            <p className="font-bold text-sm tracking-wide">
+              {image.exif?.camera}
+            </p>
+            <p className="text-xs text-white/80">{image.exif?.settings}</p>
+            {image.exif?.focalLength && (
+              <p className="text-xs text-white/60">{image.exif.focalLength}</p>
+            )}
+          </div>
         </div>
       </motion.div>
     </AnimatePresence>

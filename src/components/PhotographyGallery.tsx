@@ -103,7 +103,35 @@ function PhotographyGallery({ limit }: { limit?: number }) {
       </div>
 
       {/* Focus Mode Modal */}
-      <FocusMode image={selectedImage} onClose={closeLightbox} />
+      <FocusMode
+        image={selectedImage}
+        onClose={closeLightbox}
+        onNext={() => {
+          if (!selectedImage) return;
+          const currentIndex = shuffledImages.findIndex(
+            (img) => img.src === selectedImage.src,
+          );
+          // Only loop if we have multiple images
+          if (shuffledImages.length > 1) {
+            const nextIndex = (currentIndex + 1) % shuffledImages.length;
+            setSelectedImage(shuffledImages[nextIndex]);
+          }
+        }}
+        onPrev={() => {
+          if (!selectedImage) return;
+          const currentIndex = shuffledImages.findIndex(
+            (img) => img.src === selectedImage.src,
+          );
+          if (shuffledImages.length > 1) {
+            const prevIndex =
+              (currentIndex - 1 + shuffledImages.length) %
+              shuffledImages.length;
+            setSelectedImage(shuffledImages[prevIndex]);
+          }
+        }}
+        hasNext={shuffledImages.length > 1}
+        hasPrev={shuffledImages.length > 1}
+      />
     </>
   );
 }
