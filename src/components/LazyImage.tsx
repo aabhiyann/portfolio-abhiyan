@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ImageSkeleton } from "./ui/Skeleton";
 
 interface LazyImageProps {
   src: string;
@@ -60,11 +61,14 @@ const LazyImage: React.FC<LazyImageProps> = ({
   }
 
   return (
-    <img
-      src={imageSrc}
-      alt={alt}
-      className={`${className} ${isLoaded ? "opacity-100" : "opacity-0"} transition-opacity duration-500`}
-    />
+    <div className="relative">
+      {!isLoaded && <ImageSkeleton className={className} />}
+      <img
+        src={imageSrc}
+        alt={alt}
+        className={`${className} ${isLoaded ? "opacity-100" : "opacity-0 absolute inset-0"} transition-opacity duration-500`}
+      />
+    </div>
   );
 };
 
