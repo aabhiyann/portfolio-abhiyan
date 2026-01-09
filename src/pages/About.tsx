@@ -101,6 +101,8 @@ function About() {
                   <SafeImage
                     src="/images/about/portrait.jpg"
                     alt="Abhiyan Sainju"
+                    loading="eager"
+                    fetchPriority="high"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover/portrait:scale-105"
                     fallback="/images/placeholder-portrait.png"
                   />
