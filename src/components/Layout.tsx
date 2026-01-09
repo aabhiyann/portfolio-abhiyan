@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -9,13 +9,24 @@ import CustomCursor from "./CustomCursor";
 import LivingBackground from "./LivingBackground";
 import ScrollProgressBar from "./ScrollProgressBar";
 import StructuredData from "./StructuredData";
+import { useAppStore } from "../store/store";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
+/**
+ * Main layout container.
+ * Now uses Zustand for global state management instead of local useState.
+ */
 function Layout({ children }: LayoutProps) {
-  const [isChatbotOpen, setChatbotOpen] = useState(false);
+  const { isChatbotOpen, toggleChatbot, closeChatbot } = useAppStore(
+    (state) => ({
+      isChatbotOpen: state.isChatbotOpen,
+      toggleChatbot: state.toggleChatbot,
+      closeChatbot: state.closeChatbot,
+    }),
+  );
 
   return (
     <div className="min-h-screen relative bg-bg-primary text-text-primary">
@@ -34,11 +45,8 @@ function Layout({ children }: LayoutProps) {
         <Footer />
       </div>
 
-      <FloatingActionButton
-        onClick={() => setChatbotOpen(!isChatbotOpen)}
-        isOpen={isChatbotOpen}
-      />
-      <AIChatbot isOpen={isChatbotOpen} onClose={() => setChatbotOpen(false)} />
+      <FloatingActionButton onClick={toggleChatbot} isOpen={isChatbotOpen} />
+      <AIChatbot isOpen={isChatbotOpen} onClose={closeChatbot} />
     </div>
   );
 }
