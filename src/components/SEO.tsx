@@ -10,6 +10,7 @@ type SEOProps = {
   keywords?: string[];
   author?: string;
   noindex?: boolean;
+  jsonLd?: Record<string, unknown>;
 };
 
 const SITE_URL = "https://www.abhiyansainju.com";
@@ -22,6 +23,7 @@ export default function SEO({
   keywords = [],
   author = "Abhiyan Sainju",
   noindex = false,
+  jsonLd,
 }: SEOProps) {
   const location = useLocation();
   const canonicalUrl = `${SITE_URL}${location.pathname}`;
@@ -56,6 +58,11 @@ export default function SEO({
 
       {/* Robots */}
       {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+      {/* Structured Data (Page Specific) */}
+      {jsonLd && (
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      )}
     </Helmet>
   );
 }

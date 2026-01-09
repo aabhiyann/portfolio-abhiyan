@@ -30,6 +30,42 @@ export default function StructuredData() {
       addressRegion: "DC",
       addressCountry: "US",
     },
+    workLocation: [
+      {
+        "@type": "Place",
+        name: "Washington, DC",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Washington",
+          addressRegion: "DC",
+          addressCountry: "US",
+        },
+      },
+      {
+        "@type": "Place",
+        name: "New York, NY",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "New York",
+          addressRegion: "NY",
+          addressCountry: "US",
+        },
+      },
+      {
+        "@type": "Place",
+        name: "San Francisco, CA",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "San Francisco",
+          addressRegion: "CA",
+          addressCountry: "US",
+        },
+      },
+      {
+        "@type": "Place",
+        name: "Remote",
+      },
+    ],
     knowsAbout: [
       "Full Stack Development",
       "Artificial Intelligence",
