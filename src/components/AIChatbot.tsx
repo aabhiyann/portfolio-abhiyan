@@ -46,14 +46,11 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     const userMessage: Message = { text: input, sender: "user" };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
-    setIsLoading(true);
-    setError(null);
 
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
     if (!apiKey) {
       const errorMsg = "API Key is not configured. This feature is disabled.";
       setMessages((prev) => [...prev, { text: errorMsg, sender: "ai" }]);
-      setIsLoading(false);
       setError(errorMsg);
       return;
     }
@@ -75,6 +72,9 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
 
       ANSWER:
     `;
+
+    setIsLoading(true);
+    setError(null);
 
     try {
       const response = await fetch(API_URL, {

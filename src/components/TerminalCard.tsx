@@ -58,7 +58,7 @@ const TerminalCard: React.FC = () => {
         <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
         <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
         <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-        <div className="ml-auto text-[10px] text-slate-400">bash — 80x24</div>
+        <div className="ml-auto text-[10px] text-slate-400">bash - 80x24</div>
       </div>
 
       {/* Terminal Content */}
