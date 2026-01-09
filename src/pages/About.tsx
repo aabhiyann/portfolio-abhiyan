@@ -203,7 +203,7 @@ function About() {
               transition={{ duration: 0.5 }}
               whileHover={{ y: -4 }}
             >
-              <img
+              <SafeImage
                 src="/images/photography/IMG_9398Ben-Ben-2.webp"
                 alt="Photography sample 1"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -218,7 +218,7 @@ function About() {
               transition={{ duration: 0.5, delay: 0.1 }}
               whileHover={{ y: -4 }}
             >
-              <img
+              <SafeImage
                 src="/images/photography/IMG_7916Ben-Ben-2.webp"
                 alt="Photography sample 2"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -233,7 +233,7 @@ function About() {
               transition={{ duration: 0.5, delay: 0.2 }}
               whileHover={{ y: -4 }}
             >
-              <img
+              <SafeImage
                 src="/images/photography/IMG_6544PatKay.webp"
                 alt="Photography sample 3"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -248,7 +248,7 @@ function About() {
               transition={{ duration: 0.5, delay: 0.3 }}
               whileHover={{ y: -4 }}
             >
-              <img
+              <SafeImage
                 src="/images/photography/IMG_0566.webp"
                 alt="Photography sample 4"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
