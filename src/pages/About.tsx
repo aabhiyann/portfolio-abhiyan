@@ -63,16 +63,16 @@ function About() {
                   </p>
                   <p>
                     At GWU, I focused on algorithms, distributed systems, and
-                    machine learning. I also taught Design & Analysis of
-                    Algorithms to 60+ grad students, where my interactive
-                    tutorials improved midterm scores by 22%. Teaching forced me
-                    to truly understand complex concepts.
+                    machine learning. I taught Design & Analysis of Algorithms
+                    to grad students, where my interactive tutorials improved
+                    learning outcomes significantly.
                   </p>
                   <p>
-                    I've shipped real products with actual users. InfraSight (an
-                    ML platform) cut AWS analysis time by 70%. TalkifyDocs (AI
-                    document chat) has 1,200+ active users. These aren't school
-                    projects. They're tools people depend on daily.
+                    I've built production systems that solve real problems.
+                    InfraSight uses ML to analyze AWS infrastructure patterns.
+                    TalkifyDocs lets users chat with PDF documents using RAG
+                    architecture. I focus on shipping working software, not just
+                    prototypes.
                   </p>
                   <p>
                     When I'm not coding, I'm{" "}
