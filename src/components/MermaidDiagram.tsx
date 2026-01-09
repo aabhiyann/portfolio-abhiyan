@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import mermaid from "mermaid";
 import { useAppStore } from "../store/store";
 import { Shimmer } from "./ui/Skeleton";
 import ImageLightbox from "./ui/ImageLightbox";
@@ -27,77 +26,88 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
   useEffect(() => {
     if (!mermaidRef.current) return;
 
-    // Initialize Mermaid with dynamic theme
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: "base", // Use base theme for maximum control
-      themeVariables: isDarkMode
-        ? {
-            // Dark Mode - High Contrast & Premium
-            primaryColor: "#8B5CF6", // Violet-500
-            primaryTextColor: "#FFFFFF", // Pure White for max contrast
-            primaryBorderColor: "#A78BFA", // Violet-400 (Lighter border)
-            lineColor: "#CBD5E1", // Slate-300 (Much lighter lines)
-            secondaryColor: "#14B8A6", // Teal-500
-            tertiaryColor: "#1E293B", // Slate-800
-            background: "transparent",
-            mainBkg: "transparent",
-            nodeBorder: "#A78BFA",
-            clusterBkg: "rgba(30, 41, 59, 0.6)", // Slate-800/60
-            titleColor: "#FFFFFF",
-            edgeLabelBackground: "rgba(15, 23, 42, 0.9)", // Darker background for labels
-            fontFamily: "Inter, sans-serif",
-            fontSize: "16px", // Larger font
-          }
-        : {
-            // Light Mode - High Contrast
-            primaryColor: "#6D28D9", // Violet-700
-            primaryTextColor: "#0F172A", // Slate-900 (Darker text)
-            primaryBorderColor: "#7C3AED", // Violet-600
-            lineColor: "#475569", // Slate-600 (Darker lines)
-            secondaryColor: "#0F766E", // Teal-700
-            tertiaryColor: "#F8FAFC", // Slate-50
-            background: "transparent",
-            mainBkg: "transparent",
-            nodeBorder: "#7C3AED",
-            clusterBkg: "rgba(241, 245, 249, 0.8)",
-            titleColor: "#0F172A",
-            edgeLabelBackground: "rgba(255, 255, 255, 0.95)", // More opaque
-            fontFamily: "Inter, sans-serif",
-            fontSize: "16px", // Larger font
+    let isMounted = true;
+
+    const renderChart = async () => {
+      try {
+        const mermaid = (await import("mermaid")).default;
+
+        // Initialize Mermaid with dynamic theme
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: "base", // Use base theme for maximum control
+          themeVariables: isDarkMode
+            ? {
+                // Dark Mode - High Contrast & Premium
+                primaryColor: "#8B5CF6", // Violet-500
+                primaryTextColor: "#FFFFFF", // Pure White for max contrast
+                primaryBorderColor: "#A78BFA", // Violet-400 (Lighter border)
+                lineColor: "#CBD5E1", // Slate-300 (Much lighter lines)
+                secondaryColor: "#14B8A6", // Teal-500
+                tertiaryColor: "#1E293B", // Slate-800
+                background: "transparent",
+                mainBkg: "transparent",
+                nodeBorder: "#A78BFA",
+                clusterBkg: "rgba(30, 41, 59, 0.6)", // Slate-800/60
+                titleColor: "#FFFFFF",
+                edgeLabelBackground: "rgba(15, 23, 42, 0.9)", // Darker background for labels
+                fontFamily: "Inter, sans-serif",
+                fontSize: "16px", // Larger font
+              }
+            : {
+                // Light Mode - High Contrast
+                primaryColor: "#6D28D9", // Violet-700
+                primaryTextColor: "#0F172A", // Slate-900 (Darker text)
+                primaryBorderColor: "#7C3AED", // Violet-600
+                lineColor: "#475569", // Slate-600 (Darker lines)
+                secondaryColor: "#0F766E", // Teal-700
+                tertiaryColor: "#F8FAFC", // Slate-50
+                background: "transparent",
+                mainBkg: "transparent",
+                nodeBorder: "#7C3AED",
+                clusterBkg: "rgba(241, 245, 249, 0.8)",
+                titleColor: "#0F172A",
+                edgeLabelBackground: "rgba(255, 255, 255, 0.95)", // More opaque
+                fontFamily: "Inter, sans-serif",
+                fontSize: "16px", // Larger font
+              },
+          flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: "basis", // Smooth curves
           },
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true,
-        curve: "basis", // Smooth curves
-      },
-      fontFamily: "Inter, sans-serif",
-    });
+          fontFamily: "Inter, sans-serif",
+        });
 
-    const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
-    // Clear previous content before re-rendering
-    mermaidRef.current.innerHTML = "";
-
-    // We need to create a temporary element because mermaid.render expects one
-    // But in newer versions it wraps it.
-    // The render API signature is: render(id, text, container?)
-
-    setIsRendering(true);
-
-    mermaid
-      .render(id, chart)
-      .then((result) => {
+        const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
+        // Clear previous content before re-rendering
         if (mermaidRef.current) {
+          mermaidRef.current.innerHTML = "";
+        }
+
+        setIsRendering(true);
+
+        const result = await mermaid.render(id, chart);
+
+        if (isMounted && mermaidRef.current) {
           mermaidRef.current.innerHTML = result.svg;
           setError(null);
           setIsRendering(false);
         }
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error("Mermaid rendering error:", err);
-        setError("Failed to render diagram");
-        setIsRendering(false);
-      });
+        if (isMounted) {
+          setError("Failed to render diagram");
+          setIsRendering(false);
+        }
+      }
+    };
+
+    renderChart();
+
+    return () => {
+      isMounted = false;
+    };
   }, [chart, isDarkMode]); // Re-render when theme changes
 
   // Function to serialize SVG to Data URL for Lightbox
