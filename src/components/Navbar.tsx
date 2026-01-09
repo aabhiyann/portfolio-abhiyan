@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAppStore } from "../store/store";
+import { useTheme } from "../contexts/useTheme";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -41,16 +42,16 @@ const NavLinks = ({
 );
 
 const Navbar: React.FC = () => {
-  // Use individual selectors to avoid creating new objects on each render
-  const theme = useAppStore((state) => state.theme);
-  const toggleTheme = useAppStore((state) => state.toggleTheme);
+  // Use ThemeContext for theme (not Zustand - ThemeProvider handles DOM updates)
+  const { themeState, toggleTheme } = useTheme();
+  const isDarkMode = themeState.isDarkMode;
+
+  // Use Zustand only for UI state
   const isMobileMenuOpen = useAppStore((state) => state.isMobileMenuOpen);
   const setMobileMenuOpen = useAppStore((state) => state.setMobileMenuOpen);
   const location = useLocation();
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
-
-  // Lock scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -63,8 +64,6 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname, setMobileMenuOpen]);
-
-  const isDarkMode = theme === "dark";
 
   return (
     <>
