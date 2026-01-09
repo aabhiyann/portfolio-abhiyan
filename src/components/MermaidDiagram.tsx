@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import mermaid from "mermaid";
 import { useAppStore } from "../store/store";
+import { Shimmer } from "./ui/Skeleton";
 import ImageLightbox from "./ui/ImageLightbox";
 
 interface MermaidDiagramProps {
@@ -21,6 +22,7 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
 
   const [isLightboxOpen, setIsLightboxOpen] = React.useState(false);
   const [svgDataUrl, setSvgDataUrl] = React.useState<string | null>(null);
+  const [isRendering, setIsRendering] = React.useState(true);
 
   useEffect(() => {
     if (!mermaidRef.current) return;
@@ -80,17 +82,21 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
     // But in newer versions it wraps it.
     // The render API signature is: render(id, text, container?)
 
+    setIsRendering(true);
+
     mermaid
       .render(id, chart)
       .then((result) => {
         if (mermaidRef.current) {
           mermaidRef.current.innerHTML = result.svg;
           setError(null);
+          setIsRendering(false);
         }
       })
       .catch((err) => {
         console.error("Mermaid rendering error:", err);
         setError("Failed to render diagram");
+        setIsRendering(false);
       });
   }, [chart, isDarkMode]); // Re-render when theme changes
 
@@ -125,9 +131,16 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
           </div>
         ) : (
           <div className="relative">
+            {/* Loading shimmer while rendering */}
+            {isRendering && (
+              <Shimmer className="h-96 w-full rounded-2xl flex items-center justify-center mb-4">
+                <p className="text-text-muted">Rendering diagram...</p>
+              </Shimmer>
+            )}
+
             <div
               ref={mermaidRef}
-              className="flex justify-center items-center overflow-x-auto"
+              className={`flex justify-center items-center overflow-x-auto ${isRendering ? "hidden" : ""}`}
             />
             {/* Click to Expand Indicator */}
             <div className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 pointer-events-none">
