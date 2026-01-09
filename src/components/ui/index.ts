@@ -22,6 +22,8 @@ export { SafeImage } from "./SafeImage";
 
 export { ProjectGrid } from "./ProjectGrid";
 
+export { ImageSkeleton, TypingIndicator, Shimmer } from "./Skeleton";
+
 // Re-export design system utilities for convenience
 export { colorUtils } from "../../design/colors";
 export { designSystem } from "../../design/system";

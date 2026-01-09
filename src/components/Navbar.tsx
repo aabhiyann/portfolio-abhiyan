@@ -85,7 +85,7 @@ const Navbar: React.FC = () => {
                 <NavLinks />
               </nav>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-full text-text-muted hover:text-text-primary hover:bg-overlay-light focus:outline-none transition-colors relative z-50"
@@ -125,7 +125,7 @@ const Navbar: React.FC = () => {
               </button>
               <Link
                 to="/resume"
-                className="hidden md:block px-4 py-2 rounded-md text-sm font-medium bg-accent-primary text-white hover:bg-accent-primary/90 transition-colors relative z-50"
+                className="hidden sm:inline-flex px-4 py-2 rounded-md text-sm font-medium bg-accent-primary text-white hover:bg-accent-primary/90 transition-colors relative z-50"
               >
                 Resume
               </Link>
