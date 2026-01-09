@@ -103,12 +103,8 @@ const DeepDiveDetail: React.FC = () => {
         description={article.summary}
         keywords={article.tags}
         type="article"
+        jsonLd={blogPostingSchema}
       />
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(blogPostingSchema)}
-        </script>
-      </Helmet>
 
       <ReadingProgress />
 

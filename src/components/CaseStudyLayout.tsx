@@ -75,12 +75,8 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
         keywords={tags}
         type="article"
         image={imageUrl}
+        jsonLd={articleSchema}
       />
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(articleSchema)}
-        </script>
-      </Helmet>
 
       <article className="min-h-screen pb-24">
         {/* Back Link */}
