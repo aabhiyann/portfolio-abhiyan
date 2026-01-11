@@ -15,12 +15,12 @@ import {
   Moon,
   Download,
 } from "lucide-react";
-import { useTheme } from "../../contexts/ThemeProvider";
+import { useTheme } from "../../contexts/useTheme";
 
 export const CommandPalette = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const { theme, toggleTheme } = useTheme();
+  const { themeState, toggleTheme } = useTheme();
 
   // Listen for ⌘K or Ctrl+K
   useEffect(() => {
@@ -165,7 +165,7 @@ export const CommandPalette = () => {
               onSelect={handleToggleTheme}
               className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary aria-selected:bg-accent-primary/10 aria-selected:text-accent-primary"
             >
-              {theme === "dark" ? (
+              {themeState.isDarkMode ? (
                 <Sun className="w-4 h-4" />
               ) : (
                 <Moon className="w-4 h-4" />
