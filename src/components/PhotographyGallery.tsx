@@ -37,7 +37,7 @@ function PhotographyGallery({ limit }: { limit?: number }) {
   return (
     <>
       {/* Gallery Grid */}
-      <div className="columns-2 md:columns-3 xl:columns-4 2xl:columns-5 gap-2 md:gap-4 [column-fill:_balance] space-y-2 md:space-y-4">
+      <div className="columns-1 sm:columns-2 lg:columns-3 gap-2 md:gap-4 [column-fill:_balance] space-y-2 md:space-y-4">
         {shuffledImages.length === 0 ? (
           <div className="col-span-full py-24 text-center">
             <div className="inline-block p-8 rounded-3xl glass-card">
