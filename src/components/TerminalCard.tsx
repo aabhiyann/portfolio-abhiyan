@@ -1,98 +1,146 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { commands, getCommand } from './Terminal/commands';
 
-const script = [
-  "> implai --init",
-  "> Initializing Neural Network...",
-  "> Loading PyTorch weights...",
-  "> Connecting to AWS Region: us-east-1...",
-  "> Deploying Microservices...",
-  "> System Online: Ready to Build.",
-];
+interface HistoryEntry {
+  input: string;
+  output: string;
+}
 
 const TerminalCard: React.FC = () => {
-  const [lines, setLines] = useState<string[]>([]);
-  const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [history, setHistory] = useState<HistoryEntry[]>([
+    {
+      input: '',
+      output: `Welcome to my portfolio terminal!
+Type 'help' to see available commands.`,
+    },
+  ]);
+  const [input, setInput] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
+  const terminalRef = useRef<HTMLDivElement>(null);
 
+  // Auto-scroll to bottom on new history
   useEffect(() => {
-    if (currentLineIndex >= script.length) return;
-
-    const currentLineText = script[currentLineIndex];
-
-    if (currentCharIndex < currentLineText.length) {
-      const timeout = setTimeout(
-        () => {
-          setLines((prev) => {
-            const newLines = [...prev];
-            if (newLines[currentLineIndex] === undefined) {
-              newLines[currentLineIndex] = "";
-            }
-            newLines[currentLineIndex] = currentLineText.slice(
-              0,
-              currentCharIndex + 1,
-            );
-            return newLines;
-          });
-          setCurrentCharIndex((prev) => prev + 1);
-        },
-        30 + Math.random() * 30,
-      ); // Random typing speed
-
-      return () => clearTimeout(timeout);
-    } else {
-      // Line finished
-      const timeout = setTimeout(() => {
-        setCurrentLineIndex((prev) => prev + 1);
-        setCurrentCharIndex(0);
-      }, 400); // Pause between lines
-
-      return () => clearTimeout(timeout);
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
-  }, [currentLineIndex, currentCharIndex]);
+  }, [history]);
+
+  const handleCommand = (cmd: string): string => {
+    const trimmed = cmd.trim();
+    if (!trimmed) return '';
+
+    const [commandName, ...args] = trimmed.split(' ');
+    const command = getCommand(commandName);
+
+    if (!command) {
+      return `Command not found: ${commandName}
+Type 'help' for available commands.`;
+    }
+
+    return command.execute(args);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!input.trim()) return;
+
+    const output = handleCommand(input);
+
+    // Handle clear command
+    if (output === 'CLEAR_TERMINAL') {
+      setHistory([
+        {
+          input: '',
+          output: 'Terminal cleared. Type \'help\' for commands.',
+        },
+      ]);
+      setInput('');
+      return;
+    }
+
+    setHistory([...history, { input, output }]);
+    setInput('');
+  };
+
+  // Focus input when clicking terminal
+  const handleTerminalClick = () => {
+    inputRef.current?.focus();
+  };
 
   return (
-    <div className="w-full h-full bg-slate-950/90 backdrop-blur-md rounded-lg border border-slate-800/60 p-4 font-mono text-xs overflow-hidden shadow-2xl flex flex-col">
+    <div
+      onClick={handleTerminalClick}
+      className="w-full h-full bg-black backdrop-blur-md rounded-xl border border-emerald-500/20 shadow-2xl shadow-emerald-500/5 p-5 font-mono text-sm overflow-hidden flex flex-col cursor-text hover:border-emerald-500/30 transition-colors"
+    >
       {/* Terminal Header */}
-      <div className="flex items-center gap-2 mb-3 opacity-50">
-        <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-        <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-        <div className="ml-auto text-[10px] text-slate-400">bash - 80x24</div>
+      <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-800/50">
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-400 transition-colors cursor-pointer"></div>
+          <div className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer"></div>
+          <div className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-400 transition-colors cursor-pointer"></div>
+        </div>
+        <div className="flex items-center gap-2 text-[10px] text-slate-500 font-semibold tracking-wider">
+          <span className="text-emerald-400">●</span>
+          <span>INTERACTIVE MODE</span>
+        </div>
       </div>
 
       {/* Terminal Content */}
-      <div className="flex-1 space-y-1 text-slate-300 font-medium">
-        {lines.map((line, i) => (
+      <div
+        ref={terminalRef}
+        className="flex-1 space-y-3 overflow-y-auto scrollbar-thin scrollbar-thumb-emerald-500/20 scrollbar-track-transparent pr-2"
+      >
+        {history.map((entry, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, x: -5 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            className="space-y-2"
           >
-            <span className="text-emerald-400 mr-2">$</span>
-            <span
-              className={
-                line.includes("Error")
-                  ? "text-red-400"
-                  : line.includes("Online")
-                    ? "text-emerald-400"
-                    : line.includes("Loading")
-                      ? "text-blue-400"
-                      : "text-slate-200"
-              }
-            >
-              {line}
-            </span>
+            {entry.input && (
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-500 font-bold select-none flex-shrink-0">➜</span>
+                <span className="text-slate-300 font-medium">{entry.input}</span>
+              </div>
+            )}
+            {entry.output && (
+              <div className="text-slate-400 whitespace-pre-wrap pl-5 leading-relaxed text-[13px]">
+                {entry.output}
+              </div>
+            )}
           </motion.div>
         ))}
-        {/* Cursor */}
-        {currentLineIndex < script.length && (
-          <motion.div
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{ repeat: Infinity, duration: 0.8 }}
-            className="w-2 h-4 bg-emerald-500/50 inline-block align-middle ml-1"
+
+        {/* Input Line */}
+        <form onSubmit={handleSubmit} className="flex items-start gap-2 pt-2">
+          <span className="text-emerald-500 font-bold select-none flex-shrink-0 mt-0.5">➜</span>
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="flex-1 bg-transparent text-slate-300 font-medium outline-none caret-emerald-400 placeholder:text-slate-600"
+            placeholder="type 'help' for commands..."
+            autoFocus
+            spellCheck={false}
           />
-        )}
+        </form>
+
+        {/* Blinking Cursor Effect */}
+        <motion.div
+          animate={{ opacity: [1, 0, 1] }}
+          transition={{ duration: 1, repeat: Infinity }}
+          className="w-2 h-4 bg-emerald-400 inline-block ml-7"
+        />
+      </div>
+
+      {/* Terminal Footer Hint */}
+      <div className="mt-3 pt-3 border-t border-slate-800/50 text-[10px] text-slate-600 flex items-center justify-between">
+        <span>Press Enter to execute</span>
+        <span>Type 'clear' to reset</span>
       </div>
     </div>
   );
