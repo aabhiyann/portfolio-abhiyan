@@ -29,6 +29,22 @@ export const ProjectCard = ({
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
         />
+
+        {/* Live Status Indicator */}
+        {project.live && (
+          <div className="absolute top-4 right-4 z-10">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
+              <div className="relative flex items-center justify-center">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                <div className="absolute w-2 h-2 bg-green-400 rounded-full animate-ping"></div>
+              </div>
+              <span className="text-xs font-medium text-white tracking-wide">
+                Live
+              </span>
+            </div>
+          </div>
+        )}
+
         {/* Glassy overlay on hover - consistent with photography gallery */}
         <div className="absolute inset-0 gradient-overlay-image opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] flex items-center justify-center gap-4">
           {project.caseStudyUrl && (
