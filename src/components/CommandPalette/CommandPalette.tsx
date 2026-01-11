@@ -7,6 +7,7 @@ import {
   Briefcase,
   Award,
   Camera,
+  Clock, // Added Clock import
   Mail,
   FileText,
   Github,
@@ -131,7 +132,13 @@ export const CommandPalette = () => {
               <Award className="w-4 h-4" />
               <span>Skills</span>
             </Command.Item>
-
+            <Command.Item
+              onSelect={() => handleNavigate("/now")}
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
+            >
+              <Clock className="w-4 h-4" />
+              <span>Now</span>
+            </Command.Item>
             <Command.Item
               onSelect={() => handleNavigate("/photography")}
               className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
