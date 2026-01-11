@@ -13,6 +13,7 @@ import { Button, Chip, ProjectCard } from "../components/ui";
 import SEO from "../components/SEO";
 import ProjectFilters from "../components/ProjectFilters";
 import ContactSection from "../components/ContactSection";
+import { GitHubActivity } from "../components/GitHubActivity";
 import { FileText } from "lucide-react";
 
 interface Architecture {
@@ -128,6 +129,13 @@ function Projects() {
               </AnimatePresence>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* GitHub Activity Section */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-6 md:px-8">
+          <GitHubActivity />
         </div>
       </section>
 

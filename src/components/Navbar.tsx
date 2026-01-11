@@ -36,12 +36,10 @@ const NavLinks = ({
           onClick={onLinkClick}
           className={({ isActive }) =>
             mobile
-              ? `text-3xl font-bold transition-colors ${
-                  isActive ? "text-accent-primary" : "text-text-muted"
-                } hover:text-text-primary`
-              : `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive ? "text-text-primary" : "text-text-muted"
-                } hover:text-text-primary`
+              ? `text-3xl font-bold transition-colors ${isActive ? "text-accent-primary" : "text-text-muted"
+              } hover:text-text-primary`
+              : `px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive ? "text-text-primary" : "text-text-muted"
+              } hover:text-text-primary`
           }
         >
           {link.label}

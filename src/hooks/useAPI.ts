@@ -61,7 +61,7 @@ export function useAPI<T>() {
           timeout: 10000,
           retries: 3,
           onRetry: (attempt) => {
-            console.log(`Retrying request (attempt ${attempt})...`);
+            // No console.log here
           },
           ...options,
         });

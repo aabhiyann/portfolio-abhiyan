@@ -60,16 +60,36 @@ const FocusMode: React.FC<FocusModeProps> = ({
             wrapperClass="!w-full !h-full flex items-center justify-center"
             contentClass="!w-full !h-full flex items-center justify-center"
           >
-            <motion.img
-              key={image.src} // Key change triggers re-render/animation
-              src={image.src}
-              alt={image.alt}
-              className="max-w-[90vw] max-h-[85vh] object-contain shadow-2xl"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking image
-            />
+            <div className="relative inline-block">
+              <motion.img
+                key={image.src} // Key change triggers re-render/animation
+                src={image.src}
+                alt={image.alt}
+                className="max-w-[90vw] max-h-[85vh] object-contain shadow-2xl"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking image
+              />
+
+              {/* Glassmorphism EXIF Overlay - positioned relative to image */}
+              {image.exif && (
+                <div
+                  className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-[60] px-4 py-2 rounded-lg bg-black/40 backdrop-blur-md border border-white/20"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="flex items-center gap-3 text-white text-xs">
+                    <span>{image.exif.settings}</span>
+                    {image.exif.focalLength && (
+                      <>
+                        <span className="text-white/40">·</span>
+                        <span>{image.exif.focalLength}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
           </TransformComponent>
         </TransformWrapper>
 
@@ -108,22 +128,6 @@ const FocusMode: React.FC<FocusModeProps> = ({
             <ChevronRight className="w-8 h-8" />
           </button>
         )}
-
-        {/* Info Overlay */}
-        <div
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-6 text-white bg-black/40 backdrop-blur-md p-4 rounded-xl border border-white/10 max-w-[90vw]"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="flex flex-col">
-            <p className="font-bold text-sm tracking-wide">
-              {image.exif?.camera}
-            </p>
-            <p className="text-xs text-white/80">{image.exif?.settings}</p>
-            {image.exif?.focalLength && (
-              <p className="text-xs text-white/60">{image.exif.focalLength}</p>
-            )}
-          </div>
-        </div>
       </motion.div>
     </AnimatePresence>
   );
