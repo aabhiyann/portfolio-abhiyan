@@ -61,7 +61,11 @@ export const CommandPalette = () => {
       />
 
       {/* Command Menu */}
-      <Command className="relative max-w-lg w-full mx-4 bg-bg-card rounded-2xl shadow-2xl border border-border-primary overflow-hidden">
+      <Command
+        className="relative max-w-lg w-full mx-4 bg-bg-card rounded-2xl shadow-2xl border border-border-primary overflow-hidden"
+        shouldFilter={true}
+        loop
+      >
         <div className="flex items-center border-b border-border-primary px-4">
           <svg
             className="w-5 h-5 text-text-muted mr-2"
@@ -79,6 +83,7 @@ export const CommandPalette = () => {
           <Command.Input
             placeholder="Type a command or search..."
             className="w-full py-3 text-text-primary bg-transparent outline-none placeholder:text-text-muted"
+            autoFocus
           />
         </div>
 
