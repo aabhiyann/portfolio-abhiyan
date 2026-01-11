@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import { ThemeProvider } from "./contexts/ThemeProvider";
 import ErrorBoundary from "./components/ErrorBoundary";
 import PageErrorFallback from "./components/PageErrorFallback";
+import { CommandPalette } from "./components/CommandPalette";
 
 const Home = lazy(() => import("./pages/Home"));
 const Projects = lazy(() => import("./pages/Projects"));
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <ThemeProvider>
+      <CommandPalette />
       <Layout>
         <Suspense fallback={<div>Loading...</div>}>
           <AnimatePresence mode="wait">
