@@ -102,7 +102,7 @@ export const CommandPalette = () => {
           <Command.Group heading="Pages" className="mb-2">
             <Command.Item
               onSelect={() => handleNavigate("/")}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary aria-selected:bg-accent-primary/10 aria-selected:text-accent-primary"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
             >
               <Home className="w-4 h-4" />
               <span>Home</span>
@@ -110,7 +110,7 @@ export const CommandPalette = () => {
 
             <Command.Item
               onSelect={() => handleNavigate("/projects")}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary aria-selected:bg-accent-primary/10 aria-selected:text-accent-primary"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
             >
               <Code className="w-4 h-4" />
               <span>Projects</span>
@@ -118,7 +118,7 @@ export const CommandPalette = () => {
 
             <Command.Item
               onSelect={() => handleNavigate("/experience")}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary aria-selected:bg-accent-primary/10 aria-selected:text-accent-primary"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
             >
               <Briefcase className="w-4 h-4" />
               <span>Experience</span>
@@ -126,7 +126,7 @@ export const CommandPalette = () => {
 
             <Command.Item
               onSelect={() => handleNavigate("/skills")}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary aria-selected:bg-accent-primary/10 aria-selected:text-accent-primary"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
             >
               <Award className="w-4 h-4" />
               <span>Skills</span>
@@ -134,7 +134,7 @@ export const CommandPalette = () => {
 
             <Command.Item
               onSelect={() => handleNavigate("/photography")}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary aria-selected:bg-accent-primary/10 aria-selected:text-accent-primary"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
             >
               <Camera className="w-4 h-4" />
               <span>Photography</span>
@@ -142,7 +142,7 @@ export const CommandPalette = () => {
 
             <Command.Item
               onSelect={() => handleNavigate("/contact")}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary aria-selected:bg-accent-primary/10 aria-selected:text-accent-primary"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
             >
               <Mail className="w-4 h-4" />
               <span>Contact</span>
@@ -150,7 +150,7 @@ export const CommandPalette = () => {
 
             <Command.Item
               onSelect={() => handleNavigate("/resume")}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary aria-selected:bg-accent-primary/10 aria-selected:text-accent-primary"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
             >
               <FileText className="w-4 h-4" />
               <span>Resume</span>
@@ -166,7 +166,7 @@ export const CommandPalette = () => {
                 window.open("/resume.pdf", "_blank");
                 setOpen(false);
               }}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary aria-selected:bg-accent-primary/10 aria-selected:text-accent-primary"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
             >
               <Download className="w-4 h-4" />
               <span>Download Resume</span>
@@ -174,7 +174,7 @@ export const CommandPalette = () => {
 
             <Command.Item
               onSelect={handleToggleTheme}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary aria-selected:bg-accent-primary/10 aria-selected:text-accent-primary"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
             >
               {themeState.isDarkMode ? (
                 <Sun className="w-4 h-4" />
@@ -193,7 +193,7 @@ export const CommandPalette = () => {
               onSelect={() =>
                 handleExternalLink("https://github.com/aabhiyann")
               }
-              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary aria-selected:bg-accent-primary/10 aria-selected:text-accent-primary"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
             >
               <Github className="w-4 h-4" />
               <span>GitHub Profile</span>
@@ -203,7 +203,7 @@ export const CommandPalette = () => {
               onSelect={() =>
                 handleExternalLink("https://linkedin.com/in/abhiyansainju")
               }
-              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary aria-selected:bg-accent-primary/10 aria-selected:text-accent-primary"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
             >
               <Linkedin className="w-4 h-4" />
               <span>LinkedIn Profile</span>
