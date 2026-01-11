@@ -6,7 +6,6 @@ import { useTheme } from '../contexts/useTheme';
 export const GitHubActivity = () => {
     const { themeState } = useTheme();
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
 
     // Auto-hide loading after 3 seconds (calendar should load by then)
     useEffect(() => {
@@ -47,27 +46,15 @@ export const GitHubActivity = () => {
             </div>
 
             {/* Loading State */}
-            {loading && !error && (
+            {loading && (
                 <div className="flex flex-col items-center justify-center py-16">
                     <div className="w-10 h-10 border-4 border-accent-primary border-t-transparent rounded-full animate-spin mb-4" />
                     <p className="text-text-muted text-sm">Loading contribution history...</p>
                 </div>
             )}
 
-            {/* Error State */}
-            {error && (
-                <div className="text-center py-16">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-500/10 mb-4">
-                        <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <p className="text-text-muted">Unable to load GitHub activity at this time.</p>
-                </div>
-            )}
-
             {/* Calendar */}
-            <div className={`${loading || error ? 'hidden' : 'block'}`}>
+            <div className={`${loading ? 'hidden' : 'block'}`}>
                 <div className="flex justify-center p-4 rounded-xl bg-bg-surface overflow-x-auto">
                     <GitHubCalendar
                         username="aabhiyann"
