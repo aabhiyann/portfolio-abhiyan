@@ -17,7 +17,6 @@ const NavLinks = ({
     { path: "/projects", label: "Projects" },
     { path: "/experience", label: "Experience" },
     { path: "/skills", label: "Skills" },
-    { path: "/now", label: "Now" },
     { path: "/photography", label: "Photography" },
     { path: "/contact", label: "Contact" },
   ];

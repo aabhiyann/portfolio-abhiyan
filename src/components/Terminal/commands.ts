@@ -108,14 +108,6 @@ Visit /contact to send a message`;
         description: 'Display current user',
         execute: () => 'abhiyan@portfolio',
     },
-    {
-        name: 'now',
-        description: 'View what I\'m currently doing',
-        execute: () => {
-            window.location.href = '/now';
-            return 'Navigating to /now page...';
-        },
-    },
 ];
 
 export const getCommand = (name: string): Command | undefined => {
