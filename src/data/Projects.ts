@@ -73,7 +73,7 @@ export const projects: Project[] = [
     description:
       "Challenged with improving environmental sound recognition (Situation). Developed a custom CNN architecture using TensorFlow (Action) that achieved 92% accuracy, outperforming standard transfer learning models by 26% (Result).",
     tech: ["TensorFlow", "Keras", "librosa", "YAMNet"],
-    live: "https://github.com/aabhiyann/audio-classification-cnn",
+    live: "",
     github: "https://github.com/aabhiyann/audio-classification-cnn",
     image: "/images/projects/audio-cnn.png",
     categories: ["ML/AI"],
@@ -111,7 +111,7 @@ export const projects: Project[] = [
     description:
       "Designed for resource-limited healthcare settings (Situation). Optimized a Random Forest classifier (Action) to achieve 98.7% diagnostic accuracy on 4,920 records (Result) with minimal computational overhead.",
     tech: ["Python", "Scikit-Learn", "Pandas", "Flask"],
-    live: "https://github.com/aabhiyann/disease-prediction",
+    live: "",
     github: "https://github.com/aabhiyann/disease-prediction",
     image: "/images/projects/disease-prediction.png",
     categories: ["ML/AI"],
@@ -128,7 +128,7 @@ export const projects: Project[] = [
     description:
       "Streamlined research data extraction (Situation) by building a semantic search API with Elasticsearch (Action), reducing query time by 70% across disparate file formats like PDFs and audio transcripts (Result).",
     tech: ["Python", "Elasticsearch", "NLP", "API"],
-    live: "https://github.com/aabhiyann/multi-source-retrieval",
+    live: "",
     github: "https://github.com/aabhiyann/multi-source-retrieval",
     image: "/images/projects/retrieval.png",
     categories: ["ML/AI"],
