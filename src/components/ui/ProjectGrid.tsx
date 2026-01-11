@@ -50,6 +50,22 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                 fallback="/images/project-placeholder.png"
               />
+
+              {/* Live Status Indicator */}
+              {project.live && (
+                <div className="absolute top-3 right-3 z-10">
+                  <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
+                    <div className="relative flex items-center justify-center">
+                      <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
+                      <div className="absolute w-1.5 h-1.5 bg-green-400 rounded-full animate-ping"></div>
+                    </div>
+                    <span className="text-[10px] font-medium text-white tracking-wide">
+                      Live
+                    </span>
+                  </div>
+                </div>
+              )}
+
               {/* Glassy overlay on hover */}
               <div className="absolute inset-0 gradient-overlay-image opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] flex flex-col items-center justify-center gap-3 p-4">
                 {project.caseStudyUrl && (
