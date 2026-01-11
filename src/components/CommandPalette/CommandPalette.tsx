@@ -14,6 +14,8 @@ import {
   Sun,
   Moon,
   Download,
+  Link2,
+  User,
 } from "lucide-react";
 import { useTheme } from "../../contexts/useTheme";
 
@@ -106,6 +108,14 @@ export const CommandPalette = () => {
             >
               <Home className="w-4 h-4" />
               <span>Home</span>
+            </Command.Item>
+
+            <Command.Item
+              onSelect={() => handleNavigate("/about")}
+              className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
+            >
+              <User className="w-4 h-4" />
+              <span>About</span>
             </Command.Item>
 
             <Command.Item
