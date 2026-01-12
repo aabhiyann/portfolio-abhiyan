@@ -7,6 +7,7 @@ import Button from "../components/ui/Button";
 import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
 import HeroBento from "../components/HeroBento";
+import { HeroStats } from "../components/HeroStats";
 import SkillsSlider from "../components/SkillsSlider";
 import WhyHireMe from "../components/WhyHireMe";
 import ContactSection from "../components/ContactSection";
@@ -90,6 +91,9 @@ function Home() {
                     </Button>
                   </Link>
                 </div>
+
+                {/* Hero Stats */}
+                <HeroStats />
               </motion.div>
             </div>
 

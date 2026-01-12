@@ -182,23 +182,11 @@ const SkillsMatrix: React.FC = () => {
                           borderColor: "var(--accent-primary)",
                         }}
                       >
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="font-semibold text-text-primary">
+                        {/* Skill Name */}
+                        <div className="flex items-center justify-center">
+                          <span className="font-semibold text-text-primary text-center">
                             {skill.name}
                           </span>
-                          <span className="text-xs text-text-muted font-mono">
-                            {skill.proficiency}%
-                          </span>
-                        </div>
-
-                        {/* Progress Bar */}
-                        <div className="h-1.5 w-full bg-bg-surface rounded-full overflow-hidden">
-                          <motion.div
-                            className="h-full gradient-bg"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.proficiency}%` }}
-                            transition={{ duration: 1, ease: "easeOut" }}
-                          />
                         </div>
 
                         {/* Hover Tooltip - "Skill in Action" */}
