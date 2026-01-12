@@ -1,6 +1,7 @@
 import React from "react";
 import { Rocket } from "lucide-react";
 import CaseStudyLayout from "../../components/CaseStudyLayout";
+import MermaidDiagram from "../../components/MermaidDiagram";
 import { CaseStudySection, CaseStudyText } from "../../components/case-study";
 import { Typography } from "../../components/ui";
 
@@ -166,21 +167,60 @@ const MelodyHubCaseStudy: React.FC = () => {
           CDN for audio delivery, and MongoDB for persistent state.
         </CaseStudyText>
 
-        <div className="mb-6 p-4 rounded-xl bg-bg-surface/50 border border-border-primary/50 font-mono text-sm overflow-x-auto">
-          <pre className="whitespace-pre-wrap">
-            {`┌──────────────┐     WebSocket      ┌──────────────┐     Audio CDN    ┌──────────────┐
-│    React     │◄──────────────────►│  Socket.IO   │◄────────────────►│  Cloudinary  │
-│   Frontend   │                    │   Server     │                  │   (Audio)    │
-└──────────────┘                    └──────────────┘                  └──────────────┘
-       │                                    │
-       │ Auth                              │ DB
-       ↓                                   ↓
-┌──────────────┐                    ┌──────────────┐
-│    Clerk     │                    │   MongoDB    │
-│    Auth      │                    │  (Rooms /     │
-└──────────────┘                    │   Users)     │
-                                    └──────────────┘`}
-          </pre>
+        <div className="my-8">
+          <MermaidDiagram
+            chart={`
+graph TB
+    subgraph Clients["Client Layer (Multiple Users)"]
+        Client1["React Frontend 1<br/>User A"]
+        Client2["React Frontend 2<br/>User B"]
+        Client3["React Frontend N<br/>User N"]
+    end
+    
+    subgraph Backend["Real-Time Server"]
+        SocketIO["Socket.IO Server<br/>WebSocket + Room Isolation"]
+        RoomManager["Room State Manager<br/>Sync Engine"]
+    end
+    
+    subgraph Storage["Persistence Layer"]
+        MongoDB["MongoDB<br/>Rooms + Users + Chat"]
+    end
+    
+    subgraph CDN["Audio Delivery"]
+        Cloudinary["Cloudinary CDN<br/>Global Audio Streaming"]
+    end
+    
+    subgraph Auth["Authentication"]
+        Clerk["Clerk Auth<br/>OAuth + Email/Password"]
+    end
+    
+    Client1 <-->|WebSocket| SocketIO
+    Client2 <-->|WebSocket| SocketIO
+    Client3 <-->|WebSocket| SocketIO
+    
+    SocketIO -->|Broadcast Events| RoomManager
+    RoomManager -->|Store State| MongoDB
+    RoomManager -->|Retrieve State| MongoDB
+    
+    Client1 -->|Authenticate| Clerk
+    Client2 -->|Authenticate| Clerk
+    Client3 -->|Authenticate| Clerk
+    
+    Client1 -->|Stream Audio| Cloudinary
+    Client2 -->|Stream Audio| Cloudinary
+    Client3 -->|Stream Audio| Cloudinary
+    
+    style Client1 fill:#8B5CF6,stroke:#A78BFA,color:#F4F4F7
+    style Client2 fill:#8B5CF6,stroke:#A78BFA,color:#F4F4F7
+    style Client3 fill:#8B5CF6,stroke:#A78BFA,color:#F4F4F7
+    style SocketIO fill:#22C55E,stroke:#4ADE80,color:#F4F4F7
+    style RoomManager fill:#22C55E,stroke:#4ADE80,color:#F4F4F7
+    style MongoDB fill:#3B82F6,stroke:#60A5FA,color:#F4F4F7
+    style Cloudinary fill:#F9A825,stroke:#FBC02D,color:#0F172A
+    style Clerk fill:#EC4899,stroke:#F472B6,color:#F4F4F7
+            `}
+            title="Real-Time Synchronization Architecture"
+          />
         </div>
 
         <Typography variant="h3" className="mb-4">
@@ -338,6 +378,129 @@ const MelodyHubCaseStudy: React.FC = () => {
               <strong>Impact:</strong> Graceful handling of disconnections with
               automatic reconnection and state restoration.
             </Typography>
+          </div>
+        </div>
+      </CaseStudySection>
+
+      <CaseStudySection title="Technical Decisions & Trade-offs">
+        <div className="space-y-6">
+          <div>
+            <Typography variant="h3" className="mb-3">
+              Why Socket.IO for Real-Time Communication?
+            </Typography>
+            <CaseStudyText>
+              I chose Socket.IO over alternatives like WebRTC, long polling, or
+              Server-Sent Events because it provides bidirectional real-time
+              communication with built-in room management. For synchronized
+              music playback, I needed both server-to-client broadcasts (play,
+              pause, seek events) and client-to-server commands (user actions).
+              Socket.IO's room-based broadcasting is perfect for this: when
+              someone in "Room Jazz" clicks play, only users in that room
+              receive the event, not the entire server.
+            </CaseStudyText>
+            <CaseStudyText>
+              <strong>Trade-off:</strong> Socket.IO is a higher-level
+              abstraction than raw WebSockets, adding slight overhead. But for a
+              course project with a 3-month timeline, the built-in fallback
+              support (long polling if WebSockets fail), automatic reconnection,
+              and room management saved weeks of development. WebRTC would've
+              been overkill for simple state synchronization, and long polling
+              is too slow for music playback sync.
+            </CaseStudyText>
+          </div>
+
+          <div>
+            <Typography variant="h3" className="mb-3">
+              Why MongoDB Over PostgreSQL?
+            </Typography>
+            <CaseStudyText>
+              I chose MongoDB because room state is naturally hierarchical: each
+              room contains users, a playlist, chat messages, and playback
+              state. This nested data structure maps cleanly to MongoDB's
+              document model. A room is literally a single JSON document with
+              embedded arrays, making queries like "get this room with all its
+              users and current song" extremely fast (single query vs. multiple
+              JOINs in SQL).
+            </CaseStudyText>
+            <CaseStudyText>
+              <strong>Trade-off:</strong> PostgreSQL's strict schema and ACID
+              guarantees would've been more robust, but it would've added
+              complexity. For a real-time social app with rapidly evolving
+              features during development, MongoDB's flexible schema let us
+              iterate quickly. We could add new fields (like "room emoji" or
+              "user badges") without schema migrations. For a production fintech
+              app, I'd choose PostgreSQL. For a social music app, MongoDB's
+              speed and flexibility won.
+            </CaseStudyText>
+          </div>
+
+          <div>
+            <Typography variant="h3" className="mb-3">
+              Why Cloudinary CDN for Audio Delivery?
+            </Typography>
+            <CaseStudyText>
+              Audio delivery is latency-sensitive. If users in California and
+              New York are listening together, they need to download the same
+              song file with similar latency. I chose Cloudinary's global CDN
+              over self-hosting because it has edge servers worldwide, automatic
+              format optimization (MP3, AAC), and built-in transcoding. Upload
+              once, deliver optimized audio everywhere.
+            </CaseStudyText>
+            <CaseStudyText>
+              <strong>Trade-off:</strong> Using a third-party CDN adds an
+              external dependency (if Cloudinary goes down, no music). For a
+              course project with limited time, it was the pragmatic choice.
+              Self-hosting on our Node.js server would've required CDN setup
+              (CloudFront), file optimization, and bandwidth management, easily
+              2+ weeks of work. Cloudinary's free tier handled our beta testing
+              (100+ users) without issues.
+            </CaseStudyText>
+          </div>
+
+          <div>
+            <Typography variant="h3" className="mb-3">
+              What I Owned
+            </Typography>
+            <CaseStudyText>
+              As part of a 3-person team, I focused on backend architecture and
+              real-time synchronization:
+            </CaseStudyText>
+            <div className="grid md:grid-cols-2 gap-4 mt-4">
+              {[
+                {
+                  title: "Real-Time Backend",
+                  desc: "Socket.IO server setup, room management, WebSocket event handling, playback synchronization logic",
+                },
+                {
+                  title: "Database Design",
+                  desc: "MongoDB schema for rooms, users, playlists, chat messages. Query optimization for real-time access",
+                },
+                {
+                  title: "API Integration",
+                  desc: "Cloudinary audio upload/delivery, Clerk authentication, RESTful endpoints for room CRUD",
+                },
+                {
+                  title: "Architecture & OOP",
+                  desc: "Applied design patterns (Observer, Strategy), class hierarchies for user roles, system UML diagrams",
+                },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="p-4 rounded-xl bg-bg-surface/30 border border-border-primary/30"
+                >
+                  <Typography variant="h4" className="mb-2 text-base">
+                    {item.title}
+                  </Typography>
+                  <Typography
+                    variant="body"
+                    color="muted"
+                    className="text-sm text-text-muted"
+                  >
+                    {item.desc}
+                  </Typography>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </CaseStudySection>
