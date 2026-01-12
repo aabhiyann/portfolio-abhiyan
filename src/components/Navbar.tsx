@@ -15,7 +15,6 @@ const NavLinks = ({
   const links = [
     { path: "/about", label: "About" },
     { path: "/projects", label: "Projects" },
-    { path: "/analytics", label: "Analytics" },
     { path: "/experience", label: "Experience" },
     { path: "/skills", label: "Skills" },
     { path: "/photography", label: "Photography" },
