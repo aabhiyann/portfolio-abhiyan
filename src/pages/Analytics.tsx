@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Code, Github, Zap, Calendar } from "lucide-react";
 import SEO from "../components/SEO";
 import { GitHubActivity } from "../components/GitHubActivity";
+import { TechStackGrid } from "../components/analytics/TechStackGrid";
 
 const Analytics = () => {
   const stats = [
@@ -97,7 +98,7 @@ const Analytics = () => {
           <GitHubActivity />
         </div>
 
-        {/* Tech Stack - Coming Soon */}
+        {/* Tech Stack */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -107,14 +108,10 @@ const Analytics = () => {
           <h2 className="text-2xl font-bold text-text-primary mb-2">
             Tech Stack
           </h2>
-          <p className="text-text-muted text-sm mb-6">
+          <p className="text-text-muted text-sm mb-8">
             Technologies and tools I work with across projects
           </p>
-          <div className="flex items-center justify-center py-12">
-            <p className="text-text-muted">
-              Tech stack visualization coming soon...
-            </p>
-          </div>
+          <TechStackGrid />
         </motion.div>
       </div>
     </div>
