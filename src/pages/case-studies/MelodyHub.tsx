@@ -1,6 +1,7 @@
 import React from "react";
 import { Rocket } from "lucide-react";
 import CaseStudyLayout from "../../components/CaseStudyLayout";
+import MermaidDiagram from "../../components/MermaidDiagram";
 import { CaseStudySection, CaseStudyText } from "../../components/case-study";
 import { Typography } from "../../components/ui";
 
@@ -166,21 +167,60 @@ const MelodyHubCaseStudy: React.FC = () => {
           CDN for audio delivery, and MongoDB for persistent state.
         </CaseStudyText>
 
-        <div className="mb-6 p-4 rounded-xl bg-bg-surface/50 border border-border-primary/50 font-mono text-sm overflow-x-auto">
-          <pre className="whitespace-pre-wrap">
-            {`┌──────────────┐     WebSocket      ┌──────────────┐     Audio CDN    ┌──────────────┐
-│    React     │◄──────────────────►│  Socket.IO   │◄────────────────►│  Cloudinary  │
-│   Frontend   │                    │   Server     │                  │   (Audio)    │
-└──────────────┘                    └──────────────┘                  └──────────────┘
-       │                                    │
-       │ Auth                              │ DB
-       ↓                                   ↓
-┌──────────────┐                    ┌──────────────┐
-│    Clerk     │                    │   MongoDB    │
-│    Auth      │                    │  (Rooms /     │
-└──────────────┘                    │   Users)     │
-                                    └──────────────┘`}
-          </pre>
+        <div className="my-8">
+          <MermaidDiagram
+            chart={`
+graph TB
+    subgraph Clients["Client Layer (Multiple Users)"]
+        Client1["React Frontend 1<br/>User A"]
+        Client2["React Frontend 2<br/>User B"]
+        Client3["React Frontend N<br/>User N"]
+    end
+    
+    subgraph Backend["Real-Time Server"]
+        SocketIO["Socket.IO Server<br/>WebSocket + Room Isolation"]
+        RoomManager["Room State Manager<br/>Sync Engine"]
+    end
+    
+    subgraph Storage["Persistence Layer"]
+        MongoDB["MongoDB<br/>Rooms + Users + Chat"]
+    end
+    
+    subgraph CDN["Audio Delivery"]
+        Cloudinary["Cloudinary CDN<br/>Global Audio Streaming"]
+    end
+    
+    subgraph Auth["Authentication"]
+        Clerk["Clerk Auth<br/>OAuth + Email/Password"]
+    end
+    
+    Client1 <-->|WebSocket| Socket IO
+    Client2 <-->|WebSocket| SocketIO
+    Client3 <-->|WebSocket| SocketIO
+    
+    SocketIO -->|Broadcast Events| RoomManager
+    RoomManager -->|Store State| MongoDB
+    RoomManager -->|Retrieve State| MongoDB
+    
+    Client1 -->|Authenticate| Clerk
+    Client2 -->|Authenticate| Clerk
+    Client3 -->|Authenticate| Clerk
+    
+    Client1 -->|Stream Audio| Cloudinary
+    Client2 -->|Stream Audio| Cloudinary
+    Client3 -->|Stream Audio| Cloudinary
+    
+    style Client1 fill:#8B5CF6,stroke:#A78BFA,color:#F4F4F7
+    style Client2 fill:#8B5CF6,stroke:#A78BFA,color:#F4F4F7
+    style Client3 fill:#8B5CF6,stroke:#A78BFA,color:#F4F4F7
+    style SocketIO fill:#22C55E,stroke:#4ADE80,color:#F4F4F7
+    style RoomManager fill:#22C55E,stroke:#4ADE80,color:#F4F4F7
+    style MongoDB fill:#3B82F6,stroke:#60A5FA,color:#F4F4F7
+    style Cloudinary fill:#F9A825,stroke:#FBC02D,color:#0F172A
+    style Clerk fill:#EC4899,stroke:#F472B6,color:#F4F4F7
+            `}
+            title="Real-Time Synchronization Architecture"
+          />
         </div>
 
         <Typography variant="h3" className="mb-4">
