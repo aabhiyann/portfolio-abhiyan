@@ -194,7 +194,7 @@ graph TB
         Clerk["Clerk Auth<br/>OAuth + Email/Password"]
     end
     
-    Client1 <-->|WebSocket| Socket IO
+    Client1 <-->|WebSocket| SocketIO
     Client2 <-->|WebSocket| SocketIO
     Client3 <-->|WebSocket| SocketIO
     
