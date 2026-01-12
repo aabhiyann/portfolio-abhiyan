@@ -48,11 +48,12 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
                 background: "transparent",
                 mainBkg: "transparent",
                 nodeBorder: "#A78BFA",
-                clusterBkg: "rgba(30, 41, 59, 0.6)", // Slate-800/60
+                clusterBkg: "transparent", // NO GREY! Subtle border only
+                clusterBorder: "#475569",
                 titleColor: "#FFFFFF",
                 edgeLabelBackground: "rgba(15, 23, 42, 0.9)", // Darker background for labels
                 fontFamily: "Inter, sans-serif",
-                fontSize: "16px", // Larger font
+                fontSize: "18px", // Larger for clarity
               }
             : {
                 // Light Mode - High Contrast
@@ -65,11 +66,12 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
                 background: "transparent",
                 mainBkg: "transparent",
                 nodeBorder: "#7C3AED",
-                clusterBkg: "rgba(241, 245, 249, 0.8)",
+                clusterBkg: "transparent", // NO GREY! Clean look
+                clusterBorder: "#CBD5E1",
                 titleColor: "#0F172A",
                 edgeLabelBackground: "rgba(255, 255, 255, 0.95)", // More opaque
                 fontFamily: "Inter, sans-serif",
-                fontSize: "16px", // Larger font
+                fontSize: "18px", // Larger for clarity
               },
           flowchart: {
             useMaxWidth: true,
