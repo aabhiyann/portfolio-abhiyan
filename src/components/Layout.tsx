@@ -33,9 +33,7 @@ function Layout({ children }: LayoutProps) {
       <CustomCursor />
       <SkipLink />
       <div className="relative z-10">
-        <header>
-          <Navbar />
-        </header>
+        <Navbar />
 
         <motion.main id="content" className="relative z-10">
           {children}
