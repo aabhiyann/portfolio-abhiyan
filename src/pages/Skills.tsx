@@ -1,7 +1,8 @@
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";
-import SkillsMatrix from "../components/SkillsMatrix"; // Using existing or creating new? Existing likely.
+import SkillsMatrix from "../components/SkillsMatrix";
+import { GitHubActivity } from "../components/GitHubActivity";
 
 function Skills() {
   return (
@@ -51,6 +52,11 @@ function Skills() {
                 </span>
               </div>
             </div>
+          </div>
+
+          {/* GitHub Activity */}
+          <div className="mt-24">
+            <GitHubActivity />
           </div>
         </div>
       </section>
