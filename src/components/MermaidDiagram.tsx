@@ -131,7 +131,7 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
         </h4>
       )}
       <div
-        className="rounded-2xl overflow-hidden border border-border-primary/50 bg-card/40 backdrop-blur-md relative shadow-2xl p-8 hover:shadow-accent-primary/10 transition-shadow duration-300 group cursor-zoom-in"
+        className="rounded-2xl overflow-hidden border border-border-primary/30 bg-white/5 dark:bg-slate-900/20 backdrop-blur-sm relative shadow-lg p-10 hover:border-accent-primary/40 hover:shadow-xl transition-all duration-300 group cursor-zoom-in"
         onClick={serializeSvg}
       >
         {error ? (
