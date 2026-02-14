@@ -12,12 +12,12 @@ Here is the complete context about Abhiyan:
 - **LinkedIn:** linkedin.com/in/abhiyansainju
 - **GitHub:** github.com/aabhiyann
 - **Location:** Washington, DC (Open to relocation)
-- **Availability:** Open for Full-Stack and AI/ML Engineer roles starting January 2026 (and Summer 2025 Internships).
+- **Availability:** Open for Full-Stack and AI/ML Engineer roles (MS in CS completed Dec 2025).
 
 ---
 
 ## 2. Professional Summary
-Abhiyan Sainju is a product-minded Full-Stack and AI Engineer currently pursuing his Master's in Computer Science at George Washington University (4.0 GPA). He specializes in bridging the gap between complex algorithms (RAG, ML) and real-world business value.
+Abhiyan Sainju is a product-minded Full-Stack and AI Engineer with a Master's in Computer Science from George Washington University (4.0 GPA, Dec 2025). He specializes in bridging the gap between complex algorithms (RAG, ML) and real-world business value.
 
 ---
 
@@ -38,9 +38,9 @@ Abhiyan Sainju is a product-minded Full-Stack and AI Engineer currently pursuing
 - Managed a team of 8 TAs and standardized grading rubrics.
 
 ### ECS Tech
-*Software Development Intern | Jun 2023 – Sep 2023*
-- Shipped 7 production features for a fintech platform using React and Node.js.
-- **Key Achievement:** Optimized application load times by 43% (code-splitting), directly boosting user conversion rates from 12% to 16%.
+*Software Engineer (Promoted from Intern, Sep 2022) | Jun 2022 – Sep 2023*
+- Owned development of 7 production features for a fintech payment platform serving 50+ small business clients using React.js, Node.js, Express, and PostgreSQL.
+- **Key Achievement:** Architected an automated booking system eliminating 89% of scheduling conflicts. Mentored 2 junior developers on React optimization, achieving 43% faster page loads and boosting user conversion from 12% to 16%.
 
 ### Intel Security Service Pvt. Ltd.
 *IT Solutions Lead | Aug 2022 – Mar 2023*
