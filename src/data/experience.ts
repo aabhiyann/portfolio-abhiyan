@@ -33,25 +33,25 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    id: "ecs-tech-intern",
-    role: "Software Development Intern",
+    id: "ecs-tech",
+    role: "Software Engineer (Promoted from Intern)",
     company: "ECS Tech",
-    dates: "Jun 2023 – Sep 2023",
+    dates: "Jun 2022 – Sep 2023",
     location: "Lalitpur, Nepal",
     description:
-      "Full-stack development for a fintech client's payment platform (50+ employees) serving 1,200+ users. Focused on database optimization, automated booking systems, and React performance improvements.",
+      "Owned development of 7 production features for a fintech payment platform serving 50+ small business clients using React.js, Node.js, Express, and PostgreSQL. Built customer-facing solutions for booking, payments, and scheduling workflows.",
     technologies: [
       "React.js",
       "Node.js",
+      "Express",
       "PostgreSQL",
       "JavaScript",
-      "Automation",
       "Agile/Scrum",
     ],
     achievements: [
-      "Delivered 7 production features in 3 months, including booking system that eliminated 89% of scheduling conflicts and saved support team 15 hours weekly",
-      "Owned end-to-end launch of booking calendar, managing $5K budget and 5 stakeholders; delivered 2 weeks early, contributing to 23% increase in client retention",
-      "Mentored 2 junior interns on React optimization, reducing page load times by 43% and improving conversions from 12% to 16%",
+      "Architected an automated booking system with RESTful API backend, PostgreSQL database, and React frontend, eliminating 89% of scheduling conflicts and saving the support team 15 hours weekly",
+      "Led delivery of a booking calendar, coordinating with 5 cross-functional stakeholders to ship 2 weeks ahead of schedule",
+      "Mentored 2 junior developers on React optimization (code-splitting, lazy loading), achieving 43% faster page loads that increased user conversion from 12% to 16%",
     ],
   },
   {
