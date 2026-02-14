@@ -172,7 +172,10 @@ export const CommandPalette = () => {
           <Command.Group heading="Actions" className="mb-2">
             <Command.Item
               onSelect={() => {
-                window.open("/resume.pdf", "_blank");
+                window.open(
+                  "/Abhiyan_Sainju_Software_Engineer_Resume_2026.pdf",
+                  "_blank",
+                );
                 setOpen(false);
               }}
               className="flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer transition-colors text-text-secondary hover:bg-accent-primary/10 hover:text-accent-primary data-[selected=true]:bg-accent-primary/10 data-[selected=true]:text-accent-primary"
