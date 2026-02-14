@@ -62,11 +62,24 @@ function Resume() {
               delay: 0.2,
             }}
           >
-            <iframe
-              src={resumeUrl}
+            <object
+              data={resumeUrl}
+              type="application/pdf"
               className="w-full h-full"
               title="Abhiyan Sainju Resume"
-            />
+            >
+              <div className="flex flex-col items-center justify-center h-full gap-4 text-text-secondary">
+                <p>Your browser does not support inline PDF viewing.</p>
+                <a
+                  href={resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-primary underline"
+                >
+                  Click here to view the resume
+                </a>
+              </div>
+            </object>
           </motion.div>
         </div>
       </section>

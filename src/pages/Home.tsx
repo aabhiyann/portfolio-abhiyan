@@ -62,7 +62,7 @@ function Home() {
                   <span className="gradient-text">ML Engineer</span>
                 </h1>
 
-                <div className="text-xl md:text-2xl text-text-secondary font-medium mb-4 h-[60px]">
+                <div className="text-xl md:text-2xl text-text-secondary font-medium mb-4 min-h-[60px]">
                   <TypeWriter
                     words={[
                       "Building ML-powered applications",
