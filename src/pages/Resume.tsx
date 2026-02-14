@@ -7,7 +7,7 @@ import SectionTitle from "../components/SectionTitle";
 import { Download, ExternalLink } from "lucide-react";
 
 function Resume() {
-  const resumeUrl = "/Abhiyan_Sainju_Software_Engineer_Resume.pdf";
+  const resumeUrl = "/Abhiyan_Sainju_Software_Engineer_Resume_2026.pdf";
 
   return (
     <Page>
