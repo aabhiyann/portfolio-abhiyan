@@ -53,10 +53,10 @@ function Home() {
                 <div className="text-xl md:text-2xl text-text-secondary font-medium mb-4 min-h-[60px]">
                   <TypeWriter
                     words={[
+                      "Building AI-powered full-stack systems",
                       "Building ML-powered applications",
-                      "Teaching algorithms at GWU",
-                      "Turning coffee into production code",
-                      "Coding by day, photographing by night",
+                      "From RAG pipelines to production APIs",
+                      "Open to SWE, DS, and PM roles across the US",
                     ]}
                   />
                 </div>
