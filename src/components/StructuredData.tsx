@@ -9,7 +9,7 @@ export default function StructuredData() {
     name: "Abhiyan Sainju",
     url: SITE_URL,
     image: `${SITE_URL}/images/about/portrait.jpg`,
-    jobTitle: "Full Stack Engineer & AI Researcher",
+    jobTitle: "Software Engineer & AI/ML Specialist",
     worksFor: {
       "@type": "EducationalOrganization",
       name: "George Washington University",
@@ -128,7 +128,7 @@ export default function StructuredData() {
       name: "Abhiyan Sainju",
     },
     description:
-      "Portfolio of Abhiyan Sainju, a Full Stack and AI Engineer specializing in AI-driven SaaS, React, Python, and Cloud Infrastructure.",
+      "Portfolio of Abhiyan Sainju, a Software Engineer specializing in full-stack systems and AI/ML. Based in Washington, DC.",
   };
 
   return (
