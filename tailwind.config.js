@@ -39,7 +39,7 @@ export default {
         "info": "var(--color-info)",
       },
       fontFamily: {
-        "heading": ["Inter", "sans-serif"],
+        "heading": ["Space Grotesk", "sans-serif"],
         "body": ["Inter", "sans-serif"],
       },
       animation: {
