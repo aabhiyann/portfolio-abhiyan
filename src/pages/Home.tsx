@@ -7,8 +7,6 @@ import Button from "../components/ui/Button";
 import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
 import HeroBento from "../components/HeroBento";
-import { HeroStats } from "../components/HeroStats";
-import SkillsSlider from "../components/SkillsSlider";
 import WhyHireMe from "../components/WhyHireMe";
 import ContactSection from "../components/ContactSection";
 import TypeWriter from "../components/ui/TypeWriter";
@@ -19,19 +17,19 @@ function Home() {
   return (
     <Page>
       <SEO
-        title="Abhiyan Sainju | Full-Stack & ML Engineer"
-        description="Full-stack engineer building AI/ML solutions. Top-tier software engineering portfolio. Open to roles in DC, NYC, SF, Chicago, Austin, Charlotte, and nationwide."
+        title="Abhiyan Sainju | Software Engineer & AI/ML Specialist"
+        description="Software Engineer based in Washington, DC. Builds full-stack applications with real ML inside. Open to SWE, DS, and PM roles nationwide."
         keywords={[
           "Software Engineer",
-          "Full Stack Developer",
-          "Machine Learning Engineer",
           "AI Engineer",
+          "ML Engineer",
+          "Full Stack Developer",
+          "Machine Learning",
           "React Developer",
           "Python Developer",
           "Cloud Infrastructure",
           "TypeScript",
-          "TensorFlow",
-          "SaaS Development",
+          "Data Science",
         ]}
       />
       <DottedBackground />
@@ -47,34 +45,25 @@ function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: motionTokens.duration.normal / 1000 }}
               >
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-accent-primary text-sm font-medium font-mono mb-6 backdrop-blur-sm">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-primary opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-primary"></span>
-                  </span>
-                  <span className="flex gap-2 items-center">
-                    Hi, I'm Abhiyan Sainju
-                  </span>
-                </div>
-
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.2]">
-                  Full-Stack & <br />
-                  <span className="gradient-text">ML Engineer</span>
+                  Software Engineer & <br />
+                  <span className="text-accent-primary">AI/ML Specialist</span>
                 </h1>
 
                 <div className="text-xl md:text-2xl text-text-secondary font-medium mb-4 min-h-[60px]">
                   <TypeWriter
                     words={[
+                      "Building AI-powered full-stack systems",
                       "Building ML-powered applications",
-                      "Teaching algorithms at GWU",
-                      "Turning coffee into production code",
-                      "Coding by day, photographing by night",
+                      "From RAG pipelines to production APIs",
+                      "Open to SWE, DS, and PM roles across the US",
                     ]}
                   />
                 </div>
 
                 <p className="text-lg text-text-muted mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  Building Production-Ready Systems.
+                  Full-stack systems with real ML inside. Based in DC, open to
+                  relocation anywhere in the US.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
@@ -91,9 +80,6 @@ function Home() {
                     </Button>
                   </Link>
                 </div>
-
-                {/* Hero Stats */}
-                <HeroStats />
               </motion.div>
             </div>
 
@@ -122,9 +108,6 @@ function Home() {
           </span>
         </motion.div>
       </section>
-
-      {/* Skills Slider 2.0 */}
-      <SkillsSlider />
 
       {/* Why Hire Me Section */}
       <WhyHireMe />

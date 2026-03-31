@@ -1,5 +1,6 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageCircle, X } from "lucide-react";
 
 interface FloatingActionButtonProps {
   onClick: () => void;
@@ -13,30 +14,34 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
   return (
     <motion.button
       onClick={onClick}
-      className="fixed bottom-8 right-8 w-16 h-16 btn-primary rounded-full shadow-lg flex items-center justify-center z-50"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      className="fixed bottom-8 right-8 w-14 h-14 btn-primary rounded-full shadow-lg flex items-center justify-center z-50"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       aria-label={isOpen ? "Close AI Concierge" : "Open AI Concierge"}
     >
-      <motion.div
-        initial={false}
-        animate={isOpen ? { rotate: 45 } : { rotate: 0 }}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 4v16m8-8H4"
-          />
-        </svg>
-      </motion.div>
+      <AnimatePresence mode="wait" initial={false}>
+        {isOpen ? (
+          <motion.span
+            key="close"
+            initial={{ opacity: 0, rotate: -90 }}
+            animate={{ opacity: 1, rotate: 0 }}
+            exit={{ opacity: 0, rotate: 90 }}
+            transition={{ duration: 0.15 }}
+          >
+            <X className="w-5 h-5" />
+          </motion.span>
+        ) : (
+          <motion.span
+            key="chat"
+            initial={{ opacity: 0, rotate: 90 }}
+            animate={{ opacity: 1, rotate: 0 }}
+            exit={{ opacity: 0, rotate: -90 }}
+            transition={{ duration: 0.15 }}
+          >
+            <MessageCircle className="w-5 h-5" />
+          </motion.span>
+        )}
+      </AnimatePresence>
     </motion.button>
   );
 };
