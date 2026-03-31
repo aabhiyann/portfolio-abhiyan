@@ -35,8 +35,8 @@ function About() {
   return (
     <Page>
       <SEO
-        title="About Abhiyan Sainju | Software Engineer"
-        description="A Software Engineer based in Washington, DC, with a passion for scalable architecture and AI integration."
+        title="About | Abhiyan Sainju"
+        description="Software Engineer based in Washington, DC. M.S. Computer Science, GWU. Builds full-stack systems with AI/ML."
       />
       {/* Hero Section */}
       <section className="relative py-24 min-h-[80vh] flex items-center font-heading overflow-hidden">
