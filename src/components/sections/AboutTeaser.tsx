@@ -14,7 +14,7 @@ export const AboutTeaser: React.FC = () => {
       <div className="max-w-4xl mx-auto px-6 md:px-8 text-center relative z-10">
         <SectionTitle
           title="My Journey"
-          subtitle="I don't just write code; I solve problems. From teaching algorithms to 60+ grad students to shipping production apps used by thousands."
+          subtitle="DC-based. M.S. CS from GWU. Six production apps shipped. Open to SWE, DS, and PM roles."
         />
         <Button as={Link} to="/about" variant="primary" size="lg">
           Read My Story
