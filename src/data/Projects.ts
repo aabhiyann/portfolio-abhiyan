@@ -36,7 +36,7 @@ export const projects: Project[] = [
     id: "infrasight",
     title: "InfraSight",
     description:
-      "Addressed opaque cloud billing for SMEs (Situation) by engineering a cost analytics platform with Python and React (Action). Implemented Linear Regression forecasting that achieved 95% accuracy (Result), enabling proactive budget management.",
+      "Cloud cost analytics platform for small businesses. A Linear Regression model forecasts spend with 95% accuracy, catching budget overruns before they happen. Built with Python, FastAPI, React, and Docker.",
     tech: ["Python", "FastAPI", "React", "Docker", "AsyncPG"],
     live: "https://infrasight.netlify.app/",
     github: "https://github.com/aabhiyann/infrasight",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     id: "talkifydocs",
     title: "TalkifyDocs",
     description:
-      "Users needed a cost-effective way to query documents (Situation). Built a RAG pipeline using Groq & Gemini 3.0 (Action) to deliver sub-second responses at $0/mo operational cost (Result), scaling to 100+ active users.",
+      "RAG-powered document chat for teams and individuals. Users upload PDFs and query them conversationally. Sub-second responses at $0/mo operational cost. 100+ active users.",
     tech: ["Next.js 16", "Gemini", "Groq", "Pinecone", "tRPC", "Stripe"],
     live: "https://talkifydocs.vercel.app",
     github: "https://github.com/aabhiyann/talkifydocs",
@@ -71,7 +71,7 @@ export const projects: Project[] = [
     id: "audio-classification-cnn",
     title: "Audio Classification CNN",
     description:
-      "Challenged with improving environmental sound recognition (Situation). Developed a custom CNN architecture using TensorFlow (Action) that achieved 92% accuracy, outperforming standard transfer learning models by 26% (Result).",
+      "Custom CNN for environmental sound classification. Achieved 92% accuracy on the ESC-50 dataset, outperforming standard transfer learning baselines by 26%. Built with TensorFlow and librosa.",
     tech: ["TensorFlow", "Keras", "librosa", "YAMNet"],
     live: "",
     github: "https://github.com/aabhiyann/audio-classification-cnn",
@@ -90,7 +90,7 @@ export const projects: Project[] = [
     id: "melodyhub",
     title: "MelodyHub",
     description:
-      "Solved remote group listening latency (Situation) by building a real-time synchronization engine with Socket.IO and React (Action), ensuring sub-50ms playback sync across distributed clients (Result).",
+      "Real-time collaborative music player. Socket.IO synchronization engine keeps playback in sync across distributed clients with under 50ms latency. Built with React, Node.js, and MongoDB.",
     tech: ["React", "Node.js", "Socket.IO", "MongoDB", "Clerk"],
     live: "https://udaymelodyhhub.vercel.app/",
     github: "https://github.com/aabhiyann/MelodyHub",
@@ -109,7 +109,7 @@ export const projects: Project[] = [
     id: "disease-prediction",
     title: "Disease Prediction ML",
     description:
-      "Designed for resource-limited healthcare settings (Situation). Optimized a Random Forest classifier (Action) to achieve 98.7% diagnostic accuracy on 4,920 records (Result) with minimal computational overhead.",
+      "Random Forest classifier for multi-disease diagnosis. 98.7% accuracy across 4,920 patient records. Optimized for resource-limited settings with minimal computational overhead.",
     tech: ["Python", "Scikit-Learn", "Pandas", "Flask"],
     live: "",
     github: "https://github.com/aabhiyann/disease-prediction",
@@ -126,7 +126,7 @@ export const projects: Project[] = [
     id: "multi-source-retrieval",
     title: "Multi-Source Retrieval",
     description:
-      "Streamlined research data extraction (Situation) by building a semantic search API with Elasticsearch (Action), reducing query time by 70% across disparate file formats like PDFs and audio transcripts (Result).",
+      "Semantic search API across heterogeneous sources including PDFs, audio transcripts, and structured data. 70% reduction in query time using Elasticsearch and NLP-based retrieval.",
     tech: ["Python", "Elasticsearch", "NLP", "API"],
     live: "",
     github: "https://github.com/aabhiyann/multi-source-retrieval",
