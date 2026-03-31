@@ -17,7 +17,7 @@ function Skills() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Skills & Certifications"
-            subtitle="A comprehensive overview of my technical expertise and qualifications."
+            subtitle="Languages, frameworks, tools, and certifications."
           />
 
           <div className="mt-12">
