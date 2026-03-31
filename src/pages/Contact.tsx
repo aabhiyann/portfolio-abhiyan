@@ -16,7 +16,7 @@ function Contact() {
         <div className="max-w-4xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Let's Connect"
-            subtitle="Open to new opportunities. Let's chat about what we could build together."
+            subtitle="Open to SWE, DS, and PM roles. Response within 24 hours."
           />
 
           {/* Info Card */}

@@ -17,7 +17,7 @@ function Experience() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Experience & Teaching"
-            subtitle="My journey from software development internships to teaching algorithms at graduate level."
+            subtitle="Software development roles and academic work, in order."
           />
 
           <div className="mt-12">

@@ -128,7 +128,7 @@ function About() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="My Journey"
-            subtitle="From identifying problems to shipping solutions. Here's my path so far."
+            subtitle="Roles, projects, and milestones in order."
           />
           <VisualTimeline
             items={experiences.map((exp) => ({
@@ -147,7 +147,7 @@ function About() {
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Technical Arsenal"
-            subtitle="My primary stack for building scalable applications. Hover to see them in action."
+            subtitle="The tools I reach for on every project. Hover for context."
           />
           <SkillsMatrix />
         </div>
@@ -158,7 +158,7 @@ function About() {
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Engineering Philosophy"
-            subtitle="The core principles that drive my development and design decisions."
+            subtitle="How I think about software."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {passions.map((passion, index) => (
@@ -190,7 +190,7 @@ function About() {
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Beyond Code"
-            subtitle="When I'm not writing software, I'm capturing the world through a lens."
+            subtitle="Street and portrait photography. Shot on a Canon R50."
           />
 
           {/* Photo Grid */}
