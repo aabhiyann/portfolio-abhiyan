@@ -109,14 +109,11 @@ function About() {
                   {/* Glassy overlay on hover - like photography gallery */}
                   <div className="absolute inset-0 gradient-overlay-image-light opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500 backdrop-blur-[2px]"></div>
                   <div className="absolute bottom-8 left-8 text-white opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500">
-                    <div className="text-sm font-mono text-accent-primary mb-2 drop-shadow-2xl">
-                      Portfolio Established 2024
-                    </div>
                     <h3 className="text-3xl font-bold text-white drop-shadow-2xl">
                       Abhiyan Sainju
                     </h3>
                     <p className="text-white/95 mt-1 drop-shadow-2xl">
-                      Full-Stack & ML Engineer
+                      Software Engineer & AI/ML Specialist
                     </p>
                   </div>
                 </div>
@@ -268,10 +265,8 @@ function About() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <p className="text-text-muted mb-6 leading-relaxed">
-              Photography teaches me composition, timing, and attention to
-              detail, skills that translate directly to writing clean,
-              maintainable code. Photography teaches patience and precision, two
-              things every engineer needs.architecting systems.
+              Outside of code I shoot with a camera. It keeps the eye sharp and
+              the patience intact.
             </p>
             <a
               href="/photography"
