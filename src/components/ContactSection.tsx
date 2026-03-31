@@ -30,12 +30,9 @@ const ContactSection: React.FC = () => {
               Drop me a message
             </h3>
             <p className="text-text-muted mb-4">aabhiyansainju@gmail.com</p>
-            <div className="mb-8 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-primary/10 border border-accent-primary/20 text-accent-primary text-sm font-medium">
-              <span className="relative flex h-2 w-2">
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-primary"></span>
-              </span>
-              Based in DC • Open to Relocation (US)
-            </div>
+            <p className="text-text-muted text-sm mb-8">
+              Based in Washington, DC. Open to relocation anywhere in the US.
+            </p>
 
             <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4">
               <Button
