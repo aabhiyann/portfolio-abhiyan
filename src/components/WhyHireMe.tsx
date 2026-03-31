@@ -7,32 +7,32 @@ const WhyHireMe: React.FC = () => {
   const cards = [
     {
       icon: GraduationCap,
-      title: "Academic Excellence",
+      title: "Education",
       items: [
-        "M.S. CS @ GWU (4.0 GPA)",
-        "Graduate TA - Algorithms",
-        "22% student performance improvement",
-        "AWS Cloud Certifications (2)",
+        "M.S. Computer Science, GWU (4.0 GPA)",
+        "Focus: distributed systems, ML, algorithms",
+        "AWS Cloud Foundations certified",
+        "AWS Cloud Operations certified",
       ],
     },
     {
       icon: Rocket,
       title: "Production Experience",
       items: [
-        "6 deployed applications",
-        "1,200+ active users impacted",
-        "Built end-to-end: API → ML → UI",
+        "6 applications shipped and deployed",
+        "1,200+ active users across projects",
+        "Full ownership: API, ML layer, and UI",
         "Real metrics, not just notebooks",
       ],
     },
     {
       icon: Code2,
-      title: "Full-Stack + ML",
+      title: "Full-Stack + AI/ML",
       items: [
-        "React/Next.js → FastAPI → PostgreSQL",
-        "RAG, Anomaly Detection, Forecasting",
+        "React / Next.js, FastAPI, PostgreSQL",
+        "RAG pipelines, anomaly detection, forecasting",
         "Docker, AWS, CI/CD",
-        "Clean code + System design",
+        "System design with clean, maintainable code",
       ],
     },
   ];
@@ -41,8 +41,8 @@ const WhyHireMe: React.FC = () => {
     <section className="py-24 bg-bg-surface/50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <SectionTitle
-          title="What Sets Me Apart"
-          subtitle="Most engineers are either academic or hands-on. I bridge both: teaching algorithms to grad students while shipping production ML systems."
+          title="Why Me"
+          subtitle="Production systems. Real metrics. No fluff."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
