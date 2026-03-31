@@ -35,8 +35,8 @@ function About() {
   return (
     <Page>
       <SEO
-        title="About Abhiyan Sainju | Software Engineer"
-        description="A Software Engineer based in Washington, DC, with a passion for scalable architecture and AI integration."
+        title="About | Abhiyan Sainju"
+        description="Software Engineer based in Washington, DC. M.S. Computer Science, GWU. Builds full-stack systems with AI/ML."
       />
       {/* Hero Section */}
       <section className="relative py-24 min-h-[80vh] flex items-center font-heading overflow-hidden">
@@ -50,8 +50,8 @@ function About() {
                 transition={{ duration: motionTokens.duration.slow / 1000 }}
               >
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-tight">
-                  Building Things <br />
-                  <span className="gradient-text">That Matter.</span>
+                  I write code <br />
+                  <span className="text-accent-primary">that ships.</span>
                 </h1>
 
                 <div className="space-y-4 text-text-secondary leading-relaxed">
@@ -109,14 +109,11 @@ function About() {
                   {/* Glassy overlay on hover - like photography gallery */}
                   <div className="absolute inset-0 gradient-overlay-image-light opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500 backdrop-blur-[2px]"></div>
                   <div className="absolute bottom-8 left-8 text-white opacity-0 group-hover/portrait:opacity-100 transition-opacity duration-500">
-                    <div className="text-sm font-mono text-accent-primary mb-2 drop-shadow-2xl">
-                      Portfolio Established 2024
-                    </div>
                     <h3 className="text-3xl font-bold text-white drop-shadow-2xl">
                       Abhiyan Sainju
                     </h3>
                     <p className="text-white/95 mt-1 drop-shadow-2xl">
-                      Full-Stack & ML Engineer
+                      Software Engineer & AI/ML Specialist
                     </p>
                   </div>
                 </div>
@@ -131,7 +128,7 @@ function About() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="My Journey"
-            subtitle="From identifying problems to shipping solutions. Here's my path so far."
+            subtitle="Roles, projects, and milestones in order."
           />
           <VisualTimeline
             items={experiences.map((exp) => ({
@@ -150,7 +147,7 @@ function About() {
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Technical Arsenal"
-            subtitle="My primary stack for building scalable applications. Hover to see them in action."
+            subtitle="The tools I reach for on every project. Hover for context."
           />
           <SkillsMatrix />
         </div>
@@ -161,7 +158,7 @@ function About() {
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Engineering Philosophy"
-            subtitle="The core principles that drive my development and design decisions."
+            subtitle="How I think about software."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {passions.map((passion, index) => (
@@ -193,7 +190,7 @@ function About() {
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Beyond Code"
-            subtitle="When I'm not writing software, I'm capturing the world through a lens."
+            subtitle="Street and portrait photography. Shot on a Canon R50."
           />
 
           {/* Photo Grid */}
@@ -268,10 +265,8 @@ function About() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <p className="text-text-muted mb-6 leading-relaxed">
-              Photography teaches me composition, timing, and attention to
-              detail, skills that translate directly to writing clean,
-              maintainable code. Photography teaches patience and precision, two
-              things every engineer needs.architecting systems.
+              Outside of code I shoot with a camera. It keeps the eye sharp and
+              the patience intact.
             </p>
             <a
               href="/photography"

@@ -23,14 +23,6 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle }) => {
           {subtitle}
         </p>
       )}
-      <motion.div
-        className="absolute -bottom-2 left-1/2 w-24 h-1 bg-accent-primary"
-        style={{ x: "-50%" }}
-        initial={{ width: 0 }}
-        whileInView={{ width: "6rem" }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
-      />
     </motion.div>
   );
 };
