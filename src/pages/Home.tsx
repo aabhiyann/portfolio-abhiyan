@@ -8,7 +8,6 @@ import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
 import HeroBento from "../components/HeroBento";
 import { HeroStats } from "../components/HeroStats";
-import SkillsSlider from "../components/SkillsSlider";
 import WhyHireMe from "../components/WhyHireMe";
 import ContactSection from "../components/ContactSection";
 import TypeWriter from "../components/ui/TypeWriter";
@@ -112,9 +111,6 @@ function Home() {
           </span>
         </motion.div>
       </section>
-
-      {/* Skills Slider 2.0 */}
-      <SkillsSlider />
 
       {/* Why Hire Me Section */}
       <WhyHireMe />
