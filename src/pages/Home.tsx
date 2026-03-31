@@ -17,19 +17,19 @@ function Home() {
   return (
     <Page>
       <SEO
-        title="Abhiyan Sainju | Full-Stack & ML Engineer"
-        description="Full-stack engineer building AI/ML solutions. Top-tier software engineering portfolio. Open to roles in DC, NYC, SF, Chicago, Austin, Charlotte, and nationwide."
+        title="Abhiyan Sainju | Software Engineer & AI/ML Specialist"
+        description="Software Engineer based in Washington, DC. Builds full-stack applications with real ML inside. Open to SWE, DS, and PM roles nationwide."
         keywords={[
           "Software Engineer",
-          "Full Stack Developer",
-          "Machine Learning Engineer",
           "AI Engineer",
+          "ML Engineer",
+          "Full Stack Developer",
+          "Machine Learning",
           "React Developer",
           "Python Developer",
           "Cloud Infrastructure",
           "TypeScript",
-          "TensorFlow",
-          "SaaS Development",
+          "Data Science",
         ]}
       />
       <DottedBackground />
