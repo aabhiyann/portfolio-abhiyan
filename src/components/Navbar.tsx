@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-navbar/80 border-b border-border-primary transition-colors duration-300 shadow-lg shadow-theme overflow-hidden">
+      <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-navbar/95 border-b border-border-primary transition-colors duration-300 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -162,7 +162,7 @@ const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden fixed inset-0 z-30 bg-bg-primary/95 backdrop-blur-xl overflow-y-auto"
+            className="md:hidden fixed inset-0 z-30 bg-bg-primary/95 backdrop-blur-md overflow-y-auto"
           >
             <nav className="flex flex-col items-center justify-center min-h-screen gap-8 px-6">
               <NavLinks onLinkClick={closeMobileMenu} mobile />
