@@ -179,8 +179,8 @@ function About() {
       <section className="py-24 bg-bg-primary">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="Beyond Code"
-            subtitle="Street and portrait photography. Shot on a Canon R50."
+            title="Photography"
+            subtitle="Street and urban photography. Shot on a Canon R50."
           />
 
           {/* Photo Grid */}
