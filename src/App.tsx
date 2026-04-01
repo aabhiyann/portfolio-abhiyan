@@ -105,6 +105,14 @@ function App() {
                 }
               />
               <Route
+                path="/uses"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <Uses />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
                 path="/deep-dives"
                 element={
                   <ErrorBoundary fallback={PageErrorFallback}>
