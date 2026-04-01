@@ -15,9 +15,13 @@ import { experiences } from "../data/experience";
 import { ArrowRight, Download } from "lucide-react";
 
 function Home() {
-  const homepageTimeline = experiences.filter(
-    (experience) =>
-      !["student-athletics", "stx-event-coordinator"].includes(experience.id),
+  const homepageExperience = experiences.filter((experience) =>
+    ["gwu-ta", "ecs-engineer", "intel-security-lead", "ecs-intern"].includes(
+      experience.id,
+    ),
+  );
+  const homepageEducation = experiences.filter((experience) =>
+    ["gwu-ms", "sx-bscsit"].includes(experience.id),
   );
 
   return (
@@ -111,7 +115,7 @@ function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[320px,1fr] gap-10 lg:gap-16 items-start">
             <motion.div
-              className="lg:sticky lg:top-28 space-y-6"
+              className="lg:sticky lg:top-28 space-y-6 self-start relative z-10 bg-bg-surface/95 backdrop-blur-sm border border-border-primary/70 rounded-2xl px-6 py-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -138,56 +142,72 @@ function Home() {
               </Button>
             </motion.div>
 
-            <div className="relative pl-8 md:pl-10">
-              <div className="absolute left-3 top-2 bottom-2 w-px bg-border-primary" />
-              {homepageTimeline.map((experience, index) => (
-                <motion.article
-                  key={experience.id}
-                  className="relative pb-10 last:pb-0"
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: motionTokens.duration.normal / 1000,
-                    delay: index * 0.06,
-                  }}
-                >
-                  <div className="absolute left-[-21px] top-2 h-4 w-4 rounded-full border-4 border-bg-surface/40 bg-accent-primary" />
-
-                  <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <span className="inline-flex rounded-full bg-accent-primary/10 px-3 py-1.5 text-sm font-mono text-accent-primary">
-                      {experience.dates}
-                    </span>
-                    <span className="text-xs uppercase tracking-[0.22em] text-text-muted/80">
-                      {experience.location}
+            <div className="space-y-12">
+              {[
+                { label: "Experience", items: homepageExperience },
+                { label: "Education", items: homepageEducation },
+              ].map((group, groupIndex) => (
+                <div key={group.label} className="relative pl-8 md:pl-10">
+                  <div className="mb-6">
+                    <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
+                      {group.label}
                     </span>
                   </div>
-
-                  <div className="mb-3">
-                    <p className="text-xs uppercase tracking-[0.22em] text-accent-primary mb-2">
-                      {experience.company}
-                    </p>
-                    <h3 className="text-2xl font-bold text-text-primary font-heading">
-                      {experience.role}
-                    </h3>
-                  </div>
-
-                  <p className="text-text-muted leading-relaxed mb-4 max-w-2xl">
-                    {experience.description}
-                  </p>
-
-                  <div className="space-y-2 border-l border-accent-primary/15 pl-4">
-                    {experience.achievements.slice(0, 2).map((achievement) => (
-                      <div
-                        key={achievement}
-                        className="flex items-start gap-3 text-sm text-text-secondary"
+                  <div className="absolute left-3 top-10 bottom-2 w-px bg-border-primary" />
+                  <div className="space-y-10">
+                    {group.items.map((experience, index) => (
+                      <motion.article
+                        key={experience.id}
+                        className="relative"
+                        initial={{ opacity: 0, y: 24 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: motionTokens.duration.normal / 1000,
+                          delay: groupIndex * 0.08 + index * 0.06,
+                        }}
                       >
-                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
-                        <span>{achievement}</span>
-                      </div>
+                        <div className="absolute left-[-21px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
+
+                        <div className="flex flex-wrap items-center gap-3 mb-3">
+                          <span className="inline-flex rounded-full bg-accent-primary/10 px-3 py-1.5 text-sm font-mono text-accent-primary">
+                            {experience.dates}
+                          </span>
+                          <span className="text-xs uppercase tracking-[0.22em] text-text-muted/80">
+                            {experience.location}
+                          </span>
+                        </div>
+
+                        <div className="mb-3">
+                          <p className="text-xs uppercase tracking-[0.22em] text-accent-primary mb-2">
+                            {experience.company}
+                          </p>
+                          <h3 className="text-2xl font-bold text-text-primary font-heading">
+                            {experience.role}
+                          </h3>
+                        </div>
+
+                        <p className="text-text-muted leading-relaxed mb-4 max-w-2xl">
+                          {experience.description}
+                        </p>
+
+                        <div className="space-y-2 pl-1">
+                          {experience.achievements
+                            .slice(0, group.label === "Education" ? 2 : 3)
+                            .map((achievement) => (
+                              <div
+                                key={achievement}
+                                className="flex items-start gap-3 text-sm text-text-secondary"
+                              >
+                                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
+                                <span>{achievement}</span>
+                              </div>
+                            ))}
+                        </div>
+                      </motion.article>
                     ))}
                   </div>
-                </motion.article>
+                </div>
               ))}
             </div>
           </div>
