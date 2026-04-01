@@ -51,7 +51,7 @@ const skills: Skill[] = [
     category: "Frameworks",
     proficiency: 92,
     description:
-      "Developed scalable real-time microservices handling 10k+ requests/m.",
+      "MelodyHub backend: Socket.IO server supporting 100+ concurrent users with <100ms sync latency.",
   },
   {
     name: "FastAPI",
