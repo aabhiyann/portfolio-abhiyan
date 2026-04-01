@@ -10,7 +10,7 @@ function Photography() {
     <Page>
       <SEO
         title="Photography – Abhiyan Sainju"
-        description="Street and urban photography by Abhiyan Sainju. Washington DC, New York, and surrounding areas."
+        description="Street and urban photography by Abhiyan Sainju."
       />
       <section className="relative py-24 min-h-screen font-heading">
         <div className="relative z-20">
@@ -26,8 +26,7 @@ function Photography() {
               </h1>
 
               <p className="text-xl text-text-muted mb-8 max-w-3xl mx-auto">
-                Street and urban photography. Washington DC, New York, and
-                surrounding areas.
+                Street and urban photography.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 text-sm text-text-muted">
@@ -48,10 +47,6 @@ function Photography() {
 
             {/* Photography Gallery */}
             <PhotographyGallery />
-
-            <div className="text-center mt-16 text-sm text-text-muted">
-              <p>Washington DC · New York · Baltimore</p>
-            </div>
           </div>
         </div>
       </section>
