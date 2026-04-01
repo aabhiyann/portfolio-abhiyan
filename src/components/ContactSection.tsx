@@ -68,10 +68,6 @@ const ContactSection: React.FC = () => {
               </Button>
             </div>
           </div>
-
-          <p className="text-text-muted text-sm">
-            I usually respond within 24 hours.
-          </p>
         </motion.div>
       </div>
     </section>
