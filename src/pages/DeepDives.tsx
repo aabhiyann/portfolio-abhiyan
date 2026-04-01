@@ -62,10 +62,7 @@ function DeepDives() {
                     <h3 className="text-2xl font-bold text-text-primary mb-2">
                       No Articles Yet
                     </h3>
-                    <p className="text-text-muted">
-                      Deep dive articles coming soon! Check back later for
-                      in-depth technical explorations.
-                    </p>
+                    <p className="text-text-muted">Articles coming soon.</p>
                   </div>
                 </div>
               ) : (
