@@ -77,7 +77,7 @@ const NotFound = () => {
               />
 
               <TerminalLine
-                text="suggested_actions:"
+                text="Try one of these:"
                 delay={2.4}
                 color="text-accent-primary"
               />
