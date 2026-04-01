@@ -17,8 +17,8 @@ function Home() {
   return (
     <Page>
       <SEO
-        title="Abhiyan Sainju | Software Engineer & AI/ML Specialist"
-        description="Software Engineer based in Washington, DC. Builds full-stack applications with real ML inside. Open to SWE, DS, and PM roles nationwide."
+        title="Abhiyan Sainju | Software Engineer & AI/ML Engineer"
+        description="Software Engineer and AI/ML Engineer based in Washington, DC. Builds full-stack systems with real ML in production. M.S. Computer Science, GWU."
         keywords={[
           "Software Engineer",
           "AI Engineer",
