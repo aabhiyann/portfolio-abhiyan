@@ -180,7 +180,7 @@ function About() {
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Photography"
-            subtitle="Street and urban photography. Shot on a Canon R50."
+            subtitle="Street and urban photography. Washington DC and surrounding areas."
           />
 
           {/* Photo Grid */}

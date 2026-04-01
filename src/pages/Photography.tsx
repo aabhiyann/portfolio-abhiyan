@@ -10,7 +10,7 @@ function Photography() {
     <Page>
       <SEO
         title="Photography – Abhiyan Sainju"
-        description="Explore the photography portfolio of Abhiyan Sainju, featuring moments captured with iPhone 15 Pro Max and Canon EOS 750D."
+        description="Street and urban photography by Abhiyan Sainju. Washington DC, New York, and surrounding areas."
       />
       <section className="relative py-24 min-h-screen font-heading">
         <div className="relative z-20">
@@ -26,8 +26,8 @@ function Photography() {
               </h1>
 
               <p className="text-xl text-text-muted mb-8 max-w-3xl mx-auto">
-                Street and urban photography. Shot on a Canon R50 and iPhone 15
-                Pro Max. Based in DC.
+                Street and urban photography. Washington DC, New York, and
+                surrounding areas.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 text-sm text-text-muted">
@@ -50,7 +50,7 @@ function Photography() {
             <PhotographyGallery />
 
             <div className="text-center mt-16 text-sm text-text-muted">
-              <p>Canon R50 · iPhone 15 Pro Max</p>
+              <p>Washington DC · New York · Baltimore</p>
             </div>
           </div>
         </div>
