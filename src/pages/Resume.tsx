@@ -54,7 +54,7 @@ function Resume() {
 
           {/* PDF Viewer */}
           <motion.div
-            className="w-full h-[800px] bg-bg-surface rounded-xl overflow-hidden shadow-2xl border border-border-primary"
+            className="w-full h-[800px] bg-bg-surface rounded-xl overflow-hidden border border-border-primary"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
