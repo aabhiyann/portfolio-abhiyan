@@ -56,7 +56,7 @@ function Projects() {
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <SectionTitle
               title="Projects"
-              subtitle="Six shipped projects. All production, all documented."
+              subtitle="Selected engineering work across product, ML systems, and applied research."
             />
 
             <ProjectFilters
