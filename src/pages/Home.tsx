@@ -154,13 +154,7 @@ function Home() {
       {/* Experience Timeline */}
       <section className="py-24 bg-bg-surface/40">
         <div className="max-w-5xl mx-auto px-6 md:px-8">
-          <motion.div
-            className="max-w-2xl mb-10 lg:mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: motionTokens.duration.normal / 1000 }}
-          >
+          <div className="max-w-2xl mb-10 lg:mb-12">
             <div className="inline-flex items-center gap-3 mb-5">
               <span className="h-px w-10 bg-accent-primary/60" />
               <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
@@ -175,16 +169,10 @@ function Home() {
               engineering, and client-facing work across Nepal and Washington,
               DC.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-[84px,minmax(0,1fr)] gap-8 lg:gap-16 items-start">
-            <motion.div
-              className="hidden lg:block lg:sticky lg:top-28 self-start z-10"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: motionTokens.duration.normal / 1000 }}
-            >
+            <div className="hidden lg:block lg:sticky lg:top-28 self-start z-10">
               <div className="relative pl-5">
                 <div className="absolute left-0 top-2 bottom-2 w-px bg-border-primary/80" />
                 <div className="space-y-5">
@@ -225,7 +213,7 @@ function Home() {
                   })}
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             <div className="space-y-12">
               <div className="space-y-12">
