@@ -56,7 +56,6 @@ function Home() {
                       "Building AI-powered full-stack systems",
                       "Building ML-powered applications",
                       "From RAG pipelines to production APIs",
-                      "Open to SWE, DS, and PM roles across the US",
                     ]}
                   />
                 </div>
