@@ -49,7 +49,7 @@ const WhyHireMe: React.FC = () => {
           {cards.map((card, index) => (
             <MotionCard
               key={card.title}
-              className="h-full glass-card glass-card-hover"
+              className="h-full bg-card border border-border-primary hover:border-accent-primary/30 transition-all duration-300"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
