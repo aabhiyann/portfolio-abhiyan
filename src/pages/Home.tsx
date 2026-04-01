@@ -61,8 +61,9 @@ function Home() {
                 </div>
 
                 <p className="text-lg text-text-muted mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  Full-stack systems with real ML inside. Based in DC, open to
-                  relocation anywhere in the US.
+                  Software Engineer building AI and ML products, from document
+                  chat and forecasting to real-time systems. Based in DC, open
+                  to roles across the US.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
