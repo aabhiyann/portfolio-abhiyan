@@ -26,10 +26,8 @@ function Photography() {
               </h1>
 
               <p className="text-xl text-text-muted mb-8 max-w-3xl mx-auto">
-                Think of it as debugging the real world: finding patterns in
-                chaos, framing what matters, and capturing the edge cases of
-                daily life. My attention to detail in code mirrors my
-                composition in photography.
+                Street and urban photography. Shot on a Canon R50 and iPhone 15
+                Pro Max. Based in DC.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 text-sm text-text-muted">
