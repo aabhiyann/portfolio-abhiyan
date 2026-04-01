@@ -22,7 +22,6 @@ const WhyHireMe: React.FC = () => {
         "6 applications shipped and deployed",
         "1,200+ active users across projects",
         "Full ownership: API, ML layer, and UI",
-        "Real metrics, not just notebooks",
       ],
     },
     {
