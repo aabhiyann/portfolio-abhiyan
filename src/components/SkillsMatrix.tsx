@@ -44,7 +44,7 @@ const skills: Skill[] = [
     category: "Frameworks",
     proficiency: 95,
     description:
-      "Built SEO-optimized SaaS platforms with SSR and dynamic routing.",
+      "TalkifyDocs (Next.js, SSR), InfraSight dashboard (React, Chart.js), this portfolio.",
   },
   {
     name: "Node.js",
