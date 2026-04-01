@@ -147,7 +147,7 @@ function About() {
       <section className="py-24 bg-bg-primary">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="Engineering Philosophy"
+            title="Approach"
             subtitle="How I think about software."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
