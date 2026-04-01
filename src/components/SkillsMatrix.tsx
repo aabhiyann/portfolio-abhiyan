@@ -174,7 +174,7 @@ const SkillsMatrix: React.FC = () => {
                         key={skill.name}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        className="relative glass-card p-4 rounded-lg cursor-default group"
+                        className="relative bg-bg-surface border border-border-primary/50 p-4 rounded-lg cursor-default group"
                         onMouseEnter={() => setHoveredSkill(skill.name)}
                         onMouseLeave={() => setHoveredSkill(null)}
                         whileHover={{
