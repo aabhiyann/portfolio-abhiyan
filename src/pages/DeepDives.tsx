@@ -104,17 +104,6 @@ function DeepDives() {
                             <p className="text-text-muted/80 mb-3 leading-relaxed">
                               {article.summary}
                             </p>
-
-                            <div className="flex flex-wrap gap-2 mt-3">
-                              {article.tags.map((tag) => (
-                                <span
-                                  key={tag}
-                                  className="text-xs px-2 py-1 rounded-md bg-white/5 text-text-muted/60"
-                                >
-                                  #{tag}
-                                </span>
-                              ))}
-                            </div>
                           </div>
 
                           <div className="flex-shrink-0">
