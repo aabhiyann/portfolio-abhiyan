@@ -26,9 +26,6 @@ const ContactSection: React.FC = () => {
           className="flex flex-col items-center gap-8"
         >
           <div className="p-8 rounded-3xl glass-card w-full shadow-2xl">
-            <h3 className="text-2xl font-bold text-text-primary mb-2">
-              Drop me a message
-            </h3>
             <p className="text-text-muted mb-4">aabhiyansainju@gmail.com</p>
             <p className="text-text-muted text-sm mb-8">
               Based in Washington, DC. Open to relocation anywhere in the US.
