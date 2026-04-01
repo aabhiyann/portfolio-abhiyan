@@ -1,5 +1,5 @@
 import React from "react";
-import { MotionCard } from "./ui/MotionCard";
+import { Card } from "./ui/Card";
 import { GraduationCap, Rocket, Code2 } from "lucide-react";
 import SectionTitle from "./SectionTitle";
 
@@ -43,14 +43,10 @@ const WhyHireMe: React.FC = () => {
           subtitle="Education, shipped work, and the stack behind it."
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {cards.map((card, index) => (
-            <MotionCard
+          {cards.map((card) => (
+            <Card
               key={card.title}
               className="h-full bg-card border border-border-primary hover:border-accent-primary/30 transition-all duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
             >
               <div className="p-8 h-full flex flex-col">
                 <div className="w-12 h-12 rounded-lg bg-accent-primary/10 flex items-center justify-center mb-6">
@@ -72,7 +68,7 @@ const WhyHireMe: React.FC = () => {
                   ))}
                 </ul>
               </div>
-            </MotionCard>
+            </Card>
           ))}
         </div>
       </div>
