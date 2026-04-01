@@ -31,25 +31,19 @@ function Skills() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 rounded-2xl glass-card">
                 <h4 className="text-lg font-bold text-text-primary mb-2">
-                  AWS Academy Graduate - Cloud Foundations
+                  AWS Academy Graduate — Cloud Foundations
                 </h4>
-                <p className="text-text-muted text-sm mb-4">
-                  Issued: Sep 2024 | 20 hours
+                <p className="text-text-muted text-sm">
+                  Issued: Sep 2024 · 20 hours
                 </p>
-                <span className="inline-block px-3 py-1 bg-accent-primary/10 text-accent-primary rounded-full text-xs font-mono">
-                  Cloud Computing
-                </span>
               </div>
               <div className="p-6 rounded-2xl glass-card">
                 <h4 className="text-lg font-bold text-text-primary mb-2">
-                  AWS Academy Graduate - Cloud Operations
+                  AWS Academy Graduate — Cloud Operations
                 </h4>
-                <p className="text-text-muted text-sm mb-4">
-                  Issued: Nov 2024 | 40 hours
+                <p className="text-text-muted text-sm">
+                  Issued: Nov 2024 · 40 hours
                 </p>
-                <span className="inline-block px-3 py-1 bg-accent-primary/10 text-accent-primary rounded-full text-xs font-mono">
-                  DevOps
-                </span>
               </div>
             </div>
           </div>
