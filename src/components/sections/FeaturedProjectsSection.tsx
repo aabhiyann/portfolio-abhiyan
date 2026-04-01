@@ -20,7 +20,7 @@ export const FeaturedProjectsSection: React.FC<
 > = ({ projects }) => {
   return (
     <section id="projects" className="py-24 bg-bg-primary">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+      <div className="max-w-5xl mx-auto px-6 md:px-8">
         <SectionTitle
           title="Featured Projects"
           subtitle="Selected work with code, demos, and technical writing."
