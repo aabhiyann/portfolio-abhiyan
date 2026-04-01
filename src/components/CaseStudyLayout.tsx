@@ -194,7 +194,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
 
         {/* Bottom CTA */}
         <div className="max-w-4xl mx-auto px-6 mt-24 pt-12 border-t border-border-primary/30 text-center">
-          <h3 className="text-2xl font-bold mb-6">Explore More Work</h3>
+          <h3 className="text-2xl font-bold mb-6">Other Projects</h3>
           <Link to="/projects">
             <Button variant="outline">View All Projects</Button>
           </Link>
