@@ -136,8 +136,8 @@ function About() {
       <section className="py-24 bg-bg-surface/50">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="Technical Arsenal"
-            subtitle="The tools I reach for on every project. Hover for context."
+            title="Skills"
+            subtitle="Languages, frameworks, and tools used across projects."
           />
           <SkillsMatrix />
         </div>
