@@ -101,7 +101,7 @@ function About() {
                       Abhiyan Sainju
                     </h3>
                     <p className="text-white/95 mt-1 drop-shadow-2xl">
-                      Software Engineer & AI/ML Engineer
+                      React, Python, FastAPI, and applied ML
                     </p>
                   </div>
                 </div>
