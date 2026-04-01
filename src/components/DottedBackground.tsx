@@ -11,10 +11,10 @@ const DottedBackground: React.FC = () => {
       {/* Dark mode override using CSS classes if needed, or relying on the variable change */}
       <style>{`
         :root[class~="dark"] .dotted-bg {
-          --dot-color: rgba(255, 255, 255, 0.15);
+          --dot-color: rgba(255, 255, 255, 0.04);
         }
         :root:not([class~="dark"]) .dotted-bg {
-          --dot-color: rgba(0, 0, 0, 0.15);
+          --dot-color: rgba(0, 0, 0, 0.04);
         }
       `}</style>
       <div
