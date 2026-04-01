@@ -77,7 +77,7 @@ function Home() {
 
       {/* Hero Section */}
       <section className="relative min-h-[95vh] flex flex-col justify-center py-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full z-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 w-full z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             {/* Left Column: Text & CTA */}
             <div className="flex-1 max-w-2xl text-center lg:text-left">
@@ -143,7 +143,7 @@ function Home() {
 
       {/* Experience Timeline */}
       <section className="py-24 bg-bg-surface/40">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="max-w-5xl mx-auto px-6 md:px-8">
           <motion.div
             className="max-w-2xl mb-10 lg:mb-12"
             initial={{ opacity: 0, y: 20 }}
