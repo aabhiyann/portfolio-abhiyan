@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { commands, getCommand } from './Terminal/commands';
+import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import { getCommand } from "./Terminal/commands";
 
 interface HistoryEntry {
   input: string;
@@ -10,12 +10,12 @@ interface HistoryEntry {
 const TerminalCard: React.FC = () => {
   const [history, setHistory] = useState<HistoryEntry[]>([
     {
-      input: '',
+      input: "",
       output: `Welcome to my portfolio terminal!
 Type 'help' to see available commands.`,
     },
   ]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
@@ -28,9 +28,9 @@ Type 'help' to see available commands.`,
 
   const handleCommand = (cmd: string): string => {
     const trimmed = cmd.trim();
-    if (!trimmed) return '';
+    if (!trimmed) return "";
 
-    const [commandName, ...args] = trimmed.split(' ');
+    const [commandName, ...args] = trimmed.split(" ");
     const command = getCommand(commandName);
 
     if (!command) {
@@ -49,19 +49,19 @@ Type 'help' for available commands.`;
     const output = handleCommand(input);
 
     // Handle clear command
-    if (output === 'CLEAR_TERMINAL') {
+    if (output === "CLEAR_TERMINAL") {
       setHistory([
         {
-          input: '',
-          output: 'Terminal cleared. Type \'help\' for commands.',
+          input: "",
+          output: "Terminal cleared. Type 'help' for commands.",
         },
       ]);
-      setInput('');
+      setInput("");
       return;
     }
 
     setHistory([...history, { input, output }]);
-    setInput('');
+    setInput("");
   };
 
   // Focus input when clicking terminal
@@ -72,7 +72,7 @@ Type 'help' for available commands.`;
   return (
     <div
       onClick={handleTerminalClick}
-      className="w-full h-full bg-black backdrop-blur-md rounded-xl border border-emerald-500/20 shadow-2xl shadow-emerald-500/5 p-5 font-mono text-sm overflow-hidden flex flex-col cursor-text hover:border-emerald-500/30 transition-colors"
+      className="w-full h-full bg-black backdrop-blur-md rounded-xl border border-accent-primary/20 shadow-2xl shadow-accent-primary/5 p-5 font-mono text-sm overflow-hidden flex flex-col cursor-text hover:border-accent-primary/30 transition-colors"
     >
       {/* Terminal Header */}
       <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-800/50">
@@ -82,7 +82,7 @@ Type 'help' for available commands.`;
           <div className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-400 transition-colors cursor-pointer"></div>
         </div>
         <div className="flex items-center gap-2 text-[10px] text-slate-500 font-semibold tracking-wider">
-          <span className="text-emerald-400">●</span>
+          <span className="text-accent-primary">●</span>
           <span>INTERACTIVE MODE</span>
         </div>
       </div>
@@ -90,7 +90,7 @@ Type 'help' for available commands.`;
       {/* Terminal Content */}
       <div
         ref={terminalRef}
-        className="flex-1 space-y-3 overflow-y-auto scrollbar-thin scrollbar-thumb-emerald-500/20 scrollbar-track-transparent pr-2"
+        className="flex-1 space-y-3 overflow-y-auto scrollbar-thin scrollbar-thumb-accent-primary/20 scrollbar-track-transparent pr-2"
       >
         {history.map((entry, i) => (
           <motion.div
@@ -102,8 +102,12 @@ Type 'help' for available commands.`;
           >
             {entry.input && (
               <div className="flex items-start gap-2">
-                <span className="text-emerald-500 font-bold select-none flex-shrink-0">➜</span>
-                <span className="text-slate-300 font-medium">{entry.input}</span>
+                <span className="text-accent-primary font-bold select-none flex-shrink-0">
+                  ➜
+                </span>
+                <span className="text-slate-300 font-medium">
+                  {entry.input}
+                </span>
               </div>
             )}
             {entry.output && (
@@ -114,17 +118,21 @@ Type 'help' for available commands.`;
           </motion.div>
         ))}
 
-        {/* Input Line */}
-        <form onSubmit={handleSubmit} className="flex items-start gap-2 pt-2">
-          <span className="text-emerald-500 font-bold select-none flex-shrink-0 mt-0.5">➜</span>
+        {/* Input Line — hidden on mobile to avoid keyboard popup */}
+        <form
+          onSubmit={handleSubmit}
+          className="hidden md:flex items-start gap-2 pt-2"
+        >
+          <span className="text-accent-primary font-bold select-none flex-shrink-0 mt-0.5">
+            ➜
+          </span>
           <input
             ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-1 bg-transparent text-slate-300 font-medium outline-none caret-emerald-400 placeholder:text-slate-600"
+            className="flex-1 bg-transparent text-slate-300 font-medium outline-none caret-accent-primary placeholder:text-slate-600"
             placeholder="type 'help' for commands..."
-            autoFocus
             spellCheck={false}
           />
         </form>
@@ -133,7 +141,7 @@ Type 'help' for available commands.`;
         <motion.div
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 1, repeat: Infinity }}
-          className="w-2 h-4 bg-emerald-400 inline-block ml-7"
+          className="w-2 h-4 bg-accent-primary inline-block ml-7"
         />
       </div>
 

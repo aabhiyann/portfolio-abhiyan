@@ -40,7 +40,7 @@ function PhotographyGallery({ limit }: { limit?: number }) {
       <div className="columns-1 sm:columns-2 lg:columns-3 gap-2 md:gap-4 [column-fill:_balance] space-y-2 md:space-y-4">
         {shuffledImages.length === 0 ? (
           <div className="col-span-full py-24 text-center">
-            <div className="inline-block p-8 rounded-3xl glass-card">
+            <div className="inline-block p-8 rounded-2xl bg-bg-surface border border-border-primary">
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-primary/10 flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
