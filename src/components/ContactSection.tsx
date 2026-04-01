@@ -18,11 +18,11 @@ const ContactSection: React.FC = () => {
         <div className="flex flex-col items-center gap-8">
           <div className="p-8 rounded-2xl bg-card border border-border-primary w-full shadow-sm">
             <h3 className="text-2xl font-bold text-text-primary mb-2">
-              Drop me a message
+              Let's talk
             </h3>
             <p className="text-text-muted mb-4">aabhiyansainju@gmail.com</p>
             <p className="text-text-muted text-sm mb-8">
-              Based in Washington, DC. Open to roles across the US.
+              Email me or find me on LinkedIn — I'm usually quick to respond.
             </p>
 
             <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4">
