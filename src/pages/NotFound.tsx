@@ -67,9 +67,9 @@ const NotFound = () => {
               <TerminalLine
                 text={
                   <span>
-                    AI Analysis:{" "}
+                    Navigation error:{" "}
                     <span className="text-yellow-400">
-                      User navigation error detected.
+                      page not found.
                     </span>
                   </span>
                 }
