@@ -50,7 +50,7 @@ function About() {
                 transition={{ duration: motionTokens.duration.slow / 1000 }}
               >
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-tight">
-                  I write code <br />
+                  I build software <br />
                   <span className="text-accent-primary">that ships.</span>
                 </h1>
 
