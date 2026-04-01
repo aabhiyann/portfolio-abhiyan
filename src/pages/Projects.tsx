@@ -41,7 +41,7 @@ function Projects() {
     <Page>
       <SEO
         title="Software Engineering Projects | Abhiyan Sainju"
-        description="Explore a collection of my projects, from AI-driven SaaS platforms to full-stack web applications. Built with React, Python, and scalable architecture."
+        description="Six production projects by Abhiyan Sainju — ML forecasting, RAG document chat, audio classification, real-time collaboration. React, FastAPI, PyTorch, Docker."
         keywords={[
           "Projects",
           "Portfolio",
