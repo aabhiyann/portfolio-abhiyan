@@ -42,7 +42,7 @@ function About() {
       <section className="relative py-24 min-h-[80vh] flex items-center font-heading overflow-hidden">
         <div className="absolute inset-0 bg-accent-primary/5 opacity-30 pointer-events-none" />
         <div className="relative z-20 w-full">
-          <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="max-w-5xl mx-auto px-6 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
@@ -57,9 +57,9 @@ function About() {
                 <div className="space-y-4 text-text-secondary leading-relaxed">
                   <p>
                     I'm Abhiyan, a software engineer based in Washington, DC,
-                    originally from Nepal. I recently finished my MS in
-                    Computer Science at GWU, where I focused on algorithms,
-                    distributed systems, and machine learning.
+                    originally from Nepal. I recently finished my MS in Computer
+                    Science at GWU, where I focused on algorithms, distributed
+                    systems, and machine learning.
                   </p>
                   <p>
                     At GWU, I taught Design & Analysis of Algorithms to 60+
@@ -113,7 +113,7 @@ function About() {
 
       {/* Engineering Career */}
       <section className="py-24 bg-bg-primary">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="max-w-5xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Experience"
             subtitle="Roles, projects, and milestones in order."
