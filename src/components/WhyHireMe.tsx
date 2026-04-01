@@ -39,8 +39,8 @@ const WhyHireMe: React.FC = () => {
     <section className="py-24 bg-bg-surface/50 relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 md:px-8 relative z-10">
         <SectionTitle
-          title="At a glance"
-          subtitle="Education, shipped work, and the stack behind it."
+          title="What I bring"
+          subtitle="A graduate degree with a 4.0, production features that shipped, and the full stack to build them end to end."
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {cards.map((card) => (
