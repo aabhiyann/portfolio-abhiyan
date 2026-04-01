@@ -73,10 +73,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-border-primary text-center text-sm text-text-muted">
-          <p>
-            &copy; {new Date().getFullYear()} Abhiyan Sainju. Built with React &
-            Tailwind.
-          </p>
+          <p>&copy; {new Date().getFullYear()} Abhiyan Sainju</p>
         </div>
       </div>
     </footer>
