@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Instagram } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import Button from "./ui/Button";
 import SectionTitle from "./SectionTitle";
 
@@ -65,18 +65,6 @@ const ContactSection: React.FC = () => {
               >
                 <Github className="w-5 h-5" />
                 GitHub
-              </Button>
-              <Button
-                as="a"
-                href="https://instagram.com/abhiyan.sainju"
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outline"
-                size="lg"
-                className="flex items-center gap-2"
-              >
-                <Instagram className="w-5 h-5" />
-                Photography
               </Button>
             </div>
           </div>
