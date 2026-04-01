@@ -38,7 +38,7 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {otherArticles.map((article) => (
             <Link key={article.id} to={`/deep-dives/${article.id}`}>
-              <MotionCard className="group h-full glass-card glass-card-hover">
+              <MotionCard className="group h-full bg-card border border-border-primary hover:border-accent-primary/30 transition-all duration-300">
                 <div className="p-6">
                   <h4 className="text-lg font-semibold text-text-primary mb-2 group-hover:text-accent-primary transition-colors">
                     {article.title}
@@ -67,7 +67,7 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {related.map((article) => (
           <Link key={article.id} to={`/deep-dives/${article.id}`}>
-            <MotionCard className="group h-full glass-card glass-card-hover">
+            <MotionCard className="group h-full bg-card border border-border-primary hover:border-accent-primary/30 transition-all duration-300">
               <div className="p-6">
                 <h4 className="text-lg font-semibold text-text-primary mb-2 group-hover:text-accent-primary transition-colors">
                   {article.title}

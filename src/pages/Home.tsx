@@ -17,8 +17,8 @@ function Home() {
   return (
     <Page>
       <SEO
-        title="Abhiyan Sainju | Software Engineer & AI/ML Specialist"
-        description="Software Engineer based in Washington, DC. Builds full-stack applications with real ML inside. Open to SWE, DS, and PM roles nationwide."
+        title="Abhiyan Sainju | Software Engineer & AI/ML Engineer"
+        description="Software Engineer and AI/ML Engineer based in Washington, DC. Builds full-stack systems with real ML in production. M.S. Computer Science, GWU."
         keywords={[
           "Software Engineer",
           "AI Engineer",
@@ -47,7 +47,7 @@ function Home() {
               >
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.2]">
                   Software Engineer & <br />
-                  <span className="text-accent-primary">AI/ML Specialist</span>
+                  <span className="text-accent-primary">AI/ML Engineer</span>
                 </h1>
 
                 <div className="text-xl md:text-2xl text-text-secondary font-medium mb-4 min-h-[60px]">
@@ -56,7 +56,6 @@ function Home() {
                       "Building AI-powered full-stack systems",
                       "Building ML-powered applications",
                       "From RAG pipelines to production APIs",
-                      "Open to SWE, DS, and PM roles across the US",
                     ]}
                   />
                 </div>
@@ -95,18 +94,6 @@ function Home() {
             </div>
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-text-muted opacity-50 z-20 pointer-events-none"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-        >
-          <span className="text-xs font-mono uppercase tracking-widest">
-            Scroll to explore
-            <div className="w-px h-12 bg-gradient-to-b from-text-muted to-transparent mx-auto mt-2"></div>
-          </span>
-        </motion.div>
       </section>
 
       {/* Why Hire Me Section */}

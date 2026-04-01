@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Instagram } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import Button from "./ui/Button";
 import SectionTitle from "./SectionTitle";
 
@@ -14,7 +14,7 @@ const ContactSection: React.FC = () => {
 
       <div className="max-w-4xl mx-auto px-6 md:px-8 text-center relative z-10">
         <SectionTitle
-          title="Get in Touch"
+          title="Contact"
           subtitle="Open to work. Reach out directly."
         />
 
@@ -25,10 +25,7 @@ const ContactSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center gap-8"
         >
-          <div className="p-8 rounded-3xl glass-card w-full shadow-2xl">
-            <h3 className="text-2xl font-bold text-text-primary mb-2">
-              Drop me a message
-            </h3>
+          <div className="p-8 rounded-2xl bg-card border border-border-primary w-full">
             <p className="text-text-muted mb-4">aabhiyansainju@gmail.com</p>
             <p className="text-text-muted text-sm mb-8">
               Based in Washington, DC. Open to relocation anywhere in the US.
@@ -69,24 +66,8 @@ const ContactSection: React.FC = () => {
                 <Github className="w-5 h-5" />
                 GitHub
               </Button>
-              <Button
-                as="a"
-                href="https://instagram.com/abhiyan.sainju"
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outline"
-                size="lg"
-                className="flex items-center gap-2"
-              >
-                <Instagram className="w-5 h-5" />
-                Photography
-              </Button>
             </div>
           </div>
-
-          <p className="text-text-muted text-sm">
-            I usually respond within 24 hours.
-          </p>
         </motion.div>
       </div>
     </section>

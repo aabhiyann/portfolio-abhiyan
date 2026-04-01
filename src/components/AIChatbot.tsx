@@ -32,7 +32,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
       // Add a welcome message when the chatbot is opened for the first time
       setMessages([
         {
-          text: "Hello! I'm Abhiyan's AI assistant. Ask me anything about his skills, projects, or experience.",
+          text: "Ask about Abhiyan's projects, stack, or experience.",
           sender: "ai",
         },
       ]);

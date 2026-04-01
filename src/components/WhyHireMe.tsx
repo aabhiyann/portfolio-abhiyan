@@ -22,7 +22,6 @@ const WhyHireMe: React.FC = () => {
         "6 applications shipped and deployed",
         "1,200+ active users across projects",
         "Full ownership: API, ML layer, and UI",
-        "Real metrics, not just notebooks",
       ],
     },
     {
@@ -32,7 +31,6 @@ const WhyHireMe: React.FC = () => {
         "React / Next.js, FastAPI, PostgreSQL",
         "RAG pipelines, anomaly detection, forecasting",
         "Docker, AWS, CI/CD",
-        "System design with clean, maintainable code",
       ],
     },
   ];
@@ -41,15 +39,15 @@ const WhyHireMe: React.FC = () => {
     <section className="py-24 bg-bg-surface/50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <SectionTitle
-          title="Why Me"
-          subtitle="Production systems. Real metrics. No fluff."
+          title="Production systems. Real metrics. No fluff."
+          subtitle=""
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {cards.map((card, index) => (
             <MotionCard
               key={card.title}
-              className="h-full glass-card glass-card-hover"
+              className="h-full bg-card border border-border-primary hover:border-accent-primary/30 transition-all duration-300"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
