@@ -65,13 +65,17 @@ Databases:
     execute: () => {
       return `Work Experience:
 
-Consultant @ Intuit (Jun 2024 - Present)
-  • AI-driven SaaS solutions
-  • Full-stack development
+Graduate Teaching Assistant (Algorithms) @ GWU (Aug 2024 – Dec 2025)
+  • Taught CSCI 6212 to 60+ grad students across 4 sections
+  • 22% improvement in midterm scores vs previous cohort
 
-Graduate Research Assistant @ GWU (Aug 2023 - May 2024)
-  • ML research and development
-  
+Software Engineer (Promoted from Intern) @ ECS Tech (Jun 2022 – Sep 2023)
+  • Fintech platform: 7 production features, 50+ business clients
+  • Eliminated 89% of scheduling conflicts via automated booking system
+
+IT Solutions Lead @ Intel Security Service (Aug 2022 – Mar 2023)
+  • 73% increase in qualified leads after site rebuild
+
 Visit /experience for full details`;
     },
   },
