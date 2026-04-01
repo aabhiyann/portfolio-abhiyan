@@ -75,16 +75,6 @@ function About() {
                     architecture. I focus on shipping working software, not just
                     prototypes.
                   </p>
-                  <p>
-                    When I'm not coding, I'm{" "}
-                    <Link
-                      to="/photography"
-                      className="text-accent-primary hover:underline"
-                    >
-                      behind a camera
-                    </Link>
-                    .
-                  </p>
                 </div>
               </motion.div>
 
