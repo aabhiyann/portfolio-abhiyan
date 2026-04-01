@@ -78,7 +78,7 @@ const MelodyHubCaseStudy: React.FC = () => {
           variant="h3"
           className="text-xl font-bold text-accent-primary mb-4 flex items-center gap-2"
         >
-          <Rocket className="w-5 h-5" /> Business Impact
+          <Rocket className="w-5 h-5" /> Measured Outcome
         </Typography>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
@@ -118,7 +118,7 @@ const MelodyHubCaseStudy: React.FC = () => {
         </CaseStudyText>
       </CaseStudySection>
 
-      <CaseStudySection title="My Approach">
+      <CaseStudySection title="How I Built It">
         <CaseStudyText>
           I designed MelodyHub around real-time WebSocket communication using
           Socket.IO. The architecture separates concerns: frontend handles UI
@@ -505,7 +505,7 @@ graph TB
         </div>
       </CaseStudySection>
 
-      <CaseStudySection title="What I Learned">
+      <CaseStudySection title="Key Takeaways">
         <div className="space-y-6">
           {[
             {
@@ -624,7 +624,7 @@ graph TB
         </CaseStudyText>
       </CaseStudySection>
 
-      <CaseStudySection title="Explore the Project">
+      <CaseStudySection title="Code, Demo, and Write-up">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           <a
             href="https://github.com/aabhiyann/MelodyHub"
