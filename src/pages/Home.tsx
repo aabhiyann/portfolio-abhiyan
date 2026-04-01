@@ -167,7 +167,7 @@ function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[148px,minmax(0,1fr)] gap-8 lg:gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[84px,minmax(0,1fr)] gap-8 lg:gap-16 items-start">
             <motion.div
               className="hidden lg:block lg:sticky lg:top-28 self-start z-10"
               initial={{ opacity: 0, y: 20 }}
@@ -175,8 +175,8 @@ function Home() {
               viewport={{ once: true }}
               transition={{ duration: motionTokens.duration.normal / 1000 }}
             >
-              <div className="relative pl-8 pr-4">
-                <div className="absolute left-3 top-2 bottom-2 w-px bg-border-primary/80" />
+              <div className="relative pl-5">
+                <div className="absolute left-0 top-2 bottom-2 w-px bg-border-primary/80" />
                 <div className="space-y-5">
                   {timelineYears.map((year, index) => {
                     const isActive = activeTimelineYear === year;
@@ -193,7 +193,7 @@ function Home() {
                         className="relative"
                       >
                         <span
-                          className={`absolute left-[-29px] top-1.5 h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                          className={`absolute left-[-5px] top-1.5 h-2.5 w-2.5 rounded-full transition-all duration-300 ${
                             isActive
                               ? "bg-accent-primary ring-4 ring-bg-primary"
                               : "bg-bg-primary border border-border-primary"
@@ -217,13 +217,12 @@ function Home() {
               </div>
             </motion.div>
 
-            <div className="relative pl-8 md:pl-10 lg:pl-0">
-              <div className="absolute left-3 top-1 bottom-1 w-px bg-border-primary" />
+            <div className="space-y-12">
               <div className="space-y-12">
                 {homepageTimeline.map((experience, index) => (
                   <motion.article
                     key={experience.id}
-                    className="relative grid grid-cols-[78px,1fr] md:grid-cols-[96px,1fr] gap-4 md:gap-7"
+                    className="relative border-l border-border-primary pl-8 md:pl-10"
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     onViewportEnter={() =>
@@ -235,32 +234,14 @@ function Home() {
                       delay: index * 0.05,
                     }}
                   >
-                    <div className="absolute left-[-21px] top-1.5 h-2.5 w-2.5 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
-
-                    <div className="pt-0.5">
-                      <motion.div
-                        className="space-y-2"
-                        initial={{ opacity: 0.6, x: -8 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: motionTokens.duration.normal / 1000,
-                          delay: index * 0.04,
-                        }}
-                      >
-                        <div className="text-2xl md:text-[2rem] font-heading font-bold text-accent-primary leading-none">
-                          {getStartYear(experience.dates)}
-                        </div>
-                        <div className="h-px w-10 bg-accent-primary/35" />
-                      </motion.div>
-                    </div>
+                    <div className="absolute left-[-6px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
 
                     <div className="space-y-3">
                       <div className="flex flex-wrap items-center gap-3">
                         <span className="inline-flex rounded-full border border-border-primary px-3 py-1 text-xs font-mono uppercase tracking-[0.18em] text-text-secondary">
                           {experience.track}
                         </span>
-                        <span className="text-sm text-text-secondary">
+                        <span className="text-sm font-mono text-accent-primary">
                           {experience.dates}
                         </span>
                         <span className="text-xs uppercase tracking-[0.18em] text-text-muted/80">
