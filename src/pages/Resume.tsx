@@ -68,16 +68,19 @@ function Resume() {
               className="w-full h-full"
               title="Abhiyan Sainju Resume"
             >
-              <div className="flex flex-col items-center justify-center h-full gap-4 text-text-secondary">
+              <div className="flex flex-col items-center justify-center h-full gap-6 text-text-secondary">
                 <p>Your browser does not support inline PDF viewing.</p>
-                <a
+                <Button
+                  as="a"
                   href={resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent-primary underline"
+                  variant="primary"
+                  size="lg"
                 >
-                  Click here to view the resume
-                </a>
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Open Resume PDF
+                </Button>
               </div>
             </object>
           </motion.div>
