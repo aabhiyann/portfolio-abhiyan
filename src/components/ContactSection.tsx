@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
 import Button from "./ui/Button";
 import SectionTitle from "./SectionTitle";
@@ -16,13 +15,7 @@ const ContactSection: React.FC = () => {
           subtitle="Open to roles, collaborations, and good technical conversations."
         />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col items-center gap-8"
-        >
+        <div className="flex flex-col items-center gap-8">
           <div className="p-8 rounded-2xl bg-card border border-border-primary w-full shadow-sm">
             <h3 className="text-2xl font-bold text-text-primary mb-2">
               Drop me a message
@@ -69,7 +62,7 @@ const ContactSection: React.FC = () => {
               </Button>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
