@@ -30,7 +30,6 @@ export const GitHubActivity = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      whileHover={{ scale: 1.01 }}
       className="glass-card rounded-2xl p-8 border border-border-primary"
     >
       {/* Header */}
