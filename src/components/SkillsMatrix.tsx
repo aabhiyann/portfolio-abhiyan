@@ -29,7 +29,7 @@ const skills: Skill[] = [
     category: "Languages",
     proficiency: 85,
     description:
-      "Implemented high-performance algorithms for system optimization.",
+      "Used in CSCI 6212 curriculum design and algorithm problem sets at GWU.",
   },
   {
     name: "Java",
