@@ -8,7 +8,6 @@ import { Project } from "../../data/Projects";
 
 interface ProjectGridProps {
   projects: Project[];
-  variant?: "default" | "featured";
   className?: string;
 }
 
@@ -17,11 +16,9 @@ interface ProjectGridProps {
  * Extracted from Home.tsx to eliminate code duplication.
  *
  * @param projects - Array of projects to display
- * @param variant - 'featured' shows compact cards with stats, 'default' shows full cards
  */
 export const ProjectGrid: React.FC<ProjectGridProps> = ({
   projects,
-  variant = "default",
   className,
 }) => {
   return (
@@ -54,79 +51,83 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
               {/* Live Status Indicator */}
               {project.live && (
                 <div className="absolute top-3 right-3 z-10">
-                  <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
-                    <div className="relative flex items-center justify-center">
-                      <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
-                      <div className="absolute w-1.5 h-1.5 bg-green-400 rounded-full animate-ping"></div>
-                    </div>
+                  <div className="flex items-center gap-2 px-2.5 py-1 rounded-full bg-black/55 border border-white/10">
+                    <div className="w-1.5 h-1.5 bg-green-400 rounded-full"></div>
                     <span className="text-[10px] font-medium text-white tracking-wide">
                       Live
                     </span>
                   </div>
                 </div>
               )}
+            </div>
 
-              {/* Glassy overlay on hover */}
-              <div className="absolute inset-0 gradient-overlay-image opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-[2px] flex flex-col items-center justify-center gap-3 p-4">
-                {project.caseStudyUrl && (
-                  <Button
-                    as={Link}
-                    to={project.caseStudyUrl}
-                    size="sm"
-                    variant="primary"
-                    className="w-full max-w-[140px]"
-                  >
-                    Read Case Study
-                  </Button>
-                )}
-                {(project.live || project.github) && (
-                  <Button
-                    as="a"
-                    href={project.live || project.github}
-                    target="_blank"
-                    size="sm"
-                    variant={project.caseStudyUrl ? "outline" : "primary"}
-                    className="w-full max-w-[140px] btn-overlay"
-                  >
-                    View Project
-                  </Button>
-                )}
-              </div>
+            <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] uppercase tracking-[0.18em] text-text-muted">
+              <span>{project.categories.slice(0, 2).join(" / ")}</span>
+              {project.stats?.[0] && (
+                <span className="font-mono text-accent-primary tracking-[0.14em]">
+                  {project.stats[0].label}: {project.stats[0].value}
+                </span>
+              )}
             </div>
 
             <h3 className="text-xl font-semibold mb-3 text-text-primary font-heading">
               {project.title}
             </h3>
-            <p className="text-text-muted mb-4 flex-grow line-clamp-3 text-sm">
-              {project.description}
+            <p className="text-text-muted mb-4 flex-grow line-clamp-3 text-sm leading-relaxed">
+              {project.story || project.description}
             </p>
 
-            {/* Stats */}
-            {variant === "featured" && project.stats && (
-              <div className="flex gap-4 mb-4 border-y border-border-primary/50 py-2">
-                {project.stats.slice(0, 2).map((stat) => (
-                  <div key={stat.label} className="text-xs">
-                    <span className="text-text-muted block text-[10px] uppercase tracking-wider">
-                      {stat.label}
-                    </span>
-                    <span className="font-mono text-accent-primary font-medium">
-                      {stat.value}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Tech Badges */}
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {project.tech.slice(0, 3).map((t) => (
-                <span
-                  key={t}
-                  className="px-2 py-1 text-xs rounded bg-accent-primary/10 text-accent-primary border border-accent-primary/20"
-                >
-                  {t}
+            <div className="mt-auto pt-4 border-t border-border-primary/50">
+              <div className="text-sm text-text-secondary mb-4">
+                <span className="font-medium text-text-primary">
+                  Built with{" "}
                 </span>
-              ))}
+                <span>{project.tech.slice(0, 3).join(", ")}</span>
+              </div>
+
+              <div className="flex items-center justify-between gap-4 flex-wrap">
+                {project.caseStudyUrl ? (
+                  <Button
+                    as={Link}
+                    to={project.caseStudyUrl}
+                    size="sm"
+                    variant="primary"
+                  >
+                    Case Study
+                  </Button>
+                ) : (
+                  <Button
+                    as="a"
+                    href={project.live || project.github}
+                    target="_blank"
+                    size="sm"
+                    variant="primary"
+                  >
+                    Open Project
+                  </Button>
+                )}
+
+                <div className="flex items-center gap-4 text-sm text-text-secondary">
+                  {project.live && project.caseStudyUrl && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      className="hover:text-accent-primary transition-colors"
+                    >
+                      Live Demo
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      className="hover:text-accent-primary transition-colors"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </MotionCard>
