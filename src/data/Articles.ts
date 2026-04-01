@@ -16,7 +16,7 @@ export const articles: Article[] = [
     title:
       "InfraSight: Building a Production ML Platform for Cloud Cost Analytics",
     summary:
-      "What I learned building a live ML platform with forecasting, anomaly detection, and optimization recommendations, and why 'simple' ML often wins in production.",
+      "What I learned building a cloud-cost analysis system with forecasting, anomaly detection, and optimization recommendations, and why straightforward ML was the better production fit.",
     date: "Oct 15, 2025",
     readTime: "8 min read",
     tags: ["Machine Learning", "Python", "React", "DevOps"],
@@ -233,7 +233,7 @@ Building InfraSight taught me that production ML is fundamentally different from
     title:
       "Audio Classification: When Task-Specific Models Beat Transfer Learning",
     summary:
-      "I systematically compared 5 deep learning architectures. A simple task-specific CNN achieved 92% accuracy, outperforming YAMNet transfer learning by 26%.",
+      "This study compares five deep learning architectures for targeted audio classification and finds that a task-specific CNN outperformed YAMNet-based transfer learning by 26 percentage points.",
     date: "May 8, 2025",
     readTime: "10 min read",
     tags: ["Machine Learning", "Deep Learning", "CNN", "Research"],
@@ -407,7 +407,7 @@ This research demonstrates that transfer learning isn't always the answer. When 
     id: "talkifydocs-rag-pipeline",
     title: "TalkifyDocs: Building a RAG-Powered Document Chat Application",
     summary:
-      "What I learned building a production RAG application with Gemini 3.0, Groq, and Pinecone for $0/month, and why production AI is 80% data engineering.",
+      "What I learned building a low-cost document chat system with Gemini, Groq, and Pinecone, and why most of the work lived in retrieval, data flow, and integration.",
     date: "Dec 8, 2025",
     readTime: "12 min read",
     tags: ["AI", "RAG", "Next.js", "TypeScript"],
@@ -626,7 +626,7 @@ Building TalkifyDocs taught me that production RAG applications are fundamentall
     id: "melodyhub-realtime-architecture",
     title: "MelodyHub: Building a Real-Time Social Music Platform",
     summary:
-      "A deep dive into optimizing WebSocket connections, handling redis adapters, and load balancing for real-time applications.",
+      "A deep dive into building shared music rooms with synchronized playback, live chat, and the real-time architecture behind them.",
     date: "Apr 12, 2025",
     readTime: "8 min read",
     tags: ["WebSockets", "Node.js", "System Design", "React"],
