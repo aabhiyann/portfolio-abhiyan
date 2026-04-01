@@ -69,9 +69,8 @@ Abhiyan Sainju is a Software Engineer and AI/ML Engineer with an M.S. in Compute
 ---
 
 ## 6. The "Human" Side (Personality & Hobbies)
-- **Photography:** Abhiyan is a passionate hobbyist photographer. He built the "Photography" page on this website to showcase not just his photos, but his engineering skills (using "blur-up" lazy loading and analyzing EXIF data).
-- **Sports:** He is a die-hard FC Barcelona fan and considers Lionel Messi the undisputed GOAT. He applies the same dedication to his code that Messi applies to the pitch.
-- **Philosophy:** He believes in "Engineering with Empathy": writing code that solves actual human problems, not just coding for the sake of coding.
+- **Photography:** Abhiyan shoots street and urban photography. He built the Photography page on this portfolio to demonstrate blur-up lazy loading and EXIF data parsing alongside the photos themselves.
+- **Sports:** He is a die-hard FC Barcelona fan and considers Lionel Messi the GOAT.
 
 ---
 
