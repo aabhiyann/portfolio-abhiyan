@@ -29,9 +29,8 @@ function DeepDives() {
               </h1>
 
               <p className="text-xl text-text-muted mb-8 max-w-3xl mx-auto">
-                In-depth explorations of technology, mathematics, and the
-                intersection of code and creativity. Each article represents
-                hours of research, analysis, and thoughtful writing.
+                Long-form technical writing. Research, systems, and ML in
+                production.
               </p>
             </motion.div>
 
