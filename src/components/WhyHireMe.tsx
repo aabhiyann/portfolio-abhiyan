@@ -1,7 +1,6 @@
 import React from "react";
 import { MotionCard } from "./ui/MotionCard";
 import { GraduationCap, Rocket, Code2 } from "lucide-react";
-import SectionTitle from "./SectionTitle";
 
 const WhyHireMe: React.FC = () => {
   const cards = [
@@ -38,11 +37,6 @@ const WhyHireMe: React.FC = () => {
   return (
     <section className="py-24 bg-bg-surface/50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-        <SectionTitle
-          title="Production systems. Real metrics. No fluff."
-          subtitle=""
-        />
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {cards.map((card, index) => (
             <MotionCard
