@@ -33,15 +33,15 @@ function Photography() {
               <div className="flex flex-wrap justify-center gap-4 text-sm text-text-muted">
                 <span className="flex items-center gap-2">
                   <Camera className="w-4 h-4" />
-                  Visual Debugging
+                  Street
                 </span>
                 <span className="flex items-center gap-2">
                   <ImageIcon className="w-4 h-4" />
-                  Pattern Recognition
+                  Architecture
                 </span>
                 <span className="flex items-center gap-2">
                   <Clock className="w-4 h-4" />
-                  Frozen Moments
+                  Urban
                 </span>
               </div>
             </motion.div>
@@ -50,10 +50,7 @@ function Photography() {
             <PhotographyGallery />
 
             <div className="text-center mt-16 text-sm text-text-muted">
-              <p>
-                A collection of my favorite compositions. No AI generation, just
-                optics and light.
-              </p>
+              <p>Canon R50 · iPhone 15 Pro Max</p>
             </div>
           </div>
         </div>
