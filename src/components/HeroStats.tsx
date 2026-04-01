@@ -45,7 +45,6 @@ export const HeroStats = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-          whileHover={{ scale: 1.05, y: -5 }}
           className="glass-card p-6 rounded-xl border border-border-primary text-center group cursor-default"
         >
           {/* Icon with gradient background - unified accent-primary color */}
