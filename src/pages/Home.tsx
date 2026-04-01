@@ -14,6 +14,7 @@ import TypeWriter from "../components/ui/TypeWriter";
 import { FeaturedProjectsSection, AboutTeaser } from "../components/sections";
 import { experiences } from "../data/experience";
 import { ArrowRight, Download } from "lucide-react";
+import { SafeImage } from "../components/ui";
 
 function Home() {
   const getStartYear = (dates: string) => dates.split("–")[0].trim();
