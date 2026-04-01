@@ -135,7 +135,7 @@ export const projects: Project[] = [
     featured: false,
     stats: [
       { label: "Sources", value: "10+" },
-      { label: "Relevance", value: "High" },
+      { label: "Query time", value: "-70%" },
     ],
     badges: ["Search", "Backend"],
   },
