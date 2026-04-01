@@ -36,7 +36,7 @@ const skills: Skill[] = [
     category: "Languages",
     proficiency: 90,
     description:
-      "Architected distributed backend systems for high-throughput data processing.",
+      "Used in distributed systems and concurrent programming coursework at GWU.",
   },
   // Frameworks
   {
