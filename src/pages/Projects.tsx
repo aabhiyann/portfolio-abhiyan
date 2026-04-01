@@ -78,7 +78,7 @@ function Projects() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
                   >
-                    <div className="inline-block p-12 rounded-2xl glass-card max-w-md">
+                    <div className="inline-block p-12 rounded-2xl bg-bg-surface border border-border-primary max-w-md">
                       <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-primary/10 flex items-center justify-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
