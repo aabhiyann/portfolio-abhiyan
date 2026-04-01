@@ -36,7 +36,7 @@ export const ProjectCard = ({
         <SafeImage
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
         />
 
         {/* Live Status Indicator */}
