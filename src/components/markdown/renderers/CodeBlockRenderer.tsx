@@ -29,12 +29,12 @@ export const CodeBlockRenderer: React.FC<CodeBlockRendererProps> = ({
   return (
     <div
       className={cn(
-        "my-6 rounded-lg overflow-hidden bg-[#1e1e1e] border border-white/10",
+        "my-6 rounded-lg overflow-hidden bg-[#1e1e1e] border border-border-primary/30",
         className,
       )}
     >
       {language && (
-        <div className="px-4 py-2 bg-white/5 border-b border-white/5 text-xs font-mono text-text-muted flex items-center justify-between">
+        <div className="px-4 py-2 bg-bg-surface/50 border-b border-border-primary/30 text-xs font-mono text-text-muted flex items-center justify-between">
           <span>{language}</span>
           <button
             onClick={handleCopy}

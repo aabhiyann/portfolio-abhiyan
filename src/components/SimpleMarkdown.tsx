@@ -94,10 +94,10 @@ const SimpleMarkdown: React.FC<SimpleMarkdownProps> = ({
           blocks.push(
             <div
               key={`code-${i}`}
-              className="my-6 rounded-lg overflow-hidden bg-[#1e1e1e] border border-white/10"
+              className="my-6 rounded-lg overflow-hidden bg-[#1e1e1e] border border-border-primary/30"
             >
               {codeBlockLang && (
-                <div className="px-4 py-2 bg-white/5 border-b border-white/5 text-xs font-mono text-text-muted flex items-center justify-between">
+                <div className="px-4 py-2 bg-bg-surface/50 border-b border-border-primary/30 text-xs font-mono text-text-muted flex items-center justify-between">
                   <span>{codeBlockLang}</span>
                   <button
                     onClick={() => {
@@ -172,7 +172,7 @@ const SimpleMarkdown: React.FC<SimpleMarkdownProps> = ({
                 {rows.map((row, rIdx) => (
                   <tr
                     key={rIdx}
-                    className="border-b border-border-primary/50 last:border-0 hover:bg-white/5"
+                    className="border-b border-border-primary/50 last:border-0 hover:bg-bg-surface/50"
                   >
                     {row.map((cell, cIdx) => (
                       <td key={cIdx} className="p-3 text-text-secondary">
@@ -293,7 +293,7 @@ const SimpleMarkdown: React.FC<SimpleMarkdownProps> = ({
         <h2
           id={id}
           key={`h2-${i}`}
-          className="text-2xl md:text-3xl font-bold mt-10 mb-5 text-text-primary font-heading border-b border-white/10 pb-2 scroll-mt-24"
+          className="text-2xl md:text-3xl font-bold mt-10 mb-5 text-text-primary font-heading border-b border-border-primary/30 pb-2 scroll-mt-24"
         >
           {text}
         </h2>,
@@ -336,7 +336,9 @@ const SimpleMarkdown: React.FC<SimpleMarkdownProps> = ({
       );
     } else if (trimmed.startsWith("---")) {
       // Horizontal Rule
-      blocks.push(<hr key={`hr-${i}`} className="my-8 border-white/10" />);
+      blocks.push(
+        <hr key={`hr-${i}`} className="my-8 border-border-primary/30" />,
+      );
     } else {
       // Paragraphs
       blocks.push(
@@ -389,7 +391,7 @@ const parseInline = (text: string): string => {
   // Inline Code: `text`
   parsed = parsed.replace(
     /`([^`]+)`/g,
-    '<code class="px-1.5 py-0.5 rounded bg-white/10 font-mono text-sm text-accent-secondary">$1</code>',
+    '<code class="px-1.5 py-0.5 rounded bg-bg-surface font-mono text-sm text-accent-secondary">$1</code>',
   );
 
   return parsed;

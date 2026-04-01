@@ -15,7 +15,7 @@ const StatItem: React.FC<StatItemProps> = ({ value, label, delay = 0 }) => (
     transition={{ duration: 0.5, delay }}
     className="flex flex-col items-center justify-center p-4"
   >
-    <div className="text-3xl md:text-4xl font-bold gradient-text-br font-heading mb-1">
+    <div className="text-3xl md:text-4xl font-bold text-accent-primary font-heading mb-1">
       {value}
     </div>
     <div className="text-sm font-medium text-text-muted uppercase tracking-wider">

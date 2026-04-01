@@ -40,7 +40,7 @@ export const TableRenderer: React.FC<TableRendererProps> = ({
           {rows.map((row, rIdx) => (
             <tr
               key={rIdx}
-              className="border-b border-border-primary/50 last:border-0 hover:bg-white/5"
+              className="border-b border-border-primary/50 last:border-0 hover:bg-bg-surface/50"
             >
               {row.map((cell, cIdx) => (
                 <td key={cIdx} className="p-3 text-text-secondary">
