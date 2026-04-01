@@ -167,16 +167,16 @@ function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[110px,1fr] gap-8 lg:gap-14 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[148px,minmax(0,1fr)] gap-8 lg:gap-20 items-start">
             <motion.div
-              className="hidden lg:flex lg:sticky lg:top-28 self-start"
+              className="hidden lg:block lg:sticky lg:top-28 self-start z-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: motionTokens.duration.normal / 1000 }}
             >
-              <div className="relative pl-6">
-                <div className="absolute left-[10px] top-2 bottom-2 w-px bg-border-primary/80" />
+              <div className="relative pl-8 pr-4">
+                <div className="absolute left-3 top-2 bottom-2 w-px bg-border-primary/80" />
                 <div className="space-y-5">
                   {timelineYears.map((year, index) => {
                     const isActive = activeTimelineYear === year;
@@ -193,10 +193,10 @@ function Home() {
                         className="relative"
                       >
                         <span
-                          className={`absolute left-[-20px] top-2 h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                          className={`absolute left-[-29px] top-1.5 h-2.5 w-2.5 rounded-full transition-all duration-300 ${
                             isActive
-                              ? "bg-accent-primary ring-4 ring-accent-primary/12"
-                              : "bg-border-primary"
+                              ? "bg-accent-primary ring-4 ring-bg-primary"
+                              : "bg-bg-primary border border-border-primary"
                           }`}
                         />
                         <div
@@ -217,7 +217,7 @@ function Home() {
               </div>
             </motion.div>
 
-            <div className="relative pl-8 md:pl-10">
+            <div className="relative pl-8 md:pl-10 lg:pl-0">
               <div className="absolute left-3 top-1 bottom-1 w-px bg-border-primary" />
               <div className="space-y-12">
                 {homepageTimeline.map((experience, index) => (
