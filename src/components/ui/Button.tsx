@@ -11,7 +11,7 @@ const getButtonClasses = (variant: ButtonVariant, size: ButtonSize) => {
   // Using CSS classes defined in index.css that properly use CSS variables
   const variantClasses = {
     primary: "btn-primary font-semibold",
-    secondary: "btn-secondary shadow-md",
+    secondary: "btn-secondary",
     ghost: "btn-ghost",
     outline: "btn-outline",
   };
