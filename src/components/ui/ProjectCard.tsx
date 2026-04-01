@@ -17,7 +17,7 @@ export const ProjectCard = ({
 }: ProjectCardProps) => {
   return (
     <motion.div
-      className="flex flex-col glass-card glass-card-hover group h-full overflow-hidden rounded-2xl"
+      className="flex flex-col group h-full overflow-hidden rounded-2xl bg-card border border-border-primary/80 shadow-sm hover:border-accent-primary/20 transition-colors"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
