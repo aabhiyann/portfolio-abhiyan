@@ -110,7 +110,8 @@ const skills: Skill[] = [
     name: "PostgreSQL",
     category: "Tools",
     proficiency: 92,
-    description: "Optimized complex SQL queries for sub-millisecond latency.",
+    description:
+      "InfraSight (cost data storage) and TalkifyDocs (user/document records) via Neon serverless.",
   },
   {
     name: "Git & CI/CD",
