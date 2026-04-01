@@ -12,7 +12,7 @@ function DeepDives() {
     <Page>
       <SEO
         title="Deep Dives – Abhiyan Sainju"
-        description="Explore in-depth articles and deep dives by Abhiyan Sainju on technology, mathematics, and the intersection of code and creativity."
+        description="Long-form technical writing by Abhiyan Sainju — ML systems, production engineering, and software research."
       />
       {/* Hero Section */}
       <section className="relative py-24 min-h-screen font-heading">
@@ -29,9 +29,8 @@ function DeepDives() {
               </h1>
 
               <p className="text-xl text-text-muted mb-8 max-w-3xl mx-auto">
-                In-depth explorations of technology, mathematics, and the
-                intersection of code and creativity. Each article represents
-                hours of research, analysis, and thoughtful writing.
+                Long-form technical writing. Research, systems, and ML in
+                production.
               </p>
             </motion.div>
 
@@ -63,10 +62,7 @@ function DeepDives() {
                     <h3 className="text-2xl font-bold text-text-primary mb-2">
                       No Articles Yet
                     </h3>
-                    <p className="text-text-muted">
-                      Deep dive articles coming soon! Check back later for
-                      in-depth technical explorations.
-                    </p>
+                    <p className="text-text-muted">Articles coming soon.</p>
                   </div>
                 </div>
               ) : (
@@ -105,17 +101,6 @@ function DeepDives() {
                             <p className="text-text-muted/80 mb-3 leading-relaxed">
                               {article.summary}
                             </p>
-
-                            <div className="flex flex-wrap gap-2 mt-3">
-                              {article.tags.map((tag) => (
-                                <span
-                                  key={tag}
-                                  className="text-xs px-2 py-1 rounded-md bg-white/5 text-text-muted/60"
-                                >
-                                  #{tag}
-                                </span>
-                              ))}
-                            </div>
                           </div>
 
                           <div className="flex-shrink-0">

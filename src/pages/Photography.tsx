@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Camera, Image as ImageIcon, Clock } from "lucide-react";
+import { Camera, Image as ImageIcon, MapPin } from "lucide-react";
 import { motionTokens } from "../utils/motion";
 import PhotographyGallery from "../components/PhotographyGallery";
 import Page from "../components/Page";
@@ -26,24 +26,22 @@ function Photography() {
               </h1>
 
               <p className="text-xl text-text-muted mb-8 max-w-3xl mx-auto">
-                Think of it as debugging the real world: finding patterns in
-                chaos, framing what matters, and capturing the edge cases of
-                daily life. My attention to detail in code mirrors my
-                composition in photography.
+                Street and urban photography. Shot on a Canon R50 and iPhone 15
+                Pro Max. Based in DC.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 text-sm text-text-muted">
                 <span className="flex items-center gap-2">
                   <Camera className="w-4 h-4" />
-                  Visual Debugging
+                  Street
                 </span>
                 <span className="flex items-center gap-2">
                   <ImageIcon className="w-4 h-4" />
-                  Pattern Recognition
+                  Architecture
                 </span>
                 <span className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  Frozen Moments
+                  <MapPin className="w-4 h-4" />
+                  Urban
                 </span>
               </div>
             </motion.div>
@@ -52,10 +50,7 @@ function Photography() {
             <PhotographyGallery />
 
             <div className="text-center mt-16 text-sm text-text-muted">
-              <p>
-                A collection of my favorite compositions. No AI generation, just
-                optics and light.
-              </p>
+              <p>Canon R50 · iPhone 15 Pro Max</p>
             </div>
           </div>
         </div>

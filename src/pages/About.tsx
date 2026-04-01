@@ -65,8 +65,8 @@ function About() {
                   <p>
                     At GWU, I focused on algorithms, distributed systems, and
                     machine learning. I taught Design & Analysis of Algorithms
-                    to grad students, where my interactive tutorials improved
-                    learning outcomes significantly.
+                    to 60+ grad students — midterm scores improved 22%
+                    year-over-year.
                   </p>
                   <p>
                     I've built production systems that solve real problems.
@@ -74,16 +74,6 @@ function About() {
                     TalkifyDocs lets users chat with PDF documents using RAG
                     architecture. I focus on shipping working software, not just
                     prototypes.
-                  </p>
-                  <p>
-                    When I'm not coding, I'm{" "}
-                    <Link
-                      to="/photography"
-                      className="text-accent-primary hover:underline"
-                    >
-                      behind a camera
-                    </Link>
-                    .
                   </p>
                 </div>
               </motion.div>
@@ -113,7 +103,7 @@ function About() {
                       Abhiyan Sainju
                     </h3>
                     <p className="text-white/95 mt-1 drop-shadow-2xl">
-                      Software Engineer & AI/ML Specialist
+                      Software Engineer & AI/ML Engineer
                     </p>
                   </div>
                 </div>
@@ -127,7 +117,7 @@ function About() {
       <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="My Journey"
+            title="Experience"
             subtitle="Roles, projects, and milestones in order."
           />
           <VisualTimeline
@@ -146,8 +136,8 @@ function About() {
       <section className="py-24 bg-bg-surface/50">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="Technical Arsenal"
-            subtitle="The tools I reach for on every project. Hover for context."
+            title="Skills"
+            subtitle="Languages, frameworks, and tools used across projects."
           />
           <SkillsMatrix />
         </div>
@@ -157,7 +147,7 @@ function About() {
       <section className="py-24 bg-bg-primary">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="Engineering Philosophy"
+            title="Approach"
             subtitle="How I think about software."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -189,8 +179,8 @@ function About() {
       <section className="py-24 bg-bg-primary">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="Beyond Code"
-            subtitle="Street and portrait photography. Shot on a Canon R50."
+            title="Photography"
+            subtitle="Street and urban photography. Shot on a Canon R50."
           />
 
           {/* Photo Grid */}
