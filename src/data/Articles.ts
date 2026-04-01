@@ -40,7 +40,7 @@ I wanted to build a solution that would help engineering teams stay ahead of the
 
 ---
 
-## My Approach
+## Architecture Choices
 
 I designed InfraSight around three core principles:
 
@@ -142,7 +142,7 @@ I use K-means (default 3 clusters) on daily cost vectors to group services with 
 
 ---
 
-## What I Learned
+## Key Takeaways
 
 This project taught me that building production ML systems is fundamentally different from Jupyter notebooks.
 
@@ -266,7 +266,7 @@ I wanted to understand the tradeoffs between custom models and transfer learning
 
 ---
 
-## My Approach
+## Evaluation Design
 
 I designed a rigorous experimental methodology: start with a simple baseline, systematically add complexity, and compare against transfer learning. I tested five architectures using the same dataset and evaluation methodology.
 
@@ -343,7 +343,7 @@ This challenges the common assumption that transfer learning is always superior.
 
 ---
 
-## What I Learned
+## Key Takeaways
 
 ### 1. Transfer Learning Isn't Automatic
 
@@ -430,7 +430,7 @@ I wanted to build a production-ready RAG (Retrieval-Augmented Generation) applic
 
 ---
 
-## My Approach
+## System Design
 
 I designed TalkifyDocs around the RAG architecture: upload documents, chunk and embed them for semantic search, then use retrieved context to generate accurate, cited answers. I migrated from OpenAI (expensive) to Google Gemini 3.0 Flash + Groq for completely free operation while building a complete SaaS platform with authentication and billing.
 
@@ -574,7 +574,7 @@ Gemini 3.0 Flash has a limited context window (8k or 32k tokens depending on the
 
 ---
 
-## What I Learned
+## Key Takeaways
 
 Building TalkifyDocs taught me that RAG applications are 80% data engineering and integration, 20% AI. The hard problems aren't about calling Gemini 3.0 Flash; they're about chunking, retrieval, cost management, and orchestrating multiple services.
 
@@ -651,7 +651,7 @@ The technical challenge was synchronizing playback state across all clients in r
 
 ---
 
-## My Approach
+## How I Built It
 
 I designed MelodyHub around real-time WebSocket communication using Socket.IO. The architecture separates concerns: frontend handles UI and local state, backend manages room state and synchronization, and a CDN delivers audio reliably.
 
@@ -772,7 +772,7 @@ Cloudinary provides reliable global CDN for audio files. It handles format optim
 
 ---
 
-## What I Learned
+## Key Takeaways
 
 ### 1. Real-Time Architecture Patterns
 
