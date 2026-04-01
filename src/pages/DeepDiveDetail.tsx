@@ -109,7 +109,7 @@ const DeepDiveDetail: React.FC = () => {
 
       <article className="min-h-screen pb-24">
         {/* Header / Hero */}
-        <div className="relative py-24 bg-gradient-to-b from-bg-primary to-bg-surface/30 border-b border-border-primary/50">
+        <div className="relative py-24 border-b border-border-primary/50">
           <div className="max-w-4xl mx-auto px-6 md:px-8">
             <Link
               to="/deep-dives"
@@ -124,8 +124,8 @@ const DeepDiveDetail: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-text-muted">
-                <span className="inline-flex items-center gap-1.5">
+              <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-text-muted uppercase tracking-[0.16em]">
+                <span className="inline-flex items-center gap-1.5 font-mono text-accent-primary">
                   <Calendar className="w-4 h-4" />
                   {article.date}
                 </span>
@@ -133,7 +133,7 @@ const DeepDiveDetail: React.FC = () => {
                   <Clock className="w-4 h-4" />
                   {article.readTime}
                 </span>
-                <span className="px-2 py-0.5 rounded-full bg-accent-primary/10 text-accent-primary border border-accent-primary/20 text-xs font-medium uppercase tracking-wide">
+                <span className="text-accent-primary font-mono">
                   {article.source}
                 </span>
               </div>
@@ -170,11 +170,11 @@ const DeepDiveDetail: React.FC = () => {
 
               {/* Footer / Tags */}
               <div className="mt-16 pt-8 border-t border-border-primary/50">
-                <div className="flex flex-wrap gap-2 mb-12">
+                <div className="flex flex-wrap gap-x-4 gap-y-2 mb-12 text-xs uppercase tracking-[0.18em] text-text-muted">
                   {article.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white/5 hover:bg-white/10 text-sm text-text-secondary transition-colors cursor-default"
+                      className="inline-flex items-center gap-1.5 text-text-secondary transition-colors cursor-default"
                     >
                       <Tag className="w-3.5 h-3.5 opacity-70" />
                       {tag}
@@ -182,23 +182,24 @@ const DeepDiveDetail: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="flex justify-between items-center p-8 rounded-2xl bg-bg-surface/50 border border-border-primary/50">
+                <div className="flex justify-between items-center gap-6 p-8 rounded-2xl border border-border-primary/50 bg-bg-surface/30">
                   <div>
                     <h3 className="text-lg font-semibold text-text-primary mb-1">
-                      Enjoyed this deep dive?
+                      Keep reading
                     </h3>
                     <p className="text-text-muted text-sm">
-                      Check out my other articles or view my projects.
+                      More technical writing and project walkthroughs are linked
+                      below.
                     </p>
                   </div>
-                  <div className="flex gap-4">
+                  <div className="flex gap-4 flex-wrap">
                     <Button
                       as={Link}
                       to="/deep-dives"
                       variant="outline"
                       size="sm"
                     >
-                      All Articles
+                      All Deep Dives
                     </Button>
                     <Button
                       as={Link}
