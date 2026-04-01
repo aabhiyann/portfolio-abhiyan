@@ -37,7 +37,7 @@ const WhyHireMe: React.FC = () => {
 
   return (
     <section className="py-24 bg-bg-surface/50 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+      <div className="max-w-5xl mx-auto px-6 md:px-8 relative z-10">
         <SectionTitle
           title="At a glance"
           subtitle="Education, shipped work, and the stack behind it."
