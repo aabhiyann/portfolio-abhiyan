@@ -15,6 +15,8 @@ import { experiences } from "../data/experience";
 import { ArrowRight, Download } from "lucide-react";
 
 function Home() {
+  const getStartYear = (dates: string) => dates.split("–")[0].trim();
+
   const homepageExperience = experiences.filter((experience) =>
     ["gwu-ta", "ecs-engineer", "intel-security-lead", "ecs-intern"].includes(
       experience.id,
@@ -113,9 +115,9 @@ function Home() {
       {/* Experience Timeline */}
       <section className="py-24 bg-bg-surface/40">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[320px,1fr] gap-10 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[260px,1fr] gap-8 lg:gap-12 items-start">
             <motion.div
-              className="lg:sticky lg:top-28 space-y-6 self-start relative z-10 bg-bg-surface/95 backdrop-blur-sm border border-border-primary/70 rounded-2xl px-6 py-6"
+              className="lg:sticky lg:top-28 space-y-5 self-start relative z-10 bg-bg-surface/95 backdrop-blur-sm border border-border-primary/70 rounded-2xl px-5 py-5"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -128,16 +130,16 @@ function Home() {
                 </span>
               </div>
               <div className="space-y-4">
-                <h2 className="text-4xl md:text-5xl font-bold font-heading text-text-primary leading-tight">
+                <h2 className="text-3xl md:text-4xl font-bold font-heading text-text-primary leading-tight">
                   Built across classrooms, startups, and client work.
                 </h2>
-                <p className="text-text-muted leading-relaxed">
+                <p className="text-sm md:text-base text-text-muted leading-relaxed">
                   The projects on this site are backed by teaching, production
                   engineering, and client-facing work across Nepal and
                   Washington, DC.
                 </p>
               </div>
-              <Button as={Link} to="/about" variant="outline" size="lg">
+              <Button as={Link} to="/about" variant="outline" size="md">
                 View Full Journey
               </Button>
             </motion.div>
@@ -158,7 +160,7 @@ function Home() {
                     {group.items.map((experience, index) => (
                       <motion.article
                         key={experience.id}
-                        className="relative"
+                        className="relative grid grid-cols-[70px,1fr] md:grid-cols-[84px,1fr] gap-4 md:gap-6"
                         initial={{ opacity: 0, y: 24 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -169,40 +171,60 @@ function Home() {
                       >
                         <div className="absolute left-[-21px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
 
-                        <div className="flex flex-wrap items-center gap-3 mb-3">
-                          <span className="inline-flex rounded-full bg-accent-primary/10 px-3 py-1.5 text-sm font-mono text-accent-primary">
-                            {experience.dates}
-                          </span>
-                          <span className="text-xs uppercase tracking-[0.22em] text-text-muted/80">
-                            {experience.location}
-                          </span>
+                        <div className="pt-0.5">
+                          <motion.div
+                            className="space-y-2"
+                            initial={{ opacity: 0.6, x: -8 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                              duration: motionTokens.duration.normal / 1000,
+                              delay: index * 0.05,
+                            }}
+                          >
+                            <div className="text-2xl md:text-3xl font-heading font-bold text-accent-primary leading-none">
+                              {getStartYear(experience.dates)}
+                            </div>
+                            <div className="h-px w-10 bg-accent-primary/40" />
+                          </motion.div>
                         </div>
 
-                        <div className="mb-3">
-                          <p className="text-xs uppercase tracking-[0.22em] text-accent-primary mb-2">
-                            {experience.company}
+                        <div>
+                          <div className="flex flex-wrap items-center gap-3 mb-3">
+                            <span className="inline-flex rounded-full bg-accent-primary/10 px-3 py-1.5 text-sm font-mono text-accent-primary">
+                              {experience.dates}
+                            </span>
+                            <span className="text-xs uppercase tracking-[0.22em] text-text-muted/80">
+                              {experience.location}
+                            </span>
+                          </div>
+
+                          <div className="mb-3">
+                            <p className="text-xs uppercase tracking-[0.22em] text-accent-primary mb-2">
+                              {experience.company}
+                            </p>
+                            <h3 className="text-xl md:text-2xl font-bold text-text-primary font-heading">
+                              {experience.role}
+                            </h3>
+                          </div>
+
+                          <p className="text-text-muted leading-relaxed mb-4 max-w-2xl">
+                            {experience.description}
                           </p>
-                          <h3 className="text-2xl font-bold text-text-primary font-heading">
-                            {experience.role}
-                          </h3>
-                        </div>
 
-                        <p className="text-text-muted leading-relaxed mb-4 max-w-2xl">
-                          {experience.description}
-                        </p>
-
-                        <div className="space-y-2 pl-1">
-                          {experience.achievements
-                            .slice(0, group.label === "Education" ? 2 : 3)
-                            .map((achievement) => (
-                              <div
-                                key={achievement}
-                                className="flex items-start gap-3 text-sm text-text-secondary"
-                              >
-                                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
-                                <span>{achievement}</span>
-                              </div>
-                            ))}
+                          <div className="space-y-2 pl-1">
+                            {experience.achievements
+                              .slice(0, group.label === "Education" ? 2 : 3)
+                              .map((achievement) => (
+                                <div
+                                  key={achievement}
+                                  className="flex items-start gap-3 text-sm text-text-secondary"
+                                >
+                                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
+                                  <span>{achievement}</span>
+                                </div>
+                              ))}
+                          </div>
                         </div>
                       </motion.article>
                     ))}
