@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Camera, Image as ImageIcon, Clock } from "lucide-react";
+import { Camera, Image as ImageIcon, MapPin } from "lucide-react";
 import { motionTokens } from "../utils/motion";
 import PhotographyGallery from "../components/PhotographyGallery";
 import Page from "../components/Page";
@@ -40,7 +40,7 @@ function Photography() {
                   Architecture
                 </span>
                 <span className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
+                  <MapPin className="w-4 h-4" />
                   Urban
                 </span>
               </div>
