@@ -78,7 +78,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-navbar/95 border-b border-border-primary transition-colors duration-300 overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <Link
