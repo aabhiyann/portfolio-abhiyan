@@ -47,7 +47,7 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({
                     {article.summary}
                   </p>
                   <div className="flex items-center gap-2 text-sm text-accent-primary">
-                    Read Article
+                    Read Deep Dive
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
@@ -76,7 +76,7 @@ const RelatedArticles: React.FC<RelatedArticlesProps> = ({
                   {article.summary}
                 </p>
                 <div className="flex items-center gap-2 text-sm text-accent-primary">
-                  Read Article
+                  Read Deep Dive
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
