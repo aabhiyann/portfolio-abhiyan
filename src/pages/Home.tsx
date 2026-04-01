@@ -138,11 +138,12 @@ function Home() {
               </Button>
             </motion.div>
 
-            <div className="space-y-5">
+            <div className="relative pl-8 md:pl-10">
+              <div className="absolute left-3 top-2 bottom-2 w-px bg-border-primary" />
               {homepageTimeline.map((experience, index) => (
                 <motion.article
                   key={experience.id}
-                  className="rounded-2xl border border-border-primary/80 bg-card px-6 py-6 shadow-sm transition-colors hover:border-accent-primary/25"
+                  className="relative pb-10 last:pb-0"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -151,16 +152,18 @@ function Home() {
                     delay: index * 0.06,
                   }}
                 >
-                  <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <div className="absolute left-[-21px] top-2 h-4 w-4 rounded-full border-4 border-bg-surface/40 bg-accent-primary" />
+
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
                     <span className="inline-flex rounded-full bg-accent-primary/10 px-3 py-1.5 text-sm font-mono text-accent-primary">
                       {experience.dates}
                     </span>
-                    <span className="text-xs uppercase tracking-[0.22em] text-text-muted">
+                    <span className="text-xs uppercase tracking-[0.22em] text-text-muted/80">
                       {experience.location}
                     </span>
                   </div>
 
-                  <div className="mb-4">
+                  <div className="mb-3">
                     <p className="text-xs uppercase tracking-[0.22em] text-accent-primary mb-2">
                       {experience.company}
                     </p>
@@ -169,17 +172,17 @@ function Home() {
                     </h3>
                   </div>
 
-                  <p className="text-text-muted leading-relaxed mb-5">
+                  <p className="text-text-muted leading-relaxed mb-4 max-w-2xl">
                     {experience.description}
                   </p>
 
-                  <div className="space-y-3">
+                  <div className="space-y-2 border-l border-accent-primary/15 pl-4">
                     {experience.achievements.slice(0, 2).map((achievement) => (
                       <div
                         key={achievement}
                         className="flex items-start gap-3 text-sm text-text-secondary"
                       >
-                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70" />
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
                         <span>{achievement}</span>
                       </div>
                     ))}
