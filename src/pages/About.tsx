@@ -18,17 +18,17 @@ function About() {
     {
       title: "System Architecture",
       description:
-        "Designing scalable, fault-tolerant systems. From microservices to async pipelines, I build for production.",
+        "I bias toward systems that are easy to debug, cheap to run, and clear about failure modes.",
     },
     {
       title: "AI & ML in Production",
       description:
-        "Building RAG pipelines, ML forecasting, and anomaly detection. Not just notebooks, but deployed systems.",
+        "I’ve shipped retrieval, forecasting, and anomaly-detection work behind real APIs and product flows.",
     },
     {
       title: "Teaching & Mentorship",
       description:
-        "Teaching algorithms to 60+ grad students. If I can't explain it simply, I don't understand it well enough.",
+        "I taught algorithms to 60+ graduate students and care a lot about making technical ideas clear and useful.",
     },
   ];
 
