@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
@@ -24,6 +25,24 @@ function Home() {
   );
   const homepageEducation = experiences.filter((experience) =>
     ["gwu-ms", "sx-bscsit"].includes(experience.id),
+  );
+  const timelineSections = [
+    { label: "Experience", items: homepageExperience },
+    { label: "Education", items: homepageEducation },
+  ];
+  const timelineYears = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          timelineSections.flatMap((section) =>
+            section.items.map((item) => getStartYear(item.dates)),
+          ),
+        ),
+      ),
+    [homepageExperience, homepageEducation],
+  );
+  const [activeTimelineYear, setActiveTimelineYear] = useState(
+    timelineYears[0] ?? "",
   );
 
   return (
@@ -115,9 +134,9 @@ function Home() {
       {/* Experience Timeline */}
       <section className="py-24 bg-bg-surface/40">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[260px,1fr] gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[220px,1fr] gap-8 lg:gap-12 items-start">
             <motion.div
-              className="lg:sticky lg:top-28 space-y-5 self-start relative z-10 bg-bg-surface/95 backdrop-blur-sm border border-border-primary/70 rounded-2xl px-5 py-5"
+              className="lg:sticky lg:top-28 space-y-6 self-start relative z-10 bg-bg-surface/95 backdrop-blur-sm rounded-2xl px-4 py-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -130,25 +149,47 @@ function Home() {
                 </span>
               </div>
               <div className="space-y-4">
-                <h2 className="text-3xl md:text-4xl font-bold font-heading text-text-primary leading-tight">
+                <h2 className="text-2xl md:text-3xl font-bold font-heading text-text-primary leading-tight">
                   Built across classrooms, startups, and client work.
                 </h2>
-                <p className="text-sm md:text-base text-text-muted leading-relaxed">
-                  The projects on this site are backed by teaching, production
-                  engineering, and client-facing work across Nepal and
-                  Washington, DC.
+                <p className="text-sm text-text-muted leading-relaxed">
+                  Teaching, product engineering, and client work across Nepal
+                  and Washington, DC.
                 </p>
               </div>
+
+              <div className="relative pl-5">
+                <div className="absolute left-1 top-1 bottom-1 w-px bg-border-primary" />
+                <div className="space-y-4">
+                  {timelineYears.map((year) => (
+                    <div
+                      key={year}
+                      className={`relative pl-5 text-sm font-mono transition-all duration-300 ${
+                        activeTimelineYear === year
+                          ? "text-accent-primary"
+                          : "text-text-muted/65"
+                      }`}
+                    >
+                      <span
+                        className={`absolute left-[-3px] top-1.5 h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                          activeTimelineYear === year
+                            ? "bg-accent-primary ring-4 ring-accent-primary/12"
+                            : "bg-border-primary"
+                        }`}
+                      />
+                      {year}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <Button as={Link} to="/about" variant="outline" size="md">
                 View Full Journey
               </Button>
             </motion.div>
 
             <div className="space-y-12">
-              {[
-                { label: "Experience", items: homepageExperience },
-                { label: "Education", items: homepageEducation },
-              ].map((group, groupIndex) => (
+              {timelineSections.map((group, groupIndex) => (
                 <div key={group.label} className="relative pl-8 md:pl-10">
                   <div className="mb-6">
                     <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
@@ -163,6 +204,9 @@ function Home() {
                         className="relative grid grid-cols-[70px,1fr] md:grid-cols-[84px,1fr] gap-4 md:gap-6"
                         initial={{ opacity: 0, y: 24 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        onViewportEnter={() =>
+                          setActiveTimelineYear(getStartYear(experience.dates))
+                        }
                         viewport={{ once: true }}
                         transition={{
                           duration: motionTokens.duration.normal / 1000,
@@ -214,7 +258,7 @@ function Home() {
 
                           <div className="space-y-2 pl-1">
                             {experience.achievements
-                              .slice(0, group.label === "Education" ? 2 : 3)
+                              .slice(0, 2)
                               .map((achievement) => (
                                 <div
                                   key={achievement}
