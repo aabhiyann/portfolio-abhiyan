@@ -31,7 +31,6 @@ const WhyHireMe: React.FC = () => {
         "React / Next.js, FastAPI, PostgreSQL",
         "RAG pipelines, anomaly detection, forecasting",
         "Docker, AWS, CI/CD",
-        "System design with clean, maintainable code",
       ],
     },
   ];
