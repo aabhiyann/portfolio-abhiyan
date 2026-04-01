@@ -135,7 +135,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
 
           <div className="p-6 rounded-xl bg-accent-primary/5 border border-accent-primary/20">
             <Typography variant="h4" className="mb-2 text-lg font-semibold">
-              2. CNN + Dropout (92% test accuracy) ⭐ Best Model
+              2. CNN + Dropout (92% test accuracy) Top Result
             </Typography>
             <p className="text-sm text-text-muted mb-3 font-mono">
               Conv2D(32) → MaxPool → Conv2D(64) → MaxPool → Conv2D(128) →
