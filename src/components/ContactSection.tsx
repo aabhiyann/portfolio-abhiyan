@@ -28,7 +28,7 @@ const ContactSection: React.FC = () => {
           <div className="p-8 rounded-2xl bg-card border border-border-primary w-full">
             <p className="text-text-muted mb-4">aabhiyansainju@gmail.com</p>
             <p className="text-text-muted text-sm mb-8">
-              Based in Washington, DC. Open to relocation anywhere in the US.
+              Based in Washington, DC. Open to roles across the US.
             </p>
 
             <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4">
