@@ -14,7 +14,7 @@ function Skills() {
       />
 
       <section className="py-24 min-h-screen">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="max-w-5xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Skills & Certifications"
             subtitle="Capabilities I rely on in product engineering, applied ML, and cloud-backed systems."
