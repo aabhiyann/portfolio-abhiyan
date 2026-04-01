@@ -37,7 +37,7 @@ const ExternalFooterLink: React.FC<ExternalFooterLinkProps> = ({
 const Footer: React.FC = () => {
   return (
     <footer className="border-t border-border-primary backdrop-blur-sm bg-bg-surface relative">
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="flex flex-col space-y-4">
             <h4 className="font-semibold text-text-primary">Work</h4>
