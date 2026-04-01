@@ -15,7 +15,7 @@ const ContactSection: React.FC = () => {
       <div className="max-w-4xl mx-auto px-6 md:px-8 text-center relative z-10">
         <SectionTitle
           title="Contact"
-          subtitle="Open to work. Reach out directly."
+          subtitle="Open to roles, collaborations, and good technical conversations."
         />
 
         <motion.div
