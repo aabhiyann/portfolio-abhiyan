@@ -87,6 +87,15 @@ function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: motionTokens.duration.normal / 1000 }}
               >
+                <div className="flex justify-center lg:justify-start mb-6">
+                  <SafeImage
+                    src="/images/about/portrait.jpg"
+                    alt="Abhiyan Sainju"
+                    className="w-16 h-16 rounded-full object-cover border-2 border-border-primary"
+                    fallback="/images/placeholder-portrait.png"
+                  />
+                </div>
+
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.2]">
                   Software Engineer & <br />
                   <span className="text-accent-primary">AI/ML Engineer</span>
