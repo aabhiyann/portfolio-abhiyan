@@ -13,11 +13,11 @@ export const AboutTeaser: React.FC = () => {
       <div className="absolute inset-0 bg-accent-primary/5 opacity-20 pointer-events-none"></div>
       <div className="max-w-4xl mx-auto px-6 md:px-8 text-center relative z-10">
         <SectionTitle
-          title="My Journey"
-          subtitle="DC-based. M.S. CS from GWU. Six production apps shipped. Open to SWE, DS, and PM roles."
+          title="About"
+          subtitle="DC-based. M.S. CS from GWU (4.0). Six production apps shipped."
         />
         <Button as={Link} to="/about" variant="primary" size="lg">
-          Read My Story
+          About
         </Button>
       </div>
     </section>
