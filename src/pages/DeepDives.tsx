@@ -12,7 +12,7 @@ function DeepDives() {
     <Page>
       <SEO
         title="Deep Dives – Abhiyan Sainju"
-        description="Explore in-depth articles and deep dives by Abhiyan Sainju on technology, mathematics, and the intersection of code and creativity."
+        description="Long-form technical writing by Abhiyan Sainju — ML systems, production engineering, and software research."
       />
       {/* Hero Section */}
       <section className="relative py-24 min-h-screen font-heading">
