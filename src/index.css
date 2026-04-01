@@ -644,6 +644,7 @@ body,
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border: 1px solid color-mix(in srgb, var(--color-border-primary) 50%, transparent) !important;
+  border-radius: 1rem !important;
 }
 
 .glass-card-hover {
