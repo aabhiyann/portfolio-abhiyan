@@ -23,10 +23,7 @@ function Resume() {
             transition={{ duration: motionTokens.duration.slow / 1000 }}
             className="text-center mb-12"
           >
-            <SectionTitle
-              title="Resume"
-              subtitle="My professional experience and qualifications in a nutshell."
-            />
+            <SectionTitle title="Resume" subtitle="" />
 
             <div className="flex justify-center gap-4 mt-8">
               <a href={resumeUrl} download="Abhiyan_Sainju_Resume.pdf">
