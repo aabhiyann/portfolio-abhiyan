@@ -43,7 +43,7 @@ function DeepDives() {
 
               {articles.length === 0 ? (
                 <div className="text-center py-24">
-                  <div className="inline-block p-12 rounded-3xl glass-card max-w-md">
+                  <div className="inline-block p-12 rounded-2xl bg-bg-surface border border-border-primary max-w-md">
                     <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-primary/10 flex items-center justify-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@ function DeepDives() {
                   {articles.map((article, index) => (
                     <Link key={article.id} to={`/deep-dives/${article.id}`}>
                       <MotionCard
-                        className="group relative glass-card glass-card-hover mb-6"
+                        className="group relative bg-card border border-border-primary hover:border-accent-primary/30 transition-all duration-300 mb-6"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
