@@ -23,7 +23,7 @@ export const FeaturedProjectsSection: React.FC<
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <SectionTitle
           title="Featured Projects"
-          subtitle="Six shipped projects. All production. All documented."
+          subtitle="Selected work with code, demos, and technical writing."
         />
         <ProjectGrid projects={projects} variant="featured" />
         <motion.div
