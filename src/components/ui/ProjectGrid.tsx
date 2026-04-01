@@ -44,7 +44,7 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
               <SafeImage
                 src={project.image}
                 alt={project.title}
-                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                 fallback="/images/project-placeholder.png"
               />
 
