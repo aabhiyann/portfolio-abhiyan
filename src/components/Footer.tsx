@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { content } from "../data/Content";
 
 interface FooterLinkProps {
   to: string;
@@ -72,16 +71,9 @@ const Footer: React.FC = () => {
               <FooterLink to="/resume">Resume</FooterLink>
             </nav>
           </div>
-          <div className="flex flex-col space-y-4">
-            <h4 className="font-semibold text-text-primary">Current Focus</h4>
-            <p className="text-sm text-text-muted">{content.currentFocus}</p>
-          </div>
         </div>
         <div className="mt-12 pt-8 border-t border-border-primary text-center text-sm text-text-muted">
-          <p>
-            &copy; {new Date().getFullYear()} Abhiyan Sainju. Built with React &
-            Tailwind.
-          </p>
+          <p>&copy; {new Date().getFullYear()} Abhiyan Sainju</p>
         </div>
       </div>
     </footer>

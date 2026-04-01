@@ -29,14 +29,14 @@ const skills: Skill[] = [
     category: "Languages",
     proficiency: 85,
     description:
-      "Implemented high-performance algorithms for system optimization.",
+      "Used in CSCI 6212 curriculum design and algorithm problem sets at GWU.",
   },
   {
     name: "Java",
     category: "Languages",
     proficiency: 90,
     description:
-      "Architected distributed backend systems for high-throughput data processing.",
+      "Used in distributed systems and concurrent programming coursework at GWU.",
   },
   // Frameworks
   {
@@ -44,14 +44,14 @@ const skills: Skill[] = [
     category: "Frameworks",
     proficiency: 95,
     description:
-      "Built SEO-optimized SaaS platforms with SSR and dynamic routing.",
+      "TalkifyDocs (Next.js, SSR), InfraSight dashboard (React, Chart.js), this portfolio.",
   },
   {
     name: "Node.js",
     category: "Frameworks",
     proficiency: 92,
     description:
-      "Developed scalable real-time microservices handling 10k+ requests/m.",
+      "MelodyHub backend: Socket.IO server supporting 100+ concurrent users with <100ms sync latency.",
   },
   {
     name: "FastAPI",
@@ -110,7 +110,8 @@ const skills: Skill[] = [
     name: "PostgreSQL",
     category: "Tools",
     proficiency: 92,
-    description: "Optimized complex SQL queries for sub-millisecond latency.",
+    description:
+      "InfraSight (cost data storage) and TalkifyDocs (user/document records) via Neon serverless.",
   },
   {
     name: "Git & CI/CD",
