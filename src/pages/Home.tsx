@@ -17,29 +17,39 @@ import { ArrowRight, Download } from "lucide-react";
 
 function Home() {
   const getStartYear = (dates: string) => dates.split("–")[0].trim();
+  const parseStartDate = (dates: string) => {
+    const [start] = dates.split("–").map((part) => part.trim());
+    return new Date(`${start} 1`).getTime();
+  };
 
-  const homepageExperience = experiences.filter((experience) =>
-    ["gwu-ta", "ecs-engineer", "intel-security-lead", "ecs-intern"].includes(
-      experience.id,
-    ),
+  const homepageTimeline = useMemo(
+    () =>
+      experiences
+        .filter((experience) =>
+          [
+            "gwu-ta",
+            "gwu-ms",
+            "ecs-engineer",
+            "intel-security-lead",
+            "ecs-intern",
+            "sx-bscsit",
+          ].includes(experience.id),
+        )
+        .map((experience) => ({
+          ...experience,
+          track: ["gwu-ms", "sx-bscsit"].includes(experience.id)
+            ? "Education"
+            : "Experience",
+        }))
+        .sort((a, b) => parseStartDate(b.dates) - parseStartDate(a.dates)),
+    [],
   );
-  const homepageEducation = experiences.filter((experience) =>
-    ["gwu-ms", "sx-bscsit"].includes(experience.id),
-  );
-  const timelineSections = [
-    { label: "Experience", items: homepageExperience },
-    { label: "Education", items: homepageEducation },
-  ];
   const timelineYears = useMemo(
     () =>
       Array.from(
-        new Set(
-          timelineSections.flatMap((section) =>
-            section.items.map((item) => getStartYear(item.dates)),
-          ),
-        ),
+        new Set(homepageTimeline.map((item) => getStartYear(item.dates))),
       ),
-    [homepageExperience, homepageEducation],
+    [homepageTimeline],
   );
   const [activeTimelineYear, setActiveTimelineYear] = useState(
     timelineYears[0] ?? "",
@@ -134,148 +144,173 @@ function Home() {
       {/* Experience Timeline */}
       <section className="py-24 bg-bg-surface/40">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[220px,1fr] gap-8 lg:gap-12 items-start">
+          <motion.div
+            className="max-w-2xl mb-10 lg:mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: motionTokens.duration.normal / 1000 }}
+          >
+            <div className="inline-flex items-center gap-3 mb-5">
+              <span className="h-px w-10 bg-accent-primary/60" />
+              <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
+                Journey
+              </span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold font-heading text-text-primary leading-tight mb-4">
+              Built across classrooms, startups, and client work.
+            </h2>
+            <p className="text-sm md:text-base text-text-muted leading-relaxed">
+              The projects on this site are backed by teaching, production
+              engineering, and client-facing work across Nepal and Washington,
+              DC.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[110px,1fr] gap-8 lg:gap-14 items-start">
             <motion.div
-              className="lg:sticky lg:top-28 space-y-6 self-start relative z-10 bg-bg-surface/95 backdrop-blur-sm rounded-2xl px-4 py-4"
+              className="hidden lg:flex lg:sticky lg:top-28 self-start"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: motionTokens.duration.normal / 1000 }}
             >
-              <div className="inline-flex items-center gap-3">
-                <span className="h-px w-10 bg-accent-primary/60" />
-                <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
-                  Experience
-                </span>
-              </div>
-              <div className="space-y-4">
-                <h2 className="text-2xl md:text-3xl font-bold font-heading text-text-primary leading-tight">
-                  Built across classrooms, startups, and client work.
-                </h2>
-                <p className="text-sm text-text-muted leading-relaxed">
-                  Teaching, product engineering, and client work across Nepal
-                  and Washington, DC.
-                </p>
-              </div>
+              <div className="relative pl-6">
+                <div className="absolute left-[10px] top-2 bottom-2 w-px bg-border-primary/80" />
+                <div className="space-y-5">
+                  {timelineYears.map((year, index) => {
+                    const isActive = activeTimelineYear === year;
 
-              <div className="relative pl-5">
-                <div className="absolute left-1 top-1 bottom-1 w-px bg-border-primary" />
-                <div className="space-y-4">
-                  {timelineYears.map((year) => (
-                    <div
-                      key={year}
-                      className={`relative pl-5 text-sm font-mono transition-all duration-300 ${
-                        activeTimelineYear === year
-                          ? "text-accent-primary"
-                          : "text-text-muted/65"
-                      }`}
-                    >
-                      <span
-                        className={`absolute left-[-3px] top-1.5 h-2.5 w-2.5 rounded-full transition-all duration-300 ${
-                          activeTimelineYear === year
-                            ? "bg-accent-primary ring-4 ring-accent-primary/12"
-                            : "bg-border-primary"
-                        }`}
-                      />
-                      {year}
-                    </div>
-                  ))}
+                    return (
+                      <motion.div
+                        key={year}
+                        animate={{
+                          opacity: isActive ? 1 : 0.45,
+                          x: isActive ? 0 : 8,
+                          scale: isActive ? 1 : 0.96,
+                        }}
+                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        className="relative"
+                      >
+                        <span
+                          className={`absolute left-[-20px] top-2 h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                            isActive
+                              ? "bg-accent-primary ring-4 ring-accent-primary/12"
+                              : "bg-border-primary"
+                          }`}
+                        />
+                        <div
+                          className={`text-[11px] font-mono uppercase tracking-[0.28em] transition-colors duration-300 ${
+                            isActive
+                              ? "text-accent-primary"
+                              : index === 0
+                                ? "text-text-secondary"
+                                : "text-text-muted/75"
+                          }`}
+                        >
+                          {year}
+                        </div>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
-
-              <Button as={Link} to="/about" variant="outline" size="md">
-                View Full Journey
-              </Button>
             </motion.div>
 
-            <div className="space-y-12">
-              {timelineSections.map((group, groupIndex) => (
-                <div key={group.label} className="relative pl-8 md:pl-10">
-                  <div className="mb-6">
-                    <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
-                      {group.label}
-                    </span>
-                  </div>
-                  <div className="absolute left-3 top-10 bottom-2 w-px bg-border-primary" />
-                  <div className="space-y-10">
-                    {group.items.map((experience, index) => (
-                      <motion.article
-                        key={experience.id}
-                        className="relative grid grid-cols-[70px,1fr] md:grid-cols-[84px,1fr] gap-4 md:gap-6"
-                        initial={{ opacity: 0, y: 24 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        onViewportEnter={() =>
-                          setActiveTimelineYear(getStartYear(experience.dates))
-                        }
+            <div className="relative pl-8 md:pl-10">
+              <div className="absolute left-3 top-1 bottom-1 w-px bg-border-primary" />
+              <div className="space-y-12">
+                {homepageTimeline.map((experience, index) => (
+                  <motion.article
+                    key={experience.id}
+                    className="relative grid grid-cols-[78px,1fr] md:grid-cols-[96px,1fr] gap-4 md:gap-7"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    onViewportEnter={() =>
+                      setActiveTimelineYear(getStartYear(experience.dates))
+                    }
+                    viewport={{ once: true, amount: 0.55 }}
+                    transition={{
+                      duration: motionTokens.duration.normal / 1000,
+                      delay: index * 0.05,
+                    }}
+                  >
+                    <div className="absolute left-[-21px] top-1.5 h-2.5 w-2.5 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
+
+                    <div className="pt-0.5">
+                      <motion.div
+                        className="space-y-2"
+                        initial={{ opacity: 0.6, x: -8 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{
                           duration: motionTokens.duration.normal / 1000,
-                          delay: groupIndex * 0.08 + index * 0.06,
+                          delay: index * 0.04,
                         }}
                       >
-                        <div className="absolute left-[-21px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
+                        <div className="text-2xl md:text-[2rem] font-heading font-bold text-accent-primary leading-none">
+                          {getStartYear(experience.dates)}
+                        </div>
+                        <div className="h-px w-10 bg-accent-primary/35" />
+                      </motion.div>
+                    </div>
 
-                        <div className="pt-0.5">
-                          <motion.div
-                            className="space-y-2"
-                            initial={{ opacity: 0.6, x: -8 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{
-                              duration: motionTokens.duration.normal / 1000,
-                              delay: index * 0.05,
-                            }}
-                          >
-                            <div className="text-2xl md:text-3xl font-heading font-bold text-accent-primary leading-none">
-                              {getStartYear(experience.dates)}
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <span className="inline-flex rounded-full border border-border-primary px-3 py-1 text-xs font-mono uppercase tracking-[0.18em] text-text-secondary">
+                          {experience.track}
+                        </span>
+                        <span className="text-sm text-text-secondary">
+                          {experience.dates}
+                        </span>
+                        <span className="text-xs uppercase tracking-[0.18em] text-text-muted/80">
+                          {experience.location}
+                        </span>
+                      </div>
+
+                      <div className="space-y-1">
+                        <p className="text-xs uppercase tracking-[0.22em] text-accent-primary">
+                          {experience.company}
+                        </p>
+                        <h3 className="text-xl md:text-2xl font-bold text-text-primary font-heading leading-tight">
+                          {experience.role}
+                        </h3>
+                      </div>
+
+                      <p className="text-text-muted leading-relaxed max-w-2xl">
+                        {experience.description}
+                      </p>
+
+                      <div className="space-y-2">
+                        {experience.achievements
+                          .slice(0, 2)
+                          .map((achievement) => (
+                            <div
+                              key={achievement}
+                              className="flex items-start gap-3 text-sm text-text-secondary"
+                            >
+                              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
+                              <span>{achievement}</span>
                             </div>
-                            <div className="h-px w-10 bg-accent-primary/40" />
-                          </motion.div>
-                        </div>
+                          ))}
+                      </div>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
 
-                        <div>
-                          <div className="flex flex-wrap items-center gap-3 mb-3">
-                            <span className="inline-flex rounded-full bg-accent-primary/10 px-3 py-1.5 text-sm font-mono text-accent-primary">
-                              {experience.dates}
-                            </span>
-                            <span className="text-xs uppercase tracking-[0.22em] text-text-muted/80">
-                              {experience.location}
-                            </span>
-                          </div>
-
-                          <div className="mb-3">
-                            <p className="text-xs uppercase tracking-[0.22em] text-accent-primary mb-2">
-                              {experience.company}
-                            </p>
-                            <h3 className="text-xl md:text-2xl font-bold text-text-primary font-heading">
-                              {experience.role}
-                            </h3>
-                          </div>
-
-                          <p className="text-text-muted leading-relaxed mb-4 max-w-2xl">
-                            {experience.description}
-                          </p>
-
-                          <div className="space-y-2 pl-1">
-                            {experience.achievements
-                              .slice(0, 2)
-                              .map((achievement) => (
-                                <div
-                                  key={achievement}
-                                  className="flex items-start gap-3 text-sm text-text-secondary"
-                                >
-                                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
-                                  <span>{achievement}</span>
-                                </div>
-                              ))}
-                          </div>
-                        </div>
-                      </motion.article>
-                    ))}
-                  </div>
-                </div>
-              ))}
+              <div className="mt-10 lg:hidden">
+                <Button as={Link} to="/about" variant="outline" size="md">
+                  View Full Journey
+                </Button>
+              </div>
             </div>
+          </div>
+
+          <div className="hidden lg:flex justify-start mt-10 pl-[110px]">
+            <Button as={Link} to="/about" variant="outline" size="md">
+              View Full Journey
+            </Button>
           </div>
         </div>
       </section>
