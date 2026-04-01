@@ -53,12 +53,11 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     const getVariantClasses = () => {
       switch (variant) {
         case "elevated":
-          return "bg-card/60 backdrop-blur-xl border border-border-primary shadow-lg shadow-theme";
+          return "bg-card border border-border-primary shadow-sm shadow-theme";
         case "outlined":
           return "bg-transparent border border-border-secondary";
         default:
-          // Default card with good contrast but liquid feel
-          return "bg-card/40 backdrop-blur-md border border-border-primary shadow-sm hover:bg-card/60 transition-colors";
+          return "bg-card border border-border-primary/80 hover:border-accent-primary/30 transition-colors";
       }
     };
 
@@ -76,7 +75,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     };
 
     const baseClasses =
-      "rounded-xl transition-all duration-300 ease-in-out relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:via-transparent before:to-transparent before:pointer-events-none";
+      "rounded-xl transition-all duration-300 ease-in-out relative overflow-hidden";
 
     return (
       <div
