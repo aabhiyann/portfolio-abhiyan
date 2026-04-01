@@ -34,8 +34,6 @@
   --color-hover-dark: #79c0ff;
   --color-focus-light: #0550ae;
   --color-focus-dark: #58a6ff;
-  --color-accent-cyan: #00f2ea;
-
   /* State Colors */
   --color-success: #3fb950;
   --color-warning: #ffa657;
@@ -646,6 +644,7 @@ body,
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border: 1px solid color-mix(in srgb, var(--color-border-primary) 50%, transparent) !important;
+  border-radius: 1rem !important;
 }
 
 .glass-card-hover {

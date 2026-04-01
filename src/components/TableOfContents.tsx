@@ -54,7 +54,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({
               key={item.id}
               href={`#${item.id}`}
               onClick={(e) => handleClick(e, item.id)}
-              className={`block py-1.5 px-2 rounded-md text-sm transition-colors hover:bg-white/5 ${
+              className={`block py-1.5 px-2 rounded-md text-sm transition-colors hover:bg-bg-surface/50 ${
                 item.level === 1
                   ? "font-semibold text-text-primary"
                   : item.level === 2
