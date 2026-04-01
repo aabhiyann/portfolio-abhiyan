@@ -29,8 +29,8 @@ function DeepDives() {
               </h1>
 
               <p className="text-xl text-text-muted mb-8 max-w-3xl mx-auto">
-                Long-form technical writing. Research, systems, and ML in
-                production.
+                Long-form technical writing on research, systems, and the work
+                of getting ML into production.
               </p>
             </motion.div>
 
