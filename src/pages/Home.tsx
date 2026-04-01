@@ -11,12 +11,15 @@ import WhyHireMe from "../components/WhyHireMe";
 import ContactSection from "../components/ContactSection";
 import TypeWriter from "../components/ui/TypeWriter";
 import { FeaturedProjectsSection, AboutTeaser } from "../components/sections";
-import SectionTitle from "../components/SectionTitle";
-import VisualTimeline from "../components/VisualTimeline";
 import { experiences } from "../data/experience";
 import { ArrowRight, Download } from "lucide-react";
 
 function Home() {
+  const homepageTimeline = experiences.filter(
+    (experience) =>
+      !["student-athletics", "stx-event-coordinator"].includes(experience.id),
+  );
+
   return (
     <Page>
       <SEO
@@ -104,21 +107,87 @@ function Home() {
       <WhyHireMe />
 
       {/* Experience Timeline */}
-      <section className="py-24 bg-bg-primary">
+      <section className="py-24 bg-bg-surface/40">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <SectionTitle
-            title="Experience"
-            subtitle="A quick timeline of teaching, engineering, and shipped work."
-          />
-          <VisualTimeline
-            items={experiences.map((exp) => ({
-              year: exp.dates,
-              title: `${exp.role} @ ${exp.company}`,
-              description: exp.description,
-              location: exp.location,
-              achievements: exp.achievements,
-            }))}
-          />
+          <div className="grid grid-cols-1 lg:grid-cols-[320px,1fr] gap-10 lg:gap-16 items-start">
+            <motion.div
+              className="lg:sticky lg:top-28 space-y-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: motionTokens.duration.normal / 1000 }}
+            >
+              <div className="inline-flex items-center gap-3">
+                <span className="h-px w-10 bg-accent-primary/60" />
+                <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
+                  Experience
+                </span>
+              </div>
+              <div className="space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold font-heading text-text-primary leading-tight">
+                  Built across classrooms, startups, and client work.
+                </h2>
+                <p className="text-text-muted leading-relaxed">
+                  The projects on this site are backed by teaching, production
+                  engineering, and client-facing work across Nepal and
+                  Washington, DC.
+                </p>
+              </div>
+              <Button as={Link} to="/about" variant="outline" size="lg">
+                View Full Journey
+              </Button>
+            </motion.div>
+
+            <div className="space-y-5">
+              {homepageTimeline.map((experience, index) => (
+                <motion.article
+                  key={experience.id}
+                  className="rounded-2xl border border-border-primary/80 bg-card px-6 py-6 shadow-sm transition-colors hover:border-accent-primary/25"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: motionTokens.duration.normal / 1000,
+                    delay: index * 0.06,
+                  }}
+                >
+                  <div className="flex flex-wrap items-center gap-3 mb-4">
+                    <span className="inline-flex rounded-full bg-accent-primary/10 px-3 py-1.5 text-sm font-mono text-accent-primary">
+                      {experience.dates}
+                    </span>
+                    <span className="text-xs uppercase tracking-[0.22em] text-text-muted">
+                      {experience.location}
+                    </span>
+                  </div>
+
+                  <div className="mb-4">
+                    <p className="text-xs uppercase tracking-[0.22em] text-accent-primary mb-2">
+                      {experience.company}
+                    </p>
+                    <h3 className="text-2xl font-bold text-text-primary font-heading">
+                      {experience.role}
+                    </h3>
+                  </div>
+
+                  <p className="text-text-muted leading-relaxed mb-5">
+                    {experience.description}
+                  </p>
+
+                  <div className="space-y-3">
+                    {experience.achievements.slice(0, 2).map((achievement) => (
+                      <div
+                        key={achievement}
+                        className="flex items-start gap-3 text-sm text-text-secondary"
+                      >
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70" />
+                        <span>{achievement}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
