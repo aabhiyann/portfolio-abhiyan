@@ -25,7 +25,7 @@ const ContactSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center gap-8"
         >
-          <div className="p-8 rounded-2xl glass-card w-full">
+          <div className="p-8 rounded-2xl bg-card border border-border-primary w-full">
             <p className="text-text-muted mb-4">aabhiyansainju@gmail.com</p>
             <p className="text-text-muted text-sm mb-8">
               Based in Washington, DC. Open to relocation anywhere in the US.
