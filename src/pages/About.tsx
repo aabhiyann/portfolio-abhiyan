@@ -117,7 +117,7 @@ function About() {
       <section className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="My Journey"
+            title="Experience"
             subtitle="Roles, projects, and milestones in order."
           />
           <VisualTimeline
