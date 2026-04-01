@@ -56,24 +56,22 @@ function About() {
 
                 <div className="space-y-4 text-text-secondary leading-relaxed">
                   <p>
-                    I'm Abhiyan, a Software Engineer based in Washington DC,
-                    open to relocation anywhere in the United States. Born and
-                    raised in Nepal, I earned my MS in Computer Science from GWU
-                    with a 4.0 GPA. I build systems that work reliably in
-                    production.
+                    I'm Abhiyan, a software engineer based in Washington, DC,
+                    originally from Nepal. I recently finished my MS in
+                    Computer Science at GWU, where I focused on algorithms,
+                    distributed systems, and machine learning.
                   </p>
                   <p>
-                    At GWU, I focused on algorithms, distributed systems, and
-                    machine learning. I taught Design & Analysis of Algorithms
-                    to 60+ grad students — midterm scores improved 22%
-                    year-over-year.
+                    At GWU, I taught Design & Analysis of Algorithms to 60+
+                    graduate students across four sections, helped standardize
+                    TA training, and worked with faculty on course material
+                    rooted in real optimization problems.
                   </p>
                   <p>
-                    I've built production systems that solve real problems.
-                    InfraSight uses ML to analyze AWS infrastructure patterns.
-                    TalkifyDocs lets users chat with PDF documents using RAG
-                    architecture. I focus on shipping working software, not just
-                    prototypes.
+                    My recent work spans cloud-cost forecasting, document chat
+                    with citations, and real-time collaboration systems. I care
+                    about software that is reliable, fast to use, and clear
+                    about the problems it solves.
                   </p>
                 </div>
               </motion.div>
