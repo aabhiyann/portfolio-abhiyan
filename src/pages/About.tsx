@@ -65,8 +65,8 @@ function About() {
                   <p>
                     At GWU, I focused on algorithms, distributed systems, and
                     machine learning. I taught Design & Analysis of Algorithms
-                    to grad students, where my interactive tutorials improved
-                    learning outcomes significantly.
+                    to 60+ grad students — midterm scores improved 22%
+                    year-over-year.
                   </p>
                   <p>
                     I've built production systems that solve real problems.
