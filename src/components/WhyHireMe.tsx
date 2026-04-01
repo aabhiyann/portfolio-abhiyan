@@ -17,11 +17,11 @@ const WhyHireMe: React.FC = () => {
     },
     {
       icon: Rocket,
-      title: "Production Experience",
+      title: "Shipped Work",
       items: [
-        "6 applications shipped and deployed",
-        "1,200+ active users across projects",
-        "Full ownership: API, ML layer, and UI",
+        "7 production features delivered at ECS Tech",
+        "1,200+ active users across personal projects",
+        "Owned frontend, backend services, data flow, and deployment",
       ],
     },
     {
