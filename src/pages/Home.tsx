@@ -104,9 +104,9 @@ function Home() {
                 <div className="text-xl md:text-2xl text-text-secondary font-medium mb-4 min-h-[60px]">
                   <TypeWriter
                     words={[
-                      "Building AI-powered full-stack systems",
-                      "Building ML-powered applications",
-                      "From RAG pipelines to production APIs",
+                      "Full-stack systems with real ML in production",
+                      "Teaching algorithms while shipping products",
+                      "From RAG pipelines to React frontends",
                     ]}
                   />
                 </div>
