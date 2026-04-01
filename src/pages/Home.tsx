@@ -11,6 +11,9 @@ import WhyHireMe from "../components/WhyHireMe";
 import ContactSection from "../components/ContactSection";
 import TypeWriter from "../components/ui/TypeWriter";
 import { FeaturedProjectsSection, AboutTeaser } from "../components/sections";
+import SectionTitle from "../components/SectionTitle";
+import VisualTimeline from "../components/VisualTimeline";
+import { experiences } from "../data/experience";
 import { ArrowRight, Download } from "lucide-react";
 
 function Home() {
@@ -111,6 +114,25 @@ function Home() {
 
       {/* Why Hire Me Section */}
       <WhyHireMe />
+
+      {/* Experience Timeline */}
+      <section className="py-24 bg-bg-primary">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <SectionTitle
+            title="Experience"
+            subtitle="A quick timeline of teaching, engineering, and shipped work."
+          />
+          <VisualTimeline
+            items={experiences.map((exp) => ({
+              year: exp.dates,
+              title: `${exp.role} @ ${exp.company}`,
+              description: exp.description,
+              location: exp.location,
+              achievements: exp.achievements,
+            }))}
+          />
+        </div>
+      </section>
 
       {/* Projects Teaser - Now using extracted component */}
       <FeaturedProjectsSection projects={projects.slice(0, 3)} />
