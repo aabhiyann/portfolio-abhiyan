@@ -39,8 +39,8 @@ const WhyHireMe: React.FC = () => {
     <section className="py-24 bg-bg-surface/50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <SectionTitle
-          title="Why Me"
-          subtitle="Production systems. Real metrics. No fluff."
+          title="Production systems. Real metrics. No fluff."
+          subtitle=""
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
