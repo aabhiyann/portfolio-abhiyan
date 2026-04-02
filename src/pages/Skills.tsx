@@ -25,12 +25,9 @@ function Skills() {
           </div>
 
           <div className="mt-24">
-            <div className="inline-flex items-center gap-3 mb-5">
-              <span className="h-px w-10 bg-accent-primary/60" />
-              <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
-                Certifications
-              </span>
-            </div>
+            <p className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-3">
+              Certifications
+            </p>
             <h3 className="text-2xl font-bold font-heading mb-8">
               Focused cloud training
             </h3>

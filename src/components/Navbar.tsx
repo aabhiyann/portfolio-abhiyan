@@ -12,15 +12,26 @@ const NavLinks = ({
   onLinkClick?: () => void;
   mobile?: boolean;
 }) => {
-  const links = [
+  const navLinks = [
     { path: "/about", label: "About" },
     { path: "/projects", label: "Projects" },
-    { path: "/about#experience", label: "Experience" },
     { path: "/skills", label: "Skills" },
     { path: "/deep-dives", label: "Writing" },
     { path: "/photography", label: "Photography" },
     { path: "/contact", label: "Contact" },
   ];
+
+  const desktopLinkClass = (isActive: boolean) =>
+    `px-3 py-2 text-sm font-medium transition-colors relative ${
+      isActive
+        ? "text-text-primary after:absolute after:bottom-0 after:left-3 after:right-3 after:h-px after:bg-accent-primary"
+        : "text-text-muted"
+    } hover:text-text-primary`;
+
+  const mobileLinkClass = (isActive: boolean) =>
+    `text-2xl font-heading font-semibold transition-colors ${
+      isActive ? "text-accent-primary" : "text-text-muted"
+    } hover:text-text-primary`;
 
   return (
     <div
@@ -30,26 +41,26 @@ const NavLinks = ({
           : "flex items-baseline space-x-1"
       }
     >
-      {links.map((link) => (
+      {navLinks.map((link) => (
         <NavLink
           key={link.path}
           to={link.path}
           onClick={onLinkClick}
           className={({ isActive }) =>
-            mobile
-              ? `text-2xl font-heading font-semibold transition-colors ${
-                  isActive ? "text-accent-primary" : "text-text-muted"
-                } hover:text-text-primary`
-              : `px-3 py-2 text-sm font-medium transition-colors relative ${
-                  isActive
-                    ? "text-text-primary after:absolute after:bottom-0 after:left-3 after:right-3 after:h-px after:bg-accent-primary"
-                    : "text-text-muted"
-                } hover:text-text-primary`
+            mobile ? mobileLinkClass(isActive) : desktopLinkClass(isActive)
           }
         >
           {link.label}
         </NavLink>
       ))}
+      {/* Experience: plain anchor so hash scroll works */}
+      <a
+        href="/about#experience"
+        onClick={onLinkClick}
+        className={mobile ? mobileLinkClass(false) : desktopLinkClass(false)}
+      >
+        Experience
+      </a>
     </div>
   );
 };
