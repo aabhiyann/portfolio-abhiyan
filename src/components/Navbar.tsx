@@ -25,8 +25,8 @@ const NavLinks = ({
     <div
       className={
         mobile
-          ? "flex flex-col gap-6 items-center"
-          : "flex items-baseline space-x-4"
+          ? "flex flex-col gap-5 items-start w-full"
+          : "flex items-baseline space-x-1"
       }
     >
       {links.map((link) => (
@@ -36,10 +36,10 @@ const NavLinks = ({
           onClick={onLinkClick}
           className={({ isActive }) =>
             mobile
-              ? `text-3xl font-bold transition-colors ${
+              ? `text-2xl font-heading font-semibold transition-colors ${
                   isActive ? "text-accent-primary" : "text-text-muted"
                 } hover:text-text-primary`
-              : `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+              : `px-3 py-2 text-sm font-medium transition-colors ${
                   isActive ? "text-text-primary" : "text-text-muted"
                 } hover:text-text-primary`
           }
@@ -78,7 +78,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-navbar/95 border-b border-border-primary transition-colors duration-300 overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <Link
@@ -134,7 +134,7 @@ const Navbar: React.FC = () => {
               </button>
               <Link
                 to="/resume"
-                className="hidden sm:inline-flex px-4 py-2 rounded-md text-sm font-medium bg-accent-primary text-white hover:bg-accent-primary/90 transition-colors relative z-50"
+                className="hidden sm:inline-flex px-4 py-2 rounded-md text-sm font-medium border border-border-primary text-text-primary hover:border-accent-primary/40 hover:text-accent-primary transition-colors relative z-50"
               >
                 Resume
               </Link>
@@ -164,7 +164,7 @@ const Navbar: React.FC = () => {
             transition={{ duration: 0.2 }}
             className="md:hidden fixed inset-0 z-30 bg-bg-primary/95 backdrop-blur-md overflow-y-auto"
           >
-            <nav className="flex flex-col items-center justify-center min-h-screen gap-8 px-6">
+            <nav className="max-w-6xl mx-auto min-h-screen px-6 pt-28 pb-12">
               <NavLinks onLinkClick={closeMobileMenu} mobile />
             </nav>
           </motion.div>

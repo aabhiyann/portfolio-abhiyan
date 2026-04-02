@@ -1,5 +1,5 @@
 import React from "react";
-import { MotionCard } from "./ui/MotionCard";
+import { Card } from "./ui/Card";
 import { GraduationCap, Rocket, Code2 } from "lucide-react";
 import SectionTitle from "./SectionTitle";
 
@@ -7,53 +7,45 @@ const WhyHireMe: React.FC = () => {
   const cards = [
     {
       icon: GraduationCap,
-      title: "Education",
+      title: "Graduate degree, 4.0",
       items: [
-        "M.S. Computer Science, GWU (4.0 GPA)",
-        "Focus: distributed systems, ML, algorithms",
-        "AWS Cloud Foundations certified",
-        "AWS Cloud Operations certified",
+        "M.S. Computer Science at GWU",
+        "Focused on algorithms, distributed systems, and ML",
+        "Taught algorithms to 60+ graduate students",
       ],
     },
     {
       icon: Rocket,
-      title: "Production Experience",
+      title: "Work that shipped",
       items: [
-        "6 applications shipped and deployed",
-        "1,200+ active users across projects",
-        "Full ownership: API, ML layer, and UI",
-        "Real metrics, not just notebooks",
+        "7 production features at ECS Tech",
+        "1,200+ active users across personal projects",
+        "Owned end to end: frontend, API, data, deployment",
       ],
     },
     {
       icon: Code2,
-      title: "Full-Stack + AI/ML",
+      title: "Full stack and ML",
       items: [
-        "React / Next.js, FastAPI, PostgreSQL",
+        "React, Next.js, FastAPI, PostgreSQL",
         "RAG pipelines, anomaly detection, forecasting",
         "Docker, AWS, CI/CD",
-        "System design with clean, maintainable code",
       ],
     },
   ];
 
   return (
     <section className="py-24 bg-bg-surface/50 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
         <SectionTitle
-          title="Why Me"
-          subtitle="Production systems. Real metrics. No fluff."
+          title="What I bring"
+          subtitle="A graduate degree with a 4.0, production features that shipped, and the full stack to build them end to end."
         />
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {cards.map((card, index) => (
-            <MotionCard
+          {cards.map((card) => (
+            <Card
               key={card.title}
-              className="h-full glass-card glass-card-hover"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="h-full bg-card border border-border-primary hover:border-accent-primary/30 transition-all duration-300"
             >
               <div className="p-8 h-full flex flex-col">
                 <div className="w-12 h-12 rounded-lg bg-accent-primary/10 flex items-center justify-center mb-6">
@@ -75,7 +67,7 @@ const WhyHireMe: React.FC = () => {
                   ))}
                 </ul>
               </div>
-            </MotionCard>
+            </Card>
           ))}
         </div>
       </div>

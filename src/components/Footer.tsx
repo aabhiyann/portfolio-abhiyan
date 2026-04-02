@@ -1,87 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { content } from "../data/Content";
-
-interface FooterLinkProps {
-  to: string;
-  children: React.ReactNode;
-}
-
-const FooterLink: React.FC<FooterLinkProps> = ({ to, children }) => (
-  <Link
-    to={to}
-    className="text-text-muted hover:text-text-primary transition-colors duration-300 block py-1.5"
-  >
-    {children}
-  </Link>
-);
-
-interface ExternalFooterLinkProps {
-  href: string;
-  children: React.ReactNode;
-}
-
-const ExternalFooterLink: React.FC<ExternalFooterLinkProps> = ({
-  href,
-  children,
-}) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-text-muted hover:text-text-primary transition-colors duration-300 block py-1.5"
-  >
-    {children}
-  </a>
-);
 
 const Footer: React.FC = () => {
   return (
-    <footer className="border-t border-border-primary backdrop-blur-sm bg-bg-surface relative">
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="flex flex-col space-y-4">
-            <h4 className="font-semibold text-text-primary">Work</h4>
-            <nav className="flex flex-col space-y-2">
-              <FooterLink to="/projects">Projects</FooterLink>
-              <FooterLink to="/photography">Photography</FooterLink>
-              <FooterLink to="/deep-dives">Deep Dives</FooterLink>
-            </nav>
+    <footer className="border-t border-border-primary bg-bg-surface">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-muted">
+          <div className="flex items-center gap-6">
+            <a
+              href="https://github.com/aabhiyann"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-text-primary transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://linkedin.com/in/abhiyansainju"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-text-primary transition-colors"
+            >
+              LinkedIn
+            </a>
+            <Link
+              to="/resume"
+              className="hover:text-text-primary transition-colors"
+            >
+              Resume
+            </Link>
           </div>
-          <div className="flex flex-col space-y-4">
-            <h4 className="font-semibold text-text-primary">Connect</h4>
-            <nav className="flex flex-col space-y-2">
-              <ExternalFooterLink href="https://github.com/aabhiyann">
-                GitHub
-              </ExternalFooterLink>
-              <ExternalFooterLink href="https://linkedin.com/in/abhiyansainju">
-                LinkedIn
-              </ExternalFooterLink>
-              <ExternalFooterLink href="mailto:aabhiyansainju@gmail.com">
-                Email
-              </ExternalFooterLink>
-              <ExternalFooterLink href="https://github.com/aabhiyann/portfolio-abhiyan">
-                View Source
-              </ExternalFooterLink>
-            </nav>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-right">
+            <span>Designed and built by hand in Washington, DC</span>
+            <span>&copy; {new Date().getFullYear()} Abhiyan Sainju</span>
           </div>
-          <div className="flex flex-col space-y-4">
-            <h4 className="font-semibold text-text-primary">Resources</h4>
-            <nav className="flex flex-col space-y-2">
-              <FooterLink to="/about">About</FooterLink>
-              <FooterLink to="/resume">Resume</FooterLink>
-            </nav>
-          </div>
-          <div className="flex flex-col space-y-4">
-            <h4 className="font-semibold text-text-primary">Current Focus</h4>
-            <p className="text-sm text-text-muted">{content.currentFocus}</p>
-          </div>
-        </div>
-        <div className="mt-12 pt-8 border-t border-border-primary text-center text-sm text-text-muted">
-          <p>
-            &copy; {new Date().getFullYear()} Abhiyan Sainju. Built with React &
-            Tailwind.
-          </p>
         </div>
       </div>
     </footer>

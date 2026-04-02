@@ -7,7 +7,7 @@ function Contact() {
     <Page>
       <SEO
         title="Contact | Abhiyan Sainju"
-        description="Get in touch for SWE, DS, or PM opportunities."
+        description="Contact Abhiyan Sainju — Software Engineer and AI/ML Engineer based in Washington, DC. Open to full-stack and ML engineering roles."
         keywords={["Contact", "Email", "Hire", "Software Engineer"]}
       />
 

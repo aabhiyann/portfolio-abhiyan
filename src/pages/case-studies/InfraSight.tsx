@@ -78,7 +78,7 @@ const InfraSightCaseStudy: React.FC = () => {
           variant="h3"
           className="text-xl font-bold text-accent-primary mb-4 flex items-center gap-2"
         >
-          <Rocket className="w-5 h-5" /> Business Impact
+          <Rocket className="w-5 h-5" /> Measured Outcome
         </Typography>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
@@ -115,7 +115,7 @@ const InfraSightCaseStudy: React.FC = () => {
         </CaseStudyText>
       </CaseStudySection>
 
-      <CaseStudySection title="My Approach">
+      <CaseStudySection title="Architecture Choices">
         <CaseStudyText>
           I designed InfraSight around three core principles:{" "}
           <strong>interpretability</strong> (stakeholders need to understand
@@ -497,7 +497,7 @@ PostgreSQL--> | Connection Pool | AsyncPG
         </div>
       </CaseStudySection>
 
-      <CaseStudySection title="What I Learned">
+      <CaseStudySection title="Key Takeaways">
         <div className="space-y-6">
           <div>
             <Typography variant="h3" className="mb-2 text-lg">
@@ -608,7 +608,7 @@ PostgreSQL--> | Connection Pool | AsyncPG
         </div>
       </CaseStudySection>
 
-      <CaseStudySection title="Explore the Project">
+      <CaseStudySection title="Code, Demo, and Write-up">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="p-6 rounded-2xl bg-accent-primary/5 border border-accent-primary/10">
             <Typography variant="h3" className="mb-3 font-semibold text-lg">
