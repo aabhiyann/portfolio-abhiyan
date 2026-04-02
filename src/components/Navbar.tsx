@@ -39,8 +39,10 @@ const NavLinks = ({
               ? `text-2xl font-heading font-semibold transition-colors ${
                   isActive ? "text-accent-primary" : "text-text-muted"
                 } hover:text-text-primary`
-              : `px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive ? "text-text-primary" : "text-text-muted"
+              : `px-3 py-2 text-sm font-medium transition-colors relative ${
+                  isActive
+                    ? "text-text-primary after:absolute after:bottom-0 after:left-3 after:right-3 after:h-px after:bg-accent-primary"
+                    : "text-text-muted"
                 } hover:text-text-primary`
           }
         >
