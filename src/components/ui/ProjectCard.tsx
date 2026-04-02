@@ -39,13 +39,21 @@ export const ProjectCard = ({
           className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
         />
 
-        {/* Live Status Indicator */}
-        {project.live && (
+        {/* Status Badge */}
+        {project.status && (
           <div className="absolute top-4 right-4 z-10">
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 border border-white/10">
-              <div className="w-2 h-2 bg-green-400 rounded-full" />
+              <div
+                className={`w-2 h-2 rounded-full ${
+                  project.status === "Live"
+                    ? "bg-green-400"
+                    : project.status === "Research"
+                      ? "bg-blue-400"
+                      : "bg-neutral-400"
+                }`}
+              />
               <span className="text-xs font-medium text-white tracking-wide">
-                Live
+                {project.status}
               </span>
             </div>
           </div>
