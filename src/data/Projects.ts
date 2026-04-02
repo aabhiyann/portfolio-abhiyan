@@ -29,6 +29,7 @@ export interface Project {
     connections: Array<{ from: string; to: string }>;
   };
   isLoading?: boolean;
+  status?: "Live" | "Research" | "Archived";
 }
 
 export const projects: Project[] = [
@@ -45,6 +46,7 @@ export const projects: Project[] = [
     featured: true,
     stats: [{ label: "Architecture", value: "Microservice" }],
     badges: ["Production", "ML"],
+    status: "Live",
     caseStudyUrl: "/case-studies/infrasight",
     deepDiveId: "infrasight-production-ml",
   },
@@ -64,6 +66,7 @@ export const projects: Project[] = [
       { label: "Cost", value: "$0/mo" },
     ],
     badges: ["AI", "Free Tier", "SaaS"],
+    status: "Live",
     caseStudyUrl: "/case-studies/talkifydocs",
     deepDiveId: "talkifydocs-rag-pipeline",
   },
@@ -83,6 +86,7 @@ export const projects: Project[] = [
       { label: "Vs Transfer", value: "+26%" },
     ],
     badges: ["Deep Learning", "Research"],
+    status: "Research",
     caseStudyUrl: "/case-studies/audio-classification",
     deepDiveId: "audio-classification-research",
   },
@@ -102,6 +106,7 @@ export const projects: Project[] = [
       { label: "Latency", value: "<50ms" },
     ],
     badges: ["Socket.IO", "Team Work"],
+    status: "Live",
     caseStudyUrl: "/case-studies/melodyhub",
     deepDiveId: "melodyhub-realtime-architecture",
   },
@@ -121,6 +126,7 @@ export const projects: Project[] = [
       { label: "Recall", value: "91%" },
     ],
     badges: ["Healthcare", "Predictive"],
+    status: "Research",
   },
   {
     id: "multi-source-retrieval",
@@ -138,6 +144,7 @@ export const projects: Project[] = [
       { label: "Query time", value: "-70%" },
     ],
     badges: ["Search", "Backend"],
+    status: "Research",
   },
 ];
 
