@@ -42,7 +42,7 @@ function About() {
       <section className="relative py-24 min-h-[80vh] flex items-center font-heading overflow-hidden">
         <div className="absolute inset-0 bg-accent-primary/5 opacity-30 pointer-events-none" />
         <div className="relative z-20 w-full">
-          <div className="max-w-6xl mx-auto px-6 md:px-8">
+          <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
@@ -112,8 +112,8 @@ function About() {
       </section>
 
       {/* Engineering Career */}
-      <section className="py-24 bg-bg-primary">
-        <div className="max-w-6xl mx-auto px-6 md:px-8">
+      <section id="experience" className="py-24 bg-bg-primary">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Experience"
             subtitle="Roles, projects, and milestones in order."
@@ -132,7 +132,7 @@ function About() {
 
       {/* Engineering Philosophy */}
       <section className="py-24 bg-bg-surface/50">
-        <div className="max-w-6xl mx-auto px-6 md:px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Skills"
             subtitle="Languages, frameworks, and tools used across projects."
@@ -143,7 +143,7 @@ function About() {
 
       {/* Engineering Philosophy */}
       <section className="py-24 bg-bg-primary">
-        <div className="max-w-6xl mx-auto px-6 md:px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="How I Work"
             subtitle="The tradeoffs I optimize for when building production systems."
@@ -175,7 +175,7 @@ function About() {
 
       {/* Beyond Code - Photography Only */}
       <section className="py-24 bg-bg-primary">
-        <div className="max-w-6xl mx-auto px-6 md:px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Photography"
             subtitle="Street and urban photography."

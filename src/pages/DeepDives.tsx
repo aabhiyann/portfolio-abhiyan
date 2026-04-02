@@ -17,7 +17,7 @@ function DeepDives() {
       {/* Hero Section */}
       <section className="relative py-24 min-h-screen font-heading">
         <div className="relative z-20">
-          <div className="max-w-6xl mx-auto px-6 md:px-8">
+          <div className="max-w-7xl mx-auto px-6 md:px-8">
             <motion.div
               className="max-w-4xl mb-16"
               initial={{ opacity: 0, y: 20 }}

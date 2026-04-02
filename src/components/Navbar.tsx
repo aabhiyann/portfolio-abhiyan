@@ -15,7 +15,7 @@ const NavLinks = ({
   const links = [
     { path: "/about", label: "About" },
     { path: "/projects", label: "Projects" },
-    { path: "/experience", label: "Experience" },
+    { path: "/about#experience", label: "Experience" },
     { path: "/skills", label: "Skills" },
     { path: "/photography", label: "Photography" },
     { path: "/contact", label: "Contact" },
@@ -79,8 +79,8 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-navbar/95 border-b border-border-primary transition-colors duration-300 overflow-hidden">
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-bg-navbar border-b border-border-primary transition-colors duration-300 overflow-hidden">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <Link
@@ -166,7 +166,7 @@ const Navbar: React.FC = () => {
             transition={{ duration: 0.2 }}
             className="md:hidden fixed inset-0 z-30 bg-bg-primary/95 backdrop-blur-md overflow-y-auto"
           >
-            <nav className="max-w-6xl mx-auto min-h-screen px-6 pt-28 pb-12">
+            <nav className="max-w-7xl mx-auto min-h-screen px-6 pt-28 pb-12">
               <NavLinks onLinkClick={closeMobileMenu} mobile />
             </nav>
           </motion.div>

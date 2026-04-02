@@ -12,7 +12,6 @@ const Projects = lazy(() => import("./pages/Projects"));
 const About = lazy(() => import("./pages/About"));
 const DeepDives = lazy(() => import("./pages/DeepDives"));
 const DeepDiveDetail = lazy(() => import("./pages/DeepDiveDetail"));
-const Experience = lazy(() => import("./pages/Experience"));
 const Skills = lazy(() => import("./pages/Skills"));
 const Photography = lazy(() => import("./pages/Photography"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -62,14 +61,6 @@ function App() {
                 element={
                   <ErrorBoundary fallback={PageErrorFallback}>
                     <Projects />
-                  </ErrorBoundary>
-                }
-              />
-              <Route
-                path="/experience"
-                element={
-                  <ErrorBoundary fallback={PageErrorFallback}>
-                    <Experience />
                   </ErrorBoundary>
                 }
               />
