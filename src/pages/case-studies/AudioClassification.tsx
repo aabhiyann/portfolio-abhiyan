@@ -74,7 +74,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
         </CaseStudyText>
       </CaseStudySection>
 
-      <CaseStudySection title="My Approach">
+      <CaseStudySection title="Evaluation Design">
         <Typography variant="h3" className="mb-3">
           Dataset & Preprocessing
         </Typography>
@@ -135,7 +135,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
 
           <div className="p-6 rounded-xl bg-accent-primary/5 border border-accent-primary/20">
             <Typography variant="h4" className="mb-2 text-lg font-semibold">
-              2. CNN + Dropout (92% test accuracy) ⭐ Best Model
+              2. CNN + Dropout (92% test accuracy) Top Result
             </Typography>
             <p className="text-sm text-text-muted mb-3 font-mono">
               Conv2D(32) → MaxPool → Conv2D(64) → MaxPool → Conv2D(128) →
@@ -421,7 +421,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
         </CaseStudyText>
       </CaseStudySection>
 
-      <CaseStudySection title="What I Learned">
+      <CaseStudySection title="Key Takeaways">
         <div className="space-y-6">
           {[
             {
@@ -518,7 +518,7 @@ const AudioClassificationCaseStudy: React.FC = () => {
         </CaseStudyText>
       </CaseStudySection>
 
-      <CaseStudySection title="Explore the Project">
+      <CaseStudySection title="Code, Demo, and Write-up">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
             <Typography variant="h3" className="mb-3 font-semibold text-lg">

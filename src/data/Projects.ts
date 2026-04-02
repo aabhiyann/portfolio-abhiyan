@@ -29,6 +29,7 @@ export interface Project {
     connections: Array<{ from: string; to: string }>;
   };
   isLoading?: boolean;
+  status?: "Live" | "Research" | "Archived";
 }
 
 export const projects: Project[] = [
@@ -36,7 +37,7 @@ export const projects: Project[] = [
     id: "infrasight",
     title: "InfraSight",
     description:
-      "Cloud cost analytics platform for small businesses. A Linear Regression model forecasts spend with 95% accuracy, catching budget overruns before they happen. Built with Python, FastAPI, React, and Docker.",
+      "Cloud-cost dashboard with forecasting, anomaly detection, and optimization recommendations. Reduced AWS billing analysis time for DevOps teams by 70%. Built with Python, FastAPI, React, and Docker.",
     tech: ["Python", "FastAPI", "React", "Docker", "AsyncPG"],
     live: "https://infrasight.netlify.app/",
     github: "https://github.com/aabhiyann/infrasight",
@@ -45,6 +46,7 @@ export const projects: Project[] = [
     featured: true,
     stats: [{ label: "Architecture", value: "Microservice" }],
     badges: ["Production", "ML"],
+    status: "Live",
     caseStudyUrl: "/case-studies/infrasight",
     deepDiveId: "infrasight-production-ml",
   },
@@ -52,7 +54,7 @@ export const projects: Project[] = [
     id: "talkifydocs",
     title: "TalkifyDocs",
     description:
-      "RAG-powered document chat for teams and individuals. Users upload PDFs and query them conversationally. Sub-second responses at $0/mo operational cost. 100+ active users.",
+      "Document chat app that indexes PDFs and answers questions with cited responses. Delivers sub-second responses on large repositories while keeping operating costs near zero.",
     tech: ["Next.js 16", "Gemini", "Groq", "Pinecone", "tRPC", "Stripe"],
     live: "https://talkifydocs.vercel.app",
     github: "https://github.com/aabhiyann/talkifydocs",
@@ -64,6 +66,7 @@ export const projects: Project[] = [
       { label: "Cost", value: "$0/mo" },
     ],
     badges: ["AI", "Free Tier", "SaaS"],
+    status: "Live",
     caseStudyUrl: "/case-studies/talkifydocs",
     deepDiveId: "talkifydocs-rag-pipeline",
   },
@@ -71,7 +74,7 @@ export const projects: Project[] = [
     id: "audio-classification-cnn",
     title: "Audio Classification CNN",
     description:
-      "Custom CNN for environmental sound classification. Achieved 92% accuracy on the ESC-50 dataset, outperforming standard transfer learning baselines by 26%. Built with TensorFlow and librosa.",
+      "Environmental sound classifier for a targeted audio task. A custom CNN reached 92% accuracy and outperformed transfer-learning baselines by 26 points. Built with TensorFlow and librosa.",
     tech: ["TensorFlow", "Keras", "librosa", "YAMNet"],
     live: "",
     github: "https://github.com/aabhiyann/audio-classification-cnn",
@@ -83,6 +86,7 @@ export const projects: Project[] = [
       { label: "Vs Transfer", value: "+26%" },
     ],
     badges: ["Deep Learning", "Research"],
+    status: "Research",
     caseStudyUrl: "/case-studies/audio-classification",
     deepDiveId: "audio-classification-research",
   },
@@ -90,7 +94,7 @@ export const projects: Project[] = [
     id: "melodyhub",
     title: "MelodyHub",
     description:
-      "Real-time collaborative music player. Socket.IO synchronization engine keeps playback in sync across distributed clients with under 50ms latency. Built with React, Node.js, and MongoDB.",
+      "Shared music rooms with synchronized playback and live chat. Socket.IO keeps listeners in sync across clients with under 50ms latency. Built with React, Node.js, and MongoDB.",
     tech: ["React", "Node.js", "Socket.IO", "MongoDB", "Clerk"],
     live: "https://udaymelodyhhub.vercel.app/",
     github: "https://github.com/aabhiyann/MelodyHub",
@@ -102,6 +106,7 @@ export const projects: Project[] = [
       { label: "Latency", value: "<50ms" },
     ],
     badges: ["Socket.IO", "Team Work"],
+    status: "Live",
     caseStudyUrl: "/case-studies/melodyhub",
     deepDiveId: "melodyhub-realtime-architecture",
   },
@@ -121,6 +126,7 @@ export const projects: Project[] = [
       { label: "Recall", value: "91%" },
     ],
     badges: ["Healthcare", "Predictive"],
+    status: "Research",
   },
   {
     id: "multi-source-retrieval",
@@ -138,6 +144,7 @@ export const projects: Project[] = [
       { label: "Query time", value: "-70%" },
     ],
     badges: ["Search", "Backend"],
+    status: "Research",
   },
 ];
 
