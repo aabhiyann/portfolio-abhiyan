@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
 
 interface Skill {
   name: string;
@@ -107,69 +106,33 @@ const skills: Skill[] = [
 const SkillsMatrix: React.FC = () => {
   const categories = Array.from(new Set(skills.map((s) => s.category)));
 
-  const [openCategory, setOpenCategory] = useState<string | null>(
-    categories[0],
-  ); // Accordion state
-
-  const toggleCategory = (category: string) => {
-    setOpenCategory(openCategory === category ? null : category);
-  };
-
   return (
     <div className="w-full max-w-6xl mx-auto py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {categories.map((category) => (
           <div key={category} className="space-y-4">
-            {/* Mobile Accordion Header */}
-            <div
-              className="md:hidden flex justify-between items-center py-2 border-b border-border-primary cursor-pointer"
-              onClick={() => toggleCategory(category)}
-            >
-              <h3 className="text-xl font-bold text-accent-primary">
-                {category}
-              </h3>
-              <span className="text-text-muted text-2xl">
-                {openCategory === category ? "−" : "+"}
-              </span>
-            </div>
-
-            {/* Desktop Header */}
-            <h3 className="hidden md:block text-xl font-bold text-accent-primary border-b border-border-primary pb-2 mb-4">
+            <h3 className="text-xl font-bold text-accent-primary border-b border-border-primary pb-2 mb-4">
               {category}
             </h3>
-
-            {/* Skills Grid - Collapsible on Mobile */}
-            <AnimatePresence>
-              {/* Show if desktop OR if mobile category is open */}
-              {/* Note: We use a simple CSS class for desktop visibility and Framer Motion for mobile toggle */}
-              <div
-                className={`${
-                  openCategory === category ? "block" : "hidden"
-                } md:block`}
-              >
-                <div className="space-y-4">
-                  {skills
-                    .filter((s) => s.category === category)
-                    .map((skill) => (
-                      <motion.div
-                        key={skill.name}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="border-b border-border-primary/60 pb-4 last:border-b-0 last:pb-0"
-                      >
-                        <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
-                          <span className="font-semibold text-text-primary">
-                            {skill.name}
-                          </span>
-                          <p className="text-sm text-text-muted leading-relaxed md:max-w-[70%]">
-                            {skill.description}
-                          </p>
-                        </div>
-                      </motion.div>
-                    ))}
-                </div>
-              </div>
-            </AnimatePresence>
+            <div className="space-y-4">
+              {skills
+                .filter((s) => s.category === category)
+                .map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="border-b border-border-primary/60 pb-4 last:border-b-0 last:pb-0"
+                  >
+                    <div className="flex flex-col gap-1 md:flex-row md:items-start md:justify-between">
+                      <span className="font-semibold text-text-primary shrink-0">
+                        {skill.name}
+                      </span>
+                      <p className="text-sm text-text-muted leading-relaxed md:max-w-[65%] md:text-right">
+                        {skill.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+            </div>
           </div>
         ))}
       </div>
