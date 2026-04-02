@@ -12,25 +12,26 @@ const NavLinks = ({
   onLinkClick?: () => void;
   mobile?: boolean;
 }) => {
-  const navLinks = [
-    { path: "/about", label: "About" },
-    { path: "/projects", label: "Projects" },
-    { path: "/skills", label: "Skills" },
-    { path: "/deep-dives", label: "Writing" },
-    { path: "/photography", label: "Photography" },
-    { path: "/contact", label: "Contact" },
+  const allLinks = [
+    { label: "About", path: "/about", anchor: false },
+    { label: "Projects", path: "/projects", anchor: false },
+    { label: "Experience", path: "/about#experience", anchor: true },
+    { label: "Skills", path: "/skills", anchor: false },
+    { label: "Photography", path: "/photography", anchor: false },
+    { label: "Writing", path: "/deep-dives", anchor: false },
+    { label: "Contact", path: "/contact", anchor: false },
   ];
 
-  const desktopLinkClass = (isActive: boolean) =>
+  const desktopClass = (active: boolean) =>
     `px-3 py-2 text-sm font-medium transition-colors relative ${
-      isActive
+      active
         ? "text-text-primary after:absolute after:bottom-0 after:left-3 after:right-3 after:h-px after:bg-accent-primary"
         : "text-text-muted"
     } hover:text-text-primary`;
 
-  const mobileLinkClass = (isActive: boolean) =>
+  const mobileClass = (active: boolean) =>
     `text-2xl font-heading font-semibold transition-colors ${
-      isActive ? "text-accent-primary" : "text-text-muted"
+      active ? "text-accent-primary" : "text-text-muted"
     } hover:text-text-primary`;
 
   return (
@@ -41,26 +42,29 @@ const NavLinks = ({
           : "flex items-baseline space-x-1"
       }
     >
-      {navLinks.map((link) => (
-        <NavLink
-          key={link.path}
-          to={link.path}
-          onClick={onLinkClick}
-          className={({ isActive }) =>
-            mobile ? mobileLinkClass(isActive) : desktopLinkClass(isActive)
-          }
-        >
-          {link.label}
-        </NavLink>
-      ))}
-      {/* Experience: plain anchor so hash scroll works */}
-      <a
-        href="/about#experience"
-        onClick={onLinkClick}
-        className={mobile ? mobileLinkClass(false) : desktopLinkClass(false)}
-      >
-        Experience
-      </a>
+      {allLinks.map((link) =>
+        link.anchor ? (
+          <a
+            key={link.label}
+            href={link.path}
+            onClick={onLinkClick}
+            className={mobile ? mobileClass(false) : desktopClass(false)}
+          >
+            {link.label}
+          </a>
+        ) : (
+          <NavLink
+            key={link.path}
+            to={link.path}
+            onClick={onLinkClick}
+            className={({ isActive }) =>
+              mobile ? mobileClass(isActive) : desktopClass(isActive)
+            }
+          >
+            {link.label}
+          </NavLink>
+        ),
+      )}
     </div>
   );
 };

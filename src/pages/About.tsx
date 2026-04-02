@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";
@@ -14,6 +14,19 @@ import SkillsMatrix from "../components/SkillsMatrix";
 import { experiences } from "../data/experience";
 
 function About() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+    const el = document.querySelector(hash);
+    if (el) {
+      setTimeout(
+        () => el.scrollIntoView({ behavior: "smooth", block: "start" }),
+        100,
+      );
+    }
+  }, [hash]);
+
   const passions = [
     {
       title: "System Architecture",
