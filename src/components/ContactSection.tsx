@@ -22,7 +22,7 @@ const ContactSection: React.FC = () => {
             </h3>
             <p className="text-text-muted mb-4">aabhiyansainju@gmail.com</p>
             <p className="text-text-muted text-sm mb-8">
-              Email me or find me on LinkedIn — I'm usually quick to respond.
+              Email me or find me on LinkedIn. I'm usually quick to respond.
             </p>
 
             <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4">
