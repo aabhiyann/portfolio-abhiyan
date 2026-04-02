@@ -41,7 +41,7 @@ function Projects() {
     <Page>
       <SEO
         title="Software Engineering Projects | Abhiyan Sainju"
-        description="Explore a collection of my projects, from AI-driven SaaS platforms to full-stack web applications. Built with React, Python, and scalable architecture."
+        description="Six production projects by Abhiyan Sainju — ML forecasting, RAG document chat, audio classification, real-time collaboration. React, FastAPI, PyTorch, Docker."
         keywords={[
           "Projects",
           "Portfolio",
@@ -53,10 +53,10 @@ function Projects() {
       />
       <section className="relative py-24 min-h-screen font-heading">
         <div className="relative z-20">
-          <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="max-w-6xl mx-auto px-6 md:px-8">
             <SectionTitle
               title="Projects"
-              subtitle="Six shipped projects. All production, all documented."
+              subtitle="Selected engineering work across product, ML systems, and applied research."
             />
 
             <ProjectFilters
@@ -78,7 +78,7 @@ function Projects() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
                   >
-                    <div className="inline-block p-12 rounded-2xl glass-card max-w-md">
+                    <div className="inline-block p-12 rounded-2xl bg-bg-surface border border-border-primary max-w-md">
                       <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-primary/10 flex items-center justify-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

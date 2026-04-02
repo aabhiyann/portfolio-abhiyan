@@ -20,10 +20,10 @@ export const FeaturedProjectsSection: React.FC<
 > = ({ projects }) => {
   return (
     <section id="projects" className="py-24 bg-bg-primary">
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
+      <div className="max-w-6xl mx-auto px-6 md:px-8">
         <SectionTitle
           title="Featured Projects"
-          subtitle="Six shipped projects. All production. All documented."
+          subtitle="Selected work with code, demos, and technical writing."
         />
         <ProjectGrid projects={projects} variant="featured" />
         <motion.div

@@ -14,10 +14,10 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
   return (
     <motion.button
       onClick={onClick}
-      className="fixed bottom-8 right-8 w-14 h-14 btn-primary rounded-full shadow-lg flex items-center justify-center z-50"
-      whileHover={{ scale: 1.05 }}
+      className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-bg-surface border border-border-primary text-text-primary shadow-sm flex items-center justify-center z-40 opacity-85"
+      whileHover={{ scale: 1.03, opacity: 1 }}
       whileTap={{ scale: 0.95 }}
-      aria-label={isOpen ? "Close AI Concierge" : "Open AI Concierge"}
+      aria-label={isOpen ? "Close site assistant" : "Open site assistant"}
     >
       <AnimatePresence mode="wait" initial={false}>
         {isOpen ? (

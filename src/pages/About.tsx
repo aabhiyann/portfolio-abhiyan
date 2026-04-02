@@ -18,17 +18,17 @@ function About() {
     {
       title: "System Architecture",
       description:
-        "Designing scalable, fault-tolerant systems. From microservices to async pipelines, I build for production.",
+        "I bias toward systems that are easy to debug, cheap to run, and clear about failure modes.",
     },
     {
       title: "AI & ML in Production",
       description:
-        "Building RAG pipelines, ML forecasting, and anomaly detection. Not just notebooks, but deployed systems.",
+        "I’ve shipped retrieval, forecasting, and anomaly-detection work behind real APIs and product flows.",
     },
     {
       title: "Teaching & Mentorship",
       description:
-        "Teaching algorithms to 60+ grad students. If I can't explain it simply, I don't understand it well enough.",
+        "I taught algorithms to 60+ graduate students and care a lot about making technical ideas clear and useful.",
     },
   ];
 
@@ -42,7 +42,7 @@ function About() {
       <section className="relative py-24 min-h-[80vh] flex items-center font-heading overflow-hidden">
         <div className="absolute inset-0 bg-accent-primary/5 opacity-30 pointer-events-none" />
         <div className="relative z-20 w-full">
-          <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="max-w-6xl mx-auto px-6 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
@@ -50,40 +50,28 @@ function About() {
                 transition={{ duration: motionTokens.duration.slow / 1000 }}
               >
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-tight">
-                  I write code <br />
+                  I build software <br />
                   <span className="text-accent-primary">that ships.</span>
                 </h1>
 
                 <div className="space-y-4 text-text-secondary leading-relaxed">
                   <p>
-                    I'm Abhiyan, a Software Engineer based in Washington DC,
-                    open to relocation anywhere in the United States. Born and
-                    raised in Nepal, I earned my MS in Computer Science from GWU
-                    with a 4.0 GPA. I build systems that work reliably in
-                    production.
+                    I'm Abhiyan, a software engineer based in Washington, DC,
+                    originally from Nepal. I recently finished my MS in Computer
+                    Science at GWU, where I focused on algorithms, distributed
+                    systems, and machine learning.
                   </p>
                   <p>
-                    At GWU, I focused on algorithms, distributed systems, and
-                    machine learning. I taught Design & Analysis of Algorithms
-                    to grad students, where my interactive tutorials improved
-                    learning outcomes significantly.
+                    At GWU, I taught Design & Analysis of Algorithms to 60+
+                    graduate students across four sections, helped standardize
+                    TA training, and worked with faculty on course material
+                    rooted in real optimization problems.
                   </p>
                   <p>
-                    I've built production systems that solve real problems.
-                    InfraSight uses ML to analyze AWS infrastructure patterns.
-                    TalkifyDocs lets users chat with PDF documents using RAG
-                    architecture. I focus on shipping working software, not just
-                    prototypes.
-                  </p>
-                  <p>
-                    When I'm not coding, I'm{" "}
-                    <Link
-                      to="/photography"
-                      className="text-accent-primary hover:underline"
-                    >
-                      behind a camera
-                    </Link>
-                    .
+                    My recent work spans cloud-cost forecasting, document chat
+                    with citations, and real-time collaboration systems. I care
+                    about software that is reliable, fast to use, and clear
+                    about the problems it solves.
                   </p>
                 </div>
               </motion.div>
@@ -113,7 +101,7 @@ function About() {
                       Abhiyan Sainju
                     </h3>
                     <p className="text-white/95 mt-1 drop-shadow-2xl">
-                      Software Engineer & AI/ML Specialist
+                      React, Python, FastAPI, and applied ML
                     </p>
                   </div>
                 </div>
@@ -125,9 +113,9 @@ function About() {
 
       {/* Engineering Career */}
       <section className="py-24 bg-bg-primary">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="My Journey"
+            title="Experience"
             subtitle="Roles, projects, and milestones in order."
           />
           <VisualTimeline
@@ -146,8 +134,8 @@ function About() {
       <section className="py-24 bg-bg-surface/50">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="Technical Arsenal"
-            subtitle="The tools I reach for on every project. Hover for context."
+            title="Skills"
+            subtitle="Languages, frameworks, and tools used across projects."
           />
           <SkillsMatrix />
         </div>
@@ -157,8 +145,8 @@ function About() {
       <section className="py-24 bg-bg-primary">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="Engineering Philosophy"
-            subtitle="How I think about software."
+            title="How I Work"
+            subtitle="The tradeoffs I optimize for when building production systems."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {passions.map((passion, index) => (
@@ -189,8 +177,8 @@ function About() {
       <section className="py-24 bg-bg-primary">
         <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
-            title="Beyond Code"
-            subtitle="Street and portrait photography. Shot on a Canon R50."
+            title="Photography"
+            subtitle="Street and urban photography."
           />
 
           {/* Photo Grid */}
@@ -206,7 +194,7 @@ function About() {
               <SafeImage
                 src="/images/photography/IMG_9398Ben-Ben-2.webp"
                 alt="Photography sample 1"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </motion.div>
 
@@ -221,7 +209,7 @@ function About() {
               <SafeImage
                 src="/images/photography/IMG_7916Ben-Ben-2.webp"
                 alt="Photography sample 2"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </motion.div>
 
@@ -236,7 +224,7 @@ function About() {
               <SafeImage
                 src="/images/photography/IMG_6544PatKay.webp"
                 alt="Photography sample 3"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </motion.div>
 
@@ -251,7 +239,7 @@ function About() {
               <SafeImage
                 src="/images/photography/IMG_0566.webp"
                 alt="Photography sample 4"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </motion.div>
           </div>
