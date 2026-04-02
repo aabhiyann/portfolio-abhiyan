@@ -14,7 +14,6 @@ import TypeWriter from "../components/ui/TypeWriter";
 import { FeaturedProjectsSection, AboutTeaser } from "../components/sections";
 import { experiences } from "../data/experience";
 import { ArrowRight, Download } from "lucide-react";
-import { SafeImage } from "../components/ui";
 
 function Home() {
   const getStartYear = (dates: string) => dates.split("–")[0].trim();
@@ -87,15 +86,6 @@ function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: motionTokens.duration.normal / 1000 }}
               >
-                <div className="flex justify-center lg:justify-start mb-6">
-                  <SafeImage
-                    src="/images/about/portrait.jpg"
-                    alt="Abhiyan Sainju"
-                    className="w-24 h-24 rounded-full object-cover border-2 border-border-primary"
-                    fallback="/images/placeholder-portrait.png"
-                  />
-                </div>
-
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.2]">
                   Software Engineer & <br />
                   <span className="text-accent-primary">AI/ML Engineer</span>
