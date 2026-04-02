@@ -3,19 +3,6 @@ import SEO from "../components/SEO";
 
 const sections = [
   {
-    label: "Hardware",
-    items: [
-      {
-        title: "MacBook Pro M3",
-        body: "Primary machine. Fast enough that I stopped thinking about the machine.",
-      },
-      {
-        title: "External Monitor",
-        body: "Extra screen real estate for running dev server + browser side by side.",
-      },
-    ],
-  },
-  {
     label: "Editor",
     items: [
       {
@@ -34,6 +21,23 @@ const sections = [
       {
         title: "iTerm2",
         body: "Zsh with a minimal prompt. No plugins I don't understand.",
+      },
+    ],
+  },
+  {
+    label: "AI Tools",
+    items: [
+      {
+        title: "Claude Code",
+        body: "CLI agent for agentic coding tasks. Runs in the terminal, reads the repo, and ships — the one I use most.",
+      },
+      {
+        title: "Codex",
+        body: "OpenAI's coding agent. Good for isolated tasks and quick code generation.",
+      },
+      {
+        title: "GitHub Copilot",
+        body: "Inline completions inside the editor. Still useful for boilerplate.",
       },
     ],
   },
@@ -79,7 +83,7 @@ function Uses() {
     <Page>
       <SEO
         title="Uses – Abhiyan Sainju"
-        description="The hardware, software, and tools Abhiyan Sainju uses day to day."
+        description="The software and tools Abhiyan Sainju uses day to day."
       />
 
       <section className="py-24 border-b border-border-primary/40">
@@ -91,8 +95,8 @@ function Uses() {
             Uses
           </h1>
           <p className="text-text-muted leading-relaxed max-w-xl">
-            A living document of the hardware and software I rely on. Updated
-            when things change.
+            A living document of the software and tools I rely on. Updated when
+            things change.
           </p>
         </div>
       </section>
