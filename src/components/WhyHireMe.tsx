@@ -7,28 +7,27 @@ const WhyHireMe: React.FC = () => {
   const cards = [
     {
       icon: GraduationCap,
-      title: "Education",
+      title: "Graduate degree, 4.0",
       items: [
-        "M.S. Computer Science, GWU (4.0 GPA)",
-        "Focus: distributed systems, ML, algorithms",
-        "AWS Cloud Foundations certified",
-        "AWS Cloud Operations certified",
+        "M.S. Computer Science at GWU",
+        "Focused on algorithms, distributed systems, and ML",
+        "Taught algorithms to 60+ graduate students",
       ],
     },
     {
       icon: Rocket,
-      title: "Shipped Work",
+      title: "Work that shipped",
       items: [
-        "7 production features delivered at ECS Tech",
+        "7 production features at ECS Tech",
         "1,200+ active users across personal projects",
-        "Owned frontend, backend services, data flow, and deployment",
+        "Owned end to end: frontend, API, data, deployment",
       ],
     },
     {
       icon: Code2,
-      title: "Full-Stack + AI/ML",
+      title: "Full stack and ML",
       items: [
-        "React / Next.js, FastAPI, PostgreSQL",
+        "React, Next.js, FastAPI, PostgreSQL",
         "RAG pipelines, anomaly detection, forecasting",
         "Docker, AWS, CI/CD",
       ],
