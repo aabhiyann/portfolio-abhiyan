@@ -217,56 +217,44 @@ function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[72px,minmax(0,1fr)] gap-0 lg:gap-10 items-start">
-            {/* Sticky year rail */}
-            <div className="hidden lg:block sticky top-28 self-start z-10 pt-1">
-              <div className="relative">
-                {/* Vertical line that spans the full rail height */}
-                <div className="absolute left-[11px] top-3 bottom-0 w-px bg-border-primary/50" />
-                <div className="space-y-8">
-                  {timelineYears.map((year) => {
-                    const isActive = activeTimelineYear === year;
-
-                    return (
-                      <motion.div
-                        key={year}
-                        animate={{ opacity: isActive ? 1 : 0.35 }}
-                        transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="relative flex items-center gap-3"
-                      >
-                        {/* Dot */}
-                        <span
-                          className={`relative z-10 h-[9px] w-[9px] rounded-full shrink-0 transition-all duration-300 ${
-                            isActive
-                              ? "bg-accent-primary ring-[3px] ring-bg-primary"
-                              : "bg-bg-primary border border-border-primary"
-                          }`}
-                        />
-                        {/* Year label */}
-                        <span
-                          className={`text-xs font-mono tracking-[0.2em] transition-colors duration-300 ${
-                            isActive
-                              ? "text-accent-primary font-semibold"
-                              : "text-text-muted"
-                          }`}
-                        >
-                          {year}
-                        </span>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-[160px,minmax(0,1fr)] gap-0 items-start">
+            {/* Sticky year rail — right-aligned against the divider */}
+            <div className="hidden lg:flex sticky top-28 self-start z-10 flex-col items-end pr-8 border-r border-border-primary/40 py-1 gap-8">
+              {timelineYears.map((year) => {
+                const isActive = activeTimelineYear === year;
+                return (
+                  <motion.div
+                    key={year}
+                    animate={{ opacity: isActive ? 1 : 0.3 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="flex flex-col items-end gap-1"
+                  >
+                    <span
+                      className={`text-xs font-mono tracking-[0.22em] transition-colors duration-300 ${
+                        isActive
+                          ? "text-accent-primary font-semibold"
+                          : "text-text-muted"
+                      }`}
+                    >
+                      {year}
+                    </span>
+                    {isActive && (
+                      <span className="h-px w-6 bg-accent-primary/60 block" />
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
 
-            <div className="space-y-12">
+            {/* Timeline entries — start to the right of the divider */}
+            <div className="space-y-12 lg:pl-12">
               {homepageTimeline.map((experience, index) => (
                 <motion.article
                   key={experience.id}
                   ref={(el) => {
                     articleRefs.current[index] = el;
                   }}
-                  className="relative border-l border-border-primary pl-8 md:pl-10"
+                  className="relative pl-8"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
@@ -328,7 +316,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="hidden lg:flex justify-start mt-10 pl-[92px]">
+          <div className="hidden lg:flex justify-start mt-10 pl-[172px]">
             <Button as={Link} to="/about" variant="outline" size="md">
               View Full Journey
             </Button>
