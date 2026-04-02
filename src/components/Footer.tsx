@@ -36,11 +36,13 @@ const ExternalFooterLink: React.FC<ExternalFooterLinkProps> = ({
 
 const Footer: React.FC = () => {
   return (
-    <footer className="border-t border-border-primary backdrop-blur-sm bg-bg-surface relative">
+    <footer className="border-t border-border-primary bg-bg-primary">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
           <div className="flex flex-col space-y-4">
-            <h4 className="font-semibold text-text-primary">Work</h4>
+            <h4 className="text-xs font-mono uppercase tracking-[0.24em] text-accent-primary">
+              Work
+            </h4>
             <nav className="flex flex-col space-y-2">
               <FooterLink to="/projects">Projects</FooterLink>
               <FooterLink to="/photography">Photography</FooterLink>
@@ -48,7 +50,9 @@ const Footer: React.FC = () => {
             </nav>
           </div>
           <div className="flex flex-col space-y-4">
-            <h4 className="font-semibold text-text-primary">Connect</h4>
+            <h4 className="text-xs font-mono uppercase tracking-[0.24em] text-accent-primary">
+              Connect
+            </h4>
             <nav className="flex flex-col space-y-2">
               <ExternalFooterLink href="https://github.com/aabhiyann">
                 GitHub
@@ -65,7 +69,9 @@ const Footer: React.FC = () => {
             </nav>
           </div>
           <div className="flex flex-col space-y-4">
-            <h4 className="font-semibold text-text-primary">Resources</h4>
+            <h4 className="text-xs font-mono uppercase tracking-[0.24em] text-accent-primary">
+              Info
+            </h4>
             <nav className="flex flex-col space-y-2">
               <FooterLink to="/about">About</FooterLink>
               <FooterLink to="/resume">Resume</FooterLink>
