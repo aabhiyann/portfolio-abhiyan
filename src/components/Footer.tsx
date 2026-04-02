@@ -29,6 +29,18 @@ const Footer: React.FC = () => {
             >
               Resume
             </Link>
+            <Link
+              to="/now"
+              className="hover:text-text-primary transition-colors"
+            >
+              Now
+            </Link>
+            <Link
+              to="/uses"
+              className="hover:text-text-primary transition-colors"
+            >
+              Uses
+            </Link>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-right">
             <span>Designed and built by hand in Washington, DC</span>
