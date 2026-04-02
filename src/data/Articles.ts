@@ -16,7 +16,7 @@ export const articles: Article[] = [
     title:
       "InfraSight: Building a Production ML Platform for Cloud Cost Analytics",
     summary:
-      "What I learned building a live ML platform with forecasting, anomaly detection, and optimization recommendations, and why 'simple' ML often wins in production.",
+      "What I learned building a cloud-cost analysis system with forecasting, anomaly detection, and optimization recommendations, and why straightforward ML was the better production fit.",
     date: "Oct 15, 2025",
     readTime: "8 min read",
     tags: ["Machine Learning", "Python", "React", "DevOps"],
@@ -40,7 +40,7 @@ I wanted to build a solution that would help engineering teams stay ahead of the
 
 ---
 
-## My Approach
+## Architecture Choices
 
 I designed InfraSight around three core principles:
 
@@ -142,7 +142,7 @@ I use K-means (default 3 clusters) on daily cost vectors to group services with 
 
 ---
 
-## What I Learned
+## Key Takeaways
 
 This project taught me that building production ML systems is fundamentally different from Jupyter notebooks.
 
@@ -233,7 +233,7 @@ Building InfraSight taught me that production ML is fundamentally different from
     title:
       "Audio Classification: When Task-Specific Models Beat Transfer Learning",
     summary:
-      "I systematically compared 5 deep learning architectures. A simple task-specific CNN achieved 92% accuracy, outperforming YAMNet transfer learning by 26%.",
+      "This study compares five deep learning architectures for targeted audio classification and finds that a task-specific CNN outperformed YAMNet-based transfer learning by 26 percentage points.",
     date: "May 8, 2025",
     readTime: "10 min read",
     tags: ["Machine Learning", "Deep Learning", "CNN", "Research"],
@@ -266,7 +266,7 @@ I wanted to understand the tradeoffs between custom models and transfer learning
 
 ---
 
-## My Approach
+## Evaluation Design
 
 I designed a rigorous experimental methodology: start with a simple baseline, systematically add complexity, and compare against transfer learning. I tested five architectures using the same dataset and evaluation methodology.
 
@@ -343,7 +343,7 @@ This challenges the common assumption that transfer learning is always superior.
 
 ---
 
-## What I Learned
+## Key Takeaways
 
 ### 1. Transfer Learning Isn't Automatic
 
@@ -407,7 +407,7 @@ This research demonstrates that transfer learning isn't always the answer. When 
     id: "talkifydocs-rag-pipeline",
     title: "TalkifyDocs: Building a RAG-Powered Document Chat Application",
     summary:
-      "What I learned building a production RAG application with Gemini 3.0, Groq, and Pinecone for $0/month, and why production AI is 80% data engineering.",
+      "What I learned building a low-cost document chat system with Gemini, Groq, and Pinecone, and why most of the work lived in retrieval, data flow, and integration.",
     date: "Dec 8, 2025",
     readTime: "12 min read",
     tags: ["AI", "RAG", "Next.js", "TypeScript"],
@@ -430,7 +430,7 @@ I wanted to build a production-ready RAG (Retrieval-Augmented Generation) applic
 
 ---
 
-## My Approach
+## System Design
 
 I designed TalkifyDocs around the RAG architecture: upload documents, chunk and embed them for semantic search, then use retrieved context to generate accurate, cited answers. I migrated from OpenAI (expensive) to Google Gemini 3.0 Flash + Groq for completely free operation while building a complete SaaS platform with authentication and billing.
 
@@ -574,7 +574,7 @@ Gemini 3.0 Flash has a limited context window (8k or 32k tokens depending on the
 
 ---
 
-## What I Learned
+## Key Takeaways
 
 Building TalkifyDocs taught me that RAG applications are 80% data engineering and integration, 20% AI. The hard problems aren't about calling Gemini 3.0 Flash; they're about chunking, retrieval, cost management, and orchestrating multiple services.
 
@@ -626,7 +626,7 @@ Building TalkifyDocs taught me that production RAG applications are fundamentall
     id: "melodyhub-realtime-architecture",
     title: "MelodyHub: Building a Real-Time Social Music Platform",
     summary:
-      "A deep dive into optimizing WebSocket connections, handling redis adapters, and load balancing for real-time applications.",
+      "A deep dive into building shared music rooms with synchronized playback, live chat, and the real-time architecture behind them.",
     date: "Apr 12, 2025",
     readTime: "8 min read",
     tags: ["WebSockets", "Node.js", "System Design", "React"],
@@ -651,7 +651,7 @@ The technical challenge was synchronizing playback state across all clients in r
 
 ---
 
-## My Approach
+## How I Built It
 
 I designed MelodyHub around real-time WebSocket communication using Socket.IO. The architecture separates concerns: frontend handles UI and local state, backend manages room state and synchronization, and a CDN delivers audio reliably.
 
@@ -772,7 +772,7 @@ Cloudinary provides reliable global CDN for audio files. It handles format optim
 
 ---
 
-## What I Learned
+## Key Takeaways
 
 ### 1. Real-Time Architecture Patterns
 

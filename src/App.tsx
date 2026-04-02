@@ -27,6 +27,7 @@ const MelodyHubCaseStudy = lazy(() => import("./pages/case-studies/MelodyHub"));
 const AudioClassificationCaseStudy = lazy(
   () => import("./pages/case-studies/AudioClassification"),
 );
+const Uses = lazy(() => import("./pages/Uses"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function App() {
@@ -100,6 +101,14 @@ function App() {
                 element={
                   <ErrorBoundary fallback={PageErrorFallback}>
                     <Resume />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/uses"
+                element={
+                  <ErrorBoundary fallback={PageErrorFallback}>
+                    <Uses />
                   </ErrorBoundary>
                 }
               />

@@ -82,7 +82,7 @@ const TalkifyDocsCaseStudy: React.FC = () => {
           variant="h3"
           className="text-xl font-bold text-accent-primary mb-4 flex items-center gap-2"
         >
-          <Rocket className="w-5 h-5" /> Business Impact
+          <Rocket className="w-5 h-5" /> Measured Outcome
         </Typography>
         <div className="grid md:grid-cols-2 gap-6">
           <div>
@@ -122,7 +122,7 @@ const TalkifyDocsCaseStudy: React.FC = () => {
         </CaseStudyText>
       </CaseStudySection>
 
-      <CaseStudySection title="My Approach">
+      <CaseStudySection title="System Design">
         <CaseStudyText>
           I designed TalkifyDocs around the RAG architecture: upload documents,
           chunk and embed them for semantic search, then use retrieved context
@@ -603,7 +603,7 @@ graph TB
         </div>
       </CaseStudySection>
 
-      <CaseStudySection title="What I Learned">
+      <CaseStudySection title="Key Takeaways">
         <CaseStudyText>
           Building TalkifyDocs taught me that RAG applications are 80% data
           engineering and integration, 20% AI. The hard problems aren't about
@@ -718,7 +718,7 @@ graph TB
         </div>
       </CaseStudySection>
 
-      <CaseStudySection title="Explore the Project">
+      <CaseStudySection title="Code, Demo, and Write-up">
         <div className="grid md:grid-cols-2 gap-6">
           <div className="p-6 rounded-2xl bg-bg-surface/30 border border-border-primary/30">
             <Typography variant="h3" className="mb-3 font-semibold">

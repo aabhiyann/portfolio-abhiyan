@@ -13,12 +13,17 @@ export const AboutTeaser: React.FC = () => {
       <div className="absolute inset-0 bg-accent-primary/5 opacity-20 pointer-events-none"></div>
       <div className="max-w-4xl mx-auto px-6 md:px-8 text-center relative z-10">
         <SectionTitle
-          title="My Journey"
-          subtitle="DC-based. M.S. CS from GWU. Six production apps shipped. Open to SWE, DS, and PM roles."
+          title="Engineering, teaching, and photography"
+          subtitle="MS Computer Science at GWU, hands-on product engineering, and a parallel photography practice that keeps me paying attention to composition, pace, and detail."
         />
-        <Button as={Link} to="/about" variant="primary" size="lg">
-          Read My Story
-        </Button>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <Button as={Link} to="/about" variant="primary" size="lg">
+            About
+          </Button>
+          <Button as={Link} to="/photography" variant="outline" size="lg">
+            Photography
+          </Button>
+        </div>
       </div>
     </section>
   );

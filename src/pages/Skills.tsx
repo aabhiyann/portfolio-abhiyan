@@ -14,10 +14,10 @@ function Skills() {
       />
 
       <section className="py-24 min-h-screen">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="max-w-6xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Skills & Certifications"
-            subtitle="Languages, frameworks, tools, and certifications."
+            subtitle="Capabilities I rely on in product engineering, applied ML, and cloud-backed systems."
           />
 
           <div className="mt-12">
@@ -25,31 +25,31 @@ function Skills() {
           </div>
 
           <div className="mt-24">
+            <div className="inline-flex items-center gap-3 mb-5">
+              <span className="h-px w-10 bg-accent-primary/60" />
+              <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
+                Certifications
+              </span>
+            </div>
             <h3 className="text-2xl font-bold font-heading mb-8">
-              Certifications
+              Focused cloud training
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="p-6 rounded-2xl glass-card">
+              <div className="p-6 rounded-2xl border border-border-primary/70 bg-bg-surface/35">
                 <h4 className="text-lg font-bold text-text-primary mb-2">
-                  AWS Academy Graduate - Cloud Foundations
+                  AWS Academy Graduate — Cloud Foundations
                 </h4>
-                <p className="text-text-muted text-sm mb-4">
-                  Issued: Sep 2024 | 20 hours
+                <p className="text-text-muted text-sm">
+                  Issued: Sep 2024 · 20 hours
                 </p>
-                <span className="inline-block px-3 py-1 bg-accent-primary/10 text-accent-primary rounded-full text-xs font-mono">
-                  Cloud Computing
-                </span>
               </div>
-              <div className="p-6 rounded-2xl glass-card">
+              <div className="p-6 rounded-2xl border border-border-primary/70 bg-bg-surface/35">
                 <h4 className="text-lg font-bold text-text-primary mb-2">
-                  AWS Academy Graduate - Cloud Operations
+                  AWS Academy Graduate — Cloud Operations
                 </h4>
-                <p className="text-text-muted text-sm mb-4">
-                  Issued: Nov 2024 | 40 hours
+                <p className="text-text-muted text-sm">
+                  Issued: Nov 2024 · 40 hours
                 </p>
-                <span className="inline-block px-3 py-1 bg-accent-primary/10 text-accent-primary rounded-full text-xs font-mono">
-                  DevOps
-                </span>
               </div>
             </div>
           </div>

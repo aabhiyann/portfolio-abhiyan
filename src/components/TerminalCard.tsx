@@ -11,8 +11,8 @@ const TerminalCard: React.FC = () => {
   const [history, setHistory] = useState<HistoryEntry[]>([
     {
       input: "",
-      output: `Welcome to my portfolio terminal!
-Type 'help' to see available commands.`,
+      output: `Portfolio terminal
+Type 'help' to explore projects, writing, and contact options.`,
     },
   ]);
   const [input, setInput] = useState("");
@@ -118,8 +118,11 @@ Type 'help' for available commands.`;
           </motion.div>
         ))}
 
-        {/* Input Line */}
-        <form onSubmit={handleSubmit} className="flex items-start gap-2 pt-2">
+        {/* Input Line — hidden on mobile to avoid keyboard popup */}
+        <form
+          onSubmit={handleSubmit}
+          className="hidden md:flex items-start gap-2 pt-2"
+        >
           <span className="text-accent-primary font-bold select-none flex-shrink-0 mt-0.5">
             ➜
           </span>
@@ -130,7 +133,6 @@ Type 'help' for available commands.`;
             onChange={(e) => setInput(e.target.value)}
             className="flex-1 bg-transparent text-slate-300 font-medium outline-none caret-accent-primary placeholder:text-slate-600"
             placeholder="type 'help' for commands..."
-            autoFocus
             spellCheck={false}
           />
         </form>
