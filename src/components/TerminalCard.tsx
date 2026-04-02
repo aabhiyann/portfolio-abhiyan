@@ -11,8 +11,8 @@ const TerminalCard: React.FC = () => {
   const [history, setHistory] = useState<HistoryEntry[]>([
     {
       input: "",
-      output: `Welcome to my portfolio terminal!
-Type 'help' to see available commands.`,
+      output: `Portfolio terminal
+Type 'help' to explore projects, writing, and contact options.`,
     },
   ]);
   const [input, setInput] = useState("");

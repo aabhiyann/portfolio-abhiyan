@@ -14,26 +14,28 @@ const ProjectFilters: React.FC<ProjectFiltersProps> = ({
   onSelectCategory,
 }) => {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+    <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mb-12 border-b border-border-primary/60 pb-4">
       {categories.map((category) => (
         <button
           key={category}
           onClick={() => onSelectCategory(category)}
           className={cn(
-            "relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
+            "relative pb-2 text-sm font-medium transition-colors duration-300",
             activeCategory === category
-              ? "active-filter"
-              : "text-text-muted hover:text-text-primary hover:bg-bg-surface/50",
+              ? "text-text-primary"
+              : "text-text-muted hover:text-text-primary",
           )}
         >
           {activeCategory === category && (
             <motion.div
               layoutId="activeFilter"
-              className="absolute inset-0 btn-primary rounded-full -z-10"
+              className="absolute left-0 right-0 bottom-0 h-px bg-accent-primary"
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
           )}
-          <span className="relative z-10">{category}</span>
+          <span className="relative z-10 uppercase tracking-[0.14em]">
+            {category}
+          </span>
         </button>
       ))}
     </div>

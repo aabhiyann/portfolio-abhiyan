@@ -96,12 +96,9 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex flex-wrap gap-2 mb-6">
+            <div className="flex flex-wrap gap-x-4 gap-y-2 mb-6 text-xs uppercase tracking-[0.18em] text-text-muted">
               {tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 rounded-full text-sm font-medium bg-accent-primary/10 text-accent-primary border border-accent-primary/20"
-                >
+                <span key={tag} className="text-accent-primary">
                   {tag}
                 </span>
               ))}
@@ -149,7 +146,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="rounded-2xl overflow-hidden border border-border-primary/50 bg-card/40 backdrop-blur-md relative shadow-2xl transition-all duration-500 hover:shadow-accent-primary/20 group"
+              className="rounded-2xl overflow-hidden border border-border-primary/50 bg-card/20 relative group"
             >
               <div className="relative overflow-hidden">
                 <img
@@ -157,15 +154,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
                   alt={`${title} preview`}
                   className="w-full h-auto object-cover max-h-[600px] transition-transform duration-700 group-hover:scale-105"
                 />
-                {/* Liquid Glass Overlay */}
-                <div className="absolute inset-0 gradient-overlay-card opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-[1px]" />
-
-                {/* Optional Hover Text/Badge */}
-                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
-                  <div className="bg-bg-surface/80 backdrop-blur-md border border-white/20 px-3 py-1.5 rounded-lg text-xs font-medium text-text-primary shadow-lg">
-                    View Project
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/12 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </motion.div>
           </div>
@@ -173,7 +162,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
 
         {/* Quick Stats Grid */}
         <div className="max-w-4xl mx-auto px-6 mb-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 p-4 md:p-6 rounded-2xl bg-card/30 border border-border-primary/50 backdrop-blur-sm">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 p-4 md:p-6 rounded-2xl border border-border-primary/50 bg-bg-surface/40">
             {stats.map((stat, i) => (
               <div key={i} className="text-center flex flex-col justify-center">
                 <div className="text-xl md:text-3xl font-bold font-heading text-accent-primary mb-1">
@@ -194,7 +183,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
 
         {/* Bottom CTA */}
         <div className="max-w-4xl mx-auto px-6 mt-24 pt-12 border-t border-border-primary/30 text-center">
-          <h3 className="text-2xl font-bold mb-6">Explore More Work</h3>
+          <h3 className="text-2xl font-bold mb-6">Other Projects</h3>
           <Link to="/projects">
             <Button variant="outline">View All Projects</Button>
           </Link>
