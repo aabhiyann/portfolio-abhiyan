@@ -16,17 +16,14 @@ function Resume() {
         description="View or download Abhiyan Sainju's resume. Software Engineer specializing in Full-Stack Development and AI/ML."
       />
       <section className="relative py-24 min-h-screen font-heading">
-        <div className="max-w-5xl mx-auto px-6 md:px-8">
+        <div className="max-w-6xl mx-auto px-6 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: motionTokens.duration.slow / 1000 }}
             className="text-center mb-12"
           >
-            <SectionTitle
-              title="Resume"
-              subtitle="My professional experience and qualifications in a nutshell."
-            />
+            <SectionTitle title="Resume" subtitle="" />
 
             <div className="flex justify-center gap-4 mt-8">
               <a href={resumeUrl} download="Abhiyan_Sainju_Resume.pdf">
@@ -68,16 +65,19 @@ function Resume() {
               className="w-full h-full"
               title="Abhiyan Sainju Resume"
             >
-              <div className="flex flex-col items-center justify-center h-full gap-4 text-text-secondary">
+              <div className="flex flex-col items-center justify-center h-full gap-6 text-text-secondary">
                 <p>Your browser does not support inline PDF viewing.</p>
-                <a
+                <Button
+                  as="a"
                   href={resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent-primary underline"
+                  variant="primary"
+                  size="lg"
                 >
-                  Click here to view the resume
-                </a>
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Open Resume PDF
+                </Button>
               </div>
             </object>
           </motion.div>
