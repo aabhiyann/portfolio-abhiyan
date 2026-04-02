@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
@@ -15,13 +15,18 @@ import { FeaturedProjectsSection, AboutTeaser } from "../components/sections";
 import { experiences } from "../data/experience";
 import { ArrowRight, Download } from "lucide-react";
 
-function Home() {
-  const getStartYear = (dates: string) => dates.split("–")[0].trim();
-  const parseStartDate = (dates: string) => {
-    const [start] = dates.split("–").map((part) => part.trim());
-    return new Date(`${start} 1`).getTime();
-  };
+// Extract just the 4-digit year, e.g. "Aug 2024 – ..." → "2024"
+const getStartYear = (dates: string) => {
+  const start = dates.split("–")[0].trim();
+  return start.split(" ").slice(-1)[0];
+};
 
+const parseStartDate = (dates: string) => {
+  const [start] = dates.split("–").map((part) => part.trim());
+  return new Date(`${start} 1`).getTime();
+};
+
+function Home() {
   const homepageTimeline = useMemo(
     () =>
       experiences
@@ -54,6 +59,25 @@ function Home() {
   const [activeTimelineYear, setActiveTimelineYear] = useState(
     timelineYears[0] ?? "",
   );
+
+  const articleRefs = useRef<(HTMLElement | null)[]>([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const threshold = window.innerHeight * 0.45;
+      let active = timelineYears[0];
+      articleRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= threshold) {
+          active = getStartYear(homepageTimeline[i].dates);
+        }
+      });
+      setActiveTimelineYear(active);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [homepageTimeline, timelineYears]);
 
   return (
     <Page>
@@ -238,67 +262,65 @@ function Home() {
             </div>
 
             <div className="space-y-12">
-              <div className="space-y-12">
-                {homepageTimeline.map((experience, index) => (
-                  <motion.article
-                    key={experience.id}
-                    className="relative border-l border-border-primary pl-8 md:pl-10"
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    onViewportEnter={() =>
-                      setActiveTimelineYear(getStartYear(experience.dates))
-                    }
-                    viewport={{ once: true, amount: 0.55 }}
-                    transition={{
-                      duration: motionTokens.duration.normal / 1000,
-                      delay: index * 0.05,
-                    }}
-                  >
-                    <div className="absolute left-[-6px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
+              {homepageTimeline.map((experience, index) => (
+                <motion.article
+                  key={experience.id}
+                  ref={(el) => {
+                    articleRefs.current[index] = el;
+                  }}
+                  className="relative border-l border-border-primary pl-8 md:pl-10"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{
+                    duration: motionTokens.duration.normal / 1000,
+                    delay: index * 0.05,
+                  }}
+                >
+                  <div className="absolute left-[-6px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
 
-                    <div className="space-y-3">
-                      <div className="flex flex-wrap items-center gap-3">
-                        <span className="inline-flex rounded-full border border-border-primary px-3 py-1 text-xs font-mono uppercase tracking-[0.18em] text-text-secondary">
-                          {experience.track}
-                        </span>
-                        <span className="text-sm font-mono text-accent-primary">
-                          {experience.dates}
-                        </span>
-                        <span className="text-xs uppercase tracking-[0.18em] text-text-muted/80">
-                          {experience.location}
-                        </span>
-                      </div>
-
-                      <div className="space-y-1">
-                        <p className="text-xs uppercase tracking-[0.22em] text-accent-primary">
-                          {experience.company}
-                        </p>
-                        <h3 className="text-xl md:text-2xl font-bold text-text-primary font-heading leading-tight">
-                          {experience.role}
-                        </h3>
-                      </div>
-
-                      <p className="text-text-muted leading-relaxed max-w-2xl">
-                        {experience.description}
-                      </p>
-
-                      <div className="space-y-2">
-                        {experience.achievements
-                          .slice(0, 2)
-                          .map((achievement) => (
-                            <div
-                              key={achievement}
-                              className="flex items-start gap-3 text-sm text-text-secondary"
-                            >
-                              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
-                              <span>{achievement}</span>
-                            </div>
-                          ))}
-                      </div>
+                  <div className="space-y-3">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="inline-flex rounded-full border border-border-primary px-3 py-1 text-xs font-mono uppercase tracking-[0.18em] text-text-secondary">
+                        {experience.track}
+                      </span>
+                      <span className="text-sm font-mono text-accent-primary">
+                        {experience.dates}
+                      </span>
+                      <span className="text-xs uppercase tracking-[0.18em] text-text-muted/80">
+                        {experience.location}
+                      </span>
                     </div>
-                  </motion.article>
-                ))}
-              </div>
+
+                    <div className="space-y-1">
+                      <p className="text-xs uppercase tracking-[0.22em] text-accent-primary">
+                        {experience.company}
+                      </p>
+                      <h3 className="text-xl md:text-2xl font-bold text-text-primary font-heading leading-tight">
+                        {experience.role}
+                      </h3>
+                    </div>
+
+                    <p className="text-text-muted leading-relaxed max-w-2xl">
+                      {experience.description}
+                    </p>
+
+                    <div className="space-y-2">
+                      {experience.achievements
+                        .slice(0, 2)
+                        .map((achievement) => (
+                          <div
+                            key={achievement}
+                            className="flex items-start gap-3 text-sm text-text-secondary"
+                          >
+                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
+                            <span>{achievement}</span>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
 
               <div className="mt-10 lg:hidden">
                 <Button as={Link} to="/about" variant="outline" size="md">
