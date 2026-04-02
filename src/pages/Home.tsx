@@ -91,7 +91,7 @@ function Home() {
                   <SafeImage
                     src="/images/about/portrait.jpg"
                     alt="Abhiyan Sainju"
-                    className="w-16 h-16 rounded-full object-cover border-2 border-border-primary"
+                    className="w-24 h-24 rounded-full object-cover border-2 border-border-primary"
                     fallback="/images/placeholder-portrait.png"
                   />
                 </div>
