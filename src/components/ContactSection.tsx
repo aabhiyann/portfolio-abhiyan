@@ -23,65 +23,62 @@ const ContactSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col items-center gap-8"
+          className="border-y border-border-primary/70 py-10"
         >
-          <div className="p-8 rounded-2xl bg-card border border-border-primary w-full">
-            <h3 className="text-2xl font-bold text-text-primary mb-2">
-              Drop me a message
-            </h3>
-            <p className="text-text-muted mb-4">aabhiyansainju@gmail.com</p>
-            <p className="text-text-muted text-sm mb-8">
-              Based in Washington, DC. Open to relocation anywhere in the US.
-            </p>
+          <p className="text-2xl md:text-3xl font-heading font-bold text-text-primary mb-3">
+            aabhiyansainju@gmail.com
+          </p>
+          <p className="text-text-muted text-sm mb-8">
+            Based in Washington, DC. Open to relocation anywhere in the US.
+          </p>
 
-            <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4">
-              <Button
-                as="a"
-                href="mailto:aabhiyansainju@gmail.com"
-                variant="primary"
-                size="lg"
-                className="flex items-center gap-2"
-              >
-                <Mail className="w-5 h-5" />
-                Email Me
-              </Button>
-              <Button
-                as="a"
-                href="https://linkedin.com/in/abhiyansainju"
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outline"
-                size="lg"
-                className="flex items-center gap-2"
-              >
-                <Linkedin className="w-5 h-5" />
-                LinkedIn
-              </Button>
-              <Button
-                as="a"
-                href="https://github.com/aabhiyann"
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outline"
-                size="lg"
-                className="flex items-center gap-2"
-              >
-                <Github className="w-5 h-5" />
-                GitHub
-              </Button>
-              <Button
-                as="a"
-                href="https://instagram.com/abhiyan.sainju"
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="outline"
-                size="lg"
-                className="flex items-center gap-2"
-              >
-                <Instagram className="w-5 h-5" />
-                Photography
-              </Button>
-            </div>
+          <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4">
+            <Button
+              as="a"
+              href="mailto:aabhiyansainju@gmail.com"
+              variant="primary"
+              size="lg"
+              className="flex items-center gap-2"
+            >
+              <Mail className="w-5 h-5" />
+              Email Me
+            </Button>
+            <Button
+              as="a"
+              href="https://linkedin.com/in/abhiyansainju"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="outline"
+              size="lg"
+              className="flex items-center gap-2"
+            >
+              <Linkedin className="w-5 h-5" />
+              LinkedIn
+            </Button>
+            <Button
+              as="a"
+              href="https://github.com/aabhiyann"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="outline"
+              size="lg"
+              className="flex items-center gap-2"
+            >
+              <Github className="w-5 h-5" />
+              GitHub
+            </Button>
+            <Button
+              as="a"
+              href="https://instagram.com/abhiyan.sainju"
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="outline"
+              size="lg"
+              className="flex items-center gap-2"
+            >
+              <Instagram className="w-5 h-5" />
+              Photography
+            </Button>
           </div>
 
           <p className="text-text-muted text-sm">
