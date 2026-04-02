@@ -101,7 +101,7 @@ function Home() {
 
       {/* Hero Section */}
       <section className="relative min-h-[95vh] flex flex-col justify-center py-24 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 w-full z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             {/* Left Column: Text & CTA */}
             <div className="flex-1 max-w-2xl text-center lg:text-left">
@@ -167,7 +167,7 @@ function Home() {
 
       {/* Currently Section */}
       <section className="py-16 bg-bg-primary border-y border-border-primary/40">
-        <div className="max-w-6xl mx-auto px-6 md:px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="flex flex-col md:flex-row md:items-start md:gap-16 gap-6">
             <div className="flex-shrink-0">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
@@ -199,7 +199,7 @@ function Home() {
 
       {/* Experience Timeline */}
       <section className="py-24 bg-bg-surface/40">
-        <div className="max-w-6xl mx-auto px-6 md:px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="max-w-2xl mb-10 lg:mb-12">
             <div className="inline-flex items-center gap-3 mb-5">
               <span className="h-px w-10 bg-accent-primary/60" />
@@ -217,43 +217,41 @@ function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[84px,minmax(0,1fr)] gap-8 lg:gap-16 items-start">
-            <div className="hidden lg:block lg:sticky lg:top-28 self-start z-10">
-              <div className="relative pl-5">
-                <div className="absolute left-0 top-2 bottom-2 w-px bg-border-primary/80" />
-                <div className="space-y-5">
-                  {timelineYears.map((year, index) => {
+          <div className="grid grid-cols-1 lg:grid-cols-[72px,minmax(0,1fr)] gap-0 lg:gap-10 items-start">
+            {/* Sticky year rail */}
+            <div className="hidden lg:block sticky top-28 self-start z-10 pt-1">
+              <div className="relative">
+                {/* Vertical line that spans the full rail height */}
+                <div className="absolute left-[11px] top-3 bottom-0 w-px bg-border-primary/50" />
+                <div className="space-y-8">
+                  {timelineYears.map((year) => {
                     const isActive = activeTimelineYear === year;
 
                     return (
                       <motion.div
                         key={year}
-                        animate={{
-                          opacity: isActive ? 1 : 0.45,
-                          x: isActive ? 0 : 8,
-                          scale: isActive ? 1 : 0.96,
-                        }}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
-                        className="relative"
+                        animate={{ opacity: isActive ? 1 : 0.35 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className="relative flex items-center gap-3"
                       >
+                        {/* Dot */}
                         <span
-                          className={`absolute left-[-5px] top-1.5 h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                          className={`relative z-10 h-[9px] w-[9px] rounded-full shrink-0 transition-all duration-300 ${
                             isActive
-                              ? "bg-accent-primary ring-4 ring-bg-primary"
+                              ? "bg-accent-primary ring-[3px] ring-bg-primary"
                               : "bg-bg-primary border border-border-primary"
                           }`}
                         />
-                        <div
-                          className={`text-[11px] font-mono uppercase tracking-[0.28em] transition-colors duration-300 ${
+                        {/* Year label */}
+                        <span
+                          className={`text-xs font-mono tracking-[0.2em] transition-colors duration-300 ${
                             isActive
-                              ? "text-accent-primary"
-                              : index === 0
-                                ? "text-text-secondary"
-                                : "text-text-muted/75"
+                              ? "text-accent-primary font-semibold"
+                              : "text-text-muted"
                           }`}
                         >
                           {year}
-                        </div>
+                        </span>
                       </motion.div>
                     );
                   })}
@@ -330,7 +328,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="hidden lg:flex justify-start mt-10 pl-[110px]">
+          <div className="hidden lg:flex justify-start mt-10 pl-[92px]">
             <Button as={Link} to="/about" variant="outline" size="md">
               View Full Journey
             </Button>

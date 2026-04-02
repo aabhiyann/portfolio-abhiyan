@@ -26,7 +26,7 @@ export const ProjectCard = ({
 
   return (
     <motion.div
-      className="flex flex-col group h-full overflow-hidden rounded-2xl bg-card border border-border-primary/80 shadow-sm hover:border-accent-primary/20 transition-colors"
+      className="flex flex-col group h-full overflow-hidden rounded-2xl bg-card border border-border-primary/80 shadow-sm hover:border-accent-primary transition-all duration-300"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
@@ -38,6 +38,19 @@ export const ProjectCard = ({
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
         />
+
+        {/* Gradient overlay + hover CTA */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+          {project.caseStudyUrl && (
+            <Link
+              to={project.caseStudyUrl}
+              className="px-4 py-2 rounded-lg bg-white/90 text-gray-900 text-sm font-semibold hover:bg-white transition-colors"
+              onClick={(e) => e.stopPropagation()}
+            >
+              Read Case Study
+            </Link>
+          )}
+        </div>
 
         {/* Status Badge */}
         {project.status && (
