@@ -217,44 +217,53 @@ function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[160px,minmax(0,1fr)] gap-0 items-start">
-            {/* Sticky year rail — right-aligned against the divider */}
-            <div className="hidden lg:flex sticky top-28 self-start z-10 flex-col items-end pr-8 border-r border-border-primary/40 py-1 gap-8">
-              {timelineYears.map((year) => {
-                const isActive = activeTimelineYear === year;
-                return (
-                  <motion.div
-                    key={year}
-                    animate={{ opacity: isActive ? 1 : 0.3 }}
-                    transition={{ duration: 0.25, ease: "easeOut" }}
-                    className="flex flex-col items-end gap-1"
-                  >
-                    <span
-                      className={`text-xs font-mono tracking-[0.22em] transition-colors duration-300 ${
-                        isActive
-                          ? "text-accent-primary font-semibold"
-                          : "text-text-muted"
-                      }`}
+          <div className="hidden lg:flex gap-16 items-start">
+            {/* LEFT: sticky year rail */}
+            <div className="sticky top-28 self-start z-10 w-24 shrink-0">
+              {/* vertical line */}
+              <div className="absolute left-[5px] top-0 bottom-0 w-px bg-border-primary/40" />
+              <div className="flex flex-col gap-7">
+                {timelineYears.map((year) => {
+                  const isActive = activeTimelineYear === year;
+                  return (
+                    <motion.div
+                      key={year}
+                      animate={{ opacity: isActive ? 1 : 0.3 }}
+                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      className="relative flex items-center gap-3 pl-3"
                     >
-                      {year}
-                    </span>
-                    {isActive && (
-                      <span className="h-px w-6 bg-accent-primary/60 block" />
-                    )}
-                  </motion.div>
-                );
-              })}
+                      {/* dot on the line */}
+                      <span
+                        className={`absolute left-0 h-[11px] w-[11px] rounded-full transition-all duration-300 shrink-0 ${
+                          isActive
+                            ? "bg-accent-primary ring-[3px] ring-bg-primary"
+                            : "bg-bg-primary border border-border-primary"
+                        }`}
+                      />
+                      <span
+                        className={`text-[11px] font-mono tracking-[0.25em] uppercase transition-colors duration-300 ${
+                          isActive
+                            ? "text-accent-primary font-semibold"
+                            : "text-text-muted"
+                        }`}
+                      >
+                        {year}
+                      </span>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
 
-            {/* Timeline entries — start to the right of the divider */}
-            <div className="space-y-12 lg:pl-12">
-              {homepageTimeline.map((experience, index) => (
+            {/* RIGHT: timeline entries */}
+            <div className="flex-1 space-y-12">
+              {homepageTimeline.map((experience) => (
                 <motion.article
                   key={experience.id}
                   ref={(el) => {
                     articleRefs.current[index] = el;
                   }}
-                  className="relative pl-8"
+                  className="relative border-l border-border-primary pl-8"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
@@ -308,7 +317,7 @@ function Home() {
                 </motion.article>
               ))}
 
-              <div className="mt-10 lg:hidden">
+              <div className="mt-10">
                 <Button as={Link} to="/about" variant="outline" size="md">
                   View Full Journey
                 </Button>
@@ -316,7 +325,37 @@ function Home() {
             </div>
           </div>
 
-          <div className="hidden lg:flex justify-start mt-10 pl-[172px]">
+          {/* Mobile-only entries (no year rail) */}
+          <div className="lg:hidden space-y-12">
+            {homepageTimeline.map((experience) => (
+              <div
+                key={experience.id}
+                className="relative border-l border-border-primary pl-8"
+              >
+                <div className="absolute left-[-6px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
+                <div className="space-y-3">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="inline-flex rounded-full border border-border-primary px-3 py-1 text-xs font-mono uppercase tracking-[0.18em] text-text-secondary">
+                      {experience.track}
+                    </span>
+                    <span className="text-sm font-mono text-accent-primary">
+                      {experience.dates}
+                    </span>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-xs uppercase tracking-[0.22em] text-accent-primary">
+                      {experience.company}
+                    </p>
+                    <h3 className="text-xl font-bold text-text-primary font-heading leading-tight">
+                      {experience.role}
+                    </h3>
+                  </div>
+                  <p className="text-text-muted leading-relaxed">
+                    {experience.description}
+                  </p>
+                </div>
+              </div>
+            ))}
             <Button as={Link} to="/about" variant="outline" size="md">
               View Full Journey
             </Button>

@@ -7,7 +7,6 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  // Languages
   {
     name: "Python",
     category: "Languages",
@@ -31,7 +30,6 @@ const skills: Skill[] = [
     description:
       "Used in distributed systems and concurrent programming coursework at GWU.",
   },
-  // Frameworks
   {
     name: "React & Next.js",
     category: "Frameworks",
@@ -54,7 +52,6 @@ const skills: Skill[] = [
     category: "Frameworks",
     description: "Rapidly prototyped responsive, theme-aware design systems.",
   },
-  // AI/ML
   {
     name: "PyTorch",
     category: "AI/ML",
@@ -76,7 +73,6 @@ const skills: Skill[] = [
     category: "AI/ML",
     description: "Engineered context-aware document retrieval systems.",
   },
-  // Tools
   {
     name: "AWS & Cloud",
     category: "Tools",
@@ -92,8 +88,7 @@ const skills: Skill[] = [
   {
     name: "PostgreSQL",
     category: "Tools",
-    description:
-      "InfraSight (cost data storage) and TalkifyDocs (user/document records) via Neon serverless.",
+    description: "InfraSight and TalkifyDocs via Neon serverless PostgreSQL.",
   },
   {
     name: "Git & CI/CD",
@@ -103,39 +98,38 @@ const skills: Skill[] = [
   },
 ];
 
-const SkillsMatrix: React.FC = () => {
-  const categories = Array.from(new Set(skills.map((s) => s.category)));
+const categories = ["Languages", "Frameworks", "AI/ML", "Tools"] as const;
 
+const SkillsMatrix: React.FC = () => {
   return (
-    <div className="w-full max-w-7xl mx-auto py-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {categories.map((category) => (
-          <div key={category} className="space-y-4">
-            <h3 className="text-xl font-bold text-accent-primary border-b border-border-primary pb-2 mb-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+      {categories.map((category) => (
+        <div key={category}>
+          <div className="inline-flex items-center gap-3 mb-5">
+            <span className="h-px w-6 bg-accent-primary/60" />
+            <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
               {category}
-            </h3>
-            <div className="space-y-4">
-              {skills
-                .filter((s) => s.category === category)
-                .map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="border-b border-border-primary/60 pb-4 last:border-b-0 last:pb-0"
-                  >
-                    <div className="flex flex-col gap-1 md:flex-row md:items-start md:justify-between">
-                      <span className="font-semibold text-text-primary shrink-0">
-                        {skill.name}
-                      </span>
-                      <p className="text-sm text-text-muted leading-relaxed md:max-w-[65%] md:text-right">
-                        {skill.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-            </div>
+            </span>
           </div>
-        ))}
-      </div>
+          <div>
+            {skills
+              .filter((s) => s.category === category)
+              .map((skill, i, arr) => (
+                <div
+                  key={skill.name}
+                  className={`py-4 ${i < arr.length - 1 ? "border-b border-border-primary/40" : ""}`}
+                >
+                  <p className="text-sm font-semibold text-text-primary mb-1">
+                    {skill.name}
+                  </p>
+                  <p className="text-sm text-text-muted leading-relaxed">
+                    {skill.description}
+                  </p>
+                </div>
+              ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
