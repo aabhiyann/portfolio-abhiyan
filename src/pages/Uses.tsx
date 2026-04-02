@@ -1,6 +1,79 @@
 import Page from "../components/Page";
 import SEO from "../components/SEO";
 
+const sections = [
+  {
+    label: "Hardware",
+    items: [
+      {
+        title: "MacBook Pro M3",
+        body: "Primary machine. Fast enough that I stopped thinking about the machine.",
+      },
+      {
+        title: "External Monitor",
+        body: "Extra screen real estate for running dev server + browser side by side.",
+      },
+    ],
+  },
+  {
+    label: "Editor",
+    items: [
+      {
+        title: "Cursor",
+        body: "VS Code fork with AI built in. I use it for everything now.",
+      },
+      {
+        title: "VS Code",
+        body: "Fallback and for anything that needs a clean slate.",
+      },
+    ],
+  },
+  {
+    label: "Terminal",
+    items: [
+      {
+        title: "iTerm2",
+        body: "Zsh with a minimal prompt. No plugins I don't understand.",
+      },
+    ],
+  },
+  {
+    label: "Stack & Services",
+    items: [
+      {
+        title: "Vercel",
+        body: "Frontend deployments. Zero config for Next.js and Vite projects.",
+      },
+      {
+        title: "GitHub",
+        body: "All code lives here. I use GitHub Actions for CI/CD.",
+      },
+      {
+        title: "Cloudflare",
+        body: "DNS, domain management, and Workers for edge functions.",
+      },
+      {
+        title: "Render",
+        body: "Backend API deployments. FastAPI services run here.",
+      },
+    ],
+  },
+  {
+    label: "Productivity",
+    items: [
+      { title: "Notion", body: "Notes, project planning, and research dumps." },
+      {
+        title: "Figma",
+        body: "UI work and quick wireframes before writing any code.",
+      },
+      {
+        title: "Chrome",
+        body: "DevTools are still the best. React and Redux extensions loaded.",
+      },
+    ],
+  },
+];
+
 function Uses() {
   return (
     <Page>
@@ -8,149 +81,47 @@ function Uses() {
         title="Uses – Abhiyan Sainju"
         description="The hardware, software, and tools Abhiyan Sainju uses day to day."
       />
-      <section className="py-24 min-h-screen">
-        <div className="max-w-3xl mx-auto px-6 md:px-8">
-          <div className="inline-flex items-center gap-3 mb-5">
-            <span className="h-px w-10 bg-accent-primary/60" />
-            <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
-              Setup
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-4 font-heading">
+
+      <section className="py-24 border-b border-border-primary/40">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <p className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-4">
+            Setup
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary font-heading mb-4">
             Uses
           </h1>
-          <p className="text-text-muted leading-relaxed mb-16">
+          <p className="text-text-muted leading-relaxed max-w-xl">
             A living document of the hardware and software I rely on. Updated
             when things change.
           </p>
+        </div>
+      </section>
 
-          <div className="space-y-14">
-            {/* Hardware */}
-            <div>
-              <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-6">
-                Hardware
-              </h2>
-              <ul className="space-y-4">
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">
-                    MacBook Pro M3
-                  </span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    Primary machine. Fast enough that I stopped thinking about
-                    the machine.
-                  </span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">
-                    External Monitor
-                  </span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    Extra screen real estate for running dev server + browser
-                    side by side.
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Editor */}
-            <div>
-              <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-6">
-                Editor
-              </h2>
-              <ul className="space-y-4">
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">Cursor</span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    VS Code fork with AI built in. I use it for everything now.
-                  </span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">VS Code</span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    Fallback and for anything that needs a clean slate.
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Terminal */}
-            <div>
-              <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-6">
-                Terminal
-              </h2>
-              <ul className="space-y-4">
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">iTerm2</span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    Zsh with a minimal prompt. No plugins I don't understand.
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Stack & Services */}
-            <div>
-              <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-6">
-                Stack & Services
-              </h2>
-              <ul className="space-y-4">
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">Vercel</span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    Frontend deployments. Zero config for Next.js and Vite
-                    projects.
-                  </span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">GitHub</span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    All code lives here. I use GitHub Actions for CI/CD.
-                  </span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">
-                    Cloudflare
-                  </span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    DNS, domain management, and Workers for edge functions.
-                  </span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">Render</span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    Backend API deployments. FastAPI services run here.
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Productivity */}
-            <div>
-              <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-6">
-                Productivity
-              </h2>
-              <ul className="space-y-4">
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">Notion</span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    Notes, project planning, and research dumps.
-                  </span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">Figma</span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    UI work and quick wireframes before writing any code.
-                  </span>
-                </li>
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">Chrome</span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    DevTools are still the best. React and Redux extensions
-                    loaded.
-                  </span>
-                </li>
-              </ul>
-            </div>
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="max-w-2xl space-y-14">
+            {sections.map((section) => (
+              <div key={section.label}>
+                <p className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-6">
+                  {section.label}
+                </p>
+                <div>
+                  {section.items.map((item, i, arr) => (
+                    <div
+                      key={item.title}
+                      className={`py-4 ${i < arr.length - 1 ? "border-b border-border-primary/40" : ""}`}
+                    >
+                      <p className="text-sm font-semibold text-text-primary mb-1">
+                        {item.title}
+                      </p>
+                      <p className="text-sm text-text-muted leading-relaxed">
+                        {item.body}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

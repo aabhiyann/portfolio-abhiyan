@@ -200,162 +200,192 @@ function Home() {
       {/* Experience Timeline */}
       <section className="py-24 bg-bg-surface/40">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="max-w-2xl mb-10 lg:mb-12">
+          {/* Section header */}
+          <div className="mb-12">
             <div className="inline-flex items-center gap-3 mb-5">
               <span className="h-px w-10 bg-accent-primary/60" />
               <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
                 Journey
               </span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold font-heading text-text-primary leading-tight mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold font-heading text-text-primary leading-tight mb-3">
               Built across classrooms, startups, and client work.
             </h2>
-            <p className="text-sm md:text-base text-text-muted leading-relaxed">
-              The projects on this site are backed by teaching, production
-              engineering, and client-facing work across Nepal and Washington,
-              DC.
+            <p className="text-sm md:text-base text-text-muted leading-relaxed max-w-xl">
+              Teaching, production engineering, and client-facing work across
+              Nepal and Washington, DC.
             </p>
           </div>
 
-          <div className="hidden lg:flex gap-16 items-start">
-            {/* LEFT: sticky year rail */}
-            <div className="sticky top-28 self-start z-10 w-24 shrink-0">
-              {/* vertical line */}
-              <div className="absolute left-[5px] top-0 bottom-0 w-px bg-border-primary/40" />
-              <div className="flex flex-col gap-7">
-                {timelineYears.map((year) => {
-                  const isActive = activeTimelineYear === year;
-                  return (
-                    <motion.div
-                      key={year}
-                      animate={{ opacity: isActive ? 1 : 0.3 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
-                      className="relative flex items-center gap-3 pl-3"
-                    >
-                      {/* dot on the line */}
-                      <span
-                        className={`absolute left-0 h-[11px] w-[11px] rounded-full transition-all duration-300 shrink-0 ${
-                          isActive
-                            ? "bg-accent-primary ring-[3px] ring-bg-primary"
-                            : "bg-bg-primary border border-border-primary"
-                        }`}
-                      />
-                      <span
-                        className={`text-[11px] font-mono tracking-[0.25em] uppercase transition-colors duration-300 ${
-                          isActive
-                            ? "text-accent-primary font-semibold"
-                            : "text-text-muted"
-                        }`}
+          {/* Desktop: two-column layout */}
+          <div className="hidden lg:grid lg:grid-cols-[280px,1fr] gap-16 items-start">
+            {/* LEFT: sticky year rail with large active year */}
+            <div className="sticky top-24 self-start">
+              {/* Large active year display */}
+              <motion.div
+                key={activeTimelineYear}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25 }}
+                className="text-8xl font-bold font-heading text-text-primary/[0.07] leading-none select-none mb-2"
+              >
+                {activeTimelineYear}
+              </motion.div>
+              <p className="text-xs font-mono uppercase tracking-[0.25em] text-text-muted mb-8">
+                {
+                  homepageTimeline.filter(
+                    (e) => getStartYear(e.dates) === activeTimelineYear,
+                  ).length
+                }{" "}
+                {homepageTimeline.filter(
+                  (e) => getStartYear(e.dates) === activeTimelineYear,
+                ).length === 1
+                  ? "entry"
+                  : "entries"}
+              </p>
+
+              {/* Mini year list with line */}
+              <div className="relative">
+                <div className="absolute left-[5px] top-2 bottom-2 w-px bg-border-primary/40" />
+                <div className="flex flex-col gap-6">
+                  {timelineYears.map((year) => {
+                    const isActive = activeTimelineYear === year;
+                    return (
+                      <motion.div
+                        key={year}
+                        animate={{ opacity: isActive ? 1 : 0.35 }}
+                        transition={{ duration: 0.2 }}
+                        className="flex items-center gap-3"
                       >
-                        {year}
-                      </span>
-                    </motion.div>
-                  );
-                })}
+                        <span
+                          className={`relative z-10 h-[11px] w-[11px] rounded-full shrink-0 transition-all duration-300 ${
+                            isActive
+                              ? "bg-accent-primary ring-[3px] ring-bg-primary ring-offset-0"
+                              : "bg-bg-surface border border-border-primary"
+                          }`}
+                        />
+                        <span
+                          className={`text-xs font-mono tracking-[0.2em] transition-colors duration-300 ${
+                            isActive
+                              ? "text-accent-primary font-semibold"
+                              : "text-text-muted"
+                          }`}
+                        >
+                          {year}
+                        </span>
+                      </motion.div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 
             {/* RIGHT: timeline entries */}
-            <div className="flex-1 space-y-12">
-              {homepageTimeline.map((experience) => (
-                <motion.article
-                  key={experience.id}
-                  ref={(el) => {
-                    articleRefs.current[index] = el;
-                  }}
-                  className="relative border-l border-border-primary pl-8"
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{
-                    duration: motionTokens.duration.normal / 1000,
-                    delay: index * 0.05,
-                  }}
-                >
-                  <div className="absolute left-[-6px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
-
-                  <div className="space-y-3">
-                    <div className="flex flex-wrap items-center gap-3">
-                      <span className="inline-flex rounded-full border border-border-primary px-3 py-1 text-xs font-mono uppercase tracking-[0.18em] text-text-secondary">
+            <div className="space-y-10">
+              {homepageTimeline.map((experience, index) => {
+                const isEducation = experience.track === "Education";
+                return (
+                  <motion.article
+                    key={experience.id}
+                    ref={(el) => {
+                      articleRefs.current[index] = el;
+                    }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{
+                      duration: motionTokens.duration.normal / 1000,
+                      delay: index * 0.04,
+                    }}
+                    className="group relative pl-6 border-l-2 border-border-primary/40 hover:border-accent-primary/40 transition-colors duration-300"
+                  >
+                    {/* track + date row */}
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                      <span
+                        className={`inline-flex rounded-full px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.18em] font-semibold ${
+                          isEducation
+                            ? "bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20"
+                            : "bg-accent-primary/10 text-accent-primary border border-accent-primary/20"
+                        }`}
+                      >
                         {experience.track}
                       </span>
-                      <span className="text-sm font-mono text-accent-primary">
+                      <span className="text-xs font-mono text-text-muted tracking-wide">
                         {experience.dates}
                       </span>
-                      <span className="text-xs uppercase tracking-[0.18em] text-text-muted/80">
+                      <span className="hidden sm:inline text-xs text-text-muted/60 uppercase tracking-[0.14em]">
                         {experience.location}
                       </span>
                     </div>
 
-                    <div className="space-y-1">
-                      <p className="text-xs uppercase tracking-[0.22em] text-accent-primary">
-                        {experience.company}
-                      </p>
-                      <h3 className="text-xl md:text-2xl font-bold text-text-primary font-heading leading-tight">
-                        {experience.role}
-                      </h3>
-                    </div>
+                    {/* company + role */}
+                    <p className="text-xs uppercase tracking-[0.2em] text-text-muted mb-1">
+                      {experience.company}
+                    </p>
+                    <h3 className="text-lg md:text-xl font-bold text-text-primary font-heading leading-snug mb-3">
+                      {experience.role}
+                    </h3>
 
-                    <p className="text-text-muted leading-relaxed max-w-2xl">
+                    <p className="text-sm text-text-muted leading-relaxed mb-4">
                       {experience.description}
                     </p>
 
-                    <div className="space-y-2">
-                      {experience.achievements
-                        .slice(0, 2)
-                        .map((achievement) => (
-                          <div
-                            key={achievement}
-                            className="flex items-start gap-3 text-sm text-text-secondary"
-                          >
-                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
-                            <span>{achievement}</span>
-                          </div>
-                        ))}
+                    <div className="space-y-1.5">
+                      {experience.achievements.slice(0, 2).map((a) => (
+                        <div
+                          key={a}
+                          className="flex items-start gap-2.5 text-sm text-text-secondary"
+                        >
+                          <span className="mt-2 h-1 w-1 rounded-full bg-accent-primary/60 shrink-0" />
+                          <span>{a}</span>
+                        </div>
+                      ))}
                     </div>
-                  </div>
-                </motion.article>
-              ))}
+                  </motion.article>
+                );
+              })}
 
-              <div className="mt-10">
-                <Button as={Link} to="/about" variant="outline" size="md">
-                  View Full Journey
-                </Button>
-              </div>
+              <Button as={Link} to="/about" variant="outline" size="md">
+                View Full Journey
+              </Button>
             </div>
           </div>
 
-          {/* Mobile-only entries (no year rail) */}
-          <div className="lg:hidden space-y-12">
-            {homepageTimeline.map((experience) => (
-              <div
-                key={experience.id}
-                className="relative border-l border-border-primary pl-8"
-              >
-                <div className="absolute left-[-6px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
-                <div className="space-y-3">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className="inline-flex rounded-full border border-border-primary px-3 py-1 text-xs font-mono uppercase tracking-[0.18em] text-text-secondary">
+          {/* Mobile: simple list */}
+          <div className="lg:hidden space-y-10">
+            {homepageTimeline.map((experience) => {
+              const isEducation = experience.track === "Education";
+              return (
+                <div
+                  key={experience.id}
+                  className="relative pl-6 border-l-2 border-border-primary/40"
+                >
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span
+                      className={`inline-flex rounded-full px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.18em] font-semibold ${
+                        isEducation
+                          ? "bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20"
+                          : "bg-accent-primary/10 text-accent-primary border border-accent-primary/20"
+                      }`}
+                    >
                       {experience.track}
                     </span>
-                    <span className="text-sm font-mono text-accent-primary">
+                    <span className="text-xs font-mono text-text-muted">
                       {experience.dates}
                     </span>
                   </div>
-                  <div className="space-y-1">
-                    <p className="text-xs uppercase tracking-[0.22em] text-accent-primary">
-                      {experience.company}
-                    </p>
-                    <h3 className="text-xl font-bold text-text-primary font-heading leading-tight">
-                      {experience.role}
-                    </h3>
-                  </div>
-                  <p className="text-text-muted leading-relaxed">
+                  <p className="text-xs uppercase tracking-[0.2em] text-text-muted mb-1">
+                    {experience.company}
+                  </p>
+                  <h3 className="text-lg font-bold text-text-primary font-heading leading-snug mb-2">
+                    {experience.role}
+                  </h3>
+                  <p className="text-sm text-text-muted leading-relaxed">
                     {experience.description}
                   </p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
             <Button as={Link} to="/about" variant="outline" size="md">
               View Full Journey
             </Button>

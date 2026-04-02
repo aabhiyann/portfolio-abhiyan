@@ -1,5 +1,36 @@
 import Page from "../components/Page";
 import SEO from "../components/SEO";
+import ContactSection from "../components/ContactSection";
+
+const sections = [
+  {
+    label: "Building",
+    items: [
+      {
+        title: "SnapMacros",
+        body: "An AI-powered nutrition tracker. Photograph a meal and get an instant macro breakdown. Chip, the mascot, reacts emotionally to your eating habits.",
+      },
+    ],
+  },
+  {
+    label: "Studying",
+    items: [
+      {
+        title: "M.S. Computer Science — GWU",
+        body: "Algorithms, distributed systems, and machine learning. Teaching Design & Analysis of Algorithms (CSCI 6212) as a Graduate TA.",
+      },
+    ],
+  },
+  {
+    label: "Looking for",
+    items: [
+      {
+        title: "Full-stack or ML engineering roles",
+        body: "Open to roles across the US. Available now.",
+      },
+    ],
+  },
+];
 
 function Now() {
   return (
@@ -8,75 +39,53 @@ function Now() {
         title="Now – Abhiyan Sainju"
         description="What Abhiyan Sainju is working on right now."
       />
-      <section className="py-24 min-h-screen">
-        <div className="max-w-3xl mx-auto px-6 md:px-8">
-          <div className="inline-flex items-center gap-3 mb-5">
-            <span className="h-px w-10 bg-accent-primary/60" />
-            <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
-              April 2026
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-4 font-heading">
+
+      {/* Hero */}
+      <section className="py-24 border-b border-border-primary/40">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <p className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-4">
+            April 2026
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-text-primary font-heading mb-4">
             Now
           </h1>
-          <p className="text-text-muted leading-relaxed mb-16">
+          <p className="text-text-muted leading-relaxed max-w-xl">
             A snapshot of what I'm focused on. Updated when things shift.
           </p>
+        </div>
+      </section>
 
-          <div className="space-y-14">
-            <div>
-              <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-6">
-                Building
-              </h2>
-              <ul className="space-y-4">
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">
-                    SnapMacros
-                  </span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    An AI-powered nutrition tracker. Photograph a meal and get
-                    an instant macro breakdown. Chip, the mascot, reacts
-                    emotionally to your eating habits.
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-6">
-                Studying
-              </h2>
-              <ul className="space-y-4">
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">
-                    M.S. Computer Science — GWU
-                  </span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    Algorithms, distributed systems, and machine learning. TA
-                    for CSCI 6212.
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-6">
-                Looking for
-              </h2>
-              <ul className="space-y-4">
-                <li className="flex flex-col">
-                  <span className="text-text-primary font-medium">
-                    Full-stack or ML engineering roles
-                  </span>
-                  <span className="text-text-muted text-sm mt-0.5">
-                    Open to roles across the US. Available now.
-                  </span>
-                </li>
-              </ul>
-            </div>
+      {/* Content */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
+          <div className="max-w-2xl space-y-14">
+            {sections.map((section) => (
+              <div key={section.label}>
+                <p className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary mb-6">
+                  {section.label}
+                </p>
+                <div className="space-y-6">
+                  {section.items.map((item) => (
+                    <div
+                      key={item.title}
+                      className="border-l-2 border-border-primary/40 pl-5"
+                    >
+                      <p className="text-text-primary font-semibold mb-1">
+                        {item.title}
+                      </p>
+                      <p className="text-sm text-text-muted leading-relaxed">
+                        {item.body}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      <ContactSection />
     </Page>
   );
 }
