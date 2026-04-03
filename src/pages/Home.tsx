@@ -104,17 +104,17 @@ function Home() {
 
       {/* Hero Section */}
       <section className="relative flex flex-col justify-center pt-32 pb-24 overflow-hidden min-h-[90vh]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 min-h-[600px] items-stretch">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 min-h-[600px] items-stretch">
             {/* Left: Text & CTA */}
-            <div className="lg:col-span-5 flex flex-col justify-center text-center lg:text-left order-1">
+            <div className="lg:col-span-1 flex flex-col justify-center text-center lg:text-left order-1">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: motionTokens.duration.normal / 1000 }}
-                className="my-auto py-8"
+                className="my-auto py-8 lg:py-0"
               >
-                <h1 className="text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem] font-bold tracking-normal mb-6 font-heading text-text-primary leading-[1.1]">
+                <h1 className="text-5xl md:text-6xl font-medium tracking-tight mb-6 font-display text-text-primary leading-[1.1]">
                   Software Engineer & <br />
                   <span className="text-accent-primary font-display italic">
                     AI/ML Engineer
@@ -131,7 +131,7 @@ function Home() {
                   />
                 </div>
 
-                <p className="text-lg text-text-muted mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0 font-body">
+                <p className="text-lg text-text-muted mb-8 leading-relaxed mx-auto lg:mx-0 font-body">
                   Software Engineer building AI and ML products, from document
                   chat and forecasting to real-time systems. Based in DC, open
                   to roles across the US.
@@ -159,7 +159,7 @@ function Home() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="lg:col-span-3 h-[400px] lg:h-[600px] order-2"
+              className="lg:col-span-1 h-[400px] lg:h-[650px] order-2 w-full"
             >
               <HeroPhotoCard />
             </motion.div>
@@ -169,10 +169,10 @@ function Home() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-4 flex flex-col gap-6 order-3 h-full"
+              className="lg:col-span-1 flex flex-col gap-5 lg:gap-6 order-3 lg:h-[650px]"
             >
-              {/* Top: Terminal flexes to fill available space */}
-              <div className="flex-1 min-h-[220px] rounded-2xl overflow-hidden shadow-2xl border border-border-primary/50 bg-card">
+              {/* Top: Terminal locked height */}
+              <div className="h-[250px] rounded-2xl overflow-hidden shadow-2xl border border-border-primary/50 bg-card">
                 <TerminalCard />
               </div>
 
