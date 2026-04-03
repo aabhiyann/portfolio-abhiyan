@@ -902,13 +902,13 @@ body,
 }
 
 [cmdk-item][data-selected="true"] {
-  background-color: rgba(5, 80, 174, 0.1) !important;
-  color: #0550ae !important;
+  background-color: color-mix(in srgb, var(--color-accent-primary) 12%, transparent) !important;
+  color: var(--color-accent-primary) !important;
 }
 
 :is(.dark) [cmdk-item][data-selected="true"] {
-  background-color: rgba(88, 166, 255, 0.1) !important;
-  color: #58a6ff !important;
+  background-color: color-mix(in srgb, var(--color-accent-primary) 12%, transparent) !important;
+  color: var(--color-accent-primary) !important;
 }
 
 [cmdk-separator] {
