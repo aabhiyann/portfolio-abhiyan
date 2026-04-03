@@ -133,7 +133,7 @@ function About() {
       </section>
 
       {/* Engineering Philosophy */}
-      <section className="py-24 bg-bg-surface/50">
+      <section id="skills" className="py-24 bg-bg-surface/50">
         <div className="max-w-[90rem] mx-auto px-6 md:px-8">
           <SectionTitle
             title="Skills"
