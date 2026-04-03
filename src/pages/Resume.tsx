@@ -16,7 +16,7 @@ function Resume() {
         description="View or download Abhiyan Sainju's resume. Software Engineer specializing in Full-Stack Development and AI/ML."
       />
       <section className="relative py-24 min-h-screen font-heading">
-        <div className="max-w-[90rem] mx-auto px-6 md:px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

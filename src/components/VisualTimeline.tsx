@@ -62,7 +62,7 @@ interface VisualTimelineProps {
 
 const VisualTimeline: React.FC<VisualTimelineProps> = ({ items }) => {
   return (
-    <div className="max-w-[90rem] mx-auto py-12">
+    <div className="max-w-7xl mx-auto py-12">
       {items.map((item, index) => (
         <TimelineItem key={index} {...item} index={index} />
       ))}

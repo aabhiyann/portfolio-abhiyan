@@ -36,7 +36,7 @@ const WhyHireMe: React.FC = () => {
 
   return (
     <section className="py-24 bg-bg-surface/50 relative overflow-hidden">
-      <div className="max-w-[90rem] mx-auto px-6 md:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <SectionTitle
           title="What I bring"
           subtitle="A graduate degree with a 4.0, production features that shipped, and the full stack to build them end to end."

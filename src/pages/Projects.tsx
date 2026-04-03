@@ -53,7 +53,7 @@ function Projects() {
       />
       <section className="relative py-24 min-h-screen font-heading">
         <div className="relative z-20">
-          <div className="max-w-[90rem] mx-auto px-6 md:px-8">
+          <div className="max-w-7xl mx-auto px-6 md:px-8">
             <SectionTitle
               title="Projects"
               subtitle="Selected engineering work across product, ML systems, and applied research."
@@ -134,7 +134,7 @@ function Projects() {
 
       {/* GitHub Activity Section */}
       <section className="py-16">
-        <div className="max-w-[90rem] mx-auto px-6 md:px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
           <GitHubActivity />
         </div>
       </section>
