@@ -7,7 +7,10 @@ import Page from "../components/Page";
 import Button from "../components/ui/Button";
 import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
-import HeroBento from "../components/HeroBento";
+import TerminalCard from "../components/TerminalCard";
+import HeroPhotoCard from "../components/HeroPhotoCard";
+import HeroCurrentlyCard from "../components/HeroCurrentlyCard";
+import HeroWritingCard from "../components/HeroWritingCard";
 import WhyHireMe from "../components/WhyHireMe";
 import ContactSection from "../components/ContactSection";
 import TypeWriter from "../components/ui/TypeWriter";
@@ -100,11 +103,11 @@ function Home() {
       <DottedBackground />
 
       {/* Hero Section */}
-      <section className="relative min-h-[95vh] flex flex-col justify-center py-24 overflow-hidden">
+      <section className="relative flex flex-col justify-center pt-32 pb-24 overflow-hidden">
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 md:px-8 w-full z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-            {/* Left Column: Text & CTA */}
-            <div className="flex-1 max-w-2xl text-center lg:text-left">
+          <div className="flex flex-col gap-8">
+            {/* Top: Heading */}
+            <div className="max-w-4xl text-center lg:text-left">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -150,54 +153,35 @@ function Home() {
               </motion.div>
             </div>
 
-            {/* Right Column: Bento Grid Visuals */}
-            <div className="flex-1 w-full max-w-md lg:max-w-full">
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <HeroBento />
-              </motion.div>
-            </div>
+            {/* Bottom: Bento Grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 min-h-[600px] mt-8"
+            >
+              {/* Photo: 30% (col-span-4) */}
+              <div className="lg:col-span-4 h-[500px] lg:h-full">
+                <HeroPhotoCard />
+              </div>
+
+              {/* Terminal & Cards: 70% (col-span-8) */}
+              <div className="lg:col-span-8 flex flex-col gap-6 lg:gap-8">
+                <div className="flex-1 min-h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-border-primary/50 bg-card">
+                  <TerminalCard />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 h-auto">
+                  <HeroCurrentlyCard />
+                  <HeroWritingCard />
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Why Hire Me Section */}
       <WhyHireMe />
-
-      {/* Currently Section */}
-      <section className="py-16 bg-bg-primary border-y border-border-primary/40">
-        <div className="max-w-[90rem] mx-auto px-6 md:px-8">
-          <div className="flex flex-col md:flex-row md:items-start md:gap-16 gap-6">
-            <div className="flex-shrink-0">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
-                <span className="w-2 h-2 rounded-full bg-green-500" />
-                <span className="text-xs font-mono uppercase tracking-[0.2em] text-green-600 dark:text-green-400">
-                  Active
-                </span>
-              </div>
-            </div>
-            <div className="flex-1">
-              <ul className="space-y-3 text-text-secondary text-sm leading-relaxed mb-6">
-                <li>
-                  Building SnapMacros — photograph a meal, get an instant macro
-                  breakdown
-                </li>
-                <li>
-                  M.S. Computer Science at GWU, focused on algorithms,
-                  distributed systems, and ML
-                </li>
-                <li>Open to full-stack and ML engineering roles</li>
-              </ul>
-              <p className="text-xs font-mono uppercase tracking-[0.2em] text-text-muted">
-                Available now
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Experience Timeline */}
       <section className="py-24 bg-bg-surface/40">
