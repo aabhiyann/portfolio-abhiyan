@@ -51,7 +51,9 @@ function About() {
               >
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-tight">
                   I build software <br />
-                  <span className="text-accent-primary">that ships.</span>
+                  <span className="text-accent-primary font-display italic">
+                    that ships.
+                  </span>
                 </h1>
 
                 <div className="space-y-4 text-text-secondary leading-relaxed">
