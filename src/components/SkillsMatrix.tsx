@@ -107,7 +107,7 @@ const SkillsMatrix: React.FC = () => {
   const categories = Array.from(new Set(skills.map((s) => s.category)));
 
   return (
-    <div className="w-full max-w-6xl mx-auto py-12">
+    <div className="w-full max-w-[90rem] mx-auto py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {categories.map((category) => (
           <div key={category} className="space-y-4">

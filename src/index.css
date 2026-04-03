@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  /* Theme: GitHub Dark */
-  --color-light-background: #ffffff;
-  --color-light-navbar: rgba(255, 255, 255, 0.8);
-  --color-light-surface: #f6f8fa;
-  --color-light-card: #ffffff;
+  /* Theme: Warm Cream Light Mode / GitHub Dark Mode */
+  --color-light-background: #faf7f2;
+  --color-light-navbar: rgba(250, 247, 242, 0.85);
+  --color-light-surface: #f4efe8;
+  --color-light-card: #fffdf9;
   --color-light-text: #24292f;
   --color-light-textSecondary: #57606a;
   --color-light-textMuted: #6e7781;
-  --color-light-border: #b8c0c8;
-  --color-light-borderMuted: #c5cdd5;
+  --color-light-border: #dcd3c6;
+  --color-light-borderMuted: #e8e1d5;
 
   --color-dark-background: #0d1117;
   --color-dark-navbar: rgba(13, 17, 23, 0.8);
