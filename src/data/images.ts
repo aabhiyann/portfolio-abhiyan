@@ -58,6 +58,20 @@ export const projectImages: Record<string, ImageMetadata[]> = {
 
 // Generate photography images with real EXIF data
 // Note: Using main image as thumbnail since dedicated thumbnails don't exist yet
+function formatExifDate(dateTaken: string | undefined): string {
+  if (typeof dateTaken !== "string" || dateTaken === "Unknown") return "—";
+  const t = Date.parse(dateTaken);
+  return Number.isNaN(t) ? "—" : new Date(t).toLocaleDateString();
+}
+
+function formatFocalLength(
+  focalLength: string | undefined,
+): string | undefined {
+  if (!focalLength || focalLength === "Unknown") return undefined;
+  const n = parseFloat(focalLength);
+  return Number.isNaN(n) ? undefined : `${Math.round(n)}mm`;
+}
+
 export const photographyImages: ImageMetadata[] = imageEXIFData.map((exif) => ({
   src: `/images/photography/${exif.filename}.webp`,
   thumbnailSrc: `/images/photography/${exif.filename}.webp`, // Fallback to main image
@@ -70,10 +84,8 @@ export const photographyImages: ImageMetadata[] = imageEXIFData.map((exif) => ({
     lens: exif.lens,
     settings: `${exif.aperture} · ${exif.shutterSpeed} · ISO ${exif.iso}`,
     location: "Various Locations",
-    date: new Date(exif.dateTaken).toLocaleDateString(),
-    focalLength: exif.focalLength
-      ? `${Math.round(parseFloat(exif.focalLength))}mm`
-      : undefined,
+    date: formatExifDate(exif.dateTaken),
+    focalLength: formatFocalLength(exif.focalLength),
     aperture: exif.aperture,
     shutterSpeed: exif.shutterSpeed,
     iso: exif.iso.toString(),

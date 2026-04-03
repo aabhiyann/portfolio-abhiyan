@@ -24,6 +24,9 @@ dist-ssr
 *.sw?
 .cursor/
 
+# Local photo sources for npm run optimize-images / extract-exif (outputs go to public/)
+/Images/
+
 # Environment variables
 .env
 .env.*
