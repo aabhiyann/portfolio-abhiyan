@@ -35,7 +35,7 @@ const StatsBar: React.FC = () => {
 
   return (
     <div className="w-full bg-bg-surface/30 backdrop-blur-sm border-y border-border-primary/30 py-6">
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
+      <div className="max-w-[90rem] mx-auto px-6 md:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((stat, index) => (
             <div key={index} className="relative">
