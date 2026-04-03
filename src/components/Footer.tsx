@@ -24,6 +24,18 @@ const Footer: React.FC = () => {
               LinkedIn
             </a>
             <Link
+              to="/about#experience"
+              className="hover:text-text-primary transition-colors"
+            >
+              Experience
+            </Link>
+            <Link
+              to="/about#skills"
+              className="hover:text-text-primary transition-colors"
+            >
+              Skills
+            </Link>
+            <Link
               to="/resume"
               className="hover:text-text-primary transition-colors"
             >
