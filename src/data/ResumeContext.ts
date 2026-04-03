@@ -17,7 +17,7 @@ Here is the complete context about Abhiyan:
 ---
 
 ## 2. Professional Summary
-Abhiyan Sainju is a Software Engineer and AI/ML Engineer with an M.S. in Computer Science from George Washington University (4.0 GPA, Dec 2025). He builds full-stack systems with real ML in production — not demos. Key projects: InfraSight (ML cost forecasting, live), TalkifyDocs (RAG PDF chat, $0/mo operational cost), Audio Classification CNN (92% accuracy, +26% over YAMNet transfer learning).
+Abhiyan Sainju is a Software Engineer and AI/ML Engineer with an M.S. in Computer Science from George Washington University (4.0 GPA, Dec 2025). He builds full-stack systems with real ML in production, not demos. Key projects: InfraSight (ML cost forecasting, live), TalkifyDocs (RAG PDF chat, $0/mo operational cost), Audio Classification CNN (92% accuracy, +26% over YAMNet transfer learning).
 
 ---
 
