@@ -22,18 +22,18 @@
   --color-dark-border: #3d444d;
   --color-dark-borderMuted: #2d333b;
 
-  /* Accent Color - Different shades for optimal contrast in each theme
-     Light mode: Darker blue (#0550ae) for visibility on white/light backgrounds
-     Dark mode: Lighter blue (#58a6ff) for visibility on dark backgrounds
-     This is a best practice - same color intensity would be invisible in one theme */
-  --color-primary-light: #0550ae;
-  --color-primary-dark: #58a6ff;
+  /* Accent Color — Coffee-inspired warm amber
+     Light mode: #be5f1f (deep roasted espresso) — strong contrast on white/light
+     Dark mode: #dc7d47 (warm brewed amber) — warm glow on near-black
+     Inspired by: freshly brewed espresso, warm crema, roasted bean */
+  --color-primary-light: #be5f1f;
+  --color-primary-dark: #dc7d47;
   --color-secondary-light: #1f2328;
   --color-secondary-dark: #1e293b;
-  --color-hover-light: #0969da;
-  --color-hover-dark: #79c0ff;
-  --color-focus-light: #0550ae;
-  --color-focus-dark: #58a6ff;
+  --color-hover-light: #9a4d17;
+  --color-hover-dark: #e89060;
+  --color-focus-light: #be5f1f;
+  --color-focus-dark: #dc7d47;
   /* State Colors */
   --color-success: #3fb950;
   --color-warning: #ffa657;
@@ -43,6 +43,7 @@
   /* Fonts */
   --font-family-heading: "Space Grotesk", sans-serif;
   --font-family-body: "Inter", sans-serif;
+  --font-family-display: "DM Serif Display", serif;
 }
 
 /* Dynamic Token Mapping */
