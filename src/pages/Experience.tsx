@@ -19,7 +19,7 @@ function Experience() {
       />
 
       <section className="py-24 min-h-screen">
-        <div className="max-w-[90rem] mx-auto px-6 md:px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Experience"
             subtitle="Software development roles and academic work, in order."

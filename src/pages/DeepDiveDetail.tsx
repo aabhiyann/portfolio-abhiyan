@@ -150,7 +150,7 @@ const DeepDiveDetail: React.FC = () => {
         </div>
 
         {/* Content with TOC */}
-        <div className="max-w-[90rem] mx-auto px-6 md:px-8 py-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 py-12">
           <div className="flex gap-12">
             {/* Main Content */}
             <div className="flex-1 max-w-4xl">

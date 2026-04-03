@@ -103,17 +103,18 @@ function Home() {
       <DottedBackground />
 
       {/* Hero Section */}
-      <section className="relative flex flex-col justify-center pt-32 pb-24 overflow-hidden">
-        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 md:px-8 w-full z-10">
-          <div className="flex flex-col gap-8">
-            {/* Top: Heading */}
-            <div className="max-w-4xl text-center lg:text-left">
+      <section className="relative flex flex-col justify-center pt-32 pb-24 overflow-hidden min-h-[90vh]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 min-h-[600px] items-stretch">
+            {/* Left: Text & CTA */}
+            <div className="lg:col-span-5 flex flex-col justify-center text-center lg:text-left order-1">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: motionTokens.duration.normal / 1000 }}
+                className="my-auto py-8"
               >
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.2]">
+                <h1 className="text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem] font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.1]">
                   Software Engineer & <br />
                   <span className="text-accent-primary font-display italic">
                     AI/ML Engineer
@@ -153,27 +154,32 @@ function Home() {
               </motion.div>
             </div>
 
-            {/* Bottom: Bento Grid */}
+            {/* Middle: Photo */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 min-h-[600px] mt-8"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="lg:col-span-3 h-[400px] lg:h-[600px] order-2"
             >
-              {/* Photo: 30% (col-span-4) */}
-              <div className="lg:col-span-4 h-[500px] lg:h-full">
-                <HeroPhotoCard />
+              <HeroPhotoCard />
+            </motion.div>
+
+            {/* Right: Terminal & Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:col-span-4 flex flex-col gap-6 lg:gap-6 order-3"
+            >
+              {/* Top: Terminal */}
+              <div className="flex-1 min-h-[300px] lg:h-[350px] rounded-2xl overflow-hidden shadow-2xl border border-border-primary/50 bg-card">
+                <TerminalCard />
               </div>
 
-              {/* Terminal & Cards: 70% (col-span-8) */}
-              <div className="lg:col-span-8 flex flex-col gap-6 lg:gap-8">
-                <div className="flex-1 min-h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-border-primary/50 bg-card">
-                  <TerminalCard />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 h-auto">
-                  <HeroCurrentlyCard />
-                  <HeroWritingCard />
-                </div>
+              {/* Bottom: Currently & Writing side-by-side */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-auto lg:h-[225px]">
+                <HeroCurrentlyCard />
+                <HeroWritingCard />
               </div>
             </motion.div>
           </div>
@@ -185,7 +191,7 @@ function Home() {
 
       {/* Experience Timeline */}
       <section className="py-24 bg-bg-surface/40">
-        <div className="max-w-[90rem] mx-auto px-6 md:px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="max-w-2xl mb-10 lg:mb-12">
             <div className="inline-flex items-center gap-3 mb-5">
               <span className="h-px w-10 bg-accent-primary/60" />
