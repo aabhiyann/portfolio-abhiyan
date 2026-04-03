@@ -3,7 +3,7 @@
 @theme {
   /* Theme: Warm Cream Light Mode / GitHub Dark Mode */
   --color-light-background: #faf7f2;
-  --color-light-navbar: rgba(250, 247, 242, 0.85);
+  --color-light-navbar: #faf7f2;
   --color-light-surface: #f4efe8;
   --color-light-card: #fffdf9;
   --color-light-text: #24292f;
@@ -13,7 +13,7 @@
   --color-light-borderMuted: #e8e1d5;
 
   --color-dark-background: #0d1117;
-  --color-dark-navbar: rgba(13, 17, 23, 0.8);
+  --color-dark-navbar: #0d1117;
   --color-dark-surface: #161b22;
   --color-dark-card: #0d1117;
   --color-dark-text: #c9d1d9;
@@ -42,7 +42,7 @@
 
   /* Fonts */
   --font-family-heading: "Space Grotesk", sans-serif;
-  --font-family-body: "Inter", sans-serif;
+  --font-family-body: "DM Sans", sans-serif;
   --font-family-display: "DM Serif Display", serif;
 }
 
