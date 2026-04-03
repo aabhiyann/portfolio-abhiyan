@@ -12,13 +12,12 @@ const NavLinks = ({
   onLinkClick?: () => void;
   mobile?: boolean;
 }) => {
-  const links = [
-    { path: "/about", label: "About" },
-    { path: "/projects", label: "Projects" },
-    { path: "/experience", label: "Experience" },
-    { path: "/skills", label: "Skills" },
-    { path: "/photography", label: "Photography" },
-    { path: "/contact", label: "Contact" },
+  const allLinks = [
+    { label: "About", path: "/about", anchor: false },
+    { label: "Projects", path: "/projects", anchor: false },
+    { label: "Photography", path: "/photography", anchor: false },
+    { label: "Writing", path: "/deep-dives", anchor: false },
+    { label: "Contact", path: "/contact", anchor: false },
   ];
 
   return (
@@ -29,7 +28,7 @@ const NavLinks = ({
           : "flex items-baseline space-x-1"
       }
     >
-      {links.map((link) => (
+      {allLinks.map((link) => (
         <NavLink
           key={link.path}
           to={link.path}
@@ -39,8 +38,10 @@ const NavLinks = ({
               ? `text-2xl font-heading font-semibold transition-colors ${
                   isActive ? "text-accent-primary" : "text-text-muted"
                 } hover:text-text-primary`
-              : `px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive ? "text-text-primary" : "text-text-muted"
+              : `px-3 py-2 text-sm font-medium transition-colors relative ${
+                  isActive
+                    ? "text-text-primary after:absolute after:bottom-0 after:left-3 after:right-3 after:h-[2px] after:bg-accent-primary after:rounded-full"
+                    : "text-text-muted"
                 } hover:text-text-primary`
           }
         >
