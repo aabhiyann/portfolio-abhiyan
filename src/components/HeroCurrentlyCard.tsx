@@ -12,7 +12,7 @@ const HeroCurrentlyCard: React.FC = () => {
               <Laptop className="w-4 h-4" />
             </span>
             <span className="text-sm text-text-secondary leading-snug">
-              Building SnapMacros — photograph a meal, get an instant macro
+              Building SnapMacros: photograph a meal, get an instant macro
               breakdown
             </span>
           </li>

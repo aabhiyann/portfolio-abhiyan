@@ -49,7 +49,7 @@ function Now() {
               <ul className="space-y-4">
                 <li className="flex flex-col">
                   <span className="text-text-primary font-medium">
-                    M.S. Computer Science — GWU
+                    M.S. Computer Science, GWU
                   </span>
                   <span className="text-text-muted text-sm mt-0.5">
                     Algorithms, distributed systems, and machine learning. TA
