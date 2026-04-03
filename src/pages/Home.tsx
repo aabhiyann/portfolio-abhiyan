@@ -104,24 +104,27 @@ function Home() {
 
       {/* Hero Section */}
       <section className="relative flex flex-col justify-center pt-32 pb-24 overflow-hidden min-h-[90vh]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 min-h-[600px] items-stretch">
-            {/* Left: Text & CTA */}
-            <div className="lg:col-span-1 flex flex-col justify-center text-center lg:text-left order-1">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 min-h-[500px] items-center">
+            {/* Left Block: Pure Text & CTA (lg:col-span-6) */}
+            <div className="lg:col-span-6 flex flex-col justify-center text-center lg:text-left order-1">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: motionTokens.duration.normal / 1000 }}
-                className="my-auto py-8 lg:py-0"
               >
-                <h1 className="text-5xl md:text-6xl font-medium tracking-tight mb-6 font-display text-text-primary leading-[1.1]">
-                  Software Engineer & <br />
-                  <span className="text-accent-primary font-display italic">
+                <h1 className="text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem] font-medium tracking-tight mb-6 font-display text-text-primary leading-[1.1]">
+                  Software Engineer <br />
+                  <span className="text-accent-primary font-display italic leading-relaxed">
+                    &
+                  </span>{" "}
+                  <br />
+                  <span className="text-accent-primary font-display italic pr-2">
                     AI/ML Engineer
                   </span>
                 </h1>
 
-                <div className="text-xl md:text-2xl text-text-secondary font-medium mb-4 min-h-[60px]">
+                <div className="text-xl md:text-2xl text-text-secondary font-medium mb-6 min-h-[60px]">
                   <TypeWriter
                     words={[
                       "Full-stack systems with real ML in production",
@@ -131,10 +134,10 @@ function Home() {
                   />
                 </div>
 
-                <p className="text-lg text-text-muted mb-8 leading-relaxed mx-auto lg:mx-0 font-body">
-                  Software Engineer building AI and ML products, from document
-                  chat and forecasting to real-time systems. Based in DC, open
-                  to roles across the US.
+                <p className="text-lg text-text-muted mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0 font-body">
+                  I'm a Software Engineer building AI and ML products, from
+                  document chat and forecasting to real-time systems. Based in
+                  DC, open to roles across the US.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
@@ -154,38 +157,58 @@ function Home() {
               </motion.div>
             </div>
 
-            {/* Middle: Photo */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="lg:col-span-1 h-[400px] lg:h-[650px] order-2 w-full"
-            >
-              <HeroPhotoCard />
-            </motion.div>
-
-            {/* Right: Terminal & Cards Vertically Stacked */}
+            {/* Right Block: Interactive Console (lg:col-span-6) */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-1 flex flex-col gap-5 lg:gap-6 order-3 lg:h-[650px]"
+              className="lg:col-span-6 order-2 h-[450px] lg:h-[550px] w-full"
             >
-              {/* Top: Terminal locked height */}
-              <div className="h-[250px] rounded-2xl overflow-hidden shadow-2xl border border-border-primary/50 bg-card">
+              <div className="h-full w-full rounded-2xl overflow-hidden shadow-2xl border border-border-primary/50 bg-card">
                 <TerminalCard />
               </div>
-
-              {/* Middle: Currently Card */}
-              <div className="flex-none">
-                <HeroCurrentlyCard />
-              </div>
-
-              {/* Bottom: Writing Card */}
-              <div className="flex-none">
-                <HeroWritingCard />
-              </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Profile Dashboard Section */}
+      <section className="relative py-16 bg-bg-surface/20 border-t border-border-primary/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+            {/* Dashboard: Profile Photo */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="lg:col-span-4 h-[400px] lg:h-[500px]"
+            >
+              <HeroPhotoCard />
+            </motion.div>
+
+            {/* Dashboard: Currently & Writing Cards */}
+            <div className="lg:col-span-8 flex flex-col gap-6 lg:gap-8 justify-between">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="flex-1"
+              >
+                <HeroCurrentlyCard />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex-1"
+              >
+                <HeroWritingCard />
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
