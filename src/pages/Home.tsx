@@ -114,7 +114,7 @@ function Home() {
                 transition={{ duration: motionTokens.duration.normal / 1000 }}
                 className="my-auto py-8"
               >
-                <h1 className="text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem] font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.1]">
+                <h1 className="text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem] font-bold tracking-normal mb-6 font-heading text-text-primary leading-[1.1]">
                   Software Engineer & <br />
                   <span className="text-accent-primary font-display italic">
                     AI/ML Engineer
@@ -131,7 +131,7 @@ function Home() {
                   />
                 </div>
 
-                <p className="text-lg text-text-muted mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                <p className="text-lg text-text-muted mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0 font-body">
                   Software Engineer building AI and ML products, from document
                   chat and forecasting to real-time systems. Based in DC, open
                   to roles across the US.
@@ -164,21 +164,25 @@ function Home() {
               <HeroPhotoCard />
             </motion.div>
 
-            {/* Right: Terminal & Cards */}
+            {/* Right: Terminal & Cards Vertically Stacked */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-4 flex flex-col gap-6 lg:gap-6 order-3"
+              className="lg:col-span-4 flex flex-col gap-6 order-3 h-full"
             >
-              {/* Top: Terminal */}
-              <div className="flex-1 min-h-[300px] lg:h-[350px] rounded-2xl overflow-hidden shadow-2xl border border-border-primary/50 bg-card">
+              {/* Top: Terminal flexes to fill available space */}
+              <div className="flex-1 min-h-[220px] rounded-2xl overflow-hidden shadow-2xl border border-border-primary/50 bg-card">
                 <TerminalCard />
               </div>
 
-              {/* Bottom: Currently & Writing side-by-side */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-auto lg:h-[225px]">
+              {/* Middle: Currently Card */}
+              <div className="flex-none">
                 <HeroCurrentlyCard />
+              </div>
+
+              {/* Bottom: Writing Card */}
+              <div className="flex-none">
                 <HeroWritingCard />
               </div>
             </motion.div>
