@@ -32,7 +32,7 @@ if (!fs.existsSync(outputDir)) {
 // Get all image files
 const imageFiles = fs
   .readdirSync(inputDir)
-  .filter((file) => /\.(jpg|jpeg|png)$/i.test(file));
+  .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file));
 
 console.log(`Found ${imageFiles.length} images to optimize...`);
 

@@ -69,7 +69,7 @@ npm run optimize-images
 ```bash
 npm run extract-exif
 # Extracts camera settings and metadata
-# Updates src/data/exif-data.ts
+# Merges into src/data/ExifData.ts
 ```
 
 ### 4. Display in Gallery
@@ -91,7 +91,7 @@ The PhotographyGallery component automatically displays:
 
 Images are referenced through the `src/data/images.ts` file which provides:
 - Typed metadata using `ImageMetadata` interface
-- Real EXIF data from `src/data/exif-data.ts`
+- Real EXIF data from `src/data/ExifData.ts`
 - Proper organization and optimization
 - Professional photography gallery integration
 
