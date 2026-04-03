@@ -160,8 +160,8 @@ function Home() {
                   breakdown
                 </li>
                 <li>
-                  M.S. Computer Science at GWU, focused on algorithms,
-                  distributed systems, and ML
+                  Recently completed M.S. Computer Science @ GWU (3.97 GPA) —
+                  algorithms, cloud computing, AI/ML
                 </li>
                 <li>Open to full-stack and ML engineering roles</li>
               </ul>
