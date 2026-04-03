@@ -26,9 +26,7 @@ function DeepDives() {
             >
               <div className="inline-flex items-center gap-3 mb-5">
                 <span className="h-px w-10 bg-accent-primary/60" />
-                <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
-                  Writing
-                </span>
+                <span className="label-serif">Writing</span>
               </div>
               <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-text-primary mb-6 font-heading">
                 Deep Dives

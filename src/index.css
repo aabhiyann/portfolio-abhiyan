@@ -116,6 +116,21 @@ body,
   font-family: var(--font-family-body);
 }
 
+.font-display {
+  font-family: var(--font-family-display);
+}
+
+/* Section label with serif italic — used for eyebrow labels above headings */
+.label-serif {
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+  opacity: 0.9;
+}
+
 /* ============================================
    THEME-AWARE UTILITY CLASSES
    These properly use CSS variables and work with light/dark mode
