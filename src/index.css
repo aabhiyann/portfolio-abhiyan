@@ -26,13 +26,13 @@
      Light mode: #be5f1f (deep roasted espresso) — strong contrast on white/light
      Dark mode: #dc7d47 (warm brewed amber) — warm glow on near-black
      Inspired by: freshly brewed espresso, warm crema, roasted bean */
-  --color-primary-light: #ea580c;
+  --color-primary-light: #dc7d47;
   --color-primary-dark: #dc7d47;
   --color-secondary-light: #1f2328;
   --color-secondary-dark: #1e293b;
-  --color-hover-light: #c2410c;
+  --color-hover-light: #af5312;
   --color-hover-dark: #e89060;
-  --color-focus-light: #ea580c;
+  --color-focus-light: #d06517;
   --color-focus-dark: #dc7d47;
   /* State Colors */
   --color-success: #3fb950;
@@ -41,7 +41,7 @@
   --color-info: #58a6ff;
 
   /* Fonts */
-  --font-family-heading: "Space Grotesk", sans-serif;
+  --font-family-heading: "DM Serif Display", serif;
   --font-family-body: "Inter", sans-serif;
   --font-family-display: "DM Serif Display", serif;
 }
@@ -110,6 +110,9 @@ body,
 /* Utility Classes */
 .font-heading {
   font-family: var(--font-family-heading);
+  font-weight: 400 !important; /* DM Serif Display looks clunky if faux-bolded */
+  letter-spacing: normal !important; /* Removes harsh tracking from Tailwind classes */
+  line-height: 1.15;
 }
 
 .font-body {
