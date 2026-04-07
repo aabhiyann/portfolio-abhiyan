@@ -25,7 +25,7 @@ export const FeaturedProjectsSection: React.FC<
           title="Featured Projects"
           subtitle="Selected work with code, demos, and technical writing."
         />
-        <ProjectGrid projects={projects} variant="featured" />
+        <ProjectGrid projects={projects} />
         <motion.div
           className="text-center mt-12"
           variants={motionTokens.variants.fadeUp}

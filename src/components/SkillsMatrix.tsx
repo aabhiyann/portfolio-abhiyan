@@ -98,8 +98,6 @@ const skills: Skill[] = [
   },
 ];
 
-const categories = ["Languages", "Frameworks", "AI/ML", "Tools"] as const;
-
 const SkillsMatrix: React.FC = () => {
   const categories = Array.from(new Set(skills.map((s) => s.category)));
 
@@ -131,25 +129,8 @@ const SkillsMatrix: React.FC = () => {
                 ))}
             </div>
           </div>
-          <div>
-            {skills
-              .filter((s) => s.category === category)
-              .map((skill, i, arr) => (
-                <div
-                  key={skill.name}
-                  className={`py-4 ${i < arr.length - 1 ? "border-b border-border-primary/40" : ""}`}
-                >
-                  <p className="text-sm font-semibold text-text-primary mb-1">
-                    {skill.name}
-                  </p>
-                  <p className="text-sm text-text-muted leading-relaxed">
-                    {skill.description}
-                  </p>
-                </div>
-              ))}
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

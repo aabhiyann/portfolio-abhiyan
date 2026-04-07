@@ -57,12 +57,12 @@ export const HeroStats = () => {
           </motion.div>
 
           {/* Value */}
-          <div
+          <span
             ref={stat.countRef}
-            className="text-2xl font-bold text-text-primary font-mono"
+            className="block text-2xl font-bold text-text-primary font-mono"
           >
             {stat.value}
-          </div>
+          </span>
 
           {/* Label */}
           <div className="text-xs text-text-muted mt-1">{stat.label}</div>
