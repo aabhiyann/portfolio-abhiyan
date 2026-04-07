@@ -101,15 +101,35 @@ const skills: Skill[] = [
 const categories = ["Languages", "Frameworks", "AI/ML", "Tools"] as const;
 
 const SkillsMatrix: React.FC = () => {
+  const categories = Array.from(new Set(skills.map((s) => s.category)));
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-      {categories.map((category) => (
-        <div key={category}>
-          <div className="inline-flex items-center gap-3 mb-5">
-            <span className="h-px w-6 bg-accent-primary/60" />
-            <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
+    <div className="w-full max-w-7xl mx-auto py-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {categories.map((category) => (
+          <div key={category} className="space-y-4">
+            <h3 className="text-xl font-bold text-accent-primary border-b border-border-primary pb-2 mb-4">
               {category}
-            </span>
+            </h3>
+            <div className="space-y-4">
+              {skills
+                .filter((s) => s.category === category)
+                .map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="border-b border-border-primary/60 pb-4 last:border-b-0 last:pb-0"
+                  >
+                    <div className="flex flex-col gap-1 md:flex-row md:items-start md:justify-between">
+                      <span className="font-semibold text-text-primary shrink-0">
+                        {skill.name}
+                      </span>
+                      <p className="text-sm text-text-muted leading-relaxed md:max-w-[65%] md:text-right">
+                        {skill.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+            </div>
           </div>
           <div>
             {skills

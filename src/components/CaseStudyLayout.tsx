@@ -141,7 +141,7 @@ const CaseStudyLayout: React.FC<CaseStudyLayoutProps> = ({
 
         {/* Hero Image */}
         {heroImage && (
-          <div className="max-w-6xl mx-auto px-6 mb-16">
+          <div className="max-w-7xl mx-auto px-6 mb-16">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
