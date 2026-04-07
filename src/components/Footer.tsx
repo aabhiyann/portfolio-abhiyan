@@ -54,9 +54,39 @@ const Footer: React.FC = () => {
               Uses
             </Link>
           </div>
-
-          {/* Right: byline + copyright */}
-          <div className="flex flex-col items-start sm:items-end gap-1 text-xs">
+          <div className="flex items-center gap-5">
+            <Link
+              to="/about#experience"
+              className="hover:text-text-primary transition-colors"
+            >
+              Experience
+            </Link>
+            <Link
+              to="/skills"
+              className="hover:text-text-primary transition-colors"
+            >
+              Skills
+            </Link>
+            <Link
+              to="/now"
+              className="hover:text-text-primary transition-colors"
+            >
+              Now
+            </Link>
+            <Link
+              to="/uses"
+              className="hover:text-text-primary transition-colors"
+            >
+              Uses
+            </Link>
+            <Link
+              to="/deep-dives"
+              className="hover:text-text-primary transition-colors"
+            >
+              Writing
+            </Link>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-right">
             <span>Designed and built by hand in Washington, DC</span>
             <span>&copy; {new Date().getFullYear()} Abhiyan Sainju</span>
           </div>

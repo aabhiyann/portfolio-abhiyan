@@ -105,7 +105,7 @@ function DeepDives() {
 
                           <div className="flex-shrink-0 pt-1">
                             <div className="inline-flex items-center gap-2 text-accent-primary font-medium group-hover:translate-x-1 transition-transform">
-                              Read Deep Dive
+                              Deep Dive
                               <ArrowRight className="w-4 h-4" />
                             </div>
                           </div>
