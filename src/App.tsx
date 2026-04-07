@@ -12,7 +12,7 @@ const Projects = lazy(() => import("./pages/Projects"));
 const About = lazy(() => import("./pages/About"));
 const DeepDives = lazy(() => import("./pages/DeepDives"));
 const DeepDiveDetail = lazy(() => import("./pages/DeepDiveDetail"));
-const Skills = lazy(() => import("./pages/Skills"));
+const Experience = lazy(() => import("./pages/Experience"));
 const Photography = lazy(() => import("./pages/Photography"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Resume = lazy(() => import("./pages/Resume"));
@@ -65,10 +65,10 @@ function App() {
                 }
               />
               <Route
-                path="/skills"
+                path="/experience"
                 element={
                   <ErrorBoundary fallback={PageErrorFallback}>
-                    <Skills />
+                    <Experience />
                   </ErrorBoundary>
                 }
               />

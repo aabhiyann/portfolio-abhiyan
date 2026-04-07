@@ -7,7 +7,10 @@ import Page from "../components/Page";
 import Button from "../components/ui/Button";
 import SEO from "../components/SEO";
 import DottedBackground from "../components/DottedBackground";
-import HeroBento from "../components/HeroBento";
+import TerminalCard from "../components/TerminalCard";
+import HeroPhotoCard from "../components/HeroPhotoCard";
+import HeroCurrentlyCard from "../components/HeroCurrentlyCard";
+import HeroWritingCard from "../components/HeroWritingCard";
 import WhyHireMe from "../components/WhyHireMe";
 import ContactSection from "../components/ContactSection";
 import TypeWriter from "../components/ui/TypeWriter";
@@ -100,22 +103,28 @@ function Home() {
       <DottedBackground />
 
       {/* Hero Section */}
-      <section className="relative min-h-[95vh] flex flex-col justify-center py-24 overflow-hidden">
+      <section className="relative flex flex-col justify-center pt-32 pb-24 overflow-hidden min-h-[90vh]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-            {/* Left Column: Text & CTA */}
-            <div className="flex-1 max-w-2xl text-center lg:text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 min-h-[500px] items-center">
+            {/* Left Block: Pure Text & CTA (lg:col-span-6) */}
+            <div className="lg:col-span-6 flex flex-col justify-center text-center lg:text-left order-1">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: motionTokens.duration.normal / 1000 }}
               >
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 font-heading text-text-primary leading-[1.2]">
-                  Software Engineer & <br />
-                  <span className="text-accent-primary">AI/ML Engineer</span>
+                <h1 className="text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem] font-medium tracking-tight mb-6 font-display text-text-primary leading-[1.1]">
+                  Software Engineer <br />
+                  <span className="text-accent-primary font-display italic leading-relaxed">
+                    &
+                  </span>{" "}
+                  <br />
+                  <span className="text-accent-primary font-display italic pr-2">
+                    AI/ML Engineer
+                  </span>
                 </h1>
 
-                <div className="text-xl md:text-2xl text-text-secondary font-medium mb-4 min-h-[60px]">
+                <div className="text-xl md:text-2xl text-text-secondary font-medium mb-6 min-h-[60px]">
                   <TypeWriter
                     words={[
                       "Full-stack systems with real ML in production",
@@ -125,10 +134,10 @@ function Home() {
                   />
                 </div>
 
-                <p className="text-lg text-text-muted mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  Software Engineer building AI and ML products, from document
-                  chat and forecasting to real-time systems. Based in DC, open
-                  to roles across the US.
+                <p className="text-lg text-text-muted mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0 font-body">
+                  I'm a Software Engineer building AI and ML products, from
+                  document chat and forecasting to real-time systems. Based in
+                  DC, open to roles across the US.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
@@ -148,14 +157,56 @@ function Home() {
               </motion.div>
             </div>
 
-            {/* Right Column: Bento Grid Visuals */}
-            <div className="flex-1 w-full max-w-md lg:max-w-full">
+            {/* Right Block: Interactive Console (lg:col-span-6) */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:col-span-6 order-2 h-[450px] lg:h-[550px] w-full"
+            >
+              <div className="h-full w-full rounded-2xl overflow-hidden shadow-2xl border border-border-primary/50 bg-card">
+                <TerminalCard />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Profile Dashboard Section */}
+      <section className="relative py-16 bg-bg-surface/20 border-t border-border-primary/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 w-full z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+            {/* Dashboard: Profile Photo */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="lg:col-span-4 h-[400px] lg:h-[500px]"
+            >
+              <HeroPhotoCard />
+            </motion.div>
+
+            {/* Dashboard: Currently & Writing Cards */}
+            <div className="lg:col-span-8 flex flex-col gap-6 lg:gap-8 justify-between">
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="flex-1"
               >
-                <HeroBento />
+                <HeroCurrentlyCard />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex-1"
+              >
+                <HeroWritingCard />
               </motion.div>
             </div>
           </div>
@@ -165,48 +216,13 @@ function Home() {
       {/* Why Hire Me Section */}
       <WhyHireMe />
 
-      {/* Currently Section */}
-      <section className="py-16 bg-bg-primary border-y border-border-primary/40">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="flex flex-col md:flex-row md:items-start md:gap-16 gap-6">
-            <div className="flex-shrink-0">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
-                <span className="w-2 h-2 rounded-full bg-green-500" />
-                <span className="text-xs font-mono uppercase tracking-[0.2em] text-green-600 dark:text-green-400">
-                  Active
-                </span>
-              </div>
-            </div>
-            <div className="flex-1">
-              <ul className="space-y-3 text-text-secondary text-sm leading-relaxed mb-6">
-                <li>
-                  Building SnapMacros — photograph a meal, get an instant macro
-                  breakdown
-                </li>
-                <li>
-                  M.S. Computer Science at GWU, focused on algorithms,
-                  distributed systems, and ML
-                </li>
-                <li>Open to full-stack and ML engineering roles</li>
-              </ul>
-              <p className="text-xs font-mono uppercase tracking-[0.2em] text-text-muted">
-                Available now
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Experience Timeline */}
       <section className="py-24 bg-bg-surface/40">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          {/* Section header */}
-          <div className="mb-12">
+          <div className="max-w-2xl mb-10 lg:mb-12">
             <div className="inline-flex items-center gap-3 mb-5">
               <span className="h-px w-10 bg-accent-primary/60" />
-              <span className="text-xs font-mono uppercase tracking-[0.3em] text-accent-primary">
-                Journey
-              </span>
+              <span className="label-serif">Journey</span>
             </div>
             <h2 className="text-2xl md:text-3xl font-bold font-heading text-text-primary leading-tight mb-3">
               Built across classrooms, startups, and client work.
@@ -280,70 +296,66 @@ function Home() {
               </div>
             </div>
 
-            {/* RIGHT: timeline entries */}
-            <div className="space-y-10">
-              {homepageTimeline.map((experience, index) => {
-                const isEducation = experience.track === "Education";
-                return (
-                  <motion.article
-                    key={experience.id}
-                    ref={(el) => {
-                      articleRefs.current[index] = el;
-                    }}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{
-                      duration: motionTokens.duration.normal / 1000,
-                      delay: index * 0.04,
-                    }}
-                    className="group relative pl-6 border-l-2 border-border-primary/40 hover:border-accent-primary/40 transition-colors duration-300"
-                  >
-                    {/* track + date row */}
-                    <div className="flex flex-wrap items-center gap-3 mb-3">
-                      <span
-                        className={`inline-flex rounded-full px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.18em] font-semibold ${
-                          isEducation
-                            ? "bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/20"
-                            : "bg-accent-primary/10 text-accent-primary border border-accent-primary/20"
-                        }`}
-                      >
+            <div className="space-y-12">
+              {homepageTimeline.map((experience, index) => (
+                <motion.article
+                  key={experience.id}
+                  ref={(el) => {
+                    articleRefs.current[index] = el;
+                  }}
+                  className="relative border-l border-border-primary pl-8 md:pl-10"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{
+                    duration: motionTokens.duration.normal / 1000,
+                    delay: index * 0.05,
+                  }}
+                >
+                  <div className="absolute left-[-6px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
+
+                  <div className="space-y-3">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="inline-flex rounded-full border border-border-primary px-3 py-1 text-xs font-mono uppercase tracking-[0.18em] text-text-secondary">
                         {experience.track}
                       </span>
-                      <span className="text-xs font-mono text-text-muted tracking-wide">
+                      <span className="text-sm font-mono text-accent-primary">
                         {experience.dates}
                       </span>
-                      <span className="hidden sm:inline text-xs text-text-muted/60 uppercase tracking-[0.14em]">
+                      <span className="text-xs uppercase tracking-[0.18em] text-text-muted/80">
                         {experience.location}
                       </span>
                     </div>
 
-                    {/* company + role */}
-                    <p className="text-xs uppercase tracking-[0.2em] text-text-muted mb-1">
-                      {experience.company}
-                    </p>
-                    <h3 className="text-lg md:text-xl font-bold text-text-primary font-heading leading-snug mb-3">
-                      {experience.role}
-                    </h3>
+                    <div className="space-y-1">
+                      <p className="text-xs uppercase tracking-[0.22em] text-accent-primary">
+                        {experience.company}
+                      </p>
+                      <h3 className="text-xl md:text-2xl font-bold text-text-primary font-heading leading-tight">
+                        {experience.role}
+                      </h3>
+                    </div>
 
-                    <p className="text-sm text-text-muted leading-relaxed mb-4">
+                    <p className="text-text-muted leading-relaxed max-w-2xl">
                       {experience.description}
                     </p>
 
-                    <div className="space-y-1.5">
-                      {experience.achievements.slice(0, 2).map((a) => (
-                        <div
-                          key={a}
-                          className="flex items-start gap-2.5 text-sm text-text-secondary"
-                        >
-                          <span className="mt-2 h-1 w-1 rounded-full bg-accent-primary/60 shrink-0" />
-                          <span>{a}</span>
-                        </div>
-                      ))}
+                    <div className="space-y-2">
+                      {experience.achievements
+                        .slice(0, 2)
+                        .map((achievement) => (
+                          <div
+                            key={achievement}
+                            className="flex items-start gap-3 text-sm text-text-secondary"
+                          >
+                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
+                            <span>{achievement}</span>
+                          </div>
+                        ))}
                     </div>
-                  </motion.article>
-                );
-              })}
+                  </div>
+                </motion.article>
+              ))}
 
               <Button as={Link} to="/about" variant="outline" size="md">
                 View Full Journey

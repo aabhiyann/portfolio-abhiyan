@@ -22,12 +22,9 @@ const CustomCursor: React.FC = () => {
     let dotY = 0;
 
     // Theme-aware colors
-    const cursorColor = themeState.isDarkMode
-      ? "rgba(255, 255, 255, 0.9)"
-      : "rgba(59, 130, 246, 0.9)"; // accent-primary blue
-    const cursorGlow = themeState.isDarkMode
-      ? "0 0 8px rgba(255, 255, 255, 0.6), 0 0 16px rgba(255, 255, 255, 0.4)"
-      : "0 0 8px rgba(59, 130, 246, 0.6), 0 0 16px rgba(59, 130, 246, 0.4)";
+    const cursorColor = "rgba(220, 125, 71, 0.9)"; // amber for both modes to match #dc7d47
+    const cursorGlow =
+      "0 0 8px rgba(220, 125, 71, 0.6), 0 0 16px rgba(220, 125, 71, 0.4)";
 
     dot.style.backgroundColor = cursorColor;
     dot.style.boxShadow = cursorGlow;

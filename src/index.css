@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  /* Theme: GitHub Dark Inspired */
-  --color-light-background: #ffffff;
-  --color-light-navbar: rgba(255, 255, 255, 0.8);
-  --color-light-surface: #f6f8fa;
-  --color-light-card: #ffffff;
+  /* Theme: Warm Cream Light Mode / GitHub Dark Inspired Dark Mode */
+  --color-light-background: #faf7f2;
+  --color-light-navbar: #faf7f2;
+  --color-light-surface: #f4efe8;
+  --color-light-card: #fffdf9;
   --color-light-text: #24292f;
   --color-light-textSecondary: #57606a;
   --color-light-textMuted: #6e7781;
-  --color-light-border: #b8c0c8;
-  --color-light-borderMuted: #c5cdd5;
+  --color-light-border: #dcd3c6;
+  --color-light-borderMuted: #e8e1d5;
 
   --color-dark-background: #0d1117;
-  --color-dark-navbar: rgba(13, 17, 23, 0.8);
+  --color-dark-navbar: #0d1117;
   --color-dark-surface: #161b22;
   --color-dark-card: #0d1117;
   --color-dark-text: #c9d1d9;
@@ -22,18 +22,18 @@
   --color-dark-border: #3d444d;
   --color-dark-borderMuted: #2d333b;
 
-  /* Accent Color - Different shades for optimal contrast in each theme
-     Light mode: Darker blue (#0550ae) for visibility on white/light backgrounds
-     Dark mode: Lighter blue (#58a6ff) for visibility on dark backgrounds
-     This is a best practice - same color intensity would be invisible in one theme */
-  --color-primary-light: #0550ae;
-  --color-primary-dark: #58a6ff;
+  /* Accent Color — Coffee-inspired warm amber
+     Light mode: #be5f1f (deep roasted espresso) — strong contrast on white/light
+     Dark mode: #dc7d47 (warm brewed amber) — warm glow on near-black
+     Inspired by: freshly brewed espresso, warm crema, roasted bean */
+  --color-primary-light: #dc7d47;
+  --color-primary-dark: #dc7d47;
   --color-secondary-light: #1f2328;
   --color-secondary-dark: #1e293b;
-  --color-hover-light: #0969da;
-  --color-hover-dark: #79c0ff;
-  --color-focus-light: #0550ae;
-  --color-focus-dark: #58a6ff;
+  --color-hover-light: #af5312;
+  --color-hover-dark: #e89060;
+  --color-focus-light: #d06517;
+  --color-focus-dark: #dc7d47;
   /* State Colors */
   --color-success: #3fb950;
   --color-warning: #ffa657;
@@ -42,7 +42,8 @@
 
   /* Fonts */
   --font-family-heading: "Space Grotesk", sans-serif;
-  --font-family-body: "Inter", sans-serif;
+  --font-family-body: "DM Sans", sans-serif;
+  --font-family-display: "DM Serif Display", serif;
 }
 
 /* Dynamic Token Mapping */
@@ -113,6 +114,21 @@ body,
 
 .font-body {
   font-family: var(--font-family-body);
+}
+
+.font-display {
+  font-family: var(--font-family-display);
+}
+
+/* Section label with serif italic — used for eyebrow labels above headings */
+.label-serif {
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+  opacity: 0.9;
 }
 
 /* ============================================
@@ -886,13 +902,13 @@ body,
 }
 
 [cmdk-item][data-selected="true"] {
-  background-color: rgba(5, 80, 174, 0.1) !important;
-  color: #0550ae !important;
+  background-color: color-mix(in srgb, var(--color-accent-primary) 12%, transparent) !important;
+  color: var(--color-accent-primary) !important;
 }
 
 :is(.dark) [cmdk-item][data-selected="true"] {
-  background-color: rgba(88, 166, 255, 0.1) !important;
-  color: #58a6ff !important;
+  background-color: color-mix(in srgb, var(--color-accent-primary) 12%, transparent) !important;
+  color: var(--color-accent-primary) !important;
 }
 
 [cmdk-separator] {

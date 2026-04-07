@@ -41,6 +41,7 @@ export default {
       fontFamily: {
         "heading": ["Space Grotesk", "sans-serif"],
         "body": ["Inter", "sans-serif"],
+        "display": ["DM Serif Display", "serif"],
       },
       animation: {
         "fade-up": "fadeUp 0.25s ease-out",

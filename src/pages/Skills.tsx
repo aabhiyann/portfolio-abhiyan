@@ -34,7 +34,7 @@ function Skills() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 rounded-2xl border border-border-primary/70 bg-bg-surface/35">
                 <h4 className="text-lg font-bold text-text-primary mb-2">
-                  AWS Academy Graduate — Cloud Foundations
+                  AWS Academy Graduate: Cloud Foundations
                 </h4>
                 <p className="text-text-muted text-sm">
                   Issued: Sep 2024 · 20 hours
@@ -42,7 +42,7 @@ function Skills() {
               </div>
               <div className="p-6 rounded-2xl border border-border-primary/70 bg-bg-surface/35">
                 <h4 className="text-lg font-bold text-text-primary mb-2">
-                  AWS Academy Graduate — Cloud Operations
+                  AWS Academy Graduate: Cloud Operations
                 </h4>
                 <p className="text-text-muted text-sm">
                   Issued: Nov 2024 · 40 hours

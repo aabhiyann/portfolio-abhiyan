@@ -42,29 +42,26 @@ const NavLinks = ({
           : "flex items-baseline space-x-1"
       }
     >
-      {allLinks.map((link) =>
-        link.anchor ? (
-          <a
-            key={link.label}
-            href={link.path}
-            onClick={onLinkClick}
-            className={mobile ? mobileClass(false) : desktopClass(false)}
-          >
-            {link.label}
-          </a>
-        ) : (
-          <NavLink
-            key={link.path}
-            to={link.path}
-            onClick={onLinkClick}
-            className={({ isActive }) =>
-              mobile ? mobileClass(isActive) : desktopClass(isActive)
-            }
-          >
-            {link.label}
-          </NavLink>
-        ),
-      )}
+      {links.map((link) => (
+        <NavLink
+          key={link.path}
+          to={link.path}
+          onClick={onLinkClick}
+          className={({ isActive }) =>
+            mobile
+              ? `text-2xl font-heading font-semibold transition-colors ${
+                  isActive ? "text-accent-primary" : "text-text-muted"
+                } hover:text-text-primary`
+              : `px-3 py-2 text-sm font-medium transition-colors relative ${
+                  isActive
+                    ? "text-text-primary after:absolute after:bottom-0 after:left-3 after:right-3 after:h-px after:bg-accent-primary"
+                    : "text-text-muted"
+                } hover:text-text-primary`
+          }
+        >
+          {link.label}
+        </NavLink>
+      ))}
     </div>
   );
 };
@@ -95,7 +92,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-bg-navbar border-b border-border-primary transition-colors duration-300 overflow-hidden">
+      <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-navbar/95 border-b border-border-primary transition-colors duration-300 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
