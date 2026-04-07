@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SkipLink from "./SkipLink";
-import ScrollProgressBar from "./ScrollProgressBar";
 import StructuredData from "./StructuredData";
 
 interface LayoutProps {
@@ -18,7 +17,6 @@ function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen relative bg-bg-primary text-text-primary">
       <StructuredData />
-      <ScrollProgressBar />
       <SkipLink />
       <div className="relative z-10">
         <Navbar />
