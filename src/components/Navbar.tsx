@@ -15,8 +15,6 @@ const NavLinks = ({
   const allLinks = [
     { label: "About", path: "/about", anchor: false },
     { label: "Projects", path: "/projects", anchor: false },
-    { label: "Experience", path: "/about#experience", anchor: true },
-    { label: "Skills", path: "/skills", anchor: false },
     { label: "Photography", path: "/photography", anchor: false },
     { label: "Writing", path: "/deep-dives", anchor: false },
     { label: "Contact", path: "/contact", anchor: false },
@@ -42,7 +40,7 @@ const NavLinks = ({
           : "flex items-baseline space-x-1"
       }
     >
-      {links.map((link) => (
+      {allLinks.map((link) => (
         <NavLink
           key={link.path}
           to={link.path}
@@ -54,7 +52,7 @@ const NavLinks = ({
                 } hover:text-text-primary`
               : `px-3 py-2 text-sm font-medium transition-colors relative ${
                   isActive
-                    ? "text-text-primary after:absolute after:bottom-0 after:left-3 after:right-3 after:h-px after:bg-accent-primary"
+                    ? "text-text-primary after:absolute after:bottom-0 after:left-3 after:right-3 after:h-[2px] after:bg-accent-primary after:rounded-full"
                     : "text-text-muted"
                 } hover:text-text-primary`
           }

@@ -4,19 +4,48 @@ import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "../contexts/useTheme";
 import { useCountUp } from "../hooks/useCountUp";
 
+const GITHUB_USERNAME = "aabhiyann";
+
 export const GitHubActivity = () => {
   const { themeState } = useTheme();
   const [loading, setLoading] = useState(true);
+  const [totalContributions, setTotalContributions] = useState<number>(0);
+  const [countFetched, setCountFetched] = useState(false);
 
-  // Subtle count-up animation for total contributions
+  // Fetch real contribution count from the public API
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch(
+      `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}?y=last`,
+      { signal: controller.signal },
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        // API returns { total: { "2024": N, "2025": N, ... }, contributions: [...] }
+        if (data?.total) {
+          const values: number[] = Object.values(data.total);
+          const sum = values.reduce((acc: number, v) => acc + (v as number), 0);
+          setTotalContributions(sum);
+        }
+        setCountFetched(true);
+      })
+      .catch(() => {
+        // Silently fail — hide count rather than show wrong number
+        setCountFetched(true);
+      });
+
+    return () => controller.abort();
+  }, []);
+
+  // Count-up animation driven by the live fetched value
   const { ref: countRef, displayValue } = useCountUp({
-    end: 2243, // Actual total (update this with your real count)
+    end: totalContributions,
     duration: 1500,
     start: 0,
     suffix: " contributions in the last year",
   });
 
-  // Auto-hide loading after 3 seconds (calendar should load by then)
+  // Auto-hide loading after 3 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -46,11 +75,13 @@ export const GitHubActivity = () => {
             <h3 className="text-2xl font-bold text-text-primary">
               GitHub activity
             </h3>
-            <p className="text-sm text-text-muted leading-relaxed">
-              <span ref={countRef} className="font-mono">
-                {displayValue}
-              </span>
-            </p>
+            {countFetched && totalContributions > 0 && (
+              <p className="text-sm text-text-muted leading-relaxed">
+                <span ref={countRef} className="font-mono">
+                  {displayValue}
+                </span>
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -69,7 +100,7 @@ export const GitHubActivity = () => {
       <div className={`${loading ? "hidden" : "block"}`}>
         <div className="overflow-x-auto border border-border-primary/50 rounded-2xl bg-bg-surface/35 p-4">
           <GitHubCalendar
-            username="aabhiyann"
+            username={GITHUB_USERNAME}
             colorScheme={themeState.isDarkMode ? "dark" : "light"}
             blockSize={12}
             blockMargin={4}

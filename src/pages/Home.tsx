@@ -169,6 +169,38 @@ function Home() {
       {/* Why Hire Me Section */}
       <WhyHireMe />
 
+      {/* Currently Section */}
+      <section className="py-16 bg-bg-primary border-y border-border-primary/40">
+        <div className="max-w-6xl mx-auto px-6 md:px-8">
+          <div className="flex flex-col md:flex-row md:items-start md:gap-16 gap-6">
+            <div className="flex-shrink-0">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
+                <span className="w-2 h-2 rounded-full bg-green-500" />
+                <span className="text-xs font-mono uppercase tracking-[0.2em] text-green-600 dark:text-green-400">
+                  Active
+                </span>
+              </div>
+            </div>
+            <div className="flex-1">
+              <ul className="space-y-3 text-text-secondary text-sm leading-relaxed mb-6">
+                <li>
+                  Building SnapMacros — photograph a meal, get an instant macro
+                  breakdown
+                </li>
+                <li>
+                  Recently completed M.S. Computer Science @ GWU (3.97 GPA) —
+                  algorithms, cloud computing, AI/ML
+                </li>
+                <li>Open to full-stack and ML engineering roles</li>
+              </ul>
+              <p className="text-xs font-mono uppercase tracking-[0.2em] text-text-muted">
+                Available now
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Experience Timeline */}
       <section className="py-24 bg-bg-surface/40">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
