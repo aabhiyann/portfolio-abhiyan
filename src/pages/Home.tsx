@@ -140,18 +140,26 @@ function Home() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                  <Link to="/projects">
-                    <Button variant="primary" size="lg" className="group">
-                      View Projects
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                  <Link to="/resume">
-                    <Button variant="outline" size="lg" className="group">
-                      Download Resume
-                      <Download className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
+                  <Button
+                    as={Link}
+                    to="/projects"
+                    variant="primary"
+                    size="lg"
+                    className="group"
+                  >
+                    View Projects
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                  <Button
+                    as={Link}
+                    to="/resume"
+                    variant="outline"
+                    size="lg"
+                    className="group"
+                  >
+                    Download Resume
+                    <Download className="w-4 h-4 ml-2" />
+                  </Button>
                 </div>
               </motion.div>
             </div>
