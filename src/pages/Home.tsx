@@ -128,7 +128,6 @@ function Home() {
                   <TypeWriter
                     words={[
                       "Full-stack systems with real ML in production",
-                      "Teaching algorithms while shipping products",
                       "From RAG pipelines to React frontends",
                     ]}
                   />
