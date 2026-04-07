@@ -1,5 +1,6 @@
 import React from "react";
-import { Coffee, GraduationCap, Laptop } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Coffee, GraduationCap, Laptop } from "lucide-react";
 
 const HeroCurrentlyCard: React.FC = () => {
   return (
@@ -34,6 +35,13 @@ const HeroCurrentlyCard: React.FC = () => {
             </span>
           </li>
         </ul>
+        <Link
+          to="/now"
+          className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-accent-primary group mt-4 hover:opacity-80 transition-opacity"
+        >
+          See full /now
+          <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+        </Link>
       </div>
     </div>
   );
