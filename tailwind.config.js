@@ -40,7 +40,7 @@ export default {
       },
       fontFamily: {
         "heading": ["Space Grotesk", "sans-serif"],
-        "body": ["Inter", "sans-serif"],
+        "body": ["DM Sans", "sans-serif"],
         "display": ["DM Serif Display", "serif"],
       },
       animation: {
