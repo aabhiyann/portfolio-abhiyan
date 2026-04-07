@@ -9,7 +9,7 @@ const WhyHireMe: React.FC = () => {
       icon: GraduationCap,
       title: "Education",
       items: [
-        "M.S. Computer Science, GWU (4.0 GPA)",
+        "M.S. Computer Science, GWU",
         "Focus: distributed systems, ML, algorithms",
         "AWS Cloud Foundations certified",
         "AWS Cloud Operations certified",
