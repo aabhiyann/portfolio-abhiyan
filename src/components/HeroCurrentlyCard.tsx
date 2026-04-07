@@ -21,8 +21,8 @@ const HeroCurrentlyCard: React.FC = () => {
               <GraduationCap className="w-4 h-4" />
             </span>
             <span className="text-sm text-text-secondary leading-snug">
-              Recently completed MS CS @ GWU (3.97 GPA). Focused on Machine
-              Learning and Distributed Systems.
+              Recently completed MS CS @ GWU. Focused on Machine Learning and
+              Distributed Systems.
             </span>
           </li>
           <li className="flex items-start gap-3">
