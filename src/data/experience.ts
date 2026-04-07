@@ -122,21 +122,6 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    id: "sx-event-coordinator",
-    role: "Student Event Coordinator",
-    company: "St. Xavier's College, Maitighar",
-    dates: "Dec 2019 – Jan 2022",
-    location: "Kathmandu, Nepal",
-    description:
-      "Organized campus events including hackathons and competitions with full end-to-end logistical ownership across two years.",
-    technologies: ["Event Management", "Coordination", "Leadership"],
-    achievements: [
-      "Organized hackathons, competitions, and campus events with full end-to-end logistical ownership",
-      "Managed participant registration, scheduling, financial transactions, and event documentation",
-      "Handled front-desk support and resolved inquiries during live events",
-    ],
-  },
-  {
     id: "sx-bscsit",
     role: "BSc.CSIT",
     company: "St. Xavier's College, Maitighar",
