@@ -61,10 +61,7 @@ export const projects: Project[] = [
     image: "/images/projects/talkifydocs.png",
     categories: ["ML/AI", "Full Stack"],
     featured: true,
-    stats: [
-      { label: "Status", value: "Live" },
-      { label: "Cost", value: "$0/mo" },
-    ],
+    stats: [{ label: "Cost", value: "$0/mo" }],
     badges: ["AI", "Free Tier", "SaaS"],
     status: "Live",
     caseStudyUrl: "/case-studies/talkifydocs",
