@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     <footer className="border-t border-border-primary bg-bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-muted">
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-5">
             <a
               href="https://github.com/aabhiyann"
               target="_blank"
@@ -24,39 +24,7 @@ const Footer: React.FC = () => {
               LinkedIn
             </a>
             <Link
-              to="/about#experience"
-              className="hover:text-text-primary transition-colors"
-            >
-              Experience
-            </Link>
-            <Link
-              to="/about#skills"
-              className="hover:text-text-primary transition-colors"
-            >
-              Skills
-            </Link>
-            <Link
-              to="/resume"
-              className="hover:text-text-primary transition-colors"
-            >
-              Resume
-            </Link>
-            <Link
-              to="/now"
-              className="hover:text-text-primary transition-colors"
-            >
-              Now
-            </Link>
-            <Link
-              to="/uses"
-              className="hover:text-text-primary transition-colors"
-            >
-              Uses
-            </Link>
-          </div>
-          <div className="flex items-center gap-5">
-            <Link
-              to="/about#experience"
+              to="/experience"
               className="hover:text-text-primary transition-colors"
             >
               Experience
@@ -66,6 +34,12 @@ const Footer: React.FC = () => {
               className="hover:text-text-primary transition-colors"
             >
               Skills
+            </Link>
+            <Link
+              to="/resume"
+              className="hover:text-text-primary transition-colors"
+            >
+              Resume
             </Link>
             <Link
               to="/now"
