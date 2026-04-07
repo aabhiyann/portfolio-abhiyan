@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SkipLink from "./SkipLink";
-import CustomCursor from "./CustomCursor";
 import ScrollProgressBar from "./ScrollProgressBar";
 import StructuredData from "./StructuredData";
 
@@ -20,7 +19,6 @@ function Layout({ children }: LayoutProps) {
     <div className="min-h-screen relative bg-bg-primary text-text-primary">
       <StructuredData />
       <ScrollProgressBar />
-      <CustomCursor />
       <SkipLink />
       <div className="relative z-10">
         <Navbar />
