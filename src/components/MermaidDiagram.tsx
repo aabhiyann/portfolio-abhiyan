@@ -32,53 +32,50 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
       try {
         const mermaid = (await import("mermaid")).default;
 
-        // Initialize Mermaid with dynamic theme
+        const style = getComputedStyle(document.documentElement);
+        const cssVar = (name: string, fallback: string) => {
+          const value = style.getPropertyValue(name).trim();
+          return value || fallback;
+        };
+
+        const accent = cssVar("--color-accent-primary", "#dc7d47");
+        const accentFocus = cssVar("--color-accent-focus", "#dc7d47");
+        const textPrimary = cssVar("--color-text-primary", "#24292f");
+        const textMuted = cssVar("--color-text-muted", "#6e7781");
+        const borderPrimary = cssVar("--color-border-primary", "#dcd3c6");
+        const bgSurface = cssVar("--color-bg-surface", "#f4efe8");
+        const bgCard = cssVar("--color-bg-card", "#fffdf9");
+        const info = cssVar("--color-info", "#58a6ff");
+        const bodyFont = cssVar("--font-family-body", "DM Sans, sans-serif");
+        const edgeLabelBackground = `color-mix(in srgb, ${bgCard} 92%, transparent)`;
+
+        // Initialize Mermaid — colors/fonts follow runtime CSS variables (light/dark)
         mermaid.initialize({
           startOnLoad: false,
           theme: "base", // Use base theme for maximum control
-          themeVariables: isDarkMode
-            ? {
-                // Dark Mode - High Contrast & Premium
-                primaryColor: "#8B5CF6", // Violet-500
-                primaryTextColor: "#FFFFFF", // Pure White for max contrast
-                primaryBorderColor: "#A78BFA", // Violet-400 (Lighter border)
-                lineColor: "#CBD5E1", // Slate-300 (Much lighter lines)
-                secondaryColor: "#14B8A6", // Teal-500
-                tertiaryColor: "#1E293B", // Slate-800
-                background: "transparent",
-                mainBkg: "transparent",
-                nodeBorder: "#A78BFA",
-                clusterBkg: "transparent", // NO GREY! Subtle border only
-                clusterBorder: "#475569",
-                titleColor: "#FFFFFF",
-                edgeLabelBackground: "rgba(15, 23, 42, 0.9)", // Darker background for labels
-                fontFamily: "Inter, sans-serif",
-                fontSize: "18px", // Larger for clarity
-              }
-            : {
-                // Light Mode - High Contrast
-                primaryColor: "#6D28D9", // Violet-700
-                primaryTextColor: "#0F172A", // Slate-900 (Darker text)
-                primaryBorderColor: "#7C3AED", // Violet-600
-                lineColor: "#475569", // Slate-600 (Darker lines)
-                secondaryColor: "#0F766E", // Teal-700
-                tertiaryColor: "#F8FAFC", // Slate-50
-                background: "transparent",
-                mainBkg: "transparent",
-                nodeBorder: "#7C3AED",
-                clusterBkg: "transparent", // NO GREY! Clean look
-                clusterBorder: "#CBD5E1",
-                titleColor: "#0F172A",
-                edgeLabelBackground: "rgba(255, 255, 255, 0.95)", // More opaque
-                fontFamily: "Inter, sans-serif",
-                fontSize: "18px", // Larger for clarity
-              },
+          themeVariables: {
+            primaryColor: accent,
+            primaryTextColor: "#ffffff",
+            primaryBorderColor: accentFocus,
+            lineColor: textMuted,
+            secondaryColor: info,
+            tertiaryColor: bgSurface,
+            background: "transparent",
+            mainBkg: "transparent",
+            nodeBorder: accentFocus,
+            clusterBkg: "transparent",
+            clusterBorder: borderPrimary,
+            titleColor: textPrimary,
+            edgeLabelBackground,
+            fontFamily: bodyFont,
+            fontSize: "18px",
+          },
           flowchart: {
             useMaxWidth: true,
             htmlLabels: true,
             curve: "basis", // Smooth curves
           },
-          fontFamily: "Inter, sans-serif",
+          fontFamily: bodyFont,
         });
 
         const id = `mermaid-${Math.random().toString(36).substr(2, 9)}`;
