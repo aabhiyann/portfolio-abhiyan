@@ -1,40 +1,14 @@
 import React from "react";
-import { MotionCard } from "./ui/MotionCard";
-import { GraduationCap, Rocket, Code2 } from "lucide-react";
 import SectionTitle from "./SectionTitle";
 
 const WhyHireMe: React.FC = () => {
-  const cards = [
-    {
-      icon: GraduationCap,
-      title: "Academic Foundation",
-      items: [
-        "M.S. Computer Science, GWU",
-        "Focus: distributed systems, ML, algorithms",
-        "AWS Cloud Foundations certified",
-        "AWS Cloud Operations certified",
-      ],
-    },
-    {
-      icon: Rocket,
-      title: "Shipped Work",
-      items: [
-        "6 applications shipped and deployed",
-        "1,200+ active users across projects",
-        "Full ownership: API, ML layer, and UI",
-        "Real metrics, not just notebooks",
-      ],
-    },
-    {
-      icon: Code2,
-      title: "Full-Stack + AI/ML",
-      items: [
-        "React / Next.js, FastAPI, PostgreSQL",
-        "RAG pipelines, anomaly detection, forecasting",
-        "Docker, AWS, CI/CD",
-        "System design with clean, maintainable code",
-      ],
-    },
+  const highlights = [
+    "M.S. Computer Science, GWU with focus on distributed systems and ML",
+    "6 applications shipped and deployed with end-to-end ownership",
+    "1,200+ active users across production projects",
+    "React / Next.js, FastAPI, PostgreSQL, Docker, AWS, CI/CD",
+    "RAG pipelines, anomaly detection, and forecasting in production",
+    "AWS Cloud Foundations + Cloud Operations certified",
   ];
 
   return (
@@ -45,38 +19,26 @@ const WhyHireMe: React.FC = () => {
           subtitle="Shipped products. Measurable outcomes."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {cards.map((card, index) => (
-            <MotionCard
-              key={card.title}
-              className="h-full bg-card border border-border-primary hover:border-accent-primary/30 transition-all duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-            >
-              <div className="p-8 h-full flex flex-col">
-                <div className="w-12 h-12 rounded-lg bg-accent-primary/10 flex items-center justify-center mb-6">
-                  <card.icon className="w-6 h-6 text-accent-primary" />
-                </div>
-
-                <h3 className="text-xl font-bold text-text-primary mb-6 font-heading border-b border-border-primary/50 pb-4">
-                  {card.title}
-                </h3>
-
-                <ul className="space-y-3">
-                  {card.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3 group">
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-secondary group-hover:bg-accent-primary transition-colors" />
-                      <span className="text-text-secondary text-sm leading-relaxed">
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+        <div className="rounded-2xl border border-border-primary bg-card p-8 md:p-10">
+          <p className="text-lg text-text-secondary leading-relaxed mb-8 max-w-4xl">
+            I build production-grade software at the intersection of product,
+            machine learning, and systems design. The focus is consistent:
+            shipping useful outcomes with clean architecture and measurable
+            impact.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {highlights.map((item) => (
+              <div
+                key={item}
+                className="flex items-start gap-3 rounded-lg border border-border-primary/60 px-4 py-3"
+              >
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary shrink-0" />
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  {item}
+                </p>
               </div>
-            </MotionCard>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
