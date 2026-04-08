@@ -130,7 +130,7 @@ export const ProjectCard = ({
               rel="noopener noreferrer"
               className="hover:text-accent-primary transition-colors"
             >
-              GitHub ↗
+              GitHub
             </a>
           )}
         </div>
