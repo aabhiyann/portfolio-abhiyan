@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FileText } from "lucide-react";
 import { Project } from "../../data/Projects";
 import { Button, SafeImage } from "./";
 
@@ -16,6 +15,20 @@ export const ProjectCard = ({
   onArchitectureClick: _onArchitectureClick,
 }: ProjectCardProps) => {
   const primaryProof = project.stats?.[0];
+  const primaryAction = project.caseStudyUrl
+    ? { type: "case-study" as const, href: project.caseStudyUrl }
+    : project.live
+      ? { type: "live" as const, href: project.live }
+      : project.github
+        ? { type: "github" as const, href: project.github }
+        : null;
+
+  const secondaryAction =
+    primaryAction?.type !== "github" && project.github
+      ? { type: "github" as const, href: project.github }
+      : primaryAction?.type !== "live" && project.live
+        ? { type: "live" as const, href: project.live }
+        : null;
 
   return (
     <motion.div
@@ -71,12 +84,12 @@ export const ProjectCard = ({
           <span>{project.tech.slice(0, 4).join(", ")}</span>
         </div>
 
-        {/* Primary actions: Case Study + Live Demo */}
+        {/* Card actions: max 2 total */}
         <div className="flex flex-wrap gap-3 items-center mb-4">
-          {project.caseStudyUrl && (
+          {primaryAction?.type === "case-study" && (
             <Button
               as={Link}
-              to={project.caseStudyUrl}
+              to={primaryAction.href}
               variant="primary"
               size="sm"
               className="font-medium"
@@ -84,10 +97,10 @@ export const ProjectCard = ({
               Case Study
             </Button>
           )}
-          {project.live && (
+          {primaryAction?.type === "live" && (
             <Button
               as="a"
-              href={project.live}
+              href={primaryAction.href}
               target="_blank"
               rel="noopener noreferrer"
               variant="outline"
@@ -97,10 +110,10 @@ export const ProjectCard = ({
               Live Demo
             </Button>
           )}
-          {!project.caseStudyUrl && !project.live && project.github && (
+          {primaryAction?.type === "github" && (
             <Button
               as="a"
-              href={project.github}
+              href={primaryAction.href}
               target="_blank"
               rel="noopener noreferrer"
               variant="primary"
@@ -110,32 +123,24 @@ export const ProjectCard = ({
               Source Code
             </Button>
           )}
-        </div>
-
-        {/* Secondary links: Deep Dive · GitHub */}
-        <div className="flex flex-wrap items-center gap-3 text-xs text-text-muted pt-3 border-t border-border-primary/50">
-          {project.deepDiveId && (
-            <Link
-              to={`/deep-dives/${project.deepDiveId}`}
-              className="inline-flex items-center gap-1.5 hover:text-accent-primary transition-colors"
-            >
-              <FileText className="w-3.5 h-3.5" />
-              Deep Dive
-            </Link>
-          )}
-          {project.deepDiveId && project.github && (
-            <span className="text-[10px] text-text-muted/45" aria-hidden="true">
-              ·
-            </span>
-          )}
-          {project.github && (
+          {secondaryAction?.type === "github" && (
             <a
-              href={project.github}
+              href={secondaryAction.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-accent-primary transition-colors"
+              className="text-xs text-text-muted hover:text-accent-primary transition-colors"
             >
               GitHub
+            </a>
+          )}
+          {secondaryAction?.type === "live" && (
+            <a
+              href={secondaryAction.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-text-muted hover:text-accent-primary transition-colors"
+            >
+              Live Demo
             </a>
           )}
         </div>
