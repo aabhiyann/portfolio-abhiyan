@@ -14,6 +14,8 @@ const staticRoutes = [
     '/projects',
     '/resume',
     '/deep-dives',
+    '/now',
+    '/uses',
 ];
 
 // Regex patterns to extract data from TS files
