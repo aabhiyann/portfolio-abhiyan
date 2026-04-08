@@ -15,7 +15,7 @@ const HeroPhotoCard: React.FC = () => {
       </div>
       <div className="absolute top-4 left-4 z-10">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-bg-primary/80 backdrop-blur-md border border-border-primary/50 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+          <span className="w-2 h-2 rounded-full bg-success shadow-[0_0_8px_color-mix(in_srgb,var(--color-success)_60%,transparent)]" />
           <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-text-primary font-bold">
             Available Now
           </span>
