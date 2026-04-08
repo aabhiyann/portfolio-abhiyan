@@ -7,7 +7,7 @@ const WhyHireMe: React.FC = () => {
   const cards = [
     {
       icon: GraduationCap,
-      title: "Graduate Training",
+      title: "Academic Foundation",
       items: [
         "M.S. Computer Science, GWU",
         "Focus: distributed systems, ML, algorithms",
