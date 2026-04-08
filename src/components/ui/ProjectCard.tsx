@@ -123,6 +123,7 @@ export const ProjectCard = ({
               Deep Dive
             </Link>
           )}
+          {project.deepDiveId && project.github && <span>·</span>}
           {project.github && (
             <a
               href={project.github}
