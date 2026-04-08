@@ -13,7 +13,6 @@ import HeroCurrentlyCard from "../components/HeroCurrentlyCard";
 import HeroWritingCard from "../components/HeroWritingCard";
 import WhyHireMe from "../components/WhyHireMe";
 import ContactSection from "../components/ContactSection";
-import TypeWriter from "../components/ui/TypeWriter";
 import { FeaturedProjectsSection, AboutTeaser } from "../components/sections";
 import { experiences } from "../data/experience";
 import { ArrowRight, Download } from "lucide-react";
@@ -114,24 +113,12 @@ function Home() {
                 transition={{ duration: motionTokens.duration.normal / 1000 }}
               >
                 <h1 className="text-5xl md:text-6xl lg:text-[4rem] xl:text-[4.5rem] font-medium tracking-tight mb-6 font-display text-text-primary leading-[1.1]">
-                  Software Engineer <br />
-                  <span className="text-accent-primary font-display italic leading-relaxed">
-                    &
-                  </span>{" "}
-                  <br />
-                  <span className="text-accent-primary font-display italic pr-2">
-                    AI/ML Engineer
-                  </span>
+                  Software Engineer building AI/ML systems.
                 </h1>
 
-                <div className="text-xl md:text-2xl text-text-secondary font-medium mb-6 min-h-[60px]">
-                  <TypeWriter
-                    words={[
-                      "Full-stack systems with real ML in production",
-                      "From RAG pipelines to React frontends",
-                    ]}
-                  />
-                </div>
+                <p className="text-xl md:text-2xl text-text-secondary font-medium mb-6">
+                  Full-stack systems with real ML in production.
+                </p>
 
                 <p className="text-lg text-text-muted mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0 font-body">
                   I'm a Software Engineer building AI and ML products, from
