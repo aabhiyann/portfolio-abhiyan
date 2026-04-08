@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { FileText } from "lucide-react";
 import { Project } from "../../data/Projects";
 import { Button, SafeImage } from "./";
 
@@ -15,21 +16,6 @@ export const ProjectCard = ({
   onArchitectureClick: _onArchitectureClick,
 }: ProjectCardProps) => {
   const primaryProof = project.stats?.[0];
-  const primaryAction = project.caseStudyUrl
-    ? { type: "case-study" as const, href: project.caseStudyUrl }
-    : project.live
-      ? { type: "live" as const, href: project.live }
-      : project.github
-        ? { type: "github" as const, href: project.github }
-        : null;
-
-  const secondaryAction =
-    primaryAction?.type !== "github" && project.github
-      ? { type: "github" as const, href: project.github }
-      : primaryAction?.type !== "live" && project.live
-        ? { type: "live" as const, href: project.live }
-        : null;
-
   return (
     <motion.div
       className="flex flex-col group h-full overflow-hidden rounded-2xl bg-card border border-border-primary/80 shadow-sm hover:border-accent-primary/20 transition-colors"
@@ -62,7 +48,7 @@ export const ProjectCard = ({
       {/* Card body */}
       <div className="p-6 flex flex-col flex-grow">
         {/* Category + stat */}
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-3 text-xs uppercase tracking-[0.18em] text-text-muted">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-3 text-xs uppercase tracking-[0.18em] text-text-muted min-h-[2.75rem] content-start">
           <span>{project.categories.slice(0, 2).join(" / ")}</span>
           {primaryProof && (
             <span className="text-accent-primary font-mono tracking-[0.14em]">
@@ -71,25 +57,25 @@ export const ProjectCard = ({
           )}
         </div>
 
-        <h3 className="text-xl font-bold text-text-primary mb-3 font-heading group-hover:text-accent-primary transition-colors">
+        <h3 className="text-xl font-bold text-text-primary mb-3 font-heading group-hover:text-accent-primary transition-colors min-h-[3.5rem]">
           {project.title}
         </h3>
 
-        <p className="text-text-muted mb-6 leading-relaxed flex-grow line-clamp-3">
+        <p className="text-text-muted mb-6 leading-relaxed line-clamp-3 min-h-[5.25rem]">
           {project.story || project.description}
         </p>
 
-        <div className="mb-5 text-sm text-text-secondary">
+        <div className="mb-5 text-sm text-text-secondary min-h-[3rem]">
           <span className="font-medium text-text-primary">Built with </span>
           <span>{project.tech.slice(0, 4).join(", ")}</span>
         </div>
 
-        {/* Card actions: max 2 total */}
-        <div className="flex flex-wrap gap-3 items-center mb-4">
-          {primaryAction?.type === "case-study" && (
+        {/* Primary actions */}
+        <div className="flex flex-wrap gap-3 items-center mt-auto">
+          {project.caseStudyUrl && (
             <Button
               as={Link}
-              to={primaryAction.href}
+              to={project.caseStudyUrl}
               variant="primary"
               size="sm"
               className="font-medium"
@@ -97,10 +83,10 @@ export const ProjectCard = ({
               Case Study
             </Button>
           )}
-          {primaryAction?.type === "live" && (
+          {project.live && (
             <Button
               as="a"
-              href={primaryAction.href}
+              href={project.live}
               target="_blank"
               rel="noopener noreferrer"
               variant="outline"
@@ -110,10 +96,10 @@ export const ProjectCard = ({
               Live Demo
             </Button>
           )}
-          {primaryAction?.type === "github" && (
+          {!project.caseStudyUrl && !project.live && project.github && (
             <Button
               as="a"
-              href={primaryAction.href}
+              href={project.github}
               target="_blank"
               rel="noopener noreferrer"
               variant="primary"
@@ -123,24 +109,32 @@ export const ProjectCard = ({
               Source Code
             </Button>
           )}
-          {secondaryAction?.type === "github" && (
+        </div>
+
+        {/* Secondary links */}
+        <div className="flex flex-wrap items-center gap-3 text-xs text-text-muted pt-3 border-t border-border-primary/50 mt-3">
+          {project.deepDiveId && (
+            <Link
+              to={`/deep-dives/${project.deepDiveId}`}
+              className="inline-flex items-center gap-1.5 hover:text-accent-primary transition-colors"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              Deep Dive
+            </Link>
+          )}
+          {project.deepDiveId && project.github && (
+            <span className="text-[10px] text-text-muted/45" aria-hidden="true">
+              ·
+            </span>
+          )}
+          {project.github && (
             <a
-              href={secondaryAction.href}
+              href={project.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs text-text-muted hover:text-accent-primary transition-colors"
             >
               GitHub
-            </a>
-          )}
-          {secondaryAction?.type === "live" && (
-            <a
-              href={secondaryAction.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-text-muted hover:text-accent-primary transition-colors"
-            >
-              Live Demo
             </a>
           )}
         </div>

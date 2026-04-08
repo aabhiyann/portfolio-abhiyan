@@ -61,7 +61,7 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
               )}
             </div>
 
-            <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] uppercase tracking-[0.18em] text-text-muted">
+            <div className="mb-3 flex min-h-[2.75rem] flex-wrap content-start items-center gap-x-3 gap-y-2 text-[11px] uppercase tracking-[0.18em] text-text-muted">
               <span>{project.categories.slice(0, 2).join(" / ")}</span>
               {project.stats?.[0] && (
                 <span className="font-mono text-accent-primary tracking-[0.14em]">
@@ -70,15 +70,15 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
               )}
             </div>
 
-            <h3 className="text-xl font-semibold mb-3 text-text-primary font-heading">
+            <h3 className="mb-3 min-h-[3.5rem] text-xl font-semibold text-text-primary font-heading">
               {project.title}
             </h3>
-            <p className="text-text-muted mb-4 flex-grow line-clamp-3 text-sm leading-relaxed">
+            <p className="mb-4 min-h-[5.25rem] text-sm leading-relaxed text-text-muted line-clamp-3">
               {project.story || project.description}
             </p>
 
             <div className="mt-auto pt-4 border-t border-border-primary/50">
-              <div className="text-sm text-text-secondary mb-4">
+              <div className="mb-4 min-h-[3rem] text-sm text-text-secondary">
                 <span className="font-medium text-text-primary">
                   Built with{" "}
                 </span>
