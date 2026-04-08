@@ -58,6 +58,26 @@ function Home() {
       ),
     [homepageTimeline],
   );
+  const groupedTimeline = useMemo(
+    () =>
+      timelineYears.map((year) => {
+        const entries = homepageTimeline
+          .map((item, index) => ({ item, index }))
+          .filter(({ item }) => getStartYear(item.dates) === year);
+        return { year, entries };
+      }),
+    [homepageTimeline, timelineYears],
+  );
+  const yearFirstIndexMap = useMemo(() => {
+    const map = new Map<string, number>();
+    homepageTimeline.forEach((item, index) => {
+      const year = getStartYear(item.dates);
+      if (!map.has(year)) {
+        map.set(year, index);
+      }
+    });
+    return map;
+  }, [homepageTimeline]);
   const [activeTimelineYear, setActiveTimelineYear] = useState(
     timelineYears[0] ?? "",
   );
@@ -65,21 +85,48 @@ function Home() {
   const articleRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const threshold = window.innerHeight * 0.45;
-      let active = timelineYears[0];
-      articleRefs.current.forEach((el, i) => {
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= threshold) {
-          active = getStartYear(homepageTimeline[i].dates);
-        }
-      });
-      setActiveTimelineYear(active);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    if (!homepageTimeline.length) return;
+
+    const visibleRatios = new Map<number, number>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = Number((entry.target as HTMLElement).dataset.tlIndex);
+          if (Number.isNaN(index)) return;
+          visibleRatios.set(index, entry.intersectionRatio);
+        });
+
+        const mostVisible = [...visibleRatios.entries()]
+          .sort((a, b) => b[1] - a[1])
+          .find(([, ratio]) => ratio > 0);
+
+        if (!mostVisible) return;
+        const [visibleIndex] = mostVisible;
+        const year = getStartYear(homepageTimeline[visibleIndex].dates);
+        setActiveTimelineYear(year);
+      },
+      {
+        threshold: [0.2, 0.4, 0.6, 0.8],
+        rootMargin: "-25% 0px -35% 0px",
+      },
+    );
+
+    articleRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, [homepageTimeline, timelineYears]);
+
+  const activeYearIndex = Math.max(
+    0,
+    timelineYears.indexOf(activeTimelineYear),
+  );
+  const railProgressPct =
+    timelineYears.length > 1
+      ? (activeYearIndex / (timelineYears.length - 1)) * 100
+      : 0;
+  const railProgressHeight = `calc(max(${railProgressPct}%, 0%) - 0.5rem)`;
 
   return (
     <Page>
@@ -227,12 +274,19 @@ function Home() {
               DC.
             </p>
           </div>
+          <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-text-muted mb-5">
+            Recent to Past
+          </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[84px,minmax(0,1fr)] gap-8 lg:gap-16 items-start">
-            <div className="hidden lg:block lg:sticky lg:top-28 self-start z-10">
-              <div className="relative pl-5">
-                <div className="absolute left-0 top-2 bottom-2 w-px bg-border-primary/80" />
-                <div className="space-y-5">
+          <div className="grid grid-cols-1 lg:grid-cols-[128px,minmax(0,1fr)] gap-8 lg:gap-14 items-start">
+            <div className="hidden lg:block lg:sticky lg:top-24 self-start z-10">
+              <div className="relative pl-4">
+                <div className="absolute left-0 top-1 bottom-1 w-px bg-border-primary/80" />
+                <div
+                  className="absolute left-0 top-1 w-px bg-accent-primary transition-[height] duration-300"
+                  style={{ height: railProgressHeight }}
+                />
+                <div className="space-y-3">
                   {timelineYears.map((year, index) => {
                     const isActive = activeTimelineYear === year;
 
@@ -240,22 +294,32 @@ function Home() {
                       <motion.div
                         key={year}
                         animate={{
-                          opacity: isActive ? 1 : 0.45,
-                          x: isActive ? 0 : 8,
-                          scale: isActive ? 1 : 0.96,
+                          opacity: isActive ? 1 : 0.55,
+                          x: isActive ? 0 : 4,
+                          scale: isActive ? 1 : 0.98,
                         }}
-                        transition={{ duration: 0.25, ease: "easeOut" }}
+                        transition={{ duration: 0.22, ease: "easeOut" }}
                         className="relative"
                       >
                         <span
-                          className={`absolute left-[-5px] top-1.5 h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                          className={`absolute left-[-4px] top-2 h-2 w-2 rounded-full transition-all duration-300 ${
                             isActive
                               ? "bg-accent-primary ring-4 ring-bg-primary"
                               : "bg-bg-primary border border-border-primary"
                           }`}
                         />
-                        <div
-                          className={`text-[11px] font-mono uppercase tracking-[0.28em] transition-colors duration-300 ${
+                        <button
+                          type="button"
+                          aria-current={isActive ? "true" : "false"}
+                          onClick={() => {
+                            const targetIndex = yearFirstIndexMap.get(year);
+                            if (targetIndex === undefined) return;
+                            articleRefs.current[targetIndex]?.scrollIntoView({
+                              behavior: "smooth",
+                              block: "start",
+                            });
+                          }}
+                          className={`text-xs font-mono tracking-[0.2em] transition-colors duration-300 ${
                             isActive
                               ? "text-accent-primary"
                               : index === 0
@@ -264,7 +328,7 @@ function Home() {
                           }`}
                         >
                           {year}
-                        </div>
+                        </button>
                       </motion.div>
                     );
                   })}
@@ -273,64 +337,123 @@ function Home() {
             </div>
 
             <div className="space-y-12">
-              {homepageTimeline.map((experience, index) => (
-                <motion.article
-                  key={experience.id}
-                  ref={(el) => {
-                    articleRefs.current[index] = el;
-                  }}
-                  className="relative border-l border-border-primary pl-8 md:pl-10"
-                  initial={{ opacity: 0, y: 24 }}
+              <div className="lg:hidden -mx-1 overflow-x-auto pb-2">
+                <div className="flex items-center gap-2 px-1 min-w-max">
+                  {timelineYears.map((year) => {
+                    const isActive = activeTimelineYear === year;
+                    return (
+                      <button
+                        key={year}
+                        type="button"
+                        aria-current={isActive ? "true" : "false"}
+                        onClick={() => {
+                          const targetIndex = yearFirstIndexMap.get(year);
+                          if (targetIndex === undefined) return;
+                          articleRefs.current[targetIndex]?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                          });
+                        }}
+                        className={`rounded-full border px-3 py-1 text-[11px] font-mono tracking-[0.14em] transition-colors ${
+                          isActive
+                            ? "border-accent-primary/60 bg-accent-primary/10 text-accent-primary"
+                            : "border-border-primary text-text-secondary"
+                        }`}
+                      >
+                        {year}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {groupedTimeline.map((yearGroup, yearGroupIndex) => (
+                <motion.section
+                  key={yearGroup.year}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  viewport={{ once: true, amount: 0.25 }}
                   transition={{
                     duration: motionTokens.duration.normal / 1000,
-                    delay: index * 0.05,
+                    delay: yearGroupIndex * 0.06,
                   }}
+                  className="space-y-5"
                 >
-                  <div className="absolute left-[-6px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
-
-                  <div className="space-y-3">
-                    <div className="flex flex-wrap items-center gap-3">
-                      <span className="inline-flex rounded-full border border-border-primary px-3 py-1 text-xs font-mono uppercase tracking-[0.18em] text-text-secondary">
-                        {experience.track}
-                      </span>
-                      <span className="text-sm font-mono text-accent-primary">
-                        {experience.dates}
-                      </span>
-                      <span className="text-xs uppercase tracking-[0.18em] text-text-muted/80">
-                        {experience.location}
-                      </span>
-                    </div>
-
-                    <div className="space-y-1">
-                      <p className="text-xs uppercase tracking-[0.22em] text-accent-primary">
-                        {experience.company}
-                      </p>
-                      <h3 className="text-xl md:text-2xl font-bold text-text-primary font-heading leading-tight">
-                        {experience.role}
-                      </h3>
-                    </div>
-
-                    <p className="text-text-muted leading-relaxed max-w-2xl">
-                      {experience.description}
+                  <div className="flex items-end justify-between gap-3 border-b border-border-primary/70 pb-3">
+                    <h3 className="text-2xl md:text-3xl font-bold font-heading text-text-primary">
+                      {yearGroup.year}
+                    </h3>
+                    <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-text-muted">
+                      {yearGroup.entries.length}{" "}
+                      {yearGroup.entries.length === 1 ? "entry" : "entries"}
                     </p>
-
-                    <div className="space-y-2">
-                      {experience.achievements
-                        .slice(0, 2)
-                        .map((achievement) => (
-                          <div
-                            key={achievement}
-                            className="flex items-start gap-3 text-sm text-text-secondary"
-                          >
-                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
-                            <span>{achievement}</span>
-                          </div>
-                        ))}
-                    </div>
                   </div>
-                </motion.article>
+
+                  <div className="space-y-8">
+                    {yearGroup.entries.map(
+                      ({ item: experience, index }, entryIndex) => (
+                        <motion.article
+                          key={experience.id}
+                          ref={(el) => {
+                            articleRefs.current[index] = el;
+                          }}
+                          data-tl-index={index}
+                          className="relative border-l border-border-primary pl-8 md:pl-10"
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true, amount: 0.2 }}
+                          transition={{
+                            duration: motionTokens.duration.normal / 1000,
+                            delay: entryIndex * 0.05,
+                          }}
+                        >
+                          <div className="absolute left-[-6px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
+
+                          <div className="space-y-3">
+                            <div className="flex flex-wrap items-center gap-3">
+                              <span className="inline-flex rounded-full border border-border-primary px-3 py-1 text-xs font-mono uppercase tracking-[0.18em] text-text-secondary">
+                                {experience.track}
+                              </span>
+                              <span className="text-sm font-mono text-accent-primary">
+                                {experience.dates}
+                              </span>
+                              <span className="text-xs uppercase tracking-[0.18em] text-text-muted/80">
+                                {experience.location}
+                              </span>
+                            </div>
+
+                            <div className="space-y-1">
+                              <p className="text-xs uppercase tracking-[0.22em] text-accent-primary">
+                                {experience.company}
+                              </p>
+                              <h4 className="text-xl md:text-2xl font-bold text-text-primary font-heading leading-tight">
+                                {experience.role}
+                              </h4>
+                            </div>
+
+                            <p className="text-text-muted leading-relaxed max-w-2xl">
+                              {experience.description}
+                            </p>
+
+                            <div className="space-y-2">
+                              {experience.achievements
+                                .slice(0, 2)
+                                .map((achievement) => (
+                                  <div
+                                    key={achievement}
+                                    className="flex items-start gap-3 text-sm text-text-secondary"
+                                  >
+                                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
+                                    <span>{achievement}</span>
+                                  </div>
+                                ))}
+                            </div>
+                          </div>
+                        </motion.article>
+                      ),
+                    )}
+                  </div>
+                </motion.section>
               ))}
 
               <div className="mt-10 lg:hidden">
