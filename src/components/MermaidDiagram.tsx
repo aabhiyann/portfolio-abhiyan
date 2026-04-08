@@ -46,8 +46,12 @@ const MermaidDiagram: React.FC<MermaidDiagramProps> = ({
         const bgSurface = cssVar("--color-bg-surface", "#f4efe8");
         const bgCard = cssVar("--color-bg-card", "#fffdf9");
         const info = cssVar("--color-info", "#58a6ff");
-        const bodyFont = cssVar("--font-family-body", "DM Sans, sans-serif");
-        const edgeLabelBackground = `color-mix(in srgb, ${bgCard} 92%, transparent)`;
+        /** Mermaid expects a single family name; strip stack/quotes from CSS */
+        const bodyFontRaw = cssVar("--font-family-body", "DM Sans, sans-serif");
+        const bodyFont =
+          bodyFontRaw.split(",")[0]?.replace(/["']/g, "").trim() || "DM Sans";
+        /** Solid card token — color-mix() breaks some Mermaid/SVG paths */
+        const edgeLabelBackground = bgCard;
 
         // Initialize Mermaid — colors/fonts follow runtime CSS variables (light/dark)
         mermaid.initialize({
