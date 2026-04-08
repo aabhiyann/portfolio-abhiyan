@@ -124,7 +124,7 @@ export const ProjectCard = ({
             </Link>
           )}
           {project.deepDiveId && project.github && (
-            <span className="text-text-muted/50" aria-hidden="true">
+            <span className="text-[10px] text-text-muted/45" aria-hidden="true">
               ·
             </span>
           )}
