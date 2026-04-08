@@ -113,7 +113,7 @@ export const ProjectCard = ({
         </div>
 
         {/* Secondary links: Deep Dive · GitHub */}
-        <div className="flex flex-wrap items-center gap-4 text-sm text-text-muted pt-3 border-t border-border-primary/50">
+        <div className="flex flex-wrap items-center gap-4 text-xs text-text-muted pt-3 border-t border-border-primary/50">
           {project.deepDiveId && (
             <Link
               to={`/deep-dives/${project.deepDiveId}`}
