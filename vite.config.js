@@ -17,7 +17,9 @@ const allRoutes = [
   "/skills",
   "/contact",
   "/resume",
-  
+  "/now",
+  "/uses",
+
   // Blog posts (Deep Dives)
   "/deep-dives/infrasight-production-ml",
   "/deep-dives/audio-classification-research",
