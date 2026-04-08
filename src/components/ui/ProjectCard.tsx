@@ -71,7 +71,7 @@ export const ProjectCard = ({
           <span>{project.tech.slice(0, 4).join(", ")}</span>
         </div>
 
-        {/* Primary actions: Case Study (filled) + Deep Dive (outline with icon) */}
+        {/* Primary actions: Case Study + Live Demo */}
         <div className="flex flex-wrap gap-3 items-center mb-4">
           {project.caseStudyUrl && (
             <Button
@@ -84,52 +84,45 @@ export const ProjectCard = ({
               Case Study
             </Button>
           )}
-          {project.deepDiveId && (
-            <Button
-              as={Link}
-              to={`/deep-dives/${project.deepDiveId}`}
-              variant="outline"
-              size="sm"
-              className="font-medium inline-flex items-center gap-1.5"
-            >
-              <FileText className="w-3.5 h-3.5" />
-              Deep Dive
-            </Button>
-          )}
-          {/* Fallback for projects with no case study and no deep dive */}
-          {!project.caseStudyUrl && !project.deepDiveId && project.live && (
+          {project.live && (
             <Button
               as="a"
               href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="outline"
+              size="sm"
+              className="font-medium"
+            >
+              Live Demo
+            </Button>
+          )}
+          {!project.caseStudyUrl && !project.live && project.github && (
+            <Button
+              as="a"
+              href={project.github}
               target="_blank"
               rel="noopener noreferrer"
               variant="primary"
               size="sm"
               className="font-medium"
             >
-              Open Demo
+              Source Code
             </Button>
           )}
-          {!project.caseStudyUrl &&
-            !project.deepDiveId &&
-            !project.live &&
-            project.github && (
-              <Button
-                as="a"
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="primary"
-                size="sm"
-                className="font-medium"
-              >
-                Source Code
-              </Button>
-            )}
         </div>
 
-        {/* Secondary links: GitHub · Live Demo */}
+        {/* Secondary links: Deep Dive · GitHub */}
         <div className="flex flex-wrap items-center gap-4 text-sm text-text-muted pt-3 border-t border-border-primary/50">
+          {project.deepDiveId && (
+            <Link
+              to={`/deep-dives/${project.deepDiveId}`}
+              className="inline-flex items-center gap-1.5 hover:text-accent-primary transition-colors"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              Deep Dive
+            </Link>
+          )}
           {project.github && (
             <a
               href={project.github}
@@ -138,16 +131,6 @@ export const ProjectCard = ({
               className="hover:text-accent-primary transition-colors"
             >
               GitHub ↗
-            </a>
-          )}
-          {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-accent-primary transition-colors"
-            >
-              Live Demo ↗
             </a>
           )}
         </div>
