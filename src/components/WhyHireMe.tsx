@@ -41,7 +41,7 @@ const WhyHireMe: React.FC = () => {
     <section className="py-24 bg-bg-surface/50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <SectionTitle
-          title="Why Me"
+          title="What I Bring"
           subtitle="Production systems. Real metrics. No fluff."
         />
 
