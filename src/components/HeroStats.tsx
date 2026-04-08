@@ -6,7 +6,7 @@ import { useCountUp } from "../hooks/useCountUp";
 export const HeroStats = () => {
   // Count-up animations for stats
   const projectsCount = useCountUp({ end: 8, duration: 1500, suffix: "+" });
-  const githubCount = useCountUp({ end: 2243, duration: 2000 });
+  const githubCount = useCountUp({ end: 2200, duration: 2000, suffix: "+" });
   const certCount = useCountUp({ end: 2, duration: 1200 });
   const techCount = useCountUp({ end: 15, duration: 1800, suffix: "+" });
 
@@ -19,8 +19,8 @@ export const HeroStats = () => {
     },
     {
       icon: <Github className="w-7 h-7 stroke-[2.5]" />,
-      value: githubCount.displayValue,
-      label: "GitHub Contributions",
+      value: `~${githubCount.displayValue}`,
+      label: "GitHub Contributions (approx.)",
       countRef: githubCount.ref,
     },
     {
