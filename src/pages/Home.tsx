@@ -294,18 +294,22 @@ function Home() {
 
       {/* Experience Timeline — left year rail + scrollable right column */}
       <section
-        className="relative py-24 overflow-hidden bg-bg-surface/50"
+        className="relative py-24 bg-bg-surface/50"
         aria-label="Career timeline"
       >
-        {/* Subtle notebook lines */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.35] dark:opacity-[0.2]"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(to bottom, transparent 0, transparent 27px, var(--color-border-primary) 27px, var(--color-border-primary) 28px)",
-            backgroundSize: "100% 28px",
-          }}
-        />
+          className="pointer-events-none absolute inset-0 overflow-hidden"
+          aria-hidden
+        >
+          <div
+            className="absolute inset-0 opacity-[0.35] dark:opacity-[0.2]"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(to bottom, transparent 0, transparent 27px, var(--color-border-primary) 27px, var(--color-border-primary) 28px)",
+              backgroundSize: "100% 28px",
+            }}
+          />
+        </div>
 
         <div className="relative max-w-7xl mx-auto px-6 md:px-8">
           <div className="max-w-2xl mb-10 lg:mb-12">
@@ -326,9 +330,9 @@ function Home() {
             Recent to Past
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(220px,280px),minmax(0,1fr)] gap-10 lg:gap-16 items-start">
-            {/* Left: sticky headline year + year list */}
-            <div className="hidden lg:block lg:sticky lg:top-24 self-start z-10">
+          <div className="flex flex-col md:flex-row md:items-start md:gap-10 lg:gap-14">
+            {/* LEFT — sticky to viewport while this section scrolls (needs section overflow-visible) */}
+            <aside className="hidden md:flex md:flex-col md:w-[13.5rem] lg:w-60 md:flex-shrink-0 md:sticky md:top-24 md:self-start z-10">
               <div className="min-h-[7.5rem] overflow-hidden">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
@@ -349,33 +353,44 @@ function Home() {
                 </AnimatePresence>
               </div>
 
-              <div className="relative mt-10 pl-1">
-                <div className="absolute left-0 top-1 bottom-1 w-px bg-border-primary/70" />
+              <div className="relative mt-10">
+                {/* Vertical track: gutter column + labels — no overlap with year text */}
                 <div
-                  className="absolute left-0 top-1 w-px bg-accent-primary/90 transition-[height] duration-300 ease-out"
-                  style={{ height: railProgressHeight }}
+                  className="pointer-events-none absolute left-3.5 top-3 bottom-3 w-px rounded-full bg-border-primary/25"
+                  aria-hidden
                 />
-                <div className="space-y-1">
+                <div
+                  className="pointer-events-none absolute left-3.5 top-3 w-px rounded-full bg-accent-primary/75 transition-[height] duration-300 ease-out"
+                  style={{ height: railProgressHeight }}
+                  aria-hidden
+                />
+                <div className="relative z-[1] space-y-0.5">
                   {timelineYears.map((year) => {
                     const isActive = activeTimelineYear === year;
 
                     return (
-                      <motion.div
+                      <div
                         key={year}
-                        layout
-                        className="relative flex items-center gap-3 py-1.5 pl-3"
+                        className="flex min-h-[2.75rem] items-center gap-6"
                       >
-                        {isActive && (
-                          <motion.span
-                            layoutId="timeline-year-accent"
-                            className="absolute left-0 top-1/2 -translate-y-1/2 h-0.5 w-4 rounded-full bg-accent-primary"
-                            transition={{
-                              type: "spring",
-                              stiffness: 380,
-                              damping: 34,
-                            }}
-                          />
-                        )}
+                        <div className="flex h-full w-7 flex-shrink-0 items-center justify-center pr-0.5">
+                          {isActive ? (
+                            <motion.span
+                              layoutId="timeline-year-accent"
+                              className="h-[3px] w-4 shrink-0 rounded-full bg-accent-primary"
+                              transition={{
+                                type: "spring",
+                                stiffness: 380,
+                                damping: 34,
+                              }}
+                            />
+                          ) : (
+                            <span
+                              className="h-1 w-1 shrink-0 rounded-full bg-border-primary/45"
+                              aria-hidden
+                            />
+                          )}
+                        </div>
                         <button
                           type="button"
                           aria-current={isActive ? "true" : "false"}
@@ -387,23 +402,24 @@ function Home() {
                               block: "start",
                             });
                           }}
-                          className={`text-left text-sm font-mono tracking-[0.12em] transition-colors duration-200 ${
+                          className={`min-w-0 text-left text-sm font-mono tabular-nums tracking-[0.08em] transition-colors duration-200 ${
                             isActive
                               ? "text-text-primary font-medium"
-                              : "text-text-muted/60 hover:text-text-secondary"
+                              : "text-text-muted/65 hover:text-text-secondary"
                           }`}
                         >
                           {year}
                         </button>
-                      </motion.div>
+                      </div>
                     );
                   })}
                 </div>
               </div>
-            </div>
+            </aside>
 
-            <div className="space-y-12">
-              <div className="lg:hidden -mx-1 overflow-x-auto pb-2">
+            {/* RIGHT — scrollable timeline entries */}
+            <div className="min-w-0 flex-1 space-y-12">
+              <div className="md:hidden -mx-1 overflow-x-auto pb-2">
                 <div className="flex items-center gap-2 px-1 min-w-max">
                   {timelineYears.map((year) => {
                     const isActive = activeTimelineYear === year;
@@ -446,7 +462,7 @@ function Home() {
                   className="space-y-6"
                 >
                   {/* Right column: subtle year anchor (large year lives in left rail on desktop) */}
-                  <div className="flex items-baseline gap-4 border-b border-border-primary/50 pb-2 lg:hidden">
+                  <div className="flex items-baseline gap-4 border-b border-border-primary/50 pb-2 md:hidden">
                     <h3 className="text-2xl font-bold font-display text-text-primary">
                       {yearGroup.year}
                     </h3>
@@ -467,7 +483,7 @@ function Home() {
                               articleRefs.current[index] = el;
                             }}
                             data-tl-index={index}
-                            className="relative border-l border-border-primary/80 pl-8 md:pl-10"
+                            className="relative border-l border-border-primary/25 pl-7 md:pl-9"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
@@ -535,18 +551,18 @@ function Home() {
                 </motion.section>
               ))}
 
-              <div className="mt-10 lg:hidden">
+              <div className="mt-10 md:hidden">
+                <Button as={Link} to="/about" variant="outline" size="md">
+                  View Full Journey
+                </Button>
+              </div>
+
+              <div className="hidden md:block mt-10">
                 <Button as={Link} to="/about" variant="outline" size="md">
                   View Full Journey
                 </Button>
               </div>
             </div>
-          </div>
-
-          <div className="hidden lg:flex justify-start mt-10 pl-[calc(280px+4rem)]">
-            <Button as={Link} to="/about" variant="outline" size="md">
-              View Full Journey
-            </Button>
           </div>
         </div>
       </section>
