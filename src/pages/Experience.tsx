@@ -1,10 +1,20 @@
+import { useMemo } from "react";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";
-import VisualTimeline from "../components/VisualTimeline";
+import ExperienceJourneyTimeline from "../components/ExperienceJourneyTimeline";
 import { experiences } from "../data/experience";
+import {
+  sortExperiencesNewestFirst,
+  withTimelineTrack,
+} from "../utils/timeline";
 
 function Experience() {
+  const experienceTimeline = useMemo(
+    () => sortExperiencesNewestFirst(experiences.map(withTimelineTrack)),
+    [],
+  );
+
   return (
     <Page>
       <SEO
@@ -26,14 +36,10 @@ function Experience() {
           />
 
           <div className="mt-12">
-            <VisualTimeline
-              items={experiences.map((exp) => ({
-                year: exp.dates,
-                title: `${exp.role} @ ${exp.company}`,
-                location: exp.location,
-                description: exp.description,
-                achievements: exp.achievements,
-              }))}
+            <ExperienceJourneyTimeline
+              variant="detailed"
+              entries={experienceTimeline}
+              activeMarkerLayoutId="timeline-year-accent-experience-page"
             />
           </div>
         </div>
