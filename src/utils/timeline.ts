@@ -37,7 +37,9 @@ export function timelineTrackStyle(track: TimelineTrack) {
     return {
       pill: "border-accent-primary/45 bg-accent-primary/12 text-accent-primary",
       node: "bg-accent-primary",
-      bullet: "bg-accent-primary/80",
+      // Opacity suffixes (e.g. bg-accent-primary/80) often compile to nothing useful
+      // when accent is a chained CSS variable; match the visible node with a solid fill.
+      bullet: "bg-accent-primary",
       company: "text-accent-primary",
     };
   }
