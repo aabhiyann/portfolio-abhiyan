@@ -1,20 +1,28 @@
 import { motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Page from "../components/Page";
 import SectionTitle from "../components/SectionTitle";
 import SEO from "../components/SEO";
 import { SafeImage } from "../components/ui";
 
-// Testimonials removed to focus on data-driven impact
-import VisualTimeline from "../components/VisualTimeline";
+import ExperienceJourneyTimeline from "../components/ExperienceJourneyTimeline";
 import ContactSection from "../components/ContactSection";
 import SkillsMatrix from "../components/SkillsMatrix";
 import { experiences } from "../data/experience";
+import {
+  sortExperiencesNewestFirst,
+  withTimelineTrack,
+} from "../utils/timeline";
 
 function About() {
   const { hash } = useLocation();
+
+  const aboutTimeline = useMemo(
+    () => sortExperiencesNewestFirst(experiences.map(withTimelineTrack)),
+    [],
+  );
 
   useEffect(() => {
     if (!hash) return;
@@ -127,20 +135,17 @@ function About() {
       </section>
 
       {/* Engineering Career */}
-      <section className="py-24 bg-bg-primary">
+      <section id="experience" className="py-24 bg-bg-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <SectionTitle
             title="Experience"
             subtitle="Roles, projects, and milestones in order."
           />
-          <VisualTimeline
-            items={experiences.map((exp) => ({
-              year: exp.dates,
-              title: `${exp.role} @ ${exp.company}`,
-              description: exp.description,
-              location: exp.location,
-              achievements: exp.achievements, // Pass achievements for display
-            }))}
+          <ExperienceJourneyTimeline
+            variant="detailed"
+            entries={aboutTimeline}
+            activeMarkerLayoutId="timeline-year-accent-about"
+            className="pt-4"
           />
         </div>
       </section>
