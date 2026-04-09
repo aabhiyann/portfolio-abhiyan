@@ -1,6 +1,6 @@
 import { useMemo, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { motionTokens } from "../utils/motion";
 import { projects } from "../data/Projects";
 import Page from "../components/Page";
@@ -28,6 +28,24 @@ const parseStartDate = (dates: string) => {
   const [start] = dates.split("–").map((part) => part.trim());
   return new Date(`${start} 1`).getTime();
 };
+
+/** track-specific track colors: work/experience = orange, education/teaching = mint */
+function timelineTrackStyle(track: string) {
+  if (track === "Experience") {
+    return {
+      pill: "border-accent-primary/45 bg-accent-primary/12 text-accent-primary",
+      node: "bg-accent-primary",
+      bullet: "bg-accent-primary/80",
+      company: "text-accent-primary",
+    };
+  }
+  return {
+    pill: "border-success/40 bg-success/12 text-success",
+    node: "bg-success",
+    bullet: "bg-success/75",
+    company: "text-success",
+  };
+}
 
 function Home() {
   const homepageTimeline = useMemo(
@@ -128,6 +146,10 @@ function Home() {
       ? (activeYearIndex / (timelineYears.length - 1)) * 100
       : 0;
   const railProgressHeight = `calc(max(${railProgressPct}%, 0%) - 0.5rem)`;
+
+  const activeYearEntryCount =
+    groupedTimeline.find((g) => g.year === activeTimelineYear)?.entries
+      .length ?? 0;
 
   return (
     <Page>
@@ -270,9 +292,22 @@ function Home() {
       {/* Why Hire Me Section */}
       <WhyHireMe />
 
-      {/* Experience Timeline */}
-      <section className="py-24 bg-bg-surface/40">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      {/* Experience Timeline — left year rail + scrollable right column */}
+      <section
+        className="relative py-24 overflow-hidden bg-bg-surface/50"
+        aria-label="Career timeline"
+      >
+        {/* Subtle notebook lines */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.35] dark:opacity-[0.2]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(to bottom, transparent 0, transparent 27px, var(--color-border-primary) 27px, var(--color-border-primary) 28px)",
+            backgroundSize: "100% 28px",
+          }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-8">
           <div className="max-w-2xl mb-10 lg:mb-12">
             <div className="inline-flex items-center gap-3 mb-5">
               <span className="h-px w-10 bg-accent-primary/60" />
@@ -287,40 +322,60 @@ function Home() {
               DC.
             </p>
           </div>
-          <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-text-muted mb-5">
+          <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-text-muted mb-6">
             Recent to Past
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[128px,minmax(0,1fr)] gap-8 lg:gap-14 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(220px,280px),minmax(0,1fr)] gap-10 lg:gap-16 items-start">
+            {/* Left: sticky headline year + year list */}
             <div className="hidden lg:block lg:sticky lg:top-24 self-start z-10">
-              <div className="relative pl-4">
-                <div className="absolute left-0 top-1 bottom-1 w-px bg-border-primary/80" />
+              <div className="min-h-[7.5rem] overflow-hidden">
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={activeTimelineYear}
+                    initial={{ y: 14, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -14, opacity: 0 }}
+                    transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <p className="text-5xl md:text-6xl font-medium tracking-tight font-display text-text-primary leading-none">
+                      {activeTimelineYear}
+                    </p>
+                    <p className="mt-3 text-[11px] font-mono uppercase tracking-[0.2em] text-text-muted">
+                      {activeYearEntryCount}{" "}
+                      {activeYearEntryCount === 1 ? "entry" : "entries"}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              <div className="relative mt-10 pl-1">
+                <div className="absolute left-0 top-1 bottom-1 w-px bg-border-primary/70" />
                 <div
-                  className="absolute left-0 top-1 w-px bg-accent-primary transition-[height] duration-300"
+                  className="absolute left-0 top-1 w-px bg-accent-primary/90 transition-[height] duration-300 ease-out"
                   style={{ height: railProgressHeight }}
                 />
-                <div className="space-y-3">
-                  {timelineYears.map((year, index) => {
+                <div className="space-y-1">
+                  {timelineYears.map((year) => {
                     const isActive = activeTimelineYear === year;
 
                     return (
                       <motion.div
                         key={year}
-                        animate={{
-                          opacity: isActive ? 1 : 0.55,
-                          x: isActive ? 0 : 4,
-                          scale: isActive ? 1 : 0.98,
-                        }}
-                        transition={{ duration: 0.22, ease: "easeOut" }}
-                        className="relative"
+                        layout
+                        className="relative flex items-center gap-3 py-1.5 pl-3"
                       >
-                        <span
-                          className={`absolute left-[-4px] top-2 h-2 w-2 rounded-full transition-all duration-300 ${
-                            isActive
-                              ? "bg-accent-primary ring-4 ring-bg-primary"
-                              : "bg-bg-primary border border-border-primary"
-                          }`}
-                        />
+                        {isActive && (
+                          <motion.span
+                            layoutId="timeline-year-accent"
+                            className="absolute left-0 top-1/2 -translate-y-1/2 h-0.5 w-4 rounded-full bg-accent-primary"
+                            transition={{
+                              type: "spring",
+                              stiffness: 380,
+                              damping: 34,
+                            }}
+                          />
+                        )}
                         <button
                           type="button"
                           aria-current={isActive ? "true" : "false"}
@@ -332,12 +387,10 @@ function Home() {
                               block: "start",
                             });
                           }}
-                          className={`text-xs font-mono tracking-[0.2em] transition-colors duration-300 ${
+                          className={`text-left text-sm font-mono tracking-[0.12em] transition-colors duration-200 ${
                             isActive
-                              ? "text-accent-primary"
-                              : index === 0
-                                ? "text-text-secondary"
-                                : "text-text-muted/75"
+                              ? "text-text-primary font-medium"
+                              : "text-text-muted/60 hover:text-text-secondary"
                           }`}
                         >
                           {year}
@@ -390,80 +443,93 @@ function Home() {
                     duration: motionTokens.duration.normal / 1000,
                     delay: yearGroupIndex * 0.06,
                   }}
-                  className="space-y-5"
+                  className="space-y-6"
                 >
-                  <div className="flex items-end justify-between gap-3 border-b border-border-primary/70 pb-3">
-                    <h3 className="text-2xl md:text-3xl font-bold font-heading text-text-primary">
+                  {/* Right column: subtle year anchor (large year lives in left rail on desktop) */}
+                  <div className="flex items-baseline gap-4 border-b border-border-primary/50 pb-2 lg:hidden">
+                    <h3 className="text-2xl font-bold font-display text-text-primary">
                       {yearGroup.year}
                     </h3>
-                    <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-text-muted">
+                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-text-muted">
                       {yearGroup.entries.length}{" "}
                       {yearGroup.entries.length === 1 ? "entry" : "entries"}
-                    </p>
+                    </span>
                   </div>
 
-                  <div className="space-y-8">
+                  <div className="space-y-10">
                     {yearGroup.entries.map(
-                      ({ item: experience, index }, entryIndex) => (
-                        <motion.article
-                          key={experience.id}
-                          ref={(el) => {
-                            articleRefs.current[index] = el;
-                          }}
-                          data-tl-index={index}
-                          className="relative border-l border-border-primary pl-8 md:pl-10"
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, amount: 0.2 }}
-                          transition={{
-                            duration: motionTokens.duration.normal / 1000,
-                            delay: entryIndex * 0.05,
-                          }}
-                        >
-                          <div className="absolute left-[-6px] top-2 h-3 w-3 rounded-full bg-accent-primary ring-4 ring-bg-primary" />
+                      ({ item: experience, index }, entryIndex) => {
+                        const trackStyle = timelineTrackStyle(experience.track);
+                        return (
+                          <motion.article
+                            key={experience.id}
+                            ref={(el) => {
+                              articleRefs.current[index] = el;
+                            }}
+                            data-tl-index={index}
+                            className="relative border-l border-border-primary/80 pl-8 md:pl-10"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{
+                              duration: motionTokens.duration.normal / 1000,
+                              delay: entryIndex * 0.05,
+                            }}
+                          >
+                            <div
+                              className={`absolute left-[-6px] top-2.5 h-3 w-3 rounded-full ring-4 ring-bg-primary ${trackStyle.node}`}
+                            />
 
-                          <div className="space-y-3">
-                            <div className="flex flex-wrap items-center gap-3">
-                              <span className="inline-flex rounded-full border border-border-primary px-3 py-1 text-xs font-mono uppercase tracking-[0.18em] text-text-secondary">
-                                {experience.track}
-                              </span>
-                              <span className="text-sm font-mono text-accent-primary">
-                                {experience.dates}
-                              </span>
-                              <span className="text-xs uppercase tracking-[0.18em] text-text-muted/80">
-                                {experience.location}
-                              </span>
-                            </div>
+                            <div className="space-y-3">
+                              <div className="flex flex-wrap items-center gap-3">
+                                <span
+                                  className={`inline-flex rounded-md border px-2.5 py-1 text-[10px] font-mono font-semibold uppercase tracking-[0.16em] ${trackStyle.pill}`}
+                                >
+                                  {experience.track}
+                                </span>
+                                <span className="text-sm font-mono text-text-muted">
+                                  {experience.dates}
+                                </span>
+                              </div>
 
-                            <div className="space-y-1">
-                              <p className="text-xs uppercase tracking-[0.22em] text-accent-primary">
-                                {experience.company}
+                              <div className="space-y-1">
+                                <h4 className="text-xl md:text-2xl font-semibold text-text-primary font-display leading-tight">
+                                  {experience.role}
+                                </h4>
+                                <p
+                                  className={`text-sm font-medium ${trackStyle.company}`}
+                                >
+                                  {experience.company}
+                                  <span className="font-normal text-text-muted">
+                                    {" "}
+                                    · {experience.location}
+                                  </span>
+                                </p>
+                              </div>
+
+                              <p className="text-sm text-text-muted leading-relaxed max-w-2xl">
+                                {experience.description}
                               </p>
-                              <h4 className="text-xl md:text-2xl font-bold text-text-primary font-heading leading-tight">
-                                {experience.role}
-                              </h4>
-                            </div>
 
-                            <p className="text-text-muted leading-relaxed max-w-2xl">
-                              {experience.description}
-                            </p>
-
-                            <div className="space-y-2">
-                              {experience.achievements
-                                .slice(0, 2)
-                                .map((achievement) => (
-                                  <div
-                                    key={achievement}
-                                    className="flex items-start gap-3 text-sm text-text-secondary"
-                                  >
-                                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-primary/70 shrink-0" />
-                                    <span>{achievement}</span>
-                                  </div>
-                                ))}
+                              <div className="space-y-2 pt-1">
+                                {experience.achievements
+                                  .slice(0, 2)
+                                  .map((achievement) => (
+                                    <div
+                                      key={achievement}
+                                      className="flex items-start gap-3 text-sm text-text-secondary"
+                                    >
+                                      <span
+                                        className={`mt-1.5 h-1.5 w-1.5 rounded-full shrink-0 ${trackStyle.bullet}`}
+                                      />
+                                      <span>{achievement}</span>
+                                    </div>
+                                  ))}
+                              </div>
                             </div>
-                          </div>
-                        </motion.article>
-                      ),
+                          </motion.article>
+                        );
+                      },
                     )}
                   </div>
                 </motion.section>
@@ -477,7 +543,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="hidden lg:flex justify-start mt-10 pl-[110px]">
+          <div className="hidden lg:flex justify-start mt-10 pl-[calc(280px+4rem)]">
             <Button as={Link} to="/about" variant="outline" size="md">
               View Full Journey
             </Button>
