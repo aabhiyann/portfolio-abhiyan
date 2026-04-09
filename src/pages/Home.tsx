@@ -294,23 +294,9 @@ function Home() {
 
       {/* Experience Timeline — left year rail + scrollable right column */}
       <section
-        className="relative py-24 bg-bg-surface/50"
+        className="relative border-t border-border-primary/30 py-24 bg-bg-surface/20"
         aria-label="Career timeline"
       >
-        <div
-          className="pointer-events-none absolute inset-0 overflow-hidden"
-          aria-hidden
-        >
-          <div
-            className="absolute inset-0 opacity-[0.35] dark:opacity-[0.2]"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(to bottom, transparent 0, transparent 27px, var(--color-border-primary) 27px, var(--color-border-primary) 28px)",
-              backgroundSize: "100% 28px",
-            }}
-          />
-        </div>
-
         <div className="relative max-w-7xl mx-auto px-6 md:px-8">
           <div className="max-w-2xl mb-10 lg:mb-12">
             <div className="inline-flex items-center gap-3 mb-5">
