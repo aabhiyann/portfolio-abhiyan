@@ -374,7 +374,7 @@
 **Badges:** Socket.IO, Team Work
 
 **Links:**
-- Live: https://udaymelodyhhub.vercel.app/
+- Live: http://melodyhubmusic.vercel.app/
 - GitHub: https://github.com/aabhiyann/MelodyHub
 
 **Case Study:** `/case-studies/melodyhub`

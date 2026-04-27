@@ -20,7 +20,7 @@ const MelodyHubCaseStudy: React.FC = () => {
       ]}
       links={{
         github: "https://github.com/aabhiyann/MelodyHub",
-        live: "https://udaymelodyhhub.vercel.app",
+        live: "http://melodyhubmusic.vercel.app",
       }}
     >
       <CaseStudySection title="Overview">
@@ -45,12 +45,12 @@ const MelodyHubCaseStudy: React.FC = () => {
             <Typography variant="body" className="text-sm">
               <strong>Deployed:</strong>{" "}
               <a
-                href="https://udaymelodyhhub.vercel.app"
+                href="http://melodyhubmusic.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent-primary hover:underline"
               >
-                udaymelodyhhub.vercel.app
+                melodyhubmusic.vercel.app
               </a>{" "}
               (may be down, deployed by teammate)
             </Typography>
@@ -644,7 +644,7 @@ graph TB
             </Typography>
           </a>
           <a
-            href="https://udaymelodyhhub.vercel.app"
+            href="http://melodyhubmusic.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
             className="p-6 rounded-xl bg-bg-surface/50 border border-border-primary/50 hover:border-accent-primary/50 transition-colors group"
