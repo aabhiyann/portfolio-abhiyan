@@ -373,7 +373,7 @@
 - **Stats:** Type: Team Project, Feature: Real-Time Sync
 - **Badges:** Socket.IO, Team Work
 - **Links:**
-  - Live: https://udaymelodyhhub.vercel.app/
+  - Live: http://melodyhubmusic.vercel.app/
   - GitHub: https://github.com/aabhiyann/MelodyHub
 - **Case Study:** `/case-studies/melodyhub`
 - **Image:** `/images/projects/melodyhub.png`
@@ -1175,7 +1175,7 @@ All metrics macro-averaged across three classes (dog, cat, bird)
 **Project Status Box:**
 
 - Status: Deployed (by teammate)
-- Live Demo: https://udaymelodyhhub.vercel.app/
+- Live Demo: http://melodyhubmusic.vercel.app/
 - Note: Project is live but maintained by teammate
 
 #### Section 2: The Challenge
@@ -1388,7 +1388,7 @@ socket.on("sync-playback", ({ songId, timestamp, isPlaying }) => {
 
 **Links:**
 
-- Live Demo: https://udaymelodyhhub.vercel.app/
+- Live Demo: http://melodyhubmusic.vercel.app/
 - GitHub: https://github.com/aabhiyann/MelodyHub
 
 ---
@@ -1574,7 +1574,7 @@ socket.on("sync-playback", ({ songId, timestamp, isPlaying }) => {
 
 #### MelodyHub
 
-- **Live Demo:** https://udaymelodyhhub.vercel.app/
+- **Live Demo:** http://melodyhubmusic.vercel.app/
 - **GitHub:** https://github.com/aabhiyann/MelodyHub
 
 #### Disease Prediction ML

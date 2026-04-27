@@ -636,7 +636,7 @@ Building TalkifyDocs taught me that production RAG applications are fundamentall
 
 **TL;DR:** I built a real-time social music platform where users listen together with synchronized playback and live chat. Here's what I learned about WebSocket architecture, state synchronization, and building scalable real-time systems.
 
-**[Live Demo](https://udaymelodyhhub.vercel.app)**  
+**[Live Demo](http://melodyhubmusic.vercel.app)**  
 **[Source Code](https://github.com/aabhiyann/MelodyHub)**
 
 ---
