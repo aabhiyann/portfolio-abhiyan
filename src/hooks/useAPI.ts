@@ -60,7 +60,7 @@ export function useAPI<T>() {
         const response = await fetchWithRetry(url, {
           timeout: 10000,
           retries: 3,
-          onRetry: (attempt) => {
+          onRetry: () => {
             // No console.log here
           },
           ...options,
