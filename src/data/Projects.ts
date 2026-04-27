@@ -93,7 +93,7 @@ export const projects: Project[] = [
     description:
       "Shared music rooms with synchronized playback and live chat. Socket.IO keeps listeners in sync across clients with under 50ms latency. Built with React, Node.js, and MongoDB.",
     tech: ["React", "Node.js", "Socket.IO", "MongoDB", "Clerk"],
-    live: "https://udaymelodyhhub.vercel.app/",
+    live: "http://melodyhubmusic.vercel.app/",
     github: "https://github.com/aabhiyann/MelodyHub",
     image: "/images/projects/melodyhub.png",
     categories: ["Full Stack"],

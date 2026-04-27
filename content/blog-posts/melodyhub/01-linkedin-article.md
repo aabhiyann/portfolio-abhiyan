@@ -2,7 +2,7 @@
 
 **TL;DR:** I built a real-time social music platform where users listen together with synchronized playback and live chat. Here's what I learned about WebSocket architecture, state synchronization, and building scalable real-time systems.
 
-🌐 **Live Demo:** [udaymelodyhhub.vercel.app](https://udaymelodyhhub.vercel.app) (may be down)  
+🌐 **Live Demo:** [melodyhubmusic.vercel.app](http://melodyhubmusic.vercel.app) (may be down)  
 💻 **Source:** [github.com/aabhiyann/MelodyHub](https://github.com/aabhiyann/MelodyHub)
 
 ---
